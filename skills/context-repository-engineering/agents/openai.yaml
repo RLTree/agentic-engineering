@@ -1,0 +1,8 @@
+interface:
+  display_name: Context and Repository Engineering
+  short_description: Context and Repository Engineering
+  brand_color: '#0F766E'
+  default_prompt: Audit this repository for Codex legibility and design layered guidance,
+    retrieval, plans, compaction, and cold-start tests.
+policy:
+  allow_implicit_invocation: false

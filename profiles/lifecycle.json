@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "profile": "lifecycle",
+  "enabled_skills": [
+    "agentic-engineering",
+    "agentic-product-lifecycle",
+    "authentic-use-engineering",
+    "product-fitness-engineering",
+    "agent-product-discovery",
+    "concept-feasibility-validation",
+    "requirements-systems-engineering",
+    "architecture-delivery-planning",
+    "software-construction-quality",
+    "secure-delivery-release",
+    "production-readiness-sre",
+    "continuous-product-experimentation",
+    "maintenance-retirement-engineering",
+    "engineering-learning-loop",
+    "verification-strategy-engineering"
+  ],
+  "implicit_front_door": "external:harness-ultragoal"
+}

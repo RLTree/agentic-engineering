@@ -1,0 +1,16 @@
+{
+  "check": "routing-corpus-audit",
+  "passed": true,
+  "errors": [],
+  "warnings": [
+    "This corpus validates routing intent and coverage; it is not a live GPT-5.6 activation benchmark."
+  ],
+  "metrics": {
+    "routing_cases": 143,
+    "should_invoke": 87,
+    "should_not_invoke": 30,
+    "overlap": 26,
+    "minimum_positive_cases_per_skill": 4,
+    "minimum_negative_cases_per_skill": 1
+  }
+}

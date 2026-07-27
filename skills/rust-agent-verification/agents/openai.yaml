@@ -1,0 +1,8 @@
+interface:
+  display_name: Rust Agent Verification
+  short_description: Rust Agent Verification
+  brand_color: '#0F766E'
+  default_prompt: Build a verification matrix for this Rust agent covering Cargo,
+    properties, concurrency, fault recovery, protocols, supply chain, and trajectories.
+policy:
+  allow_implicit_invocation: false

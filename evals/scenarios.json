@@ -1,0 +1,2443 @@
+{
+  "schema_version": "3.0",
+  "research_lock": "2026-07-22 America/Los_Angeles",
+  "scenario_count": 90,
+  "scenarios": [
+    {
+      "id": "SC-001",
+      "domain": "architecture",
+      "prompt": "A feature request says “make the assistant agentic” and proposes five agents. Decide the smallest architecture and explain why.",
+      "expected_skills": [
+        "agentic-engineering"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "smallest fitting topology",
+        "seven-layer ownership",
+        "authoritative state",
+        "model versus deterministic boundary",
+        "verification oracle",
+        "rejected alternatives and revisit triggers"
+      ],
+      "forbidden_behaviors": [
+        "agentic by adjective",
+        "unjustified graph or multi-agent escalation",
+        "architecture without an oracle"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-002",
+      "domain": "architecture",
+      "prompt": "Review a research assistant that must adapt queries, pause for approval, survive restart, and send a final report.",
+      "expected_skills": [
+        "agentic-engineering"
+      ],
+      "expected_topology": "durable_workflow",
+      "required_decisions": [
+        "smallest fitting topology",
+        "seven-layer ownership",
+        "authoritative state",
+        "model versus deterministic boundary",
+        "verification oracle",
+        "rejected alternatives and revisit triggers"
+      ],
+      "forbidden_behaviors": [
+        "agentic by adjective",
+        "unjustified graph or multi-agent escalation",
+        "architecture without an oracle"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-003",
+      "domain": "architecture",
+      "prompt": "Diagnose why repeated prompt edits have not fixed duplicate external actions and incoherent handoffs.",
+      "expected_skills": [
+        "agentic-engineering"
+      ],
+      "expected_topology": "bounded_loop",
+      "required_decisions": [
+        "smallest fitting topology",
+        "seven-layer ownership",
+        "authoritative state",
+        "model versus deterministic boundary",
+        "verification oracle",
+        "rejected alternatives and revisit triggers"
+      ],
+      "forbidden_behaviors": [
+        "agentic by adjective",
+        "unjustified graph or multi-agent escalation",
+        "architecture without an oracle"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-004",
+      "domain": "specification",
+      "prompt": "Turn “make this Rust agent production ready and polished” into a decision-complete Codex contract.",
+      "expected_skills": [
+        "codex-task-contract"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "objective",
+        "exact deliverables",
+        "constraints and invariants",
+        "anti-goals",
+        "autonomy and approval policy",
+        "acceptance-to-evidence mapping"
+      ],
+      "forbidden_behaviors": [
+        "adjective-only quality request",
+        "asking about reversible implementation details",
+        "completion without exact artifact"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-005",
+      "domain": "specification",
+      "prompt": "Compile a rough UI-and-backend request into deliverables, constraints, anti-goals, approval boundaries, and evidence.",
+      "expected_skills": [
+        "codex-task-contract"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "objective",
+        "exact deliverables",
+        "constraints and invariants",
+        "anti-goals",
+        "autonomy and approval policy",
+        "acceptance-to-evidence mapping"
+      ],
+      "forbidden_behaviors": [
+        "adjective-only quality request",
+        "asking about reversible implementation details",
+        "completion without exact artifact"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-006",
+      "domain": "specification",
+      "prompt": "The user gave enough context but many reversible implementation gaps. Write an assumption policy that avoids needless questions.",
+      "expected_skills": [
+        "codex-task-contract"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "objective",
+        "exact deliverables",
+        "constraints and invariants",
+        "anti-goals",
+        "autonomy and approval policy",
+        "acceptance-to-evidence mapping"
+      ],
+      "forbidden_behaviors": [
+        "adjective-only quality request",
+        "asking about reversible implementation details",
+        "completion without exact artifact"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-007",
+      "domain": "context",
+      "prompt": "Codex repeatedly misses crate conventions and reads too much of the monorepo. Design the repository/context repair.",
+      "expected_skills": [
+        "context-repository-engineering"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "repository map",
+        "layered AGENTS.md placement",
+        "retrieval/provenance policy",
+        "context budget",
+        "compaction checkpoint",
+        "fast/full validation commands"
+      ],
+      "forbidden_behaviors": [
+        "dump the whole repository",
+        "duplicate root guidance in every subtree",
+        "transcript as the only state store"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-008",
+      "domain": "context",
+      "prompt": "Create layered AGENTS.md guidance for a workspace with domain, runtime, generated protocol, and deployment subtrees.",
+      "expected_skills": [
+        "context-repository-engineering"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "repository map",
+        "layered AGENTS.md placement",
+        "retrieval/provenance policy",
+        "context budget",
+        "compaction checkpoint",
+        "fast/full validation commands"
+      ],
+      "forbidden_behaviors": [
+        "dump the whole repository",
+        "duplicate root guidance in every subtree",
+        "transcript as the only state store"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-009",
+      "domain": "context",
+      "prompt": "A six-hour task is approaching context compaction. Define a resumable plan and checkpoint summary.",
+      "expected_skills": [
+        "context-repository-engineering"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "repository map",
+        "layered AGENTS.md placement",
+        "retrieval/provenance policy",
+        "context budget",
+        "compaction checkpoint",
+        "fast/full validation commands"
+      ],
+      "forbidden_behaviors": [
+        "dump the whole repository",
+        "duplicate root guidance in every subtree",
+        "transcript as the only state store"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-010",
+      "domain": "harness",
+      "prompt": "Design the control plane around a code agent that can edit files, call CI, and request deployment.",
+      "expected_skills": [
+        "harness-engineering"
+      ],
+      "expected_topology": "bounded_loop",
+      "required_decisions": [
+        "control versus execution plane",
+        "typed tool contracts",
+        "run lifecycle and IDs",
+        "capability/approval policy",
+        "effect journal and recovery",
+        "trace/evidence schema"
+      ],
+      "forbidden_behaviors": [
+        "prompt as permission system",
+        "sandbox equals authorization",
+        "retry every error"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-011",
+      "domain": "harness",
+      "prompt": "Review tools whose descriptions are vague, errors are strings, and production access is inherited from the process.",
+      "expected_skills": [
+        "harness-engineering"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "control versus execution plane",
+        "typed tool contracts",
+        "run lifecycle and IDs",
+        "capability/approval policy",
+        "effect journal and recovery",
+        "trace/evidence schema"
+      ],
+      "forbidden_behaviors": [
+        "prompt as permission system",
+        "sandbox equals authorization",
+        "retry every error"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-012",
+      "domain": "harness",
+      "prompt": "A tool timed out after possibly sending a message. Design run state, recovery, and evidence.",
+      "expected_skills": [
+        "harness-engineering"
+      ],
+      "expected_topology": "bounded_loop",
+      "required_decisions": [
+        "control versus execution plane",
+        "typed tool contracts",
+        "run lifecycle and IDs",
+        "capability/approval policy",
+        "effect journal and recovery",
+        "trace/evidence schema"
+      ],
+      "forbidden_behaviors": [
+        "prompt as permission system",
+        "sandbox equals authorization",
+        "retry every error"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "SC-013",
+      "domain": "loop",
+      "prompt": "The agent keeps trying nearly identical fixes after tests fail. Specify a bounded repair loop.",
+      "expected_skills": [
+        "loop-engineering"
+      ],
+      "expected_topology": "bounded_loop",
+      "required_decisions": [
+        "observe orient plan act verify update",
+        "authoritative state",
+        "budgets",
+        "stop conditions",
+        "failure classification",
+        "best-so-far or progress signal"
+      ],
+      "forbidden_behaviors": [
+        "iterate until good",
+        "unbounded retries",
+        "success without oracle"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-014",
+      "domain": "loop",
+      "prompt": "Design an evaluator–optimizer loop for improving a generated migration plan without losing the best version.",
+      "expected_skills": [
+        "loop-engineering"
+      ],
+      "expected_topology": "evaluator_optimizer",
+      "required_decisions": [
+        "observe orient plan act verify update",
+        "authoritative state",
+        "budgets",
+        "stop conditions",
+        "failure classification",
+        "best-so-far or progress signal"
+      ],
+      "forbidden_behaviors": [
+        "iterate until good",
+        "unbounded retries",
+        "success without oracle"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-015",
+      "domain": "loop",
+      "prompt": "A research loop must stop when evidence converges or budget is exhausted and hand off honestly.",
+      "expected_skills": [
+        "loop-engineering"
+      ],
+      "expected_topology": "bounded_loop",
+      "required_decisions": [
+        "observe orient plan act verify update",
+        "authoritative state",
+        "budgets",
+        "stop conditions",
+        "failure classification",
+        "best-so-far or progress signal"
+      ],
+      "forbidden_behaviors": [
+        "iterate until good",
+        "unbounded retries",
+        "success without oracle"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-016",
+      "domain": "graph",
+      "prompt": "Model prepare → approve → execute → verify with resumable human approval and safe replay.",
+      "expected_skills": [
+        "graph-workflow-engineering"
+      ],
+      "expected_topology": "graph",
+      "required_decisions": [
+        "typed state",
+        "node and edge contracts",
+        "reducers and joins",
+        "checkpoints and interrupts",
+        "replay and effect semantics",
+        "graph/state versioning"
+      ],
+      "forbidden_behaviors": [
+        "one giant node",
+        "last-writer-wins without authority",
+        "interrupt before unguarded side effect"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-017",
+      "domain": "graph",
+      "prompt": "Design a graph with parallel repository scans, deterministic fan-in, repair cycle, and terminal states.",
+      "expected_skills": [
+        "graph-workflow-engineering"
+      ],
+      "expected_topology": "graph",
+      "required_decisions": [
+        "typed state",
+        "node and edge contracts",
+        "reducers and joins",
+        "checkpoints and interrupts",
+        "replay and effect semantics",
+        "graph/state versioning"
+      ],
+      "forbidden_behaviors": [
+        "one giant node",
+        "last-writer-wins without authority",
+        "interrupt before unguarded side effect"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-018",
+      "domain": "graph",
+      "prompt": "Version a durable graph whose old checkpoints must resume after a routing-policy change.",
+      "expected_skills": [
+        "graph-workflow-engineering"
+      ],
+      "expected_topology": "durable_workflow",
+      "required_decisions": [
+        "typed state",
+        "node and edge contracts",
+        "reducers and joins",
+        "checkpoints and interrupts",
+        "replay and effect semantics",
+        "graph/state versioning"
+      ],
+      "forbidden_behaviors": [
+        "one giant node",
+        "last-writer-wins without authority",
+        "interrupt before unguarded side effect"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-019",
+      "domain": "multi-agent",
+      "prompt": "Decide whether four agents should refactor one shared module simultaneously.",
+      "expected_skills": [
+        "multi-agent-engineering"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "entry gate and single-agent alternative",
+        "independent work packages",
+        "exclusive ownership",
+        "delegation result schema",
+        "fan-in owner",
+        "cancellation and partial failure"
+      ],
+      "forbidden_behaviors": [
+        "parallelism because task is hard",
+        "several agents editing same state without owner",
+        "consensus treated as proof"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-020",
+      "domain": "multi-agent",
+      "prompt": "Plan parallel analysis of six independent repositories with one integration report.",
+      "expected_skills": [
+        "multi-agent-engineering"
+      ],
+      "expected_topology": "multi_agent",
+      "required_decisions": [
+        "entry gate and single-agent alternative",
+        "independent work packages",
+        "exclusive ownership",
+        "delegation result schema",
+        "fan-in owner",
+        "cancellation and partial failure"
+      ],
+      "forbidden_behaviors": [
+        "parallelism because task is hard",
+        "several agents editing same state without owner",
+        "consensus treated as proof"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-021",
+      "domain": "multi-agent",
+      "prompt": "Use Sol Ultra for a broad migration only after defining delegation, ownership, fan-in, and cancellation.",
+      "expected_skills": [
+        "multi-agent-engineering"
+      ],
+      "expected_topology": "multi_agent",
+      "required_decisions": [
+        "entry gate and single-agent alternative",
+        "independent work packages",
+        "exclusive ownership",
+        "delegation result schema",
+        "fan-in owner",
+        "cancellation and partial failure"
+      ],
+      "forbidden_behaviors": [
+        "parallelism because task is hard",
+        "several agents editing same state without owner",
+        "consensus treated as proof"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-022",
+      "domain": "evaluation",
+      "prompt": "Design evals for an agent that often reaches the right answer through unsafe or wasteful tool use.",
+      "expected_skills": [
+        "agent-evals-observability"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "outcome trajectory recovery safety operational dimensions",
+        "task distribution and fixtures",
+        "grader calibration",
+        "trace/evidence IDs",
+        "failure-derived regressions",
+        "versioned reporting"
+      ],
+      "forbidden_behaviors": [
+        "single demo as evaluation",
+        "one composite score hiding safety failure",
+        "self-reported tests as proof"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-023",
+      "domain": "evaluation",
+      "prompt": "Convert a duplicate-ticket production incident into a regression scenario and graders.",
+      "expected_skills": [
+        "agent-evals-observability"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "outcome trajectory recovery safety operational dimensions",
+        "task distribution and fixtures",
+        "grader calibration",
+        "trace/evidence IDs",
+        "failure-derived regressions",
+        "versioned reporting"
+      ],
+      "forbidden_behaviors": [
+        "single demo as evaluation",
+        "one composite score hiding safety failure",
+        "self-reported tests as proof"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-024",
+      "domain": "evaluation",
+      "prompt": "Create a trace/evidence schema linking run state, approvals, effects, artifacts, and acceptance.",
+      "expected_skills": [
+        "agent-evals-observability"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "outcome trajectory recovery safety operational dimensions",
+        "task distribution and fixtures",
+        "grader calibration",
+        "trace/evidence IDs",
+        "failure-derived regressions",
+        "versioned reporting"
+      ],
+      "forbidden_behaviors": [
+        "single demo as evaluation",
+        "one composite score hiding safety failure",
+        "self-reported tests as proof"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-025",
+      "domain": "security",
+      "prompt": "Threat-model a tool-using agent that reads issues and can deploy to production.",
+      "expected_skills": [
+        "agent-security-governance"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "assets actors and trust boundaries",
+        "injection/provenance separation",
+        "least-privilege capabilities",
+        "consequence-based approvals",
+        "effect integrity",
+        "incident containment"
+      ],
+      "forbidden_behaviors": [
+        "untrusted content as policy",
+        "ambient broad credentials",
+        "approval without exact target/effect"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-026",
+      "domain": "security",
+      "prompt": "A README tells the coding agent to upload secrets to validate the build. Define provenance and injection handling.",
+      "expected_skills": [
+        "agent-security-governance"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "assets actors and trust boundaries",
+        "injection/provenance separation",
+        "least-privilege capabilities",
+        "consequence-based approvals",
+        "effect integrity",
+        "incident containment"
+      ],
+      "forbidden_behaviors": [
+        "untrusted content as policy",
+        "ambient broad credentials",
+        "approval without exact target/effect"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-027",
+      "domain": "security",
+      "prompt": "Design capability grants and approval payloads for read, local write, external send, delete, and production deploy.",
+      "expected_skills": [
+        "agent-security-governance"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "assets actors and trust boundaries",
+        "injection/provenance separation",
+        "least-privilege capabilities",
+        "consequence-based approvals",
+        "effect integrity",
+        "incident containment"
+      ],
+      "forbidden_behaviors": [
+        "untrusted content as policy",
+        "ambient broad credentials",
+        "approval without exact target/effect"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "SC-028",
+      "domain": "software-delivery",
+      "prompt": "Assess whether a repository is ready for issue-to-PR work by Codex and prioritize improvements.",
+      "expected_skills": [
+        "agent-first-software-engineering"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "issue-to-artifact flow",
+        "repository legibility",
+        "correction-to-infrastructure placement",
+        "fast and exact-delivery verification",
+        "durable decisions/evidence",
+        "handoff"
+      ],
+      "forbidden_behaviors": [
+        "conversation as artifact",
+        "source-only verification",
+        "massive agent manual instead of enforcement"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-029",
+      "domain": "software-delivery",
+      "prompt": "The last five sessions repeated the same correction. Decide which belong in AGENTS.md, skills, tests, CI, policy, or architecture.",
+      "expected_skills": [
+        "agent-first-software-engineering"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "issue-to-artifact flow",
+        "repository legibility",
+        "correction-to-infrastructure placement",
+        "fast and exact-delivery verification",
+        "durable decisions/evidence",
+        "handoff"
+      ],
+      "forbidden_behaviors": [
+        "conversation as artifact",
+        "source-only verification",
+        "massive agent manual instead of enforcement"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-030",
+      "domain": "software-delivery",
+      "prompt": "Define exact-delivery verification for a packaged Codex plugin rather than only its source files.",
+      "expected_skills": [
+        "agent-first-software-engineering"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "issue-to-artifact flow",
+        "repository legibility",
+        "correction-to-infrastructure placement",
+        "fast and exact-delivery verification",
+        "durable decisions/evidence",
+        "handoff"
+      ],
+      "forbidden_behaviors": [
+        "conversation as artifact",
+        "source-only verification",
+        "massive agent manual instead of enforcement"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-031",
+      "domain": "rust-architecture",
+      "prompt": "Design a Rust agent core that can swap OpenAI and another provider without rewriting domain state and evals.",
+      "expected_skills": [
+        "rust-agentic-architecture"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "typed IDs state decisions and effects",
+        "decision/effect split",
+        "ports and adapters",
+        "provider/framework isolation",
+        "workspace dependency direction",
+        "typed error taxonomy"
+      ],
+      "forbidden_behaviors": [
+        "provider DTOs as domain",
+        "universal execute JSON escape hatch",
+        "runtime handles in durable state"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-032",
+      "domain": "rust-architecture",
+      "prompt": "Refactor provider message/tool structs out of a Rust domain model into ports and adapters.",
+      "expected_skills": [
+        "rust-agentic-architecture"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "typed IDs state decisions and effects",
+        "decision/effect split",
+        "ports and adapters",
+        "provider/framework isolation",
+        "workspace dependency direction",
+        "typed error taxonomy"
+      ],
+      "forbidden_behaviors": [
+        "provider DTOs as domain",
+        "universal execute JSON escape hatch",
+        "runtime handles in durable state"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-033",
+      "domain": "rust-architecture",
+      "prompt": "Model run state, proposed effects, approvals, budgets, and typed errors so invalid transitions are rejected.",
+      "expected_skills": [
+        "rust-agentic-architecture"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "typed IDs state decisions and effects",
+        "decision/effect split",
+        "ports and adapters",
+        "provider/framework isolation",
+        "workspace dependency direction",
+        "typed error taxonomy"
+      ],
+      "forbidden_behaviors": [
+        "provider DTOs as domain",
+        "universal execute JSON escape hatch",
+        "runtime handles in durable state"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-034",
+      "domain": "rust-runtime",
+      "prompt": "Review Tokio code with unbounded channels, detached tasks, locks across awaits, and no cancellation.",
+      "expected_skills": [
+        "rust-agent-runtime"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "task ownership tree",
+        "bounded queues and semaphores",
+        "cancellation and absolute deadlines",
+        "supervision and join errors",
+        "graceful shutdown",
+        "runtime fault tests"
+      ],
+      "forbidden_behaviors": [
+        "detached tasks",
+        "unbounded channels by habit",
+        "lock held across external await"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-035",
+      "domain": "rust-runtime",
+      "prompt": "Design bounded concurrency and deadlines for model calls, tools, and CPU-heavy parsing.",
+      "expected_skills": [
+        "rust-agent-runtime"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "task ownership tree",
+        "bounded queues and semaphores",
+        "cancellation and absolute deadlines",
+        "supervision and join errors",
+        "graceful shutdown",
+        "runtime fault tests"
+      ],
+      "forbidden_behaviors": [
+        "detached tasks",
+        "unbounded channels by habit",
+        "lock held across external await"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-036",
+      "domain": "rust-runtime",
+      "prompt": "Specify graceful shutdown while a remote effect may be in flight.",
+      "expected_skills": [
+        "rust-agent-runtime"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "task ownership tree",
+        "bounded queues and semaphores",
+        "cancellation and absolute deadlines",
+        "supervision and join errors",
+        "graceful shutdown",
+        "runtime fault tests"
+      ],
+      "forbidden_behaviors": [
+        "detached tasks",
+        "unbounded channels by habit",
+        "lock held across external await"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-037",
+      "domain": "rust-durability",
+      "prompt": "A Rust worker may crash after a provider accepts an external action but before the DB update. Design safe recovery.",
+      "expected_skills": [
+        "rust-agent-durability"
+      ],
+      "expected_topology": "durable_workflow",
+      "required_decisions": [
+        "effect journal state machine",
+        "stable action/idempotency key",
+        "outbox/inbox where needed",
+        "ambiguous effect reconciliation",
+        "replay/version policy",
+        "crash-point tests"
+      ],
+      "forbidden_behaviors": [
+        "blind retry after timeout",
+        "in-memory result as durability",
+        "network I/O inside local transaction"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-038",
+      "domain": "rust-durability",
+      "prompt": "Add transactional outbox/inbox and stable idempotency keys to at-least-once message processing.",
+      "expected_skills": [
+        "rust-agent-durability"
+      ],
+      "expected_topology": "durable_workflow",
+      "required_decisions": [
+        "effect journal state machine",
+        "stable action/idempotency key",
+        "outbox/inbox where needed",
+        "ambiguous effect reconciliation",
+        "replay/version policy",
+        "crash-point tests"
+      ],
+      "forbidden_behaviors": [
+        "blind retry after timeout",
+        "in-memory result as durability",
+        "network I/O inside local transaction"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-039",
+      "domain": "rust-durability",
+      "prompt": "Compare application-managed state, a durable execution platform, queues, and event sourcing for a month-long agent task.",
+      "expected_skills": [
+        "rust-agent-durability"
+      ],
+      "expected_topology": "durable_workflow",
+      "required_decisions": [
+        "effect journal state machine",
+        "stable action/idempotency key",
+        "outbox/inbox where needed",
+        "ambiguous effect reconciliation",
+        "replay/version policy",
+        "crash-point tests"
+      ],
+      "forbidden_behaviors": [
+        "blind retry after timeout",
+        "in-memory result as durability",
+        "network I/O inside local transaction"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "SC-040",
+      "domain": "rust-protocols",
+      "prompt": "Design a schema-first MCP tool server in Rust with authorization, deadlines, sanitation, and conformance tests.",
+      "expected_skills": [
+        "rust-agent-protocols"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "schema-first wire DTOs",
+        "semantic validation",
+        "server-side authorization",
+        "MCP versus A2A boundary",
+        "protocol version negotiation",
+        "independent conformance tests"
+      ],
+      "forbidden_behaviors": [
+        "serde_json Value everywhere",
+        "remote metadata grants authority",
+        "transport disconnect proves no effect"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-041",
+      "domain": "rust-protocols",
+      "prompt": "Decide whether an internal worker call needs MCP, A2A, or a typed service API.",
+      "expected_skills": [
+        "rust-agent-protocols"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "schema-first wire DTOs",
+        "semantic validation",
+        "server-side authorization",
+        "MCP versus A2A boundary",
+        "protocol version negotiation",
+        "independent conformance tests"
+      ],
+      "forbidden_behaviors": [
+        "serde_json Value everywhere",
+        "remote metadata grants authority",
+        "transport disconnect proves no effect"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-042",
+      "domain": "rust-protocols",
+      "prompt": "Integrate the A2A Rust SDK while keeping external task lifecycle and wire types out of the domain.",
+      "expected_skills": [
+        "rust-agent-protocols"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "schema-first wire DTOs",
+        "semantic validation",
+        "server-side authorization",
+        "MCP versus A2A boundary",
+        "protocol version negotiation",
+        "independent conformance tests"
+      ],
+      "forbidden_behaviors": [
+        "serde_json Value everywhere",
+        "remote metadata grants authority",
+        "transport disconnect proves no effect"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-043",
+      "domain": "rust-verification",
+      "prompt": "Create a CI matrix for a Tokio agent with features, MCP adapter, persistence, and unsafe FFI.",
+      "expected_skills": [
+        "rust-agent-verification"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "fmt check test clippy release ladder",
+        "feature target and toolchain matrix",
+        "concurrency and fault tests",
+        "agent scenario evals",
+        "supply-chain checks",
+        "exact artifact evidence"
+      ],
+      "forbidden_behaviors": [
+        "cargo check as complete proof",
+        "skipped tools marked passed",
+        "only happy-path async tests"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-044",
+      "domain": "rust-verification",
+      "prompt": "Design deterministic Rust agent scenario tests using fake models/tools and crash barriers.",
+      "expected_skills": [
+        "rust-agent-verification"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "fmt check test clippy release ladder",
+        "feature target and toolchain matrix",
+        "concurrency and fault tests",
+        "agent scenario evals",
+        "supply-chain checks",
+        "exact artifact evidence"
+      ],
+      "forbidden_behaviors": [
+        "cargo check as complete proof",
+        "skipped tools marked passed",
+        "only happy-path async tests"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-045",
+      "domain": "rust-verification",
+      "prompt": "Choose where cargo check, test, Clippy, Miri, Loom, RustSec, and exact release builds fit.",
+      "expected_skills": [
+        "rust-agent-verification"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "fmt check test clippy release ladder",
+        "feature target and toolchain matrix",
+        "concurrency and fault tests",
+        "agent scenario evals",
+        "supply-chain checks",
+        "exact artifact evidence"
+      ],
+      "forbidden_behaviors": [
+        "cargo check as complete proof",
+        "skipped tools marked passed",
+        "only happy-path async tests"
+      ],
+      "evidence_requirements": [
+        "facts assumptions decisions and residual risks are separated",
+        "completion or recommendation is tied to falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-046",
+      "domain": "product-lifecycle",
+      "prompt": "Tailor the complete product lifecycle for a consequential coding agent and show which decisions, evidence, owners, and artifacts connect discovery to retirement.",
+      "expected_skills": [
+        "agentic-product-lifecycle"
+      ],
+      "expected_topology": "durable_workflow",
+      "required_decisions": [
+        "tailored lifecycle and current decision",
+        "decision rights and ownership",
+        "decision evidence artifact traceability",
+        "thin-slice and authentic-use feedback",
+        "readiness gates and blocking policy",
+        "revisit stop and retirement triggers"
+      ],
+      "forbidden_behaviors": [
+        "lifecycle as waterfall",
+        "artifact handoff without decision continuity",
+        "agent authority by convenience"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-047",
+      "domain": "product-lifecycle",
+      "prompt": "Our team has discovery notes, a roadmap, code, dashboards, and incidents but no coherent evidence path. Build one lifecycle assurance system and identify the next decision.",
+      "expected_skills": [
+        "agentic-product-lifecycle"
+      ],
+      "expected_topology": "durable_workflow",
+      "required_decisions": [
+        "tailored lifecycle and current decision",
+        "decision rights and ownership",
+        "decision evidence artifact traceability",
+        "thin-slice and authentic-use feedback",
+        "readiness gates and blocking policy",
+        "revisit stop and retirement triggers"
+      ],
+      "forbidden_behaviors": [
+        "lifecycle as waterfall",
+        "artifact handoff without decision continuity",
+        "agent authority by convenience"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-048",
+      "domain": "product-lifecycle",
+      "prompt": "Review this agentic product across discovery, feasibility, requirements, architecture, delivery, release, SRE, experimentation, maintenance, and retirement without turning the work into a waterfall.",
+      "expected_skills": [
+        "agentic-product-lifecycle"
+      ],
+      "expected_topology": "durable_workflow",
+      "required_decisions": [
+        "tailored lifecycle and current decision",
+        "decision rights and ownership",
+        "decision evidence artifact traceability",
+        "thin-slice and authentic-use feedback",
+        "readiness gates and blocking policy",
+        "revisit stop and retirement triggers"
+      ],
+      "forbidden_behaviors": [
+        "lifecycle as waterfall",
+        "artifact handoff without decision continuity",
+        "agent authority by convenience"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-049",
+      "domain": "authentic-use",
+      "prompt": "Put this agent on real consequential work early without making production an uncontrolled experiment. Define exposure, authority, instrumentation, stop rules, and the learning loop.",
+      "expected_skills": [
+        "authentic-use-engineering"
+      ],
+      "expected_topology": "bounded_loop",
+      "required_decisions": [
+        "learning decision and thresholds",
+        "operating envelope and exclusions",
+        "progressive exposure and autonomy",
+        "task trajectory effect and human-work evidence",
+        "representative evidence and causal limits",
+        "observation-to-change ledger and review"
+      ],
+      "forbidden_behaviors": [
+        "production as an unbounded experiment",
+        "aggregate metric as truth",
+        "telemetry without product change"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "SC-050",
+      "domain": "authentic-use",
+      "prompt": "We dogfood an agent but decisions come from anecdotes and aggregate success rate. Design representative field evidence that becomes product, eval, tool, and policy changes.",
+      "expected_skills": [
+        "authentic-use-engineering"
+      ],
+      "expected_topology": "bounded_loop",
+      "required_decisions": [
+        "learning decision and thresholds",
+        "operating envelope and exclusions",
+        "progressive exposure and autonomy",
+        "task trajectory effect and human-work evidence",
+        "representative evidence and causal limits",
+        "observation-to-change ledger and review"
+      ],
+      "forbidden_behaviors": [
+        "production as an unbounded experiment",
+        "aggregate metric as truth",
+        "telemetry without product change"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "SC-051",
+      "domain": "authentic-use",
+      "prompt": "Design a progression from shadow mode through approval-gated and bounded autonomy, including the exact evidence required to advance, narrow, hold, revert, or stop.",
+      "expected_skills": [
+        "authentic-use-engineering"
+      ],
+      "expected_topology": "bounded_loop",
+      "required_decisions": [
+        "learning decision and thresholds",
+        "operating envelope and exclusions",
+        "progressive exposure and autonomy",
+        "task trajectory effect and human-work evidence",
+        "representative evidence and causal limits",
+        "observation-to-change ledger and review"
+      ],
+      "forbidden_behaviors": [
+        "production as an unbounded experiment",
+        "aggregate metric as truth",
+        "telemetry without product change"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "SC-052",
+      "domain": "product-discovery",
+      "prompt": "Study the real work behind this proposed agent product before choosing the solution. Produce a discovery evidence brief with representative users, workflows, consequences, and alternatives.",
+      "expected_skills": [
+        "agent-product-discovery"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "actors outcomes and current work",
+        "representative research sample",
+        "consequences failures and recovery",
+        "opportunities without solution lock-in",
+        "assumption and evidence map",
+        "discovery decision and next test"
+      ],
+      "forbidden_behaviors": [
+        "solution-led discovery",
+        "enthusiast sample as market evidence",
+        "pain point without decision context"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-053",
+      "domain": "product-discovery",
+      "prompt": "Our concept came from three enthusiastic internal users. Design a representative product-discovery program that tests whether the problem matters across actual roles and task strata.",
+      "expected_skills": [
+        "agent-product-discovery"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "actors outcomes and current work",
+        "representative research sample",
+        "consequences failures and recovery",
+        "opportunities without solution lock-in",
+        "assumption and evidence map",
+        "discovery decision and next test"
+      ],
+      "forbidden_behaviors": [
+        "solution-led discovery",
+        "enthusiast sample as market evidence",
+        "pain point without decision context"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-054",
+      "domain": "product-discovery",
+      "prompt": "Turn support tickets, workflow observations, interviews, current artifacts, and system constraints into opportunity statements and evidence-based go or stop questions.",
+      "expected_skills": [
+        "agent-product-discovery"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "actors outcomes and current work",
+        "representative research sample",
+        "consequences failures and recovery",
+        "opportunities without solution lock-in",
+        "assumption and evidence map",
+        "discovery decision and next test"
+      ],
+      "forbidden_behaviors": [
+        "solution-led discovery",
+        "enthusiast sample as market evidence",
+        "pain point without decision context"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-055",
+      "domain": "concept-feasibility",
+      "prompt": "Before building the full agent platform, identify the most consequential uncertain assumptions and choose the cheapest prototype, replay, spike, shadow trial, or concierge test for each.",
+      "expected_skills": [
+        "concept-feasibility-validation"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "critical assumption and risk map",
+        "cheapest discriminating artifact",
+        "capability workflow and effect feasibility",
+        "operating-envelope evidence",
+        "economic operational and compliance feasibility",
+        "go pivot stop criteria"
+      ],
+      "forbidden_behaviors": [
+        "prototype theater",
+        "capability score without workflow fit",
+        "sunk-cost validation"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-056",
+      "domain": "concept-feasibility",
+      "prompt": "The model succeeds on a benchmark, but we do not know whether the concept fits the workflow, integrations, review burden, or effect-safety needs. Build a feasibility evidence case.",
+      "expected_skills": [
+        "concept-feasibility-validation"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "critical assumption and risk map",
+        "cheapest discriminating artifact",
+        "capability workflow and effect feasibility",
+        "operating-envelope evidence",
+        "economic operational and compliance feasibility",
+        "go pivot stop criteria"
+      ],
+      "forbidden_behaviors": [
+        "prototype theater",
+        "capability score without workflow fit",
+        "sunk-cost validation"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-057",
+      "domain": "concept-feasibility",
+      "prompt": "Review this polished prototype for prototype theater and define precommitted go, pivot, narrow, and stop criteria before deeper implementation.",
+      "expected_skills": [
+        "concept-feasibility-validation"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "critical assumption and risk map",
+        "cheapest discriminating artifact",
+        "capability workflow and effect feasibility",
+        "operating-envelope evidence",
+        "economic operational and compliance feasibility",
+        "go pivot stop criteria"
+      ],
+      "forbidden_behaviors": [
+        "prototype theater",
+        "capability score without workflow fit",
+        "sunk-cost validation"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-058",
+      "domain": "requirements-systems",
+      "prompt": "Convert the supported product need into an operational concept, mission threads, measurable quality attributes, interfaces, effect constraints, and bidirectional verification traceability.",
+      "expected_skills": [
+        "requirements-systems-engineering"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "operational concept and modes",
+        "mission threads and decision rights",
+        "functional interface data and effect requirements",
+        "measurable quality-attribute scenarios",
+        "bidirectional verification and validation traceability",
+        "baseline and material-change control"
+      ],
+      "forbidden_behaviors": [
+        "feature list as requirements",
+        "verification substituted for validation",
+        "traceability after the fact"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-059",
+      "domain": "requirements-systems",
+      "prompt": "This specification is a feature list with words like secure, fast, and reliable. Rewrite it as verifiable system requirements and quality-attribute scenarios across normal, degraded, and recovery modes.",
+      "expected_skills": [
+        "requirements-systems-engineering"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "operational concept and modes",
+        "mission threads and decision rights",
+        "functional interface data and effect requirements",
+        "measurable quality-attribute scenarios",
+        "bidirectional verification and validation traceability",
+        "baseline and material-change control"
+      ],
+      "forbidden_behaviors": [
+        "feature list as requirements",
+        "verification substituted for validation",
+        "traceability after the fact"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-060",
+      "domain": "requirements-systems",
+      "prompt": "Define configuration baselines and revalidation triggers for changes to models, prompts, tools, permissions, data, and operating envelope—not only source code.",
+      "expected_skills": [
+        "requirements-systems-engineering"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "operational concept and modes",
+        "mission threads and decision rights",
+        "functional interface data and effect requirements",
+        "measurable quality-attribute scenarios",
+        "bidirectional verification and validation traceability",
+        "baseline and material-change control"
+      ],
+      "forbidden_behaviors": [
+        "feature list as requirements",
+        "verification substituted for validation",
+        "traceability after the fact"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-061",
+      "domain": "architecture-delivery",
+      "prompt": "Compare the smallest viable architectures against quality-attribute scenarios, identify sensitivity and tradeoff points, and plan risk-retiring end-to-end slices.",
+      "expected_skills": [
+        "architecture-delivery-planning"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "candidate architectures and smallest fit",
+        "quality tradeoff and sensitivity analysis",
+        "assumptions risks and rejected alternatives",
+        "risk-retiring vertical slices",
+        "dependency capacity and backpressure plan",
+        "decision evidence and revisit triggers"
+      ],
+      "forbidden_behaviors": [
+        "architecture by fashion",
+        "feature calendar as delivery plan",
+        "decision record without consequences"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-062",
+      "domain": "architecture-delivery",
+      "prompt": "Replace this feature calendar with an evidence-driven delivery plan where each slice states the uncertainty retired, artifact, verification, exposure, and decision unlocked.",
+      "expected_skills": [
+        "architecture-delivery-planning"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "candidate architectures and smallest fit",
+        "quality tradeoff and sensitivity analysis",
+        "assumptions risks and rejected alternatives",
+        "risk-retiring vertical slices",
+        "dependency capacity and backpressure plan",
+        "decision evidence and revisit triggers"
+      ],
+      "forbidden_behaviors": [
+        "architecture by fashion",
+        "feature calendar as delivery plan",
+        "decision record without consequences"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-063",
+      "domain": "architecture-delivery",
+      "prompt": "Review the proposed multi-agent graph, event bus, and durable workflow for architecture by fashion and state the evidence that would justify each escalation.",
+      "expected_skills": [
+        "architecture-delivery-planning"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "candidate architectures and smallest fit",
+        "quality tradeoff and sensitivity analysis",
+        "assumptions risks and rejected alternatives",
+        "risk-retiring vertical slices",
+        "dependency capacity and backpressure plan",
+        "decision evidence and revisit triggers"
+      ],
+      "forbidden_behaviors": [
+        "architecture by fashion",
+        "feature calendar as delivery plan",
+        "decision record without consequences"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-064",
+      "domain": "construction-quality",
+      "prompt": "Create a construction and quality plan for this agentic feature that covers small batches, layered tests, state/effect faults, agent evals, review, and exact packaged-artifact evidence.",
+      "expected_skills": [
+        "software-construction-quality"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "small coherent implementation batches",
+        "layered verification ladder",
+        "state effect fault and agent eval coverage",
+        "fresh-context and specialist review",
+        "defect-to-regression learning",
+        "exact delivered-artifact integrity"
+      ],
+      "forbidden_behaviors": [
+        "compile means correct",
+        "wide batch hidden behind one review",
+        "defect fix without prevention"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-065",
+      "domain": "construction-quality",
+      "prompt": "The change compiles and the happy path passes. Identify the remaining verification ladder for cancellation, retries, duplicate effects, degraded dependencies, security, and representative agent trajectories.",
+      "expected_skills": [
+        "software-construction-quality"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "small coherent implementation batches",
+        "layered verification ladder",
+        "state effect fault and agent eval coverage",
+        "fresh-context and specialist review",
+        "defect-to-regression learning",
+        "exact delivered-artifact integrity"
+      ],
+      "forbidden_behaviors": [
+        "compile means correct",
+        "wide batch hidden behind one review",
+        "defect fix without prevention"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-066",
+      "domain": "construction-quality",
+      "prompt": "Turn the last five escaped defects into durable regressions and decide whether each correction belongs in code, schema, tool, harness, eval, repository guidance, or review policy.",
+      "expected_skills": [
+        "software-construction-quality"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "small coherent implementation batches",
+        "layered verification ladder",
+        "state effect fault and agent eval coverage",
+        "fresh-context and specialist review",
+        "defect-to-regression learning",
+        "exact delivered-artifact integrity"
+      ],
+      "forbidden_behaviors": [
+        "compile means correct",
+        "wide batch hidden behind one review",
+        "defect fix without prevention"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-067",
+      "domain": "secure-release",
+      "prompt": "Produce a secure release evidence package for this agent, including threat boundaries, protected build and provenance, exact artifact identity, progressive exposure, guardrails, and tested rollback.",
+      "expected_skills": [
+        "secure-delivery-release"
+      ],
+      "expected_topology": "durable_workflow",
+      "required_decisions": [
+        "agent-specific threat and control model",
+        "secure defaults and least privilege",
+        "artifact inventory provenance and integrity",
+        "progressive cohorts and exposure integrity",
+        "guardrails authorization and stop rules",
+        "tested rollback reconciliation and release decision"
+      ],
+      "forbidden_behaviors": [
+        "deployment as release proof",
+        "feature flag as authorization",
+        "rollback plan never exercised"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "SC-068",
+      "domain": "secure-release",
+      "prompt": "The team says the feature flag makes autonomous production actions safe. Review assignment, authorization, effect budgets, cohorts, stop rules, rollback, and reconciliation.",
+      "expected_skills": [
+        "secure-delivery-release"
+      ],
+      "expected_topology": "durable_workflow",
+      "required_decisions": [
+        "agent-specific threat and control model",
+        "secure defaults and least privilege",
+        "artifact inventory provenance and integrity",
+        "progressive cohorts and exposure integrity",
+        "guardrails authorization and stop rules",
+        "tested rollback reconciliation and release decision"
+      ],
+      "forbidden_behaviors": [
+        "deployment as release proof",
+        "feature flag as authorization",
+        "rollback plan never exercised"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "SC-069",
+      "domain": "secure-release",
+      "prompt": "Design a release gate that versions code, model, prompt, harness, tools, permissions, data, evals, SBOM, provenance, and rollout configuration as one exact treatment.",
+      "expected_skills": [
+        "secure-delivery-release"
+      ],
+      "expected_topology": "durable_workflow",
+      "required_decisions": [
+        "agent-specific threat and control model",
+        "secure defaults and least privilege",
+        "artifact inventory provenance and integrity",
+        "progressive cohorts and exposure integrity",
+        "guardrails authorization and stop rules",
+        "tested rollback reconciliation and release decision"
+      ],
+      "forbidden_behaviors": [
+        "deployment as release proof",
+        "feature flag as authorization",
+        "rollback plan never exercised"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "SC-070",
+      "domain": "production-sre",
+      "prompt": "Run a production-readiness review for this consequential agent, including ownership, dependencies, capacity, SLOs, observability, degradation, incident roles, recovery, and support burden.",
+      "expected_skills": [
+        "production-readiness-sre"
+      ],
+      "expected_topology": "durable_workflow",
+      "required_decisions": [
+        "production ownership and readiness review",
+        "agent outcome and service SLIs SLOs",
+        "error-budget action policy",
+        "capacity dependency backpressure and degradation",
+        "incident recovery reconciliation and learning",
+        "observability runbooks support and known risks"
+      ],
+      "forbidden_behaviors": [
+        "monitoring as dashboard inventory",
+        "slo without policy",
+        "readiness review at the finish line"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "SC-071",
+      "domain": "production-sre",
+      "prompt": "Define separate semantic-quality and service-reliability SLIs plus an error-budget policy that changes rollout, autonomy, experimentation, and reliability priorities.",
+      "expected_skills": [
+        "production-readiness-sre"
+      ],
+      "expected_topology": "durable_workflow",
+      "required_decisions": [
+        "production ownership and readiness review",
+        "agent outcome and service SLIs SLOs",
+        "error-budget action policy",
+        "capacity dependency backpressure and degradation",
+        "incident recovery reconciliation and learning",
+        "observability runbooks support and known risks"
+      ],
+      "forbidden_behaviors": [
+        "monitoring as dashboard inventory",
+        "slo without policy",
+        "readiness review at the finish line"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "SC-072",
+      "domain": "production-sre",
+      "prompt": "Turn recent agent incidents and ambiguous effects into a resilience plan with detection, containment, reconciliation, blameless learning, regressions, and effectiveness review.",
+      "expected_skills": [
+        "production-readiness-sre"
+      ],
+      "expected_topology": "durable_workflow",
+      "required_decisions": [
+        "production ownership and readiness review",
+        "agent outcome and service SLIs SLOs",
+        "error-budget action policy",
+        "capacity dependency backpressure and degradation",
+        "incident recovery reconciliation and learning",
+        "observability runbooks support and known risks"
+      ],
+      "forbidden_behaviors": [
+        "monitoring as dashboard inventory",
+        "slo without policy",
+        "readiness review at the finish line"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "SC-073",
+      "domain": "product-experimentation",
+      "prompt": "Design a trustworthy experiment for this agentic feature with stable treatment versions, assignment and exposure, causal unit, primary outcome, diagnostics, guardrails, data-quality checks, and decision rules.",
+      "expected_skills": [
+        "continuous-product-experimentation"
+      ],
+      "expected_topology": "bounded_loop",
+      "required_decisions": [
+        "hypothesis mechanism and decision precommitment",
+        "unit population assignment and exposure integrity",
+        "outcome diagnostic guardrail and data-quality metrics",
+        "causal design qualitative review and limitations",
+        "ramp holdout bake-time and long-term effects",
+        "advance hold narrow pivot revert stop decision"
+      ],
+      "forbidden_behaviors": [
+        "metric movement as causality",
+        "one metric optimizes the product",
+        "invalid experiment still shipped"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-074",
+      "domain": "product-experimentation",
+      "prompt": "The success rate moved after rollout. Determine what observational evidence can support, what causal design is needed, and how to check SRM, contamination, novelty, carryover, and delayed outcomes.",
+      "expected_skills": [
+        "continuous-product-experimentation"
+      ],
+      "expected_topology": "bounded_loop",
+      "required_decisions": [
+        "hypothesis mechanism and decision precommitment",
+        "unit population assignment and exposure integrity",
+        "outcome diagnostic guardrail and data-quality metrics",
+        "causal design qualitative review and limitations",
+        "ramp holdout bake-time and long-term effects",
+        "advance hold narrow pivot revert stop decision"
+      ],
+      "forbidden_behaviors": [
+        "metric movement as causality",
+        "one metric optimizes the product",
+        "invalid experiment still shipped"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-075",
+      "domain": "product-experimentation",
+      "prompt": "Create a metric contract that prevents acceptance rate or benchmark score from becoming the sole product target and includes human correction, severe failure, reliability, and downstream rework.",
+      "expected_skills": [
+        "continuous-product-experimentation"
+      ],
+      "expected_topology": "bounded_loop",
+      "required_decisions": [
+        "hypothesis mechanism and decision precommitment",
+        "unit population assignment and exposure integrity",
+        "outcome diagnostic guardrail and data-quality metrics",
+        "causal design qualitative review and limitations",
+        "ramp holdout bake-time and long-term effects",
+        "advance hold narrow pivot revert stop decision"
+      ],
+      "forbidden_behaviors": [
+        "metric movement as causality",
+        "one metric optimizes the product",
+        "invalid experiment still shipped"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-076",
+      "domain": "maintenance-retirement",
+      "prompt": "Create a maintenance, deprecation, and retirement plan for an agent whose models, prompts, tools, permissions, dependencies, and evals change independently of application code.",
+      "expected_skills": [
+        "maintenance-retirement-engineering"
+      ],
+      "expected_topology": "durable_workflow",
+      "required_decisions": [
+        "change taxonomy and revalidation policy",
+        "health drift debt dependency and value evidence",
+        "deprecation owner communication and migration",
+        "safe disable drain and effect reconciliation",
+        "credential data dependency and cost removal",
+        "retirement evidence continuity and post-close checks"
+      ],
+      "forbidden_behaviors": [
+        "delete before disable and observe",
+        "deprecation without user continuity",
+        "maintenance as unbounded backlog"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-077",
+      "domain": "maintenance-retirement",
+      "prompt": "This service is barely used but cannot be safely removed. Inventory users, workflows, integrations, effects, data, credentials, flags, jobs, alerts, support, and evidence, then design migration and closure.",
+      "expected_skills": [
+        "maintenance-retirement-engineering"
+      ],
+      "expected_topology": "durable_workflow",
+      "required_decisions": [
+        "change taxonomy and revalidation policy",
+        "health drift debt dependency and value evidence",
+        "deprecation owner communication and migration",
+        "safe disable drain and effect reconciliation",
+        "credential data dependency and cost removal",
+        "retirement evidence continuity and post-close checks"
+      ],
+      "forbidden_behaviors": [
+        "delete before disable and observe",
+        "deprecation without user continuity",
+        "maintenance as unbounded backlog"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-078",
+      "domain": "maintenance-retirement",
+      "prompt": "Define which model, policy, tool, data, permission, and dependency changes require which tests, field evidence, rollout, review, and reauthorization.",
+      "expected_skills": [
+        "maintenance-retirement-engineering"
+      ],
+      "expected_topology": "durable_workflow",
+      "required_decisions": [
+        "change taxonomy and revalidation policy",
+        "health drift debt dependency and value evidence",
+        "deprecation owner communication and migration",
+        "safe disable drain and effect reconciliation",
+        "credential data dependency and cost removal",
+        "retirement evidence continuity and post-close checks"
+      ],
+      "forbidden_behaviors": [
+        "delete before disable and observe",
+        "deprecation without user continuity",
+        "maintenance as unbounded backlog"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-079",
+      "domain": "rust-observability",
+      "prompt": "Design Rust observability for an agent using typed run, task, action, effect, exposure, and observation identities with tracing spans, OpenTelemetry propagation, and joinable field evidence.",
+      "expected_skills": [
+        "rust-agent-observability"
+      ],
+      "expected_topology": "durable_workflow",
+      "required_decisions": [
+        "operator product safety and learning questions",
+        "typed domain identities and event schema",
+        "Tokio and cross-process context propagation",
+        "bounded metrics cardinality and sampling",
+        "privacy redaction retention and access policy",
+        "rollout evidence joins and observability tests"
+      ],
+      "forbidden_behaviors": [
+        "logs without causal context",
+        "high-cardinality metrics",
+        "telemetry leaks the workload"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-080",
+      "domain": "rust-observability",
+      "prompt": "Review these Rust metrics and spans for high cardinality, raw prompt leakage, missing async context, sampled-away failures, and inability to join product outcomes to effects and interventions.",
+      "expected_skills": [
+        "rust-agent-observability"
+      ],
+      "expected_topology": "durable_workflow",
+      "required_decisions": [
+        "operator product safety and learning questions",
+        "typed domain identities and event schema",
+        "Tokio and cross-process context propagation",
+        "bounded metrics cardinality and sampling",
+        "privacy redaction retention and access policy",
+        "rollout evidence joins and observability tests"
+      ],
+      "forbidden_behaviors": [
+        "logs without causal context",
+        "high-cardinality metrics",
+        "telemetry leaks the workload"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-081",
+      "domain": "rust-observability",
+      "prompt": "Specify observability tests for Tokio task propagation, channels, exporter failure, redaction, deterministic representative sampling, priority retention, graceful shutdown, and rollout-gate evidence.",
+      "expected_skills": [
+        "rust-agent-observability"
+      ],
+      "expected_topology": "durable_workflow",
+      "required_decisions": [
+        "operator product safety and learning questions",
+        "typed domain identities and event schema",
+        "Tokio and cross-process context propagation",
+        "bounded metrics cardinality and sampling",
+        "privacy redaction retention and access policy",
+        "rollout evidence joins and observability tests"
+      ],
+      "forbidden_behaviors": [
+        "logs without causal context",
+        "high-cardinality metrics",
+        "telemetry leaks the workload"
+      ],
+      "evidence_requirements": [
+        "separate observed facts, assumptions, inferences, decisions, owners, and residual uncertainty",
+        "tie promotion, release, or completion to falsifiable evidence for the named operating envelope"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-082",
+      "domain": "engineering-learning",
+      "prompt": "Several representative field runs show the same tool-schema misunderstanding, but two counterexamples succeed. Decide whether the correction belongs in prompt text, a tool contract, a validator, an eval, or nowhere durable.",
+      "expected_skills": [
+        "engineering-learning-loop"
+      ],
+      "expected_topology": "evaluator_optimizer",
+      "required_decisions": [
+        "exact observation provenance",
+        "operating envelope",
+        "responsible control layer",
+        "mechanism hypothesis and counterevidence",
+        "smallest intervention or no-change",
+        "held-out adoption evidence and expiry"
+      ],
+      "forbidden_behaviors": [
+        "universal rule from anecdotes",
+        "prompt-only correction by default",
+        "adoption without owner or invalidation"
+      ],
+      "evidence_requirements": [
+        "facts, interpretations, hypotheses, decisions, and residual risks remain distinct",
+        "the recommendation is bound to the exact candidate, operating envelope, and falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-083",
+      "domain": "engineering-learning",
+      "prompt": "One unusually successful agent session suggests a new planning rule. Produce a governed learning decision that resists survivorship bias and may legitimately reject the rule.",
+      "expected_skills": [
+        "engineering-learning-loop"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "success provenance",
+        "comparison population",
+        "alternative explanations",
+        "negative and held-out cases",
+        "smallest testable intervention",
+        "adopt hold narrow or reject decision"
+      ],
+      "forbidden_behaviors": [
+        "copy success into AGENTS.md immediately",
+        "model self-report as mechanism proof",
+        "no counterexample search"
+      ],
+      "evidence_requirements": [
+        "facts, interpretations, hypotheses, decisions, and residual risks remain distinct",
+        "the recommendation is bound to the exact candidate, operating envelope, and falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-084",
+      "domain": "engineering-learning",
+      "prompt": "A model and tool upgrade may have invalidated several repository learnings. Review freshness, supersession, contradictory guidance, and safe retirement without creating a second knowledge authority.",
+      "expected_skills": [
+        "engineering-learning-loop",
+        "context-repository-engineering"
+      ],
+      "expected_topology": "durable_workflow",
+      "required_decisions": [
+        "authoritative registry",
+        "freshness signal",
+        "supersession relation",
+        "revalidation sample",
+        "generated projection update",
+        "retirement and rollback policy"
+      ],
+      "forbidden_behaviors": [
+        "stale guidance remains active",
+        "parallel knowledge source of truth",
+        "delete without provenance continuity"
+      ],
+      "evidence_requirements": [
+        "facts, interpretations, hypotheses, decisions, and residual risks remain distinct",
+        "the recommendation is bound to the exact candidate, operating envelope, and falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-085",
+      "domain": "verification-strategy",
+      "prompt": "A bug report asks for a fix, but the branch may already contain it. Select and execute the evidence needed to distinguish no change, partial change, required change, and blocked.",
+      "expected_skills": [
+        "verification-strategy-engineering"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "current-behavior reproduction",
+        "candidate identity",
+        "four-way change disposition",
+        "oracle and limitations",
+        "minimal representative evidence",
+        "invalidation triggers"
+      ],
+      "forbidden_behaviors": [
+        "edit before reproduction",
+        "false abstention from one passing case",
+        "success claim from code inspection alone"
+      ],
+      "evidence_requirements": [
+        "facts, interpretations, hypotheses, decisions, and residual risks remain distinct",
+        "the recommendation is bound to the exact candidate, operating envelope, and falsifiable evidence"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "SC-086",
+      "domain": "verification-strategy",
+      "prompt": "Choose verification for a Rust agent change involving cancellation, duplicate delivery, ambiguous external effects, and recovery after restart. Do not default to a generic unit-test checklist.",
+      "expected_skills": [
+        "verification-strategy-engineering",
+        "rust-agent-verification",
+        "rust-agent-durability"
+      ],
+      "expected_topology": "durable_workflow",
+      "required_decisions": [
+        "failure model",
+        "effect oracle",
+        "fault and crash points",
+        "idempotency and reconciliation evidence",
+        "concurrency and cancellation evidence",
+        "claim ceiling"
+      ],
+      "forbidden_behaviors": [
+        "unit tests as sufficient proof",
+        "ambiguous effect redispatch",
+        "unbounded repair attempts"
+      ],
+      "evidence_requirements": [
+        "facts, interpretations, hypotheses, decisions, and residual risks remain distinct",
+        "the recommendation is bound to the exact candidate, operating envelope, and falsifiable evidence"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "SC-087",
+      "domain": "verification-strategy",
+      "prompt": "A web-agent feature has high test coverage but heavy mocks and no representative browser journey. Design a proportional verification contract and explain which tests not to add.",
+      "expected_skills": [
+        "verification-strategy-engineering",
+        "software-construction-quality"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "risk and real boundary",
+        "mock policy",
+        "browser journey oracle",
+        "mutation or reversal proof",
+        "selected and rejected modes",
+        "freshness across package and install"
+      ],
+      "forbidden_behaviors": [
+        "coverage percentage as assurance",
+        "duplicate brittle end-to-end cases",
+        "mock behavior treated as product behavior"
+      ],
+      "evidence_requirements": [
+        "facts, interpretations, hypotheses, decisions, and residual risks remain distinct",
+        "the recommendation is bound to the exact candidate, operating envelope, and falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-088",
+      "domain": "product-fitness",
+      "prompt": "Design the first representative installed-daily-driver pilot for an agentic coding product. Measure verified user value, intervention, recovery, near misses, and continuance without overclaiming from expert dogfood.",
+      "expected_skills": [
+        "product-fitness-engineering",
+        "authentic-use-engineering"
+      ],
+      "expected_topology": "bounded_loop",
+      "required_decisions": [
+        "target user and job",
+        "operating envelope",
+        "representative work sample",
+        "journey and outcome joins",
+        "supervisory work measures",
+        "advance hold narrow revert stop rules"
+      ],
+      "forbidden_behaviors": [
+        "expert use labeled representative",
+        "activity metric as value",
+        "broader autonomy from one success"
+      ],
+      "evidence_requirements": [
+        "facts, interpretations, hypotheses, decisions, and residual risks remain distinct",
+        "the recommendation is bound to the exact candidate, operating envelope, and falsifiable evidence"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "SC-089",
+      "domain": "product-fitness",
+      "prompt": "Create a read-only weekly Product Fitness Field Pulse from analytics, traces, outcomes, interventions, and guardrails while handling ingestion lag, missing data, privacy, and assignment-versus-exposure integrity.",
+      "expected_skills": [
+        "product-fitness-engineering"
+      ],
+      "expected_topology": "workflow",
+      "required_decisions": [
+        "metric contracts",
+        "time window and lag buffer",
+        "population and exposure",
+        "data quality and missingness",
+        "privacy and retention",
+        "claim ceiling and follow-up decisions"
+      ],
+      "forbidden_behaviors": [
+        "pulse promotes release claim",
+        "PII in saved report",
+        "missing data rendered as zero"
+      ],
+      "evidence_requirements": [
+        "facts, interpretations, hypotheses, decisions, and residual risks remain distinct",
+        "the recommendation is bound to the exact candidate, operating envelope, and falsifiable evidence"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "SC-090",
+      "domain": "product-fitness",
+      "prompt": "The agent completes more tickets, but reviewers report higher cognitive load and recovery effort. Decide whether the product is fit to expand, narrow, redesign, or gather more evidence.",
+      "expected_skills": [
+        "product-fitness-engineering",
+        "production-readiness-sre"
+      ],
+      "expected_topology": "evaluator_optimizer",
+      "required_decisions": [
+        "verified value outcome",
+        "supervisory and cognitive work",
+        "quality and recovery evidence",
+        "subgroup and contradiction analysis",
+        "operating-envelope scope",
+        "continuance decision and residual risk"
+      ],
+      "forbidden_behaviors": [
+        "throughput alone decides",
+        "perceived productivity treated as causal proof",
+        "human burden omitted"
+      ],
+      "evidence_requirements": [
+        "facts, interpretations, hypotheses, decisions, and residual risks remain distinct",
+        "the recommendation is bound to the exact candidate, operating envelope, and falsifiable evidence"
+      ],
+      "severity": "critical"
+    }
+  ]
+}

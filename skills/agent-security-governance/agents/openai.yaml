@@ -1,0 +1,8 @@
+interface:
+  display_name: Agent Security and Governance
+  short_description: Agent Security and Governance
+  brand_color: '#0F766E'
+  default_prompt: Threat-model this agent, then define provenance, least privilege,
+    consequence-based approvals, effect safety, and incident controls.
+policy:
+  allow_implicit_invocation: false

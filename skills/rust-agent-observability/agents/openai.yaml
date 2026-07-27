@@ -1,0 +1,9 @@
+interface:
+  display_name: Rust Agent Observability
+  short_description: Rust Agent Observability
+  brand_color: '#0F766E'
+  default_prompt: Design a Rust observability contract that makes task, trajectory,
+    effect, intervention, recovery, and field-learning evidence traceable without
+    leaking sensitive data.
+policy:
+  allow_implicit_invocation: false

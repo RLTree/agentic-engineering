@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/agentic-engineering/verification-mode-contract.schema.json",
+  "title": "Verification Mode Contract",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "contract_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "candidate": {
+      "type": "string",
+      "minLength": 1
+    },
+    "change": {
+      "type": "string",
+      "minLength": 1
+    },
+    "risk_profile": {
+      "enum": [
+        "micro",
+        "standard",
+        "elevated",
+        "critical"
+      ]
+    },
+    "failure_model": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "no_change_disposition": {
+      "enum": [
+        "no_change",
+        "partial_change",
+        "change_required",
+        "blocked",
+        "not_assessed"
+      ]
+    },
+    "oracle": {
+      "type": "string",
+      "minLength": 1
+    },
+    "oracle_limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "selected_modes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "no_change_proof",
+          "test_first",
+          "characterization",
+          "unit",
+          "contract",
+          "integration",
+          "end_to_end",
+          "property",
+          "invariant",
+          "state_machine",
+          "model_based",
+          "differential",
+          "metamorphic",
+          "mutation",
+          "concurrency",
+          "cancellation",
+          "saturation",
+          "fault",
+          "crash",
+          "retry",
+          "recovery",
+          "browser",
+          "journey",
+          "accessibility",
+          "performance",
+          "security",
+          "migration",
+          "rollout",
+          "field"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "rejected_modes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "mock_policy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "commands": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "environments": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "repair_budget": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "acceptance_evidence": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "freshness_rules": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "claim_ceiling": {
+      "type": "string",
+      "minLength": 1
+    },
+    "invalidation_triggers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "schema_version",
+    "contract_id",
+    "candidate",
+    "change",
+    "risk_profile",
+    "failure_model",
+    "oracle",
+    "selected_modes",
+    "acceptance_evidence",
+    "claim_ceiling"
+  ],
+  "additionalProperties": false
+}

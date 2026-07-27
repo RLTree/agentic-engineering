@@ -1,0 +1,9 @@
+interface:
+  display_name: Continuous Product Experimentation
+  short_description: Continuous Product Experimentation
+  brand_color: '#0F766E'
+  default_prompt: Create an experiment and decision contract with a causal question,
+    assignment, metrics, guardrails, data-quality checks, and a keep/change/revert
+    rule.
+policy:
+  allow_implicit_invocation: false

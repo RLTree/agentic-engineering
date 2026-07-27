@@ -1,0 +1,18 @@
+{
+  "check": "evidence-evaluation",
+  "passed": true,
+  "errors": [],
+  "warnings": [],
+  "metrics": {
+    "sources": 151,
+    "class_A": 98,
+    "class_B": 33,
+    "class_C": 19,
+    "class_D": 1,
+    "primary_source_ratio": 0.649,
+    "authoritative_source_ratio": 0.8675,
+    "research_word_count": 27366,
+    "source_ids_cited": 151,
+    "skills_covered": 30
+  }
+}

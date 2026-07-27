@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "profile": "rust",
+  "enabled_skills": [
+    "agentic-engineering",
+    "rust-agentic-architecture",
+    "rust-agent-runtime",
+    "rust-agent-durability",
+    "rust-agent-protocols",
+    "rust-agent-verification",
+    "rust-agent-observability",
+    "harness-engineering",
+    "verification-strategy-engineering"
+  ],
+  "implicit_front_door": "external:harness-ultragoal"
+}

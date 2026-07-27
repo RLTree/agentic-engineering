@@ -1,0 +1,15 @@
+{
+  "check": "official-contract-validation",
+  "passed": true,
+  "errors": [],
+  "warnings": [
+    "Negative activation is validated by the routing corpus rather than spending description budget on every explicit specialist."
+  ],
+  "metrics": {
+    "skills": 30,
+    "unique_descriptions": 30,
+    "implicit_gateway": [],
+    "oversized_files": 0,
+    "privileged_surfaces_declared": 0
+  }
+}

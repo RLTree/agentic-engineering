@@ -1,0 +1,2359 @@
+{
+  "schema_version": "3.0",
+  "plugin": "agentic-engineering",
+  "research_lock": "2026-07-22 America/Los_Angeles",
+  "source_count": 151,
+  "evidence_classes": {
+    "A": "Primary official documentation, standard, specification, SDK, or project source.",
+    "B": "First-party engineering report, model/product announcement, or detailed implementation account.",
+    "C": "Independent research, benchmark, or established practitioner synthesis.",
+    "D": "User-provided artifact used as a design/process input rather than an external factual authority."
+  },
+  "sources": [
+    {
+      "id": "R01",
+      "evidence_class": "B",
+      "topic": "Codex and coding agents",
+      "source": "OpenAI — Introducing the Codex app",
+      "date": "2026-02-02",
+      "type": "first-party engineering report",
+      "key_finding": "Codex uses isolated worktrees, skills, automations, sandboxing, and parallel agent surfaces.",
+      "operationalization": "Require artifact isolation, scoped parallelism, and reusable skills rather than transcript-only guidance.",
+      "affected_skills": [
+        "context-repository-engineering",
+        "multi-agent-engineering",
+        "agent-first-software-engineering"
+      ],
+      "url": "https://openai.com/index/introducing-the-codex-app/"
+    },
+    {
+      "id": "R02",
+      "evidence_class": "B",
+      "topic": "Codex and coding agents",
+      "source": "OpenAI — Codex for every role, tool, and workflow",
+      "date": "2026-06-02",
+      "type": "first-party product/engineering report",
+      "key_finding": "Codex expands beyond code edits to hosted artifacts, sites, annotations, and broader workflows.",
+      "operationalization": "Make the exact durable artifact and its user-facing verification the unit of completion.",
+      "affected_skills": [
+        "codex-task-contract",
+        "agent-first-software-engineering",
+        "agent-evals-observability"
+      ],
+      "url": "https://openai.com/index/codex-for-every-role-tool-and-workflow/"
+    },
+    {
+      "id": "R03",
+      "evidence_class": "B",
+      "topic": "Harness engineering",
+      "source": "OpenAI — Harness engineering: leveraging Codex in an agent-first world",
+      "date": "2026-02-11",
+      "type": "first-party engineering report",
+      "key_finding": "Agent-first engineering shifts effort toward environment design, repository legibility, intent specification, feedback loops, and verification.",
+      "operationalization": "Center the plugin on layer ownership, repository readiness, harness design, and evidence-backed completion.",
+      "affected_skills": [
+        "agentic-engineering",
+        "harness-engineering",
+        "context-repository-engineering",
+        "agent-first-software-engineering"
+      ],
+      "url": "https://openai.com/index/harness-engineering/"
+    },
+    {
+      "id": "R04",
+      "evidence_class": "B",
+      "topic": "Orchestration",
+      "source": "OpenAI — An open-source spec for Codex orchestration: Symphony",
+      "date": "2026-04-27",
+      "type": "first-party engineering report",
+      "key_finding": "Issue trackers and durable work objects can serve as control planes for always-on coding-agent orchestration.",
+      "operationalization": "Provide issue-to-artifact, durable plan, ownership, and handoff protocols.",
+      "affected_skills": [
+        "agent-first-software-engineering",
+        "multi-agent-engineering",
+        "harness-engineering"
+      ],
+      "url": "https://openai.com/index/open-source-codex-orchestration-symphony/"
+    },
+    {
+      "id": "R05",
+      "evidence_class": "A",
+      "topic": "Runtime and sandboxing",
+      "source": "OpenAI — The next evolution of the Agents SDK",
+      "date": "2026-04-15",
+      "type": "first-party official architecture",
+      "key_finding": "The harness can be separated from sandboxed compute for security, durability, and scale.",
+      "operationalization": "Separate control plane, execution plane, permissions, run state, and effects in harness blueprints.",
+      "affected_skills": [
+        "harness-engineering",
+        "agent-security-governance"
+      ],
+      "url": "https://openai.com/index/the-next-evolution-of-the-agents-sdk/"
+    },
+    {
+      "id": "R06",
+      "evidence_class": "A",
+      "topic": "Codex practice",
+      "source": "OpenAI — Codex best practices",
+      "date": "2026",
+      "type": "official documentation",
+      "key_finding": "High-quality tasks specify goal, context, constraints, and done-when; reusable guidance belongs in AGENTS.md and plans.",
+      "operationalization": "Ship execution-contract, layered AGENTS.md, plan, and evidence templates.",
+      "affected_skills": [
+        "codex-task-contract",
+        "context-repository-engineering",
+        "agent-first-software-engineering"
+      ],
+      "url": "https://developers.openai.com/codex/learn/best-practices"
+    },
+    {
+      "id": "R07",
+      "evidence_class": "A",
+      "topic": "Skills and context",
+      "source": "OpenAI — Build skills",
+      "date": "2026",
+      "type": "official documentation",
+      "key_finding": "Skills use progressive disclosure and may package focused instructions, references, assets, and scripts.",
+      "operationalization": "Use a narrow router plus focused skills; keep deep material in references and deterministic checks in scripts.",
+      "affected_skills": [
+        "agentic-engineering",
+        "context-repository-engineering"
+      ],
+      "url": "https://developers.openai.com/codex/build-skills"
+    },
+    {
+      "id": "R08",
+      "evidence_class": "B",
+      "topic": "Evaluation",
+      "source": "OpenAI — Testing Agent Skills Systematically with Evals",
+      "date": "2026-01-22",
+      "type": "first-party evaluation guidance",
+      "key_finding": "Reusable skills need systematic trigger and behavior evaluations derived from realistic failures.",
+      "operationalization": "Include should/should-not-trigger cases, behavior contracts, scenarios, and failure-derived eval guidance.",
+      "affected_skills": [
+        "agent-evals-observability",
+        "agent-first-software-engineering"
+      ],
+      "url": "https://developers.openai.com/blog/eval-skills"
+    },
+    {
+      "id": "R09",
+      "evidence_class": "A",
+      "topic": "Agent security",
+      "source": "OpenAI — Safety in building agents",
+      "date": "2026",
+      "type": "official documentation",
+      "key_finding": "Structured boundaries, approvals, guardrails, and trace-based evaluation reduce prompt-injection and unsafe-action risk.",
+      "operationalization": "Encode provenance separation, capability/approval policies, and safety/recovery evals.",
+      "affected_skills": [
+        "agent-security-governance",
+        "harness-engineering",
+        "agent-evals-observability"
+      ],
+      "url": "https://developers.openai.com/api/docs/guides/agent-builder-safety"
+    },
+    {
+      "id": "R10",
+      "evidence_class": "A",
+      "topic": "Architecture patterns",
+      "source": "OpenAI — A practical guide to building AI agents",
+      "date": "2025",
+      "type": "official guide",
+      "key_finding": "Agent systems combine model, tools, instructions, guardrails, and orchestration; single-agent simplicity is often preferable.",
+      "operationalization": "Apply smallest-fitting-architecture escalation and make multi-agent an earned choice.",
+      "affected_skills": [
+        "agentic-engineering",
+        "multi-agent-engineering"
+      ],
+      "url": "https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/"
+    },
+    {
+      "id": "R11",
+      "evidence_class": "C",
+      "topic": "Harness engineering",
+      "source": "Martin Fowler — Harness engineering for coding agent users",
+      "date": "2025",
+      "type": "independent practitioner synthesis",
+      "key_finding": "Harnesses combine feedforward guides and feedback sensors around coding agents.",
+      "operationalization": "Use explicit control/feedback mechanisms and distinguish prompt advice from executable controls.",
+      "affected_skills": [
+        "harness-engineering",
+        "agent-first-software-engineering"
+      ],
+      "url": "https://martinfowler.com/articles/exploring-gen-ai/harness-engineering.html"
+    },
+    {
+      "id": "R12",
+      "evidence_class": "A",
+      "topic": "Repository context",
+      "source": "AGENTS.md — open format",
+      "date": "2025",
+      "type": "open standard/convention",
+      "key_finding": "AGENTS.md is an open repository convention for instructions to coding agents.",
+      "operationalization": "Provide layered AGENTS.md guidance and promotion rules for repeated corrections.",
+      "affected_skills": [
+        "context-repository-engineering",
+        "agent-first-software-engineering"
+      ],
+      "url": "https://agents.md/"
+    },
+    {
+      "id": "R13",
+      "evidence_class": "B",
+      "topic": "Architecture patterns",
+      "source": "Anthropic — Building effective agents",
+      "date": "2024-12-19",
+      "type": "first-party engineering report",
+      "key_finding": "Workflows have predefined paths while agents adapt their process; simple composable patterns should be preferred.",
+      "operationalization": "Define architecture escalation from direct call and deterministic workflow to bounded loop, graph, and multi-agent.",
+      "affected_skills": [
+        "agentic-engineering",
+        "loop-engineering",
+        "multi-agent-engineering"
+      ],
+      "url": "https://www.anthropic.com/engineering/building-effective-agents"
+    },
+    {
+      "id": "R14",
+      "evidence_class": "B",
+      "topic": "Context engineering",
+      "source": "Anthropic — Effective context engineering for AI agents",
+      "date": "2025-09-29",
+      "type": "first-party engineering report",
+      "key_finding": "Context is a finite attention budget; high-signal retrieval, curation, provenance, and compaction matter more than maximal volume.",
+      "operationalization": "Add context classes, retrieval policy, progressive disclosure, and compaction checkpoints.",
+      "affected_skills": [
+        "context-repository-engineering",
+        "harness-engineering"
+      ],
+      "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
+    },
+    {
+      "id": "R15",
+      "evidence_class": "B",
+      "topic": "Long-running agents",
+      "source": "Anthropic — Effective harnesses for long-running agents",
+      "date": "2025-11-26",
+      "type": "first-party engineering report",
+      "key_finding": "Long-running work benefits from initialization, progress files, compaction, resumable state, and fresh-session continuation.",
+      "operationalization": "Provide durable plan/handoff formats and state/checkpoint requirements.",
+      "affected_skills": [
+        "context-repository-engineering",
+        "harness-engineering",
+        "agent-first-software-engineering"
+      ],
+      "url": "https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents"
+    },
+    {
+      "id": "R16",
+      "evidence_class": "B",
+      "topic": "Coding-agent practice",
+      "source": "Anthropic — Claude Code best practices",
+      "date": "2026",
+      "type": "first-party engineering guidance",
+      "key_finding": "Concise repository guidance, verification loops, hooks/permissions, and scoped parallel work improve coding-agent outcomes.",
+      "operationalization": "Require fast/full validation, concise guidance, ownership, and fresh verification while avoiding default privileged hooks.",
+      "affected_skills": [
+        "context-repository-engineering",
+        "multi-agent-engineering",
+        "agent-first-software-engineering"
+      ],
+      "url": "https://www.anthropic.com/engineering/claude-code-best-practices"
+    },
+    {
+      "id": "R17",
+      "evidence_class": "B",
+      "topic": "Agent evaluation",
+      "source": "Anthropic — Demystifying evals for AI agents",
+      "date": "2026-01-09",
+      "type": "first-party engineering report",
+      "key_finding": "Multi-turn agents require evaluation of trajectories, graders, environments, and lifecycle behavior, not only final answers.",
+      "operationalization": "Split outcome, trajectory, recovery, safety, and operational evals.",
+      "affected_skills": [
+        "agent-evals-observability",
+        "loop-engineering",
+        "graph-workflow-engineering"
+      ],
+      "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"
+    },
+    {
+      "id": "R18",
+      "evidence_class": "B",
+      "topic": "Tool design",
+      "source": "Anthropic — Writing effective tools for AI agents",
+      "date": "2025-09-11",
+      "type": "first-party engineering report",
+      "key_finding": "Tool names, descriptions, schemas, examples, boundaries, and tool-specific evals materially affect agent behavior.",
+      "operationalization": "Ship a semantic tool contract with schemas, effects, errors, permissions, and adversarial tests.",
+      "affected_skills": [
+        "harness-engineering",
+        "agent-evals-observability",
+        "rust-agent-protocols"
+      ],
+      "url": "https://www.anthropic.com/engineering/writing-tools-for-agents"
+    },
+    {
+      "id": "R19",
+      "evidence_class": "B",
+      "topic": "Agent skills",
+      "source": "Anthropic — Equipping agents for the real world with Agent Skills",
+      "date": "2025-10-16",
+      "type": "first-party engineering report",
+      "key_finding": "Modular procedural knowledge can be packaged for progressive, reusable agent capability.",
+      "operationalization": "Keep skill jobs narrow and place depth in local references/assets.",
+      "affected_skills": [
+        "context-repository-engineering",
+        "agentic-engineering"
+      ],
+      "url": "https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills"
+    },
+    {
+      "id": "R20",
+      "evidence_class": "B",
+      "topic": "Multi-agent systems",
+      "source": "Anthropic — How we built our multi-agent research system",
+      "date": "2025-06-13",
+      "type": "first-party engineering report",
+      "key_finding": "Multi-agent systems require careful decomposition, independent work, coordination, integration, evaluation, and cost control.",
+      "operationalization": "Gate multi-agent use and provide delegation, ownership, fan-in, partial-failure, and coordination metrics.",
+      "affected_skills": [
+        "multi-agent-engineering",
+        "agent-evals-observability"
+      ],
+      "url": "https://www.anthropic.com/engineering/multi-agent-research-system"
+    },
+    {
+      "id": "R21",
+      "evidence_class": "A",
+      "topic": "Graphs and state",
+      "source": "LangChain — LangGraph overview",
+      "date": "2026",
+      "type": "official project documentation",
+      "key_finding": "Explicit state graphs can combine deterministic and model-driven nodes with persistence and human-in-the-loop execution.",
+      "operationalization": "Define state/node/edge contracts and use graphs only when consequential control flow must be explicit.",
+      "affected_skills": [
+        "graph-workflow-engineering",
+        "agentic-engineering"
+      ],
+      "url": "https://docs.langchain.com/oss/python/langgraph/overview"
+    },
+    {
+      "id": "R22",
+      "evidence_class": "A",
+      "topic": "Graphs and state",
+      "source": "LangChain — LangGraph Graph API",
+      "date": "2026",
+      "type": "official project documentation",
+      "key_finding": "Graph APIs expose state, nodes, edges, reducers, branches, joins, and super-step execution.",
+      "operationalization": "Provide reducer, join, edge, node, and graph verification contracts.",
+      "affected_skills": [
+        "graph-workflow-engineering"
+      ],
+      "url": "https://docs.langchain.com/oss/python/langgraph/graph-api"
+    },
+    {
+      "id": "R23",
+      "evidence_class": "A",
+      "topic": "Persistence",
+      "source": "LangChain — LangGraph persistence",
+      "date": "2026",
+      "type": "official project documentation",
+      "key_finding": "Checkpointers preserve thread state while stores support broader memory; durability has explicit state semantics.",
+      "operationalization": "Separate checkpoints from memory/cache and require versioned state/replay tests.",
+      "affected_skills": [
+        "graph-workflow-engineering",
+        "rust-agent-durability"
+      ],
+      "url": "https://docs.langchain.com/oss/python/langgraph/persistence"
+    },
+    {
+      "id": "R24",
+      "evidence_class": "A",
+      "topic": "Human interrupts",
+      "source": "LangChain — LangGraph interrupts",
+      "date": "2026",
+      "type": "official project documentation",
+      "key_finding": "Interrupts persist state and resume later; code before an interrupt may replay and must be idempotent.",
+      "operationalization": "Split prepare/approve/execute, validate stale resumes, and test replay around interrupts.",
+      "affected_skills": [
+        "graph-workflow-engineering",
+        "agent-security-governance",
+        "rust-agent-durability"
+      ],
+      "url": "https://docs.langchain.com/oss/python/langgraph/interrupts"
+    },
+    {
+      "id": "R25",
+      "evidence_class": "A",
+      "topic": "Durable effects",
+      "source": "Temporal — Activity Definition / idempotency",
+      "date": "2026",
+      "type": "official project documentation",
+      "key_finding": "At-least-once activity execution requires granular, idempotent effects and stable keys.",
+      "operationalization": "Require action IDs, effect journals, idempotency and reconciliation around external effects.",
+      "affected_skills": [
+        "harness-engineering",
+        "rust-agent-durability"
+      ],
+      "url": "https://docs.temporal.io/activity-definition"
+    },
+    {
+      "id": "R26",
+      "evidence_class": "A",
+      "topic": "Durability testing",
+      "source": "Temporal — Pre-production testing",
+      "date": "2026",
+      "type": "official project documentation",
+      "key_finding": "Killing/restarting workers tests replay, idempotency, retries, and recovery before production.",
+      "operationalization": "Include crash-point and replay fault matrices for graphs and Rust runtimes.",
+      "affected_skills": [
+        "graph-workflow-engineering",
+        "rust-agent-durability",
+        "rust-agent-verification"
+      ],
+      "url": "https://docs.temporal.io/develop/test-suite"
+    },
+    {
+      "id": "R27",
+      "evidence_class": "A",
+      "topic": "Tools and protocols",
+      "source": "Model Context Protocol — Tools specification",
+      "date": "2026",
+      "type": "open protocol specification",
+      "key_finding": "MCP tools use JSON Schema and model-controlled invocation but require validation, access control, clear user visibility, timeouts, logging, and safe output handling.",
+      "operationalization": "Encode schema-first tools, server-side authorization, approval visibility, output sanitation, and MCP conformance.",
+      "affected_skills": [
+        "harness-engineering",
+        "agent-security-governance",
+        "rust-agent-protocols"
+      ],
+      "url": "https://modelcontextprotocol.io/specification/draft/server/tools"
+    },
+    {
+      "id": "R28",
+      "evidence_class": "A",
+      "topic": "Agent protocols",
+      "source": "A2A Protocol — A2A v1.0 announcement/specification",
+      "date": "2026",
+      "type": "open protocol specification/announcement",
+      "key_finding": "A2A defines interoperable agent discovery, task lifecycle, artifacts, identity, and enterprise controls.",
+      "operationalization": "Treat A2A as a peer-agent boundary with durable task mapping, identity, cancellation, and conformance tests.",
+      "affected_skills": [
+        "multi-agent-engineering",
+        "rust-agent-protocols"
+      ],
+      "url": "https://a2a-protocol.org/latest/announcing-1.0/"
+    },
+    {
+      "id": "R29",
+      "evidence_class": "A",
+      "topic": "Protocol boundaries",
+      "source": "A2A Protocol — A2A and MCP comparison",
+      "date": "2026",
+      "type": "official protocol guidance",
+      "key_finding": "MCP primarily addresses agent-to-tool/resource integration while A2A addresses peer-agent interaction.",
+      "operationalization": "Keep tool and peer-agent boundaries distinct and do not adopt either protocol without a real interoperability need.",
+      "affected_skills": [
+        "agentic-engineering",
+        "rust-agent-protocols"
+      ],
+      "url": "https://a2a-protocol.org/latest/topics/a2a-and-mcp/"
+    },
+    {
+      "id": "R30",
+      "evidence_class": "A",
+      "topic": "Workflow patterns",
+      "source": "Google Agent Development Kit — workflow agents",
+      "date": "2026",
+      "type": "official project documentation",
+      "key_finding": "Sequential, parallel, and loop agents provide deterministic orchestration patterns.",
+      "operationalization": "Distinguish deterministic workflows/fan-out from adaptive loops and multi-agent systems.",
+      "affected_skills": [
+        "agentic-engineering",
+        "loop-engineering",
+        "multi-agent-engineering"
+      ],
+      "url": "https://google.github.io/adk-docs/agents/workflow-agents/"
+    },
+    {
+      "id": "R31",
+      "evidence_class": "A",
+      "topic": "Workflow graphs",
+      "source": "Microsoft Agent Framework — workflows",
+      "date": "2026",
+      "type": "official documentation",
+      "key_finding": "Typed routing, graph workflows, checkpointing, and human-in-the-loop are first-class orchestration concerns.",
+      "operationalization": "Require typed routes, checkpoints, interrupts, and verification matrices.",
+      "affected_skills": [
+        "graph-workflow-engineering",
+        "harness-engineering"
+      ],
+      "url": "https://learn.microsoft.com/en-us/agent-framework/workflows/"
+    },
+    {
+      "id": "R32",
+      "evidence_class": "A",
+      "topic": "Spec-driven development",
+      "source": "GitHub — Spec Kit",
+      "date": "2026",
+      "type": "official open-source project",
+      "key_finding": "Spec-driven development packages constitution, specification, planning, tasks, and implementation for coding agents.",
+      "operationalization": "Provide an execution contract, architecture brief, plan, ADR, and acceptance matrix.",
+      "affected_skills": [
+        "codex-task-contract",
+        "agent-first-software-engineering"
+      ],
+      "url": "https://github.com/github/spec-kit"
+    },
+    {
+      "id": "R33",
+      "evidence_class": "A",
+      "topic": "Spec-driven development",
+      "source": "GitHub Spec Kit — Agentic SDD reference",
+      "date": "2026",
+      "type": "official project documentation",
+      "key_finding": "Agentic SDD separates clarify, plan, checklist, tasks, analysis, implementation, and convergence.",
+      "operationalization": "Use phase-specific artifacts and make convergence evidence explicit.",
+      "affected_skills": [
+        "codex-task-contract",
+        "loop-engineering",
+        "agent-first-software-engineering"
+      ],
+      "url": "https://github.com/github/spec-kit/blob/main/docs/reference/overview.md"
+    },
+    {
+      "id": "R34",
+      "evidence_class": "C",
+      "topic": "Coding benchmarks",
+      "source": "SWE-bench — Verified",
+      "date": "2026",
+      "type": "benchmark",
+      "key_finding": "Human-validated real GitHub issue-to-patch tasks provide a more reliable coding benchmark subset.",
+      "operationalization": "Prefer repository-grounded, exact-task eval fixtures and accepted-artifact evidence.",
+      "affected_skills": [
+        "agent-evals-observability",
+        "agent-first-software-engineering"
+      ],
+      "url": "https://www.swebench.com/verified.html"
+    },
+    {
+      "id": "R35",
+      "evidence_class": "C",
+      "topic": "Agent benchmarks",
+      "source": "Stanford / Laude Institute — Terminal-Bench",
+      "date": "2026",
+      "type": "benchmark",
+      "key_finding": "Terminal-environment tasks test practical execution across software and systems domains.",
+      "operationalization": "Evaluate tools, trajectories, state, and environment interaction—not only text generation.",
+      "affected_skills": [
+        "agent-evals-observability",
+        "harness-engineering"
+      ],
+      "url": "https://www.tbench.ai/"
+    },
+    {
+      "id": "R36",
+      "evidence_class": "C",
+      "topic": "Reliability measurement",
+      "source": "METR — Task-Completion Time Horizons",
+      "date": "2026-05-08",
+      "type": "independent research/benchmark",
+      "key_finding": "Model reliability varies with task duration and should be represented as curves/distributions rather than a single capability claim.",
+      "operationalization": "Calibrate autonomy and verification to task horizon; avoid treating model capability as deterministic.",
+      "affected_skills": [
+        "agent-evals-observability",
+        "codex-task-contract"
+      ],
+      "url": "https://metr.org/time-horizons/"
+    },
+    {
+      "id": "R37",
+      "evidence_class": "C",
+      "topic": "Coding-agent benchmark",
+      "source": "Research paper — SWE Atlas",
+      "date": "2026-05-08",
+      "type": "research paper",
+      "key_finding": "Coding-agent evaluation should include repository Q&A, tests, refactoring, and work beyond issue resolution.",
+      "operationalization": "Broaden eval scenarios across architecture, verification, maintenance, and repository understanding.",
+      "affected_skills": [
+        "agent-evals-observability",
+        "agent-first-software-engineering"
+      ],
+      "url": "https://arxiv.org/html/2605.08366v1"
+    },
+    {
+      "id": "R38",
+      "evidence_class": "A",
+      "topic": "Agent security",
+      "source": "OWASP — Agentic Security Initiative",
+      "date": "2026",
+      "type": "industry security initiative",
+      "key_finding": "Agentic systems introduce risks across identity, tools, memory, protocols, actions, governance, and supply chains.",
+      "operationalization": "Ship a threat model, injection/provenance policy, capability/approval controls, and incident protocol.",
+      "affected_skills": [
+        "agent-security-governance",
+        "rust-agent-verification"
+      ],
+      "url": "https://genai.owasp.org/initiatives/agentic-security-initiative/"
+    },
+    {
+      "id": "R39",
+      "evidence_class": "A",
+      "topic": "Observability",
+      "source": "OpenTelemetry — GenAI semantic conventions",
+      "date": "2026",
+      "type": "open standard documentation",
+      "key_finding": "Emerging conventions standardize telemetry vocabulary for model and agent operations.",
+      "operationalization": "Align trace events where practical while versioning an internal semantic/evidence schema and protecting sensitive data.",
+      "affected_skills": [
+        "agent-evals-observability",
+        "harness-engineering",
+        "rust-agent-verification"
+      ],
+      "url": "https://opentelemetry.io/docs/specs/semconv/gen-ai/"
+    },
+    {
+      "id": "R40",
+      "evidence_class": "B",
+      "topic": "Agent UX",
+      "source": "Google — Introducing A2UI",
+      "date": "2025-12",
+      "type": "first-party project announcement",
+      "key_finding": "Structured, bounded agent-generated interfaces are an emerging direction for agent-to-user interaction.",
+      "operationalization": "Treat interactive approvals and artifacts as explicit contracts rather than unconstrained generated UI.",
+      "affected_skills": [
+        "agent-security-governance",
+        "agent-first-software-engineering"
+      ],
+      "url": "https://developers.googleblog.com/introducing-a2ui-an-open-project-for-agent-driven-interfaces/"
+    },
+    {
+      "id": "R41",
+      "evidence_class": "A",
+      "topic": "Agent UX",
+      "source": "Model Context Protocol — MCP Apps",
+      "date": "2026",
+      "type": "official protocol extension documentation",
+      "key_finding": "MCP-backed apps can add interactive user surfaces to tool integrations.",
+      "operationalization": "Keep UI optional and consequence-focused; the plugin ships instruction assets without mandatory connectors or apps.",
+      "affected_skills": [
+        "harness-engineering",
+        "agent-security-governance"
+      ],
+      "url": "https://modelcontextprotocol.io/docs/extensions/apps"
+    },
+    {
+      "id": "R42",
+      "evidence_class": "D",
+      "topic": "Design method",
+      "source": "User-provided Design Judgment Codex plugin",
+      "date": "2026",
+      "type": "user-provided artifact",
+      "key_finding": "A six-gate method separates situation, evidence, divergence, commitment, interaction contract, and verification with calibrated confidence.",
+      "operationalization": "Reuse evidence traceability, explicit decision commitment, behavior contracts, and release-gate discipline for this plugin.",
+      "affected_skills": [
+        "all skills"
+      ],
+      "url": "user-provided: design-judgment-codex-plugin.zip"
+    },
+    {
+      "id": "R43",
+      "evidence_class": "B",
+      "topic": "GPT-5.6",
+      "source": "OpenAI — GPT-5.6: Frontier intelligence that scales with your ambition",
+      "date": "2026-07-09",
+      "type": "first-party model announcement",
+      "key_finding": "GPT-5.6 adds stronger coding and tool-heavy programmatic execution that can coordinate tools, process intermediate results, and choose next actions.",
+      "operationalization": "Optimize prompts for decision-complete contracts, typed tools, programmatic aggregation, and evidence-backed stopping.",
+      "affected_skills": [
+        "codex-task-contract",
+        "harness-engineering",
+        "loop-engineering",
+        "multi-agent-engineering"
+      ],
+      "url": "https://openai.com/index/gpt-5-6/"
+    },
+    {
+      "id": "R44",
+      "evidence_class": "A",
+      "topic": "GPT-5.6 Sol",
+      "source": "OpenAI — Codex models",
+      "date": "2026-07-22 accessed",
+      "type": "official documentation",
+      "key_finding": "GPT-5.6 Sol is the flagship Codex model for complex coding, computer use, research, and cybersecurity; medium is the default power setting and deeper effort is available.",
+      "operationalization": "Ship a Sol operating profile and reserve high/Max/Ultra for named complexity rather than using maximum effort by default.",
+      "affected_skills": [
+        "codex-task-contract",
+        "agentic-engineering",
+        "multi-agent-engineering"
+      ],
+      "url": "https://developers.openai.com/codex/models"
+    },
+    {
+      "id": "R45",
+      "evidence_class": "A",
+      "topic": "Skills",
+      "source": "OpenAI — Build skills (current Codex documentation)",
+      "date": "2026-07-22 accessed",
+      "type": "official documentation",
+      "key_finding": "Skill metadata is discovered before full instructions; concise front-loaded trigger descriptions and focused jobs improve selection.",
+      "operationalization": "Create focused skills with trigger-oriented descriptions, negative activation boundaries, named output contracts, and deep local references; split broad domains when activation conditions or decision artifacts differ.",
+      "affected_skills": [
+        "all skills"
+      ],
+      "url": "https://developers.openai.com/codex/build-skills"
+    },
+    {
+      "id": "R46",
+      "evidence_class": "A",
+      "topic": "Plugins",
+      "source": "OpenAI — Skills & Plugins",
+      "date": "2026-07-22 accessed",
+      "type": "official documentation",
+      "key_finding": "A skill is a focused reusable workflow; a plugin is an installable bundle that can combine skills and connectors/MCP.",
+      "operationalization": "Package the operationalization as an installable plugin while keeping external connectors optional.",
+      "affected_skills": [
+        "agentic-engineering",
+        "context-repository-engineering"
+      ],
+      "url": "https://developers.openai.com/codex/skills-and-plugins"
+    },
+    {
+      "id": "R47",
+      "evidence_class": "A",
+      "topic": "Plugins",
+      "source": "OpenAI — Build plugins",
+      "date": "2026-07-22 accessed",
+      "type": "official documentation",
+      "key_finding": "Codex plugins use a manifest and can package skills under a marketplace structure for installation and sharing.",
+      "operationalization": "Follow the current `.codex-plugin/plugin.json`, `skills/`, and marketplace layout and validate it statically.",
+      "affected_skills": [
+        "agentic-engineering"
+      ],
+      "url": "https://learn.chatgpt.com/docs/build-plugins"
+    },
+    {
+      "id": "R48",
+      "evidence_class": "A",
+      "topic": "Repository instructions",
+      "source": "OpenAI — Custom instructions with AGENTS.md",
+      "date": "2026-07-22 accessed",
+      "type": "official documentation",
+      "key_finding": "Codex reads AGENTS.md before work and applies layered repository guidance.",
+      "operationalization": "Provide layered AGENTS.md pattern and keep stable rules out of per-task prompts.",
+      "affected_skills": [
+        "context-repository-engineering",
+        "agent-first-software-engineering"
+      ],
+      "url": "https://developers.openai.com/codex/agent-configuration/agents-md"
+    },
+    {
+      "id": "R49",
+      "evidence_class": "A",
+      "topic": "Subagents",
+      "source": "OpenAI — Subagents",
+      "date": "2026-07-22 accessed",
+      "type": "official documentation",
+      "key_finding": "Codex can spawn specialized parallel agents and collect their results; this is most useful for highly parallel work.",
+      "operationalization": "Require explicit delegation, ownership, evidence, fan-in, cancellation, and a multi-agent entry gate.",
+      "affected_skills": [
+        "multi-agent-engineering"
+      ],
+      "url": "https://developers.openai.com/codex/subagents"
+    },
+    {
+      "id": "R50",
+      "evidence_class": "B",
+      "topic": "Agent loops",
+      "source": "OpenAI — Unrolling the Codex agent loop",
+      "date": "2026-01-23",
+      "type": "first-party engineering report",
+      "key_finding": "The Codex harness implements an iterative user/model/tool loop with context assembly and execution logic.",
+      "operationalization": "Make observe/plan/act/verify/update and tool/effect state explicit instead of relying on a vague iterative prompt.",
+      "affected_skills": [
+        "loop-engineering",
+        "harness-engineering"
+      ],
+      "url": "https://openai.com/index/unrolling-the-codex-agent-loop/"
+    },
+    {
+      "id": "R51",
+      "evidence_class": "B",
+      "topic": "Harness architecture",
+      "source": "OpenAI — Unlocking the Codex harness: how we built the App Server",
+      "date": "2026-02-04",
+      "type": "first-party engineering report",
+      "key_finding": "The Codex harness includes thread persistence, configuration/authentication, tool execution, skills, sandboxing, and a stable event stream through App Server.",
+      "operationalization": "Treat lifecycle, state, tools, extensions, configuration, authentication, and events as harness concerns.",
+      "affected_skills": [
+        "harness-engineering",
+        "agent-evals-observability"
+      ],
+      "url": "https://openai.com/index/unlocking-the-codex-harness/"
+    },
+    {
+      "id": "R52",
+      "evidence_class": "B",
+      "topic": "Agent runtime",
+      "source": "OpenAI — The next evolution of the Agents SDK",
+      "date": "2026-04-15",
+      "type": "first-party engineering report",
+      "key_finding": "Separating harness from compute supports controlled sandbox execution and long-horizon work.",
+      "operationalization": "Keep execution identities and sandboxes separate from the control plane and persist state outside ephemeral workers.",
+      "affected_skills": [
+        "harness-engineering",
+        "agent-security-governance"
+      ],
+      "url": "https://openai.com/index/the-next-evolution-of-the-agents-sdk/"
+    },
+    {
+      "id": "R53",
+      "evidence_class": "A",
+      "topic": "Codex customization",
+      "source": "OpenAI — Codex customization overview",
+      "date": "2026-07-22 accessed",
+      "type": "official documentation",
+      "key_finding": "Skills are discoverable, reusable workflows with richer instructions, scripts, and references without loading all content up front.",
+      "operationalization": "Use progressive disclosure and avoid monolithic always-on guidance.",
+      "affected_skills": [
+        "context-repository-engineering",
+        "agentic-engineering"
+      ],
+      "url": "https://developers.openai.com/codex/customization/overview"
+    },
+    {
+      "id": "R54",
+      "evidence_class": "A",
+      "topic": "Codex releases",
+      "source": "OpenAI — Codex changelog",
+      "date": "2026-07-22 accessed",
+      "type": "official changelog",
+      "key_finding": "Codex surfaces, plugin management, permissions, subagent visibility, and model support evolve rapidly.",
+      "operationalization": "Add a research/update policy and avoid hard-coding unstable availability or UI details beyond the research lock.",
+      "affected_skills": [
+        "agentic-engineering",
+        "codex-task-contract"
+      ],
+      "url": "https://developers.openai.com/codex/changelog"
+    },
+    {
+      "id": "R55",
+      "evidence_class": "A",
+      "topic": "Rust runtime",
+      "source": "Tokio — Graceful Shutdown",
+      "date": "2026-07-22 accessed",
+      "type": "official project documentation",
+      "key_finding": "Graceful shutdown combines detection, cancellation tokens, and waiting for tasks to finish.",
+      "operationalization": "Require stop-intake, cancellation propagation, tracked drain, reconciliation, persistence, and a final deadline.",
+      "affected_skills": [
+        "rust-agent-runtime"
+      ],
+      "url": "https://tokio.rs/tokio/topics/shutdown"
+    },
+    {
+      "id": "R56",
+      "evidence_class": "A",
+      "topic": "Rust runtime",
+      "source": "Tokio — runtime documentation",
+      "date": "2026-07-22 accessed",
+      "type": "official crate documentation",
+      "key_finding": "Tokio schedules async tasks cooperatively; blocking or non-yielding work can stall core threads and runtime lifetime has explicit semantics.",
+      "operationalization": "Separate blocking work, supervise tasks, and make task/runtime ownership explicit.",
+      "affected_skills": [
+        "rust-agent-runtime"
+      ],
+      "url": "https://docs.rs/tokio/latest/tokio/runtime/"
+    },
+    {
+      "id": "R57",
+      "evidence_class": "A",
+      "topic": "Rust backpressure",
+      "source": "Tokio — Semaphore",
+      "date": "2026-07-22 accessed",
+      "type": "official crate documentation",
+      "key_finding": "Semaphores bound concurrent access by permits and await capacity.",
+      "operationalization": "Use per-resource bounded concurrency with cancellation/deadlines and overload metrics.",
+      "affected_skills": [
+        "rust-agent-runtime"
+      ],
+      "url": "https://docs.rs/tokio/latest/tokio/sync/struct.Semaphore.html"
+    },
+    {
+      "id": "R58",
+      "evidence_class": "A",
+      "topic": "Rust verification",
+      "source": "The Cargo Book — cargo check",
+      "date": "2026-07-22 accessed",
+      "type": "official language/tool documentation",
+      "key_finding": "`cargo check` type-checks packages without final code generation and is faster, but some code-generation errors remain outside its coverage.",
+      "operationalization": "Use `cargo check` as an early gate, not a substitute for tests and release builds.",
+      "affected_skills": [
+        "rust-agent-verification"
+      ],
+      "url": "https://doc.rust-lang.org/cargo/commands/cargo-check.html"
+    },
+    {
+      "id": "R59",
+      "evidence_class": "A",
+      "topic": "Rust verification",
+      "source": "The Cargo Book — cargo test",
+      "date": "2026-07-22 accessed",
+      "type": "official language/tool documentation",
+      "key_finding": "`cargo test` compiles and runs unit, integration, and documentation tests.",
+      "operationalization": "Include workspace/unit/integration/doc tests in the verification ladder.",
+      "affected_skills": [
+        "rust-agent-verification"
+      ],
+      "url": "https://doc.rust-lang.org/cargo/commands/cargo-test.html"
+    },
+    {
+      "id": "R60",
+      "evidence_class": "A",
+      "topic": "Rust verification",
+      "source": "The Cargo Book — cargo clippy",
+      "date": "2026-07-22 accessed",
+      "type": "official language/tool documentation",
+      "key_finding": "Clippy is an official toolchain component for additional lint analysis.",
+      "operationalization": "Include project-policy Clippy checks and do not claim unavailable linting passed.",
+      "affected_skills": [
+        "rust-agent-verification"
+      ],
+      "url": "https://doc.rust-lang.org/cargo/commands/cargo-clippy.html"
+    },
+    {
+      "id": "R61",
+      "evidence_class": "A",
+      "topic": "Rust verification",
+      "source": "The Cargo Book — cargo fmt",
+      "date": "2026-07-22 accessed",
+      "type": "official language/tool documentation",
+      "key_finding": "Rustfmt is an official toolchain component invoked through Cargo for formatting.",
+      "operationalization": "Include deterministic format checks in fast and release gates.",
+      "affected_skills": [
+        "rust-agent-verification"
+      ],
+      "url": "https://doc.rust-lang.org/cargo/commands/cargo-fmt.html"
+    },
+    {
+      "id": "R62",
+      "evidence_class": "A",
+      "topic": "Rust undefined behavior",
+      "source": "The Cargo Book — cargo miri / Miri",
+      "date": "2026-07-22 accessed",
+      "type": "official language/tool documentation",
+      "key_finding": "Miri runs compatible binaries/tests in an interpreter and can detect classes of undefined behavior; it is a nightly optional component.",
+      "operationalization": "Use Miri selectively for unsafe/FFI-sensitive code and report it separately from ordinary tests.",
+      "affected_skills": [
+        "rust-agent-verification"
+      ],
+      "url": "https://doc.rust-lang.org/cargo/commands/cargo-miri.html"
+    },
+    {
+      "id": "R63",
+      "evidence_class": "A",
+      "topic": "Rust concurrency testing",
+      "source": "Tokio project — Loom",
+      "date": "2026-07-22 accessed",
+      "type": "official project/crate documentation",
+      "key_finding": "Loom explores concurrent executions of small synchronization tests using state reduction.",
+      "operationalization": "Use Loom for narrow concurrency primitives while retaining integration and process fault tests.",
+      "affected_skills": [
+        "rust-agent-verification",
+        "rust-agent-runtime"
+      ],
+      "url": "https://docs.rs/loom/latest/loom/"
+    },
+    {
+      "id": "R64",
+      "evidence_class": "A",
+      "topic": "Rust supply chain",
+      "source": "RustSec Advisory Database",
+      "date": "2026-07-22 accessed",
+      "type": "official ecosystem security project",
+      "key_finding": "RustSec provides a vulnerability advisory database and tooling such as cargo-audit for Cargo.lock.",
+      "operationalization": "Include dependency advisory/exception policy and exact artifact provenance in CI guidance.",
+      "affected_skills": [
+        "rust-agent-verification",
+        "agent-security-governance"
+      ],
+      "url": "https://rustsec.org/"
+    },
+    {
+      "id": "R65",
+      "evidence_class": "A",
+      "topic": "Rust CI",
+      "source": "The Cargo Book — Continuous Integration",
+      "date": "2026-07-22 accessed",
+      "type": "official language/tool documentation",
+      "key_finding": "Cargo documents build/check/test patterns for CI and highlights target/version considerations.",
+      "operationalization": "Provide PR/release verification matrices rather than one local command.",
+      "affected_skills": [
+        "rust-agent-verification",
+        "agent-first-software-engineering"
+      ],
+      "url": "https://doc.rust-lang.org/cargo/guide/continuous-integration.html"
+    },
+    {
+      "id": "R66",
+      "evidence_class": "A",
+      "topic": "MCP Rust",
+      "source": "Model Context Protocol — official Rust SDK",
+      "date": "2026-07-22 accessed",
+      "type": "official SDK repository",
+      "key_finding": "The official Rust SDK supports building MCP clients and servers exposing tools, resources, and prompts.",
+      "operationalization": "Keep MCP in an adapter crate, validate/authorize server-side, and run protocol/security conformance tests.",
+      "affected_skills": [
+        "rust-agent-protocols",
+        "agent-security-governance"
+      ],
+      "url": "https://github.com/modelcontextprotocol/rust-sdk"
+    },
+    {
+      "id": "R67",
+      "evidence_class": "A",
+      "topic": "A2A Rust",
+      "source": "A2A Project — official Rust SDK (a2a-rs)",
+      "date": "2026-07-22 accessed",
+      "type": "official SDK repository",
+      "key_finding": "The Rust workspace implements A2A v1 protocol types plus async client/server and gRPC support.",
+      "operationalization": "Isolate A2A wire types, map durable task lifecycle, authenticate peers, and test independent interoperability.",
+      "affected_skills": [
+        "rust-agent-protocols",
+        "multi-agent-engineering"
+      ],
+      "url": "https://github.com/a2aproject/a2a-rs"
+    },
+    {
+      "id": "R68",
+      "evidence_class": "A",
+      "topic": "Rust durability",
+      "source": "Restate — Rust SDK documentation",
+      "date": "2026-07-22 accessed",
+      "type": "official project documentation",
+      "key_finding": "Rust applications can use a durable execution platform for persisted invocations and workflow/service semantics.",
+      "operationalization": "Present durable runtime adoption as an option requiring hard-semantics proof, not a default framework dependency.",
+      "affected_skills": [
+        "rust-agent-durability",
+        "rust-agentic-architecture"
+      ],
+      "url": "https://docs.restate.dev/develop/rust/overview"
+    },
+    {
+      "id": "R69",
+      "evidence_class": "A",
+      "topic": "Rust observability",
+      "source": "Rig — Observability documentation",
+      "date": "2026-07-22 accessed",
+      "type": "official project documentation",
+      "key_finding": "Rust agent frameworks expose tracing/observability integration but application evidence and policy remain separate concerns.",
+      "operationalization": "Keep framework telemetry behind adapters and require run/action/evidence IDs independent of one framework.",
+      "affected_skills": [
+        "rust-agentic-architecture",
+        "rust-agent-verification"
+      ],
+      "url": "https://docs.rig.rs/docs/concepts/observability"
+    },
+    {
+      "id": "R70",
+      "evidence_class": "A",
+      "topic": "Rust schemas",
+      "source": "Schemars — JSON Schema generation for Rust",
+      "date": "2026-07-22 accessed",
+      "type": "official crate documentation",
+      "key_finding": "Schemars derives JSON Schema from Rust types, supporting schema-first protocol/tool surfaces while still requiring review for compatibility and semantics.",
+      "operationalization": "Provide typed wire DTOs and schema snapshots but require semantic validation and protocol compatibility tests.",
+      "affected_skills": [
+        "rust-agent-protocols",
+        "rust-agent-verification"
+      ],
+      "url": "https://docs.rs/schemars/latest/schemars/"
+    },
+    {
+      "id": "R71",
+      "evidence_class": "A",
+      "topic": "Agent improvement loops",
+      "source": "OpenAI — Agent Improvement Loop",
+      "date": "2026-05-12",
+      "type": "official engineering cookbook",
+      "key_finding": "A production-grade improvement loop starts with real traces, gathers human and model feedback, converts findings into evals, and changes prompts, tools, policy, or harness behavior before re-running the loop.",
+      "operationalization": "Require a trace-to-change ledger that links field observations to hypotheses, regression fixtures, product or harness changes, rollout evidence, and keep/revert decisions.",
+      "affected_skills": [
+        "authentic-use-engineering",
+        "agent-evals-observability",
+        "agentic-product-lifecycle"
+      ],
+      "url": "https://developers.openai.com/cookbook/examples/agents_sdk/agent_improvement_loop"
+    },
+    {
+      "id": "R72",
+      "evidence_class": "A",
+      "topic": "Agent evaluation",
+      "source": "OpenAI — Macro Evals for Agentic Systems",
+      "date": "2026-07-22 accessed",
+      "type": "official engineering cookbook",
+      "key_finding": "Agentic systems require evaluation across end-to-end outcomes, trajectories, tool behavior, and interaction patterns rather than isolated model responses alone.",
+      "operationalization": "Make authentic-use evidence joinable to outcome, trajectory, intervention, recovery, and system-version records; use field-derived cases to maintain macro evals.",
+      "affected_skills": [
+        "authentic-use-engineering",
+        "agent-evals-observability",
+        "continuous-product-experimentation",
+        "software-construction-quality"
+      ],
+      "url": "https://developers.openai.com/cookbook/examples/partners/macro_evals_for_agentic_systems/macro_evals_for_agentic_systems"
+    },
+    {
+      "id": "R73",
+      "evidence_class": "B",
+      "topic": "Human oversight and autonomy",
+      "source": "Anthropic — Measuring AI agent autonomy in practice",
+      "date": "2026-06-25",
+      "type": "first-party empirical research report",
+      "key_finding": "Real use shows autonomy is graded and shaped by task duration, intervention, human oversight, and deployment context; capability does not imply unrestricted authority.",
+      "operationalization": "Use an autonomy-and-exposure ladder with observed intervention burden, effect risk, and recovery evidence as promotion criteria rather than treating autonomy as binary.",
+      "affected_skills": [
+        "authentic-use-engineering",
+        "agent-security-governance",
+        "agentic-product-lifecycle"
+      ],
+      "url": "https://www.anthropic.com/research/measuring-agent-autonomy"
+    },
+    {
+      "id": "R74",
+      "evidence_class": "B",
+      "topic": "Agent evaluation",
+      "source": "Anthropic — Demystifying evals for AI agents",
+      "date": "2026-01-09",
+      "type": "first-party engineering report",
+      "key_finding": "Useful agent evaluations start from representative tasks and failure modes, combine multiple graders and transcript inspection, and mature through an iterative process rather than a single score.",
+      "operationalization": "Require task-distribution coverage, grader calibration, trace review, failure-derived regressions, and explicit limits on what offline evals prove.",
+      "affected_skills": [
+        "authentic-use-engineering",
+        "agent-evals-observability",
+        "software-construction-quality"
+      ],
+      "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"
+    },
+    {
+      "id": "R75",
+      "evidence_class": "A",
+      "topic": "Deployed AI monitoring",
+      "source": "NIST AI 800-4 — A Methodology for Assessing and Managing Post-Deployment AI Risks",
+      "date": "2026-03",
+      "type": "official government publication",
+      "key_finding": "Post-deployment AI risk management requires continuous monitoring, context-specific impact assessment, incident handling, change management, stakeholder feedback, and documented reassessment as conditions evolve.",
+      "operationalization": "Make controlled field learning a governed post-deployment assurance activity with operating envelopes, escalation thresholds, observation quality, incident links, and reauthorization after material change.",
+      "affected_skills": [
+        "authentic-use-engineering",
+        "production-readiness-sre",
+        "continuous-product-experimentation",
+        "maintenance-retirement-engineering",
+        "agent-security-governance"
+      ],
+      "url": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.800-4.pdf"
+    },
+    {
+      "id": "R76",
+      "evidence_class": "A",
+      "topic": "AI risk lifecycle",
+      "source": "NIST AI RMF — Core and Playbook",
+      "date": "2026-07-22 accessed",
+      "type": "official government framework",
+      "key_finding": "AI risk work spans Govern, Map, Measure, and Manage and should be continuous, context-sensitive, documented, and connected to human and organizational decision rights.",
+      "operationalization": "Map lifecycle artifacts and field-learning decisions to governance, context, measurement, and risk-treatment responsibilities rather than treating evaluation as an isolated technical task.",
+      "affected_skills": [
+        "agentic-product-lifecycle",
+        "authentic-use-engineering",
+        "agent-security-governance",
+        "requirements-systems-engineering"
+      ],
+      "url": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+    },
+    {
+      "id": "R77",
+      "evidence_class": "C",
+      "topic": "Silent and shadow evaluation",
+      "source": "Nature Medicine — Silent trials in healthcare AI: a scoping review",
+      "date": "2025-04-14",
+      "type": "independent peer-reviewed research",
+      "key_finding": "Silent deployment can test workflow fit, data quality, calibration, integration, and operational behavior without influencing decisions, but inconsistent terminology and reporting limit comparability.",
+      "operationalization": "Define shadow or silent operation precisely, record exposure and counterfactual outputs, prohibit unapproved effects, and specify evidence required to advance beyond observation-only operation.",
+      "affected_skills": [
+        "authentic-use-engineering",
+        "concept-feasibility-validation",
+        "continuous-product-experimentation"
+      ],
+      "url": "https://www.nature.com/articles/s44360-025-00048-z"
+    },
+    {
+      "id": "R78",
+      "evidence_class": "C",
+      "topic": "Silent evaluation",
+      "source": "The silent trial — a bridge from algorithms to clinical practice",
+      "date": "2022-08-18",
+      "type": "independent peer-reviewed research",
+      "key_finding": "Prospective silent evaluation reveals performance, implementation, and workflow problems that retrospective validation cannot expose while avoiding direct impact on live decisions.",
+      "operationalization": "Use prospective shadow-mode trials where risk warrants, with predeclared endpoints, representative workflow coverage, mismatch review, and transition criteria.",
+      "affected_skills": [
+        "authentic-use-engineering",
+        "concept-feasibility-validation",
+        "production-readiness-sre"
+      ],
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9424628/"
+    },
+    {
+      "id": "R79",
+      "evidence_class": "B",
+      "topic": "Online experimentation",
+      "source": "Microsoft Research — Patterns of Trustworthy Experimentation: During-Experiment Stage",
+      "date": "2021-01-25",
+      "type": "first-party research guidance",
+      "key_finding": "Trustworthy online experiments require treatment integrity, data-quality checks, trustworthy analysis, monitoring during exposure, and protection against interpretation pitfalls.",
+      "operationalization": "Require assignment, exposure, outcome, and telemetry integrity checks; freeze decision rules before reading results; stop or invalidate experiments with unresolved data-quality failures.",
+      "affected_skills": [
+        "continuous-product-experimentation",
+        "authentic-use-engineering",
+        "production-readiness-sre"
+      ],
+      "url": "https://www.microsoft.com/en-us/research/group/experimentation-platform-exp/articles/patterns-of-trustworthy-experimentation-during-experiment-stage/"
+    },
+    {
+      "id": "R80",
+      "evidence_class": "B",
+      "topic": "Experiment data quality",
+      "source": "Microsoft Research — Diagnosing Sample Ratio Mismatch in A/B Testing",
+      "date": "2020-08-17",
+      "type": "first-party research guidance",
+      "key_finding": "Sample ratio mismatch is a symptom of assignment, execution, logging, analysis, or survivorship problems and can make apparent treatment effects untrustworthy.",
+      "operationalization": "Make sample-ratio and exposure-integrity checks blocking experiment gates; diagnose the mechanism before using results for product decisions.",
+      "affected_skills": [
+        "continuous-product-experimentation",
+        "authentic-use-engineering"
+      ],
+      "url": "https://www.microsoft.com/en-us/research/articles/diagnosing-sample-ratio-mismatch-in-a-b-testing/"
+    },
+    {
+      "id": "R81",
+      "evidence_class": "C",
+      "topic": "Long-term experimentation",
+      "source": "Microsoft Research — Pitfalls of Long-Term Online Controlled Experiments",
+      "date": "2016-12-01",
+      "type": "peer-reviewed practitioner research",
+      "key_finding": "Long-running experiments can be distorted by identity instability, survivorship and selection bias, novelty, carryover, and misleading trends.",
+      "operationalization": "Require long-horizon metric and cohort reasoning, stable assignment analysis, carryover policy, and explicit limits on extrapolating short-term effects.",
+      "affected_skills": [
+        "continuous-product-experimentation",
+        "maintenance-retirement-engineering"
+      ],
+      "url": "https://www.microsoft.com/en-us/research/publication/pitfalls-of-long-term-online-controlled-experiments/"
+    },
+    {
+      "id": "R82",
+      "evidence_class": "B",
+      "topic": "Generative-AI experimentation",
+      "source": "Microsoft Research — Experimentation in Generative AI: C++ Team Practices for Continuous Improvement",
+      "date": "2024-11-12",
+      "type": "first-party engineering report",
+      "key_finding": "Generative-AI product development benefits from complementary offline evaluation, online experimentation, qualitative inspection, feedback, and continuous iteration because no single measure captures quality.",
+      "operationalization": "Combine controlled metrics with trace review and user/workflow evidence; use field failures to update offline datasets and product mechanisms.",
+      "affected_skills": [
+        "authentic-use-engineering",
+        "continuous-product-experimentation",
+        "agent-product-discovery"
+      ],
+      "url": "https://www.microsoft.com/en-us/research/articles/experimentation-in-genai-c-teams-practices-for-continuous-improvement/"
+    },
+    {
+      "id": "R83",
+      "evidence_class": "A",
+      "topic": "Software lifecycle",
+      "source": "ISO/IEC/IEEE 12207:2026 — Software life cycle processes",
+      "date": "2026",
+      "type": "international standard",
+      "key_finding": "Software lifecycle work is a set of interrelated technical, management, agreement, and support processes that can be tailored to context and iterated across the life of a system.",
+      "operationalization": "Represent the lifecycle as an assurance network with tailored decisions, artifacts, evidence, roles, and feedback paths rather than a mandatory waterfall.",
+      "affected_skills": [
+        "agentic-product-lifecycle",
+        "software-construction-quality",
+        "secure-delivery-release",
+        "maintenance-retirement-engineering"
+      ],
+      "url": "https://www.iso.org/standard/90219.html"
+    },
+    {
+      "id": "R84",
+      "evidence_class": "A",
+      "topic": "Systems lifecycle",
+      "source": "ISO/IEC/IEEE 15288:2023 — System life cycle processes",
+      "date": "2023",
+      "type": "international standard",
+      "key_finding": "Systems engineering spans conception through utilization, support, and retirement, integrating stakeholder needs, architecture, verification, validation, transition, operation, and disposal.",
+      "operationalization": "Keep product, software, operational, support, and retirement decisions connected; require mission threads and lifecycle-wide evidence continuity.",
+      "affected_skills": [
+        "agentic-product-lifecycle",
+        "requirements-systems-engineering",
+        "production-readiness-sre",
+        "maintenance-retirement-engineering"
+      ],
+      "url": "https://www.iso.org/standard/81702.html"
+    },
+    {
+      "id": "R85",
+      "evidence_class": "A",
+      "topic": "Requirements engineering",
+      "source": "ISO/IEC/IEEE 29148:2018 — Requirements engineering",
+      "date": "2018",
+      "type": "international standard",
+      "key_finding": "Good requirements are derived from stakeholder needs and operational concepts, are traceable and verifiable, and include interfaces, constraints, and quality attributes.",
+      "operationalization": "Create operational concepts, mission threads, requirement quality checks, bidirectional traceability, verification methods, and controlled baselines.",
+      "affected_skills": [
+        "requirements-systems-engineering",
+        "agent-product-discovery",
+        "concept-feasibility-validation"
+      ],
+      "url": "https://www.iso.org/standard/72089.html"
+    },
+    {
+      "id": "R86",
+      "evidence_class": "A",
+      "topic": "Product quality models",
+      "source": "ISO/IEC 25010:2023 — Product quality model",
+      "date": "2023",
+      "type": "international standard",
+      "key_finding": "Software and ICT product quality is multi-dimensional; functional correctness alone does not establish reliability, security, compatibility, usability, maintainability, or other quality characteristics.",
+      "operationalization": "Use explicit quality-attribute scenarios and evidence plans so agent-generated software is not judged only by feature completion or passing unit tests.",
+      "affected_skills": [
+        "requirements-systems-engineering",
+        "architecture-delivery-planning",
+        "software-construction-quality",
+        "production-readiness-sre"
+      ],
+      "url": "https://www.iso.org/standard/78176.html"
+    },
+    {
+      "id": "R87",
+      "evidence_class": "A",
+      "topic": "Lifecycle management",
+      "source": "ISO/IEC/IEEE 24748-1:2024 — Life cycle management",
+      "date": "2024",
+      "type": "international standard",
+      "key_finding": "Lifecycle management requires selection and tailoring of processes, integrated planning, decision management, configuration control, information management, measurement, and risk management.",
+      "operationalization": "Require lifecycle tailoring, decision records, baselines, evidence ownership, measurements, and change triggers across all plugin lifecycle skills.",
+      "affected_skills": [
+        "agentic-product-lifecycle",
+        "architecture-delivery-planning",
+        "maintenance-retirement-engineering"
+      ],
+      "url": "https://www.iso.org/standard/84709.html"
+    },
+    {
+      "id": "R88",
+      "evidence_class": "B",
+      "topic": "Quality attributes",
+      "source": "Software Engineering Institute — Quality Attribute Workshop Collection",
+      "date": "2026-07-22 accessed",
+      "type": "official engineering method",
+      "key_finding": "Stakeholder-driven quality-attribute scenarios make vague nonfunctional concerns concrete through stimulus, environment, artifact, response, and response measure.",
+      "operationalization": "Require measurable quality-attribute scenarios before architecture commitments and use them as construction, test, and production evidence targets.",
+      "affected_skills": [
+        "requirements-systems-engineering",
+        "architecture-delivery-planning",
+        "production-readiness-sre"
+      ],
+      "url": "https://www.sei.cmu.edu/library/quality-attribute-workshop-collection/"
+    },
+    {
+      "id": "R89",
+      "evidence_class": "B",
+      "topic": "Architecture evaluation",
+      "source": "Software Engineering Institute — Architecture Tradeoff Analysis Method",
+      "date": "2026-07-22 accessed",
+      "type": "official engineering method",
+      "key_finding": "Architecture evaluation should expose quality-attribute tradeoffs, sensitivity points, risks, non-risks, and assumptions before costs are locked in.",
+      "operationalization": "Use explicit tradeoff analysis and risk themes to prioritize thin slices, spikes, and evidence rather than selecting architecture by fashion or agent preference.",
+      "affected_skills": [
+        "architecture-delivery-planning",
+        "concept-feasibility-validation",
+        "agentic-engineering"
+      ],
+      "url": "https://www.sei.cmu.edu/library/atam-method-for-architecture-evaluation/"
+    },
+    {
+      "id": "R90",
+      "evidence_class": "A",
+      "topic": "Product discovery",
+      "source": "GOV.UK Service Manual — How the discovery phase works",
+      "date": "2026-07-22 accessed",
+      "type": "official government product guidance",
+      "key_finding": "Discovery is for understanding the problem, users, constraints, current journeys, risks, and whether a service should proceed—not for prematurely building the solution.",
+      "operationalization": "Require representative research, current-state evidence, problem framing, assumptions, constraints, and a go/stop recommendation before deeper implementation.",
+      "affected_skills": [
+        "agent-product-discovery",
+        "agentic-product-lifecycle",
+        "concept-feasibility-validation"
+      ],
+      "url": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works"
+    },
+    {
+      "id": "R91",
+      "evidence_class": "A",
+      "topic": "Incremental delivery",
+      "source": "GOV.UK Service Manual — How the beta phase works",
+      "date": "2026-07-22 accessed",
+      "type": "official government product guidance",
+      "key_finding": "Beta builds and improves a working service in small releases, learns from real users, manages operational readiness, and addresses accessibility, security, performance, and support needs.",
+      "operationalization": "Use thin vertical slices, controlled real-use exposure, progressive delivery, operational readiness, and recurring evidence reviews before broader release.",
+      "affected_skills": [
+        "concept-feasibility-validation",
+        "architecture-delivery-planning",
+        "software-construction-quality",
+        "secure-delivery-release"
+      ],
+      "url": "https://www.gov.uk/service-manual/agile-delivery/how-the-beta-phase-works"
+    },
+    {
+      "id": "R92",
+      "evidence_class": "A",
+      "topic": "Service retirement",
+      "source": "GOV.UK Service Manual — Retiring your service",
+      "date": "2026-07-22 accessed",
+      "type": "official government product guidance",
+      "key_finding": "Service retirement requires user communication, migration or alternatives, data and dependency handling, support planning, and evidence that critical journeys remain protected.",
+      "operationalization": "Treat retirement as an engineered lifecycle phase with owner, inventory, communication, migration, rollback, evidence retention, and post-close verification.",
+      "affected_skills": [
+        "maintenance-retirement-engineering",
+        "agentic-product-lifecycle"
+      ],
+      "url": "https://www.gov.uk/service-manual/technology/retiring-your-service"
+    },
+    {
+      "id": "R93",
+      "evidence_class": "B",
+      "topic": "Human-AI product design",
+      "source": "Microsoft — Guidelines for Human-AI Interaction",
+      "date": "2026-07-22 accessed",
+      "type": "first-party research-backed design guidance",
+      "key_finding": "Human-AI systems should set expectations, support efficient invocation, make uncertainty and limits legible, allow correction and dismissal, learn cautiously, and support global controls.",
+      "operationalization": "Include expectation, intervention, override, recovery, feedback, and control behavior in discovery, concept, field-learning, and production-readiness evidence.",
+      "affected_skills": [
+        "agent-product-discovery",
+        "concept-feasibility-validation",
+        "authentic-use-engineering",
+        "production-readiness-sre"
+      ],
+      "url": "https://www.microsoft.com/en-us/haxtoolkit/ai-guidelines/"
+    },
+    {
+      "id": "R94",
+      "evidence_class": "B",
+      "topic": "Human-centered AI",
+      "source": "Google PAIR — People + AI Guidebook",
+      "date": "2026-07-22 accessed",
+      "type": "first-party design guidance",
+      "key_finding": "Human-centered AI development connects user needs, data and model capabilities, mental models, explainability, feedback, control, errors, and graceful failure throughout product design.",
+      "operationalization": "Use human-work evidence, calibrated expectations, controllability, recovery, and qualitative research as product requirements rather than post-build polish.",
+      "affected_skills": [
+        "agent-product-discovery",
+        "concept-feasibility-validation",
+        "requirements-systems-engineering",
+        "authentic-use-engineering"
+      ],
+      "url": "https://pair.withgoogle.com/guidebook/"
+    },
+    {
+      "id": "R95",
+      "evidence_class": "A",
+      "topic": "Secure software development",
+      "source": "NIST SP 800-218 — Secure Software Development Framework 1.1",
+      "date": "2022-02",
+      "type": "official government standard guidance",
+      "key_finding": "Secure development integrates preparation, protection of software, production of well-secured software, and vulnerability response into the development lifecycle.",
+      "operationalization": "Require threat/risk work, protected build environments, review and testing, provenance, vulnerability handling, and evidence before release.",
+      "affected_skills": [
+        "secure-delivery-release",
+        "software-construction-quality",
+        "maintenance-retirement-engineering"
+      ],
+      "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+    },
+    {
+      "id": "R96",
+      "evidence_class": "A",
+      "topic": "Secure software development",
+      "source": "NIST SP 800-218 Rev. 1 Initial Public Draft",
+      "date": "2025-12",
+      "type": "official government draft guidance",
+      "key_finding": "The evolving SSDF revision reinforces lifecycle-wide secure software practices and updates implementation considerations for modern development environments.",
+      "operationalization": "Mark draft-derived guidance as provisional, keep plugin security rules tied to stable principles, and review the source when the standard is finalized.",
+      "affected_skills": [
+        "secure-delivery-release",
+        "maintenance-retirement-engineering"
+      ],
+      "url": "https://csrc.nist.gov/pubs/sp/800/218/r1/ipd"
+    },
+    {
+      "id": "R97",
+      "evidence_class": "A",
+      "topic": "AI secure development",
+      "source": "NIST SP 800-218A — Secure Software Development Practices for Generative AI and Dual-Use Foundation Models",
+      "date": "2024-07",
+      "type": "official government guidance",
+      "key_finding": "AI software development adds model, data, provenance, evaluation, misuse, supply-chain, and deployment risks that should be integrated into secure development practices.",
+      "operationalization": "Extend threat models and release evidence to prompts, models, tools, datasets, evaluations, agent permissions, and model/provider changes.",
+      "affected_skills": [
+        "secure-delivery-release",
+        "agent-security-governance",
+        "authentic-use-engineering"
+      ],
+      "url": "https://csrc.nist.gov/pubs/sp/800/218/a/final"
+    },
+    {
+      "id": "R98",
+      "evidence_class": "A",
+      "topic": "Supply-chain provenance",
+      "source": "SLSA v1.2 specification",
+      "date": "2025-09",
+      "type": "official open specification",
+      "key_finding": "Build provenance and progressively stronger build integrity controls make software artifacts traceable to source, build process, and protected infrastructure.",
+      "operationalization": "Require artifact identity, provenance, reproducible or verifiable build steps, protected release credentials, and exact delivered-artifact checks.",
+      "affected_skills": [
+        "secure-delivery-release",
+        "software-construction-quality",
+        "agent-first-software-engineering"
+      ],
+      "url": "https://slsa.dev/spec/v1.2/"
+    },
+    {
+      "id": "R99",
+      "evidence_class": "A",
+      "topic": "Software bill of materials",
+      "source": "CycloneDX 1.7 specification",
+      "date": "2025-10",
+      "type": "official open specification",
+      "key_finding": "CycloneDX provides machine-readable BOM models for components, services, dependencies, vulnerabilities, attestations, and other supply-chain information.",
+      "operationalization": "Generate and validate an SBOM or equivalent inventory for release where appropriate and link it to artifact provenance and vulnerability policy.",
+      "affected_skills": [
+        "secure-delivery-release",
+        "maintenance-retirement-engineering"
+      ],
+      "url": "https://cyclonedx.org/specification/overview/"
+    },
+    {
+      "id": "R100",
+      "evidence_class": "A",
+      "topic": "Secure by design",
+      "source": "CISA — Secure by Design",
+      "date": "2026-07-22 accessed",
+      "type": "official government guidance",
+      "key_finding": "Software manufacturers should make secure outcomes the default, reduce customer security burden, treat security as a core product requirement, and improve transparency and accountability.",
+      "operationalization": "Make secure defaults, least privilege, safe failure, product-level security outcomes, and ownership explicit from discovery through maintenance.",
+      "affected_skills": [
+        "agent-product-discovery",
+        "requirements-systems-engineering",
+        "secure-delivery-release",
+        "maintenance-retirement-engineering"
+      ],
+      "url": "https://www.cisa.gov/securebydesign"
+    },
+    {
+      "id": "R101",
+      "evidence_class": "A",
+      "topic": "Software bill of materials",
+      "source": "CISA — Software Bill of Materials resources",
+      "date": "2026-07-22 accessed",
+      "type": "official government guidance",
+      "key_finding": "An SBOM is a formal component inventory that supports vulnerability identification, risk assessment, transparency, and coordinated response across the software lifecycle.",
+      "operationalization": "Require release and maintenance processes to retain component inventory, ownership, update policy, and linkages to vulnerability response and retirement.",
+      "affected_skills": [
+        "secure-delivery-release",
+        "maintenance-retirement-engineering"
+      ],
+      "url": "https://www.cisa.gov/topics/information-communications-technology-supply-chain-security/sbom"
+    },
+    {
+      "id": "R102",
+      "evidence_class": "A",
+      "topic": "Production readiness",
+      "source": "Google SRE — Evolving SRE Engagement Model / Production Readiness Review",
+      "date": "2026-07-22 accessed",
+      "type": "official engineering handbook",
+      "key_finding": "A production readiness review examines architecture, dependencies, capacity, failure modes, monitoring, alerts, runbooks, rollout, and operational ownership before service handoff or launch.",
+      "operationalization": "Require a production-readiness evidence package with owners, SLOs, capacity, dependencies, failure/recovery tests, observability, runbooks, rollout, and rollback.",
+      "affected_skills": [
+        "production-readiness-sre",
+        "secure-delivery-release",
+        "architecture-delivery-planning"
+      ],
+      "url": "https://sre.google/sre-book/evolving-sre-engagement-model/"
+    },
+    {
+      "id": "R103",
+      "evidence_class": "A",
+      "topic": "Reliability economics",
+      "source": "Google SRE — Embracing Risk",
+      "date": "2026-07-22 accessed",
+      "type": "official engineering handbook",
+      "key_finding": "Service-level objectives and error budgets translate reliability into an explicit risk and investment decision, balancing reliability work against product velocity.",
+      "operationalization": "Define SLIs/SLOs and an error-budget policy with release, escalation, experimentation, and remediation consequences rather than treating reliability as a slogan.",
+      "affected_skills": [
+        "production-readiness-sre",
+        "continuous-product-experimentation",
+        "maintenance-retirement-engineering"
+      ],
+      "url": "https://sre.google/sre-book/embracing-risk/"
+    },
+    {
+      "id": "R104",
+      "evidence_class": "A",
+      "topic": "Incident management",
+      "source": "Google SRE — Managing Incidents",
+      "date": "2026-07-22 accessed",
+      "type": "official engineering handbook",
+      "key_finding": "Effective incident response uses clear command roles, communication, operational coordination, escalation, and disciplined recovery under pressure.",
+      "operationalization": "Require incident roles, severity, escalation, containment, communication, evidence capture, and recovery/reconciliation procedures for consequential agent systems.",
+      "affected_skills": [
+        "production-readiness-sre",
+        "agent-security-governance",
+        "maintenance-retirement-engineering"
+      ],
+      "url": "https://sre.google/sre-book/managing-incidents/"
+    },
+    {
+      "id": "R105",
+      "evidence_class": "A",
+      "topic": "Incident learning",
+      "source": "Google SRE — Postmortem Culture",
+      "date": "2026-07-22 accessed",
+      "type": "official engineering handbook",
+      "key_finding": "Blameless postmortems focus on contributing system conditions, impact, timeline, detection, response, and owned corrective actions to prevent recurrence.",
+      "operationalization": "Turn incidents and field failures into mechanism-based learning records, owned corrections, regression evidence, and follow-through checks rather than anecdotes or blame.",
+      "affected_skills": [
+        "production-readiness-sre",
+        "authentic-use-engineering",
+        "maintenance-retirement-engineering"
+      ],
+      "url": "https://sre.google/sre-book/postmortem-culture/"
+    },
+    {
+      "id": "R106",
+      "evidence_class": "A",
+      "topic": "Launch engineering",
+      "source": "Google SRE — Reliable Product Launches at Scale",
+      "date": "2026-07-22 accessed",
+      "type": "official engineering handbook",
+      "key_finding": "Reliable launches depend on repeatable launch reviews, explicit risk criteria, capacity and dependency checks, monitoring, rollback, and organizational learning from prior launches.",
+      "operationalization": "Use a launch evidence package and progressive rollout contract, not calendar pressure or code completion, as the basis for production exposure.",
+      "affected_skills": [
+        "secure-delivery-release",
+        "production-readiness-sre",
+        "architecture-delivery-planning"
+      ],
+      "url": "https://sre.google/sre-book/reliable-product-launches/"
+    },
+    {
+      "id": "R107",
+      "evidence_class": "A",
+      "topic": "Progressive delivery",
+      "source": "Google SRE Workbook — Canarying Releases",
+      "date": "2026-07-22 accessed",
+      "type": "official engineering handbook",
+      "key_finding": "Canarying limits exposure while comparing a new version with a baseline and requires representative traffic, useful metrics, enough observation time, and automated or explicit rollback criteria.",
+      "operationalization": "Define cohorts, exposure steps, guardrails, analysis windows, hold/advance/revert rules, and effect containment for agent releases.",
+      "affected_skills": [
+        "secure-delivery-release",
+        "continuous-product-experimentation",
+        "production-readiness-sre"
+      ],
+      "url": "https://sre.google/workbook/canarying-releases/"
+    },
+    {
+      "id": "R108",
+      "evidence_class": "A",
+      "topic": "Release engineering",
+      "source": "Google SRE — Release Engineering",
+      "date": "2026-07-22 accessed",
+      "type": "official engineering handbook",
+      "key_finding": "Reliable releases are reproducible, automated, self-service where safe, auditable, and built from well-defined source and build inputs.",
+      "operationalization": "Require deterministic release pipelines, artifact provenance, controlled permissions, repeatable rollback, and release evidence independent of a developer session.",
+      "affected_skills": [
+        "secure-delivery-release",
+        "software-construction-quality"
+      ],
+      "url": "https://sre.google/sre-book/release-engineering/"
+    },
+    {
+      "id": "R109",
+      "evidence_class": "A",
+      "topic": "Reliability testing",
+      "source": "Google SRE — Testing for Reliability",
+      "date": "2026-07-22 accessed",
+      "type": "official engineering handbook",
+      "key_finding": "Reliability requires layered tests including unit, integration, system, load, configuration, and failure-oriented testing; no single test class establishes production readiness.",
+      "operationalization": "Build a verification ladder aligned to quality attributes, dependencies, failure modes, rollout, and exact artifacts; record skipped or unavailable evidence honestly.",
+      "affected_skills": [
+        "software-construction-quality",
+        "production-readiness-sre",
+        "rust-agent-verification"
+      ],
+      "url": "https://sre.google/sre-book/testing-reliability/"
+    },
+    {
+      "id": "R110",
+      "evidence_class": "A",
+      "topic": "Delivery performance",
+      "source": "DORA — DORA metrics",
+      "date": "2026-07-22 accessed",
+      "type": "official research program guidance",
+      "key_finding": "Software delivery performance should be understood with a balanced set of throughput and stability measures, interpreted in context rather than optimized as isolated targets.",
+      "operationalization": "Track delivery flow and stability as diagnostics, avoid ranking teams or gaming a composite score, and connect measures to product outcomes and learning speed.",
+      "affected_skills": [
+        "agentic-product-lifecycle",
+        "architecture-delivery-planning",
+        "software-construction-quality",
+        "production-readiness-sre"
+      ],
+      "url": "https://dora.dev/guides/dora-metrics/"
+    },
+    {
+      "id": "R111",
+      "evidence_class": "B",
+      "topic": "AI-assisted software development",
+      "source": "Google Cloud — 2025 DORA Report: AI-Assisted Software Development",
+      "date": "2025-09-23",
+      "type": "first-party research report",
+      "key_finding": "AI assistance can amplify both strengths and weaknesses of a software delivery system; organizational capabilities, feedback quality, platform engineering, and control practices shape outcomes.",
+      "operationalization": "Treat agent use as a sociotechnical change, measure downstream flow and stability, and invest in repository, platform, evaluation, and feedback infrastructure rather than model access alone.",
+      "affected_skills": [
+        "agentic-product-lifecycle",
+        "agent-first-software-engineering",
+        "software-construction-quality"
+      ],
+      "url": "https://cloud.google.com/resources/content/2025-dora-ai-assisted-software-development-report"
+    },
+    {
+      "id": "R112",
+      "evidence_class": "A",
+      "topic": "Safe deployment",
+      "source": "Microsoft Azure Well-Architected Framework — Safe deployment practices",
+      "date": "2026-07-22 accessed",
+      "type": "official engineering guidance",
+      "key_finding": "Safe deployment reduces blast radius through progressive exposure, health evaluation, bake time, rollback, separation of concerns, and deployment controls.",
+      "operationalization": "Require ringed rollout, stop/rollback criteria, health and business guardrails, ownership, and recovery evidence; do not confuse a feature flag with authorization.",
+      "affected_skills": [
+        "secure-delivery-release",
+        "production-readiness-sre",
+        "continuous-product-experimentation"
+      ],
+      "url": "https://learn.microsoft.com/en-us/azure/well-architected/operational-excellence/safe-deployments"
+    },
+    {
+      "id": "R113",
+      "evidence_class": "A",
+      "topic": "Progressive delivery",
+      "source": "Argo Rollouts documentation",
+      "date": "2026-07-22 accessed",
+      "type": "official project documentation",
+      "key_finding": "Argo Rollouts supports canary and blue-green strategies, analysis runs, pauses, promotion, and rollback for Kubernetes workloads.",
+      "operationalization": "Treat rollout controllers as execution mechanisms under a predeclared evidence and authorization contract; keep product decisions outside controller defaults.",
+      "affected_skills": [
+        "secure-delivery-release",
+        "production-readiness-sre"
+      ],
+      "url": "https://argo-rollouts.readthedocs.io/en/stable/"
+    },
+    {
+      "id": "R114",
+      "evidence_class": "A",
+      "topic": "Progressive delivery",
+      "source": "Flagger documentation",
+      "date": "2026-07-22 accessed",
+      "type": "official project documentation",
+      "key_finding": "Flagger automates progressive delivery using service-mesh or ingress traffic shifting, metrics, analysis, promotion, and rollback.",
+      "operationalization": "Use automated rollout only with trustworthy metrics, minimum exposure, explicit failure handling, and independent authorization for consequential effects.",
+      "affected_skills": [
+        "secure-delivery-release",
+        "continuous-product-experimentation"
+      ],
+      "url": "https://docs.flagger.app/"
+    },
+    {
+      "id": "R115",
+      "evidence_class": "A",
+      "topic": "Feature evaluation context",
+      "source": "OpenFeature — Evaluation Context specification",
+      "date": "2026-07-22 accessed",
+      "type": "official open specification",
+      "key_finding": "Evaluation context carries targeting information through a feature-evaluation transaction and has defined merge precedence and lifecycle semantics.",
+      "operationalization": "Version rollout context, distinguish assignment from exposure, propagate stable non-sensitive identifiers, and record evaluated variant and reason with field evidence.",
+      "affected_skills": [
+        "continuous-product-experimentation",
+        "secure-delivery-release",
+        "rust-agent-observability"
+      ],
+      "url": "https://openfeature.dev/specification/sections/evaluation-context/"
+    },
+    {
+      "id": "R116",
+      "evidence_class": "A",
+      "topic": "Feature flag privacy",
+      "source": "OpenFeature — Evaluation Context concepts",
+      "date": "2026-07-22 accessed",
+      "type": "official project documentation",
+      "key_finding": "Targeting context may contain sensitive information and should be minimized, protected, and handled consistently across providers and hooks.",
+      "operationalization": "Ban raw sensitive content from default rollout context, use allowlists and pseudonymous stable IDs, and document retention and access policy.",
+      "affected_skills": [
+        "continuous-product-experimentation",
+        "rust-agent-observability",
+        "agent-security-governance"
+      ],
+      "url": "https://openfeature.dev/docs/reference/concepts/evaluation-context/"
+    },
+    {
+      "id": "R117",
+      "evidence_class": "A",
+      "topic": "Rust feature evaluation",
+      "source": "OpenFeature Rust SDK",
+      "date": "2026-07-22 accessed",
+      "type": "official project documentation",
+      "key_finding": "The Rust SDK provides a vendor-neutral feature-flag API with evaluation context, providers, hooks, and typed evaluation details.",
+      "operationalization": "Keep feature evaluation behind a Rust adapter, propagate context explicitly, expose reason/error details to telemetry, and do not treat flags as permission checks.",
+      "affected_skills": [
+        "rust-agent-observability",
+        "secure-delivery-release",
+        "continuous-product-experimentation"
+      ],
+      "url": "https://openfeature.dev/docs/reference/sdks/server/rust/"
+    },
+    {
+      "id": "R118",
+      "evidence_class": "A",
+      "topic": "Rust instrumentation",
+      "source": "tracing crate documentation",
+      "date": "2026-07-22 accessed",
+      "type": "official crate documentation",
+      "key_finding": "Rust tracing models structured, contextual diagnostics as spans and events, supporting async-aware instrumentation and subscriber-based collection.",
+      "operationalization": "Instrument run/action/tool/effect/approval/recovery boundaries with stable domain IDs, propagate spans through owned tasks, and keep event fields structured.",
+      "affected_skills": [
+        "rust-agent-observability",
+        "rust-agent-runtime"
+      ],
+      "url": "https://docs.rs/tracing/latest/tracing/"
+    },
+    {
+      "id": "R119",
+      "evidence_class": "A",
+      "topic": "Rust observability",
+      "source": "OpenTelemetry Rust documentation",
+      "date": "2026-07-22 accessed",
+      "type": "official project documentation",
+      "key_finding": "OpenTelemetry Rust provides APIs and SDKs for traces, metrics, logs, context propagation, and export through vendor-neutral telemetry pipelines.",
+      "operationalization": "Use OTel at system boundaries, bridge tracing context intentionally, test propagation and shutdown/flush behavior, and preserve domain semantics independently of a backend.",
+      "affected_skills": [
+        "rust-agent-observability",
+        "rust-agent-runtime",
+        "production-readiness-sre"
+      ],
+      "url": "https://opentelemetry.io/docs/languages/rust/"
+    },
+    {
+      "id": "R120",
+      "evidence_class": "A",
+      "topic": "Observability",
+      "source": "OpenTelemetry — Observability primer",
+      "date": "2026-07-22 accessed",
+      "type": "official project documentation",
+      "key_finding": "Observability is the ability to understand internal system state from outputs; instrumentation emits traces, metrics, and logs that serve different but complementary diagnostic purposes.",
+      "operationalization": "Design telemetry from decisions and failure mechanisms backward, with joinable signals and explicit diagnostic questions rather than indiscriminate logging.",
+      "affected_skills": [
+        "rust-agent-observability",
+        "production-readiness-sre",
+        "authentic-use-engineering"
+      ],
+      "url": "https://opentelemetry.io/docs/concepts/observability-primer/"
+    },
+    {
+      "id": "R121",
+      "evidence_class": "A",
+      "topic": "Telemetry privacy",
+      "source": "OpenTelemetry — Handling sensitive data",
+      "date": "2026-01-14",
+      "type": "official project security guidance",
+      "key_finding": "Telemetry can capture personal, credential, financial, health, or behavioral data; implementers own minimization, consent, protection, redaction, and review.",
+      "operationalization": "Apply allowlists, privacy classifications, redaction, bounded retention, access controls, and sampling policies; do not record raw prompts or tool payloads by default.",
+      "affected_skills": [
+        "rust-agent-observability",
+        "authentic-use-engineering",
+        "agent-security-governance"
+      ],
+      "url": "https://opentelemetry.io/docs/security/handling-sensitive-data/"
+    },
+    {
+      "id": "R122",
+      "evidence_class": "A",
+      "topic": "Generative-AI telemetry",
+      "source": "OpenTelemetry — GenAI semantic conventions",
+      "date": "2026-07-22 accessed",
+      "type": "official open specification",
+      "key_finding": "GenAI semantic conventions define evolving common attributes and events for model, agent, and tool telemetry, with stability levels and privacy implications that require review.",
+      "operationalization": "Adopt stable conventions selectively, namespace product-specific domain fields, version schemas, and avoid relying on experimental attributes as immutable contracts.",
+      "affected_skills": [
+        "rust-agent-observability",
+        "agent-evals-observability",
+        "authentic-use-engineering"
+      ],
+      "url": "https://opentelemetry.io/docs/specs/semconv/gen-ai/"
+    },
+    {
+      "id": "R123",
+      "evidence_class": "A",
+      "topic": "Distributed tracing",
+      "source": "W3C Trace Context Recommendation",
+      "date": "2021-11-23",
+      "type": "web standard",
+      "key_finding": "Trace Context standardizes propagation of trace identifiers and flags across process and service boundaries while defining interoperability and privacy considerations.",
+      "operationalization": "Propagate W3C context across agent services and tools, but keep trace identity separate from authorization and from durable business/effect identity.",
+      "affected_skills": [
+        "rust-agent-observability",
+        "harness-engineering",
+        "production-readiness-sre"
+      ],
+      "url": "https://www.w3.org/TR/trace-context/"
+    },
+    {
+      "id": "R124",
+      "evidence_class": "A",
+      "topic": "Agent security",
+      "source": "OWASP — AI Agent Security Cheat Sheet",
+      "date": "2026-07-22 accessed",
+      "type": "official security guidance",
+      "key_finding": "Agent systems face prompt injection, excessive agency, tool abuse, memory poisoning, data leakage, unsafe output handling, and denial-of-service risks that require layered controls.",
+      "operationalization": "Carry security constraints into authentic-use operating envelopes, tool contracts, telemetry, approvals, effect integrity, incident response, and release gates.",
+      "affected_skills": [
+        "agent-security-governance",
+        "authentic-use-engineering",
+        "secure-delivery-release",
+        "production-readiness-sre"
+      ],
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/AI_Agent_Security_Cheat_Sheet.html"
+    },
+    {
+      "id": "R125",
+      "evidence_class": "A",
+      "topic": "Agentic risk taxonomy",
+      "source": "OWASP — Top 10 for Agentic Applications 2026",
+      "date": "2026",
+      "type": "official community standard",
+      "key_finding": "Agentic applications introduce risks around goals, identity and privilege, tool use, memory and context, inter-agent trust, cascading failures, and insufficient monitoring or governance.",
+      "operationalization": "Use the taxonomy as threat-model prompts and coverage checks, not a substitute for system-specific assets, trust boundaries, misuse cases, and effect analysis.",
+      "affected_skills": [
+        "agent-security-governance",
+        "secure-delivery-release",
+        "authentic-use-engineering",
+        "agentic-product-lifecycle"
+      ],
+      "url": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/"
+    },
+    {
+      "id": "R126",
+      "evidence_class": "A",
+      "topic": "Codex skills",
+      "source": "OpenAI — Build skills",
+      "date": "2026-07-22",
+      "type": "official documentation",
+      "key_finding": "Skills use progressive disclosure; the initial list is bounded and descriptions drive implicit activation.",
+      "operationalization": "Compress descriptions, retain one host-owned implicit front door, and add context-budget and routing gates.",
+      "affected_skills": [
+        "agentic-engineering",
+        "agent-evals-observability"
+      ],
+      "url": "https://developers.openai.com/codex/skills"
+    },
+    {
+      "id": "R127",
+      "evidence_class": "A",
+      "topic": "Skill evaluation",
+      "source": "OpenAI — Testing Agent Skills Systematically with Evals",
+      "date": "2026-07-22",
+      "type": "official engineering guidance",
+      "key_finding": "Skill evals should cover explicit, implicit, contextual, and negative cases with trace, artifact, outcome, and efficiency checks.",
+      "operationalization": "Add baseline, routing, JSONL trace, artifact, negative-control, and efficiency evaluation contracts.",
+      "affected_skills": [
+        "agent-evals-observability",
+        "engineering-learning-loop"
+      ],
+      "url": "https://developers.openai.com/blog/eval-skills"
+    },
+    {
+      "id": "R128",
+      "evidence_class": "A",
+      "topic": "GPT-5.6 prompting and orchestration",
+      "source": "OpenAI — GPT-5.6 model guidance",
+      "date": "2026-07-22",
+      "type": "official documentation",
+      "key_finding": "Leaner prompts and relevant tools can improve quality and efficiency; Pro, Programmatic Tool Calling, reasoning, and multi-agent should be selected by measured task shape.",
+      "operationalization": "Use one lean outcome contract and move variation into configuration and representative evals.",
+      "affected_skills": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "harness-engineering",
+        "multi-agent-engineering"
+      ],
+      "url": "https://developers.openai.com/api/docs/guides/latest-model"
+    },
+    {
+      "id": "R129",
+      "evidence_class": "A",
+      "topic": "Compound engineering",
+      "source": "EveryInc — compound-engineering-plugin",
+      "date": "2026-07-22",
+      "type": "open-source project source",
+      "key_finding": "The project operationalizes brainstorm-plan-work-simplify-review-compound, product pulse, resumable dogfood, and risk-selected review.",
+      "operationalization": "Adopt bounded compounding, field pulse, journey review, and structured review without creating a second authority.",
+      "affected_skills": [
+        "engineering-learning-loop",
+        "product-fitness-engineering",
+        "software-construction-quality"
+      ],
+      "url": "https://github.com/EveryInc/compound-engineering-plugin"
+    },
+    {
+      "id": "R130",
+      "evidence_class": "A",
+      "topic": "Agent development discipline",
+      "source": "obra — Superpowers",
+      "date": "2026-07-02",
+      "type": "open-source project source",
+      "key_finding": "The project operationalizes causal debugging, test-first practice, fresh scoped workers, review, fresh verification, and behavior-tested skills.",
+      "operationalization": "Adopt skill behavior evals, causal repair, fresh evidence packets, and verification gates while rejecting universal ceremony.",
+      "affected_skills": [
+        "agent-evals-observability",
+        "verification-strategy-engineering",
+        "multi-agent-engineering"
+      ],
+      "url": "https://github.com/obra/superpowers"
+    },
+    {
+      "id": "R131",
+      "evidence_class": "B",
+      "topic": "AI-assisted delivery",
+      "source": "DORA — User-centric focus",
+      "date": "2026-01-12",
+      "type": "industry research guidance",
+      "key_finding": "AI amplifies both strong user focus and feature-factory dysfunction; outcome evidence must remain visible.",
+      "operationalization": "Add Product Fitness evidence, representative journeys, and user-value measures.",
+      "affected_skills": [
+        "product-fitness-engineering",
+        "agentic-product-lifecycle"
+      ],
+      "url": "https://dora.dev/capabilities/user-centric-focus/"
+    },
+    {
+      "id": "R132",
+      "evidence_class": "B",
+      "topic": "AI-assisted delivery",
+      "source": "DORA — Working in small batches",
+      "date": "2025-12-01",
+      "type": "industry research guidance",
+      "key_finding": "Small batches accelerate feedback and amplify positive AI effects on product performance.",
+      "operationalization": "Use risk-retiring slices and proportional assurance rather than large autonomous batches.",
+      "affected_skills": [
+        "architecture-delivery-planning",
+        "software-construction-quality"
+      ],
+      "url": "https://dora.dev/capabilities/working-in-small-batches/"
+    },
+    {
+      "id": "R133",
+      "evidence_class": "B",
+      "topic": "AI-accessible evidence",
+      "source": "DORA — AI-accessible internal data",
+      "date": "2026-01-12",
+      "type": "industry research guidance",
+      "key_finding": "Secure access to code, documentation, and operational evidence multiplies individual effectiveness and code quality.",
+      "operationalization": "Make repository and operational evidence directly legible through bounded context packets.",
+      "affected_skills": [
+        "context-repository-engineering",
+        "harness-engineering"
+      ],
+      "url": "https://dora.dev/capabilities/ai-accessible-internal-data/"
+    },
+    {
+      "id": "R134",
+      "evidence_class": "B",
+      "topic": "Supervisory engineering",
+      "source": "DORA — Balancing AI tensions",
+      "date": "2026-03-10",
+      "type": "industry research synthesis",
+      "key_finding": "Creation time saved by AI is often reallocated to auditing and verification; throughput can rise with instability.",
+      "operationalization": "Measure supervisory work and verification burden, not generated output alone.",
+      "affected_skills": [
+        "product-fitness-engineering",
+        "software-construction-quality"
+      ],
+      "url": "https://dora.dev/insights/balancing-ai-tensions/"
+    },
+    {
+      "id": "R135",
+      "evidence_class": "C",
+      "topic": "Agent abstention",
+      "source": "Coding Agents Don’t Know When to Act",
+      "date": "2026-05-08",
+      "type": "independent benchmark preprint",
+      "key_finding": "Agents make undesirable changes on many already-fixed tasks; framing inaction as success improves the design target but partial fixes complicate abstention.",
+      "operationalization": "Add first-class no-change and partial-change decisions with reproduction evidence.",
+      "affected_skills": [
+        "verification-strategy-engineering",
+        "software-construction-quality",
+        "agentic-engineering"
+      ],
+      "url": "https://arxiv.org/abs/2605.07769"
+    },
+    {
+      "id": "R136",
+      "evidence_class": "C",
+      "topic": "Repair loops",
+      "source": "Is Three the Magic Number?",
+      "date": "2026-07-06",
+      "type": "independent empirical preprint",
+      "key_finding": "Most repair-loop gains occur in the first three to four iterations; orchestration and feedback strongly influence repair behavior.",
+      "operationalization": "Require explicit empirically calibrated budgets and circuit breakers.",
+      "affected_skills": [
+        "loop-engineering",
+        "harness-engineering"
+      ],
+      "url": "https://arxiv.org/abs/2607.05197"
+    },
+    {
+      "id": "R137",
+      "evidence_class": "C",
+      "topic": "Repair feedback",
+      "source": "Structured Feedback Improves Repair in an LLM Agent Loop",
+      "date": "2026-07-15",
+      "type": "independent paired experiment preprint",
+      "key_finding": "Feedback with failure location, observed value, and admissible alternatives markedly improved terminal success in the studied loops.",
+      "operationalization": "Standardize structured validator-to-repair feedback.",
+      "affected_skills": [
+        "loop-engineering",
+        "harness-engineering"
+      ],
+      "url": "https://arxiv.org/abs/2607.14167"
+    },
+    {
+      "id": "R138",
+      "evidence_class": "C",
+      "topic": "Harness repair",
+      "source": "From Failed Trajectories to Reliable LLM Agents",
+      "date": "2026-06-04",
+      "type": "independent benchmark preprint",
+      "key_finding": "Trace normalization and layer-aware attribution enabled scoped harness repairs with held-out improvements.",
+      "operationalization": "Add responsible-layer attribution and held-out harness repair validation.",
+      "affected_skills": [
+        "harness-engineering",
+        "engineering-learning-loop"
+      ],
+      "url": "https://arxiv.org/abs/2606.06324"
+    },
+    {
+      "id": "R139",
+      "evidence_class": "C",
+      "topic": "Regression-aware coding agents",
+      "source": "TDAD: Test-Driven Agentic Development",
+      "date": "2026-03-18",
+      "type": "independent benchmark preprint",
+      "key_finding": "Test-impact context reduced regressions while procedural TDD prompting alone increased them in the studied setup.",
+      "operationalization": "Choose verification modes by oracle and surface relevant tests rather than prescribing ritual.",
+      "affected_skills": [
+        "verification-strategy-engineering",
+        "software-construction-quality"
+      ],
+      "url": "https://arxiv.org/abs/2603.17973"
+    },
+    {
+      "id": "R140",
+      "evidence_class": "C",
+      "topic": "Behavioral agent specifications",
+      "source": "Test-Driven AI Agent Definition",
+      "date": "2026-03-09",
+      "type": "independent benchmark preprint",
+      "key_finding": "Visible/hidden splits, semantic mutation, and specification evolution expose prompt and policy regressions.",
+      "operationalization": "Add held-out, mutation, and evolution skill evals.",
+      "affected_skills": [
+        "agent-evals-observability",
+        "engineering-learning-loop"
+      ],
+      "url": "https://arxiv.org/abs/2603.08806"
+    },
+    {
+      "id": "R141",
+      "evidence_class": "C",
+      "topic": "Browser acceptance testing",
+      "source": "From Runnable to Shippable",
+      "date": "2026-05-17",
+      "type": "independent controlled empirical preprint",
+      "key_finding": "Browser acceptance-test infrastructure improved generated web-app quality, while mismatched enforcement protocols multiplied cost without benefit.",
+      "operationalization": "Use journey/browser evidence and select enforcement protocol by model and task behavior.",
+      "affected_skills": [
+        "verification-strategy-engineering",
+        "product-fitness-engineering"
+      ],
+      "url": "https://arxiv.org/abs/2605.17242"
+    },
+    {
+      "id": "R142",
+      "evidence_class": "C",
+      "topic": "Agent-generated tests",
+      "source": "Are Coding Agents Generating Over-Mocked Tests?",
+      "date": "2026-01-30",
+      "type": "independent empirical preprint",
+      "key_finding": "Agent commits were more likely to add mocks, raising concern that tests may validate mocks instead of real interactions.",
+      "operationalization": "Require explicit mock policy and representative boundary evidence.",
+      "affected_skills": [
+        "verification-strategy-engineering",
+        "software-construction-quality"
+      ],
+      "url": "https://arxiv.org/abs/2602.00409"
+    },
+    {
+      "id": "R143",
+      "evidence_class": "C",
+      "topic": "Context engineering",
+      "source": "Coding Agents are Effective Long-Context Processors",
+      "date": "2026-03-20",
+      "type": "independent benchmark preprint",
+      "key_finding": "Coding agents can use file systems and executable tools to organize and process very large contexts effectively.",
+      "operationalization": "Use file-based handoffs, bounded maps, and executable retrieval rather than transcript stuffing.",
+      "affected_skills": [
+        "context-repository-engineering",
+        "multi-agent-engineering"
+      ],
+      "url": "https://arxiv.org/abs/2603.20432"
+    },
+    {
+      "id": "R144",
+      "evidence_class": "C",
+      "topic": "Developer experience",
+      "source": "The Impact of AI Coding Assistants on Software Engineering",
+      "date": "2026-05-22",
+      "type": "independent longitudinal mixed-methods preprint",
+      "key_finding": "Work shifts toward supervisory engineering; perceived productivity can coexist with worsening flow and cognitive load.",
+      "operationalization": "Measure intervention, review, correction, cognitive load, and retained ownership.",
+      "affected_skills": [
+        "product-fitness-engineering",
+        "agentic-product-lifecycle"
+      ],
+      "url": "https://arxiv.org/abs/2605.23135"
+    },
+    {
+      "id": "R145",
+      "evidence_class": "B",
+      "topic": "Human-agent collaboration",
+      "source": "Google Research — From Correctness to Collaboration",
+      "date": "2026-04-01",
+      "type": "peer-reviewed research summary",
+      "key_finding": "Professional expectations include standards/process, quality/reliability, effective problem solving, and collaboration—not correctness alone.",
+      "operationalization": "Evaluate collaborative and authority behavior separately from code correctness.",
+      "affected_skills": [
+        "agent-evals-observability",
+        "product-fitness-engineering"
+      ],
+      "url": "https://research.google/pubs/from-correctness-to-collaboration-a-human-centered-taxonomy-of-ai-agent-behavior-in-software-engineering/"
+    },
+    {
+      "id": "R146",
+      "evidence_class": "C",
+      "topic": "AI programming productivity",
+      "source": "Meta-analysis of generative AI on productivity and learning",
+      "date": "2026-05-06",
+      "type": "independent meta-analysis preprint",
+      "key_finding": "Productivity effects are positive but heterogeneous and smaller in enterprise/open-source contexts; learning effects were not significant.",
+      "operationalization": "Avoid assuming generated throughput equals system value or retained expertise.",
+      "affected_skills": [
+        "product-fitness-engineering",
+        "agentic-product-lifecycle"
+      ],
+      "url": "https://arxiv.org/abs/2605.04779"
+    },
+    {
+      "id": "R147",
+      "evidence_class": "A",
+      "topic": "Agent standards",
+      "source": "NIST — AI Agent Standards Initiative",
+      "date": "2026-02-17",
+      "type": "government primary guidance",
+      "key_finding": "Secure identity, authorization, interoperability, and open standards are central to trusted agent adoption.",
+      "operationalization": "Keep identity, authority, protocol, and effect boundaries explicit.",
+      "affected_skills": [
+        "agent-security-governance",
+        "rust-agent-protocols"
+      ],
+      "url": "https://www.nist.gov/news-events/news/2026/02/announcing-ai-agent-standards-initiative-interoperable-and-secure"
+    },
+    {
+      "id": "R148",
+      "evidence_class": "A",
+      "topic": "Continuous AI security",
+      "source": "NIST — Continuous-monitor-and-update security model",
+      "date": "2026-06-09",
+      "type": "government primary research communication",
+      "key_finding": "No finite fixed guardrail set is universally robust; red teaming, continuous updates, and resilience are required.",
+      "operationalization": "Add continuous monitoring, update, impact limitation, and recovery to agent security.",
+      "affected_skills": [
+        "agent-security-governance",
+        "production-readiness-sre"
+      ],
+      "url": "https://www.nist.gov/news-events/news/2026/06/nist-mathematical-proof-supports-transition-continuous-monitor-and-update"
+    },
+    {
+      "id": "R149",
+      "evidence_class": "A",
+      "topic": "Agent measurement",
+      "source": "NIST — Building Measurement Probes into Agentic AI Ecosystems",
+      "date": "2026-04-07",
+      "type": "government primary technical webinar",
+      "key_finding": "Agent traceability requires reconstructing tool use and evidence; dynamic verifiers can provide measurement probes.",
+      "operationalization": "Require trace/evidence joins and independent verifiers for consequential claims.",
+      "affected_skills": [
+        "agent-evals-observability",
+        "harness-engineering"
+      ],
+      "url": "https://www.nist.gov/news-events/events/2026/04/nist-information-technology-laboratory-ai-webinar-series-building"
+    },
+    {
+      "id": "R150",
+      "evidence_class": "A",
+      "topic": "Agent identity",
+      "source": "NIST — Identity and Authority of Software Agents",
+      "date": "2026-02-05",
+      "type": "government primary concept paper",
+      "key_finding": "Agent access to data, tools, and applications requires explicit identification and authorization controls.",
+      "operationalization": "Bind worker, reviewer, effect, and authority identities.",
+      "affected_skills": [
+        "agent-security-governance",
+        "multi-agent-engineering"
+      ],
+      "url": "https://www.nist.gov/news-events/news/2026/02/new-concept-paper-identity-and-authority-software-agents"
+    },
+    {
+      "id": "R151",
+      "evidence_class": "A",
+      "topic": "Secure lifecycle",
+      "source": "NIST — SSDF 1.2 initial public draft",
+      "date": "2025-12-17",
+      "type": "government standard draft",
+      "key_finding": "Secure and reliable development, delivery, and improvement practices should be integrated into any lifecycle model.",
+      "operationalization": "Keep proportional assurance inside the full lifecycle without weakening mandatory security boundaries.",
+      "affected_skills": [
+        "secure-delivery-release",
+        "agentic-product-lifecycle"
+      ],
+      "url": "https://csrc.nist.gov/pubs/sp/800/218/r1/ipd"
+    }
+  ],
+  "plugin_version": "3.0.1",
+  "scope_addendum": "Version 3: proportional assurance, no-change decisions, repair circuit breakers, governed learning, skill behavior evals, Product Fitness, typed worker/reviewer evidence, and knowledge lifecycle control.",
+  "evidence_class_counts": {
+    "A": 98,
+    "B": 33,
+    "C": 19,
+    "D": 1
+  }
+}

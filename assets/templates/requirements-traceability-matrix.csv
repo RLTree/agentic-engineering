@@ -1,0 +1,2 @@
+need_id,mission_thread_id,requirement_id,requirement_text,rationale,priority,quality_attribute,architecture_link,implementation_link,verification_method,verification_artifact,validation_evidence,field_signal,owner,version,status,revisit_trigger
+N-001,MT-001,REQ-001,"{{bounded verifiable requirement}}","{{rationale}}",must,"{{quality}}","{{adr}}","{{code}}","{{method}}","{{test}}","{{validation}}","{{signal}}","{{owner}}","{{version}}",proposed,"{{trigger}}"

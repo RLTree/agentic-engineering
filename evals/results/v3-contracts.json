@@ -1,0 +1,16 @@
+{
+  "check": "v3-contract-check",
+  "passed": true,
+  "errors": [],
+  "warnings": [
+    "Schema-generated smoke instances prove structural satisfiability, not domain correctness or live interoperability."
+  ],
+  "metrics": {
+    "new_skills": 3,
+    "new_schemas": 7,
+    "schema_satisfiable_smokes": 7,
+    "closed_object_negative_rejections": 7,
+    "new_templates": 12,
+    "new_shared_references": 8
+  }
+}

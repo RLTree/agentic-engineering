@@ -1,0 +1,8 @@
+interface:
+  display_name: Multi-Agent Engineering
+  short_description: Multi-Agent Engineering
+  brand_color: '#0F766E'
+  default_prompt: Decide whether this task merits multiple agents or Ultra, then define
+    non-overlapping work and deterministic fan-in.
+policy:
+  allow_implicit_invocation: false

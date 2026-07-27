@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "profile": "ultragoal",
+  "enabled_skills": [
+    "codex-task-contract",
+    "agent-evals-observability",
+    "agent-security-governance",
+    "agentic-product-lifecycle",
+    "authentic-use-engineering",
+    "engineering-learning-loop",
+    "verification-strategy-engineering",
+    "product-fitness-engineering"
+  ],
+  "implicit_front_door": "external:harness-ultragoal",
+  "notes": "Use only when Harness UltraGoal is co-installed and remains the sole implicit front door. Agentic Engineering specialists are explicit advisers."
+}

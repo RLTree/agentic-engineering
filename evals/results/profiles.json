@@ -1,0 +1,17 @@
+{
+  "check": "profile-validation",
+  "passed": true,
+  "errors": [],
+  "warnings": [],
+  "metrics": {
+    "profiles": 5,
+    "profile_sizes": {
+      "core": 12,
+      "full": 30,
+      "lifecycle": 15,
+      "rust": 9,
+      "ultragoal": 8
+    },
+    "skills": 30
+  }
+}

@@ -1,0 +1,8 @@
+interface:
+  display_name: Harness Engineering
+  short_description: Harness Engineering
+  brand_color: '#0F766E'
+  default_prompt: Design the control plane, tool gateway, run state, approvals, recovery,
+    and trace contract for this agent.
+policy:
+  allow_implicit_invocation: false

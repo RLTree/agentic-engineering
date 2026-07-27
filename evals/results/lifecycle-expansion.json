@@ -1,0 +1,17 @@
+{
+  "check": "lifecycle-and-v3-expansion-check",
+  "passed": true,
+  "errors": [],
+  "warnings": [
+    "This gate proves package completeness and traceability, not live product effectiveness, legal approval, or field fitness."
+  ],
+  "metrics": {
+    "lifecycle_skills": 12,
+    "v3_skills": 3,
+    "shared_references": 16,
+    "sources": 151,
+    "scenarios_for_expansion": 48,
+    "positive_routes_for_expansion": 72,
+    "negative_routes_for_expansion": 15
+  }
+}

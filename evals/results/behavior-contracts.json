@@ -1,0 +1,14 @@
+{
+  "check": "behavior-contract-evaluation",
+  "passed": true,
+  "errors": [],
+  "warnings": [],
+  "metrics": {
+    "contracts": 31,
+    "global_contracts": 1,
+    "skill_contracts": 30,
+    "required_behavior_rules": 185,
+    "forbidden_behavior_rules": 93,
+    "evidence_obligations": 62
+  }
+}

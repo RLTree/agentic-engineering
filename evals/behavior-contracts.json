@@ -1,0 +1,685 @@
+{
+  "schema_version": "3.0",
+  "contracts": [
+    {
+      "id": "BC-GLOBAL",
+      "skill": "*",
+      "required": [
+        "label facts assumptions hypotheses decisions and residual risks",
+        "choose the smallest fitting architecture",
+        "use deterministic control for permissions validation budgets and effects",
+        "tie completion claims to evidence",
+        "report checks not executed"
+      ],
+      "forbidden": [
+        "claim unavailable verification passed",
+        "treat model confidence as proof",
+        "silently widen scope or privilege"
+      ],
+      "evidence": [
+        "named deliverable contract",
+        "acceptance-to-evidence mapping or verification plan"
+      ]
+    },
+    {
+      "id": "BC-AGENTIC_ENGINEERING",
+      "skill": "agentic-engineering",
+      "deliverable": "Agentic Architecture Brief",
+      "required": [
+        "smallest fitting topology",
+        "seven-layer ownership",
+        "authoritative state",
+        "model versus deterministic boundary",
+        "verification oracle",
+        "rejected alternatives and revisit triggers"
+      ],
+      "forbidden": [
+        "agentic by adjective",
+        "unjustified graph or multi-agent escalation",
+        "architecture without an oracle"
+      ],
+      "evidence": [
+        "output includes the named deliverable",
+        "recommendation states evidence and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-CODEX_TASK_CONTRACT",
+      "skill": "codex-task-contract",
+      "deliverable": "Codex Execution Contract",
+      "required": [
+        "objective",
+        "exact deliverables",
+        "constraints and invariants",
+        "anti-goals",
+        "autonomy and approval policy",
+        "acceptance-to-evidence mapping"
+      ],
+      "forbidden": [
+        "adjective-only quality request",
+        "asking about reversible implementation details",
+        "completion without exact artifact"
+      ],
+      "evidence": [
+        "output includes the named deliverable",
+        "recommendation states evidence and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-CONTEXT_REPOSITORY_ENGINEERING",
+      "skill": "context-repository-engineering",
+      "deliverable": "Context and Repository Plan",
+      "required": [
+        "repository map",
+        "layered AGENTS.md placement",
+        "retrieval/provenance policy",
+        "context budget",
+        "compaction checkpoint",
+        "fast/full validation commands"
+      ],
+      "forbidden": [
+        "dump the whole repository",
+        "duplicate root guidance in every subtree",
+        "transcript as the only state store"
+      ],
+      "evidence": [
+        "output includes the named deliverable",
+        "recommendation states evidence and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-HARNESS_ENGINEERING",
+      "skill": "harness-engineering",
+      "deliverable": "Harness Blueprint",
+      "required": [
+        "control versus execution plane",
+        "typed tool contracts",
+        "run lifecycle and IDs",
+        "capability/approval policy",
+        "effect journal and recovery",
+        "trace/evidence schema"
+      ],
+      "forbidden": [
+        "prompt as permission system",
+        "sandbox equals authorization",
+        "retry every error"
+      ],
+      "evidence": [
+        "output includes the named deliverable",
+        "recommendation states evidence and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-LOOP_ENGINEERING",
+      "skill": "loop-engineering",
+      "deliverable": "Loop Contract",
+      "required": [
+        "observe orient plan act verify update",
+        "authoritative state",
+        "budgets",
+        "stop conditions",
+        "failure classification",
+        "best-so-far or progress signal"
+      ],
+      "forbidden": [
+        "iterate until good",
+        "unbounded retries",
+        "success without oracle"
+      ],
+      "evidence": [
+        "output includes the named deliverable",
+        "recommendation states evidence and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-GRAPH_WORKFLOW_ENGINEERING",
+      "skill": "graph-workflow-engineering",
+      "deliverable": "Graph Contract",
+      "required": [
+        "typed state",
+        "node and edge contracts",
+        "reducers and joins",
+        "checkpoints and interrupts",
+        "replay and effect semantics",
+        "graph/state versioning"
+      ],
+      "forbidden": [
+        "one giant node",
+        "last-writer-wins without authority",
+        "interrupt before unguarded side effect"
+      ],
+      "evidence": [
+        "output includes the named deliverable",
+        "recommendation states evidence and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-MULTI_AGENT_ENGINEERING",
+      "skill": "multi-agent-engineering",
+      "deliverable": "Multi-Agent Coordination Plan",
+      "required": [
+        "entry gate and single-agent alternative",
+        "independent work packages",
+        "exclusive ownership",
+        "delegation result schema",
+        "fan-in owner",
+        "cancellation and partial failure"
+      ],
+      "forbidden": [
+        "parallelism because task is hard",
+        "several agents editing same state without owner",
+        "consensus treated as proof"
+      ],
+      "evidence": [
+        "output includes the named deliverable",
+        "recommendation states evidence and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-AGENT_EVALS_OBSERVABILITY",
+      "skill": "agent-evals-observability",
+      "deliverable": "Agent Evaluation and Evidence Plan",
+      "required": [
+        "outcome trajectory recovery safety operational dimensions",
+        "task distribution and fixtures",
+        "grader calibration",
+        "trace/evidence IDs",
+        "failure-derived regressions",
+        "versioned reporting"
+      ],
+      "forbidden": [
+        "single demo as evaluation",
+        "one composite score hiding safety failure",
+        "self-reported tests as proof"
+      ],
+      "evidence": [
+        "output includes the named deliverable",
+        "recommendation states evidence and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-AGENT_SECURITY_GOVERNANCE",
+      "skill": "agent-security-governance",
+      "deliverable": "Agent Threat and Governance Plan",
+      "required": [
+        "assets actors and trust boundaries",
+        "injection/provenance separation",
+        "least-privilege capabilities",
+        "consequence-based approvals",
+        "effect integrity",
+        "incident containment"
+      ],
+      "forbidden": [
+        "untrusted content as policy",
+        "ambient broad credentials",
+        "approval without exact target/effect"
+      ],
+      "evidence": [
+        "output includes the named deliverable",
+        "recommendation states evidence and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-AGENT_FIRST_SOFTWARE_ENGINEERING",
+      "skill": "agent-first-software-engineering",
+      "deliverable": "Agent-Ready Repository and Delivery Plan",
+      "required": [
+        "issue-to-artifact flow",
+        "repository legibility",
+        "correction-to-infrastructure placement",
+        "fast and exact-delivery verification",
+        "durable decisions/evidence",
+        "handoff"
+      ],
+      "forbidden": [
+        "conversation as artifact",
+        "source-only verification",
+        "massive agent manual instead of enforcement"
+      ],
+      "evidence": [
+        "output includes the named deliverable",
+        "recommendation states evidence and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-RUST_AGENTIC_ARCHITECTURE",
+      "skill": "rust-agentic-architecture",
+      "deliverable": "Rust Agent Architecture",
+      "required": [
+        "typed IDs state decisions and effects",
+        "decision/effect split",
+        "ports and adapters",
+        "provider/framework isolation",
+        "workspace dependency direction",
+        "typed error taxonomy"
+      ],
+      "forbidden": [
+        "provider DTOs as domain",
+        "universal execute JSON escape hatch",
+        "runtime handles in durable state"
+      ],
+      "evidence": [
+        "output includes the named deliverable",
+        "recommendation states evidence and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-RUST_AGENT_RUNTIME",
+      "skill": "rust-agent-runtime",
+      "deliverable": "Rust Runtime Contract",
+      "required": [
+        "task ownership tree",
+        "bounded queues and semaphores",
+        "cancellation and absolute deadlines",
+        "supervision and join errors",
+        "graceful shutdown",
+        "runtime fault tests"
+      ],
+      "forbidden": [
+        "detached tasks",
+        "unbounded channels by habit",
+        "lock held across external await"
+      ],
+      "evidence": [
+        "output includes the named deliverable",
+        "recommendation states evidence and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-RUST_AGENT_DURABILITY",
+      "skill": "rust-agent-durability",
+      "deliverable": "Rust Durability and Effect Plan",
+      "required": [
+        "effect journal state machine",
+        "stable action/idempotency key",
+        "outbox/inbox where needed",
+        "ambiguous effect reconciliation",
+        "replay/version policy",
+        "crash-point tests"
+      ],
+      "forbidden": [
+        "blind retry after timeout",
+        "in-memory result as durability",
+        "network I/O inside local transaction"
+      ],
+      "evidence": [
+        "output includes the named deliverable",
+        "recommendation states evidence and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-RUST_AGENT_PROTOCOLS",
+      "skill": "rust-agent-protocols",
+      "deliverable": "Rust Tool and Protocol Contract",
+      "required": [
+        "schema-first wire DTOs",
+        "semantic validation",
+        "server-side authorization",
+        "MCP versus A2A boundary",
+        "protocol version negotiation",
+        "independent conformance tests"
+      ],
+      "forbidden": [
+        "serde_json Value everywhere",
+        "remote metadata grants authority",
+        "transport disconnect proves no effect"
+      ],
+      "evidence": [
+        "output includes the named deliverable",
+        "recommendation states evidence and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-RUST_AGENT_VERIFICATION",
+      "skill": "rust-agent-verification",
+      "deliverable": "Rust Verification and CI Matrix",
+      "required": [
+        "fmt check test clippy release ladder",
+        "feature target and toolchain matrix",
+        "concurrency and fault tests",
+        "agent scenario evals",
+        "supply-chain checks",
+        "exact artifact evidence"
+      ],
+      "forbidden": [
+        "cargo check as complete proof",
+        "skipped tools marked passed",
+        "only happy-path async tests"
+      ],
+      "evidence": [
+        "output includes the named deliverable",
+        "recommendation states evidence and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-AGENTIC_PRODUCT_LIFECYCLE",
+      "skill": "agentic-product-lifecycle",
+      "deliverable": "Lifecycle Assurance Plan",
+      "required": [
+        "tailored lifecycle and current decision",
+        "decision rights and ownership",
+        "decision evidence artifact traceability",
+        "thin-slice and authentic-use feedback",
+        "readiness gates and blocking policy",
+        "revisit stop and retirement triggers"
+      ],
+      "forbidden": [
+        "lifecycle as waterfall",
+        "artifact handoff without decision continuity",
+        "agent authority by convenience"
+      ],
+      "evidence": [
+        "output includes the named deliverable and operating-envelope or lifecycle scope",
+        "recommendation states evidence strength, owner, residual uncertainty, and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-AUTHENTIC_USE_ENGINEERING",
+      "skill": "authentic-use-engineering",
+      "deliverable": "Controlled Field-Learning Plan",
+      "required": [
+        "learning decision and thresholds",
+        "operating envelope and exclusions",
+        "progressive exposure and autonomy",
+        "task trajectory effect and human-work evidence",
+        "representative evidence and causal limits",
+        "observation-to-change ledger and review"
+      ],
+      "forbidden": [
+        "production as an unbounded experiment",
+        "aggregate metric as truth",
+        "telemetry without product change"
+      ],
+      "evidence": [
+        "output includes the named deliverable and operating-envelope or lifecycle scope",
+        "recommendation states evidence strength, owner, residual uncertainty, and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-AGENT_PRODUCT_DISCOVERY",
+      "skill": "agent-product-discovery",
+      "deliverable": "Product Discovery Evidence Brief",
+      "required": [
+        "actors outcomes and current work",
+        "representative research sample",
+        "consequences failures and recovery",
+        "opportunities without solution lock-in",
+        "assumption and evidence map",
+        "discovery decision and next test"
+      ],
+      "forbidden": [
+        "solution-led discovery",
+        "enthusiast sample as market evidence",
+        "pain point without decision context"
+      ],
+      "evidence": [
+        "output includes the named deliverable and operating-envelope or lifecycle scope",
+        "recommendation states evidence strength, owner, residual uncertainty, and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-CONCEPT_FEASIBILITY_VALIDATION",
+      "skill": "concept-feasibility-validation",
+      "deliverable": "Concept and Feasibility Evidence Case",
+      "required": [
+        "critical assumption and risk map",
+        "cheapest discriminating artifact",
+        "capability workflow and effect feasibility",
+        "operating-envelope evidence",
+        "economic operational and compliance feasibility",
+        "go pivot stop criteria"
+      ],
+      "forbidden": [
+        "prototype theater",
+        "capability score without workflow fit",
+        "sunk-cost validation"
+      ],
+      "evidence": [
+        "output includes the named deliverable and operating-envelope or lifecycle scope",
+        "recommendation states evidence strength, owner, residual uncertainty, and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-REQUIREMENTS_SYSTEMS_ENGINEERING",
+      "skill": "requirements-systems-engineering",
+      "deliverable": "Operational Concept and Traceability Baseline",
+      "required": [
+        "operational concept and modes",
+        "mission threads and decision rights",
+        "functional interface data and effect requirements",
+        "measurable quality-attribute scenarios",
+        "bidirectional verification and validation traceability",
+        "baseline and material-change control"
+      ],
+      "forbidden": [
+        "feature list as requirements",
+        "verification substituted for validation",
+        "traceability after the fact"
+      ],
+      "evidence": [
+        "output includes the named deliverable and operating-envelope or lifecycle scope",
+        "recommendation states evidence strength, owner, residual uncertainty, and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-ARCHITECTURE_DELIVERY_PLANNING",
+      "skill": "architecture-delivery-planning",
+      "deliverable": "Architecture and Evidence-Driven Delivery Plan",
+      "required": [
+        "candidate architectures and smallest fit",
+        "quality tradeoff and sensitivity analysis",
+        "assumptions risks and rejected alternatives",
+        "risk-retiring vertical slices",
+        "dependency capacity and backpressure plan",
+        "decision evidence and revisit triggers"
+      ],
+      "forbidden": [
+        "architecture by fashion",
+        "feature calendar as delivery plan",
+        "decision record without consequences"
+      ],
+      "evidence": [
+        "output includes the named deliverable and operating-envelope or lifecycle scope",
+        "recommendation states evidence strength, owner, residual uncertainty, and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-SOFTWARE_CONSTRUCTION_QUALITY",
+      "skill": "software-construction-quality",
+      "deliverable": "Construction and Quality Evidence Plan",
+      "required": [
+        "small coherent implementation batches",
+        "layered verification ladder",
+        "state effect fault and agent eval coverage",
+        "fresh-context and specialist review",
+        "defect-to-regression learning",
+        "exact delivered-artifact integrity"
+      ],
+      "forbidden": [
+        "compile means correct",
+        "wide batch hidden behind one review",
+        "defect fix without prevention"
+      ],
+      "evidence": [
+        "output includes the named deliverable and operating-envelope or lifecycle scope",
+        "recommendation states evidence strength, owner, residual uncertainty, and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-SECURE_DELIVERY_RELEASE",
+      "skill": "secure-delivery-release",
+      "deliverable": "Secure Release Evidence Package",
+      "required": [
+        "agent-specific threat and control model",
+        "secure defaults and least privilege",
+        "artifact inventory provenance and integrity",
+        "progressive cohorts and exposure integrity",
+        "guardrails authorization and stop rules",
+        "tested rollback reconciliation and release decision"
+      ],
+      "forbidden": [
+        "deployment as release proof",
+        "feature flag as authorization",
+        "rollback plan never exercised"
+      ],
+      "evidence": [
+        "output includes the named deliverable and operating-envelope or lifecycle scope",
+        "recommendation states evidence strength, owner, residual uncertainty, and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-PRODUCTION_READINESS_SRE",
+      "skill": "production-readiness-sre",
+      "deliverable": "Production Readiness and Reliability Plan",
+      "required": [
+        "production ownership and readiness review",
+        "agent outcome and service SLIs SLOs",
+        "error-budget action policy",
+        "capacity dependency backpressure and degradation",
+        "incident recovery reconciliation and learning",
+        "observability runbooks support and known risks"
+      ],
+      "forbidden": [
+        "monitoring as dashboard inventory",
+        "slo without policy",
+        "readiness review at the finish line"
+      ],
+      "evidence": [
+        "output includes the named deliverable and operating-envelope or lifecycle scope",
+        "recommendation states evidence strength, owner, residual uncertainty, and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-CONTINUOUS_PRODUCT_EXPERIMENTATION",
+      "skill": "continuous-product-experimentation",
+      "deliverable": "Product Experiment and Decision Contract",
+      "required": [
+        "hypothesis mechanism and decision precommitment",
+        "unit population assignment and exposure integrity",
+        "outcome diagnostic guardrail and data-quality metrics",
+        "causal design qualitative review and limitations",
+        "ramp holdout bake-time and long-term effects",
+        "advance hold narrow pivot revert stop decision"
+      ],
+      "forbidden": [
+        "metric movement as causality",
+        "one metric optimizes the product",
+        "invalid experiment still shipped"
+      ],
+      "evidence": [
+        "output includes the named deliverable and operating-envelope or lifecycle scope",
+        "recommendation states evidence strength, owner, residual uncertainty, and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-MAINTENANCE_RETIREMENT_ENGINEERING",
+      "skill": "maintenance-retirement-engineering",
+      "deliverable": "Maintenance, Deprecation, and Retirement Plan",
+      "required": [
+        "change taxonomy and revalidation policy",
+        "health drift debt dependency and value evidence",
+        "deprecation owner communication and migration",
+        "safe disable drain and effect reconciliation",
+        "credential data dependency and cost removal",
+        "retirement evidence continuity and post-close checks"
+      ],
+      "forbidden": [
+        "delete before disable and observe",
+        "deprecation without user continuity",
+        "maintenance as unbounded backlog"
+      ],
+      "evidence": [
+        "output includes the named deliverable and operating-envelope or lifecycle scope",
+        "recommendation states evidence strength, owner, residual uncertainty, and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-RUST_AGENT_OBSERVABILITY",
+      "skill": "rust-agent-observability",
+      "deliverable": "Rust Agent Observability Contract",
+      "required": [
+        "operator product safety and learning questions",
+        "typed domain identities and event schema",
+        "Tokio and cross-process context propagation",
+        "bounded metrics cardinality and sampling",
+        "privacy redaction retention and access policy",
+        "rollout evidence joins and observability tests"
+      ],
+      "forbidden": [
+        "logs without causal context",
+        "high-cardinality metrics",
+        "telemetry leaks the workload"
+      ],
+      "evidence": [
+        "output includes the named deliverable and operating-envelope or lifecycle scope",
+        "recommendation states evidence strength, owner, residual uncertainty, and revisit/stop conditions"
+      ]
+    },
+    {
+      "id": "BC-ENGINEERING_LEARNING_LOOP",
+      "skill": "engineering-learning-loop",
+      "deliverable": "Learning Adoption Record",
+      "required": [
+        "bind observation to exact provenance and operating envelope",
+        "separate facts interpretations hypotheses and counterevidence",
+        "attribute the earliest controllable layer",
+        "choose the smallest intervention or no-change",
+        "evaluate with baseline held-out negative mutation or evolution cases",
+        "assign ownership freshness invalidation and rollback"
+      ],
+      "forbidden": [
+        "universal rule from one anecdote",
+        "second knowledge authority",
+        "adoption from reviewer agreement or model self-report"
+      ],
+      "evidence": [
+        "named Learning Adoption Record with authority handoff",
+        "before/after or explicitly unexecuted falsification evidence"
+      ]
+    },
+    {
+      "id": "BC-VERIFICATION_STRATEGY_ENGINEERING",
+      "skill": "verification-strategy-engineering",
+      "deliverable": "Verification Mode Contract",
+      "required": [
+        "reproduce current behavior and allow no-change",
+        "classify failure risk and exact candidate",
+        "name oracle and limitations",
+        "select and reject verification modes proportionally",
+        "define mock and real-boundary policy",
+        "bind freshness repair budget acceptance and claim ceiling"
+      ],
+      "forbidden": [
+        "universal TDD or coverage proxy",
+        "stale evidence reused across truth surfaces",
+        "mock behavior presented as consequential integration proof"
+      ],
+      "evidence": [
+        "named Verification Mode Contract tied to candidate",
+        "commands artifacts representative populations and residual risk"
+      ]
+    },
+    {
+      "id": "BC-PRODUCT_FITNESS_ENGINEERING",
+      "skill": "product-fitness-engineering",
+      "deliverable": "Product Fitness Evidence Plan",
+      "required": [
+        "define user job value outcome and continuance",
+        "declare operating envelope and representative sample",
+        "join journey effect outcome intervention and recovery evidence",
+        "measure supervisory and cognitive work",
+        "separate assignment exposure activity and value",
+        "return advance hold narrow revert stop redesign or gather-more-evidence"
+      ],
+      "forbidden": [
+        "agent use relabeled as human use",
+        "activity or install success as product fitness",
+        "read-only pulse promotes a claim"
+      ],
+      "evidence": [
+        "named Product Fitness Evidence Plan and claim ceiling",
+        "Field Pulse or Journey Review tied to representative evidence"
+      ]
+    }
+  ]
+}

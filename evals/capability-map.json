@@ -1,0 +1,1161 @@
+{
+  "schema_version": "3.0",
+  "skills": [
+    {
+      "skill": "agentic-engineering",
+      "domain": "architecture",
+      "deliverable": "Agentic Architecture Brief",
+      "source_ids": [
+        "R03",
+        "R10",
+        "R13",
+        "R21",
+        "R43",
+        "R44"
+      ],
+      "references": [
+        "architecture-decision-table.md",
+        "control-architecture-review.md",
+        "seven-layer-diagnostic.md"
+      ],
+      "scenario_ids": [
+        "SC-001",
+        "SC-002",
+        "SC-003"
+      ],
+      "routing_case_ids": [
+        "RT-001",
+        "RT-002",
+        "RT-003",
+        "RT-004",
+        "RT-062",
+        "RT-065"
+      ],
+      "required_capabilities": [
+        "smallest fitting topology",
+        "seven-layer ownership",
+        "authoritative state",
+        "model versus deterministic boundary",
+        "verification oracle",
+        "rejected alternatives and revisit triggers"
+      ]
+    },
+    {
+      "skill": "codex-task-contract",
+      "domain": "specification",
+      "deliverable": "Codex Execution Contract",
+      "source_ids": [
+        "R06",
+        "R32",
+        "R33",
+        "R44"
+      ],
+      "references": [
+        "assumption-approval-policy.md",
+        "execution-contract-schema.md",
+        "vocabulary-translator.md"
+      ],
+      "scenario_ids": [
+        "SC-004",
+        "SC-005",
+        "SC-006"
+      ],
+      "routing_case_ids": [
+        "RT-005",
+        "RT-006",
+        "RT-007",
+        "RT-008",
+        "RT-062"
+      ],
+      "required_capabilities": [
+        "objective",
+        "exact deliverables",
+        "constraints and invariants",
+        "anti-goals",
+        "autonomy and approval policy",
+        "acceptance-to-evidence mapping"
+      ]
+    },
+    {
+      "skill": "context-repository-engineering",
+      "domain": "context",
+      "deliverable": "Context and Repository Plan",
+      "source_ids": [
+        "R06",
+        "R07",
+        "R12",
+        "R14",
+        "R15",
+        "R48",
+        "R53"
+      ],
+      "references": [
+        "context-budget-retrieval.md",
+        "layered-agents-pattern.md",
+        "plans-compaction.md",
+        "repository-legibility.md"
+      ],
+      "scenario_ids": [
+        "SC-007",
+        "SC-008",
+        "SC-009"
+      ],
+      "routing_case_ids": [
+        "RT-009",
+        "RT-010",
+        "RT-011",
+        "RT-012",
+        "RT-063",
+        "RT-068"
+      ],
+      "required_capabilities": [
+        "repository map",
+        "layered AGENTS.md placement",
+        "retrieval/provenance policy",
+        "context budget",
+        "compaction checkpoint",
+        "fast/full validation commands"
+      ]
+    },
+    {
+      "skill": "harness-engineering",
+      "domain": "harness",
+      "deliverable": "Harness Blueprint",
+      "source_ids": [
+        "R03",
+        "R05",
+        "R09",
+        "R18",
+        "R27",
+        "R50",
+        "R51"
+      ],
+      "references": [
+        "harness-reference-architecture.md",
+        "recovery-effect-safety.md",
+        "tool-gateway-contract.md",
+        "trace-run-state-schema.md"
+      ],
+      "scenario_ids": [
+        "SC-010",
+        "SC-011",
+        "SC-012"
+      ],
+      "routing_case_ids": [
+        "RT-013",
+        "RT-014",
+        "RT-015",
+        "RT-016",
+        "RT-066"
+      ],
+      "required_capabilities": [
+        "control versus execution plane",
+        "typed tool contracts",
+        "run lifecycle and IDs",
+        "capability/approval policy",
+        "effect journal and recovery",
+        "trace/evidence schema"
+      ]
+    },
+    {
+      "skill": "loop-engineering",
+      "domain": "loop",
+      "deliverable": "Loop Contract",
+      "source_ids": [
+        "R13",
+        "R17",
+        "R30",
+        "R50"
+      ],
+      "references": [
+        "budget-stop-policy.md",
+        "failure-recovery-taxonomy.md",
+        "loop-contract.md",
+        "loop-test-cases.md"
+      ],
+      "scenario_ids": [
+        "SC-013",
+        "SC-014",
+        "SC-015"
+      ],
+      "routing_case_ids": [
+        "RT-017",
+        "RT-018",
+        "RT-019",
+        "RT-020",
+        "RT-066"
+      ],
+      "required_capabilities": [
+        "observe orient plan act verify update",
+        "authoritative state",
+        "budgets",
+        "stop conditions",
+        "failure classification",
+        "best-so-far or progress signal"
+      ]
+    },
+    {
+      "skill": "graph-workflow-engineering",
+      "domain": "graph",
+      "deliverable": "Graph Contract",
+      "source_ids": [
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R31"
+      ],
+      "references": [
+        "graph-verification-matrix.md",
+        "graph-versioning.md",
+        "reducers-checkpoints-interrupts.md",
+        "state-node-edge-contract.md"
+      ],
+      "scenario_ids": [
+        "SC-016",
+        "SC-017",
+        "SC-018"
+      ],
+      "routing_case_ids": [
+        "RT-021",
+        "RT-022",
+        "RT-023",
+        "RT-024",
+        "RT-061",
+        "RT-067"
+      ],
+      "required_capabilities": [
+        "typed state",
+        "node and edge contracts",
+        "reducers and joins",
+        "checkpoints and interrupts",
+        "replay and effect semantics",
+        "graph/state versioning"
+      ]
+    },
+    {
+      "skill": "multi-agent-engineering",
+      "domain": "multi-agent",
+      "deliverable": "Multi-Agent Coordination Plan",
+      "source_ids": [
+        "R01",
+        "R20",
+        "R30",
+        "R44",
+        "R49"
+      ],
+      "references": [
+        "coordination-fan-in.md",
+        "delegation-contract.md",
+        "multi-agent-decision-model.md",
+        "ultra-operating-protocol.md"
+      ],
+      "scenario_ids": [
+        "SC-019",
+        "SC-020",
+        "SC-021"
+      ],
+      "routing_case_ids": [
+        "RT-025",
+        "RT-026",
+        "RT-027",
+        "RT-028",
+        "RT-065"
+      ],
+      "required_capabilities": [
+        "entry gate and single-agent alternative",
+        "independent work packages",
+        "exclusive ownership",
+        "delegation result schema",
+        "fan-in owner",
+        "cancellation and partial failure"
+      ]
+    },
+    {
+      "skill": "agent-evals-observability",
+      "domain": "evaluation",
+      "deliverable": "Agent Evaluation and Evidence Plan",
+      "source_ids": [
+        "R08",
+        "R17",
+        "R34",
+        "R35",
+        "R36",
+        "R37",
+        "R39"
+      ],
+      "references": [
+        "eval-taxonomy.md",
+        "failure-derived-evals.md",
+        "grader-design.md",
+        "trace-evidence-schema.md"
+      ],
+      "scenario_ids": [
+        "SC-022",
+        "SC-023",
+        "SC-024"
+      ],
+      "routing_case_ids": [
+        "RT-029",
+        "RT-030",
+        "RT-031",
+        "RT-032",
+        "RT-063",
+        "RT-066",
+        "RT-068"
+      ],
+      "required_capabilities": [
+        "outcome trajectory recovery safety operational dimensions",
+        "task distribution and fixtures",
+        "grader calibration",
+        "trace/evidence IDs",
+        "failure-derived regressions",
+        "versioned reporting"
+      ]
+    },
+    {
+      "skill": "agent-security-governance",
+      "domain": "security",
+      "deliverable": "Agent Threat and Governance Plan",
+      "source_ids": [
+        "R09",
+        "R27",
+        "R38",
+        "R41"
+      ],
+      "references": [
+        "agent-threat-model.md",
+        "approval-capability-policy.md",
+        "effect-safety-incident.md",
+        "injection-provenance.md"
+      ],
+      "scenario_ids": [
+        "SC-025",
+        "SC-026",
+        "SC-027"
+      ],
+      "routing_case_ids": [
+        "RT-033",
+        "RT-034",
+        "RT-035",
+        "RT-036",
+        "RT-061",
+        "RT-064",
+        "RT-067"
+      ],
+      "required_capabilities": [
+        "assets actors and trust boundaries",
+        "injection/provenance separation",
+        "least-privilege capabilities",
+        "consequence-based approvals",
+        "effect integrity",
+        "incident containment"
+      ]
+    },
+    {
+      "skill": "agent-first-software-engineering",
+      "domain": "software-delivery",
+      "deliverable": "Agent-Ready Repository and Delivery Plan",
+      "source_ids": [
+        "R03",
+        "R04",
+        "R06",
+        "R12",
+        "R32",
+        "R33"
+      ],
+      "references": [
+        "agent-ready-repository-rubric.md",
+        "correction-infrastructure-ladder.md",
+        "delivery-verification.md",
+        "issue-to-artifact-protocol.md"
+      ],
+      "scenario_ids": [
+        "SC-028",
+        "SC-029",
+        "SC-030"
+      ],
+      "routing_case_ids": [
+        "RT-037",
+        "RT-038",
+        "RT-039",
+        "RT-040",
+        "RT-063",
+        "RT-068"
+      ],
+      "required_capabilities": [
+        "issue-to-artifact flow",
+        "repository legibility",
+        "correction-to-infrastructure placement",
+        "fast and exact-delivery verification",
+        "durable decisions/evidence",
+        "handoff"
+      ]
+    },
+    {
+      "skill": "rust-agentic-architecture",
+      "domain": "rust-architecture",
+      "deliverable": "Rust Agent Architecture",
+      "source_ids": [
+        "R18",
+        "R66",
+        "R67",
+        "R68",
+        "R69",
+        "R70"
+      ],
+      "references": [
+        "provider-framework-boundary.md",
+        "rust-error-taxonomy.md",
+        "typed-state-effects.md",
+        "workspace-architecture.md"
+      ],
+      "scenario_ids": [
+        "SC-031",
+        "SC-032",
+        "SC-033"
+      ],
+      "routing_case_ids": [
+        "RT-041",
+        "RT-042",
+        "RT-043",
+        "RT-044",
+        "RT-065"
+      ],
+      "required_capabilities": [
+        "typed IDs state decisions and effects",
+        "decision/effect split",
+        "ports and adapters",
+        "provider/framework isolation",
+        "workspace dependency direction",
+        "typed error taxonomy"
+      ]
+    },
+    {
+      "skill": "rust-agent-runtime",
+      "domain": "rust-runtime",
+      "deliverable": "Rust Runtime Contract",
+      "source_ids": [
+        "R55",
+        "R56",
+        "R57"
+      ],
+      "references": [
+        "backpressure-deadlines.md",
+        "graceful-shutdown-protocol.md",
+        "runtime-fault-matrix.md",
+        "structured-concurrency-tokio.md"
+      ],
+      "scenario_ids": [
+        "SC-034",
+        "SC-035",
+        "SC-036"
+      ],
+      "routing_case_ids": [
+        "RT-045",
+        "RT-046",
+        "RT-047",
+        "RT-048",
+        "RT-064"
+      ],
+      "required_capabilities": [
+        "task ownership tree",
+        "bounded queues and semaphores",
+        "cancellation and absolute deadlines",
+        "supervision and join errors",
+        "graceful shutdown",
+        "runtime fault tests"
+      ]
+    },
+    {
+      "skill": "rust-agent-durability",
+      "domain": "rust-durability",
+      "deliverable": "Rust Durability and Effect Plan",
+      "source_ids": [
+        "R24",
+        "R25",
+        "R26",
+        "R68"
+      ],
+      "references": [
+        "durable-runtime-options.md",
+        "effect-journal-protocol.md",
+        "idempotency-outbox.md",
+        "replay-versioning.md"
+      ],
+      "scenario_ids": [
+        "SC-037",
+        "SC-038",
+        "SC-039"
+      ],
+      "routing_case_ids": [
+        "RT-049",
+        "RT-050",
+        "RT-051",
+        "RT-052",
+        "RT-061",
+        "RT-067"
+      ],
+      "required_capabilities": [
+        "effect journal state machine",
+        "stable action/idempotency key",
+        "outbox/inbox where needed",
+        "ambiguous effect reconciliation",
+        "replay/version policy",
+        "crash-point tests"
+      ]
+    },
+    {
+      "skill": "rust-agent-protocols",
+      "domain": "rust-protocols",
+      "deliverable": "Rust Tool and Protocol Contract",
+      "source_ids": [
+        "R27",
+        "R28",
+        "R29",
+        "R66",
+        "R67",
+        "R70"
+      ],
+      "references": [
+        "a2a-rust.md",
+        "mcp-rust.md",
+        "protocol-conformance.md",
+        "schema-first-tool-design.md"
+      ],
+      "scenario_ids": [
+        "SC-040",
+        "SC-041",
+        "SC-042"
+      ],
+      "routing_case_ids": [
+        "RT-053",
+        "RT-054",
+        "RT-055",
+        "RT-056",
+        "RT-064"
+      ],
+      "required_capabilities": [
+        "schema-first wire DTOs",
+        "semantic validation",
+        "server-side authorization",
+        "MCP versus A2A boundary",
+        "protocol version negotiation",
+        "independent conformance tests"
+      ]
+    },
+    {
+      "skill": "rust-agent-verification",
+      "domain": "rust-verification",
+      "deliverable": "Rust Verification and CI Matrix",
+      "source_ids": [
+        "R58",
+        "R59",
+        "R60",
+        "R61",
+        "R62",
+        "R63",
+        "R64",
+        "R65"
+      ],
+      "references": [
+        "agent-evals-rust.md",
+        "ci-supply-chain.md",
+        "concurrency-fault-testing.md",
+        "rust-verification-ladder.md"
+      ],
+      "scenario_ids": [
+        "SC-043",
+        "SC-044",
+        "SC-045"
+      ],
+      "routing_case_ids": [
+        "RT-057",
+        "RT-058",
+        "RT-059",
+        "RT-060",
+        "RT-061",
+        "RT-064"
+      ],
+      "required_capabilities": [
+        "fmt check test clippy release ladder",
+        "feature target and toolchain matrix",
+        "concurrency and fault tests",
+        "agent scenario evals",
+        "supply-chain checks",
+        "exact artifact evidence"
+      ]
+    },
+    {
+      "skill": "agentic-product-lifecycle",
+      "domain": "product-lifecycle",
+      "deliverable": "Lifecycle Assurance Plan",
+      "source_ids": [
+        "R76",
+        "R83",
+        "R84",
+        "R87",
+        "R110"
+      ],
+      "references": [
+        "lifecycle-stage-map.md",
+        "lifecycle-assurance-case.md",
+        "agent-human-decision-rights.md",
+        "lifecycle-tailoring-and-feedback.md"
+      ],
+      "scenario_ids": [
+        "SC-046",
+        "SC-047",
+        "SC-048"
+      ],
+      "routing_case_ids": [
+        "RT-069",
+        "RT-070",
+        "RT-071",
+        "RT-073"
+      ],
+      "required_capabilities": [
+        "tailored lifecycle and current decision",
+        "decision rights and ownership",
+        "decision evidence artifact traceability",
+        "thin-slice and authentic-use feedback",
+        "readiness gates and blocking policy",
+        "revisit stop and retirement triggers"
+      ]
+    },
+    {
+      "skill": "authentic-use-engineering",
+      "domain": "authentic-use",
+      "deliverable": "Controlled Field-Learning Plan",
+      "source_ids": [
+        "R71",
+        "R72",
+        "R73",
+        "R75",
+        "R77",
+        "R79"
+      ],
+      "references": [
+        "controlled-field-learning.md",
+        "operating-envelope-autonomy.md",
+        "field-instrumentation-evidence.md",
+        "evidence-to-change-loop.md"
+      ],
+      "scenario_ids": [
+        "SC-049",
+        "SC-050",
+        "SC-051"
+      ],
+      "routing_case_ids": [
+        "RT-074",
+        "RT-075",
+        "RT-076",
+        "RT-078"
+      ],
+      "required_capabilities": [
+        "learning decision and thresholds",
+        "operating envelope and exclusions",
+        "progressive exposure and autonomy",
+        "task trajectory effect and human-work evidence",
+        "representative evidence and causal limits",
+        "observation-to-change ledger and review"
+      ]
+    },
+    {
+      "skill": "agent-product-discovery",
+      "domain": "product-discovery",
+      "deliverable": "Product Discovery Evidence Brief",
+      "source_ids": [
+        "R90",
+        "R93",
+        "R94",
+        "R85"
+      ],
+      "references": [
+        "discovery-research-plan.md",
+        "representative-work-sampling.md",
+        "problem-framing-opportunity.md",
+        "discovery-evidence-quality.md"
+      ],
+      "scenario_ids": [
+        "SC-052",
+        "SC-053",
+        "SC-054"
+      ],
+      "routing_case_ids": [
+        "RT-079",
+        "RT-080",
+        "RT-081",
+        "RT-083"
+      ],
+      "required_capabilities": [
+        "actors outcomes and current work",
+        "representative research sample",
+        "consequences failures and recovery",
+        "opportunities without solution lock-in",
+        "assumption and evidence map",
+        "discovery decision and next test"
+      ]
+    },
+    {
+      "skill": "concept-feasibility-validation",
+      "domain": "concept-feasibility",
+      "deliverable": "Concept and Feasibility Evidence Case",
+      "source_ids": [
+        "R77",
+        "R78",
+        "R89",
+        "R91",
+        "R93"
+      ],
+      "references": [
+        "assumption-and-risk-map.md",
+        "prototype-spike-strategy.md",
+        "feasibility-evidence.md",
+        "go-pivot-stop-criteria.md"
+      ],
+      "scenario_ids": [
+        "SC-055",
+        "SC-056",
+        "SC-057"
+      ],
+      "routing_case_ids": [
+        "RT-084",
+        "RT-085",
+        "RT-086",
+        "RT-088"
+      ],
+      "required_capabilities": [
+        "critical assumption and risk map",
+        "cheapest discriminating artifact",
+        "capability workflow and effect feasibility",
+        "operating-envelope evidence",
+        "economic operational and compliance feasibility",
+        "go pivot stop criteria"
+      ]
+    },
+    {
+      "skill": "requirements-systems-engineering",
+      "domain": "requirements-systems",
+      "deliverable": "Operational Concept and Traceability Baseline",
+      "source_ids": [
+        "R84",
+        "R85",
+        "R86",
+        "R88",
+        "R100"
+      ],
+      "references": [
+        "operational-concept-mission-threads.md",
+        "requirements-quality-attributes.md",
+        "traceability-verification-validation.md",
+        "change-and-baseline-control.md"
+      ],
+      "scenario_ids": [
+        "SC-058",
+        "SC-059",
+        "SC-060"
+      ],
+      "routing_case_ids": [
+        "RT-089",
+        "RT-090",
+        "RT-091",
+        "RT-093"
+      ],
+      "required_capabilities": [
+        "operational concept and modes",
+        "mission threads and decision rights",
+        "functional interface data and effect requirements",
+        "measurable quality-attribute scenarios",
+        "bidirectional verification and validation traceability",
+        "baseline and material-change control"
+      ]
+    },
+    {
+      "skill": "architecture-delivery-planning",
+      "domain": "architecture-delivery",
+      "deliverable": "Architecture and Evidence-Driven Delivery Plan",
+      "source_ids": [
+        "R86",
+        "R88",
+        "R89",
+        "R91",
+        "R110"
+      ],
+      "references": [
+        "architecture-tradeoff-analysis.md",
+        "thin-slice-risk-planning.md",
+        "architecture-decision-evidence.md",
+        "dependency-capacity-plan.md"
+      ],
+      "scenario_ids": [
+        "SC-061",
+        "SC-062",
+        "SC-063"
+      ],
+      "routing_case_ids": [
+        "RT-094",
+        "RT-095",
+        "RT-096",
+        "RT-098"
+      ],
+      "required_capabilities": [
+        "candidate architectures and smallest fit",
+        "quality tradeoff and sensitivity analysis",
+        "assumptions risks and rejected alternatives",
+        "risk-retiring vertical slices",
+        "dependency capacity and backpressure plan",
+        "decision evidence and revisit triggers"
+      ]
+    },
+    {
+      "skill": "software-construction-quality",
+      "domain": "construction-quality",
+      "deliverable": "Construction and Quality Evidence Plan",
+      "source_ids": [
+        "R72",
+        "R83",
+        "R86",
+        "R109",
+        "R110"
+      ],
+      "references": [
+        "small-batch-construction.md",
+        "verification-ladder.md",
+        "review-and-defect-learning.md",
+        "artifact-integrity-handoff.md"
+      ],
+      "scenario_ids": [
+        "SC-064",
+        "SC-065",
+        "SC-066"
+      ],
+      "routing_case_ids": [
+        "RT-099",
+        "RT-100",
+        "RT-101",
+        "RT-103"
+      ],
+      "required_capabilities": [
+        "small coherent implementation batches",
+        "layered verification ladder",
+        "state effect fault and agent eval coverage",
+        "fresh-context and specialist review",
+        "defect-to-regression learning",
+        "exact delivered-artifact integrity"
+      ]
+    },
+    {
+      "skill": "secure-delivery-release",
+      "domain": "secure-release",
+      "deliverable": "Secure Release Evidence Package",
+      "source_ids": [
+        "R95",
+        "R97",
+        "R98",
+        "R99",
+        "R106",
+        "R107",
+        "R112",
+        "R124"
+      ],
+      "references": [
+        "secure-sdlc-threat-model.md",
+        "supply-chain-provenance.md",
+        "progressive-delivery-release.md",
+        "rollback-and-release-evidence.md"
+      ],
+      "scenario_ids": [
+        "SC-067",
+        "SC-068",
+        "SC-069"
+      ],
+      "routing_case_ids": [
+        "RT-104",
+        "RT-105",
+        "RT-106",
+        "RT-108"
+      ],
+      "required_capabilities": [
+        "agent-specific threat and control model",
+        "secure defaults and least privilege",
+        "artifact inventory provenance and integrity",
+        "progressive cohorts and exposure integrity",
+        "guardrails authorization and stop rules",
+        "tested rollback reconciliation and release decision"
+      ]
+    },
+    {
+      "skill": "production-readiness-sre",
+      "domain": "production-sre",
+      "deliverable": "Production Readiness and Reliability Plan",
+      "source_ids": [
+        "R75",
+        "R102",
+        "R103",
+        "R104",
+        "R105",
+        "R106",
+        "R109"
+      ],
+      "references": [
+        "production-readiness-review.md",
+        "slo-error-budget.md",
+        "incident-resilience-learning.md",
+        "capacity-dependency-operations.md"
+      ],
+      "scenario_ids": [
+        "SC-070",
+        "SC-071",
+        "SC-072"
+      ],
+      "routing_case_ids": [
+        "RT-109",
+        "RT-110",
+        "RT-111",
+        "RT-113"
+      ],
+      "required_capabilities": [
+        "production ownership and readiness review",
+        "agent outcome and service SLIs SLOs",
+        "error-budget action policy",
+        "capacity dependency backpressure and degradation",
+        "incident recovery reconciliation and learning",
+        "observability runbooks support and known risks"
+      ]
+    },
+    {
+      "skill": "continuous-product-experimentation",
+      "domain": "product-experimentation",
+      "deliverable": "Product Experiment and Decision Contract",
+      "source_ids": [
+        "R79",
+        "R80",
+        "R81",
+        "R82",
+        "R103",
+        "R107",
+        "R115"
+      ],
+      "references": [
+        "experiment-metric-contract.md",
+        "causal-evidence-design.md",
+        "ramp-holdout-guardrails.md",
+        "experiment-analysis-decision.md"
+      ],
+      "scenario_ids": [
+        "SC-073",
+        "SC-074",
+        "SC-075"
+      ],
+      "routing_case_ids": [
+        "RT-114",
+        "RT-115",
+        "RT-116",
+        "RT-118"
+      ],
+      "required_capabilities": [
+        "hypothesis mechanism and decision precommitment",
+        "unit population assignment and exposure integrity",
+        "outcome diagnostic guardrail and data-quality metrics",
+        "causal design qualitative review and limitations",
+        "ramp holdout bake-time and long-term effects",
+        "advance hold narrow pivot revert stop decision"
+      ]
+    },
+    {
+      "skill": "maintenance-retirement-engineering",
+      "domain": "maintenance-retirement",
+      "deliverable": "Maintenance, Deprecation, and Retirement Plan",
+      "source_ids": [
+        "R83",
+        "R84",
+        "R92",
+        "R95",
+        "R101",
+        "R103"
+      ],
+      "references": [
+        "sustainment-debt-dependencies.md",
+        "deprecation-migration.md",
+        "safe-decommissioning.md",
+        "retirement-evidence-continuity.md"
+      ],
+      "scenario_ids": [
+        "SC-076",
+        "SC-077",
+        "SC-078"
+      ],
+      "routing_case_ids": [
+        "RT-119",
+        "RT-120",
+        "RT-121",
+        "RT-123"
+      ],
+      "required_capabilities": [
+        "change taxonomy and revalidation policy",
+        "health drift debt dependency and value evidence",
+        "deprecation owner communication and migration",
+        "safe disable drain and effect reconciliation",
+        "credential data dependency and cost removal",
+        "retirement evidence continuity and post-close checks"
+      ]
+    },
+    {
+      "skill": "rust-agent-observability",
+      "domain": "rust-observability",
+      "deliverable": "Rust Agent Observability Contract",
+      "source_ids": [
+        "R115",
+        "R117",
+        "R118",
+        "R119",
+        "R121",
+        "R122",
+        "R123"
+      ],
+      "references": [
+        "tracing-and-context.md",
+        "telemetry-schema-and-semconv.md",
+        "privacy-cardinality-sampling.md",
+        "observability-verification.md"
+      ],
+      "scenario_ids": [
+        "SC-079",
+        "SC-080",
+        "SC-081"
+      ],
+      "routing_case_ids": [
+        "RT-124",
+        "RT-125",
+        "RT-126",
+        "RT-128"
+      ],
+      "required_capabilities": [
+        "operator product safety and learning questions",
+        "typed domain identities and event schema",
+        "Tokio and cross-process context propagation",
+        "bounded metrics cardinality and sampling",
+        "privacy redaction retention and access policy",
+        "rollout evidence joins and observability tests"
+      ]
+    },
+    {
+      "skill": "engineering-learning-loop",
+      "domain": "engineering-learning",
+      "deliverable": "Learning Adoption Record",
+      "source_ids": [
+        "R127",
+        "R129",
+        "R138",
+        "R140",
+        "R148"
+      ],
+      "references": [
+        "learning-adoption-record.md",
+        "failure-attribution-and-mechanism-hypotheses.md",
+        "hidden-evals-mutation-spec-evolution.md",
+        "knowledge-freshness-supersession.md"
+      ],
+      "scenario_ids": [
+        "SC-082",
+        "SC-083",
+        "SC-084"
+      ],
+      "routing_case_ids": [
+        "RT-129",
+        "RT-130",
+        "RT-131",
+        "RT-132",
+        "RT-133"
+      ],
+      "required_capabilities": [
+        "provenance and operating-envelope binding",
+        "layer-aware mechanism attribution",
+        "counterevidence and no-change",
+        "smallest enforceable intervention",
+        "held-out mutation and evolution evaluation",
+        "freshness supersession retirement and rollback"
+      ]
+    },
+    {
+      "skill": "verification-strategy-engineering",
+      "domain": "verification-strategy",
+      "deliverable": "Verification Mode Contract",
+      "source_ids": [
+        "R135",
+        "R136",
+        "R137",
+        "R139",
+        "R141",
+        "R142"
+      ],
+      "references": [
+        "verification-mode-selection.md",
+        "test-oracle-quality.md",
+        "risk-based-evidence-ladder.md",
+        "browser-field-and-effect-verification.md"
+      ],
+      "scenario_ids": [
+        "SC-085",
+        "SC-086",
+        "SC-087"
+      ],
+      "routing_case_ids": [
+        "RT-134",
+        "RT-135",
+        "RT-136",
+        "RT-137",
+        "RT-138"
+      ],
+      "required_capabilities": [
+        "no-change and current-behavior proof",
+        "risk and failure-model classification",
+        "oracle and limitation design",
+        "proportional mode selection",
+        "mock and real-boundary policy",
+        "freshness repair budget and claim ceiling"
+      ]
+    },
+    {
+      "skill": "product-fitness-engineering",
+      "domain": "product-fitness",
+      "deliverable": "Product Fitness Evidence Plan",
+      "source_ids": [
+        "R131",
+        "R132",
+        "R134",
+        "R144",
+        "R145",
+        "R146",
+        "R149"
+      ],
+      "references": [
+        "field-pulse-contract.md",
+        "journey-review-contract.md",
+        "developer-supervisory-work.md",
+        "fitness-evidence-and-claim-ceilings.md"
+      ],
+      "scenario_ids": [
+        "SC-088",
+        "SC-089",
+        "SC-090"
+      ],
+      "routing_case_ids": [
+        "RT-139",
+        "RT-140",
+        "RT-141",
+        "RT-142",
+        "RT-143"
+      ],
+      "required_capabilities": [
+        "user job value and continuance",
+        "representative operating envelope",
+        "field pulse and journey review",
+        "intervention recovery and near-miss evidence",
+        "supervisory and cognitive work",
+        "claim ceilings and continuance decisions"
+      ]
+    }
+  ]
+}

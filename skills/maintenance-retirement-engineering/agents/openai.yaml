@@ -1,0 +1,8 @@
+interface:
+  display_name: Maintenance & Retirement Engineering
+  short_description: Maintenance & Retirement Engineering
+  brand_color: '#0F766E'
+  default_prompt: Create a maintenance, deprecation, and retirement plan that preserves
+    user continuity, data obligations, dependency safety, and verified decommissioning.
+policy:
+  allow_implicit_invocation: false

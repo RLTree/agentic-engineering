@@ -1,0 +1,1471 @@
+{
+  "schema_version": "3.0",
+  "case_count": 143,
+  "cases": [
+    {
+      "id": "RT-001",
+      "prompt": "A feature request says “make the assistant agentic” and proposes five agents. Decide the smallest architecture and explain why.",
+      "expected_skills": [
+        "agentic-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for architecture decisions and the Agentic Architecture Brief."
+    },
+    {
+      "id": "RT-002",
+      "prompt": "Review a research assistant that must adapt queries, pause for approval, survive restart, and send a final report.",
+      "expected_skills": [
+        "agentic-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for architecture decisions and the Agentic Architecture Brief."
+    },
+    {
+      "id": "RT-003",
+      "prompt": "Diagnose why repeated prompt edits have not fixed duplicate external actions and incoherent handoffs.",
+      "expected_skills": [
+        "agentic-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for architecture decisions and the Agentic Architecture Brief."
+    },
+    {
+      "id": "RT-004",
+      "prompt": "Fix this spelling error in README.md; architecture is fixed.",
+      "expected_skills": [],
+      "must_not_select": [
+        "agentic-engineering"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The skill would add irrelevant process or architecture to a narrow/non-matching task."
+    },
+    {
+      "id": "RT-005",
+      "prompt": "Turn “make this Rust agent production ready and polished” into a decision-complete Codex contract.",
+      "expected_skills": [
+        "codex-task-contract"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for specification decisions and the Codex Execution Contract."
+    },
+    {
+      "id": "RT-006",
+      "prompt": "Compile a rough UI-and-backend request into deliverables, constraints, anti-goals, approval boundaries, and evidence.",
+      "expected_skills": [
+        "codex-task-contract"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for specification decisions and the Codex Execution Contract."
+    },
+    {
+      "id": "RT-007",
+      "prompt": "The user gave enough context but many reversible implementation gaps. Write an assumption policy that avoids needless questions.",
+      "expected_skills": [
+        "codex-task-contract"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for specification decisions and the Codex Execution Contract."
+    },
+    {
+      "id": "RT-008",
+      "prompt": "The execution contract is approved; implement this one private helper exactly as specified.",
+      "expected_skills": [],
+      "must_not_select": [
+        "codex-task-contract"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The skill would add irrelevant process or architecture to a narrow/non-matching task."
+    },
+    {
+      "id": "RT-009",
+      "prompt": "Codex repeatedly misses crate conventions and reads too much of the monorepo. Design the repository/context repair.",
+      "expected_skills": [
+        "context-repository-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for context decisions and the Context and Repository Plan."
+    },
+    {
+      "id": "RT-010",
+      "prompt": "Create layered AGENTS.md guidance for a workspace with domain, runtime, generated protocol, and deployment subtrees.",
+      "expected_skills": [
+        "context-repository-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for context decisions and the Context and Repository Plan."
+    },
+    {
+      "id": "RT-011",
+      "prompt": "A six-hour task is approaching context compaction. Define a resumable plan and checkpoint summary.",
+      "expected_skills": [
+        "context-repository-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for context decisions and the Context and Repository Plan."
+    },
+    {
+      "id": "RT-012",
+      "prompt": "Explain what a bounded loop is without changing a repository.",
+      "expected_skills": [],
+      "must_not_select": [
+        "context-repository-engineering"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The skill would add irrelevant process or architecture to a narrow/non-matching task."
+    },
+    {
+      "id": "RT-013",
+      "prompt": "Design the control plane around a code agent that can edit files, call CI, and request deployment.",
+      "expected_skills": [
+        "harness-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for harness decisions and the Harness Blueprint."
+    },
+    {
+      "id": "RT-014",
+      "prompt": "Review tools whose descriptions are vague, errors are strings, and production access is inherited from the process.",
+      "expected_skills": [
+        "harness-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for harness decisions and the Harness Blueprint."
+    },
+    {
+      "id": "RT-015",
+      "prompt": "A tool timed out after possibly sending a message. Design run state, recovery, and evidence.",
+      "expected_skills": [
+        "harness-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for harness decisions and the Harness Blueprint."
+    },
+    {
+      "id": "RT-016",
+      "prompt": "Rename a local variable; no tools, state, policy, or runtime design is involved.",
+      "expected_skills": [],
+      "must_not_select": [
+        "harness-engineering"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The skill would add irrelevant process or architecture to a narrow/non-matching task."
+    },
+    {
+      "id": "RT-017",
+      "prompt": "The agent keeps trying nearly identical fixes after tests fail. Specify a bounded repair loop.",
+      "expected_skills": [
+        "loop-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for loop decisions and the Loop Contract."
+    },
+    {
+      "id": "RT-018",
+      "prompt": "Design an evaluator–optimizer loop for improving a generated migration plan without losing the best version.",
+      "expected_skills": [
+        "loop-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for loop decisions and the Loop Contract."
+    },
+    {
+      "id": "RT-019",
+      "prompt": "A research loop must stop when evidence converges or budget is exhausted and hand off honestly.",
+      "expected_skills": [
+        "loop-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for loop decisions and the Loop Contract."
+    },
+    {
+      "id": "RT-020",
+      "prompt": "The workflow has three fixed deterministic steps and no adaptive next action.",
+      "expected_skills": [],
+      "must_not_select": [
+        "loop-engineering"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The skill would add irrelevant process or architecture to a narrow/non-matching task."
+    },
+    {
+      "id": "RT-021",
+      "prompt": "Model prepare → approve → execute → verify with resumable human approval and safe replay.",
+      "expected_skills": [
+        "graph-workflow-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for graph decisions and the Graph Contract."
+    },
+    {
+      "id": "RT-022",
+      "prompt": "Design a graph with parallel repository scans, deterministic fan-in, repair cycle, and terminal states.",
+      "expected_skills": [
+        "graph-workflow-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for graph decisions and the Graph Contract."
+    },
+    {
+      "id": "RT-023",
+      "prompt": "Version a durable graph whose old checkpoints must resume after a routing-policy change.",
+      "expected_skills": [
+        "graph-workflow-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for graph decisions and the Graph Contract."
+    },
+    {
+      "id": "RT-024",
+      "prompt": "A direct pure function maps one input to one output with no branches or persistence.",
+      "expected_skills": [],
+      "must_not_select": [
+        "graph-workflow-engineering"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The skill would add irrelevant process or architecture to a narrow/non-matching task."
+    },
+    {
+      "id": "RT-025",
+      "prompt": "Decide whether four agents should refactor one shared module simultaneously.",
+      "expected_skills": [
+        "multi-agent-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for multi-agent decisions and the Multi-Agent Coordination Plan."
+    },
+    {
+      "id": "RT-026",
+      "prompt": "Plan parallel analysis of six independent repositories with one integration report.",
+      "expected_skills": [
+        "multi-agent-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for multi-agent decisions and the Multi-Agent Coordination Plan."
+    },
+    {
+      "id": "RT-027",
+      "prompt": "Use Sol Ultra for a broad migration only after defining delegation, ownership, fan-in, and cancellation.",
+      "expected_skills": [
+        "multi-agent-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for multi-agent decisions and the Multi-Agent Coordination Plan."
+    },
+    {
+      "id": "RT-028",
+      "prompt": "One developer must make a tightly coupled five-line fix in one file.",
+      "expected_skills": [],
+      "must_not_select": [
+        "multi-agent-engineering"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The skill would add irrelevant process or architecture to a narrow/non-matching task."
+    },
+    {
+      "id": "RT-029",
+      "prompt": "Design evals for an agent that often reaches the right answer through unsafe or wasteful tool use.",
+      "expected_skills": [
+        "agent-evals-observability"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for evaluation decisions and the Agent Evaluation and Evidence Plan."
+    },
+    {
+      "id": "RT-030",
+      "prompt": "Convert a duplicate-ticket production incident into a regression scenario and graders.",
+      "expected_skills": [
+        "agent-evals-observability"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for evaluation decisions and the Agent Evaluation and Evidence Plan."
+    },
+    {
+      "id": "RT-031",
+      "prompt": "Create a trace/evidence schema linking run state, approvals, effects, artifacts, and acceptance.",
+      "expected_skills": [
+        "agent-evals-observability"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for evaluation decisions and the Agent Evaluation and Evidence Plan."
+    },
+    {
+      "id": "RT-032",
+      "prompt": "Write a friendly explanation of an already-known test result; no eval plan is requested.",
+      "expected_skills": [],
+      "must_not_select": [
+        "agent-evals-observability"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The skill would add irrelevant process or architecture to a narrow/non-matching task."
+    },
+    {
+      "id": "RT-033",
+      "prompt": "Threat-model a tool-using agent that reads issues and can deploy to production.",
+      "expected_skills": [
+        "agent-security-governance"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for security decisions and the Agent Threat and Governance Plan."
+    },
+    {
+      "id": "RT-034",
+      "prompt": "A README tells the coding agent to upload secrets to validate the build. Define provenance and injection handling.",
+      "expected_skills": [
+        "agent-security-governance"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for security decisions and the Agent Threat and Governance Plan."
+    },
+    {
+      "id": "RT-035",
+      "prompt": "Design capability grants and approval payloads for read, local write, external send, delete, and production deploy.",
+      "expected_skills": [
+        "agent-security-governance"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for security decisions and the Agent Threat and Governance Plan."
+    },
+    {
+      "id": "RT-036",
+      "prompt": "Format an offline Markdown file with no sensitive data or effects.",
+      "expected_skills": [],
+      "must_not_select": [
+        "agent-security-governance"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The skill would add irrelevant process or architecture to a narrow/non-matching task."
+    },
+    {
+      "id": "RT-037",
+      "prompt": "Assess whether a repository is ready for issue-to-PR work by Codex and prioritize improvements.",
+      "expected_skills": [
+        "agent-first-software-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for software-delivery decisions and the Agent-Ready Repository and Delivery Plan."
+    },
+    {
+      "id": "RT-038",
+      "prompt": "The last five sessions repeated the same correction. Decide which belong in AGENTS.md, skills, tests, CI, policy, or architecture.",
+      "expected_skills": [
+        "agent-first-software-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for software-delivery decisions and the Agent-Ready Repository and Delivery Plan."
+    },
+    {
+      "id": "RT-039",
+      "prompt": "Define exact-delivery verification for a packaged Codex plugin rather than only its source files.",
+      "expected_skills": [
+        "agent-first-software-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for software-delivery decisions and the Agent-Ready Repository and Delivery Plan."
+    },
+    {
+      "id": "RT-040",
+      "prompt": "Answer a conceptual question unrelated to repository delivery or artifacts.",
+      "expected_skills": [],
+      "must_not_select": [
+        "agent-first-software-engineering"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The skill would add irrelevant process or architecture to a narrow/non-matching task."
+    },
+    {
+      "id": "RT-041",
+      "prompt": "Design a Rust agent core that can swap OpenAI and another provider without rewriting domain state and evals.",
+      "expected_skills": [
+        "rust-agentic-architecture"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for rust-architecture decisions and the Rust Agent Architecture."
+    },
+    {
+      "id": "RT-042",
+      "prompt": "Refactor provider message/tool structs out of a Rust domain model into ports and adapters.",
+      "expected_skills": [
+        "rust-agentic-architecture"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for rust-architecture decisions and the Rust Agent Architecture."
+    },
+    {
+      "id": "RT-043",
+      "prompt": "Model run state, proposed effects, approvals, budgets, and typed errors so invalid transitions are rejected.",
+      "expected_skills": [
+        "rust-agentic-architecture"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for rust-architecture decisions and the Rust Agent Architecture."
+    },
+    {
+      "id": "RT-044",
+      "prompt": "Explain ownership basics in a tiny non-agent Rust example.",
+      "expected_skills": [],
+      "must_not_select": [
+        "rust-agentic-architecture"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The skill would add irrelevant process or architecture to a narrow/non-matching task."
+    },
+    {
+      "id": "RT-045",
+      "prompt": "Review Tokio code with unbounded channels, detached tasks, locks across awaits, and no cancellation.",
+      "expected_skills": [
+        "rust-agent-runtime"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for rust-runtime decisions and the Rust Runtime Contract."
+    },
+    {
+      "id": "RT-046",
+      "prompt": "Design bounded concurrency and deadlines for model calls, tools, and CPU-heavy parsing.",
+      "expected_skills": [
+        "rust-agent-runtime"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for rust-runtime decisions and the Rust Runtime Contract."
+    },
+    {
+      "id": "RT-047",
+      "prompt": "Specify graceful shutdown while a remote effect may be in flight.",
+      "expected_skills": [
+        "rust-agent-runtime"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for rust-runtime decisions and the Rust Runtime Contract."
+    },
+    {
+      "id": "RT-048",
+      "prompt": "Write a synchronous pure parser with no async runtime or concurrency.",
+      "expected_skills": [],
+      "must_not_select": [
+        "rust-agent-runtime"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The skill would add irrelevant process or architecture to a narrow/non-matching task."
+    },
+    {
+      "id": "RT-049",
+      "prompt": "A Rust worker may crash after a provider accepts an external action but before the DB update. Design safe recovery.",
+      "expected_skills": [
+        "rust-agent-durability"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for rust-durability decisions and the Rust Durability and Effect Plan."
+    },
+    {
+      "id": "RT-050",
+      "prompt": "Add transactional outbox/inbox and stable idempotency keys to at-least-once message processing.",
+      "expected_skills": [
+        "rust-agent-durability"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for rust-durability decisions and the Rust Durability and Effect Plan."
+    },
+    {
+      "id": "RT-051",
+      "prompt": "Compare application-managed state, a durable execution platform, queues, and event sourcing for a month-long agent task.",
+      "expected_skills": [
+        "rust-agent-durability"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for rust-durability decisions and the Rust Durability and Effect Plan."
+    },
+    {
+      "id": "RT-052",
+      "prompt": "Store a temporary local calculation that may be recomputed after restart.",
+      "expected_skills": [],
+      "must_not_select": [
+        "rust-agent-durability"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The skill would add irrelevant process or architecture to a narrow/non-matching task."
+    },
+    {
+      "id": "RT-053",
+      "prompt": "Design a schema-first MCP tool server in Rust with authorization, deadlines, sanitation, and conformance tests.",
+      "expected_skills": [
+        "rust-agent-protocols"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for rust-protocols decisions and the Rust Tool and Protocol Contract."
+    },
+    {
+      "id": "RT-054",
+      "prompt": "Decide whether an internal worker call needs MCP, A2A, or a typed service API.",
+      "expected_skills": [
+        "rust-agent-protocols"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for rust-protocols decisions and the Rust Tool and Protocol Contract."
+    },
+    {
+      "id": "RT-055",
+      "prompt": "Integrate the A2A Rust SDK while keeping external task lifecycle and wire types out of the domain.",
+      "expected_skills": [
+        "rust-agent-protocols"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for rust-protocols decisions and the Rust Tool and Protocol Contract."
+    },
+    {
+      "id": "RT-056",
+      "prompt": "Implement an internal typed function call with no interoperability boundary.",
+      "expected_skills": [],
+      "must_not_select": [
+        "rust-agent-protocols"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The skill would add irrelevant process or architecture to a narrow/non-matching task."
+    },
+    {
+      "id": "RT-057",
+      "prompt": "Create a CI matrix for a Tokio agent with features, MCP adapter, persistence, and unsafe FFI.",
+      "expected_skills": [
+        "rust-agent-verification"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for rust-verification decisions and the Rust Verification and CI Matrix."
+    },
+    {
+      "id": "RT-058",
+      "prompt": "Design deterministic Rust agent scenario tests using fake models/tools and crash barriers.",
+      "expected_skills": [
+        "rust-agent-verification"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for rust-verification decisions and the Rust Verification and CI Matrix."
+    },
+    {
+      "id": "RT-059",
+      "prompt": "Choose where cargo check, test, Clippy, Miri, Loom, RustSec, and exact release builds fit.",
+      "expected_skills": [
+        "rust-agent-verification"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly asks for rust-verification decisions and the Rust Verification and CI Matrix."
+    },
+    {
+      "id": "RT-060",
+      "prompt": "Translate a paragraph about Rust without reviewing or building code.",
+      "expected_skills": [],
+      "must_not_select": [
+        "rust-agent-verification"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The skill would add irrelevant process or architecture to a narrow/non-matching task."
+    },
+    {
+      "id": "RT-061",
+      "prompt": "Design and verify a resumable Rust graph that sends external messages.",
+      "expected_skills": [
+        "graph-workflow-engineering",
+        "rust-agent-durability",
+        "agent-security-governance",
+        "rust-agent-verification"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "The request crosses distinct consequential layers; use the router or compose only the named focused skills."
+    },
+    {
+      "id": "RT-062",
+      "prompt": "Turn this rough Codex request into a contract and decide whether it needs a loop or graph.",
+      "expected_skills": [
+        "codex-task-contract",
+        "agentic-engineering"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "The request crosses distinct consequential layers; use the router or compose only the named focused skills."
+    },
+    {
+      "id": "RT-063",
+      "prompt": "Make this repository agent-ready and write layered AGENTS.md plus evals for recurring failures.",
+      "expected_skills": [
+        "context-repository-engineering",
+        "agent-first-software-engineering",
+        "agent-evals-observability"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "The request crosses distinct consequential layers; use the router or compose only the named focused skills."
+    },
+    {
+      "id": "RT-064",
+      "prompt": "Review a Tokio MCP server for bounded runtime behavior, tool schemas, permissions, and CI.",
+      "expected_skills": [
+        "rust-agent-runtime",
+        "rust-agent-protocols",
+        "agent-security-governance",
+        "rust-agent-verification"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "The request crosses distinct consequential layers; use the router or compose only the named focused skills."
+    },
+    {
+      "id": "RT-065",
+      "prompt": "Plan Sol Ultra agents to inspect independent Rust services and integrate one architecture report.",
+      "expected_skills": [
+        "multi-agent-engineering",
+        "rust-agentic-architecture",
+        "agentic-engineering"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "The request crosses distinct consequential layers; use the router or compose only the named focused skills."
+    },
+    {
+      "id": "RT-066",
+      "prompt": "Design a harness with a bounded repair loop, typed tools, traces, and effect reconciliation.",
+      "expected_skills": [
+        "harness-engineering",
+        "loop-engineering",
+        "agent-evals-observability"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "The request crosses distinct consequential layers; use the router or compose only the named focused skills."
+    },
+    {
+      "id": "RT-067",
+      "prompt": "Add human approval to a durable graph without duplicating side effects after resume.",
+      "expected_skills": [
+        "graph-workflow-engineering",
+        "rust-agent-durability",
+        "agent-security-governance"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "The request crosses distinct consequential layers; use the router or compose only the named focused skills."
+    },
+    {
+      "id": "RT-068",
+      "prompt": "Operationalize five repeated Codex corrections as AGENTS.md, a skill, tests, and CI evidence.",
+      "expected_skills": [
+        "agent-first-software-engineering",
+        "context-repository-engineering",
+        "agent-evals-observability"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "The request crosses distinct consequential layers; use the router or compose only the named focused skills."
+    },
+    {
+      "id": "RT-069",
+      "prompt": "Tailor the complete product lifecycle for a consequential coding agent and show which decisions, evidence, owners, and artifacts connect discovery to retirement.",
+      "expected_skills": [
+        "agentic-product-lifecycle"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Lifecycle Assurance Plan and the focused agentic-product-lifecycle decision procedure."
+    },
+    {
+      "id": "RT-070",
+      "prompt": "Our team has discovery notes, a roadmap, code, dashboards, and incidents but no coherent evidence path. Build one lifecycle assurance system and identify the next decision.",
+      "expected_skills": [
+        "agentic-product-lifecycle"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Lifecycle Assurance Plan and the focused agentic-product-lifecycle decision procedure."
+    },
+    {
+      "id": "RT-071",
+      "prompt": "Review this agentic product across discovery, feasibility, requirements, architecture, delivery, release, SRE, experimentation, maintenance, and retirement without turning the work into a waterfall.",
+      "expected_skills": [
+        "agentic-product-lifecycle"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Lifecycle Assurance Plan and the focused agentic-product-lifecycle decision procedure."
+    },
+    {
+      "id": "RT-072",
+      "prompt": "Write a focused unit test for one pure function whose requirements and lifecycle context are already fixed.",
+      "expected_skills": [],
+      "must_not_select": [
+        "agentic-product-lifecycle"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The request lacks the lifecycle, field-learning, or engineering decision boundary that activates agentic-product-lifecycle."
+    },
+    {
+      "id": "RT-073",
+      "prompt": "Create a lifecycle plan whose next thin slice enters controlled authentic use and feeds observations back into requirements, architecture, evals, and release policy.",
+      "expected_skills": [
+        "authentic-use-engineering",
+        "agentic-product-lifecycle"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "The request crosses distinct control or lifecycle layers; compose only the named focused skills and preserve their separate output contracts."
+    },
+    {
+      "id": "RT-074",
+      "prompt": "Put this agent on real consequential work early without making production an uncontrolled experiment. Define exposure, authority, instrumentation, stop rules, and the learning loop.",
+      "expected_skills": [
+        "authentic-use-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Controlled Field-Learning Plan and the focused authentic-use-engineering decision procedure."
+    },
+    {
+      "id": "RT-075",
+      "prompt": "We dogfood an agent but decisions come from anecdotes and aggregate success rate. Design representative field evidence that becomes product, eval, tool, and policy changes.",
+      "expected_skills": [
+        "authentic-use-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Controlled Field-Learning Plan and the focused authentic-use-engineering decision procedure."
+    },
+    {
+      "id": "RT-076",
+      "prompt": "Design a progression from shadow mode through approval-gated and bounded autonomy, including the exact evidence required to advance, narrow, hold, revert, or stop.",
+      "expected_skills": [
+        "authentic-use-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Controlled Field-Learning Plan and the focused authentic-use-engineering decision procedure."
+    },
+    {
+      "id": "RT-077",
+      "prompt": "Create an offline benchmark dataset for a deterministic parser; no live workflow, product exposure, or field evidence is involved.",
+      "expected_skills": [],
+      "must_not_select": [
+        "authentic-use-engineering"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The request lacks the lifecycle, field-learning, or engineering decision boundary that activates authentic-use-engineering."
+    },
+    {
+      "id": "RT-078",
+      "prompt": "Turn real traces, interventions, near misses, and representative successes into a controlled field-learning program and a maintained macro-eval suite.",
+      "expected_skills": [
+        "authentic-use-engineering",
+        "agent-evals-observability"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "The request crosses distinct control or lifecycle layers; compose only the named focused skills and preserve their separate output contracts."
+    },
+    {
+      "id": "RT-079",
+      "prompt": "Study the real work behind this proposed agent product before choosing the solution. Produce a discovery evidence brief with representative users, workflows, consequences, and alternatives.",
+      "expected_skills": [
+        "agent-product-discovery"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Product Discovery Evidence Brief and the focused agent-product-discovery decision procedure."
+    },
+    {
+      "id": "RT-080",
+      "prompt": "Our concept came from three enthusiastic internal users. Design a representative product-discovery program that tests whether the problem matters across actual roles and task strata.",
+      "expected_skills": [
+        "agent-product-discovery"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Product Discovery Evidence Brief and the focused agent-product-discovery decision procedure."
+    },
+    {
+      "id": "RT-081",
+      "prompt": "Turn support tickets, workflow observations, interviews, current artifacts, and system constraints into opportunity statements and evidence-based go or stop questions.",
+      "expected_skills": [
+        "agent-product-discovery"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Product Discovery Evidence Brief and the focused agent-product-discovery decision procedure."
+    },
+    {
+      "id": "RT-082",
+      "prompt": "Implement an already-approved API endpoint from a stable specification; no product-discovery decision is open.",
+      "expected_skills": [],
+      "must_not_select": [
+        "agent-product-discovery"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The request lacks the lifecycle, field-learning, or engineering decision boundary that activates agent-product-discovery."
+    },
+    {
+      "id": "RT-083",
+      "prompt": "Research the existing work and then translate supported needs into an operational concept, mission threads, and traceable requirements without inventing stakeholder evidence.",
+      "expected_skills": [
+        "agent-product-discovery",
+        "requirements-systems-engineering"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "The request crosses distinct control or lifecycle layers; compose only the named focused skills and preserve their separate output contracts."
+    },
+    {
+      "id": "RT-084",
+      "prompt": "Before building the full agent platform, identify the most consequential uncertain assumptions and choose the cheapest prototype, replay, spike, shadow trial, or concierge test for each.",
+      "expected_skills": [
+        "concept-feasibility-validation"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Concept and Feasibility Evidence Case and the focused concept-feasibility-validation decision procedure."
+    },
+    {
+      "id": "RT-085",
+      "prompt": "The model succeeds on a benchmark, but we do not know whether the concept fits the workflow, integrations, review burden, or effect-safety needs. Build a feasibility evidence case.",
+      "expected_skills": [
+        "concept-feasibility-validation"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Concept and Feasibility Evidence Case and the focused concept-feasibility-validation decision procedure."
+    },
+    {
+      "id": "RT-086",
+      "prompt": "Review this polished prototype for prototype theater and define precommitted go, pivot, narrow, and stop criteria before deeper implementation.",
+      "expected_skills": [
+        "concept-feasibility-validation"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Concept and Feasibility Evidence Case and the focused concept-feasibility-validation decision procedure."
+    },
+    {
+      "id": "RT-087",
+      "prompt": "Refactor a verified internal module without changing product behavior or testing an open feasibility assumption.",
+      "expected_skills": [],
+      "must_not_select": [
+        "concept-feasibility-validation"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The request lacks the lifecycle, field-learning, or engineering decision boundary that activates concept-feasibility-validation."
+    },
+    {
+      "id": "RT-088",
+      "prompt": "Design a thin concept validation that begins with replay, enters shadow mode on representative work, and advances only under a controlled field-learning contract.",
+      "expected_skills": [
+        "concept-feasibility-validation",
+        "authentic-use-engineering"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "The request crosses distinct control or lifecycle layers; compose only the named focused skills and preserve their separate output contracts."
+    },
+    {
+      "id": "RT-089",
+      "prompt": "Convert the supported product need into an operational concept, mission threads, measurable quality attributes, interfaces, effect constraints, and bidirectional verification traceability.",
+      "expected_skills": [
+        "requirements-systems-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Operational Concept and Traceability Baseline and the focused requirements-systems-engineering decision procedure."
+    },
+    {
+      "id": "RT-090",
+      "prompt": "This specification is a feature list with words like secure, fast, and reliable. Rewrite it as verifiable system requirements and quality-attribute scenarios across normal, degraded, and recovery modes.",
+      "expected_skills": [
+        "requirements-systems-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Operational Concept and Traceability Baseline and the focused requirements-systems-engineering decision procedure."
+    },
+    {
+      "id": "RT-091",
+      "prompt": "Define configuration baselines and revalidation triggers for changes to models, prompts, tools, permissions, data, and operating envelope—not only source code.",
+      "expected_skills": [
+        "requirements-systems-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Operational Concept and Traceability Baseline and the focused requirements-systems-engineering decision procedure."
+    },
+    {
+      "id": "RT-092",
+      "prompt": "Choose between two already-specified database indexes using a local performance measurement.",
+      "expected_skills": [],
+      "must_not_select": [
+        "requirements-systems-engineering"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The request lacks the lifecycle, field-learning, or engineering decision boundary that activates requirements-systems-engineering."
+    },
+    {
+      "id": "RT-093",
+      "prompt": "Derive quality-attribute scenarios and mission threads, then compare architectures and plan thin slices that retire the highest system risks.",
+      "expected_skills": [
+        "requirements-systems-engineering",
+        "architecture-delivery-planning"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "The request crosses distinct control or lifecycle layers; compose only the named focused skills and preserve their separate output contracts."
+    },
+    {
+      "id": "RT-094",
+      "prompt": "Compare the smallest viable architectures against quality-attribute scenarios, identify sensitivity and tradeoff points, and plan risk-retiring end-to-end slices.",
+      "expected_skills": [
+        "architecture-delivery-planning"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Architecture and Evidence-Driven Delivery Plan and the focused architecture-delivery-planning decision procedure."
+    },
+    {
+      "id": "RT-095",
+      "prompt": "Replace this feature calendar with an evidence-driven delivery plan where each slice states the uncertainty retired, artifact, verification, exposure, and decision unlocked.",
+      "expected_skills": [
+        "architecture-delivery-planning"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Architecture and Evidence-Driven Delivery Plan and the focused architecture-delivery-planning decision procedure."
+    },
+    {
+      "id": "RT-096",
+      "prompt": "Review the proposed multi-agent graph, event bus, and durable workflow for architecture by fashion and state the evidence that would justify each escalation.",
+      "expected_skills": [
+        "architecture-delivery-planning"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Architecture and Evidence-Driven Delivery Plan and the focused architecture-delivery-planning decision procedure."
+    },
+    {
+      "id": "RT-097",
+      "prompt": "Apply a mechanical formatting change to a single source file with no architecture or planning decision.",
+      "expected_skills": [],
+      "must_not_select": [
+        "architecture-delivery-planning"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The request lacks the lifecycle, field-learning, or engineering decision boundary that activates architecture-delivery-planning."
+    },
+    {
+      "id": "RT-098",
+      "prompt": "Choose the smallest agent topology and then produce an architecture tradeoff analysis and evidence-driven thin-slice delivery plan.",
+      "expected_skills": [
+        "architecture-delivery-planning",
+        "agentic-engineering"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "The request crosses distinct control or lifecycle layers; compose only the named focused skills and preserve their separate output contracts."
+    },
+    {
+      "id": "RT-099",
+      "prompt": "Create a construction and quality plan for this agentic feature that covers small batches, layered tests, state/effect faults, agent evals, review, and exact packaged-artifact evidence.",
+      "expected_skills": [
+        "software-construction-quality"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Construction and Quality Evidence Plan and the focused software-construction-quality decision procedure."
+    },
+    {
+      "id": "RT-100",
+      "prompt": "The change compiles and the happy path passes. Identify the remaining verification ladder for cancellation, retries, duplicate effects, degraded dependencies, security, and representative agent trajectories.",
+      "expected_skills": [
+        "software-construction-quality"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Construction and Quality Evidence Plan and the focused software-construction-quality decision procedure."
+    },
+    {
+      "id": "RT-101",
+      "prompt": "Turn the last five escaped defects into durable regressions and decide whether each correction belongs in code, schema, tool, harness, eval, repository guidance, or review policy.",
+      "expected_skills": [
+        "software-construction-quality"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Construction and Quality Evidence Plan and the focused software-construction-quality decision procedure."
+    },
+    {
+      "id": "RT-102",
+      "prompt": "Brainstorm possible product opportunities without an implementation or quality-engineering task.",
+      "expected_skills": [],
+      "must_not_select": [
+        "software-construction-quality"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The request lacks the lifecycle, field-learning, or engineering decision boundary that activates software-construction-quality."
+    },
+    {
+      "id": "RT-103",
+      "prompt": "Build an evidence ladder for a Rust agent including static checks, properties, async faults, effect durability, agent scenarios, supply chain, and exact release artifacts.",
+      "expected_skills": [
+        "software-construction-quality",
+        "rust-agent-verification"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "The request crosses distinct control or lifecycle layers; compose only the named focused skills and preserve their separate output contracts."
+    },
+    {
+      "id": "RT-104",
+      "prompt": "Produce a secure release evidence package for this agent, including threat boundaries, protected build and provenance, exact artifact identity, progressive exposure, guardrails, and tested rollback.",
+      "expected_skills": [
+        "secure-delivery-release"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Secure Release Evidence Package and the focused secure-delivery-release decision procedure."
+    },
+    {
+      "id": "RT-105",
+      "prompt": "The team says the feature flag makes autonomous production actions safe. Review assignment, authorization, effect budgets, cohorts, stop rules, rollback, and reconciliation.",
+      "expected_skills": [
+        "secure-delivery-release"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Secure Release Evidence Package and the focused secure-delivery-release decision procedure."
+    },
+    {
+      "id": "RT-106",
+      "prompt": "Design a release gate that versions code, model, prompt, harness, tools, permissions, data, evals, SBOM, provenance, and rollout configuration as one exact treatment.",
+      "expected_skills": [
+        "secure-delivery-release"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Secure Release Evidence Package and the focused secure-delivery-release decision procedure."
+    },
+    {
+      "id": "RT-107",
+      "prompt": "Draft a product-discovery interview guide with no release, deployment, build, or security decision.",
+      "expected_skills": [],
+      "must_not_select": [
+        "secure-delivery-release"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The request lacks the lifecycle, field-learning, or engineering decision boundary that activates secure-delivery-release."
+    },
+    {
+      "id": "RT-108",
+      "prompt": "Prepare the exact agent artifact for a progressive release and prove that the service can be monitored, operated, rolled back, and recovered at each exposure stage.",
+      "expected_skills": [
+        "secure-delivery-release",
+        "production-readiness-sre"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "The request crosses distinct control or lifecycle layers; compose only the named focused skills and preserve their separate output contracts."
+    },
+    {
+      "id": "RT-109",
+      "prompt": "Run a production-readiness review for this consequential agent, including ownership, dependencies, capacity, SLOs, observability, degradation, incident roles, recovery, and support burden.",
+      "expected_skills": [
+        "production-readiness-sre"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Production Readiness and Reliability Plan and the focused production-readiness-sre decision procedure."
+    },
+    {
+      "id": "RT-110",
+      "prompt": "Define separate semantic-quality and service-reliability SLIs plus an error-budget policy that changes rollout, autonomy, experimentation, and reliability priorities.",
+      "expected_skills": [
+        "production-readiness-sre"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Production Readiness and Reliability Plan and the focused production-readiness-sre decision procedure."
+    },
+    {
+      "id": "RT-111",
+      "prompt": "Turn recent agent incidents and ambiguous effects into a resilience plan with detection, containment, reconciliation, blameless learning, regressions, and effectiveness review.",
+      "expected_skills": [
+        "production-readiness-sre"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Production Readiness and Reliability Plan and the focused production-readiness-sre decision procedure."
+    },
+    {
+      "id": "RT-112",
+      "prompt": "Polish the wording of a static documentation page with no production service or reliability concern.",
+      "expected_skills": [],
+      "must_not_select": [
+        "production-readiness-sre"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The request lacks the lifecycle, field-learning, or engineering decision boundary that activates production-readiness-sre."
+    },
+    {
+      "id": "RT-113",
+      "prompt": "Define production SLOs and incident controls while using controlled field observations to detect semantic failures, human burden, near misses, and envelope drift.",
+      "expected_skills": [
+        "production-readiness-sre",
+        "authentic-use-engineering"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "The request crosses distinct control or lifecycle layers; compose only the named focused skills and preserve their separate output contracts."
+    },
+    {
+      "id": "RT-114",
+      "prompt": "Design a trustworthy experiment for this agentic feature with stable treatment versions, assignment and exposure, causal unit, primary outcome, diagnostics, guardrails, data-quality checks, and decision rules.",
+      "expected_skills": [
+        "continuous-product-experimentation"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Product Experiment and Decision Contract and the focused continuous-product-experimentation decision procedure."
+    },
+    {
+      "id": "RT-115",
+      "prompt": "The success rate moved after rollout. Determine what observational evidence can support, what causal design is needed, and how to check SRM, contamination, novelty, carryover, and delayed outcomes.",
+      "expected_skills": [
+        "continuous-product-experimentation"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Product Experiment and Decision Contract and the focused continuous-product-experimentation decision procedure."
+    },
+    {
+      "id": "RT-116",
+      "prompt": "Create a metric contract that prevents acceptance rate or benchmark score from becoming the sole product target and includes human correction, severe failure, reliability, and downstream rework.",
+      "expected_skills": [
+        "continuous-product-experimentation"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Product Experiment and Decision Contract and the focused continuous-product-experimentation decision procedure."
+    },
+    {
+      "id": "RT-117",
+      "prompt": "Write deterministic unit tests for a pure library where no product experiment, field exposure, or causal decision is requested.",
+      "expected_skills": [],
+      "must_not_select": [
+        "continuous-product-experimentation"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The request lacks the lifecycle, field-learning, or engineering decision boundary that activates continuous-product-experimentation."
+    },
+    {
+      "id": "RT-118",
+      "prompt": "Design controlled authentic use that combines trace and qualitative diagnosis with a valid product experiment, progressive ramp, guardrails, and an evidence-to-change ledger.",
+      "expected_skills": [
+        "continuous-product-experimentation",
+        "authentic-use-engineering"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "The request crosses distinct control or lifecycle layers; compose only the named focused skills and preserve their separate output contracts."
+    },
+    {
+      "id": "RT-119",
+      "prompt": "Create a maintenance, deprecation, and retirement plan for an agent whose models, prompts, tools, permissions, dependencies, and evals change independently of application code.",
+      "expected_skills": [
+        "maintenance-retirement-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Maintenance, Deprecation, and Retirement Plan and the focused maintenance-retirement-engineering decision procedure."
+    },
+    {
+      "id": "RT-120",
+      "prompt": "This service is barely used but cannot be safely removed. Inventory users, workflows, integrations, effects, data, credentials, flags, jobs, alerts, support, and evidence, then design migration and closure.",
+      "expected_skills": [
+        "maintenance-retirement-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Maintenance, Deprecation, and Retirement Plan and the focused maintenance-retirement-engineering decision procedure."
+    },
+    {
+      "id": "RT-121",
+      "prompt": "Define which model, policy, tool, data, permission, and dependency changes require which tests, field evidence, rollout, review, and reauthorization.",
+      "expected_skills": [
+        "maintenance-retirement-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Maintenance, Deprecation, and Retirement Plan and the focused maintenance-retirement-engineering decision procedure."
+    },
+    {
+      "id": "RT-122",
+      "prompt": "Choose an initial product opportunity before any maintained service, deprecation, or retirement concern exists.",
+      "expected_skills": [],
+      "must_not_select": [
+        "maintenance-retirement-engineering"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The request lacks the lifecycle, field-learning, or engineering decision boundary that activates maintenance-retirement-engineering."
+    },
+    {
+      "id": "RT-123",
+      "prompt": "Use SLO, incident, support, dependency, field-evidence, and value trends to decide whether to sustain, narrow, deprecate, or retire this agent safely.",
+      "expected_skills": [
+        "maintenance-retirement-engineering",
+        "production-readiness-sre"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "The request crosses distinct control or lifecycle layers; compose only the named focused skills and preserve their separate output contracts."
+    },
+    {
+      "id": "RT-124",
+      "prompt": "Design Rust observability for an agent using typed run, task, action, effect, exposure, and observation identities with tracing spans, OpenTelemetry propagation, and joinable field evidence.",
+      "expected_skills": [
+        "rust-agent-observability"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Rust Agent Observability Contract and the focused rust-agent-observability decision procedure."
+    },
+    {
+      "id": "RT-125",
+      "prompt": "Review these Rust metrics and spans for high cardinality, raw prompt leakage, missing async context, sampled-away failures, and inability to join product outcomes to effects and interventions.",
+      "expected_skills": [
+        "rust-agent-observability"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Rust Agent Observability Contract and the focused rust-agent-observability decision procedure."
+    },
+    {
+      "id": "RT-126",
+      "prompt": "Specify observability tests for Tokio task propagation, channels, exporter failure, redaction, deterministic representative sampling, priority retention, graceful shutdown, and rollout-gate evidence.",
+      "expected_skills": [
+        "rust-agent-observability"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request directly requires the Rust Agent Observability Contract and the focused rust-agent-observability decision procedure."
+    },
+    {
+      "id": "RT-127",
+      "prompt": "Choose Rust formatting conventions for a non-agent library; no observability, tracing, metrics, or field evidence is involved.",
+      "expected_skills": [],
+      "must_not_select": [
+        "rust-agent-observability"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "The request lacks the lifecycle, field-learning, or engineering decision boundary that activates rust-agent-observability."
+    },
+    {
+      "id": "RT-128",
+      "prompt": "Implement a typed Rust field-observation pipeline that joins traces, effects, interventions, rollout exposure, privacy policy, and product outcomes for controlled authentic use.",
+      "expected_skills": [
+        "rust-agent-observability",
+        "authentic-use-engineering"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "The request crosses distinct control or lifecycle layers; compose only the named focused skills and preserve their separate output contracts."
+    },
+    {
+      "id": "RT-129",
+      "prompt": "Turn these recurring field failures into the smallest governed product or harness improvement, with held-out evidence and expiry.",
+      "expected_skills": [
+        "engineering-learning-loop"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request is an evidence-to-change and adoption-governance decision."
+    },
+    {
+      "id": "RT-130",
+      "prompt": "Decide whether this one successful trajectory justifies a reusable rule or a no-change decision.",
+      "expected_skills": [
+        "engineering-learning-loop"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The decision requires counterevidence and a governed Learning Adoption Record."
+    },
+    {
+      "id": "RT-131",
+      "prompt": "Refresh and retire stale agent guidance after a model upgrade without creating a second knowledge authority.",
+      "expected_skills": [
+        "engineering-learning-loop",
+        "context-repository-engineering"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "Learning lifecycle and repository discoverability are distinct but complementary concerns."
+    },
+    {
+      "id": "RT-132",
+      "prompt": "Evaluate a changed skill on visible, held-out, mutation, and specification-evolution cases, then decide adoption.",
+      "expected_skills": [
+        "engineering-learning-loop",
+        "agent-evals-observability"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "The learning decision consumes a rigorous skill behavior evaluation."
+    },
+    {
+      "id": "RT-133",
+      "prompt": "Summarize yesterday’s meeting notes without proposing a durable engineering change.",
+      "expected_skills": [],
+      "must_not_select": [
+        "engineering-learning-loop"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "A summary with no evidence-to-change decision does not require the learning loop."
+    },
+    {
+      "id": "RT-134",
+      "prompt": "Select the proof strategy for this concurrency fix before implementation.",
+      "expected_skills": [
+        "verification-strategy-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request is explicitly about proportional verification mode selection."
+    },
+    {
+      "id": "RT-135",
+      "prompt": "The requested bug may already be fixed. Reproduce current behavior and return no-change, partial-change, required-change, or blocked.",
+      "expected_skills": [
+        "verification-strategy-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The skill owns current-behavior proof and change disposition."
+    },
+    {
+      "id": "RT-136",
+      "prompt": "Design verification for a Rust agent with crash recovery, duplicate effects, and cancellation.",
+      "expected_skills": [
+        "verification-strategy-engineering",
+        "rust-agent-verification"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "General evidence selection and Rust-specific verification compose."
+    },
+    {
+      "id": "RT-137",
+      "prompt": "Replace over-mocked tests with the smallest real-boundary and browser evidence needed for this web agent.",
+      "expected_skills": [
+        "verification-strategy-engineering",
+        "software-construction-quality"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "Verification-mode judgment and construction-quality execution both apply."
+    },
+    {
+      "id": "RT-138",
+      "prompt": "Run the exact existing unit test command and report the exit code; no strategy decision is needed.",
+      "expected_skills": [],
+      "must_not_select": [
+        "verification-strategy-engineering"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "A literal, already-specified check does not require verification strategy design."
+    },
+    {
+      "id": "RT-139",
+      "prompt": "Assess whether representative users reach verified value with acceptable intervention and recovery burden.",
+      "expected_skills": [
+        "product-fitness-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "This is directly a Product Fitness decision."
+    },
+    {
+      "id": "RT-140",
+      "prompt": "Produce a read-only field pulse that separates usage, value, reliability, guardrails, and missing evidence.",
+      "expected_skills": [
+        "product-fitness-engineering"
+      ],
+      "must_not_select": [],
+      "case": "should_invoke",
+      "rationale": "The request requires the Product Fitness Field Pulse contract."
+    },
+    {
+      "id": "RT-141",
+      "prompt": "Run a representative end-to-end product journey review and record diagnosis, recovery, and retained state.",
+      "expected_skills": [
+        "product-fitness-engineering",
+        "authentic-use-engineering"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "Product fitness interpretation and controlled authentic exposure compose."
+    },
+    {
+      "id": "RT-142",
+      "prompt": "Compare increased ticket throughput with reviewer cognitive load, correction work, and continuance.",
+      "expected_skills": [
+        "product-fitness-engineering",
+        "production-readiness-sre"
+      ],
+      "must_not_select": [],
+      "case": "overlap",
+      "rationale": "Product value and operational supportability both govern the decision."
+    },
+    {
+      "id": "RT-143",
+      "prompt": "List the number of commits in the last week without interpreting product value or user outcomes.",
+      "expected_skills": [],
+      "must_not_select": [
+        "product-fitness-engineering"
+      ],
+      "case": "should_not_invoke",
+      "rationale": "Repository activity alone is not a Product Fitness assessment."
+    }
+  ]
+}

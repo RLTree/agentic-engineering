@@ -1,0 +1,15 @@
+{
+  "check": "coverage-evaluation",
+  "passed": true,
+  "errors": [],
+  "warnings": [],
+  "metrics": {
+    "scenarios": 90,
+    "scenario_domains": 30,
+    "minimum_scenarios_per_skill": 3,
+    "routing_cases": 143,
+    "capability_maps": 30,
+    "mapped_sources": 123,
+    "mapped_references": 118
+  }
+}

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Engineering Learning Loop"
+  short_description: "Engineering Learning Loop"
+  brand_color: "#0F766E"
+  default_prompt: "Use $engineering-learning-loop to produce its named evidence-backed decision artifact."
+policy:
+  allow_implicit_invocation: false

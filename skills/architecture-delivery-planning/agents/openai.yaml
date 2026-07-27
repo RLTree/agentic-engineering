@@ -1,0 +1,8 @@
+interface:
+  display_name: Architecture & Delivery Planning
+  short_description: Architecture & Delivery Planning
+  brand_color: '#0F766E'
+  default_prompt: Evaluate architecture tradeoffs and plan the smallest end-to-end
+    slices that retire the highest product and engineering risks.
+policy:
+  allow_implicit_invocation: false

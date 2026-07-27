@@ -1,0 +1,8 @@
+interface:
+  display_name: Codex Task Contract
+  short_description: Codex Task Contract
+  brand_color: '#0F766E'
+  default_prompt: Turn this rough request into a decision-complete Codex execution
+    contract, then identify only consequence-critical questions.
+policy:
+  allow_implicit_invocation: false

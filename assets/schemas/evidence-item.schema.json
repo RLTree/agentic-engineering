@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/agentic/evidence-item.schema.json",
+  "title": "Lifecycle Evidence Item",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "evidence_id",
+    "claim_ids",
+    "title",
+    "observed_at",
+    "recorded_at",
+    "source_type",
+    "evidence_class",
+    "provenance",
+    "operating_conditions",
+    "versions",
+    "finding",
+    "limitations",
+    "owner",
+    "status",
+    "expiry"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "evidence_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claim_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observed_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "recorded_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_type": {
+      "enum": [
+        "standard",
+        "documentation",
+        "research",
+        "inspection",
+        "analysis",
+        "test",
+        "simulation",
+        "replay",
+        "field_observation",
+        "experiment",
+        "incident",
+        "qualitative_research",
+        "operational_metric",
+        "expert_judgment"
+      ]
+    },
+    "evidence_class": {
+      "enum": [
+        "A_constraint",
+        "B_supported",
+        "C_emerging",
+        "D_directional"
+      ]
+    },
+    "provenance": {
+      "$ref": "#/$defs/provenance"
+    },
+    "operating_conditions": {
+      "type": "object"
+    },
+    "versions": {
+      "type": "object"
+    },
+    "finding": {
+      "type": "string",
+      "minLength": 1
+    },
+    "counterevidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "reviewed",
+        "accepted",
+        "disputed",
+        "superseded",
+        "expired",
+        "invalid"
+      ]
+    },
+    "expiry": {
+      "$ref": "#/$defs/expiry"
+    },
+    "artifact_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "supersedes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "origin",
+        "location",
+        "integrity"
+      ],
+      "properties": {
+        "origin": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "integrity": {
+          "type": "string"
+        },
+        "collector_or_author": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "method": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "expiry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "review_at",
+        "triggers"
+      ],
+      "properties": {
+        "review_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "triggers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

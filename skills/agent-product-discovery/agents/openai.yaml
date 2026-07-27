@@ -1,0 +1,8 @@
+interface:
+  display_name: Agent Product Discovery
+  short_description: Agent Product Discovery
+  brand_color: '#0F766E'
+  default_prompt: Investigate the real workflow and produce a product discovery evidence
+    brief with assumptions, representative work, and decision thresholds.
+policy:
+  allow_implicit_invocation: false
