@@ -20,6 +20,8 @@ POLICY_URLS = (
     "privacyPolicyURL",
     "termsOfServiceURL",
 )
+PACK_SET_SCHEMA = "AgenticPackSet-v1"
+GATEWAY = "external:harness-ultragoal"
 
 
 @dataclass(frozen=True)
@@ -105,15 +107,35 @@ def validate(root: Path | None = None) -> tuple[PackageInventory, ...]:
 
 def render(inventories: Iterable[PackageInventory]) -> dict:
     entries = list(inventories)
+    packs = [
+        {
+            "name": item.name,
+            "version": "4.0.0",
+            "manifest_digest": item.digest,
+            "enabled_skills": list(item.skills),
+        }
+        for item in entries
+    ]
     aggregate = sha256(
-        "\n".join(f"{item.name}:{item.digest}" for item in entries).encode("utf-8")
+        "\n".join(
+            [PACK_SET_SCHEMA, GATEWAY]
+            + [
+                "\t".join(
+                    [
+                        pack["name"],
+                        pack["version"],
+                        pack["manifest_digest"],
+                        ",".join(pack["enabled_skills"]),
+                    ]
+                )
+                for pack in packs
+            ]
+        ).encode("utf-8")
     ).hexdigest()
     return {
-        "schema_version": "AgenticPackSet-v1",
-        "packages": [
-            {"name": item.name, "version": "4.0.0", "skill_count": len(item.skills), "digest": item.digest}
-            for item in entries
-        ],
+        "schema_version": PACK_SET_SCHEMA,
+        "gateway": GATEWAY,
+        "packs": packs,
         "aggregate_digest": f"sha256:{aggregate}",
         "skill_union": sorted(skill for item in entries for skill in item.skills),
     }

@@ -21,13 +21,14 @@ class PackageValidationTests(unittest.TestCase):
             ]
         )
         self.assertEqual(result["schema_version"], "AgenticPackSet-v1")
-        self.assertEqual(len(result["packages"]), 4)
+        self.assertEqual(result["gateway"], "external:harness-ultragoal")
+        self.assertEqual(len(result["packs"]), 4)
         self.assertEqual(len(result["skill_union"]), 30)
         self.assertTrue(result["aggregate_digest"].startswith("sha256:"))
 
     def test_render_is_json_serializable(self) -> None:
         result = render([PackageInventory("agentic-engineering", ("one",), "sha256:one")])
-        self.assertEqual(json.loads(json.dumps(result))["packages"][0]["name"], "agentic-engineering")
+        self.assertEqual(json.loads(json.dumps(result))["packs"][0]["name"], "agentic-engineering")
 
     def test_current_package_set_validates(self) -> None:
         root = Path(__file__).resolve().parents[1]
