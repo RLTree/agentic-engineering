@@ -1,0 +1,7 @@
+interface:
+  display_name: "Architecture Delivery Planning"
+  short_description: "Explicit architecture delivery planning advice"
+  brand_color: "#0F766E"
+  default_prompt: "Use $agentic-engineering-lifecycle:architecture-delivery-planning as an explicit advisory lens through external:harness-ultragoal."
+policy:
+  allow_implicit_invocation: false

@@ -1,8 +1,0 @@
-interface:
-  display_name: Software Construction & Quality
-  short_description: Software Construction & Quality
-  brand_color: '#0F766E'
-  default_prompt: Plan and execute small, reviewable construction increments with
-    a risk-based verification ladder and exact artifact evidence.
-policy:
-  allow_implicit_invocation: false

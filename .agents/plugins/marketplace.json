@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "plugins": [
+    { "name": "agentic-engineering", "source": { "source": "local", "path": "./plugins/agentic-engineering" } },
+    { "name": "agentic-engineering-lifecycle", "source": { "source": "local", "path": "./plugins/agentic-engineering-lifecycle" } },
+    { "name": "agentic-engineering-rust", "source": { "source": "local", "path": "./plugins/agentic-engineering-rust" } },
+    { "name": "agentic-engineering-systems", "source": { "source": "local", "path": "./plugins/agentic-engineering-systems" } }
+  ]
+}

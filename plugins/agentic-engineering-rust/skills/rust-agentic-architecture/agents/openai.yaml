@@ -1,0 +1,7 @@
+interface:
+  display_name: "Rust Agentic Architecture"
+  short_description: "Explicit rust agentic architecture advice"
+  brand_color: "#0F766E"
+  default_prompt: "Use $agentic-engineering-rust:rust-agentic-architecture as an explicit advisory lens through external:harness-ultragoal."
+policy:
+  allow_implicit_invocation: false

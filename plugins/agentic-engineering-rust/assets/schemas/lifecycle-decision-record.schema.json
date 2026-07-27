@@ -1,0 +1,244 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/agentic/lifecycle-decision-record.schema.json",
+  "title": "Lifecycle Decision Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "decision_id",
+    "title",
+    "lifecycle_system",
+    "status",
+    "decision_at",
+    "owner",
+    "authority",
+    "question",
+    "scope",
+    "alternatives",
+    "criteria",
+    "evidence_refs",
+    "decision",
+    "rationale",
+    "consequences",
+    "residual_risks",
+    "artifacts",
+    "revisit"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "decision_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lifecycle_system": {
+      "enum": [
+        "discover",
+        "validate",
+        "specify",
+        "architect_plan",
+        "construct_verify",
+        "secure_release",
+        "operate_sre",
+        "experiment_learn",
+        "maintain",
+        "retire"
+      ]
+    },
+    "status": {
+      "enum": [
+        "proposed",
+        "approved",
+        "conditional",
+        "held",
+        "rejected",
+        "superseded",
+        "retired"
+      ]
+    },
+    "decision_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "question": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "$ref": "#/$defs/scope"
+    },
+    "alternatives": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/alternative"
+      }
+    },
+    "criteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "counterevidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "decision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "consequences": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "residual_risks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "change_links": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "revisit": {
+      "$ref": "#/$defs/revisit"
+    }
+  },
+  "$defs": {
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "system_boundary",
+        "operating_envelope_version",
+        "versions"
+      ],
+      "properties": {
+        "system_boundary": {
+          "type": "string"
+        },
+        "operating_envelope_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "versions": {
+          "type": "object"
+        },
+        "excluded_conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "alternative": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "description",
+        "tradeoffs",
+        "evidence_refs"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "tradeoffs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reversibility": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "revisit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "review_at",
+        "triggers",
+        "owner"
+      ],
+      "properties": {
+        "review_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "triggers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "owner": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

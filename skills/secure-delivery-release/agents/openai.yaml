@@ -1,8 +1,0 @@
-interface:
-  display_name: Secure Delivery & Release
-  short_description: Secure Delivery & Release
-  brand_color: '#0F766E'
-  default_prompt: Build a secure release evidence package with supply-chain provenance,
-    progressive exposure, guardrails, and tested rollback.
-policy:
-  allow_implicit_invocation: false

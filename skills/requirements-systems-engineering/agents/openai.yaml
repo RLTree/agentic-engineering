@@ -1,8 +1,0 @@
-interface:
-  display_name: Requirements & Systems Engineering
-  short_description: Requirements & Systems Engineering
-  brand_color: '#0F766E'
-  default_prompt: Translate representative operational evidence into an operational
-    concept and traceable requirements baseline with verification and validation methods.
-policy:
-  allow_implicit_invocation: false

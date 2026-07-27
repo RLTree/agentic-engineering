@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+coverage.xml
+.coverage
+.pytest_cache/
+evals/results/
+.plugin-eval/

@@ -1,8 +1,0 @@
-interface:
-  display_name: Agent Evals and Observability
-  short_description: Agent Evals and Observability
-  brand_color: '#0F766E'
-  default_prompt: Build a failure-derived evaluation suite covering outcomes, trajectories,
-    effects, recovery, safety, and reviewer effort.
-policy:
-  allow_implicit_invocation: false

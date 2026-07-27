@@ -1,0 +1,7 @@
+interface:
+  display_name: "Agent Product Discovery"
+  short_description: "Explicit agent product discovery advice"
+  brand_color: "#0F766E"
+  default_prompt: "Use $agentic-engineering-lifecycle:agent-product-discovery as an explicit advisory lens through external:harness-ultragoal."
+policy:
+  allow_implicit_invocation: false

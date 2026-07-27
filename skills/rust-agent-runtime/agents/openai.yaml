@@ -1,8 +1,0 @@
-interface:
-  display_name: Rust Agent Runtime
-  short_description: Rust Agent Runtime
-  brand_color: '#0F766E'
-  default_prompt: Review this Tokio agent runtime for task ownership, bounded backpressure,
-    cancellation, supervision, shutdown, and fault tests.
-policy:
-  allow_implicit_invocation: false

@@ -1,0 +1,22 @@
+{
+  "name": "agentic-engineering-rust",
+  "version": "4.0.0",
+  "description": "Explicit Rust and harness advisory skills for use through Harness Ultragoal.",
+  "author": { "name": "Terry" },
+  "license": "MIT",
+  "keywords": ["agentic-engineering", "rust", "advisory", "harness-ultragoal"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Agentic Engineering Rust",
+    "shortDescription": "Explicit Rust advisory lenses",
+    "longDescription": "Rust systems and harness advisers that remain explicit and route every operational action through Harness Ultragoal.",
+    "developerName": "Terry",
+    "category": "Developer Tools",
+    "capabilities": ["Read", "Write", "Interactive"],
+    "defaultPrompt": ["Use an explicit Agentic Rust lens through Harness Ultragoal."],
+    "brandColor": "#0F766E",
+    "websiteURL": "https://github.com/RLTree/plugin-policies",
+    "privacyPolicyURL": "https://github.com/RLTree/plugin-policies/blob/main/privacy-policy.md",
+    "termsOfServiceURL": "https://github.com/RLTree/plugin-policies/blob/main/terms-of-service.md"
+  }
+}

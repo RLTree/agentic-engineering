@@ -1,0 +1,7 @@
+interface:
+  display_name: "Graph Workflow Engineering"
+  short_description: "Explicit graph workflow engineering advice"
+  brand_color: "#0F766E"
+  default_prompt: "Use $agentic-engineering-systems:graph-workflow-engineering as an explicit advisory lens through external:harness-ultragoal."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Context Repository Engineering"
+  short_description: "Explicit context repository engineering advice"
+  brand_color: "#0F766E"
+  default_prompt: "Use $agentic-engineering-systems:context-repository-engineering as an explicit advisory lens through external:harness-ultragoal."
+policy:
+  allow_implicit_invocation: false

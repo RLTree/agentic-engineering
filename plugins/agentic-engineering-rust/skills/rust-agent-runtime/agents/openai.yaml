@@ -1,0 +1,7 @@
+interface:
+  display_name: "Rust Agent Runtime"
+  short_description: "Explicit rust agent runtime advice"
+  brand_color: "#0F766E"
+  default_prompt: "Use $agentic-engineering-rust:rust-agent-runtime as an explicit advisory lens through external:harness-ultragoal."
+policy:
+  allow_implicit_invocation: false

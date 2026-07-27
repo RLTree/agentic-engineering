@@ -1,8 +1,0 @@
-interface:
-  display_name: Agentic Product Lifecycle
-  short_description: Agentic Product Lifecycle
-  brand_color: '#0F766E'
-  default_prompt: Tailor the full lifecycle, assign decision rights, and produce a
-    lifecycle assurance plan with evidence gates and feedback paths.
-policy:
-  allow_implicit_invocation: false

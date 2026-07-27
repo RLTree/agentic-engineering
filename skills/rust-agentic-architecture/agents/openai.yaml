@@ -1,8 +1,0 @@
-interface:
-  display_name: Rust Agentic Architecture
-  short_description: Rust Agentic Architecture
-  brand_color: '#0F766E'
-  default_prompt: Design this Rust agent around typed state, a pure decision core,
-    explicit effects, ports/adapters, and invariant tests.
-policy:
-  allow_implicit_invocation: false

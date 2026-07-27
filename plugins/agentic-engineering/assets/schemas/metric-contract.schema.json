@@ -1,0 +1,282 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/agentic/metric-contract.schema.json",
+  "title": "Product Metric Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "metric_id",
+    "name",
+    "version",
+    "metric_class",
+    "decision",
+    "construct",
+    "formula",
+    "unit",
+    "direction",
+    "population",
+    "window",
+    "data_quality",
+    "segments",
+    "source",
+    "owner",
+    "thresholds",
+    "gaming_paths",
+    "privacy",
+    "review"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "metric_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "metric_class": {
+      "enum": [
+        "outcome",
+        "diagnostic",
+        "guardrail",
+        "data_quality"
+      ]
+    },
+    "decision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "construct": {
+      "type": "string",
+      "minLength": 1
+    },
+    "formula": {
+      "type": "string",
+      "minLength": 1
+    },
+    "unit": {
+      "type": "string",
+      "minLength": 1
+    },
+    "direction": {
+      "enum": [
+        "increase",
+        "decrease",
+        "target_range",
+        "hard_limit",
+        "informational"
+      ]
+    },
+    "population": {
+      "$ref": "#/$defs/population"
+    },
+    "window": {
+      "$ref": "#/$defs/window"
+    },
+    "data_quality": {
+      "$ref": "#/$defs/data_quality"
+    },
+    "segments": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "source": {
+      "$ref": "#/$defs/source"
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "thresholds": {
+      "$ref": "#/$defs/thresholds"
+    },
+    "gaming_paths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "validation_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "privacy": {
+      "$ref": "#/$defs/privacy"
+    },
+    "review": {
+      "$ref": "#/$defs/review"
+    }
+  },
+  "$defs": {
+    "population": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "eligible",
+        "exclusions",
+        "denominator"
+      ],
+      "properties": {
+        "eligible": {
+          "type": "string"
+        },
+        "exclusions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "denominator": {
+          "type": "string"
+        },
+        "missing_event_policy": {
+          "type": "string"
+        }
+      }
+    },
+    "window": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_time",
+        "duration",
+        "aggregation"
+      ],
+      "properties": {
+        "event_time": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "string"
+        },
+        "aggregation": {
+          "type": "string"
+        },
+        "delay_policy": {
+          "type": "string"
+        }
+      }
+    },
+    "data_quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "completeness",
+        "duplication",
+        "freshness",
+        "version_consistency"
+      ],
+      "properties": {
+        "completeness": {
+          "type": "string"
+        },
+        "duplication": {
+          "type": "string"
+        },
+        "freshness": {
+          "type": "string"
+        },
+        "version_consistency": {
+          "type": "string"
+        },
+        "sample_ratio_check": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "system",
+        "schema_version",
+        "query_version"
+      ],
+      "properties": {
+        "system": {
+          "type": "string"
+        },
+        "schema_version": {
+          "type": "string"
+        },
+        "query_version": {
+          "type": "string"
+        },
+        "location": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "baseline",
+        "target",
+        "minimum_practical_change"
+      ],
+      "properties": {
+        "baseline": {},
+        "target": {},
+        "minimum_practical_change": {},
+        "hard_stop": {}
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "classification",
+        "access",
+        "retention"
+      ],
+      "properties": {
+        "classification": {
+          "type": "string"
+        },
+        "access": {
+          "type": "string"
+        },
+        "retention": {
+          "type": "string"
+        }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "review_at",
+        "expiry_trigger"
+      ],
+      "properties": {
+        "review_at": {
+          "type": "string"
+        },
+        "expiry_trigger": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

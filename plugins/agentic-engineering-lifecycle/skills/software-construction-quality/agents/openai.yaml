@@ -1,0 +1,7 @@
+interface:
+  display_name: "Software Construction Quality"
+  short_description: "Explicit software construction quality advice"
+  brand_color: "#0F766E"
+  default_prompt: "Use $agentic-engineering-lifecycle:software-construction-quality as an explicit advisory lens through external:harness-ultragoal."
+policy:
+  allow_implicit_invocation: false

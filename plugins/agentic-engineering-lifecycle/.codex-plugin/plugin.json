@@ -1,0 +1,22 @@
+{
+  "name": "agentic-engineering-lifecycle",
+  "version": "4.0.0",
+  "description": "Explicit Agentic Engineering lifecycle advisory skills for use through Harness Ultragoal.",
+  "author": { "name": "Terry" },
+  "license": "MIT",
+  "keywords": ["agentic-engineering", "lifecycle", "advisory", "harness-ultragoal"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Agentic Engineering Lifecycle",
+    "shortDescription": "Explicit lifecycle advisory lenses",
+    "longDescription": "Lifecycle and delivery advisers that remain explicit and route every operational action through Harness Ultragoal.",
+    "developerName": "Terry",
+    "category": "Developer Tools",
+    "capabilities": ["Read", "Write", "Interactive"],
+    "defaultPrompt": ["Use an explicit Agentic lifecycle lens through Harness Ultragoal."],
+    "brandColor": "#0F766E",
+    "websiteURL": "https://github.com/RLTree/plugin-policies",
+    "privacyPolicyURL": "https://github.com/RLTree/plugin-policies/blob/main/privacy-policy.md",
+    "termsOfServiceURL": "https://github.com/RLTree/plugin-policies/blob/main/terms-of-service.md"
+  }
+}

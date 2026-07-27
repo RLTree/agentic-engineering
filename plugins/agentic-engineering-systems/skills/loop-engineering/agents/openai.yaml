@@ -1,0 +1,7 @@
+interface:
+  display_name: "Loop Engineering"
+  short_description: "Explicit loop engineering advice"
+  brand_color: "#0F766E"
+  default_prompt: "Use $agentic-engineering-systems:loop-engineering as an explicit advisory lens through external:harness-ultragoal."
+policy:
+  allow_implicit_invocation: false
