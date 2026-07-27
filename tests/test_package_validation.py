@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import shutil
 import sys
 import unittest
 from pathlib import Path
@@ -17,6 +18,7 @@ from package_validation import (
     package_manifest_digest,
     render,
     repository_root,
+    safe_generated_output,
     validate,
 )
 
@@ -54,7 +56,19 @@ class PackageValidationTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "unterminated"):
                 frontmatter(path)
             path.write_text("---\nname one\n---\nbody\n", encoding="utf-8")
-            with self.assertRaisesRegex(ValueError, "invalid"):
+            with self.assertRaisesRegex(ValueError, "frontmatter"):
+                frontmatter(path)
+            path.write_text(
+                "---\nname: [unterminated\ndescription: value\n---\nbody\n",
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ValueError, "invalid YAML"):
+                frontmatter(path)
+            path.write_text(
+                "---\nname: one\ndescription: 7\n---\nbody\n",
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ValueError, "strings"):
                 frontmatter(path)
 
     def test_package_inventory_rejects_missing_policy_urls(self) -> None:
@@ -62,11 +76,56 @@ class PackageValidationTests(unittest.TestCase):
             root = Path(temporary)
             manifest = root / "plugins" / "agentic-engineering" / ".codex-plugin"
             manifest.mkdir(parents=True)
+            (manifest.parent / "skills").mkdir()
             (manifest / "plugin.json").write_text(
                 json.dumps({"name": "agentic-engineering", "version": "4.0.0", "interface": {}}),
                 encoding="utf-8",
             )
             with self.assertRaisesRegex(ValueError, "policy"):
+                package_inventory(root, "agentic-engineering")
+
+    def test_package_inventory_uses_effective_yaml_and_exact_gateway_prompt(self) -> None:
+        source = Path(__file__).resolve().parents[1] / "plugins" / "agentic-engineering"
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            package = root / "plugins" / "agentic-engineering"
+            shutil.copytree(source, package)
+            yaml_path = (
+                package
+                / "skills"
+                / "codex-task-contract"
+                / "agents"
+                / "openai.yaml"
+            )
+            original = yaml_path.read_text(encoding="utf-8")
+            yaml_path.write_text(
+                original.replace(
+                    "allow_implicit_invocation: false",
+                    "allow_implicit_invocation: true # allow_implicit_invocation: false",
+                ),
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ValueError, "explicit-only"):
+                package_inventory(root, "agentic-engineering")
+            yaml_path.write_text(
+                original.replace(
+                    "through external:harness-ultragoal.",
+                    "through external:harness-ultragoal and external:attacker.",
+                ),
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ValueError, "explicit-only"):
+                package_inventory(root, "agentic-engineering")
+
+    def test_package_inventory_rejects_unexpected_privileged_surface(self) -> None:
+        source = Path(__file__).resolve().parents[1] / "plugins" / "agentic-engineering"
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            package = root / "plugins" / "agentic-engineering"
+            shutil.copytree(source, package)
+            (package / "hooks").mkdir()
+            (package / "hooks" / "control.md").write_text("unexpected\n", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "contain only"):
                 package_inventory(root, "agentic-engineering")
 
     def test_package_manifest_digest_binds_paths_lengths_and_content(self) -> None:
@@ -82,6 +141,40 @@ class PackageValidationTests(unittest.TestCase):
             changed_path = package_manifest_digest(root)
         self.assertNotEqual(original, changed_content)
         self.assertNotEqual(changed_content, changed_path)
+        with TemporaryDirectory() as temporary:
+            with self.assertRaisesRegex(ValueError, "empty"):
+                package_manifest_digest(Path(temporary))
+
+    def test_package_manifest_rejects_symlinks_and_control_character_paths(self) -> None:
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            external = root.parent / f"{root.name}-external"
+            external.write_text("external\n", encoding="utf-8")
+            (root / "link").symlink_to(external)
+            with self.assertRaisesRegex(ValueError, "symlink"):
+                package_manifest_digest(root)
+            (root / "link").unlink()
+            (root / "bad\tname").write_text("content\n", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "control character"):
+                package_manifest_digest(root)
+            external.unlink()
+
+    def test_safe_generated_output_rejects_source_and_symlink_paths(self) -> None:
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / "evals").mkdir()
+            source = root / "plugins" / "agentic-engineering" / "SKILL.md"
+            with self.assertRaisesRegex(ValueError, "evals/results"):
+                safe_generated_output(root, source)
+            with self.assertRaisesRegex(ValueError, "repository"):
+                safe_generated_output(root, root.parent / "outside.json")
+            external = root.parent / f"{root.name}-external-results"
+            external.mkdir()
+            (root / "evals" / "results").symlink_to(external, target_is_directory=True)
+            with self.assertRaisesRegex(ValueError, "symlink"):
+                safe_generated_output(root, root / "evals" / "results" / "report.json")
+            (root / "evals" / "results").unlink()
+            external.rmdir()
 
     def test_render_normalizes_enabled_skill_order_for_the_digest(self) -> None:
         forward = render(
@@ -111,6 +204,15 @@ class PackageValidationTests(unittest.TestCase):
             with patch.object(package_validation, "read_json", side_effect=[{"enabled_skills": full}, {"enabled_skills": ["wrong"]}]):
                 with self.assertRaisesRegex(ValueError, "base package"):
                     validate(Path("."))
+        wrong_count = list(inventories)
+        wrong_count[0] = PackageInventory(
+            wrong_count[0].name,
+            wrong_count[0].skills[:-1],
+            wrong_count[0].digest,
+        )
+        with patch.object(package_validation, "package_inventory", side_effect=wrong_count):
+            with self.assertRaisesRegex(ValueError, "counts"):
+                validate(Path("."))
 
     def test_default_repository_root_is_the_project(self) -> None:
         self.assertEqual(repository_root(), Path(__file__).resolve().parents[1])

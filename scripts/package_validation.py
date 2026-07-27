@@ -3,10 +3,14 @@
 from __future__ import annotations
 
 import json
+import os
+import stat
 from dataclasses import dataclass
 from hashlib import sha256
 from pathlib import Path
 from typing import Iterable
+
+import yaml
 
 
 PACKAGES = {
@@ -22,6 +26,7 @@ POLICY_URLS = (
 )
 PACK_SET_SCHEMA = "AgenticPackSet-v1"
 GATEWAY = "external:harness-ultragoal"
+PACKAGE_TOP_LEVEL = {".codex-plugin", "skills"}
 
 
 @dataclass(frozen=True)
@@ -49,30 +54,73 @@ def frontmatter(path: Path) -> dict[str, str]:
         end = lines.index("---", 1)
     except ValueError as error:
         raise ValueError("unterminated YAML frontmatter") from error
-    values: dict[str, str] = {}
-    for line in lines[1:end]:
-        key, separator, value = line.partition(":")
-        if not separator:
-            raise ValueError("invalid frontmatter line")
-        values[key] = value.strip().strip('"')
-    if set(values) != {"name", "description"}:
+    try:
+        values = yaml.safe_load("\n".join(lines[1:end]))
+    except yaml.YAMLError as error:
+        raise ValueError("invalid YAML frontmatter") from error
+    if not isinstance(values, dict) or set(values) != {"name", "description"}:
         raise ValueError("frontmatter must contain only name and description")
+    if any(not isinstance(values[key], str) for key in values):
+        raise ValueError("frontmatter values must be strings")
     return values
 
 
 def package_manifest_digest(package_root: Path) -> str:
-    entries: list[str] = []
-    for path in sorted(item for item in package_root.rglob("*") if item.is_file()):
+    entries: list[bytes] = []
+    for path in sorted(package_root.rglob("*")):
+        if path.is_symlink():
+            raise ValueError(f"{package_root.name}: package contains symlink {path}")
+        mode = path.stat().st_mode
+        if path.is_dir():
+            continue
+        if not stat.S_ISREG(mode):
+            raise ValueError(f"{package_root.name}: package contains non-regular file {path}")
         relative = path.relative_to(package_root).as_posix()
+        if any(character in relative for character in ("\x00", "\n", "\r", "\t")):
+            raise ValueError(f"{package_root.name}: package path contains a control character")
         content = path.read_bytes()
-        entries.append(f"{relative}\t{len(content)}\tsha256:{sha256(content).hexdigest()}")
+        encoded_path = relative.encode("utf-8")
+        entries.append(
+            len(encoded_path).to_bytes(8, "big")
+            + encoded_path
+            + len(content).to_bytes(8, "big")
+            + sha256(content).digest()
+        )
     if not entries:
         raise ValueError(f"{package_root.name}: package manifest is empty")
-    return f"sha256:{sha256(chr(10).join(entries).encode('utf-8')).hexdigest()}"
+    return f"sha256:{sha256(b''.join(entries)).hexdigest()}"
+
+
+def safe_generated_output(root: Path, requested: Path) -> Path:
+    """Resolve a report path inside the repository's ignored generated-output root."""
+    root = Path(os.path.abspath(root))
+    requested = Path(os.path.abspath(requested))
+    allowed = root / "evals" / "results"
+    try:
+        relative = requested.relative_to(root)
+    except ValueError as error:
+        raise ValueError("output must stay inside the repository") from error
+    if relative.parts[:2] != ("evals", "results") or len(relative.parts) < 3:
+        raise ValueError("output must be a file under evals/results")
+    current = root
+    for part in relative.parts:
+        current = current / part
+        if current.is_symlink():
+            raise ValueError("output path must not contain symlinks")
+    resolved = requested.resolve(strict=False)
+    if allowed.resolve(strict=False) not in resolved.parents:
+        raise ValueError("output must stay under evals/results")
+    return resolved
 
 
 def package_inventory(root: Path, name: str) -> PackageInventory:
     package_root = root / "plugins" / name
+    top_level = {path.name for path in package_root.iterdir()}
+    if top_level != PACKAGE_TOP_LEVEL:
+        raise ValueError(
+            f"{name}: package root must contain only {sorted(PACKAGE_TOP_LEVEL)}; "
+            f"found {sorted(top_level)}"
+        )
     manifest = read_json(package_root / ".codex-plugin" / "plugin.json")
     if manifest.get("name") != name or manifest.get("version") != "4.0.0":
         raise ValueError(f"{name}: manifest identity is invalid")
@@ -89,9 +137,22 @@ def package_inventory(root: Path, name: str) -> PackageInventory:
         meta = frontmatter(skill_dir / "SKILL.md")
         if meta["name"] != skill_dir.name or not meta["description"].startswith("Use when "):
             raise ValueError(f"{name}: invalid skill trigger for {skill_dir.name}")
-        agent = (skill_dir / "agents" / "openai.yaml").read_text(encoding="utf-8")
-        expected = f"$${name}:{skill_dir.name}".replace("$$", "$")
-        if "allow_implicit_invocation: false" not in agent or expected not in agent:
+        agent_path = skill_dir / "agents" / "openai.yaml"
+        try:
+            agent = yaml.safe_load(agent_path.read_text(encoding="utf-8"))
+        except yaml.YAMLError as error:
+            raise ValueError(f"{name}: invalid agent YAML for {skill_dir.name}") from error
+        expected_prompt = (
+            f"Use ${name}:{skill_dir.name} as an explicit advisory lens through {GATEWAY}."
+        )
+        if (
+            not isinstance(agent, dict)
+            or set(agent) != {"interface", "policy"}
+            or not isinstance(agent.get("interface"), dict)
+            or not isinstance(agent.get("policy"), dict)
+            or agent["interface"].get("default_prompt") != expected_prompt
+            or agent["policy"].get("allow_implicit_invocation") is not False
+        ):
             raise ValueError(f"{name}: {skill_dir.name} is not explicit-only")
         skills.append(skill_dir.name)
     return PackageInventory(name, tuple(skills), package_manifest_digest(package_root))

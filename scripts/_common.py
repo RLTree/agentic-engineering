@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
 from pathlib import Path
 from typing import Any, Iterable
@@ -20,11 +21,14 @@ def plugin_root() -> Path:
 
 
 def repo_root() -> Path:
-    return plugin_root().parents[1]
+    return plugin_root()
 
 
 def results_dir() -> Path:
     path = plugin_root() / "evals" / "results"
+    for candidate in (path.parent, path):
+        if candidate.is_symlink():
+            raise ValueError("generated results path must not contain symlinks")
     path.mkdir(parents=True, exist_ok=True)
     return path
 
@@ -34,8 +38,16 @@ def load_json(path: Path) -> Any:
 
 
 def write_json(path: Path, value: Any) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    generated = results_dir().resolve()
+    requested = Path(os.path.abspath(path))
+    if requested.is_symlink() or generated not in requested.resolve(strict=False).parents:
+        raise ValueError("report path must be a non-symlink beneath evals/results")
+    requested.parent.mkdir(parents=True, exist_ok=True)
+    flags = os.O_WRONLY | os.O_CREAT | os.O_TRUNC
+    flags |= getattr(os, "O_NOFOLLOW", 0)
+    descriptor = os.open(requested, flags, 0o600)
+    with os.fdopen(descriptor, "w", encoding="utf-8") as handle:
+        handle.write(json.dumps(value, indent=2, ensure_ascii=False) + "\n")
 
 
 def sha256(path: Path) -> str:
@@ -64,8 +76,17 @@ def parse_frontmatter(path: Path) -> tuple[dict[str, str], str]:
 
 
 def skill_dirs() -> list[Path]:
-    root = plugin_root() / "skills"
-    return sorted(path for path in root.iterdir() if path.is_dir()) if root.is_dir() else []
+    roots = sorted((plugin_root() / "plugins").glob("*/skills"))
+    return sorted(
+        path
+        for root in roots
+        for path in root.iterdir()
+        if path.is_dir() and not path.is_symlink()
+    )
+
+
+def package_roots() -> list[Path]:
+    return sorted(path for path in (plugin_root() / "plugins").iterdir() if path.is_dir())
 
 
 def local_markdown_targets(path: Path) -> Iterable[str]:

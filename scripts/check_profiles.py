@@ -2,10 +2,17 @@
 """Validate advisory skill profiles and profile-rendering output."""
 from __future__ import annotations
 
-import argparse, json, subprocess, sys
+import argparse, hashlib, json, subprocess, sys
 from _common import load_json, make_report, plugin_root, print_report, results_dir, skill_dirs, write_json
 
 EXPECTED={'core','lifecycle','rust','ultragoal','full'}
+EXPECTED_DIGESTS = {
+    "core": "a9494b6dc0cdee51790d63a1273cfef138c71e67b2815e113b9dfea19df00940",
+    "lifecycle": "6cf61fd7606da97ef185260cc3f7fb4cd17ec9fd5650a46b431b6fb4c7611e41",
+    "rust": "84121f8c9b2a52d62746bf2c18b290ec9aa0437109e46c6a0b9b3685d366ac85",
+    "ultragoal": "a2d2a098a035654f7c40837b3fd58032c4e7d250cba302c23055adb446d13ea3",
+    "full": "8fadb8437c4c7b31427effce2565660a7ba70230628700b58234a482c7de8625",
+}
 
 
 def main() -> int:
@@ -18,6 +25,9 @@ def main() -> int:
         doc=load_json(root/f'{name}.json'); enabled=doc.get('enabled_skills')
         if doc.get('schema_version')!='1.0' or doc.get('profile')!=name: errors.append(f'{name}: invalid profile metadata')
         if not isinstance(enabled,list) or len(enabled)!=len(set(enabled)): errors.append(f'{name}: enabled_skills must be a unique list'); continue
+        digest = hashlib.sha256((root / f"{name}.json").read_bytes()).hexdigest()
+        if digest != EXPECTED_DIGESTS[name]:
+            errors.append(f"{name}: profile bytes differ from the locked release profile")
         if set(enabled)-valid: errors.append(f'{name}: unknown skills {sorted(set(enabled)-valid)}')
         front=doc.get('implicit_front_door')
         if front != 'external:harness-ultragoal':

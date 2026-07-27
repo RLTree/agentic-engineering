@@ -7,7 +7,15 @@ from pathlib import Path
 import re
 import yaml
 
-from _common import make_report, parse_frontmatter, plugin_root, print_report, results_dir, skill_dirs, write_json
+from _common import (
+    make_report,
+    package_roots,
+    parse_frontmatter,
+    print_report,
+    results_dir,
+    skill_dirs,
+    write_json,
+)
 
 PROCESS_SHORTCUTS = re.compile(r"\b(?:then|step-by-step|dispatches|runs the workflow|produces a|first .* then)\b", re.I)
 PRIVILEGED_DIRS = {"hooks", "mcp", "connectors", "executables", "bin"}
@@ -45,9 +53,10 @@ def main() -> int:
         errors.append(f"oversized SKILL.md files: {oversized}")
 
     privileged = []
-    for child in plugin_root().iterdir():
-        if child.name.lower() in PRIVILEGED_DIRS:
-            privileged.append(child.name)
+    for package_root in package_roots():
+        for child in package_root.iterdir():
+            if child.name.lower() in PRIVILEGED_DIRS:
+                privileged.append(f"{package_root.name}/{child.name}")
     if privileged:
         errors.append(f"unexpected privileged plugin surfaces: {privileged}")
 

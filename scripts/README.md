@@ -21,7 +21,17 @@ Every script accepts `--write` and stores a machine-readable report under `evals
 ## Release command
 
 ```text
-python scripts/release_check.py --write
+python3 scripts/release_check.py
 ```
 
-A successful run writes individual reports, `evals/results/release-report.json`, and `FILE-MANIFEST.sha256`. It reports but never fabricates unavailable live Codex, field-pilot, Cargo, or rustc evidence.
+The default release check is zero-write. To persist the exact rendered pack set, opt in
+to a path beneath the ignored generated-output root:
+
+```text
+python3 scripts/release_check.py --write --output evals/results/agentic-pack-set.json
+```
+
+Legacy development audits also require their explicit `--write` switch before
+persisting reports under `evals/results/`. Validation reports unavailable live
+Codex, field-pilot, Cargo, or Rust compilation honestly; it never substitutes a
+static confidence claim for missing runtime proof.

@@ -6,7 +6,7 @@ import argparse
 import json
 from pathlib import Path
 
-from package_validation import render, repository_root, validate
+from package_validation import render, repository_root, safe_generated_output, validate
 
 
 def main() -> int:
@@ -22,10 +22,11 @@ def main() -> int:
         print(f"release-check failed: {error}")
         return 1
     if args.write:
-        output = args.output.resolve()
         root = repository_root()
-        if root not in output.parents:
-            print("release-check failed: output must stay inside the repository")
+        try:
+            output = safe_generated_output(root, args.output)
+        except ValueError as error:
+            print(f"release-check failed: {error}")
             return 1
         output.parent.mkdir(parents=True, exist_ok=True)
         output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
