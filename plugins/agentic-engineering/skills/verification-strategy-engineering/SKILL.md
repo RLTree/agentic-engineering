@@ -69,7 +69,7 @@ Include:
 - `references/test-oracle-quality.md`
 - `references/risk-based-evidence-ladder.md`
 - `references/browser-field-and-effect-verification.md`
-- `../../references/no-change-and-abstention.md`
-- `../../references/repair-budget-and-feedback.md`
+- the canonical repository reference library (no-change-and-abstention.md)
+- the canonical repository reference library (repair-budget-and-feedback.md)
 
-Use `../../assets/templates/verification-mode-contract.md` and `../../assets/schemas/verification-mode-contract.schema.json`.
+Use the canonical repository template or schema library (templates/verification-mode-contract.md) and the canonical repository template or schema library (schemas/verification-mode-contract.schema.json).

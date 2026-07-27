@@ -67,11 +67,11 @@ Return a **Rust Agent Observability Contract** with:
 
 ## Shared references
 
-- [Controlled Field Learning System](../../references/controlled-field-learning-system.md)
-- [Metric And Causal Evidence](../../references/metric-and-causal-evidence.md)
-- [Agent Mediated Product Operating Model](../../references/agent-mediated-product-operating-model.md)
-- [Rust Agent Landscape](../../references/rust-agent-landscape.md)
-- [Field-Learning and Full-Lifecycle Vocabulary](../../references/field-lifecycle-vocabulary.md)
+- Controlled Field Learning System (canonical repository reference library: controlled-field-learning-system.md)
+- Metric And Causal Evidence (canonical repository reference library: metric-and-causal-evidence.md)
+- Agent Mediated Product Operating Model (canonical repository reference library: agent-mediated-product-operating-model.md)
+- Rust Agent Landscape (canonical repository reference library: rust-agent-landscape.md)
+- Field-Learning and Full-Lifecycle Vocabulary (canonical repository reference library: field-lifecycle-vocabulary.md)
 
 ## Version 3 control-plane observability
 

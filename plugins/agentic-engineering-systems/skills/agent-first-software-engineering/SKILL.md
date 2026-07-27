@@ -74,11 +74,11 @@ Return an **Agent-Ready Repository and Delivery Plan** with:
 
 ## Shared references
 
-- [Seven-layer map](../../references/seven-layer-map.md)
-- [Architecture escalation](../../references/architecture-escalation.md)
-- [GPT-5.6 Sol operating profile](../../references/gpt-5.6-sol-operating-profile.md)
-- [Evidence and confidence](../../references/evidence-and-confidence.md)
+- Seven-layer map (canonical repository reference library: seven-layer-map.md)
+- Architecture escalation (canonical repository reference library: architecture-escalation.md)
+- GPT-5.6 Sol operating profile (canonical repository reference library: gpt-5.6-sol-operating-profile.md)
+- Evidence and confidence (canonical repository reference library: evidence-and-confidence.md)
 
 ## Version 3 compounding without duplicate authority
 
-Turn recurring corrections into the smallest reusable infrastructure, but adopt them through `engineering-learning-loop`. Keep one authoritative learning registry and generate discoverable human projections with reverse links. Measure whether each rule, skill, tool, or validator reduces future work; narrow or retire mechanisms whose attention and maintenance cost exceeds their benefit. Read `../../references/knowledge-evolution-and-garbage-collection.md`.
+Turn recurring corrections into the smallest reusable infrastructure, but adopt them through `engineering-learning-loop`. Keep one authoritative learning registry and generate discoverable human projections with reverse links. Measure whether each rule, skill, tool, or validator reduces future work; narrow or retire mechanisms whose attention and maintenance cost exceeds their benefit. Read the canonical repository reference library (knowledge-evolution-and-garbage-collection.md).

@@ -74,13 +74,13 @@ Return an **Agent Evaluation and Evidence Plan** with:
 
 ## Shared references
 
-- [Seven-layer map](../../references/seven-layer-map.md)
-- [Architecture escalation](../../references/architecture-escalation.md)
-- [GPT-5.6 Sol operating profile](../../references/gpt-5.6-sol-operating-profile.md)
-- [Evidence and confidence](../../references/evidence-and-confidence.md)
-- [Controlled field-learning system](../../references/controlled-field-learning-system.md)
-- [Field evidence ladder](../../references/field-evidence-ladder.md)
+- Seven-layer map (canonical repository reference library: seven-layer-map.md)
+- Architecture escalation (canonical repository reference library: architecture-escalation.md)
+- GPT-5.6 Sol operating profile (canonical repository reference library: gpt-5.6-sol-operating-profile.md)
+- Evidence and confidence (canonical repository reference library: evidence-and-confidence.md)
+- Controlled field-learning system (canonical repository reference library: controlled-field-learning-system.md)
+- Field evidence ladder (canonical repository reference library: field-evidence-ladder.md)
 
 ## Version 3 skill and behavior evaluation
 
-For material skill changes, compare against a no-skill or prior-version baseline and include explicit, implicit, contextual, negative, overlap, missing-access, small, consequential, no-change, and adversarial-proxy cases. Add held-out, semantic mutation, and specification-evolution splits when a rule is consequential. Score activation, following, composition, recovery, verified outcome, authority, safety, and efficiency separately. Read `../../references/skill-behavior-evaluation.md` and use `../../assets/schemas/skill-eval-case.schema.json`.
+For material skill changes, compare against a no-skill or prior-version baseline and include explicit, implicit, contextual, negative, overlap, missing-access, small, consequential, no-change, and adversarial-proxy cases. Add held-out, semantic mutation, and specification-evolution splits when a rule is consequential. Score activation, following, composition, recovery, verified outcome, authority, safety, and efficiency separately. Read the canonical repository reference library (skill-behavior-evaluation.md) and use the canonical repository template or schema library (schemas/skill-eval-case.schema.json).

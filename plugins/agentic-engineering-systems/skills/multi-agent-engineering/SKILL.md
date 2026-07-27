@@ -74,11 +74,11 @@ Return a **Multi-Agent Coordination Plan** with:
 
 ## Shared references
 
-- [Seven-layer map](../../references/seven-layer-map.md)
-- [Architecture escalation](../../references/architecture-escalation.md)
-- [GPT-5.6 Sol operating profile](../../references/gpt-5.6-sol-operating-profile.md)
-- [Evidence and confidence](../../references/evidence-and-confidence.md)
+- Seven-layer map (canonical repository reference library: seven-layer-map.md)
+- Architecture escalation (canonical repository reference library: architecture-escalation.md)
+- GPT-5.6 Sol operating profile (canonical repository reference library: gpt-5.6-sol-operating-profile.md)
+- Evidence and confidence (canonical repository reference library: evidence-and-confidence.md)
 
 ## Version 3 worker and reviewer evidence
 
-Parallelize only dependency-independent work. The root owns shared schemas, dependencies, public APIs, migrations, effect authority, claim promotion, and final acceptance. Each child has one Task Evidence Packet, disjoint path and semantic ownership, an explicit budget, cancellation lineage, and one return envelope. Reviewers return candidate-bound Review Verdicts. Close completed children after evidence is consumed and distinguish mailbox silence from liveness. Read `../../references/task-evidence-and-review-contracts.md` and `../../references/repair-budget-and-feedback.md`.
+Parallelize only dependency-independent work. The root owns shared schemas, dependencies, public APIs, migrations, effect authority, claim promotion, and final acceptance. Each child has one Task Evidence Packet, disjoint path and semantic ownership, an explicit budget, cancellation lineage, and one return envelope. Reviewers return candidate-bound Review Verdicts. Close completed children after evidence is consumed and distinguish mailbox silence from liveness. Read the canonical repository reference library (task-evidence-and-review-contracts.md) and the canonical repository reference library (repair-budget-and-feedback.md).

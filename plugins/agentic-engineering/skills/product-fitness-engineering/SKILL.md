@@ -61,6 +61,6 @@ Include:
 - `references/journey-review-contract.md`
 - `references/developer-supervisory-work.md`
 - `references/fitness-evidence-and-claim-ceilings.md`
-- `../../references/product-fitness-observation.md`
+- the canonical repository reference library (product-fitness-observation.md)
 
-Use `../../assets/templates/product-fitness-field-pulse.md`, `../../assets/templates/product-journey-review.md`, and `../../assets/templates/product-fitness-evidence-plan.md`.
+Use the canonical repository template or schema library (templates/product-fitness-field-pulse.md), the canonical repository template or schema library (templates/product-journey-review.md), and the canonical repository template or schema library (templates/product-fitness-evidence-plan.md).

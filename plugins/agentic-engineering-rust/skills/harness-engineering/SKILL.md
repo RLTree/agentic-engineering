@@ -74,10 +74,10 @@ Return a **Harness Blueprint** with:
 
 ## Shared references
 
-- [Seven-layer map](../../references/seven-layer-map.md)
-- [Architecture escalation](../../references/architecture-escalation.md)
-- [GPT-5.6 Sol operating profile](../../references/gpt-5.6-sol-operating-profile.md)
-- [Evidence and confidence](../../references/evidence-and-confidence.md)
+- Seven-layer map (canonical repository reference library: seven-layer-map.md)
+- Architecture escalation (canonical repository reference library: architecture-escalation.md)
+- GPT-5.6 Sol operating profile (canonical repository reference library: gpt-5.6-sol-operating-profile.md)
+- Evidence and confidence (canonical repository reference library: evidence-and-confidence.md)
 
 ## Version 3 control contracts
 
@@ -90,4 +90,4 @@ A consequential harness design should support:
 - layer-aware trace attribution before harness repair;
 - continuous monitoring and update for agent security rather than one-time guardrails.
 
-Read `../../references/no-change-and-abstention.md`, `../../references/task-evidence-and-review-contracts.md`, and `../../references/repair-budget-and-feedback.md`.
+Read the canonical repository reference library (no-change-and-abstention.md), the canonical repository reference library (task-evidence-and-review-contracts.md), and the canonical repository reference library (repair-budget-and-feedback.md).

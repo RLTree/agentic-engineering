@@ -70,11 +70,11 @@ Return a **Codex Execution Contract** with:
 
 ## Shared references
 
-- [Seven-layer map](../../references/seven-layer-map.md)
-- [Architecture escalation](../../references/architecture-escalation.md)
-- [GPT-5.6 Sol operating profile](../../references/gpt-5.6-sol-operating-profile.md)
-- [Evidence and confidence](../../references/evidence-and-confidence.md)
+- Seven-layer map (canonical repository reference library: seven-layer-map.md)
+- Architecture escalation (canonical repository reference library: architecture-escalation.md)
+- GPT-5.6 Sol operating profile (canonical repository reference library: gpt-5.6-sol-operating-profile.md)
+- Evidence and confidence (canonical repository reference library: evidence-and-confidence.md)
 
 ## Version 3 prompt and execution selection
 
-Keep the execution contract outcome-first and lean. State each rule once. Prefer changing model, reasoning effort, Pro, Programmatic Tool Calling, or Ultra configuration over adding model-specific procedural prose. Include a no-change success path, proportional verification, repair budget, and explicit authority for safe local actions. Read `../../references/gpt-5.6-execution-selection.md` and `../../references/no-change-and-abstention.md`.
+Keep the execution contract outcome-first and lean. State each rule once. Prefer changing model, reasoning effort, Pro, Programmatic Tool Calling, or Ultra configuration over adding model-specific procedural prose. Include a no-change success path, proportional verification, repair budget, and explicit authority for safe local actions. Read the canonical repository reference library (gpt-5.6-execution-selection.md) and the canonical repository reference library (no-change-and-abstention.md).

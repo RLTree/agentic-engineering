@@ -67,8 +67,8 @@ Return a **Maintenance, Deprecation, and Retirement Plan** with:
 
 ## Shared references
 
-- [Full Lifecycle Map](../../references/full-lifecycle-map.md)
-- [Lifecycle Evidence And Readiness](../../references/lifecycle-evidence-and-readiness.md)
-- [Controlled Field Learning System](../../references/controlled-field-learning-system.md)
-- [Decision Records](../../references/decision-records.md)
-- [Field-Learning and Full-Lifecycle Vocabulary](../../references/field-lifecycle-vocabulary.md)
+- Full Lifecycle Map (canonical repository reference library: full-lifecycle-map.md)
+- Lifecycle Evidence And Readiness (canonical repository reference library: lifecycle-evidence-and-readiness.md)
+- Controlled Field Learning System (canonical repository reference library: controlled-field-learning-system.md)
+- Decision Records (canonical repository reference library: decision-records.md)
+- Field-Learning and Full-Lifecycle Vocabulary (canonical repository reference library: field-lifecycle-vocabulary.md)

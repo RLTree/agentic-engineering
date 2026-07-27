@@ -76,11 +76,11 @@ Return a **Loop Contract** with:
 
 ## Shared references
 
-- [Seven-layer map](../../references/seven-layer-map.md)
-- [Architecture escalation](../../references/architecture-escalation.md)
-- [GPT-5.6 Sol operating profile](../../references/gpt-5.6-sol-operating-profile.md)
-- [Evidence and confidence](../../references/evidence-and-confidence.md)
+- Seven-layer map (canonical repository reference library: seven-layer-map.md)
+- Architecture escalation (canonical repository reference library: architecture-escalation.md)
+- GPT-5.6 Sol operating profile (canonical repository reference library: gpt-5.6-sol-operating-profile.md)
+- Evidence and confidence (canonical repository reference library: evidence-and-confidence.md)
 
 ## Version 3 repair discipline
 
-Every repair attempt records a hypothesis, mechanism class, changed variable, validator identity, failure location, observed value, admissible alternatives, and evidence gained. Repeated attempts using the same mechanism without new evidence trip a circuit breaker before the numeric budget is exhausted. Calibrate budgets empirically; do not assume unlimited retries or a universal fixed count. Read `../../references/repair-budget-and-feedback.md`.
+Every repair attempt records a hypothesis, mechanism class, changed variable, validator identity, failure location, observed value, admissible alternatives, and evidence gained. Repeated attempts using the same mechanism without new evidence trip a circuit breaker before the numeric budget is exhausted. Calibrate budgets empirically; do not assume unlimited retries or a universal fixed count. Read the canonical repository reference library (repair-budget-and-feedback.md).

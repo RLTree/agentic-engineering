@@ -67,8 +67,8 @@ Return a **Product Experiment and Decision Contract** with:
 
 ## Shared references
 
-- [Metric And Causal Evidence](../../references/metric-and-causal-evidence.md)
-- [Field Evidence Ladder](../../references/field-evidence-ladder.md)
-- [Controlled Field Learning System](../../references/controlled-field-learning-system.md)
-- [Evidence And Confidence](../../references/evidence-and-confidence.md)
-- [Field-Learning and Full-Lifecycle Vocabulary](../../references/field-lifecycle-vocabulary.md)
+- Metric And Causal Evidence (canonical repository reference library: metric-and-causal-evidence.md)
+- Field Evidence Ladder (canonical repository reference library: field-evidence-ladder.md)
+- Controlled Field Learning System (canonical repository reference library: controlled-field-learning-system.md)
+- Evidence And Confidence (canonical repository reference library: evidence-and-confidence.md)
+- Field-Learning and Full-Lifecycle Vocabulary (canonical repository reference library: field-lifecycle-vocabulary.md)

@@ -1,2 +1,0 @@
-assumption_id,category,assumption,downstream_commitments,consequence,uncertainty,irreversibility,dependency,evidence_latency,current_evidence,evidence_strength,discriminating_test,pass_partial_fail_rule,owner,decision_date,status
-A-001,value,"{{assumption}}","{{commitments}}",high,high,medium,"{{dependency}}","{{latency}}","{{evidence}}",emerging,"{{test}}","{{rule}}","{{owner}}","{{date}}",open

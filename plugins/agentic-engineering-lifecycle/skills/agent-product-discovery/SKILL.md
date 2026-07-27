@@ -67,8 +67,8 @@ Return a **Product Discovery Evidence Brief** with:
 
 ## Shared references
 
-- [Full Lifecycle Map](../../references/full-lifecycle-map.md)
-- [Field Evidence Ladder](../../references/field-evidence-ladder.md)
-- [Metric And Causal Evidence](../../references/metric-and-causal-evidence.md)
-- [Evidence And Confidence](../../references/evidence-and-confidence.md)
-- [Field-Learning and Full-Lifecycle Vocabulary](../../references/field-lifecycle-vocabulary.md)
+- Full Lifecycle Map (canonical repository reference library: full-lifecycle-map.md)
+- Field Evidence Ladder (canonical repository reference library: field-evidence-ladder.md)
+- Metric And Causal Evidence (canonical repository reference library: metric-and-causal-evidence.md)
+- Evidence And Confidence (canonical repository reference library: evidence-and-confidence.md)
+- Field-Learning and Full-Lifecycle Vocabulary (canonical repository reference library: field-lifecycle-vocabulary.md)

@@ -75,7 +75,7 @@ Read on demand:
 - `references/failure-attribution-and-mechanism-hypotheses.md`
 - `references/hidden-evals-mutation-spec-evolution.md`
 - `references/knowledge-freshness-supersession.md`
-- `../../references/no-change-and-abstention.md`
-- `../../references/task-evidence-and-review-contracts.md`
+- the canonical repository reference library (no-change-and-abstention.md)
+- the canonical repository reference library (task-evidence-and-review-contracts.md)
 
-Use `../../assets/templates/learning-adoption-record.md` and `../../assets/schemas/learning-adoption-record.schema.json` for durable output.
+Use the canonical repository template or schema library (templates/learning-adoption-record.md) and the canonical repository template or schema library (schemas/learning-adoption-record.schema.json) for durable output.

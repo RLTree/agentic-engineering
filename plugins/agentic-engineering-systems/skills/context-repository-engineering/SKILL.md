@@ -70,11 +70,11 @@ Return a **Context and Repository Plan** with:
 
 ## Shared references
 
-- [Seven-layer map](../../references/seven-layer-map.md)
-- [Architecture escalation](../../references/architecture-escalation.md)
-- [GPT-5.6 Sol operating profile](../../references/gpt-5.6-sol-operating-profile.md)
-- [Evidence and confidence](../../references/evidence-and-confidence.md)
+- Seven-layer map (canonical repository reference library: seven-layer-map.md)
+- Architecture escalation (canonical repository reference library: architecture-escalation.md)
+- GPT-5.6 Sol operating profile (canonical repository reference library: gpt-5.6-sol-operating-profile.md)
+- Evidence and confidence (canonical repository reference library: evidence-and-confidence.md)
 
 ## Version 3 durable context controls
 
-Treat context as versioned, attributable data. Hand large task briefs, diffs, and reviewer results through bounded files or typed packets instead of repeatedly pasting session history. Adopt learnings into one registry; generate projections for people; require freshness, supersession, and deletion. Read `../../references/knowledge-evolution-and-garbage-collection.md` and `../../references/task-evidence-and-review-contracts.md`.
+Treat context as versioned, attributable data. Hand large task briefs, diffs, and reviewer results through bounded files or typed packets instead of repeatedly pasting session history. Adopt learnings into one registry; generate projections for people; require freshness, supersession, and deletion. Read the canonical repository reference library (knowledge-evolution-and-garbage-collection.md) and the canonical repository reference library (task-evidence-and-review-contracts.md).

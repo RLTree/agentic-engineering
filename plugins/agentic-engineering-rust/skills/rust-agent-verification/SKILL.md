@@ -79,11 +79,11 @@ Return a **Rust Verification and CI Matrix** with:
 
 ## Shared references
 
-- [Seven-layer map](../../references/seven-layer-map.md)
-- [Architecture escalation](../../references/architecture-escalation.md)
-- [GPT-5.6 Sol operating profile](../../references/gpt-5.6-sol-operating-profile.md)
-- [Evidence and confidence](../../references/evidence-and-confidence.md)
+- Seven-layer map (canonical repository reference library: seven-layer-map.md)
+- Architecture escalation (canonical repository reference library: architecture-escalation.md)
+- GPT-5.6 Sol operating profile (canonical repository reference library: gpt-5.6-sol-operating-profile.md)
+- Evidence and confidence (canonical repository reference library: evidence-and-confidence.md)
 
 ## Version 3 Rust assurance assets
 
-Use `../../assets/rust/control_evidence.rs`, `../../assets/rust/repair_budget.rs`, and `../../assets/rust/learning_record.rs` as adaptable domain sketches. Verify ownership and candidate identity, no-change decisions, circuit-break behavior, review evidence, and learning-record lifecycle in addition to code correctness.
+Use the canonical repository template or schema library (rust/control_evidence.rs), the canonical repository template or schema library (rust/repair_budget.rs), and the canonical repository template or schema library (rust/learning_record.rs) as adaptable domain sketches. Verify ownership and candidate identity, no-change decisions, circuit-break behavior, review evidence, and learning-record lifecycle in addition to code correctness.

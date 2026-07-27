@@ -67,8 +67,8 @@ Return a **Secure Release Evidence Package** with:
 
 ## Shared references
 
-- [Autonomy And Exposure Ladder](../../references/autonomy-and-exposure-ladder.md)
-- [Lifecycle Evidence And Readiness](../../references/lifecycle-evidence-and-readiness.md)
-- [Agent Mediated Product Operating Model](../../references/agent-mediated-product-operating-model.md)
-- [Evidence And Confidence](../../references/evidence-and-confidence.md)
-- [Field-Learning and Full-Lifecycle Vocabulary](../../references/field-lifecycle-vocabulary.md)
+- Autonomy And Exposure Ladder (canonical repository reference library: autonomy-and-exposure-ladder.md)
+- Lifecycle Evidence And Readiness (canonical repository reference library: lifecycle-evidence-and-readiness.md)
+- Agent Mediated Product Operating Model (canonical repository reference library: agent-mediated-product-operating-model.md)
+- Evidence And Confidence (canonical repository reference library: evidence-and-confidence.md)
+- Field-Learning and Full-Lifecycle Vocabulary (canonical repository reference library: field-lifecycle-vocabulary.md)

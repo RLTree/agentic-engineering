@@ -67,8 +67,8 @@ Return a **Concept and Feasibility Evidence Case** with:
 
 ## Shared references
 
-- [Field Evidence Ladder](../../references/field-evidence-ladder.md)
-- [Metric And Causal Evidence](../../references/metric-and-causal-evidence.md)
-- [Lifecycle Evidence And Readiness](../../references/lifecycle-evidence-and-readiness.md)
-- [Evidence And Confidence](../../references/evidence-and-confidence.md)
-- [Field-Learning and Full-Lifecycle Vocabulary](../../references/field-lifecycle-vocabulary.md)
+- Field Evidence Ladder (canonical repository reference library: field-evidence-ladder.md)
+- Metric And Causal Evidence (canonical repository reference library: metric-and-causal-evidence.md)
+- Lifecycle Evidence And Readiness (canonical repository reference library: lifecycle-evidence-and-readiness.md)
+- Evidence And Confidence (canonical repository reference library: evidence-and-confidence.md)
+- Field-Learning and Full-Lifecycle Vocabulary (canonical repository reference library: field-lifecycle-vocabulary.md)

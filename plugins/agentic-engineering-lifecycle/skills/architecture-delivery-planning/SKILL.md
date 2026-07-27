@@ -67,8 +67,8 @@ Return a **Architecture and Evidence-Driven Delivery Plan** with:
 
 ## Shared references
 
-- [Architecture Escalation](../../references/architecture-escalation.md)
-- [Lifecycle Evidence And Readiness](../../references/lifecycle-evidence-and-readiness.md)
-- [Decision Records](../../references/decision-records.md)
-- [Agent Mediated Product Operating Model](../../references/agent-mediated-product-operating-model.md)
-- [Field-Learning and Full-Lifecycle Vocabulary](../../references/field-lifecycle-vocabulary.md)
+- Architecture Escalation (canonical repository reference library: architecture-escalation.md)
+- Lifecycle Evidence And Readiness (canonical repository reference library: lifecycle-evidence-and-readiness.md)
+- Decision Records (canonical repository reference library: decision-records.md)
+- Agent Mediated Product Operating Model (canonical repository reference library: agent-mediated-product-operating-model.md)
+- Field-Learning and Full-Lifecycle Vocabulary (canonical repository reference library: field-lifecycle-vocabulary.md)

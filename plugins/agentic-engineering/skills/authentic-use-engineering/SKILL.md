@@ -67,11 +67,11 @@ Return a **Controlled Field-Learning Plan** with:
 
 ## Shared references
 
-- [Controlled Field Learning System](../../references/controlled-field-learning-system.md)
-- [Field Evidence Ladder](../../references/field-evidence-ladder.md)
-- [Autonomy And Exposure Ladder](../../references/autonomy-and-exposure-ladder.md)
-- [Metric And Causal Evidence](../../references/metric-and-causal-evidence.md)
-- [Field-Learning and Full-Lifecycle Vocabulary](../../references/field-lifecycle-vocabulary.md)
+- Controlled Field Learning System (canonical repository reference library: controlled-field-learning-system.md)
+- Field Evidence Ladder (canonical repository reference library: field-evidence-ladder.md)
+- Autonomy And Exposure Ladder (canonical repository reference library: autonomy-and-exposure-ladder.md)
+- Metric And Causal Evidence (canonical repository reference library: metric-and-causal-evidence.md)
+- Field-Learning and Full-Lifecycle Vocabulary (canonical repository reference library: field-lifecycle-vocabulary.md)
 
 ## Version 3 product-fitness handoff
 

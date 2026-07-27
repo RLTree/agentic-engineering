@@ -69,13 +69,13 @@ Return an **Agentic Architecture Brief** with:
 
 ## Shared references
 
-- [Seven-layer map](../../references/seven-layer-map.md)
-- [Architecture escalation](../../references/architecture-escalation.md)
-- [GPT-5.6 Sol operating profile](../../references/gpt-5.6-sol-operating-profile.md)
-- [Evidence and confidence](../../references/evidence-and-confidence.md)
-- [Full lifecycle map](../../references/full-lifecycle-map.md)
-- [Controlled field-learning system](../../references/controlled-field-learning-system.md)
-- [Field-learning and full-lifecycle vocabulary](../../references/field-lifecycle-vocabulary.md)
+- Seven-layer map (canonical repository reference library: seven-layer-map.md)
+- Architecture escalation (canonical repository reference library: architecture-escalation.md)
+- GPT-5.6 Sol operating profile (canonical repository reference library: gpt-5.6-sol-operating-profile.md)
+- Evidence and confidence (canonical repository reference library: evidence-and-confidence.md)
+- Full lifecycle map (canonical repository reference library: full-lifecycle-map.md)
+- Controlled field-learning system (canonical repository reference library: controlled-field-learning-system.md)
+- Field-learning and full-lifecycle vocabulary (canonical repository reference library: field-lifecycle-vocabulary.md)
 
 ## Version 3 cross-cutting gates
 
@@ -88,4 +88,4 @@ Before recommending implementation:
 5. route observed outcomes through `engineering-learning-loop` before turning them into durable rules;
 6. use `product-fitness-engineering` when a claim concerns real user value or continuance.
 
-Read `../../references/no-change-and-abstention.md`, `../../references/proportional-assurance.md`, and `../../references/gpt-5.6-execution-selection.md` when these gates apply.
+Read the canonical repository reference library (no-change-and-abstention.md), the canonical repository reference library (proportional-assurance.md), and the canonical repository reference library (gpt-5.6-execution-selection.md) when these gates apply.

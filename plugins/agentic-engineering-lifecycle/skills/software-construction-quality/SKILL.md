@@ -67,12 +67,12 @@ Return a **Construction and Quality Evidence Plan** with:
 
 ## Shared references
 
-- [Lifecycle Evidence And Readiness](../../references/lifecycle-evidence-and-readiness.md)
-- [Controlled Field Learning System](../../references/controlled-field-learning-system.md)
-- [Evidence And Confidence](../../references/evidence-and-confidence.md)
-- [Decision Records](../../references/decision-records.md)
-- [Field-Learning and Full-Lifecycle Vocabulary](../../references/field-lifecycle-vocabulary.md)
+- Lifecycle Evidence And Readiness (canonical repository reference library: lifecycle-evidence-and-readiness.md)
+- Controlled Field Learning System (canonical repository reference library: controlled-field-learning-system.md)
+- Evidence And Confidence (canonical repository reference library: evidence-and-confidence.md)
+- Decision Records (canonical repository reference library: decision-records.md)
+- Field-Learning and Full-Lifecycle Vocabulary (canonical repository reference library: field-lifecycle-vocabulary.md)
 
 ## Version 3 construction decisions
 
-Before coding, permit `no_change` and `partial_change` outcomes. Select verification modes by risk and oracle rather than imposing universal TDD. Prefer real behavior over mocks and require representative boundary evidence for critical mocked paths. Bound review/fix loops and return structured feedback. Use `verification-strategy-engineering`, `../../references/no-change-and-abstention.md`, and `../../references/repair-budget-and-feedback.md`.
+Before coding, permit `no_change` and `partial_change` outcomes. Select verification modes by risk and oracle rather than imposing universal TDD. Prefer real behavior over mocks and require representative boundary evidence for critical mocked paths. Bound review/fix loops and return structured feedback. Use `verification-strategy-engineering`, the canonical repository reference library (no-change-and-abstention.md), and the canonical repository reference library (repair-budget-and-feedback.md).
