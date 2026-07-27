@@ -54,8 +54,8 @@
       "Assess Product Fitness and full-lifecycle readiness without confusing activity with value"
     ],
     "brandColor": "#0F766E",
-    "websiteURL": "https://github.com/RLTree/plugin-policies",
-    "privacyPolicyURL": "https://github.com/RLTree/plugin-policies/blob/main/privacy-policy.md",
-    "termsOfServiceURL": "https://github.com/RLTree/plugin-policies/blob/main/terms-of-service.md"
+    "websiteURL": "https://github.com/RLTree/plugin-policies/blob/master/products/agentic-engineering/4.0.0/product.md",
+    "privacyPolicyURL": "https://github.com/RLTree/plugin-policies/blob/master/products/agentic-engineering/4.0.0/privacy.md",
+    "termsOfServiceURL": "https://github.com/RLTree/plugin-policies/blob/master/products/agentic-engineering/4.0.0/terms.md"
   }
 }

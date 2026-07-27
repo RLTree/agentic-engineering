@@ -60,6 +60,17 @@ def frontmatter(path: Path) -> dict[str, str]:
     return values
 
 
+def package_manifest_digest(package_root: Path) -> str:
+    entries: list[str] = []
+    for path in sorted(item for item in package_root.rglob("*") if item.is_file()):
+        relative = path.relative_to(package_root).as_posix()
+        content = path.read_bytes()
+        entries.append(f"{relative}\t{len(content)}\tsha256:{sha256(content).hexdigest()}")
+    if not entries:
+        raise ValueError(f"{package_root.name}: package manifest is empty")
+    return f"sha256:{sha256(chr(10).join(entries).encode('utf-8')).hexdigest()}"
+
+
 def package_inventory(root: Path, name: str) -> PackageInventory:
     package_root = root / "plugins" / name
     manifest = read_json(package_root / ".codex-plugin" / "plugin.json")
@@ -83,8 +94,7 @@ def package_inventory(root: Path, name: str) -> PackageInventory:
         if "allow_implicit_invocation: false" not in agent or expected not in agent:
             raise ValueError(f"{name}: {skill_dir.name} is not explicit-only")
         skills.append(skill_dir.name)
-    digest = sha256("\n".join(skills).encode("utf-8")).hexdigest()
-    return PackageInventory(name, tuple(skills), f"sha256:{digest}")
+    return PackageInventory(name, tuple(skills), package_manifest_digest(package_root))
 
 
 def validate(root: Path | None = None) -> tuple[PackageInventory, ...]:
@@ -125,7 +135,7 @@ def render(inventories: Iterable[PackageInventory]) -> dict:
                         pack["name"],
                         pack["version"],
                         pack["manifest_digest"],
-                        ",".join(pack["enabled_skills"]),
+                        ",".join(sorted(pack["enabled_skills"])),
                     ]
                 )
                 for pack in packs
