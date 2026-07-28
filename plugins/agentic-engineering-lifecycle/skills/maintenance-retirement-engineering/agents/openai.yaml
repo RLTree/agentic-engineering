@@ -1,0 +1,7 @@
+interface:
+  display_name: "Maintenance Retirement Engineering"
+  short_description: "Explicit maintenance retirement engineering advice"
+  brand_color: "#0F766E"
+  default_prompt: "Use $agentic-engineering-lifecycle:maintenance-retirement-engineering as an explicit advisory lens through external:harness-ultragoal."
+policy:
+  allow_implicit_invocation: false

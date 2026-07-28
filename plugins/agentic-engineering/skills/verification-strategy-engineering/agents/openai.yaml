@@ -1,0 +1,7 @@
+interface:
+  display_name: "Verification Strategy Engineering"
+  short_description: "Explicit verification strategy engineering advice"
+  brand_color: "#0F766E"
+  default_prompt: "Use $agentic-engineering:verification-strategy-engineering as an explicit advisory lens through external:harness-ultragoal."
+policy:
+  allow_implicit_invocation: false

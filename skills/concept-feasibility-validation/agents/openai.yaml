@@ -1,8 +1,0 @@
-interface:
-  display_name: Concept & Feasibility Validation
-  short_description: Concept & Feasibility Validation
-  brand_color: '#0F766E'
-  default_prompt: Map the decisive assumptions and produce a concept and feasibility
-    evidence case using the cheapest faithful tests first.
-policy:
-  allow_implicit_invocation: false

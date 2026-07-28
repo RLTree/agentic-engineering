@@ -1,9 +1,0 @@
-interface:
-  display_name: Authentic Use Engineering
-  short_description: Authentic Use Engineering
-  brand_color: '#0F766E'
-  default_prompt: Design a controlled field-learning program with an operating envelope,
-    progressive autonomy, representative evidence, instrumentation, and an evidence-to-change
-    loop.
-policy:
-  allow_implicit_invocation: false

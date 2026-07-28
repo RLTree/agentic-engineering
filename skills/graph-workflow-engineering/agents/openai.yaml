@@ -1,8 +1,0 @@
-interface:
-  display_name: Graph and Workflow Engineering
-  short_description: Graph and Workflow Engineering
-  brand_color: '#0F766E'
-  default_prompt: Design the typed state graph, node and edge contracts, reducers,
-    checkpoints, interrupts, and path tests.
-policy:
-  allow_implicit_invocation: false

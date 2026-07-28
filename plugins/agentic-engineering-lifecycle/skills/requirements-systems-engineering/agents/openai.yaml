@@ -1,0 +1,7 @@
+interface:
+  display_name: "Requirements Systems Engineering"
+  short_description: "Explicit requirements systems engineering advice"
+  brand_color: "#0F766E"
+  default_prompt: "Use $agentic-engineering-lifecycle:requirements-systems-engineering as an explicit advisory lens through external:harness-ultragoal."
+policy:
+  allow_implicit_invocation: false

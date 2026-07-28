@@ -1,0 +1,47 @@
+name: Verify
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  packages:
+    name: Package checks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Refuse persisted checkout credentials
+        shell: bash
+        run: |
+          if git config --local --get-regexp '^http\..*\.extraheader$'; then
+            echo "checkout credential persisted in local Git config" >&2
+            exit 1
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.12"
+
+      - name: Install validator dependency
+        run: python3 -m pip install "PyYAML==6.0.2"
+
+      - name: Run release checks
+        run: python3 scripts/release_check.py
+
+      - name: Run validator tests
+        run: python3 -m unittest discover -s tests -v

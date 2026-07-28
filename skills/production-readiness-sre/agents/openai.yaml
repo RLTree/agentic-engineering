@@ -1,8 +1,0 @@
-interface:
-  display_name: Production Readiness & SRE
-  short_description: Production Readiness & SRE
-  brand_color: '#0F766E'
-  default_prompt: Conduct a production-readiness review and produce an SLO, operations,
-    incident, and resilience plan tied to product consequences.
-policy:
-  allow_implicit_invocation: false

@@ -1,8 +1,0 @@
-interface:
-  display_name: Rust Agent Protocols
-  short_description: Rust Agent Protocols
-  brand_color: '#0F766E'
-  default_prompt: Design this Rust MCP or A2A adapter with domain-owned schemas, authorization,
-    lifecycle semantics, and conformance tests.
-policy:
-  allow_implicit_invocation: false

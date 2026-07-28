@@ -1,8 +1,0 @@
-interface:
-  display_name: Loop Engineering
-  short_description: Loop Engineering
-  brand_color: '#0F766E'
-  default_prompt: Specify a bounded observe–orient–plan–act–verify–update loop with
-    budgets, recovery, and trajectory tests.
-policy:
-  allow_implicit_invocation: false

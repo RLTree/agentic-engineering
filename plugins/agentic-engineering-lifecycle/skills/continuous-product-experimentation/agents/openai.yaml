@@ -1,0 +1,7 @@
+interface:
+  display_name: "Continuous Product Experimentation"
+  short_description: "Explicit continuous product experimentation advice"
+  brand_color: "#0F766E"
+  default_prompt: "Use $agentic-engineering-lifecycle:continuous-product-experimentation as an explicit advisory lens through external:harness-ultragoal."
+policy:
+  allow_implicit_invocation: false

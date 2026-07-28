@@ -11,7 +11,8 @@ def main() -> int:
     args = parser.parse_args()
     profile = json.loads((ROOT/'profiles'/f'{args.profile}.json').read_text())
     enabled = set(profile['enabled_skills'])
-    for skill in sorted((args.plugin_root/'skills').iterdir()):
+    skill_roots = sorted((args.plugin_root / "plugins").glob("*/skills"))
+    for skill in sorted(path for root in skill_roots for path in root.iterdir()):
         if not (skill/'SKILL.md').is_file():
             continue
         print('[[skills.config]]')

@@ -1,8 +1,0 @@
-interface:
-  display_name: Rust Agent Durability
-  short_description: Rust Agent Durability
-  brand_color: '#0F766E'
-  default_prompt: Design crash-safe Rust agent durability with checkpoints, effect
-    journal, idempotency, outbox, replay, fencing, and recovery tests.
-policy:
-  allow_implicit_invocation: false
