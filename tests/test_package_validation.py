@@ -216,3 +216,7 @@ class PackageValidationTests(unittest.TestCase):
 
     def test_default_repository_root_is_the_project(self) -> None:
         self.assertEqual(repository_root(), Path(__file__).resolve().parents[1])
+
+    def test_obsolete_v3_aggregate_is_not_shipped(self) -> None:
+        root = Path(__file__).resolve().parents[1]
+        self.assertFalse((root / "scripts" / "release_check_v3.py").exists())
