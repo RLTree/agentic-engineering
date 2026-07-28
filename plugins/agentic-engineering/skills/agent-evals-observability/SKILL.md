@@ -81,6 +81,6 @@ Return an **Agent Evaluation and Evidence Plan** with:
 - Controlled field-learning system (canonical repository reference library: controlled-field-learning-system.md)
 - Field evidence ladder (canonical repository reference library: field-evidence-ladder.md)
 
-## Version 3 skill and behavior evaluation
+## Skill behavior evaluation protocol v3
 
-For material skill changes, compare against a no-skill or prior-version baseline and include explicit, implicit, contextual, negative, overlap, missing-access, small, consequential, no-change, and adversarial-proxy cases. Add held-out, semantic mutation, and specification-evolution splits when a rule is consequential. Score activation, following, composition, recovery, verified outcome, authority, safety, and efficiency separately. Read the canonical repository reference library (skill-behavior-evaluation.md) and use the canonical repository template or schema library (schemas/skill-eval-case.schema.json).
+For material skill changes, compare against a no-skill or prior-version baseline and include explicit, implicit, contextual, negative, overlap, missing-access, small, consequential, no-change, and adversarial-proxy cases. Add held-out, semantic mutation, and specification-evolution splits when a rule is consequential. Score activation, following, composition, recovery, verified outcome, authority, safety, and efficiency separately. Use the package-local [eval taxonomy](references/eval-taxonomy.md), [grader design](references/grader-design.md), and [failure-derived eval loop](references/failure-derived-evals.md) to define the protocol.

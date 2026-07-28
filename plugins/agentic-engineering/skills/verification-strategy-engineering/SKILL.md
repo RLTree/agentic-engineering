@@ -72,4 +72,5 @@ Include:
 - the canonical repository reference library (no-change-and-abstention.md)
 - the canonical repository reference library (repair-budget-and-feedback.md)
 
-Use the canonical repository template or schema library (templates/verification-mode-contract.md) and the canonical repository template or schema library (schemas/verification-mode-contract.schema.json).
+Use the package-local **Output contract** above as the authoritative
+Verification Mode Contract template.
