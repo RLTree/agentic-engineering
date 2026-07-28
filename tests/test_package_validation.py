@@ -21,6 +21,7 @@ from package_validation import (
     repository_root,
     safe_generated_output,
     validate,
+    validate_marketplace,
 )
 
 
@@ -54,6 +55,47 @@ class PackageValidationTests(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         inventories = validate(root)
         self.assertEqual([len(item.skills) for item in inventories], [8, 10, 7, 5])
+
+    def test_marketplace_requires_current_host_fields_and_exact_packages(self) -> None:
+        root = Path(__file__).resolve().parents[1]
+        validate_marketplace(root)
+        with TemporaryDirectory() as temporary:
+            candidate = Path(temporary)
+            original = json.loads(
+                (root / ".agents" / "plugins" / "marketplace.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+            path = candidate / ".agents" / "plugins" / "marketplace.json"
+            path.parent.mkdir(parents=True)
+            cases = [
+                ("marketplace name", lambda value: value.pop("name")),
+                ("interface", lambda value: value.pop("interface")),
+                ("plugins must be", lambda value: value.__setitem__("plugins", {})),
+                ("package set", lambda value: value["plugins"].pop()),
+                (
+                    "source",
+                    lambda value: value["plugins"][0].__setitem__("source", {}),
+                ),
+                (
+                    "policy",
+                    lambda value: value["plugins"][0].__setitem__("policy", {}),
+                ),
+                (
+                    "category",
+                    lambda value: value["plugins"][0].__setitem__(
+                        "category",
+                        "Other",
+                    ),
+                ),
+            ]
+            for expected, mutate in cases:
+                with self.subTest(expected=expected):
+                    manifest = json.loads(json.dumps(original))
+                    mutate(manifest)
+                    path.write_text(json.dumps(manifest), encoding="utf-8")
+                    with self.assertRaisesRegex(ValueError, expected):
+                        validate_marketplace(candidate)
 
     def test_frontmatter_rejects_malformed_documents(self) -> None:
         with TemporaryDirectory() as temporary:
@@ -212,7 +254,11 @@ class PackageValidationTests(unittest.TestCase):
         )
         self.assertEqual(forward["aggregate_digest"], reverse["aggregate_digest"])
 
-    def test_validate_rejects_duplicate_and_mismatched_profiles(self) -> None:
+    @patch.object(package_validation, "validate_marketplace")
+    def test_validate_rejects_duplicate_and_mismatched_profiles(
+        self,
+        _marketplace,
+    ) -> None:
         inventories = [
             PackageInventory(
                 name,
@@ -265,7 +311,11 @@ class PackageValidationTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "counts"):
                 validate(Path("."))
 
-    def test_validate_selects_base_package_by_name_after_reordering(self) -> None:
+    @patch.object(package_validation, "validate_marketplace")
+    def test_validate_selects_base_package_by_name_after_reordering(
+        self,
+        _marketplace,
+    ) -> None:
         reordered = dict(reversed(list(PACKAGES.items())))
         by_name = {
             name: PackageInventory(
