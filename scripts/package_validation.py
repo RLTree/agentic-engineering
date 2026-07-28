@@ -29,6 +29,9 @@ POLICY_URLS = (
 PACK_SET_SCHEMA = "AgenticPackSet-v1"
 GATEWAY = "external:harness-ultragoal"
 PACKAGE_TOP_LEVEL = {".codex-plugin", "skills"}
+MARKETPLACE_NAME = "agentic-engineering-local"
+MARKETPLACE_SCHEMA_VERSION = "1.0"
+MARKETPLACE_DISPLAY_NAME = "Agentic Engineering Local"
 
 
 @dataclass(frozen=True)
@@ -220,8 +223,48 @@ def package_inventory(root: Path, name: str) -> PackageInventory:
     return PackageInventory(name, tuple(skills), package_manifest_digest(package_root))
 
 
+def validate_marketplace(root: Path) -> None:
+    marketplace = read_json(root / ".agents" / "plugins" / "marketplace.json")
+    if not isinstance(marketplace, dict):
+        raise ValueError("marketplace document must be an object")
+    if marketplace.get("schema_version") != MARKETPLACE_SCHEMA_VERSION:
+        raise ValueError("marketplace schema version is invalid")
+    if marketplace.get("name") != MARKETPLACE_NAME:
+        raise ValueError("marketplace name is invalid")
+    interface = marketplace.get("interface")
+    if (
+        not isinstance(interface, dict)
+        or interface.get("displayName") != MARKETPLACE_DISPLAY_NAME
+    ):
+        raise ValueError("marketplace interface is invalid")
+    entries = marketplace.get("plugins")
+    if not isinstance(entries, list):
+        raise ValueError("marketplace plugins must be a list")
+    by_name = {
+        entry.get("name"): entry
+        for entry in entries
+        if isinstance(entry, dict) and isinstance(entry.get("name"), str)
+    }
+    if set(by_name) != set(PACKAGES) or len(entries) != len(PACKAGES):
+        raise ValueError("marketplace package set is invalid")
+    for name, entry in by_name.items():
+        if entry.get("source") != {
+            "source": "local",
+            "path": f"./plugins/{name}",
+        }:
+            raise ValueError(f"{name}: marketplace source is invalid")
+        if entry.get("policy") != {
+            "installation": "AVAILABLE",
+            "authentication": "ON_INSTALL",
+        }:
+            raise ValueError(f"{name}: marketplace policy is invalid")
+        if entry.get("category") != "Developer Tools":
+            raise ValueError(f"{name}: marketplace category is invalid")
+
+
 def validate(root: Path | None = None) -> tuple[PackageInventory, ...]:
     root = repository_root(root)
+    validate_marketplace(root)
     inventories = tuple(package_inventory(root, name) for name in PACKAGES)
     counts = {inventory.name: len(inventory.skills) for inventory in inventories}
     if counts != PACKAGES:

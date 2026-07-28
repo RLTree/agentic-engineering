@@ -1,9 +1,33 @@
 {
   "schema_version": "1.0",
+  "name": "agentic-engineering-local",
+  "interface": {
+    "displayName": "Agentic Engineering Local"
+  },
   "plugins": [
-    { "name": "agentic-engineering", "source": { "source": "local", "path": "./plugins/agentic-engineering" } },
-    { "name": "agentic-engineering-lifecycle", "source": { "source": "local", "path": "./plugins/agentic-engineering-lifecycle" } },
-    { "name": "agentic-engineering-rust", "source": { "source": "local", "path": "./plugins/agentic-engineering-rust" } },
-    { "name": "agentic-engineering-systems", "source": { "source": "local", "path": "./plugins/agentic-engineering-systems" } }
+    {
+      "name": "agentic-engineering",
+      "source": { "source": "local", "path": "./plugins/agentic-engineering" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Developer Tools"
+    },
+    {
+      "name": "agentic-engineering-lifecycle",
+      "source": { "source": "local", "path": "./plugins/agentic-engineering-lifecycle" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Developer Tools"
+    },
+    {
+      "name": "agentic-engineering-rust",
+      "source": { "source": "local", "path": "./plugins/agentic-engineering-rust" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Developer Tools"
+    },
+    {
+      "name": "agentic-engineering-systems",
+      "source": { "source": "local", "path": "./plugins/agentic-engineering-systems" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Developer Tools"
+    }
   ]
 }
