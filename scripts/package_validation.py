@@ -30,6 +30,8 @@ PACK_SET_SCHEMA = "AgenticPackSet-v1"
 GATEWAY = "external:harness-ultragoal"
 PACKAGE_TOP_LEVEL = {".codex-plugin", "skills"}
 MARKETPLACE_NAME = "agentic-engineering-local"
+MARKETPLACE_SCHEMA_VERSION = "1.0"
+MARKETPLACE_DISPLAY_NAME = "Agentic Engineering Local"
 
 
 @dataclass(frozen=True)
@@ -223,12 +225,16 @@ def package_inventory(root: Path, name: str) -> PackageInventory:
 
 def validate_marketplace(root: Path) -> None:
     marketplace = read_json(root / ".agents" / "plugins" / "marketplace.json")
+    if not isinstance(marketplace, dict):
+        raise ValueError("marketplace document must be an object")
+    if marketplace.get("schema_version") != MARKETPLACE_SCHEMA_VERSION:
+        raise ValueError("marketplace schema version is invalid")
     if marketplace.get("name") != MARKETPLACE_NAME:
         raise ValueError("marketplace name is invalid")
     interface = marketplace.get("interface")
-    if not isinstance(interface, dict) or not isinstance(
-        interface.get("displayName"),
-        str,
+    if (
+        not isinstance(interface, dict)
+        or interface.get("displayName") != MARKETPLACE_DISPLAY_NAME
     ):
         raise ValueError("marketplace interface is invalid")
     entries = marketplace.get("plugins")

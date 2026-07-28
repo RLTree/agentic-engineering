@@ -68,9 +68,23 @@ class PackageValidationTests(unittest.TestCase):
             )
             path = candidate / ".agents" / "plugins" / "marketplace.json"
             path.parent.mkdir(parents=True)
+            path.write_text("[]", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "document must be an object"):
+                validate_marketplace(candidate)
             cases = [
+                (
+                    "schema version",
+                    lambda value: value.__setitem__("schema_version", "2.0"),
+                ),
                 ("marketplace name", lambda value: value.pop("name")),
                 ("interface", lambda value: value.pop("interface")),
+                (
+                    "interface",
+                    lambda value: value["interface"].__setitem__(
+                        "displayName",
+                        "Changed",
+                    ),
+                ),
                 ("plugins must be", lambda value: value.__setitem__("plugins", {})),
                 ("package set", lambda value: value["plugins"].pop()),
                 (
