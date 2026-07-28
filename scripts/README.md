@@ -32,6 +32,6 @@ python3 scripts/release_check.py --write --output evals/results/agentic-pack-set
 ```
 
 Legacy development audits also require their explicit `--write` switch before
-persisting reports under `evals/results/`. Validation reports unavailable live
-Codex, field-pilot, Cargo, or Rust compilation honestly; it never substitutes a
-static confidence claim for missing runtime proof.
+persisting reports under `evals/results/`. Validation honestly reports when live
+Codex, field-pilot, Cargo, or Rust compilation evidence is unavailable; it
+never substitutes a static confidence claim for missing runtime proof.

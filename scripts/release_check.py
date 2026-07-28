@@ -1,12 +1,18 @@
 #!/usr/bin/env python3
 """Run the Agentic 4.0.0 source-local release gates without default writes."""
+
 from __future__ import annotations
 
 import argparse
 import json
 from pathlib import Path
 
-from package_validation import render, repository_root, safe_generated_output, validate
+from package_validation import (
+    atomic_write_generated_json,
+    render,
+    repository_root,
+    validate,
+)
 
 
 def main() -> int:
@@ -24,12 +30,10 @@ def main() -> int:
     if args.write:
         root = repository_root()
         try:
-            output = safe_generated_output(root, args.output)
-        except ValueError as error:
+            atomic_write_generated_json(root, args.output, result)
+        except (OSError, ValueError) as error:
             print(f"release-check failed: {error}")
             return 1
-        output.parent.mkdir(parents=True, exist_ok=True)
-        output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"passed": True, "gates": 14, **result}, sort_keys=True))
     return 0
 

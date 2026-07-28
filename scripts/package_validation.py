@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 """Validate the explicit-only Agentic Engineering 4.0.0 package set."""
+
 from __future__ import annotations
 
 import json
 import os
+import secrets
 import stat
+from collections.abc import Iterable
 from dataclasses import dataclass
 from hashlib import sha256
 from pathlib import Path
-from typing import Iterable
 
 import yaml
 
@@ -74,10 +76,14 @@ def package_manifest_digest(package_root: Path) -> str:
         if path.is_dir():
             continue
         if not stat.S_ISREG(mode):
-            raise ValueError(f"{package_root.name}: package contains non-regular file {path}")
+            raise ValueError(
+                f"{package_root.name}: package contains non-regular file {path}"
+            )
         relative = path.relative_to(package_root).as_posix()
         if any(character in relative for character in ("\x00", "\n", "\r", "\t")):
-            raise ValueError(f"{package_root.name}: package path contains a control character")
+            raise ValueError(
+                f"{package_root.name}: package path contains a control character"
+            )
         content = path.read_bytes()
         encoded_path = relative.encode("utf-8")
         entries.append(
@@ -113,6 +119,59 @@ def safe_generated_output(root: Path, requested: Path) -> Path:
     return resolved
 
 
+def atomic_write_generated_json(root: Path, requested: Path, value: dict) -> Path:
+    """Atomically write JSON beneath evals/results without following links."""
+    output = safe_generated_output(root, requested)
+    lexical_root = Path(os.path.abspath(root))
+    relative = Path(os.path.abspath(requested)).relative_to(lexical_root)
+    directory_flags = os.O_RDONLY | getattr(os, "O_DIRECTORY", 0)
+    directory_flags |= getattr(os, "O_CLOEXEC", 0) | getattr(os, "O_NOFOLLOW", 0)
+    descriptors: list[int] = []
+    temporary_name: str | None = None
+    try:
+        descriptors.append(os.open(lexical_root, directory_flags))
+        for part in relative.parts[:-1]:
+            try:
+                os.mkdir(part, mode=0o700, dir_fd=descriptors[-1])
+            except FileExistsError:
+                pass
+            descriptors.append(os.open(part, directory_flags, dir_fd=descriptors[-1]))
+        parent = descriptors[-1]
+        filename = relative.parts[-1]
+        try:
+            target = os.stat(filename, dir_fd=parent, follow_symlinks=False)
+        except FileNotFoundError:
+            target = None
+        if target is not None and stat.S_ISLNK(target.st_mode):
+            raise ValueError("output path must not contain symlinks")
+        payload = (json.dumps(value, indent=2) + "\n").encode("utf-8")
+        temporary_name = f".{filename}.tmp-{os.getpid()}-{secrets.token_hex(8)}"
+        flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
+        flags |= getattr(os, "O_CLOEXEC", 0) | getattr(os, "O_NOFOLLOW", 0)
+        descriptor = os.open(temporary_name, flags, 0o600, dir_fd=parent)
+        with os.fdopen(descriptor, "wb") as handle:
+            handle.write(payload)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(
+            temporary_name,
+            filename,
+            src_dir_fd=parent,
+            dst_dir_fd=parent,
+        )
+        temporary_name = None
+        os.fsync(parent)
+        return output
+    finally:
+        if temporary_name is not None and descriptors:
+            try:
+                os.unlink(temporary_name, dir_fd=descriptors[-1])
+            except FileNotFoundError:
+                pass
+        for descriptor in reversed(descriptors):
+            os.close(descriptor)
+
+
 def package_inventory(root: Path, name: str) -> PackageInventory:
     package_root = root / "plugins" / name
     top_level = {path.name for path in package_root.iterdir()}
@@ -126,7 +185,8 @@ def package_inventory(root: Path, name: str) -> PackageInventory:
         raise ValueError(f"{name}: manifest identity is invalid")
     interface = manifest.get("interface")
     if not isinstance(interface, dict) or any(
-        not isinstance(interface.get(key), str) or not interface[key].startswith("https://")
+        not isinstance(interface.get(key), str)
+        or not interface[key].startswith("https://")
         for key in POLICY_URLS
     ):
         raise ValueError(f"{name}: policy URLs are incomplete")
@@ -135,16 +195,18 @@ def package_inventory(root: Path, name: str) -> PackageInventory:
         if not skill_dir.is_dir():
             continue
         meta = frontmatter(skill_dir / "SKILL.md")
-        if meta["name"] != skill_dir.name or not meta["description"].startswith("Use when "):
+        if meta["name"] != skill_dir.name or not meta["description"].startswith(
+            "Use when "
+        ):
             raise ValueError(f"{name}: invalid skill trigger for {skill_dir.name}")
         agent_path = skill_dir / "agents" / "openai.yaml"
         try:
             agent = yaml.safe_load(agent_path.read_text(encoding="utf-8"))
         except yaml.YAMLError as error:
-            raise ValueError(f"{name}: invalid agent YAML for {skill_dir.name}") from error
-        expected_prompt = (
-            f"Use ${name}:{skill_dir.name} as an explicit advisory lens through {GATEWAY}."
-        )
+            raise ValueError(
+                f"{name}: invalid agent YAML for {skill_dir.name}"
+            ) from error
+        expected_prompt = f"Use ${name}:{skill_dir.name} as an explicit advisory lens through {GATEWAY}."
         if (
             not isinstance(agent, dict)
             or set(agent) != {"interface", "policy"}
@@ -171,7 +233,11 @@ def validate(root: Path | None = None) -> tuple[PackageInventory, ...]:
     if set(union) != set(full) or len(full) != 30:
         raise ValueError("package skill union does not equal the 30-skill full profile")
     base = set(read_json(root / "profiles" / "ultragoal.json")["enabled_skills"])
-    if set(inventories[0].skills) != base:
+    base_inventory = next(
+        (item for item in inventories if item.name == "agentic-engineering"),
+        None,
+    )
+    if base_inventory is None or set(base_inventory.skills) != base:
         raise ValueError("base package does not equal the Ultragoal profile")
     return inventories
 

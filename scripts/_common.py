@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """Shared validation utilities for the Agentic Engineering Codex plugin."""
+
 from __future__ import annotations
 
 import hashlib
 import json
 import os
 import re
+from collections.abc import Iterable
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 FRONTMATTER_RE = re.compile(r"^---\n(.*?)\n---\n", re.S)
 MARKDOWN_LINK_RE = re.compile(r"!?(?:\[[^\]]*\])\(([^)]+)\)")
@@ -40,7 +42,10 @@ def load_json(path: Path) -> Any:
 def write_json(path: Path, value: Any) -> None:
     generated = results_dir().resolve()
     requested = Path(os.path.abspath(path))
-    if requested.is_symlink() or generated not in requested.resolve(strict=False).parents:
+    if (
+        requested.is_symlink()
+        or generated not in requested.resolve(strict=False).parents
+    ):
         raise ValueError("report path must be a non-symlink beneath evals/results")
     requested.parent.mkdir(parents=True, exist_ok=True)
     flags = os.O_WRONLY | os.O_CREAT | os.O_TRUNC
@@ -76,7 +81,17 @@ def parse_frontmatter(path: Path) -> tuple[dict[str, str], str]:
 
 
 def skill_dirs() -> list[Path]:
-    roots = sorted((plugin_root() / "plugins").glob("*/skills"))
+    roots: list[Path] = []
+    for package in sorted((plugin_root() / "plugins").iterdir()):
+        if package.is_symlink():
+            raise ValueError(f"symlinked package root: {package}")
+        if not package.is_dir():
+            continue
+        root = package / "skills"
+        if root.is_symlink():
+            raise ValueError(f"symlinked skills root: {root}")
+        if root.is_dir():
+            roots.append(root)
     return sorted(
         path
         for root in roots
@@ -86,7 +101,11 @@ def skill_dirs() -> list[Path]:
 
 
 def package_roots() -> list[Path]:
-    return sorted(path for path in (plugin_root() / "plugins").iterdir() if path.is_dir())
+    entries = sorted((plugin_root() / "plugins").iterdir())
+    links = [path for path in entries if path.is_symlink()]
+    if links:
+        raise ValueError(f"symlinked package root: {links[0]}")
+    return [path for path in entries if path.is_dir()]
 
 
 def local_markdown_targets(path: Path) -> Iterable[str]:
@@ -104,7 +123,13 @@ def local_markdown_targets(path: Path) -> Iterable[str]:
         yield target
 
 
-def make_report(name: str, passed: bool, errors: list[str], warnings: list[str], metrics: dict[str, Any] | None = None) -> dict[str, Any]:
+def make_report(
+    name: str,
+    passed: bool,
+    errors: list[str],
+    warnings: list[str],
+    metrics: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     return {
         "check": name,
         "passed": passed,

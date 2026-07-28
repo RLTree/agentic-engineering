@@ -13,6 +13,7 @@ import package_validation
 from package_validation import (
     PACKAGES,
     PackageInventory,
+    atomic_write_generated_json,
     frontmatter,
     package_inventory,
     package_manifest_digest,
@@ -27,7 +28,11 @@ class PackageValidationTests(unittest.TestCase):
     def test_render_has_a_stable_pack_set_shape(self) -> None:
         result = render(
             [
-                PackageInventory(name, tuple(f"{name}-{index}" for index in range(count)), f"sha256:{name}")
+                PackageInventory(
+                    name,
+                    tuple(f"{name}-{index}" for index in range(count)),
+                    f"sha256:{name}",
+                )
                 for name, count in PACKAGES.items()
             ]
         )
@@ -38,8 +43,12 @@ class PackageValidationTests(unittest.TestCase):
         self.assertTrue(result["aggregate_digest"].startswith("sha256:"))
 
     def test_render_is_json_serializable(self) -> None:
-        result = render([PackageInventory("agentic-engineering", ("one",), "sha256:one")])
-        self.assertEqual(json.loads(json.dumps(result))["packs"][0]["name"], "agentic-engineering")
+        result = render(
+            [PackageInventory("agentic-engineering", ("one",), "sha256:one")]
+        )
+        self.assertEqual(
+            json.loads(json.dumps(result))["packs"][0]["name"], "agentic-engineering"
+        )
 
     def test_current_package_set_validates(self) -> None:
         root = Path(__file__).resolve().parents[1]
@@ -78,24 +87,24 @@ class PackageValidationTests(unittest.TestCase):
             manifest.mkdir(parents=True)
             (manifest.parent / "skills").mkdir()
             (manifest / "plugin.json").write_text(
-                json.dumps({"name": "agentic-engineering", "version": "4.0.0", "interface": {}}),
+                json.dumps(
+                    {"name": "agentic-engineering", "version": "4.0.0", "interface": {}}
+                ),
                 encoding="utf-8",
             )
             with self.assertRaisesRegex(ValueError, "policy"):
                 package_inventory(root, "agentic-engineering")
 
-    def test_package_inventory_uses_effective_yaml_and_exact_gateway_prompt(self) -> None:
+    def test_package_inventory_uses_effective_yaml_and_exact_gateway_prompt(
+        self,
+    ) -> None:
         source = Path(__file__).resolve().parents[1] / "plugins" / "agentic-engineering"
         with TemporaryDirectory() as temporary:
             root = Path(temporary)
             package = root / "plugins" / "agentic-engineering"
             shutil.copytree(source, package)
             yaml_path = (
-                package
-                / "skills"
-                / "codex-task-contract"
-                / "agents"
-                / "openai.yaml"
+                package / "skills" / "codex-task-contract" / "agents" / "openai.yaml"
             )
             original = yaml_path.read_text(encoding="utf-8")
             yaml_path.write_text(
@@ -124,7 +133,9 @@ class PackageValidationTests(unittest.TestCase):
             package = root / "plugins" / "agentic-engineering"
             shutil.copytree(source, package)
             (package / "hooks").mkdir()
-            (package / "hooks" / "control.md").write_text("unexpected\n", encoding="utf-8")
+            (package / "hooks" / "control.md").write_text(
+                "unexpected\n", encoding="utf-8"
+            )
             with self.assertRaisesRegex(ValueError, "contain only"):
                 package_inventory(root, "agentic-engineering")
 
@@ -145,7 +156,9 @@ class PackageValidationTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "empty"):
                 package_manifest_digest(Path(temporary))
 
-    def test_package_manifest_rejects_symlinks_and_control_character_paths(self) -> None:
+    def test_package_manifest_rejects_symlinks_and_control_character_paths(
+        self,
+    ) -> None:
         with TemporaryDirectory() as temporary:
             root = Path(temporary)
             external = root.parent / f"{root.name}-external"
@@ -176,6 +189,20 @@ class PackageValidationTests(unittest.TestCase):
             (root / "evals" / "results").unlink()
             external.rmdir()
 
+    def test_atomic_generated_output_rejects_links_and_writes_json(self) -> None:
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            output = root / "evals" / "results" / "nested" / "report.json"
+            atomic_write_generated_json(root, output, {"passed": True})
+            self.assertEqual(
+                json.loads(output.read_text(encoding="utf-8")),
+                {"passed": True},
+            )
+            output.unlink()
+            output.symlink_to(root / "outside.json")
+            with self.assertRaisesRegex(ValueError, "symlink"):
+                atomic_write_generated_json(root, output, {"passed": False})
+
     def test_render_normalizes_enabled_skill_order_for_the_digest(self) -> None:
         forward = render(
             [PackageInventory("agentic-engineering", ("one", "two"), "sha256:one")]
@@ -187,21 +214,43 @@ class PackageValidationTests(unittest.TestCase):
 
     def test_validate_rejects_duplicate_and_mismatched_profiles(self) -> None:
         inventories = [
-            PackageInventory(name, tuple(f"{name}-{index}" for index in range(count)), f"sha256:{name}")
+            PackageInventory(
+                name,
+                tuple(f"{name}-{index}" for index in range(count)),
+                f"sha256:{name}",
+            )
             for name, count in PACKAGES.items()
         ]
         duplicate = list(inventories)
-        duplicate[1] = PackageInventory(duplicate[1].name, (inventories[0].skills[0],) + duplicate[1].skills[1:], "sha256:duplicate")
-        with patch.object(package_validation, "package_inventory", side_effect=duplicate):
+        duplicate[1] = PackageInventory(
+            duplicate[1].name,
+            (inventories[0].skills[0],) + duplicate[1].skills[1:],
+            "sha256:duplicate",
+        )
+        with patch.object(
+            package_validation, "package_inventory", side_effect=duplicate
+        ):
             with self.assertRaisesRegex(ValueError, "duplicates"):
                 validate(Path("."))
         full = [skill for item in inventories for skill in item.skills]
-        with patch.object(package_validation, "package_inventory", side_effect=inventories):
-            with patch.object(package_validation, "read_json", side_effect=[{"enabled_skills": ["wrong"]}]):
+        with patch.object(
+            package_validation, "package_inventory", side_effect=inventories
+        ):
+            with patch.object(
+                package_validation,
+                "read_json",
+                side_effect=[{"enabled_skills": ["wrong"]}],
+            ):
                 with self.assertRaisesRegex(ValueError, "full profile"):
                     validate(Path("."))
-        with patch.object(package_validation, "package_inventory", side_effect=inventories):
-            with patch.object(package_validation, "read_json", side_effect=[{"enabled_skills": full}, {"enabled_skills": ["wrong"]}]):
+        with patch.object(
+            package_validation, "package_inventory", side_effect=inventories
+        ):
+            with patch.object(
+                package_validation,
+                "read_json",
+                side_effect=[{"enabled_skills": full}, {"enabled_skills": ["wrong"]}],
+            ):
                 with self.assertRaisesRegex(ValueError, "base package"):
                     validate(Path("."))
         wrong_count = list(inventories)
@@ -210,9 +259,40 @@ class PackageValidationTests(unittest.TestCase):
             wrong_count[0].skills[:-1],
             wrong_count[0].digest,
         )
-        with patch.object(package_validation, "package_inventory", side_effect=wrong_count):
+        with patch.object(
+            package_validation, "package_inventory", side_effect=wrong_count
+        ):
             with self.assertRaisesRegex(ValueError, "counts"):
                 validate(Path("."))
+
+    def test_validate_selects_base_package_by_name_after_reordering(self) -> None:
+        reordered = dict(reversed(list(PACKAGES.items())))
+        by_name = {
+            name: PackageInventory(
+                name,
+                tuple(f"{name}-{index}" for index in range(count)),
+                f"sha256:{name}",
+            )
+            for name, count in reordered.items()
+        }
+        inventories = [by_name[name] for name in reordered]
+        full = [skill for item in inventories for skill in item.skills]
+        base = list(by_name["agentic-engineering"].skills)
+        with patch.object(package_validation, "PACKAGES", reordered):
+            with patch.object(
+                package_validation,
+                "package_inventory",
+                side_effect=inventories,
+            ):
+                with patch.object(
+                    package_validation,
+                    "read_json",
+                    side_effect=[
+                        {"enabled_skills": full},
+                        {"enabled_skills": base},
+                    ],
+                ):
+                    self.assertEqual(validate(Path(".")), tuple(inventories))
 
     def test_default_repository_root_is_the_project(self) -> None:
         self.assertEqual(repository_root(), Path(__file__).resolve().parents[1])

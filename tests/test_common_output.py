@@ -18,16 +18,16 @@ class CommonOutputTests(unittest.TestCase):
             with patch.object(_common, "plugin_root", return_value=root):
                 path = root / "evals" / "results" / "report.json"
                 _common.write_json(path, {"passed": True})
-                self.assertEqual(json.loads(path.read_text(encoding="utf-8")), {"passed": True})
+                self.assertEqual(
+                    json.loads(path.read_text(encoding="utf-8")), {"passed": True}
+                )
 
     def test_results_directory_symlink_is_rejected(self) -> None:
-        with TemporaryDirectory() as temporary:
+        with TemporaryDirectory() as temporary, TemporaryDirectory() as external:
             root = Path(temporary)
-            external = root.parent / f"{root.name}-external-results"
-            external.mkdir()
             (root / "evals").mkdir()
             (root / "evals" / "results").symlink_to(
-                external,
+                Path(external),
                 target_is_directory=True,
             )
             with patch.object(_common, "plugin_root", return_value=root):
@@ -36,8 +36,33 @@ class CommonOutputTests(unittest.TestCase):
                         root / "evals" / "results" / "report.json",
                         {"passed": True},
                     )
-            (root / "evals" / "results").unlink()
-            external.rmdir()
+
+    def test_plugin_root_symlinks_are_rejected_before_traversal(self) -> None:
+        with TemporaryDirectory() as temporary, TemporaryDirectory() as external:
+            root = Path(temporary)
+            plugins = root / "plugins"
+            plugins.mkdir()
+            (plugins / "linked").symlink_to(Path(external), target_is_directory=True)
+            with patch.object(_common, "plugin_root", return_value=root):
+                with self.assertRaisesRegex(ValueError, "package root"):
+                    _common.package_roots()
+                with self.assertRaisesRegex(ValueError, "package root"):
+                    _common.skill_dirs()
+            (plugins / "linked").unlink()
+            (plugins / "broken").symlink_to(root / "missing", target_is_directory=True)
+            with patch.object(_common, "plugin_root", return_value=root):
+                with self.assertRaisesRegex(ValueError, "package root"):
+                    _common.package_roots()
+
+    def test_symlinked_skills_root_is_rejected_before_traversal(self) -> None:
+        with TemporaryDirectory() as temporary, TemporaryDirectory() as external:
+            root = Path(temporary)
+            package = root / "plugins" / "package"
+            package.mkdir(parents=True)
+            (package / "skills").symlink_to(Path(external), target_is_directory=True)
+            with patch.object(_common, "plugin_root", return_value=root):
+                with self.assertRaisesRegex(ValueError, "skills root"):
+                    _common.skill_dirs()
 
 
 if __name__ == "__main__":

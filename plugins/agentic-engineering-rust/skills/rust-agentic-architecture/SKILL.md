@@ -74,7 +74,7 @@ Return a **Rust Agent Architecture** with:
 
 ## Shared references
 
-- Seven-layer map (canonical repository reference library: seven-layer-map.md)
-- Architecture escalation (canonical repository reference library: architecture-escalation.md)
-- GPT-5.6 Sol operating profile (canonical repository reference library: gpt-5.6-sol-operating-profile.md)
-- Evidence and confidence (canonical repository reference library: evidence-and-confidence.md)
+- [Seven-layer map](https://github.com/RLTree/agentic-engineering/blob/master/references/seven-layer-map.md)
+- [Architecture escalation](https://github.com/RLTree/agentic-engineering/blob/master/references/architecture-escalation.md)
+- [GPT-5.6 Sol operating profile](https://github.com/RLTree/agentic-engineering/blob/master/references/gpt-5.6-sol-operating-profile.md)
+- [Evidence and confidence](https://github.com/RLTree/agentic-engineering/blob/master/references/evidence-and-confidence.md)

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Validate Codex progressive-disclosure and low-privilege plugin conventions."""
+
 from __future__ import annotations
 
 import argparse
-from pathlib import Path
 import re
 import yaml
 
@@ -17,19 +17,32 @@ from _common import (
     write_json,
 )
 
-PROCESS_SHORTCUTS = re.compile(r"\b(?:then|step-by-step|dispatches|runs the workflow|produces a|first .* then)\b", re.I)
+PROCESS_SHORTCUTS = re.compile(
+    r"\b(?:then|step-by-step|dispatches|runs the workflow|produces a|first .* then)\b",
+    re.I,
+)
 PRIVILEGED_DIRS = {"hooks", "mcp", "connectors", "executables", "bin"}
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(); parser.add_argument("--write", action="store_true"); args = parser.parse_args()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--write", action="store_true")
+    args = parser.parse_args()
     errors: list[str] = []
-    warnings = ["Negative activation is validated by the routing corpus rather than spending description budget on every explicit specialist."]
+    warnings = [
+        "Negative activation is validated by the routing corpus rather than spending description budget on every explicit specialist."
+    ]
     descriptions: list[str] = []
     implicit: list[str] = []
     oversized: list[str] = []
 
-    for d in skill_dirs():
+    try:
+        directories = skill_dirs()
+    except ValueError as error:
+        errors.append(str(error))
+        directories = []
+
+    for d in directories:
         fields, text = parse_frontmatter(d / "SKILL.md")
         description = fields.get("description", "")
         descriptions.append(description)
@@ -38,10 +51,14 @@ def main() -> int:
         if len(description) > 180:
             errors.append(f"{d.name}: description is too long for discovery")
         if PROCESS_SHORTCUTS.search(description):
-            errors.append(f"{d.name}: description appears to summarize workflow instead of trigger")
+            errors.append(
+                f"{d.name}: description appears to summarize workflow instead of trigger"
+            )
         if len(text.encode("utf-8")) > 55_000:
             oversized.append(d.name)
-        data = yaml.safe_load((d / "agents" / "openai.yaml").read_text(encoding="utf-8"))
+        data = yaml.safe_load(
+            (d / "agents" / "openai.yaml").read_text(encoding="utf-8")
+        )
         if (data.get("policy") or {}).get("allow_implicit_invocation"):
             implicit.append(d.name)
 
@@ -53,7 +70,12 @@ def main() -> int:
         errors.append(f"oversized SKILL.md files: {oversized}")
 
     privileged = []
-    for package_root in package_roots():
+    try:
+        roots = package_roots()
+    except ValueError as error:
+        errors.append(str(error))
+        roots = []
+    for package_root in roots:
         for child in package_root.iterdir():
             if child.name.lower() in PRIVILEGED_DIRS:
                 privileged.append(f"{package_root.name}/{child.name}")
@@ -61,16 +83,28 @@ def main() -> int:
         errors.append(f"unexpected privileged plugin surfaces: {privileged}")
 
     # All specialist procedures must remain progressively disclosed locally.
-    for d in skill_dirs():
+    for d in directories:
         if not (d / "references").is_dir() or not any((d / "references").glob("*.md")):
             errors.append(f"{d.name}: no local progressive-disclosure references")
 
-    report = make_report("official-contract-validation", not errors, errors, warnings, {
-        "skills": len(descriptions), "unique_descriptions": len(set(descriptions)),
-        "implicit_gateway": implicit, "oversized_files": len(oversized),
-        "privileged_surfaces_declared": len(privileged),
-    })
-    if args.write: write_json(results_dir() / "official-contract-validation.json", report)
-    print_report(report); return 0 if report["passed"] else 1
+    report = make_report(
+        "official-contract-validation",
+        not errors,
+        errors,
+        warnings,
+        {
+            "skills": len(descriptions),
+            "unique_descriptions": len(set(descriptions)),
+            "implicit_gateway": implicit,
+            "oversized_files": len(oversized),
+            "privileged_surfaces_declared": len(privileged),
+        },
+    )
+    if args.write:
+        write_json(results_dir() / "official-contract-validation.json", report)
+    print_report(report)
+    return 0 if report["passed"] else 1
 
-if __name__ == "__main__": raise SystemExit(main())
+
+if __name__ == "__main__":
+    raise SystemExit(main())
