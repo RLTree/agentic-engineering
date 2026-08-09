@@ -44,4 +44,6 @@ Decision rights prevent fluent automation from silently acquiring authority. Ass
 
 ## Research basis
 
-Draws on current agent autonomy, HAX/PAIR human-AI guidance, and deployed-AI governance [R73] [R75] [R93] [R94].
+Draws on agent autonomy, HAX/PAIR human-AI guidance, and deployed-AI governance.
+NIST AI 800-4 supplies monitoring questions, not a prescribed governance method
+(`F-NIST-AI800-4`). Historical lineage: [R73] [R75] [R93] [R94].

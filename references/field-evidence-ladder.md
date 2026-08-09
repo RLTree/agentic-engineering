@@ -46,4 +46,8 @@ Define the workload population before collecting convenient traces. Sample acros
 
 ## Research basis
 
-This ladder integrates agent outcome/trajectory evaluation, post-deployment monitoring, controlled field trials, human-AI workflow study, and experimentation validity [R72] [R74] [R75] [R77] [R78] [R79] [R80].
+This ladder integrates agent outcome/trajectory evaluation, monitoring questions,
+controlled field trials, human-AI workflow study, and experimentation validity.
+NIST AI 800-4 is descriptive rather than a prescribed field-evidence method
+(`F-NIST-AI800-4`). Historical lineage: [R72] [R74] [R75] [R77] [R78] [R79]
+[R80].

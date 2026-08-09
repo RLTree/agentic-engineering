@@ -15,4 +15,6 @@ Include:
 
 Apply ingestion-lag buffers. Preserve `no data`, `insufficient integrity`, and `not comparable` states. Do not persist raw user content or identifiers unless separately authorized and necessary.
 
-Evidence basis: R131, R133, R134, R148.
+The NIST continuous-monitor communication is emerging research, not a normative
+operating standard (`F-NIST-AGENT-INIT`). Historical lineage: R131, R133, R134,
+R148.

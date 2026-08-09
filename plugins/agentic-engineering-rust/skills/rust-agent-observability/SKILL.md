@@ -9,6 +9,10 @@ description: "Use when a Rust agent needs typed telemetry identities, tracing, O
 
 Observability is a typed product and control contract, not printf logging. Model runs, tasks, decisions, actions, effects, approvals, interventions, and outcomes with stable identities; propagate context through Tokio and external tools; bound cardinality and sensitive data; and test that telemetry supports diagnosis and field-learning decisions.
 
+## Version and claim ceiling
+
+At the 2026-08-08 implementation lock, use OpenTelemetry Specification **1.59.0** and semantic conventions **1.43.0** as the compatibility baseline. Treat GenAI semantic-convention fields as experimental and version-sensitive: isolate them behind adapters, emit the chosen convention version, and migration-test producers and consumers. Telemetry, traces, dashboards, and schema checks establish observability evidence only; they do not independently prove domain/product outcomes, model behavior, safety, or release readiness. Return proposed instrumentation and evidence requirements until an authorized implementation and its independent runtime evidence exist.
+
 ## Workflow
 
 ### 1. Define evidence and operator questions
@@ -37,7 +41,7 @@ Attach feature-flag/variant and cohort context without using flags as authorizat
 
 ### 7. Verify and operate telemetry
 
-Test schema stability, context propagation, redaction, sampling, exporter failure, non-blocking behavior, shutdown flush, data-quality monitors, and queries used in reviews. Record OpenTelemetry and crate maturity assumptions and pin versions downstream.
+Test schema stability, context propagation, redaction, sampling, exporter failure, non-blocking behavior, shutdown flush, data-quality monitors, and queries used in reviews. Record the pinned OpenTelemetry and semantic-convention versions, plus crate maturity assumptions, downstream.
 
 ## Output contract
 

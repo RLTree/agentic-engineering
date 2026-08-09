@@ -59,4 +59,8 @@ A complete template does not prove a claim. Reviewers should ask:
 
 ## Research basis
 
-This contract combines assurance-case reasoning, systems and requirements traceability, SRE launch and error-budget practice, secure release evidence, and post-deployment AI monitoring [R75] [R76] [R83] [R84] [R85] [R95] [R102] [R103] [R106].
+This contract combines assurance-case reasoning, systems and requirements
+traceability, SRE launch and error-budget practice, secure release evidence, and
+monitoring questions. NIST AI 800-4 is descriptive rather than a prescribed
+readiness method (`F-NIST-AI800-4`). Historical lineage: [R75] [R76] [R83]
+[R84] [R85] [R95] [R102] [R103] [R106].

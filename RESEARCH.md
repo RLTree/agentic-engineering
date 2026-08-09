@@ -1,5 +1,9 @@
 # Agentic Engineering for Codex and Rust in 2026
 
+> **Historical research snapshot through 2026-07-22.** Useful for lineage and
+> vocabulary, not current version-sensitive implementation or release authority.
+> Current foundations: `docs/foundations/current-2026-08-08.md`.
+
 ## Research and operational analysis for the Agentic Engineering Codex plugin
 
 **Research lock:** July 22, 2026  

@@ -2,6 +2,12 @@
 
 A research-backed decision system for GPT-5.6 Sol and Codex that operationalizes agentic architecture, authentic-use field learning, full-lifecycle product and systems engineering, task contracts, context and repository design, harnesses, bounded loops, explicit graphs, evaluation, security, release, SRE, continuous experimentation, maintenance, retirement, and resilient Rust agent applications.
 
+> **Research authority:** `RESEARCH.md`, `RESEARCH-V3-ADDENDUM.md`,
+> `SOURCE-MANIFEST.json`, and `EVIDENCE-MATRIX.csv` are historical snapshots
+> through 2026-07-22. They remain useful for lineage and vocabulary, but are not
+> current version-sensitive implementation or release authority. Current
+> foundations: `docs/foundations/current-2026-08-08.md`.
+
 **Research lock:** July 22, 2026, America/Los_Angeles  
 **Release:** 3.0.1  
 **Default privilege:** no hooks, connectors, MCP servers, network calls, or installation executables
@@ -135,9 +141,10 @@ Use $agentic-engineering to diagnose the responsible control and lifecycle layer
 
 Start with:
 
+- `docs/foundations/current-2026-08-08.md` for current implementation decisions and claim ceilings;
 - `references/field-lifecycle-vocabulary.md` for promptable terms;
-- `RESEARCH.md` for the complete synthesis and source catalog;
-- `SOURCE-MANIFEST.json` and `EVIDENCE-MATRIX.csv` for evidence traceability;
+- `RESEARCH.md` for the historical synthesis and source lineage;
+- `SOURCE-MANIFEST.json` and `EVIDENCE-MATRIX.csv` for the historical 2026-07-22 inventory and mapping;
 - `references/controlled-field-learning-system.md` and `references/full-lifecycle-map.md` for the operating models.
 
 ## Installation

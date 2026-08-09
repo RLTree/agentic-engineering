@@ -9,6 +9,10 @@ description: "Use when agents handle untrusted input, capabilities, secrets, ext
 
 Treat model output and retrieved content as untrusted proposals. Authorization, validation, irreversible effects and data boundaries must be enforced by deterministic systems with human control at consequence thresholds.
 
+## Authority and claim ceiling
+
+Treat NIST agent initiative, research, and concept materials as emerging/draft and non-normative: they can inform threat discovery or proposal design, but are not conformance authority. Anchor enforceable requirements in the applicable final standards, law, policy, and system-specific controls. This skill returns a proposed governance plan; a threat model, policy, or test suite alone does not prove live security, authorization effectiveness, incident readiness, or domain/product behavior. Those claims require independently observed evidence at the relevant boundary.
+
 ## Workflow
 
 ### 1. Model assets, actors and trust boundaries

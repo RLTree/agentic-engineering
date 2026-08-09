@@ -62,4 +62,8 @@ Use both event-triggered and periodic review:
 
 ## Research basis
 
-The system operationalizes current agent-improvement loops, macro/trajectory evals, autonomy practice, post-deployment AI monitoring, silent-trial literature, controlled experimentation, and SRE progressive exposure [R71] [R72] [R73] [R74] [R75] [R77] [R78] [R79] [R107].
+The system operationalizes agent-improvement loops, macro/trajectory evals,
+autonomy practice, monitoring questions, silent-trial literature, controlled
+experimentation, and SRE progressive exposure. NIST AI 800-4 is a descriptive
+challenge taxonomy rather than a prescribed method (`F-NIST-AI800-4`).
+Historical lineage: [R71] [R72] [R73] [R74] [R75] [R77] [R78] [R79] [R107].

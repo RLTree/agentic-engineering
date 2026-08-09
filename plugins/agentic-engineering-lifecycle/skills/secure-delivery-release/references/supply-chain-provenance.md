@@ -2,6 +2,10 @@
 
 Agentic products include source, dependencies, models, prompts, skills, tools, protocol schemas, datasets, containers, infrastructure and build systems. Inventory and provenance must cover the whole behavior-producing supply chain.
 
+## Current implementation reader and claim ceiling
+
+Use final **NIST SSDF 1.1** as the controlling secure-development baseline. **SSDF 1.2 draft** guidance may inform proposals but is provisional and cannot establish conformance. Use **SLSA v1.2** (approved 2025-11-24), evaluating the Source and Build tracks separately. SLSA attestations establish provenance/integrity claims about declared source, build, and artifact relationships; they do not establish behavior, safety, deployment success, or release readiness. This reference yields a proposed evidence plan until the exact artifact and independently verified evidence are available.
+
 ## Vocabulary
 - **SBOM:** Machine-readable inventory of software components and dependencies.
 - **attestation:** Signed or verifiable statement about build, test, review or provenance.
@@ -12,7 +16,7 @@ Agentic products include source, dependencies, models, prompts, skills, tools, p
 ## Decision procedure
 1. Inventory first- and third-party source, crates/packages, containers, actions, models, prompts/skills, datasets, tools/MCP/A2A endpoints, infrastructure modules and build services.
 2. Pin and lock dependencies; control registries, checksums, signatures, identities and update policy.
-3. Generate SBOM and provenance for exact artifacts; record model/tool/schema/config versions separately when not embedded.
+3. Generate SBOM and provenance for exact artifacts; evaluate SLSA Source and Build evidence separately; record model/tool/schema/config versions separately when not embedded.
 4. Scan vulnerabilities, licenses, malicious packages, secrets and policy violations; assess exploitability and reachability.
 5. Harden CI/CD identities, runners, permissions, branch/review rules, artifact signing and release promotion.
 6. Define update, emergency patch, compromise, rollback, revocation, vendor exit and retirement procedures.
@@ -46,4 +50,4 @@ Agentic products include source, dependencies, models, prompts, skills, tools, p
 
 ## Research basis
 
-Based on NIST SSDF, SLSA, CycloneDX and CISA supply-chain guidance [R95] [R98] [R99] [R101].
+Based on final NIST SSDF 1.1, provisional SSDF 1.2 draft material, SLSA v1.2, CycloneDX and CISA supply-chain guidance [R95] [R98] [R99] [R101].

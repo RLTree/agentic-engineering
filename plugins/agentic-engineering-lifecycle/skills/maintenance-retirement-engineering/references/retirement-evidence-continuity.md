@@ -46,4 +46,7 @@ Retirement must preserve enough evidence to explain historical decisions, incide
 
 ## Research basis
 
-Uses lifecycle/retirement guidance, secure data handling, provenance and postmortem learning [R92] [R98] [R105] [R112].
+Uses lifecycle/retirement guidance, secure data handling, provenance and postmortem
+learning. Current SLSA decision: v1.2 Source and Build tracks support provenance
+and integrity, not behavioral correctness (`F-SLSA-12`). Historical lineage:
+[R92] [R98] [R105] [R112].

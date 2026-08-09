@@ -45,4 +45,7 @@ Traceability connects why the product exists to what is built, how it is tested,
 
 ## Research basis
 
-Grounded in requirements and lifecycle standards, post-deployment monitoring, and assurance practice [R75] [R83] [R84] [R85].
+Grounded in requirements and lifecycle standards, monitoring questions, and
+assurance practice. NIST AI 800-4 is descriptive rather than a prescribed
+validation method (`F-NIST-AI800-4`). Historical lineage: [R75] [R83] [R84]
+[R85].

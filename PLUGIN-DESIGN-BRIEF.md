@@ -1,5 +1,9 @@
 # Plugin Design Brief
 
+> **Historical Version 2/3 design and release record.** Retained for lineage,
+> not current package, research, release, behavioral-efficacy, or product-quality
+> authority. Current foundations: `docs/foundations/current-2026-08-08.md`.
+
 ## 1. Situation
 
 The user has strong architectural instincts but lacks compact vocabulary and reusable contracts for asking Codex to produce coherent, professional agentic systems. The failure pattern is excessive conversational repair: ambiguous adjectives are interpreted inconsistently; control flow remains hidden; state, effects, recovery and evidence are added late; and Rust implementation details become coupled to whichever provider/framework is chosen first.

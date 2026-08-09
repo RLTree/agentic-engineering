@@ -41,4 +41,8 @@ Agents may accelerate search, synthesis, trace maintenance, option generation, i
 
 ## Research basis
 
-The map synthesizes lifecycle-process standards, requirements and systems-engineering guidance, agile service-development guidance, secure software-development frameworks, SRE practice, and current agent-evaluation and field-monitoring guidance [R75] [R83] [R84] [R85] [R90] [R91] [R95] [R102] [R110].
+The map synthesizes lifecycle-process standards, requirements and systems
+engineering, agile service development, secure-development frameworks, SRE,
+agent evaluation, and monitoring questions. NIST AI 800-4 is descriptive rather
+than a prescribed lifecycle method (`F-NIST-AI800-4`). Historical lineage:
+[R75] [R83] [R84] [R85] [R90] [R91] [R95] [R102] [R110].

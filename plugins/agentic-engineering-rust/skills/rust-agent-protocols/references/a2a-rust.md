@@ -1,10 +1,10 @@
 # A2A in Rust
 
-Use an agent-to-agent protocol when independently operated agents need capability discovery, task lifecycle, messages/artifacts and long-running coordination. Do not use A2A merely for internal function calls that a typed service API or queue handles more simply.
+Use A2A v1.0 only when independently operated, interoperable agent systems need capability discovery, task lifecycle, messages/artifacts and long-running coordination. Do not use A2A for internal subagents, tool calls, or internal function calls that a typed service API or queue handles more simply.
 
 ## Boundary distinction
 
-MCP primarily connects a model/agent to tools, resources and prompts. A2A connects peer agents/services that own their own reasoning and task lifecycle. A system may use both, but keep trust and identity boundaries distinct.
+MCP primarily connects a model/agent to tools, resources and prompts. A2A v1.0 connects independently operated peer agent systems that own their own reasoning and task lifecycle. A system may use both, but keep trust and identity boundaries distinct.
 
 ## Rust architecture
 

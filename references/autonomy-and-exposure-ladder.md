@@ -48,4 +48,7 @@ Oversight is a system, not a button. Define what the reviewer sees, what is hidd
 
 ## Research basis
 
-This ladder operationalizes current evidence on agent autonomy in practice, human oversight, deployed-AI monitoring, progressive delivery, and reliable launches [R73] [R75] [R93] [R94] [R106] [R107].
+This ladder operationalizes evidence on agent autonomy, human oversight,
+monitoring questions, progressive delivery, and reliable launches. NIST AI
+800-4 is a challenge taxonomy rather than a prescribed exposure method
+(`F-NIST-AI800-4`). Historical lineage: [R73] [R75] [R93] [R94] [R106] [R107].

@@ -9,6 +9,10 @@ description: "Use when an agentic product needs secure development, provenance, 
 
 A release is an authorized transition of a specific, provenance-verifiable artifact into a bounded operating envelope. Security, supply-chain integrity, migration, observability, progressive exposure, rollback, and operator readiness are part of the product change—not post-build paperwork.
 
+## Current implementation reader and claim ceiling
+
+Use final **NIST SSDF 1.1** as the controlling SSDF baseline; treat **SSDF 1.2 draft** material as provisional until finalized. Use **SLSA v1.2** (approved 2025-11-24) with its separate Source and Build tracks to structure provenance evidence. SLSA provenance/integrity evidence links source, build, and artifact; it does not prove release behavior, migration safety, security effectiveness, or product outcomes. Produce a proposed release package and explicit missing-evidence list until authorized execution and independent release/runtime evidence are recorded.
+
 ## Workflow
 
 ### 1. Define the release object and trust boundaries
@@ -21,7 +25,7 @@ Cover prompt/context injection, poisoned retrieval, tool abuse, privilege escala
 
 ### 3. Build supply-chain evidence
 
-Use pinned/locked dependencies, vulnerability and license policy, SBOM, isolated build, provenance/attestation, signing where applicable, secret scanning, code review, protected branches, and artifact hash verification. Record waivers with owner and expiry.
+Use pinned/locked dependencies, vulnerability and license policy, SBOM, isolated build, provenance/attestation, signing where applicable, secret scanning, code review, protected branches, and artifact hash verification. Evaluate SLSA Source and Build requirements separately. Record waivers with owner and expiry.
 
 ### 4. Verify release and migration behavior
 

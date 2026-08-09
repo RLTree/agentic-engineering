@@ -45,4 +45,7 @@ A handoff is complete when another person or agent can reproduce what changed, w
 
 ## Research basis
 
-Uses SLSA provenance, CycloneDX SBOM, secure release and reproducible release engineering [R98] [R99] [R108].
+Uses SLSA provenance, CycloneDX SBOM, secure release and reproducible release
+engineering. SLSA v1.2 Source and Build tracks support provenance and integrity,
+not behavioral correctness (`F-SLSA-12`). Historical lineage: [R98] [R99]
+[R108].

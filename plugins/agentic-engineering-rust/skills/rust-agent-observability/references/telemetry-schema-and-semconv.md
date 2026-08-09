@@ -2,6 +2,10 @@
 
 Define typed, versioned telemetry for agent runs, decisions, tools, effects, approvals, interventions and outcomes. Adopt OpenTelemetry semantic conventions where stable and isolate experimental conventions behind adapters/version fields.
 
+## Current implementation reader and claim ceiling
+
+For the 2026-08-08 lock, implement against OpenTelemetry Specification **1.59.0** and semantic conventions **1.43.0**. GenAI fields remain experimental/version-sensitive: record the emitted convention version, use an adapter rather than a domain schema, and migration-test upgrades. A conforming event schema or trace proves only telemetry interoperability and data-quality properties; domain/product outcomes, model behavior, safety, and release readiness need independent evidence. This reference produces proposed contracts and checks, not authorization or completion claims.
+
 ## Vocabulary
 - **semantic convention:** Shared attribute/span/metric naming and meaning for interoperability.
 - **schema version:** Identifier for the event contract used by producers and consumers.
@@ -12,7 +16,7 @@ Define typed, versioned telemetry for agent runs, decisions, tools, effects, app
 ## Decision procedure
 1. List operator/product/safety/field-learning questions and derive minimum events, spans and metrics.
 2. Define enums and structs for run/task/action/effect/approval/intervention/outcome with stable IDs, timestamps, versions, cohort and privacy class.
-3. Map stable OpenTelemetry resource/service and relevant GenAI attributes; namespace local fields and record semantic-convention version.
+3. Map stable OpenTelemetry resource/service attributes; use relevant GenAI attributes only through the pinned, versioned adapter; namespace local fields and record semantic-convention version.
 4. Separate low-cardinality metric labels from high-cardinality event/span attributes; attach exemplars where useful.
 5. Create serialization/schema compatibility, unknown-value and redaction policies; keep provider SDK payloads behind adapters.
 6. Validate producer/consumer compatibility, trace joins, event ordering, duplicate handling and query correctness.

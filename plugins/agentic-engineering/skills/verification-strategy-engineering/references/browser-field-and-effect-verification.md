@@ -8,4 +8,6 @@ For external effects, verify prepared, dispatched, confirmed, ambiguous, reconci
 
 Field evidence requires an operating envelope, exposure/assignment integrity, privacy policy, severe-event stop rule, and a claim ceiling.
 
-Evidence basis: R130, R141, R147.
+Current foundation: the NIST agent initiative is emerging and non-normative
+(`F-NIST-AGENT-INIT`); it does not authorize a conformance claim or mandatory
+field program. Historical lineage: R130, R141, R147.

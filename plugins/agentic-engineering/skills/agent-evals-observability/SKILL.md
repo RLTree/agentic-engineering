@@ -33,11 +33,11 @@ Prefer executable oracles. For model graders, define rubric, evidence input, amb
 
 ### 6. Compare variants fairly
 
-Freeze fixtures, environment, tool versions, budgets and evidence. Randomize/blind human review where practical. Report confidence intervals or at least paired wins/losses and failure categories.
+Freeze fixtures, environment, tool versions, budgets and evidence. Randomize/blind human review where practical. Predeclare the evaluated population, unit, data quality, uncertainty and statistical limits; report confidence intervals or at least paired wins/losses and failure categories. Do not extrapolate beyond the tested population.
 
 ### 7. Add release and online gates
 
-Set thresholds by consequence, not a single aggregate average. Preserve a small fast regression suite and a broader scheduled suite. Monitor drift, cost, latency and novel failure clusters.
+Set thresholds by consequence, not a single aggregate average. Preserve a small fast regression suite and a broader scheduled suite. Monitor drift, cost, latency and novel failure clusters. Use NIST AI 800-4 only as a taxonomy for monitoring questions and open challenges, not as a validated monitoring methodology or mandate for universal infrastructure.
 
 ### 8. Close the loop
 

@@ -44,4 +44,7 @@ Use the stage map to locate the current decision, expose missing predecessor evi
 
 ## Research basis
 
-Grounded in lifecycle standards, agile service development, SRE, and deployed-AI monitoring [R75] [R83] [R84] [R90] [R91].
+Grounded in lifecycle standards, agile service development, SRE, and deployed-AI
+monitoring. NIST AI 800-4 supplies a challenge taxonomy rather than a prescribed
+methodology (`F-NIST-AI800-4`). Historical lineage: [R75] [R83] [R84] [R90]
+[R91].

@@ -46,4 +46,7 @@ Field instrumentation must reconstruct the joint human-agent-system trajectory, 
 
 ## Research basis
 
-Uses agent trajectory evaluation, post-deployment monitoring, OpenTelemetry, W3C trace context, and privacy guidance [R72] [R75] [R118] [R119] [R121] [R123].
+Uses agent trajectory evaluation, monitoring questions, OpenTelemetry, W3C trace
+context, and privacy guidance. NIST AI 800-4 is descriptive rather than a
+prescribed instrumentation method (`F-NIST-AI800-4`). Historical lineage: [R72]
+[R75] [R118] [R119] [R121] [R123].

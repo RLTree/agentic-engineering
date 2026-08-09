@@ -45,4 +45,7 @@ A baseline is an agreed, versioned decision state used for coordination—not a 
 
 ## Research basis
 
-Uses lifecycle/configuration and requirements standards, secure release, and field-monitoring principles [R75] [R83] [R84] [R85] [R95].
+Uses lifecycle/configuration and requirements standards, secure release, and
+monitoring questions. NIST AI 800-4 is a challenge taxonomy rather than a
+prescribed change-control method (`F-NIST-AI800-4`). Historical lineage: [R75]
+[R83] [R84] [R85] [R95].

@@ -13,15 +13,15 @@ Protocols define wire interoperability, not application correctness or authoriza
 
 ### 1. Choose the right boundary
 
-Use MCP for model/agent access to tools and resources. Use A2A for communication and task collaboration between agentic applications. Do not add either protocol when a local function or ordinary service API is the simpler boundary.
+Use MCP for model/agent access to tools and resources. Use A2A v1.0 only for independently operated, interoperable agent systems. Native subagent delegation and tool calls do not require A2A; do not add either protocol when a local function or ordinary service API is the simpler boundary.
 
 ### 2. Pin the contract
 
-Record protocol/spec version, SDK/repository, transport, auth model, capability negotiation and compatibility policy. Re-check current official sources before implementation.
+Record protocol/spec version, SDK/repository, transport, auth model, capability negotiation and compatibility policy. For new MCP implementations in the 2026-07-28 stateless-first era, avoid new dependencies on deprecated Roots, Sampling, Logging, Dynamic Client Registration and legacy HTTP+SSE; retain compatibility only for a named current consumer. Re-check current official sources before implementation.
 
 ### 3. Design domain-owned schemas
 
-Define typed request, result and error semantics first. Generate or validate JSON Schema where applicable. Keep `rmcp`/A2A SDK types in adapters. Read [schema-first tool design](references/schema-first-tool-design.md).
+Define typed request, result and error semantics first. Generate or validate full JSON Schema 2020-12 where supported. Keep `rmcp`/A2A SDK types in adapters. Read [schema-first tool design](references/schema-first-tool-design.md).
 
 ### 4. Engineer MCP tools
 

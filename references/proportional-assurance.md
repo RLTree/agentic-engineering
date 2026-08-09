@@ -11,4 +11,6 @@ Assurance intensity should follow consequence, reversibility, novelty, uncertain
 
 Profiles tailor evidence; they never weaken security, privacy, authorization, provenance, or destructive-effect boundaries.
 
-Evidence basis: R128, R132, R151.
+Current foundation: SSDF 1.1 is controlling and SSDF 1.2 remains draft provisional
+(`F-SSDF-11`, `F-SSDF-12-DRAFT`). Historical lineage: R128, R132; R151 is a
+non-authoritative duplicate of the draft entry.

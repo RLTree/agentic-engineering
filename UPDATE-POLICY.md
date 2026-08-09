@@ -1,41 +1,50 @@
 # Research and Compatibility Update Policy
 
-## Research lock
+## Current authority
 
-This release is current through **2026-07-22, America/Los_Angeles**.
+`docs/foundations/current-2026-08-08.md` and
+`docs/foundations/register.csv` are the sole current external-research authority.
+`RESEARCH.md`, `RESEARCH-V3-ADDENDUM.md`, `SOURCE-MANIFEST.json`, and
+`EVIDENCE-MATRIX.csv` are historical lineage through 2026-07-22. Their source
+count, coverage, and length do not establish package quality or release validity.
 
-## Re-verify before changing or hard-coding
+Use official or primary sources first. Recheck version-sensitive guidance at
+the point of use and follow the review trigger in the current register.
 
-- GPT-5.6 Sol model name, availability, effort/power settings, Max/Ultra behavior and Codex CLI syntax;
-- Codex plugin manifest/marketplace schema, installation UI/commands, skill metadata limits and optional `agents/openai.yaml` fields;
-- AGENTS.md precedence/size behavior;
-- MCP and A2A protocol versions, SDK maturity and transport/capability support;
-- Rust/Tokio/Cargo/Miri/Loom/RustSec APIs and recommended commands;
-- agent-framework and durable-runtime semantics.
+## Decision-delta workflow
 
-Use official/primary sources first. Record access date and change the research lock when findings alter behavior.
+For a source change:
 
-## Update triggers
+1. identify the exact old and new claim and its `foundation_id`;
+2. identify the affected current repository decision and its canonical owner;
+3. choose `no_change`, `update`, `replace`, or `retire`;
+4. name the cheapest falsifier for the proposed decision delta;
+5. change only the canonical source, code, test, configuration, skill, or
+   reference that consumes the decision;
+6. add or update a held-out case only when behavior could materially change;
+7. validate at the narrowest affected boundary before broader release checks;
+8. add one compact row to `docs/foundations/decision-log.csv` only when the
+   decision must survive the session.
 
-- Codex changelog changes plugin, skill, subagent, permission or model behavior;
-- a source marked official becomes deprecated or superseded;
-- routing/eval production failure repeats;
-- new security incident affects tools, protocols, plugins, memory or effects;
-- Rust fragments no longer compile under the supported toolchain;
-- blind Sol A/B fails to show benefit or reveals a regression;
-- user corrections show that a concept is missing or over-prescribed.
+A source change does not automatically update the historical manifest, evidence
+matrix, monograph, every skill, a schema, a template, a receipt, or a release
+claim. `no_change` is a valid result when the current decision remains supported.
 
-## Change protocol
+## Persistence and claims
 
-1. capture the change and affected source IDs;
-2. update `SOURCE-MANIFEST.json`, `EVIDENCE-MATRIX.csv` and `RESEARCH.md` together;
-3. write the expected decision delta;
-4. update only the skills/references/assets/scripts implicated;
-5. add positive, negative and ambiguous eval cases;
-6. run all mandatory release gates and target-environment checks where available;
-7. update version, changelog, file manifest and confidence;
-8. preserve or explicitly migrate compatibility for existing skill names and links.
+Persist only adopted cross-session decisions, canonical implementation or tests,
+or evidence with a named consumer or custody need. Routine source discovery,
+validation, creator/reviewer work, and no-op review remain zero-write by default.
 
-## Deprecation
+Source review supports only the exact stated principle. Structural validation
+supports only the checked package structure. Activation, isolated adviser value,
+composition, clean-host behavior, and field usefulness require their own stage
+evidence and cannot be inferred from source inventory or documentation.
 
-Mark superseded guidance before removal. Prefer compatibility notes and a migration path when renaming skills, schemas or templates. Never silently reinterpret an effect, approval or replay contract for in-flight durable systems.
+## Compatibility and retirement
+
+Before retiring guidance, identify current readers and package consumers,
+migrate or remove them, prove the rendered package no longer contains the active
+surface, and rerun the affected checks. Use Git history for superseded material;
+do not create an in-repository archive. Never silently reinterpret an effect,
+approval, protocol, or replay contract for an in-flight system.

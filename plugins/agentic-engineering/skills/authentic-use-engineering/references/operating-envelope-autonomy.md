@@ -44,4 +44,7 @@ An operating envelope defines where claims, permissions, controls, and evidence 
 
 ## Research basis
 
-Based on deployed-AI monitoring, autonomy-in-practice guidance, secure agent capability controls, and progressive delivery [R73] [R75] [R106] [R107] [R115] [R124].
+Based on monitoring questions, autonomy-in-practice guidance, secure capability
+controls, and progressive delivery. NIST AI 800-4 is a challenge taxonomy, not a
+prescribed operating-envelope method (`F-NIST-AI800-4`). Historical lineage:
+[R73] [R75] [R106] [R107] [R115] [R124].

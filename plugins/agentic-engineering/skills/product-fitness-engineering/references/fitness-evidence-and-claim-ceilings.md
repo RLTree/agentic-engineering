@@ -11,4 +11,6 @@ A later class requires its own observation and cannot be inferred from an earlie
 
 Product correctness, Product Fitness, Product Cohesion, and causal experiment evidence answer different questions. Do not substitute one for another.
 
-Evidence basis: R131, R144, R148.
+The NIST continuous-monitor communication is emerging research, not a normative
+product-fitness or conformance standard (`F-NIST-AGENT-INIT`). Historical
+lineage: R131, R144, R148.

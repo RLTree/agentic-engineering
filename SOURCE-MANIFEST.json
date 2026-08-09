@@ -417,27 +417,27 @@
       "id": "R27",
       "evidence_class": "A",
       "topic": "Tools and protocols",
-      "source": "Model Context Protocol — Tools specification",
-      "date": "2026",
-      "type": "open protocol specification",
-      "key_finding": "MCP tools use JSON Schema and model-controlled invocation but require validation, access control, clear user visibility, timeouts, logging, and safe output handling.",
-      "operationalization": "Encode schema-first tools, server-side authorization, approval visibility, output sanitation, and MCP conformance.",
+      "source": "Model Context Protocol — 2026-07-28 specification release",
+      "date": "2026-07-28",
+      "type": "official protocol release",
+      "key_finding": "Modern MCP is stateless-first and uses full JSON Schema 2020-12 where supported; Roots, Sampling, Logging, Dynamic Client Registration, and legacy HTTP+SSE are deprecated for new implementations, with compatibility windows.",
+      "operationalization": "Use stateless-first schema-validated tools for new work, avoid new dependencies on deprecated features, and retain compatibility only for a named current consumer.",
       "affected_skills": [
         "harness-engineering",
         "agent-security-governance",
         "rust-agent-protocols"
       ],
-      "url": "https://modelcontextprotocol.io/specification/draft/server/tools"
+      "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28/"
     },
     {
       "id": "R28",
       "evidence_class": "A",
       "topic": "Agent protocols",
-      "source": "A2A Protocol — A2A v1.0 announcement/specification",
-      "date": "2026",
-      "type": "open protocol specification/announcement",
-      "key_finding": "A2A defines interoperable agent discovery, task lifecycle, artifacts, identity, and enterprise controls.",
-      "operationalization": "Treat A2A as a peer-agent boundary with durable task mapping, identity, cancellation, and conformance tests.",
+      "source": "A2A Protocol v1.0",
+      "date": "1.0.0 current; reviewed 2026-08-08",
+      "type": "official protocol specification",
+      "key_finding": "A2A v1.0 defines interoperable discovery, task lifecycle, artifacts, identity, and controls for independently operated agent systems; it is not a protocol for internal subagents or tool calls.",
+      "operationalization": "Adopt A2A only for a real independent cross-system boundary; keep internal worker delegation and tool calls on native typed contracts.",
       "affected_skills": [
         "multi-agent-engineering",
         "rust-agent-protocols"
@@ -600,17 +600,17 @@
       "id": "R39",
       "evidence_class": "A",
       "topic": "Observability",
-      "source": "OpenTelemetry — GenAI semantic conventions",
-      "date": "2026",
-      "type": "open standard documentation",
-      "key_finding": "Emerging conventions standardize telemetry vocabulary for model and agent operations.",
-      "operationalization": "Align trace events where practical while versioning an internal semantic/evidence schema and protecting sensitive data.",
+      "source": "OpenTelemetry specification 1.59.0 / semantic conventions 1.43.0",
+      "date": "1.59.0 / 1.43.0; reviewed 2026-08-08",
+      "type": "official versioned specification",
+      "key_finding": "OpenTelemetry defines versioned traces, metrics, logs, and semantic conventions; experimental GenAI fields remain version-sensitive rather than immutable domain evidence.",
+      "operationalization": "Adopt stable fields selectively, version experimental mappings, protect sensitive data, and keep product and claim evidence independent of telemetry conventions.",
       "affected_skills": [
         "agent-evals-observability",
         "harness-engineering",
         "rust-agent-verification"
       ],
-      "url": "https://opentelemetry.io/docs/specs/semconv/gen-ai/"
+      "url": "https://opentelemetry.io/docs/specs/"
     },
     {
       "id": "R40",
@@ -997,11 +997,11 @@
       "id": "R66",
       "evidence_class": "A",
       "topic": "MCP Rust",
-      "source": "Model Context Protocol — official Rust SDK",
-      "date": "2026-07-22 accessed",
+      "source": "Model Context Protocol — official Rust SDK in the 2026-07-28 protocol era",
+      "date": "2026-08-08 reviewed",
       "type": "official SDK repository",
-      "key_finding": "The official Rust SDK supports building MCP clients and servers exposing tools, resources, and prompts.",
-      "operationalization": "Keep MCP in an adapter crate, validate/authorize server-side, and run protocol/security conformance tests.",
+      "key_finding": "The Rust SDK can implement MCP clients and servers, but SDK use must follow the stateless-first 2026-07-28 era and avoid new dependencies on deprecated Roots, Sampling, Logging, Dynamic Client Registration, and legacy HTTP+SSE surfaces.",
+      "operationalization": "Keep MCP in an adapter crate, use full JSON Schema 2020-12 where supported, validate and authorize server-side, and test only compatibility surfaces required by a current consumer.",
       "affected_skills": [
         "rust-agent-protocols",
         "agent-security-governance"
@@ -1012,11 +1012,11 @@
       "id": "R67",
       "evidence_class": "A",
       "topic": "A2A Rust",
-      "source": "A2A Project — official Rust SDK (a2a-rs)",
-      "date": "2026-07-22 accessed",
+      "source": "A2A Project v1.0 — official Rust SDK (a2a-rs)",
+      "date": "1.0.0; reviewed 2026-08-08",
       "type": "official SDK repository",
-      "key_finding": "The Rust workspace implements A2A v1 protocol types plus async client/server and gRPC support.",
-      "operationalization": "Isolate A2A wire types, map durable task lifecycle, authenticate peers, and test independent interoperability.",
+      "key_finding": "The Rust workspace implements A2A v1 protocol types and transports for independently operated agent systems, not internal subagents or ordinary tool calls.",
+      "operationalization": "Use only for a real interoperable peer boundary; isolate wire types, map durable task lifecycle, authenticate peers, and test independent interoperability.",
       "affected_skills": [
         "rust-agent-protocols",
         "multi-agent-engineering"
@@ -1137,11 +1137,11 @@
       "id": "R75",
       "evidence_class": "A",
       "topic": "Deployed AI monitoring",
-      "source": "NIST AI 800-4 — A Methodology for Assessing and Managing Post-Deployment AI Risks",
-      "date": "2026-03",
-      "type": "official government publication",
-      "key_finding": "Post-deployment AI risk management requires continuous monitoring, context-specific impact assessment, incident handling, change management, stakeholder feedback, and documented reassessment as conditions evolve.",
-      "operationalization": "Make controlled field learning a governed post-deployment assurance activity with operating envelopes, escalation thresholds, observation quality, incident links, and reauthorization after material change.",
+      "source": "NIST AI 800-4 — Challenges to the Monitoring of Deployed AI Systems",
+      "date": "2026-03-06",
+      "type": "official government descriptive report",
+      "key_finding": "The report organizes monitoring categories and open challenges; it does not prescribe or validate a universal post-deployment monitoring methodology.",
+      "operationalization": "Use its categories to formulate context-specific monitoring questions; do not convert them into mandatory infrastructure or a product-quality claim.",
       "affected_skills": [
         "authentic-use-engineering",
         "production-readiness-sre",
@@ -1149,7 +1149,7 @@
         "maintenance-retirement-engineering",
         "agent-security-governance"
       ],
-      "url": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.800-4.pdf"
+      "url": "https://doi.org/10.6028/NIST.AI.800-4"
     },
     {
       "id": "R76",
@@ -1479,11 +1479,11 @@
       "id": "R96",
       "evidence_class": "A",
       "topic": "Secure software development",
-      "source": "NIST SP 800-218 Rev. 1 Initial Public Draft",
-      "date": "2025-12",
-      "type": "official government draft guidance",
-      "key_finding": "The evolving SSDF revision reinforces lifecycle-wide secure software practices and updates implementation considerations for modern development environments.",
-      "operationalization": "Mark draft-derived guidance as provisional, keep plugin security rules tied to stable principles, and review the source when the standard is finalized.",
+      "source": "NIST SP 800-218 Rev. 1 — SSDF 1.2 Initial Public Draft",
+      "date": "2025-12-17 IPD",
+      "type": "official draft provisional guidance",
+      "key_finding": "The draft proposes updated secure-development practices but is not final; SSDF 1.1 remains the controlling final guidance.",
+      "operationalization": "Use this single provisional entry only as gap input, label draft-derived changes, and review when NIST publishes a final revision.",
       "affected_skills": [
         "secure-delivery-release",
         "maintenance-retirement-engineering"
@@ -1511,10 +1511,10 @@
       "evidence_class": "A",
       "topic": "Supply-chain provenance",
       "source": "SLSA v1.2 specification",
-      "date": "2025-09",
-      "type": "official open specification",
-      "key_finding": "Build provenance and progressively stronger build integrity controls make software artifacts traceable to source, build process, and protected infrastructure.",
-      "operationalization": "Require artifact identity, provenance, reproducible or verifiable build steps, protected release credentials, and exact delivered-artifact checks.",
+      "date": "2025-11-24 approved",
+      "type": "approved open specification",
+      "key_finding": "SLSA v1.2 defines Source and Build tracks for source and artifact provenance and integrity; that provenance does not establish behavioral correctness.",
+      "operationalization": "Bind exact source, build, and package identity where claimed, protect release credentials, and limit conclusions to provenance and integrity rather than routing or product value.",
       "affected_skills": [
         "secure-delivery-release",
         "software-construction-quality",
@@ -1890,11 +1890,11 @@
       "id": "R122",
       "evidence_class": "A",
       "topic": "Generative-AI telemetry",
-      "source": "OpenTelemetry — GenAI semantic conventions",
-      "date": "2026-07-22 accessed",
-      "type": "official open specification",
-      "key_finding": "GenAI semantic conventions define evolving common attributes and events for model, agent, and tool telemetry, with stability levels and privacy implications that require review.",
-      "operationalization": "Adopt stable conventions selectively, namespace product-specific domain fields, version schemas, and avoid relying on experimental attributes as immutable contracts.",
+      "source": "OpenTelemetry GenAI semantic conventions 1.43.0",
+      "date": "1.43.0; reviewed 2026-08-08",
+      "type": "official versioned specification",
+      "key_finding": "GenAI semantic conventions provide versioned model, agent, and tool telemetry fields; experimental fields and compatibility surfaces remain version-sensitive and carry privacy implications.",
+      "operationalization": "Adopt stable fields selectively, namespace and version product mappings, avoid raw sensitive payloads by default, and keep domain evidence independent of OTel.",
       "affected_skills": [
         "rust-agent-observability",
         "agent-evals-observability",
@@ -2278,14 +2278,14 @@
       "topic": "Agent standards",
       "source": "NIST — AI Agent Standards Initiative",
       "date": "2026-02-17",
-      "type": "government primary guidance",
-      "key_finding": "Secure identity, authorization, interoperability, and open standards are central to trusted agent adoption.",
-      "operationalization": "Keep identity, authority, protocol, and effect boundaries explicit.",
+      "type": "government initiative; emerging, not normative",
+      "key_finding": "The initiative identifies identity, authorization, interoperability, and security as standardization priorities; it does not yet define final normative requirements.",
+      "operationalization": "Use as roadmap evidence, preserve explicit identity and authority boundaries, and do not claim conformance or create mandatory law IDs.",
       "affected_skills": [
         "agent-security-governance",
         "rust-agent-protocols"
       ],
-      "url": "https://www.nist.gov/news-events/news/2026/02/announcing-ai-agent-standards-initiative-interoperable-and-secure"
+      "url": "https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative"
     },
     {
       "id": "R148",
@@ -2293,9 +2293,9 @@
       "topic": "Continuous AI security",
       "source": "NIST — Continuous-monitor-and-update security model",
       "date": "2026-06-09",
-      "type": "government primary research communication",
-      "key_finding": "No finite fixed guardrail set is universally robust; red teaming, continuous updates, and resilience are required.",
-      "operationalization": "Add continuous monitoring, update, impact limitation, and recovery to agent security.",
+      "type": "government research communication; emerging, not normative",
+      "key_finding": "The communication motivates continuous monitoring, updates, and resilience as a research direction; it is not a final prescriptive standard.",
+      "operationalization": "Use as a hypothesis for risk-proportionate monitoring and recovery, not as authority for universal infrastructure or conformance claims.",
       "affected_skills": [
         "agent-security-governance",
         "production-readiness-sre"
@@ -2308,9 +2308,9 @@
       "topic": "Agent measurement",
       "source": "NIST — Building Measurement Probes into Agentic AI Ecosystems",
       "date": "2026-04-07",
-      "type": "government primary technical webinar",
-      "key_finding": "Agent traceability requires reconstructing tool use and evidence; dynamic verifiers can provide measurement probes.",
-      "operationalization": "Require trace/evidence joins and independent verifiers for consequential claims.",
+      "type": "government technical webinar; emerging, not normative",
+      "key_finding": "The webinar presents measurement probes and dynamic verifiers as an emerging approach to agent traceability, not a validated normative method.",
+      "operationalization": "Treat probes as an evaluation hypothesis and require local endpoint evidence before adopting them as a consequential control.",
       "affected_skills": [
         "agent-evals-observability",
         "harness-engineering"
@@ -2321,26 +2321,26 @@
       "id": "R150",
       "evidence_class": "A",
       "topic": "Agent identity",
-      "source": "NIST — Identity and Authority of Software Agents",
-      "date": "2026-02-05",
-      "type": "government primary concept paper",
-      "key_finding": "Agent access to data, tools, and applications requires explicit identification and authorization controls.",
-      "operationalization": "Bind worker, reviewer, effect, and authority identities.",
+      "source": "NIST NCCoE — Identity and Authorization of Software and AI Agents concept paper",
+      "date": "2026-02-05 draft concept",
+      "type": "government draft concept paper; provisional, not normative",
+      "key_finding": "The concept paper identifies explicit identity and authorization as an important agent-access problem and solicits input; it is not final guidance.",
+      "operationalization": "Preserve explicit principal, target, permission, and effect identity, but do not claim NIST conformance from the draft.",
       "affected_skills": [
         "agent-security-governance",
         "multi-agent-engineering"
       ],
-      "url": "https://www.nist.gov/news-events/news/2026/02/new-concept-paper-identity-and-authority-software-agents"
+      "url": "https://csrc.nist.gov/pubs/other/2026/02/05/accelerating-the-adoption-of-software-and-ai-agent/ipd"
     },
     {
       "id": "R151",
       "evidence_class": "A",
-      "topic": "Secure lifecycle",
-      "source": "NIST — SSDF 1.2 initial public draft",
+      "topic": "Secure lifecycle historical duplicate",
+      "source": "Historical duplicate of R96 — NIST SSDF 1.2 Initial Public Draft",
       "date": "2025-12-17",
-      "type": "government standard draft",
-      "key_finding": "Secure and reliable development, delivery, and improvement practices should be integrated into any lifecycle model.",
-      "operationalization": "Keep proportional assurance inside the full lifecycle without weakening mandatory security boundaries.",
+      "type": "historical duplicate; superseded as current authority",
+      "key_finding": "This historical row duplicates the SSDF 1.2 draft represented provisionally by R96; it creates no second current source or controlling requirement.",
+      "operationalization": "Use R96 and current foundation F-SSDF-12-DRAFT for provisional draft status; SSDF 1.1 remains final controlling guidance.",
       "affected_skills": [
         "secure-delivery-release",
         "agentic-product-lifecycle"
@@ -2349,7 +2349,7 @@
     }
   ],
   "plugin_version": "3.0.1",
-  "scope_addendum": "Version 3: proportional assurance, no-change decisions, repair circuit breakers, governed learning, skill behavior evals, Product Fitness, typed worker/reviewer evidence, and knowledge lifecycle control.",
+  "scope_addendum": "Historical research snapshot through 2026-07-22. Useful for lineage and vocabulary, not current version-sensitive implementation or release authority. Current foundations: docs/foundations/current-2026-08-08.md. Version 3 scope: proportional assurance, no-change decisions, repair circuit breakers, governed learning, skill behavior evals, Product Fitness, typed worker/reviewer evidence, and knowledge lifecycle control.",
   "evidence_class_counts": {
     "A": 98,
     "B": 33,

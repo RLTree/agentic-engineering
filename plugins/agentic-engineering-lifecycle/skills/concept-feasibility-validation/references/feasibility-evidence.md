@@ -45,4 +45,7 @@ Feasibility is multidimensional: a system can be technically possible yet undesi
 
 ## Research basis
 
-Synthesizes lifecycle, quality, secure development, SRE and deployed-AI monitoring [R75] [R83] [R86] [R95] [R102].
+Synthesizes lifecycle, quality, secure development, SRE and deployed-AI monitoring.
+NIST AI 800-4 supplies a monitoring-question taxonomy, not a prescribed
+methodology (`F-NIST-AI800-4`). Historical lineage: [R75] [R83] [R86] [R95]
+[R102].

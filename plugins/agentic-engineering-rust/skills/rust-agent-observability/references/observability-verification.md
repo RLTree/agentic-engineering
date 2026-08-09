@@ -47,4 +47,7 @@ Treat telemetry as a tested interface. Verify that representative and failure tr
 
 ## Research basis
 
-Uses `tracing`, OpenTelemetry Rust, semantic conventions, W3C propagation and privacy guidance [R118] [R119] [R121] [R122] [R123].
+At the 2026-08-08 lock, OpenTelemetry 1.59.0 and semantic conventions 1.43.0
+remain version-sensitive; experimental GenAI fields do not become domain
+evidence (`F-OTEL-159`). Historical lineage: [R118] [R119] [R121] [R122]
+[R123].

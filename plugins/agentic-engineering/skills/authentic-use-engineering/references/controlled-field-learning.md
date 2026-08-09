@@ -46,4 +46,7 @@ Controlled field learning exposes a product to representative real work at the l
 
 ## Research basis
 
-Operationalizes agent-improvement loops, silent/shadow trials, deployed-AI monitoring, autonomy practice, and progressive release [R71] [R73] [R75] [R77] [R78] [R107].
+Operationalizes agent-improvement loops, silent/shadow trials, autonomy practice,
+and progressive release. NIST AI 800-4 is used only as a monitoring-question
+taxonomy, not a prescribed field-learning methodology (`F-NIST-AI800-4`).
+Historical lineage: [R71] [R73] [R75] [R77] [R78] [R107].

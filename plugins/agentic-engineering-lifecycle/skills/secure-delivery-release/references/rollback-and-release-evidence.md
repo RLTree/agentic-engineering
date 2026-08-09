@@ -46,4 +46,7 @@ Rollback is a designed state transition with data, effect, compatibility and ope
 
 ## Research basis
 
-Uses SRE release/canary guidance, secure delivery, effect durability and supply-chain evidence [R98] [R106] [R107] [R108].
+Uses SRE release/canary guidance, secure delivery, effect durability and
+supply-chain evidence. SLSA v1.2 Source and Build tracks support provenance and
+integrity, not behavioral correctness (`F-SLSA-12`). Historical lineage: [R98]
+[R106] [R107] [R108].

@@ -1,5 +1,10 @@
 # Evaluation Strategy
 
+> **Superseded Version 3 strategy.** Retained temporarily for lineage, not
+> current release or behavioral-efficacy authority. The active staged contract
+> is `EXECPLAN.md`; current claim ceilings are in
+> `docs/foundations/current-2026-08-08.md`.
+
 ## Release question
 
 Does Agentic Engineering 3.0 provide a coherent, research-supported, falsifiable mechanism for improving Codex decisions and outcomes across agent architecture, authentic use, the full product lifecycle, software delivery, Product Fitness, evaluation, security, and agentic Rust—and is the distributed package itself valid and low privilege?

@@ -16,4 +16,6 @@ Required separation:
 
 A record is adoption-ready only when it names the authority that can own the change, the operating envelope, held-out evaluation, residual risk, freshness policy, and rollback. Keep one learning per record so overlap and supersession remain tractable.
 
-Evidence basis: R127, R137, R138, R140, R148.
+The NIST continuous-monitor communication is emerging research rather than a
+normative adoption requirement (`F-NIST-AGENT-INIT`). Historical lineage: R127,
+R137, R138, R140, R148.

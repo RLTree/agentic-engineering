@@ -1,6 +1,6 @@
 # MCP in Rust
 
-Use MCP for agent-to-tool/resource/prompt integration when interoperability is valuable. Treat the MCP server as a security boundary and adapter, not as the owner of application policy.
+Use MCP for agent-to-tool/resource/prompt integration when interoperability is valuable. Treat the MCP server as a security boundary and adapter, not as the owner of application policy. This guidance is locked to the 2026-07-28 stateless-first MCP era.
 
 ## Implementation shape
 
@@ -13,11 +13,11 @@ MCP transport/session
   -> structured bounded result
 ```
 
-The official MCP ecosystem includes a Rust SDK. Verify the current SDK/spec version and transport features at implementation time; pin compatible versions and test protocol negotiation.
+Verify the current SDK/spec version and transport features at implementation time; pin compatible versions and test protocol negotiation. For new implementations, prefer stateless operation and avoid new dependencies on deprecated Roots, Sampling, Logging, Dynamic Client Registration and legacy HTTP+SSE. Add compatibility only for a named current consumer.
 
 ## Tool contracts
 
-Publish precise input/output JSON Schemas, semantic descriptions, side-effect and approval expectations. Tool annotations are hints and may be untrusted; authorization remains server-side. Keep stable tool names and version breaking changes explicitly.
+Publish precise input/output JSON Schemas using full JSON Schema 2020-12 where supported, with semantic descriptions, side-effect and approval expectations. Tool annotations are hints and may be untrusted; authorization remains server-side. Keep stable tool names and version breaking changes explicitly.
 
 ## Security
 

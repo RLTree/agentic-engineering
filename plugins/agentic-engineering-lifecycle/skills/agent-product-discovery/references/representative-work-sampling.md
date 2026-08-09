@@ -45,4 +45,7 @@ Representative sampling defines the workload population and deliberately capture
 
 ## Research basis
 
-Supported by field-evidence methods, post-deployment monitoring, human-AI workflow research, and experiment validity [R75] [R77] [R79] [R93] [R94].
+Supported by field-evidence methods, monitoring questions, human-AI workflow
+research, and experiment validity. NIST AI 800-4 is descriptive rather than a
+prescribed sampling method (`F-NIST-AI800-4`). Historical lineage: [R75] [R77]
+[R79] [R93] [R94].

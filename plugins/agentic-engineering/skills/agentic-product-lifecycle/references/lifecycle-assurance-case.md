@@ -44,4 +44,7 @@ An assurance case is a structured argument that the product is fit for a bounded
 
 ## Research basis
 
-Synthesizes systems assurance, requirements traceability, post-deployment monitoring, and production readiness [R75] [R84] [R85] [R102].
+Synthesizes systems assurance, requirements traceability, post-deployment
+monitoring, and production readiness. NIST AI 800-4 supplies monitoring
+questions, not a validated assurance method (`F-NIST-AI800-4`). Historical
+lineage: [R75] [R84] [R85] [R102].

@@ -55,4 +55,7 @@ Each object should have stable identity, version, owner, status, links, and a ma
 
 ## Research basis
 
-This operating model draws on current agent autonomy/evaluation guidance, human-AI interaction methods, lifecycle standards, and post-deployment monitoring [R71] [R73] [R74] [R75] [R93] [R94].
+This operating model draws on agent autonomy/evaluation guidance, human-AI
+interaction methods, lifecycle standards, and monitoring questions. NIST AI
+800-4 is descriptive rather than a prescribed operating model
+(`F-NIST-AI800-4`). Historical lineage: [R71] [R73] [R74] [R75] [R93] [R94].

@@ -21,4 +21,6 @@ Use proportional assurance profiles:
 - **elevated:** cross-boundary, stateful, concurrent, data, security, or operational change;
 - **critical:** irreversible, external, safety-, security-, privacy-, or mission-significant effect.
 
-Evidence basis: R128, R132, R151.
+Current foundation: SSDF 1.1 is controlling and SSDF 1.2 remains draft provisional
+(`F-SSDF-11`, `F-SSDF-12-DRAFT`). Historical lineage: R128, R132; R151 is a
+non-authoritative duplicate of the draft entry.

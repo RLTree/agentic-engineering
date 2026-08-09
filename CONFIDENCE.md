@@ -1,5 +1,10 @@
 # Release Confidence
 
+> **Superseded aggregate model.** Retained temporarily for lineage, not current
+> research, release, behavioral-efficacy, or product-quality authority. Current
+> claim ceilings: `docs/foundations/current-2026-08-08.md`. The active
+> `EXECPLAN.md` replaces this model with noncompensatory stage claim states.
+
 ## Result
 
 **Calibrated release confidence: 97.5/100** that Agentic Engineering 3.0 will positively influence the targeted architecture, lifecycle, verification, learning, Product Fitness, coordination, security, and Rust-engineering decisions when appropriately invoked in Codex, relative to underspecified work without equivalent controls.

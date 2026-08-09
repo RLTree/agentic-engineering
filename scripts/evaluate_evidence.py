@@ -9,7 +9,10 @@ from _common import load_json, make_report, plugin_root, print_report, results_d
 
 def main() -> int:
     parser=argparse.ArgumentParser(); parser.add_argument('--write',action='store_true'); args=parser.parse_args()
-    errors: list[str]=[]; warnings: list[str]=[]
+    errors: list[str]=[]
+    warnings: list[str]=[
+        'Historical source-ledger integrity only; source count, coverage, ratios, and monograph length do not prove package quality or release validity.'
+    ]
     doc=load_json(plugin_root()/"SOURCE-MANIFEST.json"); sources=doc.get('sources',[])
     if doc.get('source_count')!=len(sources): errors.append('source_count does not match sources')
     ids=[x.get('id') for x in sources]; expected=[f'R{i:02d}' for i in range(1,len(sources)+1)]

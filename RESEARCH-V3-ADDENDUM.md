@@ -1,5 +1,9 @@
 # Agentic Engineering 3.0 Research Addendum
 
+> **Historical research snapshot through 2026-07-22.** Useful for lineage and
+> vocabulary, not current version-sensitive implementation or release authority.
+> Current foundations: `docs/foundations/current-2026-08-08.md`.
+
 **Research lock:** July 22, 2026, America/Los_Angeles  
 **Scope:** Evidence added after Agentic Engineering 2.0 and the UltraGoal, Compound Engineering, and Superpowers comparison.
 
