@@ -1,37 +1,27 @@
-# Validation and Release Scripts
+# Validation scripts
 
-Every script accepts `--write` and stores a machine-readable report under `evals/results/`.
-
-| Script | Gate |
-|---|---|
-| `validate_plugin.py` | marketplace, manifest, 30 skills, frontmatter, local references, no internal implicit gateway, docs, and privilege floor |
-| `validate_official_contract.py` | Codex progressive disclosure, concise trigger-only descriptions, and specialist isolation |
-| `audit_links.py` | local Markdown links and path safety |
-| `evaluate_coverage.py` | 90 scenarios, 30 capability maps, 143 routes, references, and source IDs |
-| `evaluate_behavior_contracts.py` | one global and 30 per-skill deliverable/required/forbidden/evidence contracts |
-| `evaluate_evidence.py` | 151-source ledger, exact evidence matrix, class ratios, mappings, and complete research citation |
-| `check_skill_routing.py` | positive, negative, and overlap routing coverage for every skill |
-| `check_context_budget.py` | conservative 8,000-character discovery estimate, 7,600 release limit, and no internal implicit gateway |
-| `check_profiles.py` | core, lifecycle, Rust, and full skill-selection profiles and renderer output |
-| `check_v3_contracts.py` | new skills, references, templates, schema satisfiability, and closed-object negative tests |
-| `check_rust_assets.py` | 11 Rust modules, prohibited patterns, delimiters, 17 schemas, and six Rust skills |
-| `check_lifecycle_assets.py` | cumulative field-learning, lifecycle, Product Fitness, learning, verification, research, and eval expansion |
-| `release_check.py` | all mandatory gates, syntax, content scan, confidence threshold, hashes, and aggregate report |
-
-## Release command
+## Current release check
 
 ```text
 python3 scripts/release_check.py
 ```
 
-The default release check is zero-write. To persist the exact rendered pack set, opt in
-to a path beneath the ignored generated-output root:
+The default command is zero-write. It validates the complete four-package candidate, captures its identity, and returns only the checks actually executed, their observations, and structural claim states. A passing result is evidence of package structure only. It is not activation, advice-value, composition, host-installation, protocol, or field evidence.
+
+An output file is opt-in and requires both flags:
 
 ```text
 python3 scripts/release_check.py --write --output evals/results/agentic-pack-set.json
 ```
 
-Legacy development audits also require their explicit `--write` switch before
-persisting reports under `evals/results/`. Validation honestly reports when live
-Codex, field-pilot, Cargo, or Rust compilation evidence is unavailable; it
-never substitutes a static confidence claim for missing runtime proof.
+Use this only when a named consumer needs the rendered package-set description. The command does not create per-check receipts by default.
+
+## Structural helpers
+
+`package_validation.py` supplies the release check's package, marketplace, manifest, skill-identity, and package-content validation. Archive validation remains an AH responsibility. The test suite is the current executable specification for the structural negative cases.
+
+## Historical inventory diagnostics
+
+The remaining scripts inspect historical Version 2/3 inventories, source lineage, routing corpora, static assets, or development contracts. They are useful diagnostics but are not mandatory A1 release gates and do not establish behavioral quality. In particular, source counts, coverage totals, schemas, and static Rust checks do not prove activation, useful advice, host behavior, or field value.
+
+Some legacy scripts accept `--write` for an explicit development report under `evals/results/`. Do not run those write modes for ordinary release validation.

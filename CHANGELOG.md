@@ -1,5 +1,12 @@
 # Changelog
 
+## 4.0.0 candidate — 2026-08-09
+
+- Established one four-package Agentic Engineering package-set identity: four explicit advisory packs, 30 unique skills, and package manifests at `4.0.0`.
+- Made the current research foundation snapshot (`2026-08-08`) and marketplace contract (`1.0`) explicit, without treating either as behavioral evidence.
+- Replaced aggregate release confidence with noncompensatory staged claim states; structural validation does not establish activation, advice value, composition, host behavior, or field usefulness.
+- Reframed release reporting around the exact candidate and checks actually executed. Host and field evidence remain later, separately authorized work.
+
 ## 3.0.1 — 2026-07-23
 
 - Disabled implicit invocation for the Agentic Engineering gateway when co-installed with Harness UltraGoal.

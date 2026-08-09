@@ -2,7 +2,8 @@
 
 > **Historical Version 2/3 design and release record.** Retained for lineage,
 > not current package, research, release, behavioral-efficacy, or product-quality
-> authority. Current foundations: `docs/foundations/current-2026-08-08.md`.
+> authority. Current package and claim authority: `README.md`, `CONFIDENCE.md`,
+> `EVALUATION.md`, and `docs/foundations/current-2026-08-08.md`.
 
 ## 1. Situation
 

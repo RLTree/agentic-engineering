@@ -93,7 +93,7 @@ Keep ephemeral or in expiring CI artifacts:
 ## 5. Progress
 
 - [x] A0 re-resolve the candidate and establish current foundation authority.
-- [ ] A1 align release identity and compute release results from executed checks.
+- [x] A1 align release identity and compute release results from executed checks.
 - [ ] AQ qualify activation, abstention, and bounded reference loading.
 - [ ] AS reduce and test four representative skills in isolation.
 - [ ] AC test bounded composition only if AS passes.
