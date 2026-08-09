@@ -110,7 +110,7 @@ class RunnerTests(unittest.TestCase):
             with contextlib.redirect_stderr(io.StringIO()):
                 with self.assertRaises(SystemExit): runner.main([mode])
 
-    def test_precommit_dry_run_is_zero_write_and_no_model_call(self):
+    def test_dry_run_is_zero_write_and_no_model_call(self):
         watched = [
             ROOT / "scripts/run_activation_trials.py",
             ROOT / "evals/foundation-v4/selector-output-schema.json",
@@ -118,9 +118,13 @@ class RunnerTests(unittest.TestCase):
         ]
         before = {path: path.read_bytes() for path in watched}
         status_before = subprocess.run(["git", "status", "--porcelain"], cwd=ROOT, capture_output=True, check=True).stdout
-        with mock.patch.object(runner, "codex_preflight", side_effect=AssertionError("dry-run precommit HOLD must not reach model CLI")), \
-             contextlib.redirect_stderr(io.StringIO()), contextlib.redirect_stdout(io.StringIO()):
-            self.assertEqual(runner.main(["--dry-run", "--candidate-commit", "HEAD"]), 2)
+        stdout = io.StringIO()
+        codex_info = {"path": "/test/codex", "version": "codex-cli test", "sha256": "a" * 64}
+        with mock.patch.object(runner, "codex_preflight", return_value=codex_info), \
+             mock.patch.object(runner, "invoke_packet", side_effect=AssertionError("dry-run must not make a model call")), \
+             contextlib.redirect_stderr(io.StringIO()), contextlib.redirect_stdout(stdout):
+            self.assertEqual(runner.main(["--dry-run", "--candidate-commit", "HEAD"]), 0)
+        self.assertEqual(json.loads(stdout.getvalue())["live_calls"], 0)
         status_after = subprocess.run(["git", "status", "--porcelain"], cwd=ROOT, capture_output=True, check=True).stdout
         self.assertEqual(before, {path: path.read_bytes() for path in watched})
         self.assertEqual(status_before, status_after)
