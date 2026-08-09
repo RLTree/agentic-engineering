@@ -1,0 +1,7 @@
+interface:
+  display_name: "Verification Strategy Engineering"
+  short_description: "Explicit proposal-only verification strategy advice"
+  brand_color: "#0F766E"
+  default_prompt: "Use $agentic-engineering:verification-strategy-engineering only as an explicit, bounded, proposal-only advisory lens. Do not take effects, assign authority, adopt policy, or make completion, efficacy, or product claims."
+policy:
+  allow_implicit_invocation: false

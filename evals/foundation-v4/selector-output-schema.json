@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/agentic-engineering/evals/foundation-v4/selector-output-schema.json",
+  "title": "AQ fixed-four logical selector output",
+  "type": "object",
+  "properties": {
+    "selected_advisers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ]
+      },
+      "uniqueItems": true,
+      "maxItems": 2
+    }
+  },
+  "required": ["selected_advisers"],
+  "additionalProperties": false
+}

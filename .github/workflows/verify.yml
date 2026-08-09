@@ -39,8 +39,8 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install validator dependency
-        run: python3 -m pip install "PyYAML==6.0.2"
+      - name: Install validator dependencies
+        run: python3 -m pip install "PyYAML==6.0.2" "jsonschema==4.26.0"
 
       - name: Run release checks
         run: python3 scripts/release_check.py

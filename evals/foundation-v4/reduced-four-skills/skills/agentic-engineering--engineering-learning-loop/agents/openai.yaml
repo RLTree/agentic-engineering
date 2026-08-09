@@ -1,0 +1,7 @@
+interface:
+  display_name: "Engineering Learning Loop"
+  short_description: "Explicit proposal-only engineering learning advice"
+  brand_color: "#0F766E"
+  default_prompt: "Use $agentic-engineering:engineering-learning-loop only as an explicit, bounded, proposal-only advisory lens. Do not take effects, assign authority, adopt policy, or make completion, efficacy, or product claims."
+policy:
+  allow_implicit_invocation: false
