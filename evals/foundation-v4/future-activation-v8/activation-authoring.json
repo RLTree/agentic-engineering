@@ -1,0 +1,3929 @@
+{
+  "schema_version": "8.0",
+  "corpus_id": "AQ8-authoring",
+  "split_nonce": "fcedacb4116091fe69d412a085fd40e350b8f1c7e70348dd3dd950d1752da1c2",
+  "authority": {
+    "h4": {
+      "commit": "d6f9e6089e6e11f158a2d3bf4af717fc026548d4",
+      "tree": "6b65ea1e125836c9ae684e869f1156e5750c7a0b",
+      "components": [
+        {
+          "role": "authority",
+          "path": "evals/foundation-v4/unresolved-decision-graph-authority-v8.json",
+          "sha256": "3452f1ee7552549feac9a3f9d4d720eaae1b371177b5a4185596287ac98afd68"
+        },
+        {
+          "role": "protocol",
+          "path": "evals/foundation-v4/unresolved-decision-graph-protocol-v8.json",
+          "sha256": "a145766c475de5ed1411bc86467a1a82c3cdaa18782b772ef00901238f590fd5"
+        },
+        {
+          "role": "semantic_selector_schema",
+          "path": "evals/foundation-v4/unresolved-decision-graph-selector-output-schema-v8.json",
+          "sha256": "5ef3bd8dc5a1a83a25c51d10513607c17e298086450b00181caecac0dba35af4"
+        },
+        {
+          "role": "runtime_selector_schema",
+          "path": "evals/foundation-v4/unresolved-decision-graph-runtime-output-schema-v8.json",
+          "sha256": "e4d58b46e39ac65e56a339e7c0d2714d536a5d517de57c2bcc34cfd5c6fe301e"
+        },
+        {
+          "role": "condition_adapter",
+          "path": "evals/foundation-v4/unresolved-decision-graph-condition-adapter-v8.json",
+          "sha256": "2b82d26b9f438b7cfef712d59817bb2cc8426941167350ec58c42a9a6e5e5b31"
+        },
+        {
+          "role": "reference_policy",
+          "path": "evals/foundation-v4/unresolved-decision-graph-reference-policy-v8.json",
+          "sha256": "e16ad13602a3540b97b608d6a70223e5c7061530b748a6843e007eea791826f4"
+        }
+      ],
+      "active_parent_parser_projection": {
+        "path": "explicit_constraint.h4_parent_parser_contract",
+        "canonical_sha256": "8920ab58abd9618fb1af4894e1b664d76d3c6f478d335e1d61e08ac47b9360d1"
+      }
+    },
+    "aq8_gate": {
+      "commit": "953651815e76c56f0cf8d23d9eae9ef6a480726f",
+      "tree": "83c5aa7ecd3930733071e509ba56d307ae49aa59",
+      "path": "evals/foundation-v4/unresolved-decision-graph-gates-v8.json",
+      "sha256": "d17c6de19b456100a0c930d9cbe898d123dab882fe924c92226f9962fc7784d8"
+    },
+    "base_candidate": {
+      "commit": "f09a0544acf4b7a95fff796434273511a0683ca9",
+      "tree": "38c8c8adf3bb633d33200df1ec65f33e985ae244",
+      "path": "evals/foundation-v4/reduced-four-skills/candidate.json",
+      "sha256": "854f67bdd03e7121bd20e5513ef61ac806d016b3a5f1d6e5891bf4d9e546eb1f"
+    },
+    "recorded_plan": {
+      "commit": "b304aa09a8228b8c96e50a7c678a45baf84a7a49",
+      "tree": "adbf28fdd11120f5a567e2be56eb90da21c4eafe"
+    }
+  },
+  "claim_boundary": {
+    "observation_state": "no-results",
+    "replay_policy": "no-replay",
+    "tuning_policy": "no-tuning",
+    "failure_policy": "terminal-AQ8",
+    "claim_ceiling": "structural-only",
+    "runtime": false,
+    "provider": false,
+    "model": false,
+    "sandbox": false,
+    "product": false,
+    "efficacy": false,
+    "promotion": false,
+    "authority": false,
+    "effects": false,
+    "external_action": false
+  },
+  "cases": [
+    {
+      "case_id": "AQ8-authoring-01",
+      "case_nonce": "48ae296f79b92264bf43a3911bd8abffdc24ef280c2c215fca56985178b2a993",
+      "task_text": "A database migration review is finished. The service boundary is fixed, the requested outcome and write authority are recorded, the proof plan has passed, and the follow-up lesson has already been accepted into the team's guidance. No decision or supporting reference remains open.",
+      "task_text_nfc_sha256": "0873c6ea4beaf8f1e2ca8d917a6a2f76a41789847a2f7e39000995081861b6f9",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s1",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s2",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s3",
+            "state": "resolved_or_absent"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [],
+        "selected_slots": [],
+        "selected_adviser_ids": [],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 0,
+          "canonical_payload_id_tuple": []
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-02",
+      "case_nonce": "bd16f3ab94f4100f391d65b28adb04f6812b208f0350590041c4058f6af0a40a",
+      "task_text": "A one-character documentation correction has already been merged after its prescribed diff check. It changes no system boundary, leaves no outcome or approval contract unsettled, calls for no new verification choice, and produced no observation that needs a governed learning change. No reference material is needed.",
+      "task_text_nfc_sha256": "9044fc27b46793775bb8c7cd781c609b73d7b66eab92a8c67eff317a55075390",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s1",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s2",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s3",
+            "state": "resolved_or_absent"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [],
+        "selected_slots": [],
+        "selected_adviser_ids": [],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 0,
+          "canonical_payload_id_tuple": []
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-03",
+      "case_nonce": "40bc53503e55d3fedbe0810f3d1b3b8ec032d572b9e83a89023c2dd139d77769",
+      "task_text": "Before replacing the queue worker, the team still must decide whether orchestration stays in one process or is split between a coordinator and workers. The requested outcome, authority limits, and completion evidence are already fixed; the proof plan is approved; and there is no prior outcome to convert into guidance. Material on choosing the smallest decomposition boundary is needed.",
+      "task_text_nfc_sha256": "31d42ce3013e0f1e6ac2032ad358979a8f66e8de58bf11d4165aab691d9e7d59",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s1",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s2",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s3",
+            "state": "resolved_or_absent"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "primary"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s0"
+        ],
+        "selected_slots": [
+          "s0"
+        ],
+        "selected_adviser_ids": [
+          "agentic-engineering"
+        ],
+        "complement_adviser_ids": [
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [
+          {
+            "owner_adviser_id": "agentic-engineering",
+            "trigger_id": "decomposition-boundary"
+          }
+        ],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 1,
+          "canonical_payload_id_tuple": [
+            "aq-agentic-seven-layer"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-04",
+      "case_nonce": "9dcb7c5286fe596415c9eb80175977fa08da2c6d8bf54bfce8d3b5399e1536b1",
+      "task_text": "A maintainer asks for a cleanup, but the intended outcome, allowed file changes, required evidence, and definition of done have not been agreed. The component topology is unchanged, the standard checks are already prescribed, and there is no observed result to institutionalize. Support for defining the outcome-authority-evidence contract is needed.",
+      "task_text_nfc_sha256": "ac597eff2e8d5a576b37197ea4e01713412bc859fa9f16fc80fe424fb00822d2",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s1",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s2",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s3",
+            "state": "resolved_or_absent"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "primary"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s1"
+        ],
+        "selected_slots": [
+          "s1"
+        ],
+        "selected_adviser_ids": [
+          "codex-task-contract"
+        ],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [
+          {
+            "owner_adviser_id": "codex-task-contract",
+            "trigger_id": "decision-contract"
+          }
+        ],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 1,
+          "canonical_payload_id_tuple": [
+            "aq-contract-vocabulary"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-05",
+      "case_nonce": "c314fd4574b1249b97ec77f4f8d6945d6a2965729164134c580f00175dff245c",
+      "task_text": "The retry patch is implemented, its scope and authority are settled, and it does not alter the component boundary. What remains is choosing proportional evidence for the exact candidate before review; this is not a post-outcome learning exercise. Guidance on verification evidence and mode selection is required.",
+      "task_text_nfc_sha256": "b67a601ef9e614119f33801bad9721a8d585f41db4a3e04fd8be3b007b785f8f",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s1",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s2",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s3",
+            "state": "resolved_or_absent"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "primary"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s2"
+        ],
+        "selected_slots": [
+          "s2"
+        ],
+        "selected_adviser_ids": [
+          "verification-strategy-engineering"
+        ],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [
+          {
+            "owner_adviser_id": "verification-strategy-engineering",
+            "trigger_id": "verification-evidence"
+          }
+        ],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 1,
+          "canonical_payload_id_tuple": [
+            "aq-verify-mode-selection"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-06",
+      "case_nonce": "f2cae2186ebf7453ca336fd4549ec6c1bbdb579d6d78ae38b0c1eefd6fe87c7d",
+      "task_text": "Three recent incidents have already been attributed to a stale recovery rule. Architecture, task authority, and the incident-reproduction checks are settled; the remaining decision is how that observation should change evaluations or engineering guidance. Reference help for failure attribution and adaptation is requested.",
+      "task_text_nfc_sha256": "9eb96c5eabdd718ef7b0add628ed7cdaf88d39e887f8266dbacc2cb15370a3c6",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s1",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s2",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s3",
+            "state": "unresolved"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "primary"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s3"
+        ],
+        "selected_slots": [
+          "s3"
+        ],
+        "selected_adviser_ids": [
+          "engineering-learning-loop"
+        ],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "reference_requests": [
+          {
+            "owner_adviser_id": "engineering-learning-loop",
+            "trigger_id": "reference-isolation"
+          }
+        ],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 1,
+          "canonical_payload_id_tuple": [
+            "aq-learning-attribution"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-07",
+      "case_nonce": "89bf554c7ad5d6b1bcf2b53ce95a50a6e776dc9a886666bb88d4738fe1d10fcc",
+      "task_text": "Two separate decisions remain for a new local assistant. One is the smallest viable process and control boundary; the other is the request's outcome, authority, evidence, and completion contract. Neither decision constrains the other. The verification approach is already chosen, and no observed result is awaiting adoption. Use primary support for both open decisions.",
+      "task_text_nfc_sha256": "6dfc56d06b7bdf25e5608c23cf798d2667c75227f76b4ffb60259547b76ca74f",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s1",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s2",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s3",
+            "state": "resolved_or_absent"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "independent"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "primary"
+          },
+          {
+            "slot_id": "s1",
+            "need": "primary"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s0",
+          "s1"
+        ],
+        "selected_slots": [
+          "s0",
+          "s1"
+        ],
+        "selected_adviser_ids": [
+          "agentic-engineering",
+          "codex-task-contract"
+        ],
+        "complement_adviser_ids": [
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [
+          {
+            "owner_adviser_id": "agentic-engineering",
+            "trigger_id": "decomposition-boundary"
+          },
+          {
+            "owner_adviser_id": "codex-task-contract",
+            "trigger_id": "decision-contract"
+          }
+        ],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 2,
+          "canonical_payload_id_tuple": [
+            "aq-agentic-seven-layer",
+            "aq-contract-vocabulary"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-08",
+      "case_nonce": "faa7db3ce0f5ab711e010926a4ece46020b7ecabd9a91bff527230810ef65fe3",
+      "task_text": "The team must independently choose the service decomposition and choose proportional proof for a cache rewrite. Either choice can be made without the other. The requested behavior and authority are already explicit, and no previous observation is being turned into a policy change. Primary support on the smallest useful split and primary support on choosing proportional proof are both needed.",
+      "task_text_nfc_sha256": "a055ffa7c074717ef26e44f60bf3ba58e853c4ba24c0038c9aeee1de4eaa8b91",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s1",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s2",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s3",
+            "state": "resolved_or_absent"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "independent"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "primary"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "primary"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s0",
+          "s2"
+        ],
+        "selected_slots": [
+          "s0",
+          "s2"
+        ],
+        "selected_adviser_ids": [
+          "agentic-engineering",
+          "verification-strategy-engineering"
+        ],
+        "complement_adviser_ids": [
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [
+          {
+            "owner_adviser_id": "agentic-engineering",
+            "trigger_id": "decomposition-boundary"
+          },
+          {
+            "owner_adviser_id": "verification-strategy-engineering",
+            "trigger_id": "verification-evidence"
+          }
+        ],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 2,
+          "canonical_payload_id_tuple": [
+            "aq-agentic-seven-layer",
+            "aq-verify-mode-selection"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-09",
+      "case_nonce": "a5944e67a1609d8802edbe35db3ac67ddd9cc985426993849e8edaadfab2d1bb",
+      "task_text": "A control-plane boundary is still open, and a separate postmortem observation still needs a governed adaptation decision. Neither controls the other: the boundary can be chosen without the learning outcome, and the learning outcome does not constrain the boundary. The task contract and proof strategy are settled. Seek architecture/control-boundary support for the first decision and failure-attribution support for the second.",
+      "task_text_nfc_sha256": "187ae15d2e32ab5af4a06c0396f727f6c04b2460fe978c1c2d0d220da33dc861",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s1",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s2",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s3",
+            "state": "unresolved"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "independent"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "secondary"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "primary"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s0",
+          "s3"
+        ],
+        "selected_slots": [
+          "s0",
+          "s3"
+        ],
+        "selected_adviser_ids": [
+          "agentic-engineering",
+          "engineering-learning-loop"
+        ],
+        "complement_adviser_ids": [
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "reference_requests": [
+          {
+            "owner_adviser_id": "agentic-engineering",
+            "trigger_id": "architecture-boundary"
+          },
+          {
+            "owner_adviser_id": "engineering-learning-loop",
+            "trigger_id": "reference-isolation"
+          }
+        ],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 2,
+          "canonical_payload_id_tuple": [
+            "aq-agentic-architecture",
+            "aq-learning-attribution"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-10",
+      "case_nonce": "0d18079bdf5a801948a1b47533bbea8b7a3448f3009dfae677677a21c5f9e625",
+      "task_text": "For a permissions refactor, the team still needs to define the allowed effects and done evidence, and separately needs to choose the proportional verification mode. Those questions are independent. The system topology is fixed, and there is no completed observation to feed into a learning loop. Primary contract support and primary verification support are requested.",
+      "task_text_nfc_sha256": "43af7f6b701c2547f83b107d6419902baa1d74d514e99a08df7372502454fcde",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s1",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s2",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s3",
+            "state": "resolved_or_absent"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "independent"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "primary"
+          },
+          {
+            "slot_id": "s2",
+            "need": "primary"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s1",
+          "s2"
+        ],
+        "selected_slots": [
+          "s1",
+          "s2"
+        ],
+        "selected_adviser_ids": [
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [
+          {
+            "owner_adviser_id": "codex-task-contract",
+            "trigger_id": "decision-contract"
+          },
+          {
+            "owner_adviser_id": "verification-strategy-engineering",
+            "trigger_id": "verification-evidence"
+          }
+        ],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 2,
+          "canonical_payload_id_tuple": [
+            "aq-contract-vocabulary",
+            "aq-verify-mode-selection"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-11",
+      "case_nonce": "195a4b8f30b25866c789b70fd4a9efadcd111658ad224639b48255f75446e3e3",
+      "task_text": "Two unrelated questions are open. The first concerns assumptions, approvals, and reference isolation in the work contract; the second concerns how a measured regression should become a governed adaptation. Neither question determines the other. Architecture and pre-change verification are already settled. Use secondary contract support and primary learning-attribution support.",
+      "task_text_nfc_sha256": "bb0ca53c966d9195bcf794b1de45935cfd97b5952a3df9155e9b06e9cd274684",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s1",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s2",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s3",
+            "state": "unresolved"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "independent"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "secondary"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "primary"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s1",
+          "s3"
+        ],
+        "selected_slots": [
+          "s1",
+          "s3"
+        ],
+        "selected_adviser_ids": [
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "verification-strategy-engineering"
+        ],
+        "reference_requests": [
+          {
+            "owner_adviser_id": "codex-task-contract",
+            "trigger_id": "reference-isolation"
+          },
+          {
+            "owner_adviser_id": "engineering-learning-loop",
+            "trigger_id": "reference-isolation"
+          }
+        ],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 2,
+          "canonical_payload_id_tuple": [
+            "aq-contract-assumption-approval",
+            "aq-learning-attribution"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-12",
+      "case_nonce": "adf057642842d6a3977610c412dc99649e2cb152b7fce03cfd4950c930bc69ed",
+      "task_text": "The release candidate still needs an effect-boundary verification choice. Separately, an older evaluation result still needs a decision about lifecycle adoption into maintained guidance. The proof choice does not control that adoption decision, and the adoption decision does not control the proof choice. Topology and task authority are closed. Secondary support is needed for both open questions.",
+      "task_text_nfc_sha256": "82f5ad1651e987046e359e097486786ef9e1bfcd75df46317f0e7d11c9c18e31",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s1",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s2",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s3",
+            "state": "unresolved"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "independent"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "secondary"
+          },
+          {
+            "slot_id": "s3",
+            "need": "secondary"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s2",
+          "s3"
+        ],
+        "selected_slots": [
+          "s2",
+          "s3"
+        ],
+        "selected_adviser_ids": [
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "codex-task-contract"
+        ],
+        "reference_requests": [
+          {
+            "owner_adviser_id": "verification-strategy-engineering",
+            "trigger_id": "reference-isolation"
+          },
+          {
+            "owner_adviser_id": "engineering-learning-loop",
+            "trigger_id": "learning-adoption"
+          }
+        ],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 2,
+          "canonical_payload_id_tuple": [
+            "aq-learning-freshness",
+            "aq-verify-boundary"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-13",
+      "case_nonce": "8ae35135a524eb04a1b81b88c3415e915fb7cecd95fc825d38f4d4a993a85905",
+      "task_text": "Before the team can choose between an in-process helper and a background service, it must settle which external effects are authorized and what evidence counts as done. That work contract directly controls the downstream topology choice. Verification is already specified, and there is no learning decision. Support on assumptions, approvals, and reference isolation is needed for the controlling contract.",
+      "task_text_nfc_sha256": "a27e9546748e71294e048e39c3c44811a01521a999cf9858ed429a48128f6edf",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s1",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s2",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s3",
+            "state": "resolved_or_absent"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "right_controls_left_downstream"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "secondary"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s1"
+        ],
+        "selected_slots": [
+          "s1"
+        ],
+        "selected_adviser_ids": [
+          "codex-task-contract"
+        ],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [
+          {
+            "owner_adviser_id": "codex-task-contract",
+            "trigger_id": "reference-isolation"
+          }
+        ],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 1,
+          "canonical_payload_id_tuple": [
+            "aq-contract-assumption-approval"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-14",
+      "case_nonce": "d2d3df4c085c84a72391c25cb2c050f695896bc42880ce49f99a3bf145a8bd03",
+      "task_text": "The deployment boundary must be chosen first: single host or isolated worker pool. That architecture choice determines which failure modes are reachable and therefore controls the downstream verification plan. The requested outcome and authority are fixed, and no observed result needs adoption. Architecture and control-boundary support is requested for the root decision.",
+      "task_text_nfc_sha256": "518dd4540d43a2f284845971ada69c57b08e91a3fa0eb288c79fc321a0021a19",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s1",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s2",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s3",
+            "state": "resolved_or_absent"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "left_controls_right_downstream"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "secondary"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s0"
+        ],
+        "selected_slots": [
+          "s0"
+        ],
+        "selected_adviser_ids": [
+          "agentic-engineering"
+        ],
+        "complement_adviser_ids": [
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [
+          {
+            "owner_adviser_id": "agentic-engineering",
+            "trigger_id": "architecture-boundary"
+          }
+        ],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 1,
+          "canonical_payload_id_tuple": [
+            "aq-agentic-architecture"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-15",
+      "case_nonce": "76b9975ad347439eec30caa6ed03a2dadb97b80f9913161f93a9f243aad54852",
+      "task_text": "An accepted incident finding may become either a narrow test rule or a durable operational rule. The team must decide that knowledge-lifecycle adoption first; its scope will determine the downstream control-plane boundary. The work contract and proof method are settled. Support for learning adoption is needed at the controlling decision.",
+      "task_text_nfc_sha256": "1b56f06b0733cf69e40d6afee43dc91ab822c4b60eff8f721dea2c9e9a55a96a",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s1",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s2",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s3",
+            "state": "unresolved"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "right_controls_left_downstream"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "secondary"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s3"
+        ],
+        "selected_slots": [
+          "s3"
+        ],
+        "selected_adviser_ids": [
+          "engineering-learning-loop"
+        ],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "reference_requests": [
+          {
+            "owner_adviser_id": "engineering-learning-loop",
+            "trigger_id": "learning-adoption"
+          }
+        ],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 1,
+          "canonical_payload_id_tuple": [
+            "aq-learning-freshness"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-16",
+      "case_nonce": "16854975aad417e3cd8e53a0f8f58dec0b60229eff8139e70c939eef1597fc03",
+      "task_text": "Before promising what completion evidence the task contract will require, the team must determine which external effects can be observed reliably and select the proof boundary. That verification decision controls the downstream contract wording. Architecture is fixed and no post-result adaptation is pending. Supporting material about separating effect fields from evidentiary references is needed for the controlling verification decision.",
+      "task_text_nfc_sha256": "d10e40ceac137f3aaeae22e81019e7f80e13f9cecd618a2a47d8bf93e6d88853",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s1",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s2",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s3",
+            "state": "resolved_or_absent"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "right_controls_left_downstream"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "secondary"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s2"
+        ],
+        "selected_slots": [
+          "s2"
+        ],
+        "selected_adviser_ids": [
+          "verification-strategy-engineering"
+        ],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [
+          {
+            "owner_adviser_id": "verification-strategy-engineering",
+            "trigger_id": "reference-isolation"
+          }
+        ],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 1,
+          "canonical_payload_id_tuple": [
+            "aq-verify-boundary"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-17",
+      "case_nonce": "c47e800fbf2ea50b1f412c392f813db32ee6eb593ef5a5b0ac756fee822cb586",
+      "task_text": "The change request has not yet fixed which outcomes are in scope or who may approve them. That contract decision must come first because it determines which later observations are eligible for governed learning. Verification and topology are settled. Assumption and approval support is requested for the controlling contract.",
+      "task_text_nfc_sha256": "f5ae34929b1dc0ddfd7fe277412f33f2769cea5cd0e02401b88e09e63523f036",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s1",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s2",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s3",
+            "state": "unresolved"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "left_controls_right_downstream"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "secondary"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s1"
+        ],
+        "selected_slots": [
+          "s1"
+        ],
+        "selected_adviser_ids": [
+          "codex-task-contract"
+        ],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [
+          {
+            "owner_adviser_id": "codex-task-contract",
+            "trigger_id": "reference-isolation"
+          }
+        ],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 1,
+          "canonical_payload_id_tuple": [
+            "aq-contract-assumption-approval"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-18",
+      "case_nonce": "21e5642848e537a7f05fa0a90d4af04f5317f36bb76f5ea99d1adaa208edb8e9",
+      "task_text": "The experiment's evidence mode and observation boundary must be selected before the team can decide what result is trustworthy enough to become maintained guidance. Thus the verification choice controls the downstream learning decision. Architecture and task authority are fixed. Secondary verification support on effect and reference isolation is needed.",
+      "task_text_nfc_sha256": "5f156c9a4a07ecd151f46ed61379987f02d86bfc51de6027e7a38403969e7098",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s1",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s2",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s3",
+            "state": "unresolved"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "left_controls_right_downstream"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "secondary"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s2"
+        ],
+        "selected_slots": [
+          "s2"
+        ],
+        "selected_adviser_ids": [
+          "verification-strategy-engineering"
+        ],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [
+          {
+            "owner_adviser_id": "verification-strategy-engineering",
+            "trigger_id": "reference-isolation"
+          }
+        ],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 1,
+          "canonical_payload_id_tuple": [
+            "aq-verify-boundary"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-19",
+      "case_nonce": "af154ade591c2003b094ab826982a164fc4366fa362a28a5a590766ab732d89a",
+      "task_text": "The team must first choose the tenant-isolation architecture. That boundary controls what operations the work contract may authorize, and the resulting contract controls which verification evidence is proportional. The architecture therefore also constrains verification through the full chain. No post-outcome learning decision applies. Seek architecture/control-boundary support for the sole root.",
+      "task_text_nfc_sha256": "f1aababce0024a028f1852724bde4dc9c57562ee119db326f15e64d7a6d0aa7c",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s1",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s2",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s3",
+            "state": "resolved_or_absent"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "left_controls_right_downstream"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "left_controls_right_downstream"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "left_controls_right_downstream"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "secondary"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s0"
+        ],
+        "selected_slots": [
+          "s0"
+        ],
+        "selected_adviser_ids": [
+          "agentic-engineering"
+        ],
+        "complement_adviser_ids": [
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [
+          {
+            "owner_adviser_id": "agentic-engineering",
+            "trigger_id": "architecture-boundary"
+          }
+        ],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 1,
+          "canonical_payload_id_tuple": [
+            "aq-agentic-architecture"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-20",
+      "case_nonce": "2fca8651dfc0a42112b2b4ccfd4ffba4c54f31feb9d21ffaa48c893739832af1",
+      "task_text": "First the request's outcome and authority must be bounded. That contract controls the verification strategy, which in turn controls what observations could justify a governed learning change; the contract therefore also controls that learning decision transitively. No topology decision remains. It is unclear whether the controlling contract needs primary, secondary, or no reference support.",
+      "task_text_nfc_sha256": "a81318fc3ad27fa234b36ef18581d84c3f77fb2bc52bddea226868b560436a71",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s1",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s2",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s3",
+            "state": "unresolved"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "left_controls_right_downstream"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "left_controls_right_downstream"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "left_controls_right_downstream"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "uncertain"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s1"
+        ],
+        "selected_slots": [
+          "s1"
+        ],
+        "selected_adviser_ids": [
+          "codex-task-contract"
+        ],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [],
+        "reference_uncertain_slots": [
+          "s1"
+        ],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 0,
+          "canonical_payload_id_tuple": []
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-21",
+      "case_nonce": "0c981289e1a58bf6d2263fceb8a1120002e2bf2826f948df73d1a4b0a1ac17a3",
+      "task_text": "The evidence-capture strategy must be chosen before deciding how a trial result should alter maintained practice. That learning decision will then determine the durable control boundary, so verification also controls the boundary transitively. The task contract is already closed. Whether the root verification decision needs supporting material cannot yet be established.",
+      "task_text_nfc_sha256": "d41551c0c701e0f7afaf406b15bbb948b04c2266dd3c82021e271c027670aeaf",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s1",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s2",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s3",
+            "state": "unresolved"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "right_controls_left_downstream"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "right_controls_left_downstream"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "left_controls_right_downstream"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "uncertain"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s2"
+        ],
+        "selected_slots": [
+          "s2"
+        ],
+        "selected_adviser_ids": [
+          "verification-strategy-engineering"
+        ],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [],
+        "reference_uncertain_slots": [
+          "s2"
+        ],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 0,
+          "canonical_payload_id_tuple": []
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-22",
+      "case_nonce": "79ec44b4c5b670d73b22061af31cc0dc690842df83f0d87bc42d0d3c6ce0a7ce",
+      "task_text": "A repeated field failure first requires a decision about adopting the lesson into the engineering lifecycle. That adoption controls the system boundary, and the boundary controls the downstream authority and done contract; the learning decision therefore also controls the contract transitively. The proof strategy is fixed. Knowledge-lifecycle adoption support is requested for the root.",
+      "task_text_nfc_sha256": "ef9af2af3c50eb9905922665a89a5db7bafabd9cdfe6cbf3c646fe99c5746078",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s1",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s2",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s3",
+            "state": "unresolved"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "left_controls_right_downstream"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "right_controls_left_downstream"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "right_controls_left_downstream"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "secondary"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s3"
+        ],
+        "selected_slots": [
+          "s3"
+        ],
+        "selected_adviser_ids": [
+          "engineering-learning-loop"
+        ],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "reference_requests": [
+          {
+            "owner_adviser_id": "engineering-learning-loop",
+            "trigger_id": "learning-adoption"
+          }
+        ],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 1,
+          "canonical_payload_id_tuple": [
+            "aq-learning-freshness"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-23",
+      "case_nonce": "1ccf64fc31184ce917942654782fae201b0b93f71538d138de6d9ed29764f5d7",
+      "task_text": "The host/process boundary is the one controlling choice still open. Once chosen, it will independently determine both the allowed-effects contract and the proportional verification plan; those two downstream decisions do not control each other. There is no learning decision. The team cannot yet tell whether the root boundary needs primary, secondary, or no reference material.",
+      "task_text_nfc_sha256": "0d766fdca0b76e0ed08603362f6dffce6475669a5f8471ff90b6343d5d3163fa",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s1",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s2",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s3",
+            "state": "resolved_or_absent"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "left_controls_right_downstream"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "left_controls_right_downstream"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "independent"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "uncertain"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s0"
+        ],
+        "selected_slots": [
+          "s0"
+        ],
+        "selected_adviser_ids": [
+          "agentic-engineering"
+        ],
+        "complement_adviser_ids": [
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [],
+        "reference_uncertain_slots": [
+          "s0"
+        ],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 0,
+          "canonical_payload_id_tuple": []
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-24",
+      "case_nonce": "eac62ea4fc8a289967a1a7427888fad582f1088ce2168c363f55e1e7e5719d78",
+      "task_text": "Settling the requested outcome, authority, and done evidence comes first. That contract will independently constrain the later verification plan and which results may enter governed learning, while those two downstream questions remain independent of each other. No architecture decision is open. The controlling contract needs no reference material.",
+      "task_text_nfc_sha256": "0dddd342ce4034eccfb4e28f90f980f647fd1e2a2411e389972936b422fed407",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s1",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s2",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s3",
+            "state": "unresolved"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "left_controls_right_downstream"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "left_controls_right_downstream"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "independent"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s1"
+        ],
+        "selected_slots": [
+          "s1"
+        ],
+        "selected_adviser_ids": [
+          "codex-task-contract"
+        ],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 0,
+          "canonical_payload_id_tuple": []
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-25",
+      "case_nonce": "dac18f41e5d816448e71fe08e2492a360f33387ef7ec3daf662a6c547e8b714c",
+      "task_text": "The observable-evidence strategy must be fixed first. It will independently constrain both what post-result lesson can be adopted and what execution boundary is safe; the learning and boundary choices do not constrain one another. The work contract is settled. No supporting reference is needed for the root verification choice.",
+      "task_text_nfc_sha256": "75ea8573b1012e1cdbb5b27d88ecc93a8d98cc24d1950619da4833ed0f3fbd0a",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s1",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s2",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s3",
+            "state": "unresolved"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "right_controls_left_downstream"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "independent"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "left_controls_right_downstream"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s2"
+        ],
+        "selected_slots": [
+          "s2"
+        ],
+        "selected_adviser_ids": [
+          "verification-strategy-engineering"
+        ],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 0,
+          "canonical_payload_id_tuple": []
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-26",
+      "case_nonce": "846452b54901f3b50f641436243653190f39b0679038552ee3b7f35536711f11",
+      "task_text": "The unresolved root is how to adopt a production observation into maintained engineering practice. That decision will independently control both the future component boundary and the authority/evidence contract, while those downstream choices remain independent. Verification is complete. It is uncertain whether reference support is needed for the learning root.",
+      "task_text_nfc_sha256": "df9041874b31a55be0561a89b2f4da1a41648da920471ca3f1c289b32a2f0e82",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s1",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s2",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s3",
+            "state": "unresolved"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "independent"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "right_controls_left_downstream"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "right_controls_left_downstream"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "uncertain"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s3"
+        ],
+        "selected_slots": [
+          "s3"
+        ],
+        "selected_adviser_ids": [
+          "engineering-learning-loop"
+        ],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "reference_requests": [],
+        "reference_uncertain_slots": [
+          "s3"
+        ],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 0,
+          "canonical_payload_id_tuple": []
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-27",
+      "case_nonce": "6175152fabf8390f163a30eeab5915c6c45c09f5fe336232346ef4e4e7830d31",
+      "task_text": "The root choice is the isolation architecture. It independently controls the authority contract and the verification plan; each of those then constrains the eventual decision about incorporating the lesson into maintained practice. The architecture consequently controls that final decision both directly and through the two middle branches, while contract and verification stay independent. No reference support is needed.",
+      "task_text_nfc_sha256": "c20d06c9dab32c1bba804cf70327f61438d00e03007d6ad98f33811fd949d653",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s1",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s2",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s3",
+            "state": "unresolved"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "left_controls_right_downstream"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "left_controls_right_downstream"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "left_controls_right_downstream"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "independent"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "left_controls_right_downstream"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "left_controls_right_downstream"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s0"
+        ],
+        "selected_slots": [
+          "s0"
+        ],
+        "selected_adviser_ids": [
+          "agentic-engineering"
+        ],
+        "complement_adviser_ids": [
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 0,
+          "canonical_payload_id_tuple": []
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-28",
+      "case_nonce": "6734d6f678bc7fe2c75f1d1c159dae0a448a138ab7c56fbf6a51f5838c1bf57f",
+      "task_text": "The starting decision is whether a validated observation should become durable engineering guidance. It separately controls the task contract and the verification strategy; both of those then constrain the final topology choice. The learning decision also directly controls that topology, while contract and verification remain independent. No supporting reference is requested.",
+      "task_text_nfc_sha256": "4d1624643d5a7c931c771ca4fcafc4b4d9b019058dd962b6e210637bb1cefd15",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s1",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s2",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s3",
+            "state": "unresolved"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "right_controls_left_downstream"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "right_controls_left_downstream"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "right_controls_left_downstream"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "independent"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "right_controls_left_downstream"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "right_controls_left_downstream"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "automatic",
+        "root_slots": [
+          "s3"
+        ],
+        "selected_slots": [
+          "s3"
+        ],
+        "selected_adviser_ids": [
+          "engineering-learning-loop"
+        ],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "reference_requests": [],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 0,
+          "canonical_payload_id_tuple": []
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-29",
+      "case_nonce": "bf7c4ec4180c1f9697324eef6310472db0ee0e14bd54311ac74df2a2af5c06b3",
+      "task_text": "The description of a proposed wrapper omits whether it adds a process, crosses a trust boundary, or changes control ownership, so it cannot yet be determined whether a topology or control decision applies. The requested outcome and authority, proof plan, and treatment of any observed lesson are already settled. Missing implementation facts, rather than outside guidance, are what would resolve applicability: no supporting material is needed for the boundary question, the contract, verification, or learning.",
+      "task_text_nfc_sha256": "a70042f8bfacf7044f339a69f743c5746dfa3493a564587a5bb9184cd6f1d809",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "uncertain"
+          },
+          {
+            "slot_id": "s1",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s2",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s3",
+            "state": "resolved_or_absent"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "uncertain"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "uncertain"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "uncertain"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "graph_uncertain",
+        "automatic_selection_status": "graph_uncertain",
+        "selection_status": "graph_uncertain",
+        "root_slots": [],
+        "selected_slots": [],
+        "selected_adviser_ids": [],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 0,
+          "canonical_payload_id_tuple": []
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-30",
+      "case_nonce": "6c6241d40c031561736c95724f8aa547f4e67c250108c9f6167dfab97f418505",
+      "task_text": "The outcome-and-authority contract and the proportional verification plan both remain direct decisions. The available description does not establish whether contract constraints determine the proof plan, the proof plan determines the contract, or the two are independent. The component boundary is fixed, and no observation awaits a learning decision. The team needs no supporting material for the contract decision and none for verification; the settled boundary and absent learning question also require none.",
+      "task_text_nfc_sha256": "c5a693967472193db1c1311e3d65c56515f541d139c69cfa14ab201ec983bb26",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s1",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s2",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s3",
+            "state": "resolved_or_absent"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "uncertain"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "graph_uncertain",
+        "automatic_selection_status": "graph_uncertain",
+        "selection_status": "graph_uncertain",
+        "root_slots": [],
+        "selected_slots": [],
+        "selected_adviser_ids": [],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 0,
+          "canonical_payload_id_tuple": []
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-31",
+      "case_nonce": "95eef5884488334072982912527c7bb62b36b7aee70207182d016877071faa60",
+      "task_text": "A team planning a rewrite still must choose whether components stay together or split, define the outcome, authority, evidence, and definition of done, and choose how to verify the exact change. These are three direct decisions, and each can be settled without determining either of the others. Turning results into maintained guidance is not a pending question. The team already has enough local information for the boundary choice, the work contract, and the proof plan, so it needs no supporting material for any of them; none is needed for learning.",
+      "task_text_nfc_sha256": "c40cb2d31b7e8f2172330c767e2e7870ddbf0c7134d3a360caa2d21e0d318e1c",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s1",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s2",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s3",
+            "state": "resolved_or_absent"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "independent"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "independent"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "independent"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "cap_exceeded",
+        "selection_status": "cap_exceeded",
+        "root_slots": [
+          "s0",
+          "s1",
+          "s2"
+        ],
+        "selected_slots": [],
+        "selected_adviser_ids": [],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 0,
+          "canonical_payload_id_tuple": []
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-32",
+      "case_nonce": "bee942d7965c4a75e3c9621da1fd02c64349d66d18c7d5163b2f1fbee8b92aa3",
+      "task_text": "After an exploratory trial, a team still must choose the runtime and control boundary, define the work outcome, authority, evidence, and definition of done, select proportional verification for the next change, and decide how the observation should affect maintained practice. These are four direct decisions. Each can be settled without determining any of the others. Existing project records are sufficient support, so no additional material is needed for the boundary, contract, verification, or learning decision.",
+      "task_text_nfc_sha256": "09ee712aee7face12879d79f283b1199991f7de718c8fb3f25f7283a06343b8e",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s1",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s2",
+            "state": "unresolved"
+          },
+          {
+            "slot_id": "s3",
+            "state": "unresolved"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "independent"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "independent"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "independent"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "independent"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "independent"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "independent"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "cap_exceeded",
+        "selection_status": "cap_exceeded",
+        "root_slots": [
+          "s0",
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "selected_slots": [],
+        "selected_adviser_ids": [],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 0,
+          "canonical_payload_id_tuple": []
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-33",
+      "case_nonce": "7d93ced6399594aee94217891a838b7b83bbbbf04dd1e746a9d16c25eac3b323",
+      "task_text": "All architecture, contract, verification, and learning decisions are already settled. No decision remains open. For a bounded consultation only, invoke $agentic-engineering and request material on choosing the smallest decomposition boundary.",
+      "task_text_nfc_sha256": "bdb6cf60dd3b88b20b6169fb391bd1957654bf7c4d35f08bb322ab4c3d361d64",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s1",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s2",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s3",
+            "state": "resolved_or_absent"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "primary"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "exact",
+        "root_slots": [],
+        "selected_slots": [
+          "s0"
+        ],
+        "selected_adviser_ids": [
+          "agentic-engineering"
+        ],
+        "complement_adviser_ids": [
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [
+          {
+            "owner_adviser_id": "agentic-engineering",
+            "trigger_id": "decomposition-boundary"
+          }
+        ],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 1,
+          "canonical_payload_id_tuple": [
+            "aq-agentic-seven-layer"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-34",
+      "case_nonce": "61d17118f0172c714faecfc81deed1f6fbdc907ff2f265fa6554f03f5fa837e8",
+      "task_text": "The implementation boundary, work contract, proof plan, and post-result learning disposition are all closed. No unresolved decision remains. Consult $codex-task-contract solely for material about assumptions, approvals, and keeping supporting sources separate from the action.",
+      "task_text_nfc_sha256": "c15d52e05a818cec6d48d541f14b83dae839e4431c560f9e65775f7fa29a263d",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s1",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s2",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s3",
+            "state": "resolved_or_absent"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "secondary"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "exact",
+        "root_slots": [],
+        "selected_slots": [
+          "s1"
+        ],
+        "selected_adviser_ids": [
+          "codex-task-contract"
+        ],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [
+          {
+            "owner_adviser_id": "codex-task-contract",
+            "trigger_id": "reference-isolation"
+          }
+        ],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 1,
+          "canonical_payload_id_tuple": [
+            "aq-contract-assumption-approval"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-35",
+      "case_nonce": "f4db3a45627e3857d66350fbcc704ddbbfc8051a653ae02a9ca6d82102425b0c",
+      "task_text": "Every decision about topology, authority, verification, and governed learning is complete. The explicit consultation does not reopen them. Ask $verification-strategy-engineering only for primary material about proportional verification evidence and mode.",
+      "task_text_nfc_sha256": "4448145c71417e01bebc878972a2a3a749058c4a6c32994f029bf9a624a3e2fb",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s1",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s2",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s3",
+            "state": "resolved_or_absent"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "primary"
+          },
+          {
+            "slot_id": "s3",
+            "need": "none"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "exact",
+        "root_slots": [],
+        "selected_slots": [
+          "s2"
+        ],
+        "selected_adviser_ids": [
+          "verification-strategy-engineering"
+        ],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "reference_requests": [
+          {
+            "owner_adviser_id": "verification-strategy-engineering",
+            "trigger_id": "verification-evidence"
+          }
+        ],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 1,
+          "canonical_payload_id_tuple": [
+            "aq-verify-mode-selection"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "AQ8-authoring-36",
+      "case_nonce": "5c419cd8d42fc1da87654d1f88ccc4c3fbc89402a5da37880fafa882dc0c67b3",
+      "task_text": "Topology, request scope, proof, and learning adoption are all settled; nothing remains unresolved. Use $engineering-learning-loop only to retrieve secondary material about knowledge and evaluation lifecycle adoption.",
+      "task_text_nfc_sha256": "9b67e86f1fe3fbc1fbbdca620abdab9f76d5ba021c8144679dc2d41fb014b226",
+      "expected_semantic_output": {
+        "candidate_states": [
+          {
+            "slot_id": "s0",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s1",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s2",
+            "state": "resolved_or_absent"
+          },
+          {
+            "slot_id": "s3",
+            "state": "resolved_or_absent"
+          }
+        ],
+        "pairwise_relations": [
+          {
+            "left_slot": "s0",
+            "right_slot": "s1",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s0",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s2",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s1",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          },
+          {
+            "left_slot": "s2",
+            "right_slot": "s3",
+            "relation": "unrelated"
+          }
+        ],
+        "reference_needs": [
+          {
+            "slot_id": "s0",
+            "need": "none"
+          },
+          {
+            "slot_id": "s1",
+            "need": "none"
+          },
+          {
+            "slot_id": "s2",
+            "need": "none"
+          },
+          {
+            "slot_id": "s3",
+            "need": "secondary"
+          }
+        ]
+      },
+      "expected_parent_derivation": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection_status": "exact",
+        "root_slots": [],
+        "selected_slots": [
+          "s3"
+        ],
+        "selected_adviser_ids": [
+          "engineering-learning-loop"
+        ],
+        "complement_adviser_ids": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "reference_requests": [
+          {
+            "owner_adviser_id": "engineering-learning-loop",
+            "trigger_id": "learning-adoption"
+          }
+        ],
+        "reference_uncertain_slots": [],
+        "reference_resolution": {
+          "status": "resolved",
+          "resolved_count": 1,
+          "canonical_payload_id_tuple": [
+            "aq-learning-freshness"
+          ]
+        }
+      }
+    }
+  ]
+}
