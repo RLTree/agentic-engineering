@@ -342,6 +342,8 @@ AQ5 corpus G was consumed once against candidate `f9b15f5b6f415364e9f4cf7df4dce4
 
 Successor hypothesis H3 changes the causal mechanism before any AQ6 corpus exists: the selector emits only a closed, fixed-order task-fact vector; a parent-owned deterministic resolver derives eligible atoms from frozen positive predicates, exclusions and uncertainty, applies the frozen explicit-invocation grammar, rejects selections above the two-atom cap, then performs adviser mapping and reference resolution. The model never emits atoms, advisers or routes. H3 authority is frozen at commit `ccbe06be9a2ef5feca4104b6918985ee9c4527c0` and tree `dd20449fdc45a73c55adb349d8c828687728ef4d`; this is structural proposal evidence only. AQ6 remains contingent on a separately authored blinded corpus, exact frozen custody, and one authorized canary plus one batch.
 
+Independently authored and blinded AQ6 corpus H is frozen at commit `4ba09a422b5485a885c7e12409dae84639bdb513` and tree `937c6ed971a4c58049ed3a5f8ee891f5d6b5809a`; it is unconsumed and future-run-only. Structural validation covers 64 automatic cases, eight explicit cases, 72 total cases and 40 qualification cases. No observation result or behavioral claim exists. Any AQ6 execution must bind these exact corpus bytes, the frozen H3 authority and validator, and a committed candidate that completes the full zero-model fact-to-selection-to-score preflight before any child invocation.
+
 Use 64 natural-language automatic-routing prompts:
 
 - 12 cross-domain decomposition;
