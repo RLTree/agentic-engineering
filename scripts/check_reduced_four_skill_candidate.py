@@ -36,18 +36,18 @@ ADVISERS = (
 ADVISER_IDS = tuple(item[0] for item in ADVISERS)
 TRIGGER_ORDER = ("architecture-boundary", "decision-contract", "verification-evidence", "learning-adoption", "decomposition-boundary", "no-change-abstention", "reference-isolation")
 TRIGGERS = frozenset(TRIGGER_ORDER)
-CORPUS_COMMIT = "25de0cb1fe86a802768de9bf64659206d69650d0"
-CORPUS_TREE = "e5faff4b1a5ba678a7df1727b5bda3b3d0afe00a"
-CORPUS_PATHS = {"schema": "evals/foundation-v4/future-activation-v2/activation-schema.json", "authoring": "evals/foundation-v4/future-activation-v2/activation-authoring.json", "heldout": "evals/foundation-v4/future-activation-v2/activation-heldout.json"}
+CORPUS_COMMIT = "ee7be80441ce06e53615df74505a1b4549a4aa90"
+CORPUS_TREE = "e1c83c852b26a0c06753c591a689e1ecf00022b7"
+CORPUS_PATHS = {"schema": "evals/foundation-v4/future-activation-v3/activation-schema.json", "authoring": "evals/foundation-v4/future-activation-v3/activation-authoring.json", "heldout": "evals/foundation-v4/future-activation-v3/activation-heldout.json"}
 EVALUATOR_PATHS = (
     "evals/foundation-v4/activation-evaluator-schema.json",
     "evals/foundation-v4/selector-output-schema.json",
     "scripts/check_reduced_four_skill_candidate.py",
     "scripts/score_activation.py",
     "scripts/run_activation_trials.py",
-    "scripts/validate_future_activation_corpus.py",
+    "scripts/validate_future_activation_corpus_v3.py",
 )
-FUTURE_CORPUS_VALIDATOR_SHA256 = "bc59b649ef4c25ca253dee1bbd483d7eb9de5b1a9827f0094c7cb219504333ee"
+FUTURE_CORPUS_VALIDATOR_SHA256 = "a09e8d11362824552ca427a37901baeb1dbf8009a6847f4a23df7c2b4ddc60ba"
 CATEGORY_COUNTS = {"decomposition": 6, "task-contract": 6, "verification": 6, "learning": 6, "native-sufficient": 4, "near-neighbor": 4, "explicit-invocation": 4}
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 CONTEXT_ID_RE = re.compile(r"^aq-reduced-four-[a-z0-9]+(?:-[a-z0-9]+)*$")
@@ -301,7 +301,7 @@ def validate_candidate(candidate: Any, root: Path = ROOT, overlay_commit: str | 
     errors: list[str] = []
     top = {"schema_version", "claim_ceiling", "source", "corpus", "evaluator_surface", "conditions", "skills"}
     if not _closed(candidate, top, "candidate", errors): return errors
-    if candidate["schema_version"] != "2.0" or candidate["claim_ceiling"] != "structural-proposal-only": errors.append("candidate version or structural claim ceiling mismatch")
+    if candidate["schema_version"] != "3.0" or candidate["claim_ceiling"] != "structural-proposal-only": errors.append("candidate version or structural claim ceiling mismatch")
     source = candidate["source"]
     if _closed(source, {"commit", "tree"}, "source", errors):
         if source["commit"] != SOURCE_COMMIT: errors.append("source commit mismatch")
@@ -350,7 +350,7 @@ def validate_candidate(candidate: Any, root: Path = ROOT, overlay_commit: str | 
                     errors.append(f"cannot read evaluator surface {entry['path']}: {exc}")
                     continue
                 if sha256_bytes(raw) != entry["sha256"]: errors.append(f"evaluator surface digest mismatch for {entry['path']}")
-                if entry["path"] == "scripts/validate_future_activation_corpus.py" and entry["sha256"] != FUTURE_CORPUS_VALIDATOR_SHA256: errors.append("future corpus validator digest mismatch")
+                if entry["path"] == "scripts/validate_future_activation_corpus_v3.py" and entry["sha256"] != FUTURE_CORPUS_VALIDATOR_SHA256: errors.append("future corpus validator digest mismatch")
                 if entry["path"] == EVALUATOR_PATHS[0]: evaluator_json = json.loads(raw)
                 if entry["path"] == EVALUATOR_PATHS[1]: selector_json = json.loads(raw)
             if evaluator_json is not None: _validate_evaluator_schema(evaluator_json, errors)
@@ -439,17 +439,20 @@ def validate_candidate(candidate: Any, root: Path = ROOT, overlay_commit: str | 
         except (OSError, ValueError): pass
     if len(contexts) != len(set(contexts)) or any(not isinstance(value, str) or not CONTEXT_ID_RE.fullmatch(value) for value in contexts): errors.append("fixture context IDs must be unique nonblank static aq-reduced-four IDs")
     # Mechanical capacity proof over the entire schema-permitted selection and
-    # trigger surface; it does not depend on a model result or prompt content.
+    # trigger surface; it proves every overflow is represented by the closed
+    # cap_exceeded form instead of assuming an arbitrary trigger subset fits.
     for size in range(3):
         for advisers in itertools.combinations(ADVISER_IDS, size):
-            for trigger_size in range(4):
+            for trigger_size in range(len(TRIGGER_ORDER) + 1):
                 for needed in itertools.combinations(TRIGGER_ORDER, trigger_size):
                     outcome = resolve_parent_payload_resolution(candidate, set(needed), list(advisers))
-                    if outcome["status"] == "cap_exceeded" or len(outcome["records"]) > 3:
-                        errors.append("schema-permitted resolver capacity exceeds three")
-                        break
+                    if outcome["status"] == "cap_exceeded":
+                        if outcome["resolved_count"] <= 3 or outcome["records"] != []:
+                            errors.append("resolver capacity overflow is not closed")
+                    elif outcome["status"] != "resolved" or outcome["resolved_count"] != len(outcome["records"]) or len(outcome["records"]) > 3:
+                        errors.append("resolver capacity outcome is not closed")
     for corpus_item, split in zip(corpus_data, ("authoring", "heldout")):
-        if corpus_item.get("schema_version") != "2.0" or corpus_item.get("corpus_id") != f"foundation-v4-future-activation-v2-{split}" or corpus_item.get("split") != split or corpus_item.get("candidate_independent") is not True or corpus_item.get("routing_surface") != "fixed-four-adviser" or corpus_item.get("reference_catalog") != list(TRIGGER_ORDER): errors.append(f"{split} corpus schema-shape mismatch")
+        if corpus_item.get("schema_version") != "3.0" or corpus_item.get("corpus_id") != f"foundation-v4-future-activation-v3-{split}" or corpus_item.get("split") != split or corpus_item.get("candidate_independent") is not True or corpus_item.get("routing_surface") != "fixed-four-adviser" or corpus_item.get("reference_catalog") != list(TRIGGER_ORDER): errors.append(f"{split} corpus schema-shape mismatch")
         cases = corpus_item.get("cases")
         if not isinstance(cases, list) or len(cases) != 36: errors.append(f"{split} corpus case-count mismatch"); continue
         counts = {category: 0 for category in CATEGORY_COUNTS}

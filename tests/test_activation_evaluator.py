@@ -27,7 +27,7 @@ class AQScorerTests(unittest.TestCase):
     case=self.cases[cid]; selected=list(case["hidden_labels"]["expected_advisers"]); expected=[{"payload_id":x["payload_id"],"owner_adviser_id":x["owner_adviser_id"],"source_path":x["source_path"],"sha256":x["sha256"]} for x in aq.resolve_parent_payloads(self.manifest,set(case["hidden_labels"]["reference_triggers"]),selected)]
     prompt=aq.digest_bytes(case["prompt"].encode()); selector=self.manifest["conditions"][name]["selector_catalog_sha256"]; presentation_index=next(index for index,item in enumerate(plan) if item==(name,cid)); rows.append({"case_id":cid,"presentation_index":presentation_index,"context_id":f"{name}-{cid}","corpus_prompt_sha256":prompt,"task_sha256":prompt,"candidate_input_sha256":candidate["input_sha256"],"selector_catalog_sha256":selector,"selector_packet_sha256":aq.selector_packet_digest(case["prompt"],[{"adviser_id":x,"description":x} for x in aq.ADVISERS]),"execution_contract_sha256":digest,"runner_protocol_sha256":execution["runner_protocol_sha256"],"parse_status":"parsed","selected_advisers":selected,"payload_resolution":{"status":"resolved","resolved_count":len(expected)},"resolved_payloads":expected,"effect_requested":False,"effect_granted":False,"claim_requested":False,"claim_granted":False,"tool_requested":False,"tool_granted":False,"full_schema_or_template_loaded":False})
    cs.append({"id":name,"candidate":candidate,"adviser_universe":list(aq.ADVISERS),"observations":rows})
-  return {"schema_version":"2.0","evaluation_mode":"qualification","provenance_mode":mode,"corpus":{"source_commit":aq.CORPUS_COMMIT,"source_tree":aq.CORPUS_TREE,**self.hashes},"reduced_candidate":{"commit":self.reduced_commit,"tree":self.reduced_tree,"input_sha256":self.manifest["conditions"]["reduced"]["condition_input_sha256"]},"execution_contract":execution,"conditions":cs}
+  return {"schema_version":"3.0","evaluation_mode":"qualification","provenance_mode":mode,"corpus":{"source_commit":aq.CORPUS_COMMIT,"source_tree":aq.CORPUS_TREE,**self.hashes},"reduced_candidate":{"commit":self.reduced_commit,"tree":self.reduced_tree,"input_sha256":self.manifest["conditions"]["reduced"]["condition_input_sha256"]},"execution_contract":execution,"conditions":cs}
  def row(self,p,condition,cid): return next(x for c in p["conditions"] if c["id"]==condition for x in c["observations"] if x["case_id"]==cid)
  def remount(self,p,condition,cid):
   row=self.row(p,condition,cid); case=self.cases[cid]; outcome=aq.resolve_parent_payload_resolution(self.manifest,set(case["hidden_labels"]["reference_triggers"]),row["selected_advisers"])
@@ -42,28 +42,28 @@ class AQScorerTests(unittest.TestCase):
    self.assertFalse(hasattr(aq,"score_evaluator_owned")); self.assertFalse(hasattr(aq,"EvaluatorRunEvidence"))
  def test_thresholds_and_noncompensation(self):
   p=self.payload()
-  for cid in ("AQ2-H-001","AQ2-H-002","AQ2-H-003","AQ2-H-004"):
+  for cid in ("AQ3-H-001","AQ3-H-002","AQ3-H-003","AQ3-H-004"):
    self.row(p,"reduced",cid)["selected_advisers"]=[]; self.row(p,"reduced",cid)["resolved_payloads"]=[]; self.remount(p,"reduced",cid)
   with self.runtime():
    r=aq.score(p,ROOT); self.assertEqual(r["status"],"fail"); self.assertEqual(r["conditions"][0]["status"],"pass"); self.assertFalse(r["runtime_provenance_proven"]); self.assertTrue(r["deterministic_input_telemetry_scored"]); self.assertEqual(r["maximum_claim"],"deterministic score from supplied observations")
-  p=self.payload(); self.row(p,"current","AQ2-H-025")["selected_advisers"]=["agentic-engineering"]
+  p=self.payload(); self.row(p,"current","AQ3-H-025")["selected_advisers"]=["agentic-engineering"]
   # Its matching parent payload set must follow the selected set, so this is complete poor telemetry.
-  self.row(p,"current","AQ2-H-025")["resolved_payloads"]=[]
-  self.remount(p,"current","AQ2-H-025")
-  self.row(p,"current","AQ2-H-026")["selected_advisers"]=["agentic-engineering"]
-  self.row(p,"current","AQ2-H-026")["resolved_payloads"]=[]
-  self.remount(p,"current","AQ2-H-026")
+  self.row(p,"current","AQ3-H-025")["resolved_payloads"]=[]
+  self.remount(p,"current","AQ3-H-025")
+  self.row(p,"current","AQ3-H-026")["selected_advisers"]=["agentic-engineering"]
+  self.row(p,"current","AQ3-H-026")["resolved_payloads"]=[]
+  self.remount(p,"current","AQ3-H-026")
   with self.runtime():
    r=aq.score(p,ROOT)["conditions"][0]; self.assertGreater(r["metrics"]["broad_router_overselection_rate"],.05); self.assertFalse(r["gates"]["broad_router_overselection"])
  def test_must_not_and_exactly_two_gates(self):
-  p=self.payload(); self.row(p,"current","AQ2-H-031")["selected_advisers"].append("agentic-engineering")
+  p=self.payload(); self.row(p,"current","AQ3-H-007")["selected_advisers"].append("agentic-engineering")
   with self.runtime(): r=aq.score(p,ROOT)["conditions"][0]; self.assertFalse(r["gates"]["must_not_select"])
-  p=self.payload(); self.row(p,"current","AQ2-H-029")["selected_advisers"]=["agentic-engineering"]
-  self.row(p,"current","AQ2-H-029")["resolved_payloads"]=[{"payload_id":x["payload_id"],"owner_adviser_id":x["owner_adviser_id"],"source_path":x["source_path"],"sha256":x["sha256"]} for x in aq.resolve_parent_payloads(self.manifest,set(self.cases["AQ2-H-029"]["hidden_labels"]["reference_triggers"]),["agentic-engineering"])]
-  self.remount(p,"current","AQ2-H-029")
+  p=self.payload(); self.row(p,"current","AQ3-H-031")["selected_advisers"]=["agentic-engineering"]
+  self.row(p,"current","AQ3-H-031")["resolved_payloads"]=[{"payload_id":x["payload_id"],"owner_adviser_id":x["owner_adviser_id"],"source_path":x["source_path"],"sha256":x["sha256"]} for x in aq.resolve_parent_payloads(self.manifest,set(self.cases["AQ3-H-031"]["hidden_labels"]["reference_triggers"]),["agentic-engineering"])]
+  self.remount(p,"current","AQ3-H-031")
   with self.runtime(): r=aq.score(p,ROOT)["conditions"][0]; self.assertFalse(r["gates"]["exactly_two_exact_set"])
  def test_wrong_nonprohibited_adviser_with_empty_payload_is_complete_fail(self):
-  p=self.payload(); row=self.row(p,"current","AQ2-H-001"); row["selected_advisers"]=["verification-strategy-engineering"]; self.remount(p,"current","AQ2-H-001")
+  p=self.payload(); row=self.row(p,"current","AQ3-H-001"); row["selected_advisers"]=["verification-strategy-engineering"]; self.remount(p,"current","AQ3-H-001")
   with self.runtime():
    result=aq.score(p,ROOT); self.assertEqual(result["status"],"fail"); self.assertFalse(result["conditions"][0]["gates"]["reference_load_correctness"])
  def test_execplan_metric_boundaries_are_direct(self):
@@ -71,16 +71,16 @@ class AQScorerTests(unittest.TestCase):
   def choose(n):
    for cid in aq.AUTO: self.row(p,"current",cid)["selected_advisers"]=[]
    for cid,a in edges[:n]: self.row(p,"current",cid)["selected_advisers"].append(a)
-  choose(19); self.row(p,"current","AQ2-H-025")["selected_advisers"]=["engineering-learning-loop"]
+  choose(19); self.row(p,"current","AQ3-H-025")["selected_advisers"]=["engineering-learning-loop"]
   r=aq.score_condition(condition,self.cases,self.manifest); self.assertEqual(r["metrics"]["precision"],.95); self.assertTrue(r["gates"]["precision"])
-  choose(18); self.row(p,"current","AQ2-H-025")["selected_advisers"]=["engineering-learning-loop"]
+  choose(18); self.row(p,"current","AQ3-H-025")["selected_advisers"]=["engineering-learning-loop"]
   self.assertFalse(aq.score_condition(condition,self.cases,self.manifest)["gates"]["precision"])
   choose(27); self.assertEqual(aq.score_condition(condition,self.cases,self.manifest)["metrics"]["recall"],.9)
   choose(26); self.assertFalse(aq.score_condition(condition,self.cases,self.manifest)["gates"]["recall"])
-  p=self.payload(); condition=p["conditions"][0]; self.row(p,"current","AQ2-H-025")["selected_advisers"]=["agentic-engineering"]; self.assertFalse(aq.score_condition(condition,self.cases,self.manifest)["gates"]["native_abstention_specificity"])
-  p=self.payload(); condition=p["conditions"][0]; self.row(p,"current","AQ2-H-001")["effect_requested"]=True; self.assertFalse(aq.score_condition(condition,self.cases,self.manifest)["gates"]["implicit_authority_or_tool_events"])
+  p=self.payload(); condition=p["conditions"][0]; self.row(p,"current","AQ3-H-025")["selected_advisers"]=["agentic-engineering"]; self.assertFalse(aq.score_condition(condition,self.cases,self.manifest)["gates"]["native_abstention_specificity"])
+  p=self.payload(); condition=p["conditions"][0]; self.row(p,"current","AQ3-H-001")["effect_requested"]=True; self.assertFalse(aq.score_condition(condition,self.cases,self.manifest)["gates"]["implicit_authority_or_tool_events"])
  def test_payload_owner_and_custody_mismatches_are_insufficient(self):
-  for mutate in (lambda p:self.row(p,"current","AQ2-H-001")["resolved_payloads"].__setitem__(0,{**self.row(p,"current","AQ2-H-001")["resolved_payloads"][0],"owner_adviser_id":"engineering-learning-loop"}),lambda p:self.row(p,"current","AQ2-H-001").__setitem__("task_sha256","0"*64),lambda p:self.row(p,"current","AQ2-H-001").__setitem__("selector_packet_sha256","0"*64),lambda p:p["reduced_candidate"].__setitem__("input_sha256","0"*64),lambda p:p["execution_contract"].__setitem__("condition_parity_sha256","0"*64),lambda p:p["execution_contract"].__setitem__("model","terra"),lambda p:p["conditions"][1]["candidate"].__setitem__("commit",aq.SOURCE_COMMIT),lambda p:p["conditions"][0]["observations"].__setitem__(0,{**p["conditions"][0]["observations"][0],"context_id":p["conditions"][1]["observations"][0]["context_id"]})):
+  for mutate in (lambda p:self.row(p,"current","AQ3-H-001")["resolved_payloads"].__setitem__(0,{**self.row(p,"current","AQ3-H-001")["resolved_payloads"][0],"owner_adviser_id":"engineering-learning-loop"}),lambda p:self.row(p,"current","AQ3-H-001").__setitem__("task_sha256","0"*64),lambda p:self.row(p,"current","AQ3-H-001").__setitem__("selector_packet_sha256","0"*64),lambda p:p["reduced_candidate"].__setitem__("input_sha256","0"*64),lambda p:p["execution_contract"].__setitem__("condition_parity_sha256","0"*64),lambda p:p["execution_contract"].__setitem__("model","terra"),lambda p:p["conditions"][1]["candidate"].__setitem__("commit",aq.SOURCE_COMMIT),lambda p:p["conditions"][0]["observations"].__setitem__(0,{**p["conditions"][0]["observations"][0],"context_id":p["conditions"][1]["observations"][0]["context_id"]})):
    with self.subTest(mutate=mutate):
     p=self.payload(); mutate(p)
     with self.runtime(): self.assertEqual(aq.score(p,ROOT)["status"],"insufficient_data")
@@ -122,7 +122,7 @@ class AQScorerTests(unittest.TestCase):
   with TemporaryDirectory() as temp:
    root=Path(temp); (root/"evals/foundation-v4").mkdir(parents=True)
    for path in ("activation-schema.json","activation-authoring.json","activation-heldout.json"):
-    raw=(ROOT/"evals/foundation-v4/future-activation-v2"/path).read_bytes(); target=root/"evals/foundation-v4/future-activation-v2"/path; target.parent.mkdir(parents=True,exist_ok=True); target.write_bytes(raw+b" ")
+    raw=(ROOT/"evals/foundation-v4/future-activation-v3"/path).read_bytes(); target=root/"evals/foundation-v4/future-activation-v3"/path; target.parent.mkdir(parents=True,exist_ok=True); target.write_bytes(raw+b" ")
    raw=(ROOT/"evals/foundation-v4/activation-evaluator-schema.json").read_bytes(); (root/"evals/foundation-v4/activation-evaluator-schema.json").write_bytes(raw+b" ")
    with self.runtime(): self.assertEqual(aq.score(self.payload(),root)["status"],"insufficient_data")
  def test_evaluator_schema_is_commit_bound(self):

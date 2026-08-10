@@ -1,23 +1,23 @@
 {
-  "schema_version": "2.0",
+  "schema_version": "3.0",
   "claim_ceiling": "structural-proposal-only",
   "source": {"commit": "407a2ac124856f0ce1fa33af8a61d0607e413820", "tree": "8314ca6ad82fa4687720692d8c5762c7aabf6261"},
   "corpus": {
-    "commit": "25de0cb1fe86a802768de9bf64659206d69650d0", "tree": "e5faff4b1a5ba678a7df1727b5bda3b3d0afe00a",
-    "schema": {"path": "evals/foundation-v4/future-activation-v2/activation-schema.json", "sha256": "a228e9e5143d8dbe17f68a1217c264360f287bc615143469b072452f50dbcb21"},
-    "authoring": {"path": "evals/foundation-v4/future-activation-v2/activation-authoring.json", "sha256": "e077a07b99f8782656cd59619eb13e287bb3fc4e6fed3e5fdc8b256b9b97f038"},
-    "heldout": {"path": "evals/foundation-v4/future-activation-v2/activation-heldout.json", "sha256": "2af0e58c0c8b9e009bc7b8716850dc02e000e9702cfdd0bc90cf96740e45d66e"}
+    "commit": "ee7be80441ce06e53615df74505a1b4549a4aa90", "tree": "e1c83c852b26a0c06753c591a689e1ecf00022b7",
+    "schema": {"path": "evals/foundation-v4/future-activation-v3/activation-schema.json", "sha256": "5cc66a6ba0d5f749bdee5f23fc8705034bfd0d4cd44d3d392dfaef3a1d4160ee"},
+    "authoring": {"path": "evals/foundation-v4/future-activation-v3/activation-authoring.json", "sha256": "f67d9e31e64e3c37dde389f984e41b963224263cbe8e82c1643c25a9fee91b65"},
+    "heldout": {"path": "evals/foundation-v4/future-activation-v3/activation-heldout.json", "sha256": "b02773d6757f37a332aaf8d43f78cc1061ac060ef45a253451fded012c40bd75"}
   },
   "evaluator_surface": {
     "claim_ceiling": "logical-catalog-structural-only",
     "jsonschema_dialect": "Draft 2020-12",
     "files": [
-      {"path": "evals/foundation-v4/activation-evaluator-schema.json", "sha256": "aaacaf312d518ac06b12a24304d16ba17a599811e6e59efda575ced96551ca51"},
+      {"path": "evals/foundation-v4/activation-evaluator-schema.json", "sha256": "001dd8339a050aa320f9a558e50bb442d6895bb10d68c21b0c6b54bd4f1a455d"},
       {"path": "evals/foundation-v4/selector-output-schema.json", "sha256": "70b6b7d3e4ac024d4f9ad33eec371fd9fbbcb7782589759da5d9919322ad3ace"},
-      {"path": "scripts/check_reduced_four_skill_candidate.py", "sha256": "7182e73d0b28550397ed17b654eebe17e2ceecfc46c82f7f52eff53372130b6b"},
-      {"path": "scripts/score_activation.py", "sha256": "4fb9a964277b39070ff21b9ea60e6a0456d7c71e5607070a4793ea7cc08af199"},
-      {"path": "scripts/run_activation_trials.py", "sha256": "afa8bcd9f349cd2290dc5c5735fe46e3ef9578761d399c18112d52b36e8fb443"},
-      {"path": "scripts/validate_future_activation_corpus.py", "sha256": "bc59b649ef4c25ca253dee1bbd483d7eb9de5b1a9827f0094c7cb219504333ee"}
+      {"path": "scripts/check_reduced_four_skill_candidate.py", "sha256": "8de386208426ddcc584564fbde0568406a3cca5128f9a1cf1fbf353e5bb80936"},
+      {"path": "scripts/score_activation.py", "sha256": "45e05f0c14b5aa7daca33c946256f7dfe8a0184d7c9507ed8fe5cb1bf553b6ee"},
+      {"path": "scripts/run_activation_trials.py", "sha256": "35a78356aa5a639da812dd9b83089715a5e7dd7333a21fc66690f521d4d26d20"},
+      {"path": "scripts/validate_future_activation_corpus_v3.py", "sha256": "a09e8d11362824552ca427a37901baeb1dbf8009a6847f4a23df7c2b4ddc60ba"}
     ]
   },
   "conditions": {

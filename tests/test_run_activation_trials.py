@@ -4,10 +4,12 @@ from __future__ import annotations
 
 import importlib.util
 import contextlib
+import hashlib
 import io
 import inspect
 import json
 import subprocess
+import tempfile
 import unittest
 from unittest import mock
 from pathlib import Path
@@ -15,6 +17,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location("runner", ROOT / "scripts/run_activation_trials.py")
 runner = importlib.util.module_from_spec(SPEC); assert SPEC.loader; SPEC.loader.exec_module(runner)
+SCORER_SPEC = importlib.util.spec_from_file_location("scorer", ROOT / "scripts/score_activation.py")
+scorer = importlib.util.module_from_spec(SCORER_SPEC); assert SCORER_SPEC.loader; SCORER_SPEC.loader.exec_module(scorer)
 
 
 class Fake:
@@ -49,7 +53,7 @@ class RunnerTests(unittest.TestCase):
             with self.assertRaises(runner.RunnerError): runner.validate_selection(invalid)
 
     def test_packet_is_condition_and_label_blind(self):
-        case = {"id": "AQ2-H-001", "prompt": "Decide whether a bounded contract needs an adviser.", "hidden_labels": {"expected_advisers": ["agentic-engineering"], "reference_triggers": ["architecture-boundary"]}}
+        case = {"id": "AQ3-H-001", "prompt": "Decide whether a bounded contract needs an adviser.", "hidden_labels": {"expected_advisers": ["agentic-engineering"], "reference_triggers": ["architecture-boundary"]}}
         packet = runner.selector_packet(case, [{"adviser_id": item, "description": item + " description"} for item in runner.ADVISERS])
         self.assertNotIn("hidden_labels", packet); self.assertNotIn("architecture-boundary", packet); self.assertNotIn("current", packet); self.assertNotIn("plugins/", packet); self.assertIn("logical_advisers", packet); self.assertIn("$agentic-engineering", packet); self.assertIn(case["prompt"], packet)
 
@@ -78,6 +82,67 @@ class RunnerTests(unittest.TestCase):
         self.assertIn("prefer the more specific decision owner over a broad or downstream lens", instruction)
         self.assertIn("do not stack advisers for a single decision", instruction)
         self.assertIn("do not add others merely for shared relevance", instruction)
+
+    def test_scorer_packet_digest_uses_the_runner_contract_bytes(self):
+        catalog = [{"adviser_id": item, "description": item + " description"} for item in runner.ADVISERS]
+        case = {"id": "synthetic", "prompt": "Synthetic routing decision."}
+        self.assertEqual(scorer.SELECTOR_DECISION_CONTRACT, runner.SELECTOR_DECISION_CONTRACT)
+        self.assertEqual(scorer.selector_packet_digest(case["prompt"], catalog), hashlib.sha256(runner.selector_packet(case, catalog).encode()).hexdigest())
+
+    def test_trial_packet_digest_mismatch_prevents_child_invocation(self):
+        class MismatchedScorer:
+            @staticmethod
+            def selector_packet_digest(*_args): return "0" * 64
+        fake = Fake([])
+        with self.assertRaisesRegex(runner.RunnerError, "selector packet digest mismatch"):
+            runner.trial_observation(scorer=MismatchedScorer, checker=None, candidate={}, condition="current", candidate_commit="c", candidate_tree="t", case={"id":"AQ3-H-001","prompt":"synthetic packet binding"}, catalog=[{"adviser_id": item, "description": item} for item in runner.ADVISERS], contract={}, codex_path="codex", invoke=fake, root=ROOT)
+        self.assertEqual(fake.calls, [])
+
+    def test_candidate_custody_rejects_nonhead_and_all_nonignored_drift_before_module_or_model(self):
+        def repository():
+            raw = tempfile.TemporaryDirectory()
+            repo = Path(raw.name)
+            subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
+            tracked = repo / "tracked.txt"
+            tracked.write_text("one", encoding="utf-8")
+            subprocess.run(["git", "add", "tracked.txt"], cwd=repo, check=True)
+            subprocess.run(["git", "-c", "user.name=test", "-c", "user.email=test@example.invalid", "commit", "-qm", "one"], cwd=repo, check=True)
+            tracked.write_text("two", encoding="utf-8")
+            subprocess.run(["git", "add", "tracked.txt"], cwd=repo, check=True)
+            subprocess.run(["git", "-c", "user.name=test", "-c", "user.email=test@example.invalid", "commit", "-qm", "two"], cwd=repo, check=True)
+            return raw, repo, tracked
+        cases = (
+            ("HEAD^", lambda repo, tracked: None, "candidate commit is not live HEAD"),
+            ("HEAD", lambda repo, tracked: (repo / "staged.txt").write_text("staged", encoding="utf-8"), "repository worktree is not clean"),
+            ("HEAD", lambda repo, tracked: tracked.write_text("unstaged", encoding="utf-8"), "repository worktree is not clean"),
+            ("HEAD", lambda repo, tracked: (repo / "untracked.txt").write_text("untracked", encoding="utf-8"), "repository worktree is not clean"),
+        )
+        for commit, arrange, expected in cases:
+            with self.subTest(expected=expected):
+                temporary, repo, tracked = repository()
+                try:
+                    arrange(repo, tracked)
+                    if (repo / "staged.txt").exists():
+                        subprocess.run(["git", "add", "staged.txt"], cwd=repo, check=True)
+                    with mock.patch.object(runner, "committed_module", side_effect=AssertionError("module import is forbidden")) as modules, \
+                         mock.patch.object(runner, "codex_preflight", side_effect=AssertionError("model probe is forbidden")) as preflight:
+                        with self.assertRaisesRegex(runner.RunnerError, "^" + expected + "$"):
+                            runner.validate_candidate(repo, commit)
+                    modules.assert_not_called()
+                    preflight.assert_not_called()
+                finally:
+                    temporary.cleanup()
+
+    def test_executable_drift_after_preflight_prevents_child_invocation(self):
+        with tempfile.TemporaryDirectory() as raw:
+            executable = Path(raw) / "codex"
+            executable.write_bytes(b"captured at preflight")
+            captured_sha256 = runner.sha256_file(executable)
+            executable.write_bytes(b"substituted after preflight")
+            fake = Fake([])
+            with self.assertRaisesRegex(runner.RunnerError, "^Codex executable drift detected$"):
+                runner.invoke_packet(codex_path=str(executable), packet="{}", invoke=fake, codex_sha256=captured_sha256)
+            self.assertEqual(fake.calls, [])
 
     def test_argv_keeps_approval_after_exec_and_disables_features(self):
         argv = runner.child_argv("/tmp/codex", "/tmp/clean", runner.SCHEMA_PATH)
@@ -134,7 +199,7 @@ class RunnerTests(unittest.TestCase):
             runner.codex_preflight(str(Path(__file__).resolve()), probe=lambda *args, **kwargs: next(results))
 
     def test_schedule_is_deterministic_strict_and_complete(self):
-        cases = [{"id": f"AQ2-H-{index:03d}", "prompt": "x"} for index in range(1, 41)]
+        cases = [{"id": f"AQ3-H-{index:03d}", "prompt": "x"} for index in range(1, 41)]
         one = runner.schedule(cases, "seed"); two = runner.schedule(cases, "seed")
         self.assertEqual(one, two); self.assertEqual(len(one), 80)
         self.assertEqual({condition for condition, _ in one}, {"current", "reduced"})
@@ -143,7 +208,7 @@ class RunnerTests(unittest.TestCase):
             runner.schedule(cases, "   ")
 
     def test_preflight_binds_future_corpus_validator_and_observations_reject_out_of_range_indices(self):
-        self.assertIn("scripts/validate_future_activation_corpus.py", inspect.getsource(runner.immutable_preflight))
+        self.assertIn("scripts/validate_future_activation_corpus_v3.py", inspect.getsource(runner.immutable_preflight))
         with self.assertRaises(runner.RunnerError):
             runner.trial_observation(scorer=None, checker=None, candidate={}, condition="current", candidate_commit="c", candidate_tree="t", case={}, catalog=[], contract={}, codex_path="codex", invoke=Fake([]), root=ROOT, presentation_index=80)
 
@@ -158,25 +223,28 @@ class RunnerTests(unittest.TestCase):
         self.assertEqual(selected, []); self.assertTrue(raw.startswith(b'{"type": "thread.started"')); self.assertEqual(len(fake.calls), 2)
 
     def test_qualification_packet_never_retries_after_thread_started_without_completion(self):
+        class MatchingScorer:
+            @staticmethod
+            def selector_packet_digest(task, catalog): return hashlib.sha256(runner.selector_packet({"id":"AQ3-H-001","prompt":task}, catalog).encode()).hexdigest()
         raw = b'{"type":"thread.started","thread_id":"qualification-thread"}\nnot-json\n'
         fake = Fake([response(raw), response(events())])
         with self.assertRaises(runner.InfrastructureError):
-            runner.trial_observation(scorer=None, checker=None, candidate={}, condition="current", candidate_commit="c", candidate_tree="t", case={"id":"AQ2-H-001","prompt":"bounded qualification"}, catalog=[], contract={}, codex_path="codex", invoke=fake, root=ROOT)
+            runner.trial_observation(scorer=MatchingScorer, checker=None, candidate={}, condition="current", candidate_commit="c", candidate_tree="t", case={"id":"AQ3-H-001","prompt":"bounded qualification"}, catalog=[], contract={}, codex_path="codex", invoke=fake, root=ROOT)
         self.assertEqual(len(fake.calls), 1)
         with self.assertRaisesRegex(runner.RunnerError, "qualification trials never retry"):
-            runner.trial_observation(scorer=None, checker=None, candidate={}, condition="current", candidate_commit="c", candidate_tree="t", case={"id":"AQ2-H-001","prompt":"bounded qualification"}, catalog=[], contract={}, codex_path="codex", invoke=Fake([]), root=ROOT, allow_retry=True)
+            runner.trial_observation(scorer=MatchingScorer, checker=None, candidate={}, condition="current", candidate_commit="c", candidate_tree="t", case={"id":"AQ3-H-001","prompt":"bounded qualification"}, catalog=[], contract={}, codex_path="codex", invoke=Fake([]), root=ROOT, allow_retry=True)
 
     def test_terminal_error_item_is_diagnostic_and_not_retried(self):
         raw = b'{"type":"thread.started","thread_id":"x"}\n{"type":"item.completed","item":{"type":"error","message":"provider unavailable"}}\n'
         fake = Fake([response(raw), response(events())])
-        with self.assertRaisesRegex(runner.RunnerError, "child error item: provider unavailable"):
+        with self.assertRaisesRegex(runner.RunnerError, "^child error item$"):
             runner.run_one(argv=["codex"], packet="{}", invoke=fake)
         self.assertEqual(len(fake.calls), 1)
 
     def test_top_level_and_turn_errors_are_diagnostic(self):
         cases = (
-            (b'{"type":"error","message":"stream failed"}\n', "child stream error: stream failed"),
-            (b'{"type":"turn.failed","error":{"message":"turn failed"}}\n', "child turn failed: turn failed"),
+            (b'{"type":"error","message":"stream failed"}\n', "^child stream error$"),
+            (b'{"type":"turn.failed","error":{"message":"turn failed"}}\n', "^child turn failed$"),
         )
         for raw, expected in cases:
             with self.subTest(expected=expected), self.assertRaisesRegex(runner.RunnerError, expected):
@@ -186,14 +254,29 @@ class RunnerTests(unittest.TestCase):
         with self.assertRaises(runner.RunnerError):
             runner.parse_events(b'{"type":"thread.started","thread_id":"x"}\n{"type":"item.completed","item":{"type":"tool_call"}}\n')
 
-    def test_unknown_event_and_item_report_only_bounded_type_metadata(self):
+    def test_unknown_event_and_item_report_fixed_classification(self):
         cases = (
-            (b'{"type":"future.event"}\n', "unrecognized Codex JSONL event type: future.event"),
-            (b'{"type":"item.completed","item":{"type":"future_item"}}\n', "unrecognized Codex JSONL item type: future_item"),
+            (b'{"type":"future.event"}\n', "^unrecognized Codex JSONL event$"),
+            (b'{"type":"item.completed","item":{"type":"future_item"}}\n', "^unrecognized Codex JSONL item$"),
         )
         for raw, expected in cases:
             with self.subTest(expected=expected), self.assertRaisesRegex(runner.RunnerError, expected):
                 runner.parse_events(raw)
+
+    def test_child_diagnostics_never_reflect_child_controlled_text(self):
+        secret = "AQ3-H-999-synthetic-corpus-like-secret"
+        cases = (
+            (json.dumps({"type":"error", "message":secret}).encode() + b"\n", "child stream error"),
+            (json.dumps({"type":"turn.failed", "error":{"message":secret}}).encode() + b"\n", "child turn failed"),
+            (json.dumps({"type":"thread.started", "thread_id":"x"}).encode() + b"\n" + json.dumps({"type":"item.completed", "item":{"type":"error", "message":secret}}).encode() + b"\n", "child error item"),
+            (json.dumps({"type":"future." + secret}).encode() + b"\n", "unrecognized Codex JSONL event"),
+            (json.dumps({"type":"item.completed", "item":{"type":"future_item_" + secret}}).encode() + b"\n", "unrecognized Codex JSONL item"),
+        )
+        for raw, expected in cases:
+            with self.subTest(expected=expected):
+                with self.assertRaisesRegex(runner.RunnerError, "^" + expected + "$") as raised:
+                    runner.parse_events(raw)
+                self.assertNotIn(secret, str(raised.exception))
 
     def test_mcp_tool_item_is_rejected_in_any_phase(self):
         with self.assertRaises(runner.RunnerError):
@@ -232,7 +315,7 @@ class RunnerTests(unittest.TestCase):
         watched = [
             ROOT / "scripts/run_activation_trials.py",
             ROOT / "evals/foundation-v4/selector-output-schema.json",
-            ROOT / "evals/foundation-v4/future-activation-v2/activation-heldout.json",
+            ROOT / "evals/foundation-v4/future-activation-v3/activation-heldout.json",
             ROOT / "evals/foundation-v4/reduced-four-skills/candidate.json",
         ]
         before = {path: path.read_bytes() for path in watched}
@@ -264,7 +347,7 @@ class RunnerTests(unittest.TestCase):
         self.assertEqual(called, [])
 
     def test_execute_returns_evaluator_owned_aggregate_not_envelope(self):
-        cases = [{"id": f"AQ2-H-{index:03d}", "prompt": "task"} for index in range(1, 41)]
+        cases = [{"id": f"AQ3-H-{index:03d}", "prompt": "task"} for index in range(1, 41)]
         candidate = {"conditions": {name: {"condition_input_sha256": name * 64, "selector_catalog_sha256": ("a" if name == "current" else "b") * 64} for name in ("current", "reduced")}}
         class Checker:
             @staticmethod
@@ -299,7 +382,7 @@ class RunnerTests(unittest.TestCase):
         self.assertNotIn("raw_event_sha256", json.dumps(captured["envelope"]))
 
     def test_execute_rejects_scorer_runtime_or_promotion_claims(self):
-        cases = [{"id": f"AQ2-H-{index:03d}", "prompt": "task"} for index in range(1, 41)]
+        cases = [{"id": f"AQ3-H-{index:03d}", "prompt": "task"} for index in range(1, 41)]
         candidate = {"conditions": {name: {"condition_input_sha256": name * 64, "selector_catalog_sha256": ("a" if name == "current" else "b") * 64} for name in ("current", "reduced")}}
         class Checker:
             @staticmethod
@@ -315,7 +398,7 @@ class RunnerTests(unittest.TestCase):
              mock.patch.object(runner, "codex_preflight", return_value={"path":"codex","version":"v","sha256":"a" * 64}), \
              mock.patch.object(runner, "execution_contract", return_value={"schedule_sha256":"s"}), \
              mock.patch.object(runner, "invoke_packet", return_value=([], events("canary-thread"), "canary-thread")), \
-             mock.patch.object(runner, "trial_observation", return_value={"case_id":"AQ2-H-001", "context_id":"thread"}), \
+             mock.patch.object(runner, "trial_observation", return_value={"case_id":"AQ3-H-001", "context_id":"thread"}), \
              mock.patch.object(runner, "scorer_module", return_value=Scorer):
             with self.assertRaisesRegex(runner.RunnerError, "runtime provenance claim"):
                 runner.execute_trials(root=ROOT, candidate_commit="HEAD", seed="seed", codex="codex", invoke=Fake([]))

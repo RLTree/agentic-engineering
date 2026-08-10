@@ -54,7 +54,7 @@ class ReducedFourCandidateTest(unittest.TestCase):
         self.assert_error(self.errors_for(lambda d: d["skills"][1]["reduced"].__setitem__("context_id", "")), "context IDs")
         self.assert_error(self.errors_for(lambda d: d["skills"][0]["references"][0].__setitem__("full_schema_or_template", True)), "compact non-schema/template")
 
-    def test_aq2_exactly_two_payload_limit_reds(self) -> None:
+    def test_aq3_exactly_two_payload_limit_reds(self) -> None:
         def errors_with_ref_mutation(mutate):
             candidate = copy.deepcopy(self.candidate)
             mutate(candidate)
@@ -64,11 +64,11 @@ class ReducedFourCandidateTest(unittest.TestCase):
 
         def a029(data):
             data["skills"][1]["references"][1]["trigger_ids"] = ["no-change-abstention"]
-        self.assert_error(errors_with_ref_mutation(a029), "AQ2-H-029")
+        self.assert_error(errors_with_ref_mutation(a029), "AQ3-H-029")
 
         def generic(data):
             data["skills"][0]["references"][1]["trigger_ids"] = ["decomposition-boundary"]
-        self.assert_error(errors_with_ref_mutation(generic), "AQ2-H-030")
+        self.assert_error(errors_with_ref_mutation(generic), "corpus trigger coverage gap")
 
     def test_yaml_frontmatter_router_and_forbidden_content_reds(self) -> None:
         yaml = 'interface:\n  display_name: "Agentic Engineering"\n  short_description: "x"\n  brand_color: "#0F766E"\n  default_prompt: "Use $agentic-engineering-lifecycle:agentic-engineering only as proposal-only. Do not act."\npolicy:\n  allow_implicit_invocation: true\n'
@@ -93,11 +93,17 @@ class ReducedFourCandidateTest(unittest.TestCase):
         self.assertEqual([item["payload_id"] for item in resolved], sorted(item["payload_id"] for item in resolved))
         self.assertTrue(all(set(item) == {"payload_id", "owner_adviser_id", "source_path", "sha256", "trigger_ids", "content_class", "full_schema_or_template"} for item in resolved))
 
-    def test_schema_permitted_capacity_breach_is_a_checker_red(self) -> None:
-        breach = {"status": "cap_exceeded", "resolved_count": 4, "records": []}
+    def test_schema_permitted_capacity_overflow_must_use_the_closed_form(self) -> None:
+        breach = {"status": "cap_exceeded", "resolved_count": 3, "records": []}
         with patch.object(checker, "resolve_parent_payload_resolution", return_value=breach):
             errors = checker.validate_candidate(self.candidate, ROOT)
-        self.assert_error(errors, "schema-permitted resolver capacity exceeds three")
+        self.assert_error(errors, "resolver capacity overflow is not closed")
+
+    def test_exhaustive_capacity_proof_detects_more_than_three_trigger_overflow(self) -> None:
+        required = {"architecture-boundary", "decision-contract", "decomposition-boundary", "no-change-abstention"}
+        outcome = checker.resolve_parent_payload_resolution(self.candidate, required, ["agentic-engineering", "codex-task-contract"])
+        self.assertEqual((outcome["status"], outcome["resolved_count"], outcome["records"]), ("cap_exceeded", 4, []))
+        self.assertIn("range(len(TRIGGER_ORDER) + 1)", (ROOT / "scripts/check_reduced_four_skill_candidate.py").read_text(encoding="utf-8"))
 
     def test_condition_digests_are_deterministic_and_distinct(self) -> None:
         descriptor = checker.condition_input_descriptor(self.candidate, "current", ROOT)
@@ -132,7 +138,7 @@ class ReducedFourCandidateTest(unittest.TestCase):
         self.assertIn("evaluator schema lacks exact runner path or nonblank schedule seed", errors)
 
     def test_future_corpus_validator_is_closed_evaluator_surface_with_fixed_digest(self) -> None:
-        entry = next(item for item in self.candidate["evaluator_surface"]["files"] if item["path"] == "scripts/validate_future_activation_corpus.py")
+        entry = next(item for item in self.candidate["evaluator_surface"]["files"] if item["path"] == "scripts/validate_future_activation_corpus_v3.py")
         self.assertEqual(entry["sha256"], checker.FUTURE_CORPUS_VALIDATOR_SHA256)
 
     def test_historical_v1_validator_rejects_invalid_lineage_shape(self) -> None:
@@ -163,9 +169,9 @@ class ReducedFourCandidateTest(unittest.TestCase):
     def test_default_and_working_cli_are_zero_write(self) -> None:
         targets = sorted({
             *[path for path in (ROOT / checker.OVERLAY).rglob("*") if path.is_file()],
-            ROOT / "evals/foundation-v4/future-activation-v2/activation-schema.json",
-            ROOT / "evals/foundation-v4/future-activation-v2/activation-authoring.json",
-            ROOT / "evals/foundation-v4/future-activation-v2/activation-heldout.json",
+            ROOT / "evals/foundation-v4/future-activation-v3/activation-schema.json",
+            ROOT / "evals/foundation-v4/future-activation-v3/activation-authoring.json",
+            ROOT / "evals/foundation-v4/future-activation-v3/activation-heldout.json",
             ROOT / "evals/foundation-v4/activation-evaluator-schema.json",
             ROOT / "evals/foundation-v4/selector-output-schema.json",
             ROOT / "scripts/check_reduced_four_skill_candidate.py",

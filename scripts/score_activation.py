@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Zero-write deterministic AQ logical-catalog scorer (schema 2.0)."""
+"""Zero-write deterministic AQ logical-catalog scorer (schema 3.0)."""
 from __future__ import annotations
 import argparse, hashlib, importlib.util, itertools, json, random, subprocess, sys
 from pathlib import Path
@@ -7,11 +7,22 @@ from typing import Any
 sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_COMMIT, SOURCE_TREE = "407a2ac124856f0ce1fa33af8a61d0607e413820", "8314ca6ad82fa4687720692d8c5762c7aabf6261"
-CORPUS_COMMIT, CORPUS_TREE = "25de0cb1fe86a802768de9bf64659206d69650d0", "e5faff4b1a5ba678a7df1727b5bda3b3d0afe00a"
+CORPUS_COMMIT, CORPUS_TREE = "ee7be80441ce06e53615df74505a1b4549a4aa90", "e1c83c852b26a0c06753c591a689e1ecf00022b7"
 ADVISERS = ("agentic-engineering","codex-task-contract","verification-strategy-engineering","engineering-learning-loop")
-AUTO = {f"AQ2-H-{n:03d}" for n in range(1, 33)}
-QUALIFIED = AUTO | {f"AQ2-{split}-{n:03d}" for split in ("A", "H") for n in range(33, 37)}
+AUTO = {f"AQ3-H-{n:03d}" for n in range(1, 33)}
+QUALIFIED = AUTO | {f"AQ3-{split}-{n:03d}" for split in ("A", "H") for n in range(33, 37)}
 SCHEMA_PATH = "evals/foundation-v4/activation-evaluator-schema.json"
+SELECTOR_DECISION_CONTRACT = (
+    "Select the minimum necessary decision owner or owners for this task: zero, one, or two. "
+    "Shared topical relevance is insufficient; do not select every adviser whose description seems related. "
+    "Identify the controlling decision or decisions. For one controlling decision, select exactly one best owner using the catalog description with the most discriminative responsibility; when descriptions overlap, prefer the more specific decision owner over a broad or downstream lens. "
+    "Select exactly two only when the task has two independent controlling decisions and one owner is necessary for each; do not stack advisers for a single decision. "
+    "Select none when native work is sufficient without an adviser. "
+    "An explicit evaluator-vocabulary invocation is decisive: select that named logical adviser and do not add others merely for shared relevance. "
+    "Evaluator vocabulary maps $agentic-engineering to agentic-engineering, $codex-task-contract to codex-task-contract, $verification-strategy-engineering to verification-strategy-engineering, and $engineering-learning-loop to engineering-learning-loop. "
+    "These bare aliases do not invoke, install, discover, or grant authority. "
+    "Return only the schema object. Do not request tools, effects, approvals, claims, or additional context."
+)
 
 class InputError(ValueError): pass
 def digest_bytes(raw: bytes) -> str: return hashlib.sha256(raw).hexdigest()
@@ -27,7 +38,7 @@ def git_tree(root: Path, commit: str) -> str:
 
 def frozen(root: Path) -> tuple[dict[str,dict[str,Any]],dict[str,str]]:
     """Only committed corpus bytes are scoring input; live drift is rejected."""
-    paths={"activation_schema":"evals/foundation-v4/future-activation-v2/activation-schema.json","authoring":"evals/foundation-v4/future-activation-v2/activation-authoring.json","heldout":"evals/foundation-v4/future-activation-v2/activation-heldout.json"}
+    paths={"activation_schema":"evals/foundation-v4/future-activation-v3/activation-schema.json","authoring":"evals/foundation-v4/future-activation-v3/activation-authoring.json","heldout":"evals/foundation-v4/future-activation-v3/activation-heldout.json"}
     raw={key:git_show(root,CORPUS_COMMIT,path) for key,path in paths.items()}
     for key,path in paths.items():
         try: live=(root/path).read_bytes()
@@ -65,7 +76,7 @@ def qualification_schedule(cases: dict[str,dict[str,Any]], seed: str) -> list[tu
 def selector_packet_digest(task: str, catalog: list[dict[str, str]]) -> str:
     """Digest the sole logical, evaluator-mounted selector packet."""
     logical=[{"id":item["adviser_id"],"description":item["description"]} for item in catalog]
-    return digest_json({"instruction":"Select zero, one, or two logical adviser IDs for this task. Evaluator vocabulary maps $agentic-engineering to agentic-engineering, $codex-task-contract to codex-task-contract, $verification-strategy-engineering to verification-strategy-engineering, and $engineering-learning-loop to engineering-learning-loop. These bare aliases do not invoke, install, discover, or grant authority. Return only the schema object. Do not request tools, effects, approvals, claims, or additional context.","task":task,"logical_advisers":logical})
+    return digest_json({"instruction":SELECTOR_DECISION_CONTRACT,"task":task,"logical_advisers":logical})
 def resolve_parent_payload_resolution(candidate: dict[str,Any], triggers: set[str], selected: list[str]) -> dict[str,Any]:
     eligible=sorted(({**ref,"owner_adviser_id":skill["id"],"source_path":ref["path"]} for skill in candidate["skills"] if skill["id"] in selected for ref in skill["references"] if triggers.intersection(ref["trigger_ids"])),key=lambda item:item["payload_id"])
     def cover(rows): return set().union(*(set(row["trigger_ids"]) for row in rows)) & triggers if rows else set()
@@ -209,13 +220,13 @@ def score_condition(condition:dict[str,Any],cases:dict[str,dict[str,Any]],candid
     gates={"precision":metrics["precision"]>=.95,"recall":metrics["recall"]>=.90,"native_abstention_specificity":metrics["native_abstention_specificity"]>=.95,"broad_router_overselection":metrics["broad_router_overselection_rate"]<=.05,"one_decision_stacking":stack==0,"must_not_select":must_not==0,"exactly_two_exact_set":two==two_ok==2,"explicit_exact_set_compliance":metrics["explicit_exact_set_compliance"]==1,"reference_load_correctness":metrics["reference_load_correctness"]==1,"parent_payload_cap":caps==0,"implicit_authority_or_tool_events":authority==0}
     return {"id":condition["id"],"candidate":condition["candidate"],"counts":{"true_positive_edges":tp,"false_positive_edges":fp,"false_negative_edges":fn,"native_abstention_total":abstain,"broad_router_eligible_cases":broad_n,"broad_router_overselection_events":broad,"one_decision_stacking_raw_count":stack,"must_not_select_violations":must_not,"exactly_two_cases":two,"exactly_two_exact_sets":two_ok,"parent_payload_cap_exceeded":caps,"implicit_authority_or_tool_events":authority},"metrics":metrics,"gates":gates,"status":"pass" if all(gates.values()) else "fail"}
 
-def insufficient(reason:str)->dict[str,Any]: return {"schema_version":"2.0","evaluation_mode":"qualification","status":"insufficient_data","promotion_eligible":False,"runtime_provenance_proven":False,"deterministic_input_telemetry_scored":False,"raw_trajectories_persisted":False,"insufficiency_reason":reason,"maximum_claim":None}
+def insufficient(reason:str)->dict[str,Any]: return {"schema_version":"3.0","evaluation_mode":"qualification","status":"insufficient_data","promotion_eligible":False,"runtime_provenance_proven":False,"deterministic_input_telemetry_scored":False,"raw_trajectories_persisted":False,"insufficiency_reason":reason,"maximum_claim":None}
 def score(payload:Any,root:Path=ROOT)->dict[str,Any]:
     try:
         payload,cases,candidate,execution_digest=validate(payload,root); results=[score_condition(x,cases,candidate) for x in payload["conditions"]]
     except (InputError, ValueError, OSError, KeyError, TypeError) as exc: return insufficient(str(exc) if isinstance(exc, InputError) else "custody_unavailable")
     passed=all(x["status"]=="pass" for x in results)
-    return {"schema_version":"2.0","evaluation_mode":"qualification","status":"pass" if passed else "fail","promotion_eligible":False,"runtime_provenance_proven":False,"deterministic_input_telemetry_scored":True,"score_basis":"supplied_observations","corpus":payload["corpus"],"reduced_candidate":payload["reduced_candidate"],"execution_contract_sha256":execution_digest,"conditions":results,"raw_trajectories_persisted":False,"maximum_claim":"deterministic score from supplied observations"}
+    return {"schema_version":"3.0","evaluation_mode":"qualification","status":"pass" if passed else "fail","promotion_eligible":False,"runtime_provenance_proven":False,"deterministic_input_telemetry_scored":True,"score_basis":"supplied_observations","corpus":payload["corpus"],"reduced_candidate":payload["reduced_candidate"],"execution_contract_sha256":execution_digest,"conditions":results,"raw_trajectories_persisted":False,"maximum_claim":"deterministic score from supplied observations"}
 
 def main(argv:list[str]|None=None)->int:
     p=argparse.ArgumentParser(); p.add_argument("--input",type=Path); a=p.parse_args(argv)

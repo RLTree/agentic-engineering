@@ -24,9 +24,9 @@ sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parents[1]
 FROZEN_COMMIT = "407a2ac124856f0ce1fa33af8a61d0607e413820"
 FROZEN_TREE = "8314ca6ad82fa4687720692d8c5762c7aabf6261"
-CORPUS_COMMIT = "25de0cb1fe86a802768de9bf64659206d69650d0"
-CORPUS_TREE = "e5faff4b1a5ba678a7df1727b5bda3b3d0afe00a"
-CORPUS_ROOT = "evals/foundation-v4/future-activation-v2"
+CORPUS_COMMIT = "ee7be80441ce06e53615df74505a1b4549a4aa90"
+CORPUS_TREE = "e1c83c852b26a0c06753c591a689e1ecf00022b7"
+CORPUS_ROOT = "evals/foundation-v4/future-activation-v3"
 SCHEMA_PATH = ROOT / "evals/foundation-v4/selector-output-schema.json"
 CHECKER_PATH = ROOT / "scripts/check_reduced_four_skill_candidate.py"
 ADVISERS = (
@@ -109,9 +109,23 @@ def git_identity(root: Path, commit: str) -> tuple[str, str]:
     return candidate, tree.stdout.strip()
 
 
+def require_live_head_and_clean(root: Path, candidate_commit: str, probe: Callable[..., Any] = subprocess.run) -> None:
+    """Bind execution to the live clean checkout, not a general trust claim."""
+    candidate = probe(["git", "rev-parse", "--verify", f"{candidate_commit}^{{commit}}"], cwd=root, capture_output=True, text=True)
+    head = probe(["git", "rev-parse", "--verify", "HEAD^{commit}"], cwd=root, capture_output=True, text=True)
+    if candidate.returncode or head.returncode:
+        raise RunnerError("candidate commit is unavailable")
+    if candidate.stdout.strip() != head.stdout.strip():
+        raise RunnerError("candidate commit is not live HEAD")
+    status = probe(["git", "status", "--porcelain=v1", "--untracked-files=all"], cwd=root, capture_output=True, text=True)
+    if status.returncode or status.stdout:
+        raise RunnerError("repository worktree is not clean")
+
+
 def committed_module(root: Path, commit: str, relative: str, name: str, dependencies: dict[str, Any] | None = None) -> Any:
     """Load evaluator code only after its live bytes match the candidate tree."""
     import types
+    require_live_head_and_clean(root, commit)
     raw = git_show(root, commit, relative)
     if (root / relative).read_bytes() != raw:
         raise RunnerError("live evaluator code differs from candidate commit")
@@ -135,6 +149,7 @@ def scorer_module(root: Path, commit: str, checker: Any) -> Any:
 
 def validate_candidate(root: Path, candidate_commit: str) -> tuple[Any, dict[str, Any], str, str]:
     """Return the checker module, immutable manifest, commit, and tree."""
+    require_live_head_and_clean(root, candidate_commit)
     commit, tree = git_identity(root, candidate_commit)
     checker = committed_module(root, commit, "scripts/check_reduced_four_skill_candidate.py", "aq_candidate_checker")
     errors = checker.validate_committed_candidate(root, commit)
@@ -153,10 +168,10 @@ def load_qualification_cases(root: Path = ROOT) -> tuple[list[dict[str, Any]], d
     cases = []
     for document in documents.values():
         for case in document.get("cases", []):
-            if case.get("mode") == "explicit" or (case.get("id", "").startswith("AQ2-H-") and case.get("mode") == "automatic"):
+            if case.get("mode") == "explicit" or (case.get("id", "").startswith("AQ3-H-") and case.get("mode") == "automatic"):
                 cases.append(case)
     # The frozen corpus has four explicit cases in each split and 32 heldout automatic cases.
-    wanted = {f"AQ2-H-{index:03d}" for index in range(1, 33)} | {f"AQ2-A-{index:03d}" for index in range(33, 37)} | {f"AQ2-H-{index:03d}" for index in range(33, 37)}
+    wanted = {f"AQ3-H-{index:03d}" for index in range(1, 33)} | {f"AQ3-A-{index:03d}" for index in range(33, 37)} | {f"AQ3-H-{index:03d}" for index in range(33, 37)}
     selected = [case for case in cases if case.get("id") in wanted]
     if len(selected) != 40 or {case["id"] for case in selected} != wanted:
         raise RunnerError("frozen qualification distribution is unavailable")
@@ -208,7 +223,7 @@ def selector_packet(case: dict[str, Any], catalog: list[dict[str, str]]) -> str:
 
 def immutable_preflight(root: Path, candidate_commit: str, checker: Any, reduced_commit: str) -> None:
     """Prove all evaluator inputs equal their committed candidate/source bytes."""
-    for relative in ("scripts/run_activation_trials.py", "scripts/check_reduced_four_skill_candidate.py", "scripts/score_activation.py", "scripts/validate_future_activation_corpus.py", "evals/foundation-v4/selector-output-schema.json", "evals/foundation-v4/activation-evaluator-schema.json"):
+    for relative in ("scripts/run_activation_trials.py", "scripts/check_reduced_four_skill_candidate.py", "scripts/score_activation.py", "scripts/validate_future_activation_corpus_v3.py", "evals/foundation-v4/selector-output-schema.json", "evals/foundation-v4/activation-evaluator-schema.json"):
         committed = git_show(root, reduced_commit, relative)
         try:
             live = (root / relative).read_bytes()
@@ -297,15 +312,6 @@ def child_argv(codex_path: str, temporary_cwd: str, schema_path: Path) -> list[s
     return argv + ["--output-schema", str(schema_path.resolve()), "--color", "never", "--json", "-"]
 
 
-def error_message(value: Any) -> str:
-    """Return a bounded diagnostic for a terminal child error event."""
-    if isinstance(value, dict):
-        value = value.get("message")
-    if not isinstance(value, str) or not value.strip():
-        return "unspecified child error"
-    return " ".join(value.split())[:240]
-
-
 def parse_events(raw: bytes) -> tuple[list[str], bytes, str]:
     """Parse Codex JSONL and retain the actual ephemeral thread identity only."""
     completed: list[str] = []
@@ -331,20 +337,20 @@ def parse_events(raw: bytes) -> tuple[list[str], bytes, str]:
             turn_completed = True
             continue
         if event_type == "turn.failed":
-            raise RunnerError(f"child turn failed: {error_message(event.get('error'))}")
+            raise RunnerError("child turn failed")
         if event_type == "error":
-            raise RunnerError(f"child stream error: {error_message(event.get('message'))}")
+            raise RunnerError("child stream error")
         item = event.get("item")
         if event_type not in {"item.started", "item.updated", "item.completed"} or not isinstance(item, dict):
-            raise RunnerError(f"unrecognized Codex JSONL event type: {error_message(event_type)}")
+            raise RunnerError("unrecognized Codex JSONL event")
         item_type = item.get("type")
         if item_type == "error":
-            raise RunnerError(f"child error item: {error_message(item.get('message'))}")
+            raise RunnerError("child error item")
         forbidden = {"tool_call", "mcp_tool_call", "command_execution", "file_change", "mcp_call", "function_call", "web_search_call", "effect", "approval", "approval_request"}
         if item_type in forbidden:
             raise RunnerError("child emitted an authority or tool event")
         if item_type not in {"agent_message", "reasoning"}:
-            raise RunnerError(f"unrecognized Codex JSONL item type: {error_message(item_type)}")
+            raise RunnerError("unrecognized Codex JSONL item")
         if event_type == "item.completed":
             if item_type == "reasoning":
                 continue
@@ -395,7 +401,7 @@ def execution_contract(codex_info: dict[str, str], schedule_seed: str, schedule_
     return contract
 
 
-def run_one(*, argv: list[str] | None = None, argv_factory: Callable[[], list[str]] | None = None, packet: str, invoke: Callable[..., Any], allow_retry: bool = False) -> tuple[list[str], bytes, str]:
+def run_one(*, argv: list[str] | None = None, argv_factory: Callable[[], list[str]] | None = None, packet: str, invoke: Callable[..., Any], allow_retry: bool = False, before_invoke: Callable[[], None] | None = None) -> tuple[list[str], bytes, str]:
     """Launch once, except for an explicitly designated transport canary."""
     if (argv is None) == (argv_factory is None):
         raise RunnerError("provide exactly one child argv source")
@@ -404,6 +410,8 @@ def run_one(*, argv: list[str] | None = None, argv_factory: Callable[[], list[st
     for attempt in range(2 if allow_retry else 1):
         try:
             child_argv_value = argv_factory() if argv_factory else argv
+            if before_invoke is not None:
+                before_invoke()
             process = invoke(child_argv_value, input=packet.encode(), stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
             raw = process.stdout if isinstance(process.stdout, bytes) else str(process.stdout).encode()
             parsed = parse_events(raw)
@@ -417,33 +425,45 @@ def run_one(*, argv: list[str] | None = None, argv_factory: Callable[[], list[st
     raise RunnerError("unreachable child retry state")
 
 
-def invoke_packet(*, codex_path: str, packet: str, invoke: Callable[..., Any], allow_retry: bool = False) -> tuple[list[str], bytes, str]:
+def invoke_packet(*, codex_path: str, packet: str, invoke: Callable[..., Any], allow_retry: bool = False, codex_sha256: str | None = None) -> tuple[list[str], bytes, str]:
     """Invoke a packet once; only a non-corpus transport canary may opt in to retry."""
     temporary: list[tempfile.TemporaryDirectory[str]] = []
     def fresh_argv() -> list[str]:
         directory = tempfile.TemporaryDirectory(prefix="aq-prompt-only-")
         temporary.append(directory)
         return child_argv(codex_path, directory.name, SCHEMA_PATH)
+    def verify_executable() -> None:
+        if codex_sha256 is None:
+            return
+        try:
+            actual = sha256_file(Path(codex_path))
+        except OSError as error:
+            raise RunnerError("Codex executable drift detected") from error
+        if actual != codex_sha256:
+            raise RunnerError("Codex executable drift detected")
     try:
-        return run_one(argv_factory=fresh_argv, packet=packet, invoke=invoke, allow_retry=allow_retry)
+        return run_one(argv_factory=fresh_argv, packet=packet, invoke=invoke, allow_retry=allow_retry, before_invoke=verify_executable)
     finally:
         for directory in temporary:
             directory.cleanup()
 
 
-def trial_observation(*, scorer: Any, checker: Any, candidate: dict[str, Any], condition: str, candidate_commit: str, candidate_tree: str, case: dict[str, Any], catalog: list[dict[str, str]], contract: dict[str, Any], codex_path: str, invoke: Callable[..., Any], root: Path, presentation_index: int = 0, allow_retry: bool = False) -> dict[str, Any]:
+def trial_observation(*, scorer: Any, checker: Any, candidate: dict[str, Any], condition: str, candidate_commit: str, candidate_tree: str, case: dict[str, Any], catalog: list[dict[str, str]], contract: dict[str, Any], codex_path: str, invoke: Callable[..., Any], root: Path, presentation_index: int = 0, allow_retry: bool = False, codex_sha256: str | None = None) -> dict[str, Any]:
     if not isinstance(presentation_index, int) or not 0 <= presentation_index < 80:
         raise RunnerError("presentation index is outside the qualification schedule")
     if not isinstance(allow_retry, bool) or allow_retry:
         raise RunnerError("qualification trials never retry")
     packet = selector_packet(case, catalog)
-    selected, _raw_event, context_id = invoke_packet(codex_path=codex_path, packet=packet, invoke=invoke, allow_retry=False)
+    packet_digest = sha256_bytes(packet.encode("utf-8"))
+    if packet_digest != scorer.selector_packet_digest(case["prompt"], catalog):
+        raise RunnerError("selector packet digest mismatch")
+    selected, _raw_event, context_id = invoke_packet(codex_path=codex_path, packet=packet, invoke=invoke, allow_retry=False, codex_sha256=codex_sha256)
     payload_resolution, payloads = resolve_payloads(checker, candidate, case, selected, root)
     prompt_digest = sha256_bytes(case["prompt"].encode())
     observation = {
         "case_id": case["id"], "presentation_index": presentation_index, "context_id": context_id,
         "corpus_prompt_sha256": prompt_digest, "task_sha256": prompt_digest,
-        "selector_packet_sha256": scorer.selector_packet_digest(case["prompt"], catalog),
+        "selector_packet_sha256": packet_digest,
         "candidate_input_sha256": candidate["conditions"][condition]["condition_input_sha256"],
         "selector_catalog_sha256": candidate["conditions"][condition]["selector_catalog_sha256"],
         "parse_status": "parsed", "selected_advisers": selected,
@@ -479,19 +499,19 @@ def execute_trials(*, root: Path, candidate_commit: str, seed: str, codex: str, 
         raise RunnerError("evaluator-owned live scorer unavailable")
     # Canary is intentionally outside the corpus and not included in scoring.
     canary_packet = json.dumps({"instruction": "Return only the schema object with an empty selected_advisers array.", "task": "AQ evaluator transport canary. Do not use tools or request authority.", "logical_advisers": [{"id": item, "description": "logical evaluator entry"} for item in ADVISERS]}, sort_keys=True, separators=(",", ":"))
-    invoke_packet(codex_path=codex_info["path"], packet=canary_packet, invoke=invoke, allow_retry=True)
+    invoke_packet(codex_path=codex_info["path"], packet=canary_packet, invoke=invoke, allow_retry=True, codex_sha256=codex_info["sha256"])
     grouped: dict[str, list[dict[str, Any]]] = {"current": [], "reduced": []}
     indexed_plan = list(enumerate(plan))
     if [presentation_index for presentation_index, _ in indexed_plan] != list(range(80)):
         raise RunnerError("qualification schedule indices are incomplete")
     for presentation_index, (condition, case) in indexed_plan:
         candidate_id, candidate_tree = (FROZEN_COMMIT, FROZEN_TREE) if condition == "current" else (reduced_commit, reduced_tree)
-        observation = trial_observation(scorer=scorer, checker=checker, candidate=candidate, condition=condition, candidate_commit=candidate_id, candidate_tree=candidate_tree, case=case, catalog=catalogs[condition], contract=contract, codex_path=codex_info["path"], invoke=invoke, root=root, presentation_index=presentation_index)
+        observation = trial_observation(scorer=scorer, checker=checker, candidate=candidate, condition=condition, candidate_commit=candidate_id, candidate_tree=candidate_tree, case=case, catalog=catalogs[condition], contract=contract, codex_path=codex_info["path"], invoke=invoke, root=root, presentation_index=presentation_index, codex_sha256=codex_info["sha256"])
         grouped[condition].append(observation)
     if any(len(grouped[condition]) != 40 for condition in grouped):
         raise RunnerError("partial scorer payload prohibited")
     envelope = {
-        "schema_version": "2.0", "evaluation_mode": "qualification", "provenance_mode": "live_runner", "corpus": corpus,
+        "schema_version": "3.0", "evaluation_mode": "qualification", "provenance_mode": "live_runner", "corpus": corpus,
         "reduced_candidate": {"commit": reduced_commit, "tree": reduced_tree, "input_sha256": candidate["conditions"]["reduced"]["condition_input_sha256"]}, "execution_contract": contract,
         "conditions": [{"id": condition, "candidate": {"commit": FROZEN_COMMIT, "tree": FROZEN_TREE, "input_sha256": candidate["conditions"][condition]["condition_input_sha256"]} if condition == "current" else {"commit": reduced_commit, "tree": reduced_tree, "input_sha256": candidate["conditions"][condition]["condition_input_sha256"]}, "adviser_universe": list(ADVISERS), "observations": grouped[condition]} for condition in ("current", "reduced")],
     }
@@ -511,7 +531,7 @@ def run_canary(*, root: Path, candidate_commit: str, codex: str, invoke: Callabl
     immutable_preflight(root, candidate_commit, checker, reduced_commit)
     info = codex_preflight(codex)
     packet = json.dumps({"instruction": "Return only the schema object with an empty selected_advisers array.", "task": "AQ evaluator transport canary. Do not use tools or request authority.", "logical_advisers": [{"id": item, "description": "logical evaluator entry"} for item in ADVISERS]}, sort_keys=True, separators=(",", ":"))
-    selected, _raw_digest, context_id = invoke_packet(codex_path=info["path"], packet=packet, invoke=invoke, allow_retry=True)
+    selected, _raw_digest, context_id = invoke_packet(codex_path=info["path"], packet=packet, invoke=invoke, allow_retry=True, codex_sha256=info["sha256"])
     return {"stage": "AQ", "mode": "canary", "status": "parsed", "context_id": context_id, "selected_advisers": selected, "provider_identity_proven": False, "raw_trajectories_persisted": False, "maximum_claim": "parser and argv acceptance only"}
 
 
@@ -521,6 +541,7 @@ def main(argv: list[str] | None = None) -> int:
     modes.add_argument("--canary", action="store_true")
     modes.add_argument("--execute", action="store_true")
     modes.add_argument("--dry-run", action="store_true")
+    # This is an accidental-invocation interlock; authority remains external.
     parser.add_argument("--usage-approval", default="")
     parser.add_argument("--candidate-commit", default="HEAD")
     parser.add_argument("--seed", default="aq-v4-default-seed")
