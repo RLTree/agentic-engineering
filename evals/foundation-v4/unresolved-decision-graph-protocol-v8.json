@@ -1,0 +1,407 @@
+{
+  "schema_version": "8.0",
+  "protocol_id": "H4-unresolved-decision-graph",
+  "status": "frozen-proposal-only",
+  "claim_ceiling": "structural-proposal-only",
+  "outcome_tuned": false,
+  "purpose": "H4 separates model extraction of unresolved-decision graph facts from deterministic parent-owned root selection. It is a qualification proposal, not evidence of routing quality or runtime behavior.",
+  "novelty_statement": "Unlike H3 independent eligibility, H4 represents controller-to-downstream dependencies among the same four frozen decision slots and selects only unresolved roots. The proposal is novel only at the structural resolver layer and makes no outcome, efficacy, runtime, provider, or product claim.",
+  "authority_basis": {
+    "h3": {
+      "commit": "ccbe06be9a2ef5feca4104b6918985ee9c4527c0",
+      "tree": "dd20449fdc45a73c55adb349d8c828687728ef4d",
+      "protocol": {
+        "path": "evals/foundation-v4/decision-certificate-protocol-v6.json",
+        "sha256": "9ad483a26fe339f81c947507de9c1c66d54b2823a38f68b1c5ee7fdf5c426f84",
+        "predicate_order_sha256": "cd890bb08444940bf1483dc48c0ca563476f7b4c2b25bbe65edfe861d839e4ae",
+        "eligibility_rules_sha256": "3475626c995dfe801faeeded444ed249e72c0f50d8f19b01ee515ad12eba4ad2"
+      },
+      "selector_output_schema": {
+        "path": "evals/foundation-v4/decision-certificate-selector-output-schema-v6.json",
+        "sha256": "9742f2255fed5452df52f9da789a6f2fd72e89aa94c3c6847fad6944445f5b25"
+      }
+    },
+    "h2_catalog": {
+      "commit": "8ddf39198cb0e21f321a01a9755e009bb1c1860f",
+      "tree": "1fbf9964b10831da051d2e5cafe29b6086d4d599",
+      "path": "evals/foundation-v4/decision-atom-candidate-v4.json",
+      "sha256": "50fffcf10170cd022d78428909d0679527439a002a7e07dac30e321bbaff61d9",
+      "git_blob_sha1": "c3e1f89ded468592e3ada8f23f7336c89f0d580d"
+    },
+    "reference_policy": {
+      "commit": "c4e661a926e0ace78d9da83f71d9c52d311abb72",
+      "tree": "f2abb05d32a888c9054ef2e7ab3ad0f08547de88",
+      "path": "evals/foundation-v4/decision-certificate-reference-policy-v6.json",
+      "sha256": "92982c278e33ff52edce1ba2a16082afb3ecc1989d8333a77eee9ca0911fee19"
+    },
+    "base_manifest_provenance_only": {
+      "commit": "f09a0544acf4b7a95fff796434273511a0683ca9",
+      "tree": "38c8c8adf3bb633d33200df1ec65f33e985ae244",
+      "path": "evals/foundation-v4/reduced-four-skills/candidate.json",
+      "sha256": "854f67bdd03e7121bd20e5513ef61ac806d016b3a5f1d6e5891bf4d9e546eb1f",
+      "conditions": {
+        "current": {
+          "selector_catalog_sha256": "7947721cd7ce8a3321b89a5b17891cbc79f373acadb0351793aa481b8dac362a",
+          "condition_input_sha256": "0f7d1ef19a63fceeacf86779042bb9269a098a4e1a88b3eb176f11e44b44f0a0"
+        },
+        "reduced": {
+          "selector_catalog_sha256": "e6b62fd582f724f33d0ce63acb22fa3209f6936213aeba74113a4c0eac67eb4d",
+          "condition_input_sha256": "a2bb7830b3dfccdd5decf1a63d4bcf5cd2bb2605ea35db0efad6ac4d892c78d1"
+        }
+      }
+    }
+  },
+  "source_custody": {
+    "slot_derivation_input": {
+      "classification": "controlling-frozen-git-object-only",
+      "commit": "8ddf39198cb0e21f321a01a9755e009bb1c1860f",
+      "tree": "1fbf9964b10831da051d2e5cafe29b6086d4d599",
+      "path": "evals/foundation-v4/decision-atom-candidate-v4.json",
+      "sha256": "50fffcf10170cd022d78428909d0679527439a002a7e07dac30e321bbaff61d9",
+      "git_blob_sha1": "c3e1f89ded468592e3ada8f23f7336c89f0d580d"
+    },
+    "live_workspace_observation": {
+      "classification": "known-different-lineage-not-a-derivation-input",
+      "path": "evals/foundation-v4/decision-atom-candidate-v4.json",
+      "sha256": "8f7d2d61cee5de217077d3767f3e6454a92c1a29c94fa4f73f121065a50e25cc",
+      "git_blob_sha1": "fba49224df0791c4dc44e22d1ef44cc0fd983b2d"
+    },
+    "substitution_policy": "Slot identity and mapping derive only from the frozen H2 Git object. Live workspace bytes are custody telemetry and must never substitute for that object."
+  },
+  "slot_contract": {
+    "stable_slot_order": ["s0", "s1", "s2", "s3"],
+    "slots": [
+      {
+        "slot_id": "s0",
+        "logical_atom": "topology-control-boundary",
+        "adviser_id": "agentic-engineering",
+        "qualified_invocation": "$agentic-engineering"
+      },
+      {
+        "slot_id": "s1",
+        "logical_atom": "task-contract",
+        "adviser_id": "codex-task-contract",
+        "qualified_invocation": "$codex-task-contract"
+      },
+      {
+        "slot_id": "s2",
+        "logical_atom": "verification-strategy",
+        "adviser_id": "verification-strategy-engineering",
+        "qualified_invocation": "$verification-strategy-engineering"
+      },
+      {
+        "slot_id": "s3",
+        "logical_atom": "engineering-learning",
+        "adviser_id": "engineering-learning-loop",
+        "qualified_invocation": "$engineering-learning-loop"
+      }
+    ],
+    "stable_pair_order": [
+      ["s0", "s1"],
+      ["s0", "s2"],
+      ["s0", "s3"],
+      ["s1", "s2"],
+      ["s1", "s3"],
+      ["s2", "s3"]
+    ],
+    "mapping_owner": "parent-only",
+    "base_manifest_role": "provenance-only"
+  },
+  "model_output_contract": {
+    "semantic_schema_path": "evals/foundation-v4/unresolved-decision-graph-selector-output-schema-v8.json",
+    "runtime_schema_path": "evals/foundation-v4/unresolved-decision-graph-runtime-output-schema-v8.json",
+    "only_top_level_keys": ["candidate_states", "pairwise_relations", "reference_needs"],
+    "candidate_states": {
+      "row_count": 4,
+      "row_keys": ["slot_id", "state"],
+      "slot_order": ["s0", "s1", "s2", "s3"],
+      "allowed_states": ["unresolved", "resolved_or_absent", "uncertain"]
+    },
+    "pairwise_relations": {
+      "row_count": 6,
+      "row_keys": ["left_slot", "right_slot", "relation"],
+      "pair_order": [
+        ["s0", "s1"],
+        ["s0", "s2"],
+        ["s0", "s3"],
+        ["s1", "s2"],
+        ["s1", "s3"],
+        ["s2", "s3"]
+      ],
+      "allowed_relations": [
+        "left_controls_right_downstream",
+        "right_controls_left_downstream",
+        "independent",
+        "unrelated",
+        "uncertain"
+      ]
+    },
+    "reference_needs": {
+      "row_count": 4,
+      "row_keys": ["slot_id", "need"],
+      "slot_order": ["s0", "s1", "s2", "s3"],
+      "allowed_needs": ["none", "primary", "secondary", "uncertain"]
+    },
+    "runtime_projection": "The runtime schema is a deliberate provider-safe homogeneous-array projection. It enforces closed rows, enums, and exact counts but cannot establish row order, unique identities, canonical pairs, relation compatibility, acyclicity, or transitive closure. The parent must validate every runtime output against the semantic schema and resolver algebra before use.",
+    "model_must_not_output": [
+      "selected_slots",
+      "root_slots",
+      "graph_status",
+      "automatic_selection_status",
+      "selection_status",
+      "logical_atoms",
+      "atoms",
+      "advisers",
+      "routes",
+      "authority",
+      "effects",
+      "claims"
+    ]
+  },
+  "deterministic_graph_resolution": {
+    "parent_owned": true,
+    "status_precedence": [
+      "schema_invalid_fail",
+      "relation_state_mismatch_graph_invalid",
+      "cycle_graph_cycle",
+      "transitive_closure_failure_graph_invalid",
+      "uncertainty_graph_uncertain",
+      "root_selection"
+    ],
+    "schema_invalid": "Fail before invocation parsing or graph selection. A schema-invalid model output never produces a selection or recoverable routing status.",
+    "pair_compatibility": [
+      {
+        "endpoint_states": "at_least_one_uncertain",
+        "required_relation": "uncertain"
+      },
+      {
+        "endpoint_states": "neither_uncertain_and_at_least_one_resolved_or_absent",
+        "required_relation": "unrelated"
+      },
+      {
+        "endpoint_states": "both_unresolved",
+        "allowed_relations": [
+          "left_controls_right_downstream",
+          "right_controls_left_downstream",
+          "independent",
+          "uncertain"
+        ],
+        "forbidden_relation": "unrelated"
+      }
+    ],
+    "invalid_pair_result": {
+      "graph_status": "graph_invalid",
+      "automatic_selection_status": "graph_invalid",
+      "root_slots": [],
+      "selected_slots": []
+    },
+    "edge_construction": {
+      "left_controls_right_downstream": "left_slot_to_right_slot",
+      "right_controls_left_downstream": "right_slot_to_left_slot",
+      "independent": "no_edge",
+      "unrelated": "no_edge",
+      "uncertain": "no_edge",
+      "endpoint_scope": "Edges exist only between unresolved endpoints."
+    },
+    "order_law": "The directed unresolved graph must be a strict partial order: irreflexive, acyclic, asymmetric, and transitively closed.",
+    "cycle_result": {
+      "graph_status": "graph_cycle",
+      "automatic_selection_status": "graph_cycle",
+      "root_slots": [],
+      "selected_slots": []
+    },
+    "transitive_closure_rule": "For every directed path from controller A to downstream B, the canonical pair for A and B must encode the direct A-to-B direction. A missing, independent, reverse, unrelated, or uncertain closure relation is graph_invalid.",
+    "uncertainty_rule": "After schema, pair compatibility, cycle, and closure checks pass, any uncertain candidate state or any uncertain pairwise relation yields graph_uncertain automatic abstention.",
+    "uncertainty_result": {
+      "graph_status": "graph_uncertain",
+      "automatic_selection_status": "graph_uncertain",
+      "root_slots": [],
+      "selected_slots": []
+    },
+    "root_definition": "Roots are exactly unresolved slots with directed indegree zero.",
+    "root_selection": {
+      "zero_roots": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selected_slots": []
+      },
+      "one_or_two_roots": {
+        "graph_status": "valid",
+        "automatic_selection_status": "automatic",
+        "selection": "all roots in stable_slot_order"
+      },
+      "more_than_two_roots": {
+        "graph_status": "valid",
+        "automatic_selection_status": "cap_exceeded",
+        "selected_slots": []
+      }
+    },
+    "selection_cap": 2,
+    "graph_status_values": ["valid", "graph_uncertain", "graph_invalid", "graph_cycle"],
+    "automatic_selection_status_values": ["automatic", "cap_exceeded", "graph_uncertain", "graph_invalid", "graph_cycle"]
+  },
+  "explicit_constraint": {
+    "parse_boundary": "The parent, not the model output, parses task text after semantic-schema validation and computes graph telemetry before applying explicit selection precedence.",
+    "superseded_h3_grammar_lineage": {
+      "authority_path": "evals/foundation-v4/decision-certificate-protocol-v6.json",
+      "authority_sha256": "9ad483a26fe339f81c947507de9c1c66d54b2823a38f68b1c5ee7fdf5c426f84",
+      "superseded_surface": "explicit_constraint.qualified_invocation_grammar",
+      "status": "superseded-for-h4",
+      "reason": "H3 ASCII lookaround boundaries can recognize a qualified token adjacent to a non-ASCII Unicode letter, number, or combining mark. H4 owns a codepoint-category boundary parser instead.",
+      "change_classification": "pre-corpus correctness hardening",
+      "outcome_tuned": false,
+      "corpus_or_evaluator_evidence_used": false
+    },
+    "h4_parent_parser_contract": {
+      "owner": "H4 parent",
+      "normalization": "Unicode NFC",
+      "qualified_token_bodies": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "invocation_like_body": {
+        "prefix": "$",
+        "first_codepoint": {
+          "alphabet": "ASCII",
+          "allowed_ranges": ["A-Z", "a-z"]
+        },
+        "remaining_codepoints": {
+          "alphabet": "ASCII",
+          "allowed_ranges": ["A-Z", "a-z", "0-9"],
+          "allowed_literals": ["-"],
+          "minimum_count": 0
+        },
+        "scan": "maximal"
+      },
+      "boundary": {
+        "adjacent_codepoints": "The codepoint immediately before $ and the codepoint immediately after the maximal invocation-like body, when present.",
+        "allowed_when_absent": true,
+        "disallowed_unicode_general_category_prefixes": ["L", "N", "M"],
+        "disallowed_unicode_general_categories": ["Cf", "Pc"],
+        "disallowed_literals": ["_", "-"],
+        "same_rule_on_both_sides": true,
+        "retained_rejection_fixtures": [
+          { "codepoint": "U+200C", "category": "Cf" },
+          { "codepoint": "U+200D", "category": "Cf" },
+          { "codepoint": "U+2060", "category": "Cf" },
+          { "codepoint": "U+FEFF", "category": "Cf" },
+          { "codepoint": "U+202E", "category": "Cf" },
+          { "codepoint": "U+203F", "category": "Pc" }
+        ]
+      },
+      "rewrites": "No trimming, case folding, substring expansion, or token rewriting."
+    },
+    "ordered_token_to_slot": [
+      { "token": "$agentic-engineering", "slot_id": "s0" },
+      { "token": "$codex-task-contract", "slot_id": "s1" },
+      { "token": "$verification-strategy-engineering", "slot_id": "s2" },
+      { "token": "$engineering-learning-loop", "slot_id": "s3" }
+    ],
+    "schema_invalid": "Always fail before explicit invocation can be considered.",
+    "exact": "When there is exactly one bounded invocation-like token whose exact ASCII body is qualified and no unrecognized invocation-like token, select exactly its mapped slot even when automatic graph selection would abstain or select a different root set.",
+    "ambiguous": "More than one qualified invocation is ambiguous and selects no slot.",
+    "absence": "When task text contains no invocation-like token, use automatic graph selection.",
+    "unrecognized": "Any unrecognized invocation-like token, including one mixed with a qualified token, is unrecognized and selects no slot.",
+    "precedence": "After schema validation, unrecognized takes precedence over exact or ambiguous; otherwise one qualified token is exact, more than one is ambiguous, and none leaves automatic selection in force.",
+    "telemetry": "graph_status, automatic_selection_status, and root_slots remain parent-computed telemetry on exact, ambiguous, and unrecognized paths; explicit syntax changes selected_slots only.",
+    "selection_status_values": ["automatic", "exact", "ambiguous", "unrecognized", "cap_exceeded", "graph_uncertain", "graph_invalid", "graph_cycle"]
+  },
+  "parent_resolution_contract": {
+    "result_fields": ["graph_status", "automatic_selection_status", "selection_status", "root_slots", "selected_slots"],
+    "slot_output_order": "stable_slot_order",
+    "automatic_status": "Without invocation-like syntax, selection_status equals automatic_selection_status.",
+    "explicit_status": "With recognized explicit syntax, selection_status is exact or ambiguous; with any unrecognized invocation-like token, selection_status is unrecognized.",
+    "mapping": "Only the parent maps selected slots through slot_contract to logical atoms and advisers.",
+    "prohibitions": [
+      "no_model_owned_selection",
+      "no_authority_assignment",
+      "no_policy_adoption",
+      "no_effect_execution",
+      "no_external_action",
+      "no_completion_claim",
+      "no_efficacy_claim",
+      "no_runtime_claim",
+      "no_provider_claim",
+      "no_product_claim",
+      "no_promotion_claim"
+    ]
+  },
+  "reference_boundary": {
+    "routing_influence": "none",
+    "reference_needs_are_annotations_only": true,
+    "uncertain_need_does_not_change_graph_status": true,
+    "must_not_control": [
+      "pair_compatibility",
+      "edge_construction",
+      "cycle_detection",
+      "transitive_closure",
+      "root_slots",
+      "automatic_selection_status",
+      "selection_status",
+      "selected_slots"
+    ],
+    "resolution_time": "Only after parent-owned slot selection may a separate frozen reference policy inspect reference needs."
+  },
+  "structural_discriminators": [
+    {
+      "discriminator_id": "controller-and-downstream-select-root-only",
+      "setup": {
+        "unresolved_slots": ["s0", "s1"],
+        "resolved_or_absent_slots": ["s2", "s3"],
+        "unresolved_pair_relation": {
+          "left_slot": "s0",
+          "right_slot": "s1",
+          "relation": "left_controls_right_downstream"
+        }
+      },
+      "expected": {
+        "graph_status": "valid",
+        "root_slots": ["s0"],
+        "selected_slots": ["s0"]
+      }
+    },
+    {
+      "discriminator_id": "independent-pair-selects-both",
+      "setup": {
+        "unresolved_slots": ["s0", "s1"],
+        "resolved_or_absent_slots": ["s2", "s3"],
+        "unresolved_pair_relation": {
+          "left_slot": "s0",
+          "right_slot": "s1",
+          "relation": "independent"
+        }
+      },
+      "expected": {
+        "graph_status": "valid",
+        "root_slots": ["s0", "s1"],
+        "selected_slots": ["s0", "s1"]
+      }
+    }
+  ],
+  "structural_invariants": [
+    {
+      "invariant_id": "single-direct-root",
+      "rule": "Exactly one unresolved slot and three resolved_or_absent slots yields that unresolved slot as the sole root and sole automatic selection."
+    },
+    {
+      "invariant_id": "no-unresolved-selects-none",
+      "rule": "Four resolved_or_absent slots and six unrelated relations yields zero roots and no automatic selection."
+    }
+  ],
+  "qualification_controls": {
+    "aq8_failure_policy": {
+      "terminal_stop": true,
+      "rule": "An AQ8 failure is terminal. Stop unless independent new evidence supports a separately authorized protocol revision.",
+      "outcome_tuning_after_failure_permitted": false
+    },
+    "outcome_tuned": false,
+    "corpus_inputs_permitted": false,
+    "case_label_result_inputs_permitted": false,
+    "evaluator_output_inputs_permitted": false,
+    "fresh_blinded_corpus_required_for_any_later_qualification": true,
+    "authorized_observation_schedule": "one_canary_then_one_batch",
+    "claim_ceiling": "Protocol freezing, schema validation, synthetic resolver tests, and any later authorized qualification observations do not establish runtime behavior, provider behavior, product behavior, efficacy, promotion, authority, effects, or external claims."
+  }
+}

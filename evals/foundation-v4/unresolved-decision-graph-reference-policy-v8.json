@@ -1,0 +1,187 @@
+{
+  "schema_version": "8.0",
+  "policy_id": "H4-unresolved-decision-graph-parent-reference-policy",
+  "status": "frozen-proposal-only",
+  "claim_ceiling": "structural-proposal-only",
+  "authority_basis": {
+    "base_candidate": {
+      "commit": "f09a0544acf4b7a95fff796434273511a0683ca9",
+      "tree": "38c8c8adf3bb633d33200df1ec65f33e985ae244",
+      "path": "evals/foundation-v4/reduced-four-skills/candidate.json",
+      "sha256": "854f67bdd03e7121bd20e5513ef61ac806d016b3a5f1d6e5891bf4d9e546eb1f"
+    },
+    "h3_cover_authority": {
+      "commit": "c4e661a926e0ace78d9da83f71d9c52d311abb72",
+      "tree": "f2abb05d32a888c9054ef2e7ab3ad0f08547de88",
+      "path": "evals/foundation-v4/decision-certificate-reference-policy-v6.json",
+      "sha256": "92982c278e33ff52edce1ba2a16082afb3ecc1989d8333a77eee9ca0911fee19"
+    }
+  },
+  "model_boundary": {
+    "model_visible": false,
+    "model_visible_projection": "An anonymous fixed-slot reference-need legend only; no logical atom, adviser, trigger, payload, authority, route, effect, or claim values.",
+    "model_output_used": "Schema-valid fixed-order reference_needs only after routing is independently resolved.",
+    "parent_owned_inputs": [
+      "selection_status",
+      "selected_slots",
+      "ordered_slot_table",
+      "reference_payload_catalog"
+    ],
+    "route_independence": "reference_needs MUST NOT influence graph validation, root selection, exact-invocation selection, selection status, selected slots, or adviser selection."
+  },
+  "reference_need_contract": {
+    "slot_order": [
+      "s0",
+      "s1",
+      "s2",
+      "s3"
+    ],
+    "reference_need_enum": [
+      "none",
+      "primary",
+      "secondary",
+      "uncertain"
+    ],
+    "ordered_slot_table": [
+      {
+        "slot_id": "s0",
+        "logical_atom": "topology-control-boundary",
+        "adviser_id": "agentic-engineering",
+        "primary_trigger_id": "decomposition-boundary",
+        "secondary_trigger_id": "architecture-boundary"
+      },
+      {
+        "slot_id": "s1",
+        "logical_atom": "task-contract",
+        "adviser_id": "codex-task-contract",
+        "primary_trigger_id": "decision-contract",
+        "secondary_trigger_id": "reference-isolation"
+      },
+      {
+        "slot_id": "s2",
+        "logical_atom": "verification-strategy",
+        "adviser_id": "verification-strategy-engineering",
+        "primary_trigger_id": "verification-evidence",
+        "secondary_trigger_id": "reference-isolation"
+      },
+      {
+        "slot_id": "s3",
+        "logical_atom": "engineering-learning",
+        "adviser_id": "engineering-learning-loop",
+        "primary_trigger_id": "reference-isolation",
+        "secondary_trigger_id": "learning-adoption"
+      }
+    ],
+    "routing_precondition": "Graph and exact-invocation routing are resolved before this policy runs; this policy only validates reference needs and derives owner-qualified requests for already-selected slots.",
+    "selection_gate": {
+      "closed_selection_statuses": [
+        "automatic",
+        "exact",
+        "ambiguous",
+        "unrecognized",
+        "cap_exceeded",
+        "graph_uncertain",
+        "graph_invalid",
+        "graph_cycle"
+      ],
+      "emitting_selection_statuses": [
+        "automatic",
+        "exact"
+      ],
+      "automatic": "Only zero through two root_slots copied to selected_slots in frozen slot order are selected and may emit.",
+      "exact": "Only the one exact-invocation selected slot may emit; graph telemetry does not redirect or suppress that exact selection after schema validation.",
+      "non_emitting_selection_statuses": [
+        "ambiguous",
+        "unrecognized",
+        "cap_exceeded",
+        "graph_uncertain",
+        "graph_invalid",
+        "graph_cycle"
+      ],
+      "non_emitting_rule": "selected_slots MUST be empty and every reference need MUST be none."
+    },
+    "unselected_slot_rule": {
+      "required_need": "none",
+      "classes": [
+        "resolved_or_absent",
+        "downstream_unresolved",
+        "state_or_graph_uncertain",
+        "graph_invalid",
+        "graph_cycle",
+        "cap_exceeded",
+        "ambiguous",
+        "unrecognized",
+        "otherwise_unselected"
+      ],
+      "violation": "certificate_invalid_before_request_or_cover"
+    },
+    "selected_slot_rules": {
+      "none": "emit_no_request",
+      "primary": "emit_exactly_one_owner_qualified_request_for_that_slot_owner_and_primary_trigger",
+      "secondary": "emit_exactly_one_owner_qualified_request_for_that_slot_owner_and_secondary_trigger",
+      "uncertain": "emit_no_request_and_record_reference_uncertain_without_changing_selected_slots_or_advisers"
+    },
+    "request_shape": [
+      "owner_adviser_id",
+      "trigger_id"
+    ],
+    "deduplication": "Stable first occurrence by owner_adviser_id then trigger_id."
+  },
+  "canonical_cover": {
+    "source_authority": "h3_cover_authority",
+    "requirement_identity": [
+      "owner_adviser_id",
+      "trigger_id"
+    ],
+    "payload_eligibility": "A payload is eligible only when its owner adviser equals the request owner and its trigger_ids contain the request trigger.",
+    "objective_order": [
+      "minimum_payload_count",
+      "lexicographically_smallest_payload_id_tuple"
+    ],
+    "payload_output_order": "payload_id_ascending",
+    "maximum_payloads": 3,
+    "statuses": [
+      "resolved",
+      "unresolved",
+      "cap_exceeded"
+    ],
+    "branch_contracts": {
+      "resolved": {
+        "payloads": "exact_chosen_cover_in_payload_id_order",
+        "resolved_count": "exact_chosen_payload_count_at_most_maximum"
+      },
+      "unresolved": {
+        "payloads": "empty",
+        "resolved_count": 0
+      },
+      "cap_exceeded": {
+        "payloads": "empty",
+        "resolved_count": "minimum_required_payload_count_greater_than_maximum"
+      }
+    }
+  },
+  "qualification_controls": {
+    "outcome_tuned": false,
+    "corpus_inputs_permitted": false,
+    "hidden_label_inputs_permitted": false,
+    "binding_scope": "frozen_base_candidate_and_h3_cover_authority_only",
+    "aq8_failure_rule": "Any AQ8 failure is terminal: stop without outcome tuning, replay, policy revision, or successor-hypothesis promotion.",
+    "prohibitions": [
+      "no_corpus_binding",
+      "no_hidden_label_or_result_input",
+      "no_reference_need_route_influence",
+      "no_model_visible_owner_trigger_or_payload_table",
+      "no_authority_assignment",
+      "no_policy_adoption",
+      "no_effect_execution",
+      "no_external_action",
+      "no_completion_claim",
+      "no_efficacy_claim",
+      "no_product_claim",
+      "no_runtime_claim",
+      "no_provider_claim",
+      "no_promotion_claim"
+    ],
+    "maximum_claim": "A frozen parent-owned H4 reference policy can establish route-independent request derivation and reproducible owner-qualified catalog resolution only."
+  }
+}

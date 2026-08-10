@@ -1,0 +1,474 @@
+{
+  "schema_version": "8.0",
+  "adapter_id": "AQ8-unresolved-decision-graph-condition-adapter",
+  "status": "frozen-proposal-only",
+  "claim_ceiling": "structural-proposal-only",
+  "corpus_blind": true,
+  "outcome_tuned": false,
+  "model_agnostic": true,
+  "qualification_boundary": {
+    "operationalizes": "H4 condition packet construction only",
+    "does_not_establish": "behavioral qualification or any runtime, product, efficacy, promotion, authority, effect, or external-action claim",
+    "fresh_blinded_holdout_required": true,
+    "authorized_observation_schedule": "one_canary_then_one_batch",
+    "no_replay": true,
+    "replay_permitted": false,
+    "aq8_failure_terminal_stop": true
+  },
+  "authority_basis": {
+    "h2_catalog": {
+      "commit": "8ddf39198cb0e21f321a01a9755e009bb1c1860f",
+      "tree": "1fbf9964b10831da051d2e5cafe29b6086d4d599",
+      "path": "evals/foundation-v4/decision-atom-candidate-v4.json",
+      "sha256": "50fffcf10170cd022d78428909d0679527439a002a7e07dac30e321bbaff61d9",
+      "git_blob_sha1": "c3e1f89ded468592e3ada8f23f7336c89f0d580d",
+      "source_slot_order_canonical_sha256": "852f84da56a3a658c9de7d66fbb202b71c626fa61782d76dfe7daf846b01c860"
+    },
+    "h3_grammar_lineage_only": {
+      "classification": "frozen-superseded-lineage-only",
+      "commit": "ccbe06be9a2ef5feca4104b6918985ee9c4527c0",
+      "tree": "dd20449fdc45a73c55adb349d8c828687728ef4d",
+      "protocol_path": "evals/foundation-v4/decision-certificate-protocol-v6.json",
+      "protocol_sha256": "9ad483a26fe339f81c947507de9c1c66d54b2823a38f68b1c5ee7fdf5c426f84",
+      "projection_path": "explicit_constraint.qualified_invocation_grammar",
+      "projection_canonical_sha256": "4900859123c43250b1622f461e8cf6e2f11df97d50e85f6cadd46906ef4e34c5",
+      "status": "superseded-for-h4",
+      "active_parent_authority": false
+    },
+    "h4_parent_parser_authority": {
+      "classification": "active-parent-parser-authority",
+      "protocol_path": "evals/foundation-v4/unresolved-decision-graph-protocol-v8.json",
+      "protocol_raw_sha256_binding": "closed H4 authority manifest",
+      "projection_path": "explicit_constraint.h4_parent_parser_contract",
+      "projection_canonical_sha256": "8920ab58abd9618fb1af4894e1b664d76d3c6f478d335e1d61e08ac47b9360d1",
+      "status": "active-for-h4",
+      "owner": "H4 parent"
+    }
+  },
+  "source_custody": {
+    "derivation_input": {
+      "classification": "controlling-frozen-git-object-only",
+      "commit": "8ddf39198cb0e21f321a01a9755e009bb1c1860f",
+      "tree": "1fbf9964b10831da051d2e5cafe29b6086d4d599",
+      "path": "evals/foundation-v4/decision-atom-candidate-v4.json",
+      "sha256": "50fffcf10170cd022d78428909d0679527439a002a7e07dac30e321bbaff61d9",
+      "git_blob_sha1": "c3e1f89ded468592e3ada8f23f7336c89f0d580d"
+    },
+    "live_workspace_observation": {
+      "classification": "known-different-lineage-not-a-derivation-input",
+      "path": "evals/foundation-v4/decision-atom-candidate-v4.json",
+      "sha256": "8f7d2d61cee5de217077d3767f3e6454a92c1a29c94fa4f73f121065a50e25cc",
+      "git_blob_sha1": "fba49224df0791c4dc44e22d1ef44cc0fd983b2d",
+      "substitution_permitted": false
+    },
+    "substitution_policy": "Read the derivation input only with git show at the frozen commit and path after commit, tree, raw SHA-256, and blob identity checks. Never substitute live workspace bytes, even when a permitted projection happens to compare equal."
+  },
+  "mechanical_transformation": {
+    "source": "For each condition, read the frozen H2 atom_catalog in source order and map its four source row positions to s0 through s3.",
+    "output_guidance_keys": [
+      "slot_id",
+      "declared_scope",
+      "positive_boundary",
+      "admission_rule",
+      "pairwise_boundaries"
+    ],
+    "pairwise_boundary_keys": [
+      "other_slot_id",
+      "boundary"
+    ],
+    "algorithm": [
+      "Require current and reduced H2 atom_catalog arrays to contain the same four source identifiers in the same order.",
+      "Assign s0 through s3 by source row position without copying the source identifier into model-visible guidance.",
+      "For each row, copy declared_scope, positive_boundary, and admission_rule exactly after JSON decoding.",
+      "For each source pairwise_exclusions entry in source order, map its source identifier to other_slot_id and copy boundary exactly after JSON decoding.",
+      "Emit no other source field and preserve all source row and pairwise entry ordering."
+    ],
+    "omitted_source_fields": [
+      "atom_id",
+      "adviser_id",
+      "explicit_token",
+      "route",
+      "payload",
+      "reference",
+      "case",
+      "label",
+      "result"
+    ]
+  },
+  "slot_order": [
+    "s0",
+    "s1",
+    "s2",
+    "s3"
+  ],
+  "pair_order": [
+    [
+      "s0",
+      "s1"
+    ],
+    [
+      "s0",
+      "s2"
+    ],
+    [
+      "s0",
+      "s3"
+    ],
+    [
+      "s1",
+      "s2"
+    ],
+    [
+      "s1",
+      "s3"
+    ],
+    [
+      "s2",
+      "s3"
+    ]
+  ],
+  "support_legend_authority": {
+    "path": "evals/foundation-v4/unresolved-decision-graph-reference-policy-v8.json",
+    "role": "The separate H4 reference authority owns primary and secondary support semantics; this adapter exposes only anonymous human descriptions.",
+    "sibling_digest_binding": "deferred to the closed H4 authority manifest",
+    "condition_identical": true
+  },
+  "support_legend_canonical_sha256": "196e21fb7f7d994dd11d9b6217d481cf3a88ec53031402e9f9dcf91401565449",
+  "support_legend": [
+    {
+      "slot_id": "s0",
+      "primary": "smallest decomposition boundary",
+      "secondary": "architecture/control boundary"
+    },
+    {
+      "slot_id": "s1",
+      "primary": "task outcome/authority/evidence/done contract",
+      "secondary": "assumption/approval/reference-isolation boundary"
+    },
+    {
+      "slot_id": "s2",
+      "primary": "proportional verification evidence/mode",
+      "secondary": "effect/field/reference-isolation boundary"
+    },
+    {
+      "slot_id": "s3",
+      "primary": "failure attribution/adaptation",
+      "secondary": "knowledge/evaluation lifecycle adoption"
+    }
+  ],
+  "packet_contract": {
+    "packet_keys": [
+      "instruction",
+      "task_text",
+      "slot_order",
+      "pair_order",
+      "condition_guidance",
+      "support_legend"
+    ],
+    "instruction": "Read the task text using the ordered anonymous decision guidance and support legend. Return only the three exact ordered arrays required by the frozen H4 output contract: four candidate states in slot order, six pairwise relations in pair order, and four reference needs in slot order. A candidate state is unresolved when the decision remains, resolved_or_absent when it does not remain, and uncertain when applicability cannot be established. For two unresolved slots, use left_controls_right_downstream when the left slot controls the right slot downstream, right_controls_left_downstream when the right slot controls the left slot downstream, independent when neither controls the other, or uncertain when the relation cannot be established. Use unrelated when at least one endpoint is resolved_or_absent. A pair incident to an uncertain state must use uncertain. Reference needs are none, primary, secondary, or uncertain and never affect routing.",
+    "task_text": "caller-supplied task text only; no task text is stored in this adapter",
+    "slot_order": {
+      "source": "slot_order"
+    },
+    "pair_order": {
+      "source": "pair_order"
+    },
+    "condition_guidance": {
+      "source": "conditions.<condition>.condition_guidance",
+      "canonical_sha256_source": "conditions.<condition>.condition_guidance_canonical_sha256"
+    },
+    "support_legend": {
+      "source": "support_legend",
+      "canonical_sha256_source": "support_legend_canonical_sha256"
+    },
+    "condition_variance": "Only condition_guidance may differ between condition packets for the same task text."
+  },
+  "model_output_contract": {
+    "schema_path": "evals/foundation-v4/unresolved-decision-graph-selector-output-schema-v8.json",
+    "sibling_digest_binding": "deferred to the closed H4 authority manifest",
+    "only_top_level_keys": [
+      "candidate_states",
+      "pairwise_relations",
+      "reference_needs"
+    ],
+    "candidate_state_count": 4,
+    "pairwise_relation_count": 6,
+    "reference_need_count": 4,
+    "additional_properties": false,
+    "condition_identical": true,
+    "model_must_not_output": [
+      "selected_slots",
+      "root_slots",
+      "graph_status",
+      "automatic_selection_status",
+      "selection_status",
+      "logical_atoms",
+      "atoms",
+      "advisers",
+      "routes",
+      "authority",
+      "effects",
+      "claims"
+    ]
+  },
+  "condition_identity_contract": {
+    "same_task_text_required": true,
+    "only_condition_variant": "condition_guidance",
+    "packet_fields_identical": [
+      "instruction",
+      "task_text",
+      "slot_order",
+      "pair_order",
+      "support_legend"
+    ],
+    "condition_invariant_surfaces": [
+      "model_output_contract",
+      "parent_resolver",
+      "model",
+      "reasoning_effort",
+      "tools",
+      "host"
+    ],
+    "identity_values": {
+      "model_output_contract": "same exact semantic schema path and SHA-256 bound by the closed H4 authority manifest",
+      "parent_resolver": "same exact parent resolver path and SHA-256 bound by the closed H4 authority manifest",
+      "model": "same exact model identity",
+      "reasoning_effort": "same exact reasoning effort",
+      "tools": "same exact tools profile",
+      "host": "same exact host execution profile"
+    }
+  },
+  "parent_resolution_boundary": {
+    "protocol_path": "evals/foundation-v4/unresolved-decision-graph-protocol-v8.json",
+    "sibling_digest_binding": "deferred to the closed H4 authority manifest",
+    "identical_for_all_conditions": true,
+    "model_visible": false,
+    "active_parent_parser_authority": "authority_basis.h4_parent_parser_authority",
+    "condition_guidance_must_not_control": [
+      "explicit invocation parsing",
+      "parent graph validation",
+      "root selection",
+      "slot-to-adviser mapping",
+      "support resolution",
+      "authority assignment",
+      "effects"
+    ],
+    "reference_needs_must_not_control": [
+      "pair compatibility",
+      "edge construction",
+      "cycle detection",
+      "transitive closure",
+      "root selection",
+      "automatic selection status",
+      "explicit invocation selection",
+      "selected slots"
+    ],
+    "prohibitions": [
+      "no_model_owned_selection",
+      "no_authority_assignment",
+      "no_policy_adoption",
+      "no_effect_execution",
+      "no_external_action",
+      "no_completion_claim",
+      "no_efficacy_claim",
+      "no_runtime_claim",
+      "no_provider_claim",
+      "no_product_claim",
+      "no_promotion_claim"
+    ]
+  },
+  "condition_difference_contract": {
+    "comparison_unit": "same slot_id at the same frozen position",
+    "permitted_differing_guidance_fields": [
+      "declared_scope"
+    ],
+    "observed_differing_guidance_fields": [
+      "declared_scope"
+    ],
+    "observed_identical_guidance_fields": [
+      "slot_id",
+      "positive_boundary",
+      "admission_rule",
+      "pairwise_boundaries"
+    ],
+    "pairwise_boundaries_condition_specific": false,
+    "digest_paths": {
+      "current": "conditions.current.condition_guidance_canonical_sha256",
+      "reduced": "conditions.reduced.condition_guidance_canonical_sha256"
+    }
+  },
+  "conditions": {
+    "current": {
+      "source_atom_catalog_canonical_sha256": "041a17c0ce7101366aacebe4b3abcfa14757729a92f751111641de403b24f6d4",
+      "condition_guidance_canonical_sha256": "e0c21c0ff763dc53f3ca4a6edb711d935edc041ff5d9c951dea890ddef4603af",
+      "condition_guidance": [
+        {
+          "slot_id": "s0",
+          "declared_scope": "Use when an AI or agent product needs architecture, lifecycle, assurance, field-learning, or Rust engineering decisions.",
+          "positive_boundary": "Own the topology or control-boundary decision itself.",
+          "admission_rule": "Admit only for a direct instance of this controlling decision; topical relevance, downstream usefulness, and possible future need are insufficient.",
+          "pairwise_boundaries": [
+            {
+              "other_slot_id": "s1",
+              "boundary": "Exclude when task-contract definition is the direct decision and topology is only context."
+            },
+            {
+              "other_slot_id": "s2",
+              "boundary": "Exclude when verification strategy is the direct decision and topology is only context."
+            },
+            {
+              "other_slot_id": "s3",
+              "boundary": "Exclude when governed learning is the direct decision and topology is only context."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "declared_scope": "Use when a consequential or ambiguous Codex request needs an explicit outcome, authority, evidence, and done contract.",
+          "positive_boundary": "Own the task outcome, authority, evidence, and done contract itself.",
+          "admission_rule": "Admit only for a direct instance of this controlling decision; topical relevance, downstream usefulness, and possible future need are insufficient.",
+          "pairwise_boundaries": [
+            {
+              "other_slot_id": "s0",
+              "boundary": "Exclude when topology or control-boundary design is the direct decision and contract wording is only downstream."
+            },
+            {
+              "other_slot_id": "s2",
+              "boundary": "Exclude when verification strategy is the direct decision and contract wording is only context."
+            },
+            {
+              "other_slot_id": "s3",
+              "boundary": "Exclude when governed learning is the direct decision and contract wording is only context."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "declared_scope": "Use when a software or agent change needs a proportional proof strategy before implementation, review, or release.",
+          "positive_boundary": "Own the proportional verification strategy itself.",
+          "admission_rule": "Admit only for a direct instance of this controlling decision; topical relevance, downstream usefulness, and possible future need are insufficient.",
+          "pairwise_boundaries": [
+            {
+              "other_slot_id": "s0",
+              "boundary": "Exclude when topology or control-boundary design is the direct decision and proof is only downstream."
+            },
+            {
+              "other_slot_id": "s1",
+              "boundary": "Exclude when task-contract definition is the direct decision and proof wording is only context."
+            },
+            {
+              "other_slot_id": "s3",
+              "boundary": "Exclude when governed learning from an observation is the direct decision rather than proof selection."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "declared_scope": "Use when observed agent or product outcomes should become governed changes to evals, tools, rules, prompts, or architecture.",
+          "positive_boundary": "Own the governed engineering-learning decision itself.",
+          "admission_rule": "Admit only for a direct instance of this controlling decision; topical relevance, downstream usefulness, and possible future need are insufficient.",
+          "pairwise_boundaries": [
+            {
+              "other_slot_id": "s0",
+              "boundary": "Exclude when topology or control-boundary design is the direct decision without an observed learning input."
+            },
+            {
+              "other_slot_id": "s1",
+              "boundary": "Exclude when task-contract definition is the direct decision without an observed learning input."
+            },
+            {
+              "other_slot_id": "s2",
+              "boundary": "Exclude when choosing proof before observation is the direct decision."
+            }
+          ]
+        }
+      ]
+    },
+    "reduced": {
+      "source_atom_catalog_canonical_sha256": "d1ba2828bd03edbef7c912950b7fddd403e132792fbbe508e913337e39f5aa9e",
+      "condition_guidance_canonical_sha256": "e4085d2a637e63fb459dbdc3a64281afbbf9362501c7654ba1b95d6aff26f87b",
+      "condition_guidance": [
+        {
+          "slot_id": "s0",
+          "declared_scope": "Proposal-only advice for choosing the smallest agentic topology or control boundary.",
+          "positive_boundary": "Own the topology or control-boundary decision itself.",
+          "admission_rule": "Admit only for a direct instance of this controlling decision; topical relevance, downstream usefulness, and possible future need are insufficient.",
+          "pairwise_boundaries": [
+            {
+              "other_slot_id": "s1",
+              "boundary": "Exclude when task-contract definition is the direct decision and topology is only context."
+            },
+            {
+              "other_slot_id": "s2",
+              "boundary": "Exclude when verification strategy is the direct decision and topology is only context."
+            },
+            {
+              "other_slot_id": "s3",
+              "boundary": "Exclude when governed learning is the direct decision and topology is only context."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "declared_scope": "Proposal-only advice for turning an ambiguous task into a bounded, evidence-linked contract.",
+          "positive_boundary": "Own the task outcome, authority, evidence, and done contract itself.",
+          "admission_rule": "Admit only for a direct instance of this controlling decision; topical relevance, downstream usefulness, and possible future need are insufficient.",
+          "pairwise_boundaries": [
+            {
+              "other_slot_id": "s0",
+              "boundary": "Exclude when topology or control-boundary design is the direct decision and contract wording is only downstream."
+            },
+            {
+              "other_slot_id": "s2",
+              "boundary": "Exclude when verification strategy is the direct decision and contract wording is only context."
+            },
+            {
+              "other_slot_id": "s3",
+              "boundary": "Exclude when governed learning is the direct decision and contract wording is only context."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "declared_scope": "Explicit, proposal-only advice for choosing proportional verification evidence for an exact software or agent candidate.",
+          "positive_boundary": "Own the proportional verification strategy itself.",
+          "admission_rule": "Admit only for a direct instance of this controlling decision; topical relevance, downstream usefulness, and possible future need are insufficient.",
+          "pairwise_boundaries": [
+            {
+              "other_slot_id": "s0",
+              "boundary": "Exclude when topology or control-boundary design is the direct decision and proof is only downstream."
+            },
+            {
+              "other_slot_id": "s1",
+              "boundary": "Exclude when task-contract definition is the direct decision and proof wording is only context."
+            },
+            {
+              "other_slot_id": "s3",
+              "boundary": "Exclude when governed learning from an observation is the direct decision rather than proof selection."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "declared_scope": "Explicit, proposal-only advice for turning a bounded engineering observation into a governed learning recommendation.",
+          "positive_boundary": "Own the governed engineering-learning decision itself.",
+          "admission_rule": "Admit only for a direct instance of this controlling decision; topical relevance, downstream usefulness, and possible future need are insufficient.",
+          "pairwise_boundaries": [
+            {
+              "other_slot_id": "s0",
+              "boundary": "Exclude when topology or control-boundary design is the direct decision without an observed learning input."
+            },
+            {
+              "other_slot_id": "s1",
+              "boundary": "Exclude when task-contract definition is the direct decision without an observed learning input."
+            },
+            {
+              "other_slot_id": "s2",
+              "boundary": "Exclude when choosing proof before observation is the direct decision."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

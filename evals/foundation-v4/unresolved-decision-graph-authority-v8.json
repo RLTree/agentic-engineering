@@ -1,0 +1,243 @@
+{
+  "schema_version": "8.0",
+  "authority_id": "H4-unresolved-decision-graph-authority-v8",
+  "status": "frozen-proposal-only",
+  "claim_ceiling": "structural-proposal-only",
+  "h2_catalog_authority": {
+    "commit": "8ddf39198cb0e21f321a01a9755e009bb1c1860f",
+    "tree": "1fbf9964b10831da051d2e5cafe29b6086d4d599",
+    "path": "evals/foundation-v4/decision-atom-candidate-v4.json",
+    "sha256": "50fffcf10170cd022d78428909d0679527439a002a7e07dac30e321bbaff61d9"
+  },
+  "h3_protocol_authority": {
+    "commit": "ccbe06be9a2ef5feca4104b6918985ee9c4527c0",
+    "tree": "dd20449fdc45a73c55adb349d8c828687728ef4d",
+    "path": "evals/foundation-v4/decision-certificate-protocol-v6.json",
+    "sha256": "9ad483a26fe339f81c947507de9c1c66d54b2823a38f68b1c5ee7fdf5c426f84"
+  },
+  "h3_selector_schema_authority": {
+    "commit": "ccbe06be9a2ef5feca4104b6918985ee9c4527c0",
+    "tree": "dd20449fdc45a73c55adb349d8c828687728ef4d",
+    "path": "evals/foundation-v4/decision-certificate-selector-output-schema-v6.json",
+    "sha256": "9742f2255fed5452df52f9da789a6f2fd72e89aa94c3c6847fad6944445f5b25"
+  },
+  "h3_reference_policy_authority": {
+    "commit": "c4e661a926e0ace78d9da83f71d9c52d311abb72",
+    "tree": "f2abb05d32a888c9054ef2e7ab3ad0f08547de88",
+    "path": "evals/foundation-v4/decision-certificate-reference-policy-v6.json",
+    "sha256": "92982c278e33ff52edce1ba2a16082afb3ecc1989d8333a77eee9ca0911fee19"
+  },
+  "base_manifest_authority": {
+    "commit": "f09a0544acf4b7a95fff796434273511a0683ca9",
+    "tree": "38c8c8adf3bb633d33200df1ec65f33e985ae244",
+    "path": "evals/foundation-v4/reduced-four-skills/candidate.json",
+    "sha256": "854f67bdd03e7121bd20e5513ef61ac806d016b3a5f1d6e5891bf4d9e546eb1f"
+  },
+  "evaluator_surface": {
+    "files": [
+      {
+        "role": "protocol",
+        "path": "evals/foundation-v4/unresolved-decision-graph-protocol-v8.json",
+        "sha256": "a145766c475de5ed1411bc86467a1a82c3cdaa18782b772ef00901238f590fd5"
+      },
+      {
+        "role": "semantic_selector_schema",
+        "path": "evals/foundation-v4/unresolved-decision-graph-selector-output-schema-v8.json",
+        "sha256": "5ef3bd8dc5a1a83a25c51d10513607c17e298086450b00181caecac0dba35af4"
+      },
+      {
+        "role": "runtime_selector_schema",
+        "path": "evals/foundation-v4/unresolved-decision-graph-runtime-output-schema-v8.json",
+        "sha256": "e4d58b46e39ac65e56a339e7c0d2714d536a5d517de57c2bcc34cfd5c6fe301e"
+      },
+      {
+        "role": "condition_adapter",
+        "path": "evals/foundation-v4/unresolved-decision-graph-condition-adapter-v8.json",
+        "sha256": "2b82d26b9f438b7cfef712d59817bb2cc8426941167350ec58c42a9a6e5e5b31"
+      },
+      {
+        "role": "reference_policy",
+        "path": "evals/foundation-v4/unresolved-decision-graph-reference-policy-v8.json",
+        "sha256": "e16ad13602a3540b97b608d6a70223e5c7061530b748a6843e007eea791826f4"
+      }
+    ]
+  },
+  "cross_file_equality_contract": {
+    "fields": [
+      "commit",
+      "tree",
+      "path",
+      "sha256"
+    ],
+    "authorities": [
+      {
+        "manifest_binding": "h2_catalog_authority",
+        "component_locations": [
+          "protocol.authority_basis.h2_catalog",
+          "protocol.source_custody.slot_derivation_input",
+          "condition_adapter.authority_basis.h2_catalog",
+          "condition_adapter.source_custody.derivation_input"
+        ]
+      },
+      {
+        "manifest_binding": "h3_protocol_authority",
+        "component_locations": [
+          "protocol.authority_basis.h3.protocol",
+          "condition_adapter.authority_basis.h3_grammar_lineage_only"
+        ]
+      },
+      {
+        "manifest_binding": "h3_selector_schema_authority",
+        "component_locations": [
+          "protocol.authority_basis.h3.selector_output_schema"
+        ]
+      },
+      {
+        "manifest_binding": "h3_reference_policy_authority",
+        "component_locations": [
+          "protocol.authority_basis.reference_policy",
+          "reference_policy.authority_basis.h3_cover_authority"
+        ]
+      },
+      {
+        "manifest_binding": "base_manifest_authority",
+        "component_locations": [
+          "protocol.authority_basis.base_manifest_provenance_only",
+          "reference_policy.authority_basis.base_candidate"
+        ]
+      }
+    ],
+    "active_h4_parent_parser": {
+      "component_role": "protocol",
+      "adapter_location": "condition_adapter.authority_basis.h4_parent_parser_authority",
+      "protocol_projection": "explicit_constraint.h4_parent_parser_contract",
+      "projection_canonical_sha256": "8920ab58abd9618fb1af4894e1b664d76d3c6f478d335e1d61e08ac47b9360d1"
+    }
+  },
+  "mechanism": {
+    "declaration": "anonymous unresolved-decision strict partial-order graph",
+    "routing_rule": "graph roots are routes",
+    "non_isomorphism": {
+      "h1_adviser_ids": "not_isomorphic",
+      "h2_atom_sets": "not_isomorphic",
+      "h3_unary_facts": "not_isomorphic"
+    },
+    "causal_target": {
+      "relation": "controlling-vs-downstream/independent relation",
+      "prospective_only": true,
+      "aq7_diagnosis": false
+    }
+  },
+  "diagnostics": {
+    "ordered_primary": [
+      "graph_validity",
+      "candidate_state_accuracy",
+      "directed_control_precision",
+      "directed_control_recall",
+      "independent_relation_accuracy",
+      "exact_root_set",
+      "uncertainty_abstention",
+      "cap_abstention"
+    ],
+    "graph_validity_required_exact": 1,
+    "ordered_later_legacy_noncompensatory_gates": [
+      "selected_set",
+      "reference",
+      "authority"
+    ]
+  },
+  "structural_discriminators": [
+    {
+      "discriminator_id": "controller-and-downstream-select-root-only",
+      "setup": {
+        "unresolved_slots": [
+          "s0",
+          "s1"
+        ],
+        "resolved_or_absent_slots": [
+          "s2",
+          "s3"
+        ],
+        "unresolved_pair_relation": {
+          "left_slot": "s0",
+          "right_slot": "s1",
+          "relation": "left_controls_right_downstream"
+        }
+      },
+      "expected": {
+        "graph_status": "valid",
+        "root_slots": [
+          "s0"
+        ],
+        "selected_slots": [
+          "s0"
+        ]
+      }
+    },
+    {
+      "discriminator_id": "independent-pair-selects-both",
+      "setup": {
+        "unresolved_slots": [
+          "s0",
+          "s1"
+        ],
+        "resolved_or_absent_slots": [
+          "s2",
+          "s3"
+        ],
+        "unresolved_pair_relation": {
+          "left_slot": "s0",
+          "right_slot": "s1",
+          "relation": "independent"
+        }
+      },
+      "expected": {
+        "graph_status": "valid",
+        "root_slots": [
+          "s0",
+          "s1"
+        ],
+        "selected_slots": [
+          "s0",
+          "s1"
+        ]
+      }
+    }
+  ],
+  "structural_invariants": [
+    {
+      "invariant_id": "single-direct-root",
+      "rule": "Exactly one unresolved slot and three resolved_or_absent slots yields that unresolved slot as the sole root and sole automatic selection."
+    },
+    {
+      "invariant_id": "no-unresolved-selects-none",
+      "rule": "Four resolved_or_absent slots and six unrelated relations yields zero roots and no automatic selection."
+    }
+  ],
+  "terminal_stop": {
+    "trigger": "any complete AQ8 noncompensatory aggregate failure",
+    "noncompensatory": true,
+    "actions": [
+      "retire_H4",
+      "stop_AQ"
+    ],
+    "only_resume_condition": "genuinely independent external evidence frozen before any later mechanism",
+    "aq7_outcome_tuning_permitted": false,
+    "aq8_outcome_tuning_permitted": false
+  },
+  "prospective_qualification_boundary": {
+    "prospective_only": true,
+    "authority_commit_required_before_corpus_authoring": true,
+    "fresh_independently_authored_blinded_corpus_required": true,
+    "historical_corpus_reuse_permitted": false
+  },
+  "claims_proven": {
+    "runtime": false,
+    "provider": false,
+    "model": false,
+    "sandbox": false,
+    "product": false,
+    "efficacy": false,
+    "promotion": false
+  }
+}

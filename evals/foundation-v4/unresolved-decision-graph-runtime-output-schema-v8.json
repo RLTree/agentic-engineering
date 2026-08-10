@@ -1,0 +1,71 @@
+{
+  "type": "object",
+  "properties": {
+    "candidate_states": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "slot_id": {
+            "type": "string",
+            "enum": ["s0", "s1", "s2", "s3"]
+          },
+          "state": {
+            "type": "string",
+            "enum": ["unresolved", "resolved_or_absent", "uncertain"]
+          }
+        },
+        "required": ["slot_id", "state"],
+        "additionalProperties": false
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "pairwise_relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "left_slot": {
+            "type": "string",
+            "enum": ["s0", "s1", "s2"]
+          },
+          "right_slot": {
+            "type": "string",
+            "enum": ["s1", "s2", "s3"]
+          },
+          "relation": {
+            "type": "string",
+            "enum": ["left_controls_right_downstream", "right_controls_left_downstream", "independent", "unrelated", "uncertain"]
+          }
+        },
+        "required": ["left_slot", "right_slot", "relation"],
+        "additionalProperties": false
+      },
+      "minItems": 6,
+      "maxItems": 6
+    },
+    "reference_needs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "slot_id": {
+            "type": "string",
+            "enum": ["s0", "s1", "s2", "s3"]
+          },
+          "need": {
+            "type": "string",
+            "enum": ["none", "primary", "secondary", "uncertain"]
+          }
+        },
+        "required": ["slot_id", "need"],
+        "additionalProperties": false
+      },
+      "minItems": 4,
+      "maxItems": 4
+    }
+  },
+  "required": ["candidate_states", "pairwise_relations", "reference_needs"],
+  "additionalProperties": false
+}

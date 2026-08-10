@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/agentic-engineering/evals/foundation-v4/unresolved-decision-graph-selector-output-schema-v8.json",
+  "title": "AQ8 closed unresolved-decision graph output",
+  "type": "object",
+  "properties": {
+    "candidate_states": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "object",
+          "properties": {
+            "slot_id": { "const": "s0" },
+            "state": { "type": "string", "enum": ["unresolved", "resolved_or_absent", "uncertain"] }
+          },
+          "required": ["slot_id", "state"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "slot_id": { "const": "s1" },
+            "state": { "type": "string", "enum": ["unresolved", "resolved_or_absent", "uncertain"] }
+          },
+          "required": ["slot_id", "state"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "slot_id": { "const": "s2" },
+            "state": { "type": "string", "enum": ["unresolved", "resolved_or_absent", "uncertain"] }
+          },
+          "required": ["slot_id", "state"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "slot_id": { "const": "s3" },
+            "state": { "type": "string", "enum": ["unresolved", "resolved_or_absent", "uncertain"] }
+          },
+          "required": ["slot_id", "state"],
+          "additionalProperties": false
+        }
+      ],
+      "items": false,
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "pairwise_relations": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "object",
+          "properties": {
+            "left_slot": { "const": "s0" },
+            "right_slot": { "const": "s1" },
+            "relation": { "type": "string", "enum": ["left_controls_right_downstream", "right_controls_left_downstream", "independent", "unrelated", "uncertain"] }
+          },
+          "required": ["left_slot", "right_slot", "relation"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "left_slot": { "const": "s0" },
+            "right_slot": { "const": "s2" },
+            "relation": { "type": "string", "enum": ["left_controls_right_downstream", "right_controls_left_downstream", "independent", "unrelated", "uncertain"] }
+          },
+          "required": ["left_slot", "right_slot", "relation"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "left_slot": { "const": "s0" },
+            "right_slot": { "const": "s3" },
+            "relation": { "type": "string", "enum": ["left_controls_right_downstream", "right_controls_left_downstream", "independent", "unrelated", "uncertain"] }
+          },
+          "required": ["left_slot", "right_slot", "relation"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "left_slot": { "const": "s1" },
+            "right_slot": { "const": "s2" },
+            "relation": { "type": "string", "enum": ["left_controls_right_downstream", "right_controls_left_downstream", "independent", "unrelated", "uncertain"] }
+          },
+          "required": ["left_slot", "right_slot", "relation"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "left_slot": { "const": "s1" },
+            "right_slot": { "const": "s3" },
+            "relation": { "type": "string", "enum": ["left_controls_right_downstream", "right_controls_left_downstream", "independent", "unrelated", "uncertain"] }
+          },
+          "required": ["left_slot", "right_slot", "relation"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "left_slot": { "const": "s2" },
+            "right_slot": { "const": "s3" },
+            "relation": { "type": "string", "enum": ["left_controls_right_downstream", "right_controls_left_downstream", "independent", "unrelated", "uncertain"] }
+          },
+          "required": ["left_slot", "right_slot", "relation"],
+          "additionalProperties": false
+        }
+      ],
+      "items": false,
+      "minItems": 6,
+      "maxItems": 6
+    },
+    "reference_needs": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "object",
+          "properties": {
+            "slot_id": { "const": "s0" },
+            "need": { "type": "string", "enum": ["none", "primary", "secondary", "uncertain"] }
+          },
+          "required": ["slot_id", "need"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "slot_id": { "const": "s1" },
+            "need": { "type": "string", "enum": ["none", "primary", "secondary", "uncertain"] }
+          },
+          "required": ["slot_id", "need"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "slot_id": { "const": "s2" },
+            "need": { "type": "string", "enum": ["none", "primary", "secondary", "uncertain"] }
+          },
+          "required": ["slot_id", "need"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "slot_id": { "const": "s3" },
+            "need": { "type": "string", "enum": ["none", "primary", "secondary", "uncertain"] }
+          },
+          "required": ["slot_id", "need"],
+          "additionalProperties": false
+        }
+      ],
+      "items": false,
+      "minItems": 4,
+      "maxItems": 4
+    }
+  },
+  "required": ["candidate_states", "pairwise_relations", "reference_needs"],
+  "additionalProperties": false
+}
