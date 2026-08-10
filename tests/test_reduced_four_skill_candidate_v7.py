@@ -209,6 +209,24 @@ class CheckerTests(unittest.TestCase):
             text = path.read_text(encoding="utf-8")
             self.assertNotIn("def resolve_decision_certificate(", text, path.name)
 
+    def test_real_validator_module_dataclass_load_is_temporary_and_collision_safe(self) -> None:
+        name = "aq7_committed_validator_load_regression"
+        sys.modules.pop(name, None)
+        module = checker._load_module(ROOT / checker.VALIDATOR_PATH, name)
+        self.assertTrue(hasattr(module, "ValidationResult"))
+        self.assertNotIn(name, sys.modules)
+        sentinel = object()
+        with patch.dict(sys.modules, {name: sentinel}):
+            collided = checker._load_module(ROOT / checker.VALIDATOR_PATH, name)
+            self.assertTrue(hasattr(collided, "ValidationResult"))
+            self.assertIs(sys.modules[name], sentinel)
+        self.assertNotIn(name, sys.modules)
+        with tempfile.TemporaryDirectory() as directory:
+            broken = Path(directory) / "broken_validator.py"
+            broken.write_text("raise RuntimeError('fixture failure')\n")
+            with self.assertRaises(RuntimeError): checker._load_module(broken, name)
+            self.assertNotIn(name, sys.modules)
+
     def test_temp_git_candidate_manifest_and_live_drift(self) -> None:
         with candidate_fixture() as (root, commit, manifest):
             self.assertEqual(checker.validate_manifest_document(manifest, root, commit, True), [])

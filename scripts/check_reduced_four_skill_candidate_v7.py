@@ -12,6 +12,7 @@ import importlib.util
 import json
 import re
 import subprocess
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -223,7 +224,18 @@ def _load_module(path: Path, name: str) -> Any:
     if spec is None or spec.loader is None:
         raise CandidateError("validator import is unavailable")
     module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+    # Dataclasses resolve their defining module through ``sys.modules`` while
+    # executing.  Registration is deliberately temporary: this committed-byte
+    # loader must not leave a mutable import seam or replace a caller module.
+    prior = sys.modules.get(name)
+    try:
+        sys.modules[name] = module
+        spec.loader.exec_module(module)
+    finally:
+        if prior is None:
+            sys.modules.pop(name, None)
+        else:
+            sys.modules[name] = prior
     return module
 
 

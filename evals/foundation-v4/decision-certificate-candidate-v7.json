@@ -66,7 +66,7 @@
       {
         "role": "checker",
         "path": "scripts/check_reduced_four_skill_candidate_v7.py",
-        "sha256": "4be38c874bb019b5a0bf6669707634395a6784bddda1b63c7c61f948c5b2869b"
+        "sha256": "ca08b4d663bb240e2a3ef07e0bdb564e757e5bfcfc3713e471080951e2500021"
       },
       {
         "role": "resolver",
