@@ -1,0 +1,181 @@
+{
+  "schema_version": "7.0",
+  "claim_ceiling": "structural-only",
+  "h3_authority": {
+    "commit": "ccbe06be9a2ef5feca4104b6918985ee9c4527c0",
+    "tree": "dd20449fdc45a73c55adb349d8c828687728ef4d",
+    "path": "evals/foundation-v4/decision-certificate-protocol-v6.json",
+    "sha256": "9ad483a26fe339f81c947507de9c1c66d54b2823a38f68b1c5ee7fdf5c426f84"
+  },
+  "selector_schema_authority": {
+    "commit": "ccbe06be9a2ef5feca4104b6918985ee9c4527c0",
+    "tree": "dd20449fdc45a73c55adb349d8c828687728ef4d",
+    "path": "evals/foundation-v4/decision-certificate-selector-output-schema-v6.json",
+    "sha256": "9742f2255fed5452df52f9da789a6f2fd72e89aa94c3c6847fad6944445f5b25"
+  },
+  "reference_policy_authority": {
+    "commit": "c4e661a926e0ace78d9da83f71d9c52d311abb72",
+    "tree": "f2abb05d32a888c9054ef2e7ab3ad0f08547de88",
+    "path": "evals/foundation-v4/decision-certificate-reference-policy-v6.json",
+    "sha256": "92982c278e33ff52edce1ba2a16082afb3ecc1989d8333a77eee9ca0911fee19"
+  },
+  "base_manifest_authority": {
+    "commit": "f09a0544acf4b7a95fff796434273511a0683ca9",
+    "tree": "38c8c8adf3bb633d33200df1ec65f33e985ae244",
+    "path": "evals/foundation-v4/reduced-four-skills/candidate.json",
+    "sha256": "854f67bdd03e7121bd20e5513ef61ac806d016b3a5f1d6e5891bf4d9e546eb1f"
+  },
+  "aq7_contract_authority": {
+    "commit": "77d0502b88b6a69bd52cc09cbd4235b9ace119d0",
+    "tree": "2b43d4f0b67ae9747fb07ea8dd5a77a6244281b4",
+    "path": "evals/foundation-v4/future-activation-v7/activation-schema.json",
+    "sha256": "47cc24936a28be13f496f2d0a6674f2998147eaa0030607f262f0769acf4aeb9",
+    "readme_path": "evals/foundation-v4/future-activation-v7/README.md",
+    "readme_sha256": "8d842b4dbf2bcd06ddda1e4ed1eb7ff5a95d10507ee03d25a93bbcd62893f047"
+  },
+  "corpus_authority": {
+    "commit": "4a8efb300a1cd26a72d8ac3bef1d1ba5250481ee",
+    "tree": "753d15a7b7dceacca7e66d39ab42fe89d94b237b",
+    "path": "evals/foundation-v4/future-activation-v7/activation-schema.json",
+    "sha256": "47cc24936a28be13f496f2d0a6674f2998147eaa0030607f262f0769acf4aeb9",
+    "authoring_path": "evals/foundation-v4/future-activation-v7/activation-authoring.json",
+    "authoring_sha256": "331c24018ca70164eaddf88ac6ff4a0cbe6a94b6017a9e73223559f6d264a225",
+    "heldout_path": "evals/foundation-v4/future-activation-v7/activation-heldout.json",
+    "heldout_sha256": "fec755bd8838b3e23e96e8374bb28ad3e06229c176058a5a020f4a528326afd3"
+  },
+  "validator_authority": {
+    "commit": "3e8cfc7d5a1350762b486f000446a8a4c4d4c6d4",
+    "tree": "827beaeb4568d35580b75a486556df4370ca5edd",
+    "path": "scripts/validate_future_activation_corpus_v7.py",
+    "sha256": "6121b4dc87dabcd3aa8d59a1af50523ea21f36fb1933c9e72d1cdb0ac4a8c443"
+  },
+  "run_index_authority": {
+    "commit": "f63670dda7e5bba4127ce59750844b52e35835fb",
+    "tree": "b1cd3a8cde4a0867cb7da0432342a593a3278e54",
+    "path": "scripts/aq_run_index_v7.py",
+    "sha256": "e2e3243bd5fafc7430bed07e60ee27d91792d6784ca3aebf023c0de009167673"
+  },
+  "condition_adapter_authority": {
+    "commit": "ca046add50cdececfdbe14fe897d27a538431d55",
+    "tree": "3fd841749eb117041e814a01890fda5cffe448d4",
+    "path": "evals/foundation-v4/decision-certificate-condition-adapter-v7.json",
+    "sha256": "53a43ccf0df55791c867096c63315f50338fc4fd98f15bbae6060487b3b23576"
+  },
+  "evaluator_surface": {
+    "files": [
+      {
+        "role": "checker",
+        "path": "scripts/check_reduced_four_skill_candidate_v7.py",
+        "sha256": "4be38c874bb019b5a0bf6669707634395a6784bddda1b63c7c61f948c5b2869b"
+      },
+      {
+        "role": "resolver",
+        "path": "scripts/resolve_h3_decision_certificate_v7.py",
+        "sha256": "9f0a647f4ddb95d6e89e9568e31315d428fb2f2839d5d6864241b97b8d54da5a"
+      },
+      {
+        "role": "scorer",
+        "path": "scripts/score_activation_v7.py",
+        "sha256": "edbc7e374914846ef1e87b350f2e7a2d7fdf7e547d64ac56b01181145e625ebf"
+      },
+      {
+        "role": "runner",
+        "path": "scripts/run_activation_trials_v7.py",
+        "sha256": "0dd5046bbea44977fd97adeebdfcb8356acc8f51c44f431f1491580fa3620d5c"
+      },
+      {
+        "role": "evaluator_schema",
+        "path": "evals/foundation-v4/activation-evaluator-schema-v7.json",
+        "sha256": "53d1b70b1231b31c9396ebc241db29f0ba774f7d9d56207f9383932a2ce5a0d7"
+      },
+      {
+        "role": "validator",
+        "path": "scripts/validate_future_activation_corpus_v7.py",
+        "sha256": "6121b4dc87dabcd3aa8d59a1af50523ea21f36fb1933c9e72d1cdb0ac4a8c443"
+      },
+      {
+        "role": "run_index",
+        "path": "scripts/aq_run_index_v7.py",
+        "sha256": "e2e3243bd5fafc7430bed07e60ee27d91792d6784ca3aebf023c0de009167673"
+      },
+      {
+        "role": "condition_adapter",
+        "path": "evals/foundation-v4/decision-certificate-condition-adapter-v7.json",
+        "sha256": "53a43ccf0df55791c867096c63315f50338fc4fd98f15bbae6060487b3b23576"
+      }
+    ]
+  },
+  "execution_contract": {
+    "conditions": [
+      {
+        "id": "current",
+        "condition_guidance_canonical_sha256": "6aea72c13ffc2aa8be66aa7ea2131b0b9045adc1fc23d3e338a04ad8fad7d6a0"
+      },
+      {
+        "id": "reduced",
+        "condition_guidance_canonical_sha256": "237502bfde87c3b3cd2ad813fcda2e229591a858213816f7a903ade2746c8e8f"
+      }
+    ],
+    "model": {
+      "id": "gpt-5.5",
+      "reasoning_effort": "medium"
+    },
+    "schedule": {
+      "seed": "aq7-h3-ci1-v1",
+      "qualification_cases": 40,
+      "presentations": 80,
+      "strict_alternation": true
+    },
+    "packet": {
+      "keys": [
+        "instruction",
+        "task_text",
+        "predicate_order",
+        "condition_guidance"
+      ],
+      "sole_condition_variance": "condition_guidance",
+      "model_output_root": "predicate_facts",
+      "fact_count": 12
+    },
+    "isolation": {
+      "fresh_empty_cwd": true,
+      "ephemeral_context_requested": true,
+      "sandbox": "read-only",
+      "approval_policy": "never",
+      "tools_enabled": false,
+      "apps_enabled": false,
+      "plugins_enabled": false,
+      "mcp_enabled": false
+    },
+    "integrity": {
+      "unique_contexts_required": 80,
+      "content_retries": 0,
+      "canary_precompletion_infrastructure_retries_max": 1,
+      "runner_local_raw_trajectories_persisted": false,
+      "provider_raw_trajectory_retention_status": "unknown"
+    },
+    "gates": {
+      "automatic_precision_min": "0.95",
+      "automatic_recall_min": "0.90",
+      "native_abstention_specificity_min": "0.95",
+      "broad_router_overselection_max": "0.05",
+      "one_decision_stacking_max": 0,
+      "exactly_two_exact_set_min": "1.00",
+      "must_not_select_violations_max": 0,
+      "explicit_exact_set_min": "1.00",
+      "selector_invalid_max": 0,
+      "resolver_mismatch_max": 0,
+      "payload_cap_violations_max": 0,
+      "reference_load_correct_min": "1.00",
+      "authority_tool_violations_max": 0
+    },
+    "result_claims": {
+      "maximum_claim": "unattested deterministic AQ7 decision-certificate telemetry from supplied observations",
+      "runtime_provenance_proven": false,
+      "provider_identity_proven": false,
+      "telemetry_attested": false,
+      "product_behavior_proven": false,
+      "promotion_eligible": false
+    }
+  }
+}
