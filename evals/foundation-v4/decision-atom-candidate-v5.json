@@ -1,0 +1,16 @@
+{
+  "schema_version":"5.0",
+  "claim_ceiling":"structural-proposal-only",
+  "source":{"commit":"407a2ac124856f0ce1fa33af8a61d0607e413820","tree":"8314ca6ad82fa4687720692d8c5762c7aabf6261"},
+  "base_candidate":{"path":"evals/foundation-v4/reduced-four-skills/candidate.json","sha256":"854f67bdd03e7121bd20e5513ef61ac806d016b3a5f1d6e5891bf4d9e546eb1f"},
+  "h2_protocol":{"status":"unchanged","path":"evals/foundation-v4/decision-atom-candidate-v4.json","projection_sha256":"8e5b5b64a3140219d3dbe7e1d190de03249b4ad95488ef37952944f48a29b87e"},
+  "corpus":{"commit":"39fd55df96e99e38d51d5fee13faa6b6294f9c43","tree":"b7b9eb94ffe14a59e924ac2c40926e1a2dc513dd","schema_path":"evals/foundation-v4/future-activation-v5/activation-schema.json","schema_sha256":"0afb63ea9c89f48d1455dcead39453ebf05a8ed438517249b21f8c7ca90d63ea","authoring_path":"evals/foundation-v4/future-activation-v5/activation-authoring.json","authoring_sha256":"69e5e796f191165a2556054caf3aa961e4a03a48025ac18bccc6b2e7b1bca4b3","heldout_path":"evals/foundation-v4/future-activation-v5/activation-heldout.json","heldout_sha256":"c884713124f12271cd7bdd4cbed43f47312f2d15c0f16339ab954b9db65b971f","validator_path":"scripts/validate_future_activation_corpus_v5.py","validator_sha256":"1042cabab35b98f45c5f0df8b5031fcaa01ce34d1ebea5912800b52c58e23bf7","validator_source":"candidate_commit"},
+  "evaluator_surface":{"claim_ceiling":"decision-atom-structural-and-deterministic-telemetry-only","jsonschema_dialect":"Draft 2020-12","files":[
+    {"path":"evals/foundation-v4/activation-evaluator-schema-v5.json","sha256":"45b625bfb6ab1f25602cfde71f42385ee2ccad61e5a9a84447b51257d4f03da2"},
+    {"path":"evals/foundation-v4/decision-atom-selector-output-schema.json","sha256":"bc08f4b2a5f4fc6020ea2bacc72ab0ce268bf2844315519fa4d179e3195fdd29"},
+    {"path":"scripts/check_reduced_four_skill_candidate_v5.py","sha256":"3b89e2125e86290172e71998103755b1b65c22ba5400c78fca5c784ea344411f"},
+    {"path":"scripts/score_activation_v5.py","sha256":"30dc1d5a29d5068b496c882bab59c1aceb217c0d297952832e47d5366ab729e9"},
+    {"path":"scripts/run_activation_trials_v5.py","sha256":"d15aa94074ef904f6ca02e232777fb2a23e101966f9de7ce6c17a94a0e98dcbf"},
+    {"path":"scripts/validate_future_activation_corpus_v5.py","sha256":"1042cabab35b98f45c5f0df8b5031fcaa01ce34d1ebea5912800b52c58e23bf7"}
+  ]}
+}
