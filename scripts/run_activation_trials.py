@@ -33,6 +33,12 @@ ADVISERS = (
     "agentic-engineering", "codex-task-contract",
     "verification-strategy-engineering", "engineering-learning-loop",
 )
+FROZEN_CASE_FIELDS = frozenset((
+    "anti_reuse", "authority", "category", "condition_blind",
+    "declared_invocation", "family_id", "hidden_labels", "id",
+    "labels_visible_to_runner", "mode", "near_neighbor_kind",
+    "outcomes_visible_to_authoring", "precedence", "prompt",
+))
 MODEL = "gpt-5.5"
 REASONING = "medium"
 DISABLED_FEATURES = (
@@ -175,6 +181,8 @@ def load_qualification_cases(root: Path = ROOT) -> tuple[list[dict[str, Any]], d
     selected = [case for case in cases if case.get("id") in wanted]
     if len(selected) != 40 or {case["id"] for case in selected} != wanted:
         raise RunnerError("frozen qualification distribution is unavailable")
+    if any(set(case) != FROZEN_CASE_FIELDS for case in selected):
+        raise RunnerError("frozen qualification case shape drift")
     return selected, {
         "source_commit": CORPUS_COMMIT, "source_tree": CORPUS_TREE,
         "activation_schema_sha256": sha256_bytes(git_show(root, CORPUS_COMMIT, f"{CORPUS_ROOT}/activation-schema.json")),
@@ -209,7 +217,7 @@ def validate_selection(value: Any) -> list[str]:
 
 def selector_packet(case: dict[str, Any], catalog: list[dict[str, str]]) -> str:
     """Build the sole model-visible packet; it intentionally contains no labels."""
-    if set(case) - {"id", "family_id", "category", "mode", "prompt", "authority", "condition_blind", "labels_visible_to_runner", "outcomes_visible_to_authoring", "hidden_labels", "near_neighbor_kind", "declared_invocation"}:
+    if set(case) - FROZEN_CASE_FIELDS:
         raise RunnerError("unexpected frozen case shape")
     logical = [{"id": record["adviser_id"], "description": record["description"]} for record in catalog]
     packet = {

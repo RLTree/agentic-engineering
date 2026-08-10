@@ -57,6 +57,20 @@ class RunnerTests(unittest.TestCase):
         packet = runner.selector_packet(case, [{"adviser_id": item, "description": item + " description"} for item in runner.ADVISERS])
         self.assertNotIn("hidden_labels", packet); self.assertNotIn("architecture-boundary", packet); self.assertNotIn("current", packet); self.assertNotIn("plugins/", packet); self.assertIn("logical_advisers", packet); self.assertIn("$agentic-engineering", packet); self.assertIn(case["prompt"], packet)
 
+    def test_real_frozen_case_shape_is_accepted_and_packet_only_exposes_prompt(self):
+        cases, _corpus = runner.load_qualification_cases(ROOT)
+        case = cases[0]
+        catalog = [{"adviser_id": item, "description": item + " description"} for item in runner.ADVISERS]
+        packet = json.loads(runner.selector_packet(case, catalog))
+        self.assertEqual(set(case), runner.FROZEN_CASE_FIELDS)
+        self.assertEqual(set(packet), {"instruction", "logical_advisers", "task"})
+        self.assertEqual(packet["task"], case["prompt"])
+        self.assertEqual(packet["logical_advisers"], [{"id": item, "description": item + " description"} for item in runner.ADVISERS])
+
+    def test_packet_rejects_fields_outside_the_frozen_case_allowlist(self):
+        with self.assertRaisesRegex(runner.RunnerError, "unexpected frozen case shape"):
+            runner.selector_packet({"id": "synthetic", "prompt": "Synthetic routing decision.", "unexpected": True}, [])
+
     def test_packet_orders_the_minimum_owner_decision_contract(self):
         catalog = [{"adviser_id": item, "description": item + " description"} for item in runner.ADVISERS]
         packet = json.loads(runner.selector_packet({"id": "synthetic", "prompt": "Synthetic routing decision."}, catalog))

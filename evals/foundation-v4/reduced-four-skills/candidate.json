@@ -16,7 +16,7 @@
       {"path": "evals/foundation-v4/selector-output-schema.json", "sha256": "70b6b7d3e4ac024d4f9ad33eec371fd9fbbcb7782589759da5d9919322ad3ace"},
       {"path": "scripts/check_reduced_four_skill_candidate.py", "sha256": "8de386208426ddcc584564fbde0568406a3cca5128f9a1cf1fbf353e5bb80936"},
       {"path": "scripts/score_activation.py", "sha256": "45e05f0c14b5aa7daca33c946256f7dfe8a0184d7c9507ed8fe5cb1bf553b6ee"},
-      {"path": "scripts/run_activation_trials.py", "sha256": "35a78356aa5a639da812dd9b83089715a5e7dd7333a21fc66690f521d4d26d20"},
+      {"path": "scripts/run_activation_trials.py", "sha256": "f54ca1c120996515d3e051ca5e0fba14008576e892695635082c8b75f22f321d"},
       {"path": "scripts/validate_future_activation_corpus_v3.py", "sha256": "a09e8d11362824552ca427a37901baeb1dbf8009a6847f4a23df7c2b4ddc60ba"}
     ]
   },
