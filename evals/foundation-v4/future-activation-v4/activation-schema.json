@@ -1,0 +1,278 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.local/schemas/aq4-activation-corpus-v4.json",
+  "title": "AQ4 activation corpus v4",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "corpus_id",
+    "condition_blind",
+    "claim_ceiling",
+    "cases"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aq4-activation-corpus-v4"
+    },
+    "corpus_id": {
+      "type": "string",
+      "pattern": "^aq4-(authoring|heldout)-v4$"
+    },
+    "condition_blind": {
+      "const": true
+    },
+    "claim_ceiling": {
+      "const": "structural-proposal-only"
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 36,
+      "maxItems": 36,
+      "items": {
+        "$ref": "#/$defs/case"
+      }
+    }
+  },
+  "$defs": {
+    "atom": {
+      "enum": [
+        "topology-control-boundary",
+        "task-contract",
+        "verification-strategy",
+        "engineering-learning"
+      ]
+    },
+    "adviser": {
+      "enum": [
+        "$agentic-engineering-lifecycle:agentic-engineering",
+        "$agentic-engineering:codex-task-contract",
+        "$agentic-engineering:verification-strategy-engineering",
+        "$agentic-engineering:engineering-learning-loop"
+      ]
+    },
+    "trigger": {
+      "enum": [
+        "decomposition-boundary",
+        "architecture-boundary",
+        "reference-isolation",
+        "no-change-abstention",
+        "decision-contract",
+        "verification-evidence",
+        "learning-adoption"
+      ]
+    },
+    "case": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "nonce",
+        "family",
+        "prompt",
+        "normalized_prompt",
+        "prompt_sha256",
+        "mode",
+        "expected_decision_atoms",
+        "expected_advisers",
+        "must_not_select",
+        "reference_triggers",
+        "deterministic_reference_expectations",
+        "full_schema_or_template_expected",
+        "authority_prohibitions",
+        "effect_prohibitions",
+        "claim_prohibitions",
+        "exactly_two",
+        "precedence",
+        "declared_invocation",
+        "condition_blind",
+        "blinding_flags"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^aq4-(authoring|heldout)-[0-9]{2}$"
+        },
+        "nonce": {
+          "type": "string",
+          "minLength": 12
+        },
+        "family": {
+          "type": "string",
+          "minLength": 12
+        },
+        "prompt": {
+          "type": "string",
+          "minLength": 8
+        },
+        "normalized_prompt": {
+          "type": "string",
+          "minLength": 8
+        },
+        "prompt_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "mode": {
+          "enum": [
+            "automatic",
+            "explicit"
+          ]
+        },
+        "expected_decision_atoms": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/atom"
+          }
+        },
+        "expected_advisers": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/adviser"
+          }
+        },
+        "must_not_select": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/atom"
+          }
+        },
+        "reference_triggers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "owner_atom",
+              "trigger_id"
+            ],
+            "properties": {
+              "owner_atom": {
+                "$ref": "#/$defs/atom"
+              },
+              "trigger_id": {
+                "$ref": "#/$defs/trigger"
+              }
+            }
+          }
+        },
+        "deterministic_reference_expectations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "owner_atom",
+              "trigger_id",
+              "payload_id"
+            ],
+            "properties": {
+              "owner_atom": {
+                "$ref": "#/$defs/atom"
+              },
+              "trigger_id": {
+                "$ref": "#/$defs/trigger"
+              },
+              "payload_id": {
+                "type": "string",
+                "pattern": "^aq-"
+              }
+            }
+          }
+        },
+        "authority_prohibitions": {
+          "const": [
+            "no_authority_assignment",
+            "no_policy_adoption"
+          ]
+        },
+        "effect_prohibitions": {
+          "const": [
+            "no_effect_execution",
+            "no_external_action"
+          ]
+        },
+        "claim_prohibitions": {
+          "const": [
+            "no_completion_claim",
+            "no_efficacy_claim",
+            "no_product_claim"
+          ]
+        },
+        "exactly_two": {
+          "type": "boolean"
+        },
+        "precedence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "applies",
+            "candidate_atoms",
+            "winner",
+            "rule"
+          ],
+          "properties": {
+            "applies": {
+              "type": "boolean"
+            },
+            "candidate_atoms": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/atom"
+              }
+            },
+            "winner": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/atom"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "rule": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        "declared_invocation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/adviser"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "condition_blind": {
+          "const": true
+        },
+        "blinding_flags": {
+          "const": [
+            "author_blind_to_candidate_selector",
+            "author_blind_to_prior_outcomes"
+          ]
+        },
+        "full_schema_or_template_expected": {
+          "const": false
+        }
+      }
+    }
+  }
+}

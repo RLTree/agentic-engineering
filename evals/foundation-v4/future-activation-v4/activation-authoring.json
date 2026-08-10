@@ -1,0 +1,2094 @@
+{
+  "schema_version": "aq4-activation-corpus-v4",
+  "corpus_id": "aq4-authoring-v4",
+  "condition_blind": true,
+  "claim_ceiling": "structural-proposal-only",
+  "cases": [
+    {
+      "id": "aq4-authoring-01",
+      "nonce": "aq4-authoring-topology-01-n64g",
+      "family": "aq4-authoring-topology-family-01",
+      "prompt": "Map the handoff boundaries before separating the incident helper into a coordinator and two reviewers.",
+      "normalized_prompt": "map the handoff boundaries before separating the incident helper into a coordinator and two reviewers.",
+      "prompt_sha256": "466eaf3c9f7a2c751d6fa49e7c5f5d03206f3ffe6ef732643f472709b330aaac",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "topology-control-boundary"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering-lifecycle:agentic-engineering"
+      ],
+      "must_not_select": [
+        "task-contract",
+        "verification-strategy",
+        "engineering-learning"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "topology-control-boundary",
+          "trigger_id": "decomposition-boundary"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "topology-control-boundary",
+          "trigger_id": "decomposition-boundary",
+          "payload_id": "aq-agentic-seven-layer"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-02",
+      "nonce": "aq4-authoring-topology-02-nc8f",
+      "family": "aq4-authoring-topology-family-02",
+      "prompt": "Propose where the planner should stop and the executor should begin in the release workflow.",
+      "normalized_prompt": "propose where the planner should stop and the executor should begin in the release workflow.",
+      "prompt_sha256": "c53ee5b16895fe15a9ac49d2b14e9adeb84350ce8cf63748a9844d6856947b88",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "topology-control-boundary"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering-lifecycle:agentic-engineering"
+      ],
+      "must_not_select": [
+        "task-contract",
+        "verification-strategy",
+        "engineering-learning"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "topology-control-boundary",
+          "trigger_id": "architecture-boundary"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "topology-control-boundary",
+          "trigger_id": "architecture-boundary",
+          "payload_id": "aq-agentic-architecture"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-03",
+      "nonce": "aq4-authoring-topology-03-nice",
+      "family": "aq4-authoring-topology-family-03",
+      "prompt": "Outline a safe boundary between the request intake lane and the tool-using lane.",
+      "normalized_prompt": "outline a safe boundary between the request intake lane and the tool-using lane.",
+      "prompt_sha256": "85de46d91b8bf272db18db82442f55ccabb8896d2c25e745614917de68cb52a3",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "topology-control-boundary"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering-lifecycle:agentic-engineering"
+      ],
+      "must_not_select": [
+        "task-contract",
+        "verification-strategy",
+        "engineering-learning"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "topology-control-boundary",
+          "trigger_id": "reference-isolation"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "topology-control-boundary",
+          "trigger_id": "reference-isolation",
+          "payload_id": "aq-agentic-control"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-04",
+      "nonce": "aq4-authoring-topology-04-nogd",
+      "family": "aq4-authoring-topology-family-04",
+      "prompt": "Recommend a decomposition for a support workflow with triage, drafting, and approval stages.",
+      "normalized_prompt": "recommend a decomposition for a support workflow with triage, drafting, and approval stages.",
+      "prompt_sha256": "9c20c3554874e3ec8c8a496c698f34e9e4cdb1ec0909c8532ffe8c18697fd535",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "topology-control-boundary"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering-lifecycle:agentic-engineering"
+      ],
+      "must_not_select": [
+        "task-contract",
+        "verification-strategy",
+        "engineering-learning"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "topology-control-boundary",
+          "trigger_id": "decomposition-boundary"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "topology-control-boundary",
+          "trigger_id": "decomposition-boundary",
+          "payload_id": "aq-agentic-seven-layer"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-05",
+      "nonce": "aq4-authoring-topology-05-nukc",
+      "family": "aq4-authoring-topology-family-05",
+      "prompt": "Sketch decision boundaries for a system that routes research questions to specialized workers.",
+      "normalized_prompt": "sketch decision boundaries for a system that routes research questions to specialized workers.",
+      "prompt_sha256": "b3394a241169417f6a6a028a5c4b948390e58f1b648b737109b9d15feaf30c31",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "topology-control-boundary"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering-lifecycle:agentic-engineering"
+      ],
+      "must_not_select": [
+        "task-contract",
+        "verification-strategy",
+        "engineering-learning"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "topology-control-boundary",
+          "trigger_id": "architecture-boundary"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "topology-control-boundary",
+          "trigger_id": "architecture-boundary",
+          "payload_id": "aq-agentic-architecture"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-06",
+      "nonce": "aq4-authoring-topology-06-n10ob",
+      "family": "aq4-authoring-topology-family-06",
+      "prompt": "Propose a simple control boundary for deciding when a coordinator should hand work to a reviewer.",
+      "normalized_prompt": "propose a simple control boundary for deciding when a coordinator should hand work to a reviewer.",
+      "prompt_sha256": "a32c36e7f48f9a45a5e469a75beac7e8f41db7c379474eef92fb33f14e7d7513",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "topology-control-boundary"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering-lifecycle:agentic-engineering"
+      ],
+      "must_not_select": [
+        "task-contract",
+        "verification-strategy",
+        "engineering-learning"
+      ],
+      "reference_triggers": [],
+      "deterministic_reference_expectations": [],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-07",
+      "nonce": "aq4-authoring-contract-07-n16sa",
+      "family": "aq4-authoring-contract-family-07",
+      "prompt": "Draft a compact agreement for a maintenance request that states scope, assumptions, and the approval point.",
+      "normalized_prompt": "draft a compact agreement for a maintenance request that states scope, assumptions, and the approval point.",
+      "prompt_sha256": "8701ded2e176dd370c61ba4cb4e698431f5fd2e1de17338690e59eb1471bba0d",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering:codex-task-contract"
+      ],
+      "must_not_select": [
+        "topology-control-boundary",
+        "verification-strategy",
+        "engineering-learning"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "task-contract",
+          "trigger_id": "decision-contract"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "task-contract",
+          "trigger_id": "decision-contract",
+          "payload_id": "aq-contract-vocabulary"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-08",
+      "nonce": "aq4-authoring-contract-08-n1cw9",
+      "family": "aq4-authoring-contract-family-08",
+      "prompt": "Clarify which assumptions need confirmation before a worker can change a configuration.",
+      "normalized_prompt": "clarify which assumptions need confirmation before a worker can change a configuration.",
+      "prompt_sha256": "7c4fcd18fb02e628aab05fff3cdcf640c2eced3df44e351709194f92202b8efe",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering:codex-task-contract"
+      ],
+      "must_not_select": [
+        "topology-control-boundary",
+        "verification-strategy",
+        "engineering-learning"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "task-contract",
+          "trigger_id": "reference-isolation"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "task-contract",
+          "trigger_id": "reference-isolation",
+          "payload_id": "aq-contract-assumption-approval"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-09",
+      "nonce": "aq4-authoring-contract-09-n1j08",
+      "family": "aq4-authoring-contract-family-09",
+      "prompt": "Write a decision record format that distinguishes an observation from a proposed action.",
+      "normalized_prompt": "write a decision record format that distinguishes an observation from a proposed action.",
+      "prompt_sha256": "57e43e4779c7a4c389cbaff5039316488f0562f8f923174ded1a4d2c77e86ef7",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering:codex-task-contract"
+      ],
+      "must_not_select": [
+        "topology-control-boundary",
+        "verification-strategy",
+        "engineering-learning"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "task-contract",
+          "trigger_id": "decision-contract"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "task-contract",
+          "trigger_id": "decision-contract",
+          "payload_id": "aq-contract-vocabulary"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-10",
+      "nonce": "aq4-authoring-contract-10-n1p47",
+      "family": "aq4-authoring-contract-family-10",
+      "prompt": "Frame a bounded assignment for investigating a flaky check without authorizing repairs.",
+      "normalized_prompt": "frame a bounded assignment for investigating a flaky check without authorizing repairs.",
+      "prompt_sha256": "51b5ee0512326125780ecb90b436727a6a6ea633c0dc3136b3be02f76e5b8e71",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering:codex-task-contract"
+      ],
+      "must_not_select": [
+        "topology-control-boundary",
+        "verification-strategy",
+        "engineering-learning"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "task-contract",
+          "trigger_id": "no-change-abstention"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "task-contract",
+          "trigger_id": "no-change-abstention",
+          "payload_id": "aq-contract-assumption-approval"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-11",
+      "nonce": "aq4-authoring-contract-11-n1v86",
+      "family": "aq4-authoring-contract-family-11",
+      "prompt": "Propose acceptance criteria for a narrow documentation update with an explicit stop condition.",
+      "normalized_prompt": "propose acceptance criteria for a narrow documentation update with an explicit stop condition.",
+      "prompt_sha256": "5fb5a64ae9d51325c652f47eb73b62c43ea47f470721346b9ec0c1f285a3dbd8",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering:codex-task-contract"
+      ],
+      "must_not_select": [
+        "topology-control-boundary",
+        "verification-strategy",
+        "engineering-learning"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "task-contract",
+          "trigger_id": "decision-contract"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "task-contract",
+          "trigger_id": "decision-contract",
+          "payload_id": "aq-contract-vocabulary"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-12",
+      "nonce": "aq4-authoring-contract-12-n21c5",
+      "family": "aq4-authoring-contract-family-12",
+      "prompt": "Help phrase a reversible request boundary for a small review.",
+      "normalized_prompt": "help phrase a reversible request boundary for a small review.",
+      "prompt_sha256": "9eaf03c79e6391a10f076f4687079962b94007dda79bc5162217400d2d0cc111",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering:codex-task-contract"
+      ],
+      "must_not_select": [
+        "topology-control-boundary",
+        "verification-strategy",
+        "engineering-learning"
+      ],
+      "reference_triggers": [],
+      "deterministic_reference_expectations": [],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-13",
+      "nonce": "aq4-authoring-verify-13-n27g4",
+      "family": "aq4-authoring-verify-family-13",
+      "prompt": "Choose the smallest evidence plan for a change that may alter a visible workflow.",
+      "normalized_prompt": "choose the smallest evidence plan for a change that may alter a visible workflow.",
+      "prompt_sha256": "16e6e85e3c0fab0fd88e6b6e3f140a0a4e6f3bff7e2762da54f8f86752c87aa8",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "verification-strategy"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering:verification-strategy-engineering"
+      ],
+      "must_not_select": [
+        "topology-control-boundary",
+        "task-contract",
+        "engineering-learning"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "verification-strategy",
+          "trigger_id": "verification-evidence"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "verification-strategy",
+          "trigger_id": "verification-evidence",
+          "payload_id": "aq-verify-mode-selection"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-14",
+      "nonce": "aq4-authoring-verify-14-n2dk3",
+      "family": "aq4-authoring-verify-family-14",
+      "prompt": "Compare a focused check with an end-to-end exercise for a routing change.",
+      "normalized_prompt": "compare a focused check with an end-to-end exercise for a routing change.",
+      "prompt_sha256": "7b9604814c00b6b81b2cf75c96d4e9f0de23823818044aa0b1af85384e455779",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "verification-strategy"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering:verification-strategy-engineering"
+      ],
+      "must_not_select": [
+        "topology-control-boundary",
+        "task-contract",
+        "engineering-learning"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "verification-strategy",
+          "trigger_id": "verification-evidence"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "verification-strategy",
+          "trigger_id": "verification-evidence",
+          "payload_id": "aq-verify-mode-selection"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-15",
+      "nonce": "aq4-authoring-verify-15-n2jo2",
+      "family": "aq4-authoring-verify-family-15",
+      "prompt": "Suggest how to tell whether a confirmation screen actually reflects the saved state.",
+      "normalized_prompt": "suggest how to tell whether a confirmation screen actually reflects the saved state.",
+      "prompt_sha256": "dbcc1685013ec7f0343bdd1d21bf56ede41ca4c73948e2699bf5d975a571fab7",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "verification-strategy"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering:verification-strategy-engineering"
+      ],
+      "must_not_select": [
+        "topology-control-boundary",
+        "task-contract",
+        "engineering-learning"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "verification-strategy",
+          "trigger_id": "reference-isolation"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "verification-strategy",
+          "trigger_id": "reference-isolation",
+          "payload_id": "aq-verify-boundary"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-16",
+      "nonce": "aq4-authoring-verify-16-n2ps1",
+      "family": "aq4-authoring-verify-family-16",
+      "prompt": "Design an evidence ladder for a parser update with uncertain edge cases.",
+      "normalized_prompt": "design an evidence ladder for a parser update with uncertain edge cases.",
+      "prompt_sha256": "ac5df35b08f229b04d9f15c37f9ebb92ed817ec523abde63051bb7bda3a57908",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "verification-strategy"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering:verification-strategy-engineering"
+      ],
+      "must_not_select": [
+        "topology-control-boundary",
+        "task-contract",
+        "engineering-learning"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "verification-strategy",
+          "trigger_id": "verification-evidence"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "verification-strategy",
+          "trigger_id": "verification-evidence",
+          "payload_id": "aq-verify-mode-selection"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-17",
+      "nonce": "aq4-authoring-verify-17-n2vw0",
+      "family": "aq4-authoring-verify-family-17",
+      "prompt": "Identify an observable oracle for a command that should leave files untouched.",
+      "normalized_prompt": "identify an observable oracle for a command that should leave files untouched.",
+      "prompt_sha256": "4b46dc32c00adaf081431b49fc89bfc4ab52c3669cb0553cfbbd30e0d5bb2e8f",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "verification-strategy"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering:verification-strategy-engineering"
+      ],
+      "must_not_select": [
+        "topology-control-boundary",
+        "task-contract",
+        "engineering-learning"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "verification-strategy",
+          "trigger_id": "verification-evidence"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "verification-strategy",
+          "trigger_id": "verification-evidence",
+          "payload_id": "aq-verify-mode-selection"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-18",
+      "nonce": "aq4-authoring-verify-18-final-n8k2q",
+      "family": "aq4-authoring-verify-trigger-free-family-18",
+      "prompt": "Recommend a proportionate validation posture for a low-risk interface wording change.",
+      "normalized_prompt": "recommend a proportionate validation posture for a low-risk interface wording change.",
+      "prompt_sha256": "e30642a57c717a738443adf8c2820440dc844fcef5dd1909b818b565beeaddfc",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "verification-strategy"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering:verification-strategy-engineering"
+      ],
+      "must_not_select": [
+        "topology-control-boundary",
+        "task-contract",
+        "engineering-learning"
+      ],
+      "reference_triggers": [],
+      "deterministic_reference_expectations": [],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-19",
+      "nonce": "aq4-authoring-learning-19-n383y",
+      "family": "aq4-authoring-learning-family-19",
+      "prompt": "Turn repeated investigation mistakes into a short hypothesis log and a follow-up experiment.",
+      "normalized_prompt": "turn repeated investigation mistakes into a short hypothesis log and a follow-up experiment.",
+      "prompt_sha256": "90a962c9827c45fd7286b4492d4da296f9b630426ac3362e8749ad9fff3c6a0a",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "engineering-learning"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering:engineering-learning-loop"
+      ],
+      "must_not_select": [
+        "topology-control-boundary",
+        "task-contract",
+        "verification-strategy"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "engineering-learning",
+          "trigger_id": "reference-isolation"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "engineering-learning",
+          "trigger_id": "reference-isolation",
+          "payload_id": "aq-learning-attribution"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-20",
+      "nonce": "aq4-authoring-learning-20-n3e7x",
+      "family": "aq4-authoring-learning-family-20",
+      "prompt": "Propose a way to refresh team guidance when a recurring failure reveals an obsolete rule.",
+      "normalized_prompt": "propose a way to refresh team guidance when a recurring failure reveals an obsolete rule.",
+      "prompt_sha256": "3c8a5f60f4576055968176761b8ba3c67a1d5ab37d7313c6374e28f1cdf6b068",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "engineering-learning"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering:engineering-learning-loop"
+      ],
+      "must_not_select": [
+        "topology-control-boundary",
+        "task-contract",
+        "verification-strategy"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "engineering-learning",
+          "trigger_id": "learning-adoption"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "engineering-learning",
+          "trigger_id": "learning-adoption",
+          "payload_id": "aq-learning-freshness"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-21",
+      "nonce": "aq4-authoring-learning-21-n3kbw",
+      "family": "aq4-authoring-learning-family-21",
+      "prompt": "Suggest how to learn from hidden edge cases without exposing their contents.",
+      "normalized_prompt": "suggest how to learn from hidden edge cases without exposing their contents.",
+      "prompt_sha256": "73d24e431afefa1a6efa70aa4b0df9bbf1f645d6c4c5d1cae8893c43d7d0ece8",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "engineering-learning"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering:engineering-learning-loop"
+      ],
+      "must_not_select": [
+        "topology-control-boundary",
+        "task-contract",
+        "verification-strategy"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "engineering-learning",
+          "trigger_id": "verification-evidence"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "engineering-learning",
+          "trigger_id": "verification-evidence",
+          "payload_id": "aq-learning-hidden-evals"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-22",
+      "nonce": "aq4-authoring-learning-22-n3qfv",
+      "family": "aq4-authoring-learning-family-22",
+      "prompt": "Design a feedback loop that links a failure pattern to a falsifiable mechanism.",
+      "normalized_prompt": "design a feedback loop that links a failure pattern to a falsifiable mechanism.",
+      "prompt_sha256": "04aab8b829087c13ff26bff5fb9fd17dd2f7c9cf5261fd83f4dd2a9c3399de8e",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "engineering-learning"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering:engineering-learning-loop"
+      ],
+      "must_not_select": [
+        "topology-control-boundary",
+        "task-contract",
+        "verification-strategy"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "engineering-learning",
+          "trigger_id": "reference-isolation"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "engineering-learning",
+          "trigger_id": "reference-isolation",
+          "payload_id": "aq-learning-attribution"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-23",
+      "nonce": "aq4-authoring-learning-23-n3wju",
+      "family": "aq4-authoring-learning-family-23",
+      "prompt": "Outline how a team can retire stale troubleshooting advice after a counterexample.",
+      "normalized_prompt": "outline how a team can retire stale troubleshooting advice after a counterexample.",
+      "prompt_sha256": "558291735f133afdb8411e3583693859db5a42dbe5a409ac95eff3c49de5a5b9",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "engineering-learning"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering:engineering-learning-loop"
+      ],
+      "must_not_select": [
+        "topology-control-boundary",
+        "task-contract",
+        "verification-strategy"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "engineering-learning",
+          "trigger_id": "learning-adoption"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "engineering-learning",
+          "trigger_id": "learning-adoption",
+          "payload_id": "aq-learning-freshness"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-24",
+      "nonce": "aq4-authoring-learning-24-n42nt",
+      "family": "aq4-authoring-learning-family-24",
+      "prompt": "Describe a proposal for capturing a lesson after a deployment retrospective.",
+      "normalized_prompt": "describe a proposal for capturing a lesson after a deployment retrospective.",
+      "prompt_sha256": "77c3a3e85ba13992b7311c72fb630c0d33dd15b20a2824f6ad5c269fc6b41172",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "engineering-learning"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering:engineering-learning-loop"
+      ],
+      "must_not_select": [
+        "topology-control-boundary",
+        "task-contract",
+        "verification-strategy"
+      ],
+      "reference_triggers": [],
+      "deterministic_reference_expectations": [],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-25",
+      "nonce": "aq4-authoring-native-25-n48rs",
+      "family": "aq4-authoring-native-family-25",
+      "prompt": "What is a clear title for a weekly engineering meeting?",
+      "normalized_prompt": "what is a clear title for a weekly engineering meeting?",
+      "prompt_sha256": "3608ddbb7eb1a1f5b8be941f18dfc61b21cdd2beb08e4d750102ca3e398df8e5",
+      "mode": "automatic",
+      "expected_decision_atoms": [],
+      "expected_advisers": [],
+      "must_not_select": [
+        "topology-control-boundary",
+        "task-contract",
+        "verification-strategy",
+        "engineering-learning"
+      ],
+      "reference_triggers": [],
+      "deterministic_reference_expectations": [],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-26",
+      "nonce": "aq4-authoring-native-26-n4evr",
+      "family": "aq4-authoring-native-family-26",
+      "prompt": "Convert 42 minutes to seconds.",
+      "normalized_prompt": "convert 42 minutes to seconds.",
+      "prompt_sha256": "263597b31458724b0e159eadbf928247006a651152c19098c626c721f1c62afe",
+      "mode": "automatic",
+      "expected_decision_atoms": [],
+      "expected_advisers": [],
+      "must_not_select": [
+        "topology-control-boundary",
+        "task-contract",
+        "verification-strategy",
+        "engineering-learning"
+      ],
+      "reference_triggers": [],
+      "deterministic_reference_expectations": [],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-27",
+      "nonce": "aq4-authoring-native-27-n4kzq",
+      "family": "aq4-authoring-native-family-27",
+      "prompt": "Give three neutral names for a small internal newsletter.",
+      "normalized_prompt": "give three neutral names for a small internal newsletter.",
+      "prompt_sha256": "3fbc2a62b818e928a2472c7a1fb18b09870e223b87babe5f0309b34a399c5722",
+      "mode": "automatic",
+      "expected_decision_atoms": [],
+      "expected_advisers": [],
+      "must_not_select": [
+        "topology-control-boundary",
+        "task-contract",
+        "verification-strategy",
+        "engineering-learning"
+      ],
+      "reference_triggers": [],
+      "deterministic_reference_expectations": [],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-28",
+      "nonce": "aq4-authoring-native-28-n4r3p",
+      "family": "aq4-authoring-native-family-28",
+      "prompt": "Summarize this sentence in five words: The build completed before lunch.",
+      "normalized_prompt": "summarize this sentence in five words: the build completed before lunch.",
+      "prompt_sha256": "3d0562f5fe1f57f51e9a8aa669b716e33483b14de0781c2ef6bb8fece12306d4",
+      "mode": "automatic",
+      "expected_decision_atoms": [],
+      "expected_advisers": [],
+      "must_not_select": [
+        "topology-control-boundary",
+        "task-contract",
+        "verification-strategy",
+        "engineering-learning"
+      ],
+      "reference_triggers": [],
+      "deterministic_reference_expectations": [],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-29",
+      "nonce": "aq4-authoring-exactly_two-29-n4x7o",
+      "family": "aq4-authoring-exactly_two-family-29",
+      "prompt": "We need a coordinator boundary and an explicit handoff agreement for the data-import workflow.",
+      "normalized_prompt": "we need a coordinator boundary and an explicit handoff agreement for the data-import workflow.",
+      "prompt_sha256": "616b1da060165a76df075c5e2122a4db0645ec8db4a2795ee83046e3e81fd5a2",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "topology-control-boundary",
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering-lifecycle:agentic-engineering",
+        "$agentic-engineering:codex-task-contract"
+      ],
+      "must_not_select": [
+        "verification-strategy",
+        "engineering-learning"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "topology-control-boundary",
+          "trigger_id": "architecture-boundary"
+        },
+        {
+          "owner_atom": "task-contract",
+          "trigger_id": "decision-contract"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "topology-control-boundary",
+          "trigger_id": "architecture-boundary",
+          "payload_id": "aq-agentic-architecture"
+        },
+        {
+          "owner_atom": "task-contract",
+          "trigger_id": "decision-contract",
+          "payload_id": "aq-contract-vocabulary"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": true,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-30",
+      "nonce": "aq4-authoring-exactly_two-30-n53bn",
+      "family": "aq4-authoring-exactly_two-family-30",
+      "prompt": "Plan both an observable evidence check and a way to retain lessons from recurring regressions.",
+      "normalized_prompt": "plan both an observable evidence check and a way to retain lessons from recurring regressions.",
+      "prompt_sha256": "b71782707395ac2b99edb1a9a0478d736d563647b94edbd5d1736dedadc518bd",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "verification-strategy",
+        "engineering-learning"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering:verification-strategy-engineering",
+        "$agentic-engineering:engineering-learning-loop"
+      ],
+      "must_not_select": [
+        "topology-control-boundary",
+        "task-contract"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "verification-strategy",
+          "trigger_id": "verification-evidence"
+        },
+        {
+          "owner_atom": "engineering-learning",
+          "trigger_id": "reference-isolation"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "verification-strategy",
+          "trigger_id": "verification-evidence",
+          "payload_id": "aq-verify-mode-selection"
+        },
+        {
+          "owner_atom": "engineering-learning",
+          "trigger_id": "reference-isolation",
+          "payload_id": "aq-learning-attribution"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": true,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-31",
+      "nonce": "aq4-authoring-precedence-31-n59fm",
+      "family": "aq4-authoring-precedence-family-31",
+      "prompt": "The request mentions both a routing diagram and a stated approval boundary; prioritize the approval decision before drawing the diagram.",
+      "normalized_prompt": "the request mentions both a routing diagram and a stated approval boundary; prioritize the approval decision before drawing the diagram.",
+      "prompt_sha256": "a7baa190995c0e3c552ddfeaea87dbbe3ec5126e8160131ba5572c7a91e59db7",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering:codex-task-contract"
+      ],
+      "must_not_select": [
+        "topology-control-boundary",
+        "verification-strategy",
+        "engineering-learning"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "task-contract",
+          "trigger_id": "decision-contract"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "task-contract",
+          "trigger_id": "decision-contract",
+          "payload_id": "aq-contract-vocabulary"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": true,
+        "candidate_atoms": [
+          "topology-control-boundary",
+          "task-contract"
+        ],
+        "winner": "task-contract",
+        "rule": "explicit approval-boundary decision takes precedence over general routing framing"
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-32",
+      "nonce": "aq4-authoring-precedence-32-n5fjl",
+      "family": "aq4-authoring-precedence-family-32",
+      "prompt": "The team wants a test plan and a lessons log, but the immediate question is which observation would falsify the change claim.",
+      "normalized_prompt": "the team wants a test plan and a lessons log, but the immediate question is which observation would falsify the change claim.",
+      "prompt_sha256": "239dc1e683669cd4d20c99e7dddb345f61317e626d8cc4026b94833b53b9a809",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "verification-strategy"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering:verification-strategy-engineering"
+      ],
+      "must_not_select": [
+        "topology-control-boundary",
+        "task-contract",
+        "engineering-learning"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "verification-strategy",
+          "trigger_id": "verification-evidence"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "verification-strategy",
+          "trigger_id": "verification-evidence",
+          "payload_id": "aq-verify-mode-selection"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": true,
+        "candidate_atoms": [
+          "verification-strategy",
+          "engineering-learning"
+        ],
+        "winner": "verification-strategy",
+        "rule": "immediate falsification evidence takes precedence over retrospective learning framing"
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-33",
+      "nonce": "aq4-authoring-topology-33-n5lnk",
+      "family": "aq4-authoring-topology-family-33",
+      "prompt": "$agentic-engineering-lifecycle:agentic-engineering Offer a boundary proposal for intake and execution.",
+      "normalized_prompt": "$agentic-engineering-lifecycle:agentic-engineering offer a boundary proposal for intake and execution.",
+      "prompt_sha256": "9361e1613cc15b633c13303dbd77a6e2f6028c4113b0da825867201c65b37752",
+      "mode": "explicit",
+      "expected_decision_atoms": [
+        "topology-control-boundary"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering-lifecycle:agentic-engineering"
+      ],
+      "must_not_select": [
+        "task-contract",
+        "verification-strategy",
+        "engineering-learning"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "topology-control-boundary",
+          "trigger_id": "architecture-boundary"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "topology-control-boundary",
+          "trigger_id": "architecture-boundary",
+          "payload_id": "aq-agentic-architecture"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": "$agentic-engineering-lifecycle:agentic-engineering",
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-35",
+      "nonce": "aq4-authoring-contract-35-n5xvi",
+      "family": "aq4-authoring-contract-family-35",
+      "prompt": "$agentic-engineering:codex-task-contract Draft a proposal-only scope note for this maintenance request.",
+      "normalized_prompt": "$agentic-engineering:codex-task-contract draft a proposal-only scope note for this maintenance request.",
+      "prompt_sha256": "33112c434bdd283ee5ce52b8ca35484a7e628bc4a994433339c7414a67e19ce4",
+      "mode": "explicit",
+      "expected_decision_atoms": [
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering:codex-task-contract"
+      ],
+      "must_not_select": [
+        "topology-control-boundary",
+        "verification-strategy",
+        "engineering-learning"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "task-contract",
+          "trigger_id": "decision-contract"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "task-contract",
+          "trigger_id": "decision-contract",
+          "payload_id": "aq-contract-vocabulary"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": "$agentic-engineering:codex-task-contract",
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-37",
+      "nonce": "aq4-authoring-verify-37-n6a3g",
+      "family": "aq4-authoring-verify-family-37",
+      "prompt": "$agentic-engineering:verification-strategy-engineering Recommend evidence for a state-saving change.",
+      "normalized_prompt": "$agentic-engineering:verification-strategy-engineering recommend evidence for a state-saving change.",
+      "prompt_sha256": "b63d88e7dc2e2aa3adbd5ee6e8c55ae05cdfd36a627ac9f254255bc8ff9c150a",
+      "mode": "explicit",
+      "expected_decision_atoms": [
+        "verification-strategy"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering:verification-strategy-engineering"
+      ],
+      "must_not_select": [
+        "topology-control-boundary",
+        "task-contract",
+        "engineering-learning"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "verification-strategy",
+          "trigger_id": "verification-evidence"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "verification-strategy",
+          "trigger_id": "verification-evidence",
+          "payload_id": "aq-verify-mode-selection"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": "$agentic-engineering:verification-strategy-engineering",
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "aq4-authoring-39",
+      "nonce": "aq4-authoring-learning-39-n6mbe",
+      "family": "aq4-authoring-learning-family-39",
+      "prompt": "$agentic-engineering:engineering-learning-loop Offer a hypothesis loop for recurring incidents.",
+      "normalized_prompt": "$agentic-engineering:engineering-learning-loop offer a hypothesis loop for recurring incidents.",
+      "prompt_sha256": "a071fdeb5515ad991157545582bd787c95c7a4914c17e647627a6dfc8dde4b2e",
+      "mode": "explicit",
+      "expected_decision_atoms": [
+        "engineering-learning"
+      ],
+      "expected_advisers": [
+        "$agentic-engineering:engineering-learning-loop"
+      ],
+      "must_not_select": [
+        "topology-control-boundary",
+        "task-contract",
+        "verification-strategy"
+      ],
+      "reference_triggers": [
+        {
+          "owner_atom": "engineering-learning",
+          "trigger_id": "reference-isolation"
+        }
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "engineering-learning",
+          "trigger_id": "reference-isolation",
+          "payload_id": "aq-learning-attribution"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": "$agentic-engineering:engineering-learning-loop",
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    }
+  ]
+}
