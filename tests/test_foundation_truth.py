@@ -68,6 +68,50 @@ class FoundationTruthTests(unittest.TestCase):
         self.assertIn("## 6. Claim ceilings", self.current)
         self.assertIn("No lower row proves a higher row.", self.current)
 
+    def test_current_material_status_tracks_realized_replacements(self) -> None:
+        material_section = self.current.split(
+            "## 3. Current repository-material status", maxsplit=1
+        )[1].split("\n## ", maxsplit=1)[0]
+        rows = {}
+        for line in material_section.splitlines():
+            if not line.startswith("| `"):
+                continue
+            material, status, action = (
+                cell.strip() for cell in line.strip("|").split("|")
+            )
+            self.assertNotIn(material, rows, f"duplicate material row: {material}")
+            rows[material] = (status, action)
+
+        expected = {
+            "`CONFIDENCE.md`": (
+                "Current claim-state matrix",
+                "Retain as claim-specific authority; aggregate score remains retired.",
+            ),
+            "`EVALUATION.md`": (
+                "Current staged evaluation",
+                "Retain as stage/claim interpretation; `EXECPLAN.md` terminal state controls execution.",
+            ),
+            "`UPDATE-POLICY.md`": (
+                "Current decision-delta lifecycle",
+                "Retain; synchronized refresh choreography remains retired.",
+            ),
+            "`README.md`": (
+                "Current 4.0.0 source identity",
+                "Retain as current source identity; no host, AH, or behavioral claim.",
+            ),
+            "`scripts/release_check.py`": (
+                "Current zero-write structural checker",
+                "Retain; structural claim only.",
+            ),
+        }
+        for material, canonical_row in expected.items():
+            self.assertEqual(canonical_row, rows[material], material)
+            self.assertNotRegex(
+                " ".join(rows[material]),
+                r"(?i)\b(?:obsolete|outdated|stale|incorrect)\b",
+                material,
+            )
+
     def test_register_is_scoped_unique_and_review_triggered(self) -> None:
         self.assertEqual(35, len(self.register_rows))
         by_id = {row["foundation_id"]: row for row in self.register_rows}
