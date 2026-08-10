@@ -1,0 +1,3679 @@
+{
+  "schema_version": "7.0",
+  "corpus_id": "AQ7-heldout",
+  "split": "heldout",
+  "status": "future-only-unconsumed",
+  "claim_ceiling": "structural-only",
+  "authority": {
+    "h3_protocol": {
+      "commit": "ccbe06be9a2ef5feca4104b6918985ee9c4527c0",
+      "tree": "dd20449fdc45a73c55adb349d8c828687728ef4d",
+      "path": "evals/foundation-v4/decision-certificate-protocol-v6.json",
+      "sha256": "9ad483a26fe339f81c947507de9c1c66d54b2823a38f68b1c5ee7fdf5c426f84"
+    },
+    "h3_selector_schema": {
+      "commit": "ccbe06be9a2ef5feca4104b6918985ee9c4527c0",
+      "tree": "dd20449fdc45a73c55adb349d8c828687728ef4d",
+      "path": "evals/foundation-v4/decision-certificate-selector-output-schema-v6.json",
+      "sha256": "9742f2255fed5452df52f9da789a6f2fd72e89aa94c3c6847fad6944445f5b25"
+    },
+    "reference_policy": {
+      "commit": "c4e661a926e0ace78d9da83f71d9c52d311abb72",
+      "tree": "f2abb05d32a888c9054ef2e7ab3ad0f08547de88",
+      "path": "evals/foundation-v4/decision-certificate-reference-policy-v6.json",
+      "sha256": "92982c278e33ff52edce1ba2a16082afb3ecc1989d8333a77eee9ca0911fee19"
+    },
+    "base_candidate": {
+      "commit": "f09a0544acf4b7a95fff796434273511a0683ca9",
+      "tree": "38c8c8adf3bb633d33200df1ec65f33e985ae244",
+      "path": "evals/foundation-v4/reduced-four-skills/candidate.json",
+      "sha256": "854f67bdd03e7121bd20e5513ef61ac806d016b3a5f1d6e5891bf4d9e546eb1f"
+    }
+  },
+  "blinding": {
+    "corpus_fields_exposed_to_model": [
+      "task_text"
+    ],
+    "runner_code_owned_context": [
+      "instruction",
+      "predicate_order"
+    ],
+    "grading_only_fields": [
+      "expected_predicate_facts",
+      "expected_selected_atoms",
+      "expected_selection_status",
+      "expected_selection_constraint",
+      "expected_advisers",
+      "expected_must_not_select_advisers",
+      "expected_reference_requests",
+      "deterministic_reference_expectations"
+    ],
+    "labels_are_not_packet_or_inference_inputs": true,
+    "fresh_blinded_corpus_required": true
+  },
+  "precedence": {
+    "schema_valid_exact_explicit_overrides_automatic_eligibility": true,
+    "multiple_qualified_tokens_are_ambiguous": true,
+    "unrecognized_invocation_like_token_blocks_selection": true,
+    "cap_exceeded_selects_no_atoms": true
+  },
+  "prohibitions": [
+    "no_model_visible_reference_policy",
+    "no_authority_assignment",
+    "no_policy_adoption",
+    "no_effect_execution",
+    "no_external_action",
+    "no_completion_claim",
+    "no_efficacy_claim",
+    "no_product_claim",
+    "no_runtime_claim",
+    "no_provider_claim",
+    "no_promotion_claim"
+  ],
+  "freeze_controls": {
+    "future_only": true,
+    "no_model_call": true,
+    "no_result_inputs": true,
+    "no_replay_inputs": true,
+    "derived_projection_before_freeze": true,
+    "nonce_sha256_must_be_unique_within_split": true,
+    "prompt_sha256_must_be_unique_within_split": true,
+    "freeze_commit_permitted": true
+  },
+  "nonce_source_contract": {
+    "split_scope": "AQ7-heldout",
+    "nonce_source": "future-split-local",
+    "hash_algorithm": "SHA-256"
+  },
+  "case_count": 36,
+  "cases": [
+    {
+      "case_id": "AQ7-H-001",
+      "case_kind": "automatic",
+      "case_family": "single-owner",
+      "family_atom": "topology-control-boundary",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "7c840458813de5e796a4875f31612d62076ab8e5e0769a108fda65c11f388949",
+      "prompt_sha256": "4c31fad1514237401ffe0467f61b527b80b76ffcea15ec57778fbdce703afd5f",
+      "packet": {
+        "task_text": "Plan the handoff between the mobile and data teams so their coupled milestones can proceed without losing interface ownership."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "present"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "topology-control-boundary"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "agentic-engineering"
+        ],
+        "expected_must_not_select_advisers": [
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "agentic-engineering",
+            "trigger_id": "decomposition-boundary"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "agentic-engineering",
+              "payload_id": "aq-agentic-seven-layer",
+              "sha256": "b32a84de05a0bbebac86064f37be4c9b6e79a0f70b5c83a23d8073e9091a2232"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-002",
+      "case_kind": "automatic",
+      "case_family": "single-owner",
+      "family_atom": "topology-control-boundary",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "bb9a01049389d28f8dce29aa824f98fba65e6b7930b5a3513d40fff9eb6f8ad8",
+      "prompt_sha256": "663f914f819595b945ba7bc4897f09e30f1aea271c66ef1ae6934a5e9eda4f4d",
+      "packet": {
+        "task_text": "Break a service migration into coordinated workstreams and define how the workstream leads report cross-stream dependencies."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "present"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "topology-control-boundary"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "agentic-engineering"
+        ],
+        "expected_must_not_select_advisers": [
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "agentic-engineering",
+            "trigger_id": "architecture-boundary"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "agentic-engineering",
+              "payload_id": "aq-agentic-architecture",
+              "sha256": "7b38f8fde0d77fef1136520db3daf55caac50c8654b2c7c7e82866f8b976b3fa"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-003",
+      "case_kind": "automatic",
+      "case_family": "single-owner",
+      "family_atom": "topology-control-boundary",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "2a9e7bddf361ad8f144097469f22c479dca3659c644bb64db14ae4dfc8f1cb4a",
+      "prompt_sha256": "be56f0e818344235c7f02b04ccac2cec687c1fde4ef2e35583d1709f207ff514",
+      "packet": {
+        "task_text": "We need a boundary map for a workflow shared by operations, support, and platform before the implementation begins."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "present"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "topology-control-boundary"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "agentic-engineering"
+        ],
+        "expected_must_not_select_advisers": [
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "agentic-engineering",
+            "trigger_id": "decomposition-boundary"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "agentic-engineering",
+              "payload_id": "aq-agentic-seven-layer",
+              "sha256": "b32a84de05a0bbebac86064f37be4c9b6e79a0f70b5c83a23d8073e9091a2232"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-004",
+      "case_kind": "automatic",
+      "case_family": "single-owner",
+      "family_atom": "topology-control-boundary",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "a8616daa60f1c5804b43aeec71c60054baec2f77441d346694c87e7ea411d632",
+      "prompt_sha256": "c93d81b5bccff4ee5bd4c5e049f62d447c8c61b7aa961135768db3e5abe73262",
+      "packet": {
+        "task_text": "Reconcile the responsibilities of several specialist workers that must jointly deliver one release."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "present"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "topology-control-boundary"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "agentic-engineering"
+        ],
+        "expected_must_not_select_advisers": [
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "agentic-engineering",
+            "trigger_id": "architecture-boundary"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "agentic-engineering",
+              "payload_id": "aq-agentic-architecture",
+              "sha256": "7b38f8fde0d77fef1136520db3daf55caac50c8654b2c7c7e82866f8b976b3fa"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-005",
+      "case_kind": "automatic",
+      "case_family": "single-owner",
+      "family_atom": "topology-control-boundary",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "c6f80daebe15495704b72e465f853f4d4a0947e0b1013e814ce5ca1df0b2fb0f",
+      "prompt_sha256": "d9371c50a65da460025bd6720802c57341ad5ee1f2f76d319f07154afded5fc0",
+      "packet": {
+        "task_text": "Design the coordination plan for an intake process that crosses research, design, and implementation groups."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "present"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "topology-control-boundary"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "agentic-engineering"
+        ],
+        "expected_must_not_select_advisers": [
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "agentic-engineering",
+            "trigger_id": "decomposition-boundary"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "agentic-engineering",
+              "payload_id": "aq-agentic-seven-layer",
+              "sha256": "b32a84de05a0bbebac86064f37be4c9b6e79a0f70b5c83a23d8073e9091a2232"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-006",
+      "case_kind": "automatic",
+      "case_family": "single-owner",
+      "family_atom": "topology-control-boundary",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "c416b2caef0b4a56bb1143196aeb580483017806dc0874d6e2515d277f055eeb",
+      "prompt_sha256": "1645557fb7bc0db0e1dfc79b637f0016e504a0f6f37239f9889d5e69d2bc678a",
+      "packet": {
+        "task_text": "Split a complex rollout among independent teams while retaining one accountable integration path."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "present"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "topology-control-boundary"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "agentic-engineering"
+        ],
+        "expected_must_not_select_advisers": [
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "agentic-engineering",
+            "trigger_id": "architecture-boundary"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "agentic-engineering",
+              "payload_id": "aq-agentic-architecture",
+              "sha256": "7b38f8fde0d77fef1136520db3daf55caac50c8654b2c7c7e82866f8b976b3fa"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-007",
+      "case_kind": "automatic",
+      "case_family": "single-owner",
+      "family_atom": "task-contract",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "ac47676f4498335641790dc56b97fc202aeefdd58024d0cee8b140eb6a040b9c",
+      "prompt_sha256": "2f5fe63e1cc87200fc0e54bbb2ed869e63beff282f50b8d301c936ebb4c14c95",
+      "packet": {
+        "task_text": "Clarify who may approve a change request and what outcome will count as acceptance."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "present"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "task-contract"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "codex-task-contract"
+        ],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "codex-task-contract",
+            "trigger_id": "decision-contract"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "codex-task-contract",
+              "payload_id": "aq-contract-vocabulary",
+              "sha256": "0a19fbde8ab13b459931e4f353dfbe5ae95108e21414cc5d6087930c5c13c4bb"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-008",
+      "case_kind": "automatic",
+      "case_family": "single-owner",
+      "family_atom": "task-contract",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "5607c15f99835b7ab8eeaefc007ea1fa64abb38ccdcd89bf57a77d63cd902d38",
+      "prompt_sha256": "d42a90bf35e97eba3b4c6f119224d46d7b7aeabbfd203200308dda2446b76a28",
+      "packet": {
+        "task_text": "Draft the decision record that fixes scope, authority, and the definition of done for this request."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "present"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "task-contract"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "codex-task-contract"
+        ],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "codex-task-contract",
+            "trigger_id": "decision-contract"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "codex-task-contract",
+              "payload_id": "aq-contract-vocabulary",
+              "sha256": "0a19fbde8ab13b459931e4f353dfbe5ae95108e21414cc5d6087930c5c13c4bb"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-009",
+      "case_kind": "automatic",
+      "case_family": "single-owner",
+      "family_atom": "task-contract",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "ebb6cd27a94d046c26b859f148fc9fb6b3f44d70456d7c4ba17a919ef0d4ba2d",
+      "prompt_sha256": "f71cb384b349a49a4391a8bf16132b6f1338510b6d1aff74dfc8e9c9e3277851",
+      "packet": {
+        "task_text": "Establish the assumptions that need owner signoff before the team proceeds with the change."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "present"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "task-contract"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "codex-task-contract"
+        ],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "codex-task-contract",
+            "trigger_id": "decision-contract"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "codex-task-contract",
+              "payload_id": "aq-contract-vocabulary",
+              "sha256": "0a19fbde8ab13b459931e4f353dfbe5ae95108e21414cc5d6087930c5c13c4bb"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-010",
+      "case_kind": "automatic",
+      "case_family": "single-owner",
+      "family_atom": "task-contract",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "7d14ca7cacd1a04897c9f44fa18a81c2f4824bf7dc269d249b11f42afc713623",
+      "prompt_sha256": "dc6e86a4caa2461410493bda6e095f9c775dd79ba7562332c080bb3bf4c3f8b7",
+      "packet": {
+        "task_text": "Define the acceptance boundary for a small feature, including who can authorize any exception."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "present"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "task-contract"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "codex-task-contract"
+        ],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "codex-task-contract",
+            "trigger_id": "decision-contract"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "codex-task-contract",
+              "payload_id": "aq-contract-vocabulary",
+              "sha256": "0a19fbde8ab13b459931e4f353dfbe5ae95108e21414cc5d6087930c5c13c4bb"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-011",
+      "case_kind": "automatic",
+      "case_family": "single-owner",
+      "family_atom": "task-contract",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "ad0c57d2dccd53da4279fd31ab981d0bb3cb2734516bdf149562c55a4fca66ad",
+      "prompt_sha256": "efc88b8df4390edc2bd8cf291aaf319115c4ec3553bec9f99293b46e877ebbf7",
+      "packet": {
+        "task_text": "Set the execution prerequisites and stop conditions for a scheduled data backfill."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "present"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "task-contract"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "codex-task-contract"
+        ],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "codex-task-contract",
+            "trigger_id": "decision-contract"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "codex-task-contract",
+              "payload_id": "aq-contract-vocabulary",
+              "sha256": "0a19fbde8ab13b459931e4f353dfbe5ae95108e21414cc5d6087930c5c13c4bb"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-012",
+      "case_kind": "automatic",
+      "case_family": "single-owner",
+      "family_atom": "task-contract",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "8cb44d43cea578d79d71be582fe91d8c5a8d27266ee2b012ba85298949fb9226",
+      "prompt_sha256": "a5b9fd9640a87dc2e35d5ea08f9c278ffd4256bf3d48ae2ee086e90d4f2e2458",
+      "packet": {
+        "task_text": "List the dependencies that must clear before a release manager may begin the deployment sequence."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "present"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "task-contract"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "codex-task-contract"
+        ],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "codex-task-contract",
+            "trigger_id": "decision-contract"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "codex-task-contract",
+              "payload_id": "aq-contract-vocabulary",
+              "sha256": "0a19fbde8ab13b459931e4f353dfbe5ae95108e21414cc5d6087930c5c13c4bb"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-013",
+      "case_kind": "automatic",
+      "case_family": "single-owner",
+      "family_atom": "verification-strategy",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "114582c782aa6e3ff5d55b9756dcd52ed9d298d6881fdb905a479c905664a481",
+      "prompt_sha256": "99781cbfa8455279dea823d6e4014a7f7b5e3ee1c69e9ff345e1f8b0357fad51",
+      "packet": {
+        "task_text": "Determine what observed evidence would justify the claim that the retry guard prevents duplicate charges."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "present"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "verification-strategy"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "verification-strategy-engineering"
+        ],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "verification-strategy-engineering",
+            "trigger_id": "verification-evidence"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "verification-strategy-engineering",
+              "payload_id": "aq-verify-mode-selection",
+              "sha256": "abdae0d6dafd308814d0f10d51d054f8ab3298ed295801666f9716b1a769997c"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-014",
+      "case_kind": "automatic",
+      "case_family": "single-owner",
+      "family_atom": "verification-strategy",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "e5b6300172cd7dcf84e8712cc02ce0b996a24888c8ead51e0c0a5009556235c1",
+      "prompt_sha256": "7f01db3e2b1dcdce9bc089546848bde0a163bc80f85eee3092f2fa56da72ff38",
+      "packet": {
+        "task_text": "Specify the check needed to support the claim that a report never exposes redacted fields."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "present"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "verification-strategy"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "verification-strategy-engineering"
+        ],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "verification-strategy-engineering",
+            "trigger_id": "verification-evidence"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "verification-strategy-engineering",
+              "payload_id": "aq-verify-mode-selection",
+              "sha256": "abdae0d6dafd308814d0f10d51d054f8ab3298ed295801666f9716b1a769997c"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-015",
+      "case_kind": "automatic",
+      "case_family": "single-owner",
+      "family_atom": "verification-strategy",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "01647ebc5326737690981674e2f5eb8f3161e3bed7fcfe88497446c0050f7eba",
+      "prompt_sha256": "974f48fa52229db6464a943e52aa999b715db2b1226eaeab1e5918f227c7db08",
+      "packet": {
+        "task_text": "Identify the checks required before we can say a parser now handles malformed input safely."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "present"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "verification-strategy"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "verification-strategy-engineering"
+        ],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "verification-strategy-engineering",
+            "trigger_id": "verification-evidence"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "verification-strategy-engineering",
+              "payload_id": "aq-verify-mode-selection",
+              "sha256": "abdae0d6dafd308814d0f10d51d054f8ab3298ed295801666f9716b1a769997c"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-016",
+      "case_kind": "automatic",
+      "case_family": "single-owner",
+      "family_atom": "verification-strategy",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "0cca655142728a2cab45bfead406135de876e4171cb6062416145b8ccbbcba2a",
+      "prompt_sha256": "c51d70ba91d8919c69c3f2a2a075b41601207f2192a817606e0f624b143a14ea",
+      "packet": {
+        "task_text": "Choose the evidence required before asserting that the migration preserves referential integrity."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "present"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "verification-strategy"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "verification-strategy-engineering"
+        ],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "verification-strategy-engineering",
+            "trigger_id": "verification-evidence"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "verification-strategy-engineering",
+              "payload_id": "aq-verify-mode-selection",
+              "sha256": "abdae0d6dafd308814d0f10d51d054f8ab3298ed295801666f9716b1a769997c"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-017",
+      "case_kind": "automatic",
+      "case_family": "single-owner",
+      "family_atom": "verification-strategy",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "71a69d4108eef24da1d355054a1ef8f384dc3afbcf6873f33e1e3fc531961704",
+      "prompt_sha256": "da937c5628e9b5e9bd65bdf2ad745fdd80fc3068eb6b9996a45dd1e48092dbad",
+      "packet": {
+        "task_text": "Assess whether the comparator for the ledger reconciliation can tell a correct balance from a coincidental match."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "present"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "verification-strategy"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "verification-strategy-engineering"
+        ],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "verification-strategy-engineering",
+            "trigger_id": "verification-evidence"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "verification-strategy-engineering",
+              "payload_id": "aq-verify-mode-selection",
+              "sha256": "abdae0d6dafd308814d0f10d51d054f8ab3298ed295801666f9716b1a769997c"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-018",
+      "case_kind": "automatic",
+      "case_family": "single-owner",
+      "family_atom": "verification-strategy",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "0beda3af5f3da428c20c88a9e0e72ed4e586e244b910be96e6b8d53d32c17053",
+      "prompt_sha256": "e5302bb882e04f6826f4502d3188a1dee2e847139e650ce8cc1a1b13c155595f",
+      "packet": {
+        "task_text": "Evaluate the adequacy of the evidence source used to validate a critical reconciliation result."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "present"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "verification-strategy"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "verification-strategy-engineering"
+        ],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "verification-strategy-engineering",
+            "trigger_id": "verification-evidence"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "verification-strategy-engineering",
+              "payload_id": "aq-verify-mode-selection",
+              "sha256": "abdae0d6dafd308814d0f10d51d054f8ab3298ed295801666f9716b1a769997c"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-019",
+      "case_kind": "automatic",
+      "case_family": "single-owner",
+      "family_atom": "engineering-learning",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "1677ed08e7cf7ef285782f2cbbeaff4a73e3052bc7adeb264e601a6e29360b8c",
+      "prompt_sha256": "2e723da01f864789c9290b805915b388f459fb782170db679528478ca68b0c38",
+      "packet": {
+        "task_text": "Investigate a recurring failure and decide which mechanism hypothesis should guide the next experiment."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "present"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "engineering-learning"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "engineering-learning-loop"
+        ],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "engineering-learning-loop",
+            "trigger_id": "reference-isolation"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "engineering-learning-loop",
+              "payload_id": "aq-learning-attribution",
+              "sha256": "162e8b622f83083e8075446321ff9a35debf120a5183724e1541d7eb3512adac"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-020",
+      "case_kind": "automatic",
+      "case_family": "single-owner",
+      "family_atom": "engineering-learning",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "6c442df52124a29e60714374c8620a81888eab3e6783af47c27f41fb5da3e95d",
+      "prompt_sha256": "5991fac2ea5b3e73845bd36fe59399368f73726598ec0f5d882a354b0731731c",
+      "packet": {
+        "task_text": "Isolate the causal mechanism behind delayed notifications before modifying the delivery worker."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "present"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "engineering-learning"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "engineering-learning-loop"
+        ],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "engineering-learning-loop",
+            "trigger_id": "reference-isolation"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "engineering-learning-loop",
+              "payload_id": "aq-learning-attribution",
+              "sha256": "162e8b622f83083e8075446321ff9a35debf120a5183724e1541d7eb3512adac"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-021",
+      "case_kind": "automatic",
+      "case_family": "single-owner",
+      "family_atom": "engineering-learning",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "e862a1bef46702aa56b63df300e56a765bb3dfbf15b31ffe04a8ff3ad3abdf63",
+      "prompt_sha256": "0ceb4ec4315df432f8da2df0b311db6e0f45b58f627c8bf64b62bef9e44e6b0e",
+      "packet": {
+        "task_text": "Plan the postmortem loop for an intermittent job failure so the next revision addresses the cause rather than the symptom."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "present"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "engineering-learning"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "engineering-learning-loop"
+        ],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "engineering-learning-loop",
+            "trigger_id": "reference-isolation"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "engineering-learning-loop",
+              "payload_id": "aq-learning-attribution",
+              "sha256": "162e8b622f83083e8075446321ff9a35debf120a5183724e1541d7eb3512adac"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-022",
+      "case_kind": "automatic",
+      "case_family": "single-owner",
+      "family_atom": "engineering-learning",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "0e2713bdafa527de6b0ce545080dfe3dfb2adafa4cd5731ff68114d7fa8efb9f",
+      "prompt_sha256": "82c76014c73ec23cce26d5bc4f9290c3ecef316d76c3db613495d796fc9e082d",
+      "packet": {
+        "task_text": "Attribute the observed error pattern to a concrete mechanism before selecting a corrective change."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "present"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "engineering-learning"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "engineering-learning-loop"
+        ],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "engineering-learning-loop",
+            "trigger_id": "reference-isolation"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "engineering-learning-loop",
+              "payload_id": "aq-learning-attribution",
+              "sha256": "162e8b622f83083e8075446321ff9a35debf120a5183724e1541d7eb3512adac"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-023",
+      "case_kind": "automatic",
+      "case_family": "single-owner",
+      "family_atom": "engineering-learning",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "e85f2b35b00fcd2f9ab6e76f37c8a71d10fa42d181be2ece34d72b0cd6939907",
+      "prompt_sha256": "b33dbd269affa858fd1bbb2bf22a901fa11d36e9b739687b7728ba593b30368d",
+      "packet": {
+        "task_text": "Decide when newly reviewed incident evidence should replace the standing operational guidance."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "present"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "engineering-learning"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "engineering-learning-loop"
+        ],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "engineering-learning-loop",
+            "trigger_id": "learning-adoption"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "engineering-learning-loop",
+              "payload_id": "aq-learning-freshness",
+              "sha256": "df8ea54b7a6af971f24089bee6945e15f99665ae4578cc0a67340e89852d46a5"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-024",
+      "case_kind": "automatic",
+      "case_family": "single-owner",
+      "family_atom": "engineering-learning",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "2e79a6fc88f8d83b49102c773c7e48dfdac98cb56ebb9a2a7f7ab4426a9069d4",
+      "prompt_sha256": "6e9d8b664a2cdbfc2182e7d84e1721e8dca7b909cf5d446aa041c46e982718c2",
+      "packet": {
+        "task_text": "Set a refresh policy for operational knowledge after a new class of incident is discovered."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "present"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "engineering-learning"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "engineering-learning-loop"
+        ],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "engineering-learning-loop",
+            "trigger_id": "learning-adoption"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "engineering-learning-loop",
+              "payload_id": "aq-learning-freshness",
+              "sha256": "df8ea54b7a6af971f24089bee6945e15f99665ae4578cc0a67340e89852d46a5"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-025",
+      "case_kind": "automatic",
+      "case_family": "native-no-advice",
+      "family_atom": null,
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "64077f2bb7ce405d31466f153fa1ea5956ed5cc7f0f657afe0fde9c13c876b53",
+      "prompt_sha256": "f0bdf64be06ba69531e2eda50944d7759653ed4e660d95b9340a7a62d466a217",
+      "packet": {
+        "task_text": "Complete a familiar single-component style adjustment using documented routines; the verification method is already fixed."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "present"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "present"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 0,
+          "payloads": [],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-026",
+      "case_kind": "automatic",
+      "case_family": "native-no-advice",
+      "family_atom": null,
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "0b89e9bf4ce77e27ebcead872b2652f822c6154db5c67cdd09cb5b3b0afab2e8",
+      "prompt_sha256": "bee4ef935f5bd0a7521ce77aec2f938986220ce0c4a607095402006e8eaf05bc",
+      "packet": {
+        "task_text": "Apply the previously approved single-context correction; its scope and acceptance contract are already complete."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "present"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "present"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 0,
+          "payloads": [],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-027",
+      "case_kind": "automatic",
+      "case_family": "native-no-advice",
+      "family_atom": null,
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "c9a32999fb15aaf1f9c4eee6c4bcd57e08ed8a5c8fb5e9b35f66d1d109635ae7",
+      "prompt_sha256": "c38ef21cf47a4b18c0e4d7da4f0fbabf144bddee1ea4136384dacc9acd5b9b7d",
+      "packet": {
+        "task_text": "Carry out a routine, self-contained formatting adjustment in one known component."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "present"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 0,
+          "payloads": [],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-028",
+      "case_kind": "automatic",
+      "case_family": "native-no-advice",
+      "family_atom": null,
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "d4fd634a9f9a8bdba8e37017199c1b6edf087c1d2eb0458af98fddc3d8116bea",
+      "prompt_sha256": "b7e5b96ca7494e708b5099888f2ff55691c1201fafd478f8d2a99bc6995ac64f",
+      "packet": {
+        "task_text": "Perform a routine single-context update with no learning or adaptation decision remaining."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "present"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "present"
+          }
+        ],
+        "expected_selected_atoms": [],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 0,
+          "payloads": [],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-029",
+      "case_kind": "automatic",
+      "case_family": "exactly-two",
+      "family_atom": null,
+      "near_neighbor_kind": null,
+      "exactly_two": true,
+      "nonce_sha256": "3fd352dd5029538065be7c5f607cb25f19c4f3265a66e70ea5ae4aaa465ab0b8",
+      "prompt_sha256": "51688f9874b78cf4178915ca8d58d694aa522d8cc0824f56fa363e42f3a631fd",
+      "packet": {
+        "task_text": "Define the handoff boundary among a scheduler and workers, and choose behavioral evidence for their shared execution."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "present"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "present"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "topology-control-boundary",
+          "verification-strategy"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "agentic-engineering",
+          "verification-strategy-engineering"
+        ],
+        "expected_must_not_select_advisers": [
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "agentic-engineering",
+            "trigger_id": "architecture-boundary"
+          },
+          {
+            "owner_adviser_id": "verification-strategy-engineering",
+            "trigger_id": "verification-evidence"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 2,
+          "payloads": [
+            {
+              "owner_adviser_id": "agentic-engineering",
+              "payload_id": "aq-agentic-architecture",
+              "sha256": "7b38f8fde0d77fef1136520db3daf55caac50c8654b2c7c7e82866f8b976b3fa"
+            },
+            {
+              "owner_adviser_id": "verification-strategy-engineering",
+              "payload_id": "aq-verify-mode-selection",
+              "sha256": "abdae0d6dafd308814d0f10d51d054f8ab3298ed295801666f9716b1a769997c"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-030",
+      "case_kind": "automatic",
+      "case_family": "exactly-two",
+      "family_atom": null,
+      "near_neighbor_kind": null,
+      "exactly_two": true,
+      "nonce_sha256": "3058682ed18d1281e66070cde9b301bd46e41925b5cbd5f077c353050e6fd4eb",
+      "prompt_sha256": "fb061b06245faa823b223a4d28a81457618129d39ca9950998eb34e0377bc737",
+      "packet": {
+        "task_text": "Set the authorization boundary for a data import and determine evidence for its reconciliation result."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "present"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "present"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "task-contract",
+          "verification-strategy"
+        ],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "codex-task-contract",
+            "trigger_id": "decision-contract"
+          },
+          {
+            "owner_adviser_id": "verification-strategy-engineering",
+            "trigger_id": "verification-evidence"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 2,
+          "payloads": [
+            {
+              "owner_adviser_id": "codex-task-contract",
+              "payload_id": "aq-contract-vocabulary",
+              "sha256": "0a19fbde8ab13b459931e4f353dfbe5ae95108e21414cc5d6087930c5c13c4bb"
+            },
+            {
+              "owner_adviser_id": "verification-strategy-engineering",
+              "payload_id": "aq-verify-mode-selection",
+              "sha256": "abdae0d6dafd308814d0f10d51d054f8ab3298ed295801666f9716b1a769997c"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-031",
+      "case_kind": "automatic",
+      "case_family": "exclusion-or-uncertainty-near-neighbor",
+      "family_atom": null,
+      "near_neighbor_kind": "exclusion",
+      "exactly_two": false,
+      "nonce_sha256": "559b1335877ace4e6e7c1bc6cc1d7bfd434325f91dce9ce744ed3cf5ef3410ca",
+      "prompt_sha256": "6b7f62367c4821728f20ae67f293f6ba60db53503cec54eb69ec9042f19a3d85",
+      "packet": {
+        "task_text": "Coordinate multiple delivery tracks, but the work is explicitly limited to one local execution context."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "present"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "present"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 0,
+          "payloads": [],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-032",
+      "case_kind": "automatic",
+      "case_family": "exclusion-or-uncertainty-near-neighbor",
+      "family_atom": null,
+      "near_neighbor_kind": "uncertainty",
+      "exactly_two": false,
+      "nonce_sha256": "b739230eb9eb3f54126daa0849ff822979a5b33073a372a4262b93f0a454ac1b",
+      "prompt_sha256": "2413b3422a80e283e6fa04427fd5b911c89d2da3024db3a225c11b0cef5920e6",
+      "packet": {
+        "task_text": "The scope is clear, but the release dependency details remain unresolved; decide whether the task can safely start."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "present"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "uncertain"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [],
+        "expected_selection_status": "automatic",
+        "expected_selection_constraint": {
+          "parse_status": "no_invocation_like",
+          "selected_atom": null,
+          "qualified_tokens": [],
+          "invocation_like_tokens": []
+        },
+        "expected_advisers": [],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 0,
+          "payloads": [],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-033",
+      "case_kind": "explicit",
+      "case_family": "exact-explicit",
+      "family_atom": "topology-control-boundary",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "872cf3033dbe5e583bb6503c737a4f14882c2a5f66ddb1ac1f76f7e573e4617e",
+      "prompt_sha256": "88865a7335e07e70801f48e0295f1481140b611cf9b7e53e92f8d3e3d4d332bc",
+      "packet": {
+        "task_text": "Use $agentic-engineering to examine how several teams should coordinate an interdependent release."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "present"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "topology-control-boundary"
+        ],
+        "expected_selection_status": "exact",
+        "expected_selection_constraint": {
+          "parse_status": "exact",
+          "selected_atom": "topology-control-boundary",
+          "qualified_tokens": [
+            "$agentic-engineering"
+          ],
+          "invocation_like_tokens": [
+            "$agentic-engineering"
+          ]
+        },
+        "expected_advisers": [
+          "agentic-engineering"
+        ],
+        "expected_must_not_select_advisers": [
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "agentic-engineering",
+            "trigger_id": "decomposition-boundary"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "agentic-engineering",
+              "payload_id": "aq-agentic-seven-layer",
+              "sha256": "b32a84de05a0bbebac86064f37be4c9b6e79a0f70b5c83a23d8073e9091a2232"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-034",
+      "case_kind": "explicit",
+      "case_family": "exact-explicit",
+      "family_atom": "task-contract",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "0eb9a2c3c841c057980b3f62a43f3f262300675d4b858770dffe654067738813",
+      "prompt_sha256": "66d7096d7080ab2bbde8585ce1817db90e914e7c7d4debdb8b7a6b052c4a9769",
+      "packet": {
+        "task_text": "Use $codex-task-contract to decide who may approve this request and what counts as acceptance."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "present"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "task-contract"
+        ],
+        "expected_selection_status": "exact",
+        "expected_selection_constraint": {
+          "parse_status": "exact",
+          "selected_atom": "task-contract",
+          "qualified_tokens": [
+            "$codex-task-contract"
+          ],
+          "invocation_like_tokens": [
+            "$codex-task-contract"
+          ]
+        },
+        "expected_advisers": [
+          "codex-task-contract"
+        ],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "codex-task-contract",
+            "trigger_id": "decision-contract"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "codex-task-contract",
+              "payload_id": "aq-contract-vocabulary",
+              "sha256": "0a19fbde8ab13b459931e4f353dfbe5ae95108e21414cc5d6087930c5c13c4bb"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-035",
+      "case_kind": "explicit",
+      "case_family": "exact-explicit",
+      "family_atom": "verification-strategy",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "757c59b4abf83e0e21dffa2c66df5641312cb5460c35ddbe841a3bcb11827243",
+      "prompt_sha256": "fa0ec112c32ce128b6c0fac32a7809ab6539a6130f5b328a5d0f8ffad822c992",
+      "packet": {
+        "task_text": "Use $verification-strategy-engineering to determine the evidence needed before claiming the retry path prevents duplicate writes."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "present"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "verification-strategy"
+        ],
+        "expected_selection_status": "exact",
+        "expected_selection_constraint": {
+          "parse_status": "exact",
+          "selected_atom": "verification-strategy",
+          "qualified_tokens": [
+            "$verification-strategy-engineering"
+          ],
+          "invocation_like_tokens": [
+            "$verification-strategy-engineering"
+          ]
+        },
+        "expected_advisers": [
+          "verification-strategy-engineering"
+        ],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "verification-strategy-engineering",
+            "trigger_id": "verification-evidence"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "verification-strategy-engineering",
+              "payload_id": "aq-verify-mode-selection",
+              "sha256": "abdae0d6dafd308814d0f10d51d054f8ab3298ed295801666f9716b1a769997c"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    },
+    {
+      "case_id": "AQ7-H-036",
+      "case_kind": "explicit",
+      "case_family": "exact-explicit",
+      "family_atom": "engineering-learning",
+      "near_neighbor_kind": null,
+      "exactly_two": false,
+      "nonce_sha256": "22f2b9774bccfbd29ef22cf7277c6a64f6447d69d5fbefd2b26546c3647bec5c",
+      "prompt_sha256": "4efb02649c5bfaed37beca3050476d202e80442d14c335188360386ea9a470a0",
+      "packet": {
+        "task_text": "Use $engineering-learning-loop to identify the mechanism behind a recurrent failure before revising the workflow."
+      },
+      "grading": {
+        "expected_predicate_facts": [
+          {
+            "predicate_id": "multi_domain_coordination",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "cross_component_or_agent_boundary",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "scope_acceptance_or_authority_contract",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "execution_dependencies_or_stop_conditions",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "claim_or_behavior_requires_verification_strategy",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+            "state": "present"
+          },
+          {
+            "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "single_domain_native_execution_is_sufficient",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "contract_is_already_complete_and_no_contract_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "verification_method_is_already_fixed_and_no_verification_decision_remains",
+            "state": "absent"
+          },
+          {
+            "predicate_id": "no_learning_or_adaptation_decision_remains",
+            "state": "absent"
+          }
+        ],
+        "expected_selected_atoms": [
+          "engineering-learning"
+        ],
+        "expected_selection_status": "exact",
+        "expected_selection_constraint": {
+          "parse_status": "exact",
+          "selected_atom": "engineering-learning",
+          "qualified_tokens": [
+            "$engineering-learning-loop"
+          ],
+          "invocation_like_tokens": [
+            "$engineering-learning-loop"
+          ]
+        },
+        "expected_advisers": [
+          "engineering-learning-loop"
+        ],
+        "expected_must_not_select_advisers": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "expected_reference_requests": [
+          {
+            "owner_adviser_id": "engineering-learning-loop",
+            "trigger_id": "reference-isolation"
+          }
+        ],
+        "deterministic_reference_expectations": {
+          "status": "resolved",
+          "resolved_payload_count": 1,
+          "payloads": [
+            {
+              "owner_adviser_id": "engineering-learning-loop",
+              "payload_id": "aq-learning-attribution",
+              "sha256": "162e8b622f83083e8075446321ff9a35debf120a5183724e1541d7eb3512adac"
+            }
+          ],
+          "derivation": "H3+frozen-reference-policy+base-candidate"
+        }
+      }
+    }
+  ]
+}
