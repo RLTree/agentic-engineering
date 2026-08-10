@@ -384,6 +384,10 @@ The AQ8 record above remains controlling history: corpora I and J are consumed a
 
 **Decision and claim ceiling.** AQ9 passes only if both conditions and every frozen behavioral and complete-run integrity gate pass under one global logical AND; any missing, skipped, undefined, or nonfinite gate fails that AND. Persist only the aggregate decision, digest, exact custody, and one compact AQ stage decision. PASS establishes only that the exact H5 candidate met the frozen AQ gates on exact corpus K under the recorded conditions and opens AS; it establishes no general population performance, adviser value, composition, host, field, provider, model, sandbox, product, promotion, authority, or effect claim. A failed or malformed canary; structural or preflight invalidity; frozen-byte or formula drift; an access, disclosure, custody, or blinding breach; any K observation or partial batch that does not reach PASS; post-observation interruption; completed malformed output; exhausted infrastructure retry; or attempt-budget breach retires H5, permanently closes AQ under this ExecPlan, keeps AS/AC/AH/AF blocked, and permits only AR bounded retirement and stop.
 
+AQ9-E0-TERMINAL-RECORD status=fail commit=a8ae421c4e8619f4cc72cd91bbd7f65da1928f5d tree=077968d10f9172c2cf86468c3b91c2137dfbffa4 packet_path=evals/foundation-v4/aq9-h5-independent-evidence-v1.json packet_blob=34bb5efc8411961227b374d7ae3b610cda628de7 packet_sha256=1ec15fa32f3ad262eb95d913c964854799546a0397874cfa803322b4bb761fcd verdict_path=evals/foundation-v4/aq9-h5-independent-evidence-verdict-v1.json verdict_blob=b6b142e935381baada66e4d148364d4f22d55e88 verdict_sha256=374825c130d076e4d298c0a8d004fc5d6f33c201715ffefb190f98c2c87815da
+
+During independent E0 review, access exceeded the role-wide allowed envelope; review aborted before packet or source inspection. E0=FAIL. No H5/K artifact, model, or corpus work occurred. AQ9 is permanently closed; AS/AC/AH/AF remain blocked. The sole transition is AR bounded retirement and stop. Claim ceiling: structural process-failure only.
+
 Use 64 natural-language automatic-routing prompts:
 
 - 12 cross-domain decomposition;
