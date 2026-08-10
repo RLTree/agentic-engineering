@@ -24,6 +24,9 @@ sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parents[1]
 FROZEN_COMMIT = "407a2ac124856f0ce1fa33af8a61d0607e413820"
 FROZEN_TREE = "8314ca6ad82fa4687720692d8c5762c7aabf6261"
+CORPUS_COMMIT = "25de0cb1fe86a802768de9bf64659206d69650d0"
+CORPUS_TREE = "e5faff4b1a5ba678a7df1727b5bda3b3d0afe00a"
+CORPUS_ROOT = "evals/foundation-v4/future-activation-v2"
 SCHEMA_PATH = ROOT / "evals/foundation-v4/selector-output-schema.json"
 CHECKER_PATH = ROOT / "scripts/check_reduced_four_skill_candidate.py"
 ADVISERS = (
@@ -62,7 +65,7 @@ class RunnerError(ValueError):
 
 
 class InfrastructureError(RunnerError):
-    """A child failed before it supplied any completion event; retry once."""
+    """A child failed before it supplied any completion event."""
 
 
 def sha256_bytes(value: bytes) -> str:
@@ -133,25 +136,24 @@ def load_qualification_cases(root: Path = ROOT) -> tuple[list[dict[str, Any]], d
     """Load the frozen corpus from Git, never working-tree corpus bytes."""
     documents = {}
     for split in ("authoring", "heldout"):
-        path = f"evals/foundation-v4/activation-{split}.json"
-        raw = git_show(root, FROZEN_COMMIT, path)
+        path = f"{CORPUS_ROOT}/activation-{split}.json"
+        raw = git_show(root, CORPUS_COMMIT, path)
         documents[split] = json.loads(raw)
     cases = []
     for document in documents.values():
         for case in document.get("cases", []):
-            if case.get("mode") == "explicit" or (case.get("id", "").startswith("AQ-H-") and case.get("mode") == "automatic"):
+            if case.get("mode") == "explicit" or (case.get("id", "").startswith("AQ2-H-") and case.get("mode") == "automatic"):
                 cases.append(case)
     # The frozen corpus has four explicit cases in each split and 32 heldout automatic cases.
-    wanted = {f"AQ-H-{index:03d}" for index in range(1, 33)} | {f"AQ-A-{index:03d}" for index in range(33, 37)} | {f"AQ-H-{index:03d}" for index in range(33, 37)}
+    wanted = {f"AQ2-H-{index:03d}" for index in range(1, 33)} | {f"AQ2-A-{index:03d}" for index in range(33, 37)} | {f"AQ2-H-{index:03d}" for index in range(33, 37)}
     selected = [case for case in cases if case.get("id") in wanted]
     if len(selected) != 40 or {case["id"] for case in selected} != wanted:
         raise RunnerError("frozen qualification distribution is unavailable")
     return selected, {
-        "source_commit": FROZEN_COMMIT,
-        "source_tree": FROZEN_TREE,
-        "activation_schema_sha256": sha256_bytes(git_show(root, FROZEN_COMMIT, "evals/foundation-v4/activation-schema.json")),
-        "authoring_sha256": sha256_bytes(git_show(root, FROZEN_COMMIT, "evals/foundation-v4/activation-authoring.json")),
-        "heldout_sha256": sha256_bytes(git_show(root, FROZEN_COMMIT, "evals/foundation-v4/activation-heldout.json")),
+        "source_commit": CORPUS_COMMIT, "source_tree": CORPUS_TREE,
+        "activation_schema_sha256": sha256_bytes(git_show(root, CORPUS_COMMIT, f"{CORPUS_ROOT}/activation-schema.json")),
+        "authoring_sha256": sha256_bytes(git_show(root, CORPUS_COMMIT, f"{CORPUS_ROOT}/activation-authoring.json")),
+        "heldout_sha256": sha256_bytes(git_show(root, CORPUS_COMMIT, f"{CORPUS_ROOT}/activation-heldout.json")),
     }
 
 
@@ -195,7 +197,7 @@ def selector_packet(case: dict[str, Any], catalog: list[dict[str, str]]) -> str:
 
 def immutable_preflight(root: Path, candidate_commit: str, checker: Any, reduced_commit: str) -> None:
     """Prove all evaluator inputs equal their committed candidate/source bytes."""
-    for relative in ("scripts/run_activation_trials.py", "scripts/check_reduced_four_skill_candidate.py", "scripts/score_activation.py", "evals/foundation-v4/selector-output-schema.json", "evals/foundation-v4/activation-evaluator-schema.json"):
+    for relative in ("scripts/run_activation_trials.py", "scripts/check_reduced_four_skill_candidate.py", "scripts/score_activation.py", "scripts/validate_future_activation_corpus.py", "evals/foundation-v4/selector-output-schema.json", "evals/foundation-v4/activation-evaluator-schema.json"):
         committed = git_show(root, reduced_commit, relative)
         try:
             live = (root / relative).read_bytes()
@@ -205,17 +207,17 @@ def immutable_preflight(root: Path, candidate_commit: str, checker: Any, reduced
             raise RunnerError("live evaluator input differs from candidate commit")
     selector = git_show(root, reduced_commit, "evals/foundation-v4/selector-output-schema.json")
     validate_selector_schema(raw=selector)
-    corpus_paths = ("evals/foundation-v4/activation-schema.json", "evals/foundation-v4/activation-authoring.json", "evals/foundation-v4/activation-heldout.json")
+    corpus_paths = tuple(f"{CORPUS_ROOT}/activation-{name}.json" for name in ("schema", "authoring", "heldout"))
     corpus = {}
     for relative in corpus_paths:
-        committed = git_show(root, FROZEN_COMMIT, relative)
+        committed = git_show(root, CORPUS_COMMIT, relative)
         if (root / relative).read_bytes() != committed:
             raise RunnerError("live frozen corpus differs from source commit")
         corpus[relative] = json.loads(committed)
     try:
         import jsonschema
-        validator = jsonschema.Draft202012Validator(corpus["evals/foundation-v4/activation-schema.json"])
-        if any(validator.iter_errors(corpus["evals/foundation-v4/activation-authoring.json"])) or any(validator.iter_errors(corpus["evals/foundation-v4/activation-heldout.json"])):
+        validator = jsonschema.Draft202012Validator(corpus[f"{CORPUS_ROOT}/activation-schema.json"])
+        if any(validator.iter_errors(corpus[f"{CORPUS_ROOT}/activation-authoring.json"])) or any(validator.iter_errors(corpus[f"{CORPUS_ROOT}/activation-heldout.json"])):
             raise RunnerError("frozen corpus schema validation failed")
     except ImportError as error:
         raise RunnerError("jsonschema unavailable for immutable corpus preflight") from error
@@ -223,7 +225,7 @@ def immutable_preflight(root: Path, candidate_commit: str, checker: Any, reduced
 
 def schedule(cases: list[dict[str, Any]], seed: str) -> list[tuple[str, dict[str, Any]]]:
     """Strictly alternate randomized current/reduced presentations for all 80 trials."""
-    if not isinstance(seed, str) or not seed:
+    if not isinstance(seed, str) or not seed.strip():
         raise RunnerError("seed must be nonblank")
     rng = random.Random(int(hashlib.sha256(seed.encode("utf-8")).hexdigest(), 16))
     by_id = {case["id"]: case for case in cases}
@@ -350,13 +352,14 @@ def parse_events(raw: bytes) -> tuple[list[str], bytes, str]:
     return validate_selection(output), raw, thread_id
 
 
-def resolve_payloads(checker: Any, candidate: dict[str, Any], case: dict[str, Any], selected: list[str], root: Path) -> list[dict[str, Any]]:
+def resolve_payloads(checker: Any, candidate: dict[str, Any], case: dict[str, Any], selected: list[str], root: Path) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     labels = case.get("hidden_labels")
     if not isinstance(labels, dict):
         raise RunnerError("frozen hidden trigger labels unavailable")
-    records = checker.resolve_parent_payloads(candidate, labels.get("reference_triggers", []), selected)
-    if len(records) > 3:
-        raise RunnerError("parent payload cap exceeded")
+    outcome = checker.resolve_parent_payload_resolution(candidate, labels.get("reference_triggers", []), selected)
+    if outcome["status"] == "cap_exceeded":
+        return {"status": "cap_exceeded", "resolved_count": outcome["resolved_count"]}, []
+    records = outcome["records"]
     output = []
     for record in records:
         if record.get("full_schema_or_template") is not False or record.get("content_class") != "compact-reference":
@@ -365,28 +368,29 @@ def resolve_payloads(checker: Any, candidate: dict[str, Any], case: dict[str, An
         if hashlib.sha256(raw).hexdigest() != record["sha256"]:
             raise RunnerError("resolved payload digest drift")
         output.append({"payload_id": record["payload_id"], "owner_adviser_id": record["owner_adviser_id"], "source_path": record["source_path"], "sha256": record["sha256"]})
-    return output
+    return {"status": "resolved", "resolved_count": len(output)}, output
 
 
-def execution_contract(codex_info: dict[str, str], schedule_digest: str, catalog_digest: str, reduced_commit: str) -> dict[str, Any]:
+def execution_contract(codex_info: dict[str, str], schedule_seed: str, schedule_digest: str, catalog_digest: str, reduced_commit: str) -> dict[str, Any]:
     contract = {
         "model": MODEL, "reasoning": REASONING, "cli_path": codex_info["path"], "cli_version": codex_info["version"], "cli_sha256": codex_info["sha256"],
         "tools_sha256": sha256_json({"permitted": [], "disabled": DISABLED_FEATURES, "sandbox": "read-only", "approval": "never"}),
         "host_surface_sha256": sha256_json({"cli": codex_info, "argv": child_argv("<codex>", "<fresh-empty>", SCHEMA_PATH), "empty_temp_cwd": True, "selector_catalog_sha256": catalog_digest}),
-        "runner_path": "scripts/run_activation_trials.py", "runner_protocol_sha256": sha256_file(Path(__file__)),
-        "schedule_sha256": schedule_digest, "evaluator_schema_sha256": sha256_bytes(git_show(ROOT, reduced_commit, "evals/foundation-v4/activation-evaluator-schema.json")),
+        "runner_path": "scripts/run_activation_trials.py", "runner_protocol_sha256": sha256_file(ROOT / "scripts/run_activation_trials.py"),
+        "schedule_seed": schedule_seed, "schedule_sha256": schedule_digest, "evaluator_schema_sha256": sha256_bytes(git_show(ROOT, reduced_commit, "evals/foundation-v4/activation-evaluator-schema.json")),
         "zero_write": True, "raw_trajectories_persisted": False,
     }
-    contract["condition_parity_sha256"] = sha256_json({key: value for key, value in contract.items() if key not in {"condition_parity_sha256", "schedule_sha256"}})
+    contract["condition_parity_sha256"] = sha256_json({key: value for key, value in contract.items() if key not in {"condition_parity_sha256", "schedule_seed", "schedule_sha256"}})
     return contract
 
 
-def run_one(*, argv: list[str] | None = None, argv_factory: Callable[[], list[str]] | None = None, packet: str, invoke: Callable[..., Any]) -> tuple[list[str], bytes, str]:
-    """Run with one retry only when the first child never completed."""
-    last: Exception | None = None
+def run_one(*, argv: list[str] | None = None, argv_factory: Callable[[], list[str]] | None = None, packet: str, invoke: Callable[..., Any], allow_retry: bool = False) -> tuple[list[str], bytes, str]:
+    """Launch once, except for an explicitly designated transport canary."""
     if (argv is None) == (argv_factory is None):
         raise RunnerError("provide exactly one child argv source")
-    for attempt in range(2):
+    if not isinstance(allow_retry, bool):
+        raise RunnerError("allow_retry must be boolean")
+    for attempt in range(2 if allow_retry else 1):
         try:
             child_argv_value = argv_factory() if argv_factory else argv
             process = invoke(child_argv_value, input=packet.encode(), stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
@@ -395,41 +399,44 @@ def run_one(*, argv: list[str] | None = None, argv_factory: Callable[[], list[st
             if process.returncode:
                 raise RunnerError("child exited nonzero after completion")
             return parsed
-        except InfrastructureError as error:
-            last = error
-            if attempt == 0:
+        except InfrastructureError:
+            if allow_retry and attempt == 0:
                 continue
             raise
-    raise InfrastructureError(str(last))
+    raise RunnerError("unreachable child retry state")
 
 
-def invoke_packet(*, codex_path: str, packet: str, invoke: Callable[..., Any]) -> tuple[list[str], bytes, str]:
-    """Invoke a packet in a fresh empty directory for each permitted attempt."""
+def invoke_packet(*, codex_path: str, packet: str, invoke: Callable[..., Any], allow_retry: bool = False) -> tuple[list[str], bytes, str]:
+    """Invoke a packet once; only a non-corpus transport canary may opt in to retry."""
     temporary: list[tempfile.TemporaryDirectory[str]] = []
     def fresh_argv() -> list[str]:
         directory = tempfile.TemporaryDirectory(prefix="aq-prompt-only-")
         temporary.append(directory)
         return child_argv(codex_path, directory.name, SCHEMA_PATH)
     try:
-        return run_one(argv_factory=fresh_argv, packet=packet, invoke=invoke)
+        return run_one(argv_factory=fresh_argv, packet=packet, invoke=invoke, allow_retry=allow_retry)
     finally:
         for directory in temporary:
             directory.cleanup()
 
 
-def trial_observation(*, scorer: Any, checker: Any, candidate: dict[str, Any], condition: str, candidate_commit: str, candidate_tree: str, case: dict[str, Any], catalog: list[dict[str, str]], contract: dict[str, Any], codex_path: str, invoke: Callable[..., Any], root: Path) -> dict[str, Any]:
+def trial_observation(*, scorer: Any, checker: Any, candidate: dict[str, Any], condition: str, candidate_commit: str, candidate_tree: str, case: dict[str, Any], catalog: list[dict[str, str]], contract: dict[str, Any], codex_path: str, invoke: Callable[..., Any], root: Path, presentation_index: int = 0, allow_retry: bool = False) -> dict[str, Any]:
+    if not isinstance(presentation_index, int) or not 0 <= presentation_index < 80:
+        raise RunnerError("presentation index is outside the qualification schedule")
+    if not isinstance(allow_retry, bool) or allow_retry:
+        raise RunnerError("qualification trials never retry")
     packet = selector_packet(case, catalog)
-    selected, _raw_event, context_id = invoke_packet(codex_path=codex_path, packet=packet, invoke=invoke)
-    payloads = resolve_payloads(checker, candidate, case, selected, root)
+    selected, _raw_event, context_id = invoke_packet(codex_path=codex_path, packet=packet, invoke=invoke, allow_retry=False)
+    payload_resolution, payloads = resolve_payloads(checker, candidate, case, selected, root)
     prompt_digest = sha256_bytes(case["prompt"].encode())
     observation = {
-        "case_id": case["id"], "context_id": context_id,
+        "case_id": case["id"], "presentation_index": presentation_index, "context_id": context_id,
         "corpus_prompt_sha256": prompt_digest, "task_sha256": prompt_digest,
         "selector_packet_sha256": scorer.selector_packet_digest(case["prompt"], catalog),
         "candidate_input_sha256": candidate["conditions"][condition]["condition_input_sha256"],
         "selector_catalog_sha256": candidate["conditions"][condition]["selector_catalog_sha256"],
         "parse_status": "parsed", "selected_advisers": selected,
-        "resolved_payloads": payloads, "execution_contract_sha256": sha256_json(contract),
+        "payload_resolution": payload_resolution, "resolved_payloads": payloads, "execution_contract_sha256": sha256_json(contract),
         "runner_protocol_sha256": contract["runner_protocol_sha256"],
         "effect_requested": False, "effect_granted": False, "claim_requested": False, "claim_granted": False,
         "tool_requested": False, "tool_granted": False, "full_schema_or_template_loaded": False,
@@ -455,17 +462,20 @@ def execute_trials(*, root: Path, candidate_commit: str, seed: str, codex: str, 
         raise RunnerError("selector catalog order drift")
     schedule_digest = sha256_json([(condition, case["id"]) for condition, case in plan])
     catalog_digest = sha256_json(catalogs)
-    contract = execution_contract(codex_info, schedule_digest, catalog_digest, reduced_commit)
+    contract = execution_contract(codex_info, seed, schedule_digest, catalog_digest, reduced_commit)
     scorer = scorer_module(root, reduced_commit, checker)
     if not hasattr(scorer, "score") or not hasattr(scorer, "selector_packet_digest"):
         raise RunnerError("evaluator-owned live scorer unavailable")
     # Canary is intentionally outside the corpus and not included in scoring.
     canary_packet = json.dumps({"instruction": "Return only the schema object with an empty selected_advisers array.", "task": "AQ evaluator transport canary. Do not use tools or request authority.", "logical_advisers": [{"id": item, "description": "logical evaluator entry"} for item in ADVISERS]}, sort_keys=True, separators=(",", ":"))
-    invoke_packet(codex_path=codex_info["path"], packet=canary_packet, invoke=invoke)
+    invoke_packet(codex_path=codex_info["path"], packet=canary_packet, invoke=invoke, allow_retry=True)
     grouped: dict[str, list[dict[str, Any]]] = {"current": [], "reduced": []}
-    for condition, case in plan:
+    indexed_plan = list(enumerate(plan))
+    if [presentation_index for presentation_index, _ in indexed_plan] != list(range(80)):
+        raise RunnerError("qualification schedule indices are incomplete")
+    for presentation_index, (condition, case) in indexed_plan:
         candidate_id, candidate_tree = (FROZEN_COMMIT, FROZEN_TREE) if condition == "current" else (reduced_commit, reduced_tree)
-        observation = trial_observation(scorer=scorer, checker=checker, candidate=candidate, condition=condition, candidate_commit=candidate_id, candidate_tree=candidate_tree, case=case, catalog=catalogs[condition], contract=contract, codex_path=codex_info["path"], invoke=invoke, root=root)
+        observation = trial_observation(scorer=scorer, checker=checker, candidate=candidate, condition=condition, candidate_commit=candidate_id, candidate_tree=candidate_tree, case=case, catalog=catalogs[condition], contract=contract, codex_path=codex_info["path"], invoke=invoke, root=root, presentation_index=presentation_index)
         grouped[condition].append(observation)
     if any(len(grouped[condition]) != 40 for condition in grouped):
         raise RunnerError("partial scorer payload prohibited")
@@ -477,6 +487,10 @@ def execute_trials(*, root: Path, candidate_commit: str, seed: str, codex: str, 
     result = scorer.score(envelope, root)
     if result.get("promotion_eligible") is not False:
         raise RunnerError("runner scoring result attempted promotion")
+    if result.get("runtime_provenance_proven") is not False:
+        raise RunnerError("runner scoring result attempted runtime provenance claim")
+    if "provenance_mode" in result or any(result.get(field) is True for field in ("provider_identity_proven", "product_behavior_proven")):
+        raise RunnerError("runner scoring result attempted an attested runtime claim")
     return result
 
 
@@ -486,7 +500,7 @@ def run_canary(*, root: Path, candidate_commit: str, codex: str, invoke: Callabl
     immutable_preflight(root, candidate_commit, checker, reduced_commit)
     info = codex_preflight(codex)
     packet = json.dumps({"instruction": "Return only the schema object with an empty selected_advisers array.", "task": "AQ evaluator transport canary. Do not use tools or request authority.", "logical_advisers": [{"id": item, "description": "logical evaluator entry"} for item in ADVISERS]}, sort_keys=True, separators=(",", ":"))
-    selected, _raw_digest, context_id = invoke_packet(codex_path=info["path"], packet=packet, invoke=invoke)
+    selected, _raw_digest, context_id = invoke_packet(codex_path=info["path"], packet=packet, invoke=invoke, allow_retry=True)
     return {"stage": "AQ", "mode": "canary", "status": "parsed", "context_id": context_id, "selected_advisers": selected, "provider_identity_proven": False, "raw_trajectories_persisted": False, "maximum_claim": "parser and argv acceptance only"}
 
 
@@ -530,7 +544,7 @@ def main(argv: list[str] | None = None) -> int:
     except (RunnerError, OSError) as error:
         print(f"HOLD: {error}", file=sys.stderr)
         return 2
-    summary = {"stage": "AQ", "mode": "dry-run", "candidate": {"commit": commit, "tree": tree}, "corpus": corpus, "cli_sha256": codex_info["sha256"], "qualification_trials": len(plan), "schedule_sha256": sha256_json([(condition, case["id"]) for condition, case in plan]), "live_calls": 0, "raw_trajectories_persisted": False, "claim_ceiling": "structural preflight only"}
+    summary = {"stage": "AQ", "mode": "dry-run", "candidate": {"commit": commit, "tree": tree}, "corpus": corpus, "cli_sha256": codex_info["sha256"], "qualification_trials": len(plan), "schedule_seed": args.seed, "schedule_sha256": sha256_json([(condition, case["id"]) for condition, case in plan]), "live_calls": 0, "raw_trajectories_persisted": False, "claim_ceiling": "structural preflight only"}
     print(json.dumps(summary, sort_keys=True, separators=(",", ":")))
     return 0
 

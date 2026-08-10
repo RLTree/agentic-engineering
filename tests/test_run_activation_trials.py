@@ -5,6 +5,7 @@ from __future__ import annotations
 import importlib.util
 import contextlib
 import io
+import inspect
 import json
 import subprocess
 import unittest
@@ -48,7 +49,7 @@ class RunnerTests(unittest.TestCase):
             with self.assertRaises(runner.RunnerError): runner.validate_selection(invalid)
 
     def test_packet_is_condition_and_label_blind(self):
-        case = {"id": "AQ-H-001", "prompt": "Decide whether a bounded contract needs an adviser.", "hidden_labels": {"expected_advisers": ["agentic-engineering"], "reference_triggers": ["architecture-boundary"]}}
+        case = {"id": "AQ2-H-001", "prompt": "Decide whether a bounded contract needs an adviser.", "hidden_labels": {"expected_advisers": ["agentic-engineering"], "reference_triggers": ["architecture-boundary"]}}
         packet = runner.selector_packet(case, [{"adviser_id": item, "description": item + " description"} for item in runner.ADVISERS])
         self.assertNotIn("hidden_labels", packet); self.assertNotIn("architecture-boundary", packet); self.assertNotIn("current", packet); self.assertNotIn("plugins/", packet); self.assertIn("logical_advisers", packet); self.assertIn("$agentic-engineering", packet); self.assertIn(case["prompt"], packet)
 
@@ -107,21 +108,37 @@ class RunnerTests(unittest.TestCase):
             runner.codex_preflight(str(Path(__file__).resolve()), probe=lambda *args, **kwargs: next(results))
 
     def test_schedule_is_deterministic_strict_and_complete(self):
-        cases = [{"id": f"AQ-H-{index:03d}", "prompt": "x"} for index in range(1, 41)]
+        cases = [{"id": f"AQ2-H-{index:03d}", "prompt": "x"} for index in range(1, 41)]
         one = runner.schedule(cases, "seed"); two = runner.schedule(cases, "seed")
         self.assertEqual(one, two); self.assertEqual(len(one), 80)
         self.assertEqual({condition for condition, _ in one}, {"current", "reduced"})
         self.assertTrue(all(one[index][0] != one[index + 1][0] for index in range(79)))
+        with self.assertRaises(runner.RunnerError):
+            runner.schedule(cases, "   ")
+
+    def test_preflight_binds_future_corpus_validator_and_observations_reject_out_of_range_indices(self):
+        self.assertIn("scripts/validate_future_activation_corpus.py", inspect.getsource(runner.immutable_preflight))
+        with self.assertRaises(runner.RunnerError):
+            runner.trial_observation(scorer=None, checker=None, candidate={}, condition="current", candidate_commit="c", candidate_tree="t", case={}, catalog=[], contract={}, codex_path="codex", invoke=Fake([]), root=ROOT, presentation_index=80)
 
     def test_completed_malformed_is_not_retried(self):
         fake = Fake([response(events(selection='{"selected_advisers":["bad"]}')), response(events())])
         with self.assertRaises(runner.RunnerError): runner.run_one(argv=["codex"], packet="{}", invoke=fake)
         self.assertEqual(len(fake.calls), 1)
 
-    def test_infrastructure_failure_retries_once(self):
+    def test_non_corpus_transport_canary_may_retry_once_before_completion(self):
         fake = Fake([response(b"not-json\n"), response(events())])
-        selected, raw, context = runner.run_one(argv=["codex"], packet="{}", invoke=fake)
+        selected, raw, context = runner.invoke_packet(codex_path="/tmp/codex", packet="{}", invoke=fake, allow_retry=True)
         self.assertEqual(selected, []); self.assertTrue(raw.startswith(b'{"type": "thread.started"')); self.assertEqual(len(fake.calls), 2)
+
+    def test_qualification_packet_never_retries_after_thread_started_without_completion(self):
+        raw = b'{"type":"thread.started","thread_id":"qualification-thread"}\nnot-json\n'
+        fake = Fake([response(raw), response(events())])
+        with self.assertRaises(runner.InfrastructureError):
+            runner.trial_observation(scorer=None, checker=None, candidate={}, condition="current", candidate_commit="c", candidate_tree="t", case={"id":"AQ2-H-001","prompt":"bounded qualification"}, catalog=[], contract={}, codex_path="codex", invoke=fake, root=ROOT)
+        self.assertEqual(len(fake.calls), 1)
+        with self.assertRaisesRegex(runner.RunnerError, "qualification trials never retry"):
+            runner.trial_observation(scorer=None, checker=None, candidate={}, condition="current", candidate_commit="c", candidate_tree="t", case={"id":"AQ2-H-001","prompt":"bounded qualification"}, catalog=[], contract={}, codex_path="codex", invoke=Fake([]), root=ROOT, allow_retry=True)
 
     def test_terminal_error_item_is_diagnostic_and_not_retried(self):
         raw = b'{"type":"thread.started","thread_id":"x"}\n{"type":"item.completed","item":{"type":"error","message":"provider unavailable"}}\n'
@@ -189,7 +206,7 @@ class RunnerTests(unittest.TestCase):
         watched = [
             ROOT / "scripts/run_activation_trials.py",
             ROOT / "evals/foundation-v4/selector-output-schema.json",
-            ROOT / "evals/foundation-v4/activation-heldout.json",
+            ROOT / "evals/foundation-v4/future-activation-v2/activation-heldout.json",
             ROOT / "evals/foundation-v4/reduced-four-skills/candidate.json",
         ]
         before = {path: path.read_bytes() for path in watched}
@@ -221,7 +238,7 @@ class RunnerTests(unittest.TestCase):
         self.assertEqual(called, [])
 
     def test_execute_returns_evaluator_owned_aggregate_not_envelope(self):
-        cases = [{"id": f"AQ-H-{index:03d}", "prompt": "task"} for index in range(1, 41)]
+        cases = [{"id": f"AQ2-H-{index:03d}", "prompt": "task"} for index in range(1, 41)]
         candidate = {"conditions": {name: {"condition_input_sha256": name * 64, "selector_catalog_sha256": ("a" if name == "current" else "b") * 64} for name in ("current", "reduced")}}
         class Checker:
             @staticmethod
@@ -234,9 +251,11 @@ class RunnerTests(unittest.TestCase):
             @staticmethod
             def score(envelope, root):
                 captured["envelope"] = envelope
-                return {"stage":"AQ", "status":"fail", "promotion_eligible":False, "raw_trajectories_persisted":False}
+                return {"stage":"AQ", "status":"fail", "promotion_eligible":False, "runtime_provenance_proven":False, "raw_trajectories_persisted":False}
+        indices = []
         def observation(**kwargs):
             case, condition = kwargs["case"], kwargs["condition"]
+            indices.append(kwargs["presentation_index"])
             return {"case_id":case["id"], "context_id":f"thread-{condition}-{case['id']}"}
         with mock.patch.object(runner, "validate_candidate", return_value=(Checker, candidate, "c" * 40, "d" * 40)), \
              mock.patch.object(runner, "immutable_preflight"), \
@@ -250,12 +269,45 @@ class RunnerTests(unittest.TestCase):
         self.assertEqual(result["stage"], "AQ")
         self.assertEqual(len(captured["envelope"]["conditions"][0]["observations"]), 40)
         self.assertEqual(len(captured["envelope"]["conditions"][1]["observations"]), 40)
+        self.assertEqual(indices, list(range(80)))
         self.assertNotIn("raw_event_sha256", json.dumps(captured["envelope"]))
+
+    def test_execute_rejects_scorer_runtime_or_promotion_claims(self):
+        cases = [{"id": f"AQ2-H-{index:03d}", "prompt": "task"} for index in range(1, 41)]
+        candidate = {"conditions": {name: {"condition_input_sha256": name * 64, "selector_catalog_sha256": ("a" if name == "current" else "b") * 64} for name in ("current", "reduced")}}
+        class Checker:
+            @staticmethod
+            def selector_catalog(*_args): return [{"adviser_id": item, "description": item} for item in runner.ADVISERS]
+        class Scorer:
+            @staticmethod
+            def selector_packet_digest(*_args): return "p" * 64
+            @staticmethod
+            def score(*_args): return {"promotion_eligible":False, "runtime_provenance_proven":True}
+        with mock.patch.object(runner, "validate_candidate", return_value=(Checker, candidate, "c" * 40, "d" * 40)), \
+             mock.patch.object(runner, "immutable_preflight"), \
+             mock.patch.object(runner, "load_qualification_cases", return_value=(cases, {"source_commit":"x"})), \
+             mock.patch.object(runner, "codex_preflight", return_value={"path":"codex","version":"v","sha256":"a" * 64}), \
+             mock.patch.object(runner, "execution_contract", return_value={"schedule_sha256":"s"}), \
+             mock.patch.object(runner, "invoke_packet", return_value=([], events("canary-thread"), "canary-thread")), \
+             mock.patch.object(runner, "trial_observation", return_value={"case_id":"AQ2-H-001", "context_id":"thread"}), \
+             mock.patch.object(runner, "scorer_module", return_value=Scorer):
+            with self.assertRaisesRegex(runner.RunnerError, "runtime provenance claim"):
+                runner.execute_trials(root=ROOT, candidate_commit="HEAD", seed="seed", codex="codex", invoke=Fake([]))
 
     def test_raw_bytes_do_not_appear_in_observation_shape(self):
         selected, raw, context = runner.parse_events(events("real-thread"))
         self.assertEqual(selected, []); self.assertTrue(raw); self.assertNotIn("raw_event", {"context_id": context})
         self.assertEqual(context, "real-thread")
+
+    def test_capacity_breach_is_a_compact_completed_resolution(self):
+        class Checker:
+            @staticmethod
+            def resolve_parent_payload_resolution(*args, **kwargs):
+                return {"status": "cap_exceeded", "resolved_count": 4, "records": []}
+        case = {"hidden_labels": {"reference_triggers": ["architecture-boundary"]}}
+        status, records = runner.resolve_payloads(Checker, {}, case, ["agentic-engineering"], ROOT)
+        self.assertEqual(status, {"status": "cap_exceeded", "resolved_count": 4})
+        self.assertEqual(records, [])
 
 
 if __name__ == "__main__": unittest.main()

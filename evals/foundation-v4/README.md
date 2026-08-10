@@ -1,5 +1,7 @@
 # Foundation V4 activation corpus
 
+The AQ-v1 corpus remains frozen lineage and must not be replayed after its aborted post-completion run. The frozen `future-activation-v2` corpus is the current future qualification input; it confers no routing, outcome, or candidate authority.
+
 This root contains frozen routing inputs, not a live routing result. Each split has 32 automatic cases and four separate explicit-invocation cases. Both conditions intentionally exercise the same fixed four-adviser surface (`agentic-engineering`, `codex-task-contract`, `verification-strategy-engineering`, and `engineering-learning-loop`); the current package condition is not an unrestricted 30-skill routing comparison. `activation-authoring.json` supports hypothesis formation. `activation-heldout.json` is co-located in the repository to freeze integrity, not to provide secrecy, and must never tune a routing change.
 
 Both corpora are candidate-independent: a future run contract must prove parity of task text, model, reasoning setting, tools, and host surface for the current package and the reduced four-skill candidate. The evaluator must mount prompt-only views and withhold outcomes; this structural corpus validator cannot prove that blinding. The parent resolves the closed semantic reference triggers; advisers do not select their own reference payload. A trigger allows only compact task-relevant material and never authorizes loading a full schema or template merely because a case exists.

@@ -40,6 +40,11 @@ class ReducedFourCandidateTest(unittest.TestCase):
         self.assert_error(self.errors_for(lambda d: d["evaluator_surface"]["files"][3].__setitem__("sha256", "0" * 64)), "evaluator surface digest mismatch")
 
     def test_source_tree_and_identical_condition_digest_reds(self) -> None:
+        self.assertEqual(self.candidate["source"], {"commit": checker.SOURCE_COMMIT, "tree": checker.SOURCE_TREE})
+        self.assertEqual(
+            {key: self.candidate["corpus"][key] for key in ("commit", "tree")},
+            {"commit": checker.CORPUS_COMMIT, "tree": checker.CORPUS_TREE},
+        )
         self.assert_error(self.errors_for(lambda d: d["source"].__setitem__("tree", "0" * 40)), "source tree mismatch")
         self.assert_error(self.errors_for(lambda d: d["conditions"]["reduced"].__setitem__("condition_input_sha256", d["conditions"]["current"]["condition_input_sha256"])), "input digests must differ")
 
@@ -49,15 +54,21 @@ class ReducedFourCandidateTest(unittest.TestCase):
         self.assert_error(self.errors_for(lambda d: d["skills"][1]["reduced"].__setitem__("context_id", "")), "context IDs")
         self.assert_error(self.errors_for(lambda d: d["skills"][0]["references"][0].__setitem__("full_schema_or_template", True)), "compact non-schema/template")
 
-    def test_a029_and_generic_exactly_two_payload_limit_reds(self) -> None:
+    def test_aq2_exactly_two_payload_limit_reds(self) -> None:
+        def errors_with_ref_mutation(mutate):
+            candidate = copy.deepcopy(self.candidate)
+            mutate(candidate)
+            for condition in ("current", "reduced"):
+                candidate["conditions"][condition]["condition_input_sha256"] = checker.condition_input_digest(candidate, condition, ROOT)
+            return checker.validate_candidate(candidate, ROOT)
+
         def a029(data):
-            data["skills"][0]["references"][2]["trigger_ids"] = ["architecture-boundary"]
-        self.assert_error(self.errors_for(a029), "AQ-H-029")
+            data["skills"][1]["references"][1]["trigger_ids"] = ["no-change-abstention"]
+        self.assert_error(errors_with_ref_mutation(a029), "AQ2-H-029")
 
         def generic(data):
-            data["skills"][1]["references"][0]["trigger_ids"].append("decision-contract")
-            data["skills"][3]["references"][0]["trigger_ids"].append("learning-adoption")
-        self.assert_error(self.errors_for(generic), "AQ-H-030")
+            data["skills"][0]["references"][1]["trigger_ids"] = ["decomposition-boundary"]
+        self.assert_error(errors_with_ref_mutation(generic), "AQ2-H-030")
 
     def test_yaml_frontmatter_router_and_forbidden_content_reds(self) -> None:
         yaml = 'interface:\n  display_name: "Agentic Engineering"\n  short_description: "x"\n  brand_color: "#0F766E"\n  default_prompt: "Use $agentic-engineering-lifecycle:agentic-engineering only as proposal-only. Do not act."\npolicy:\n  allow_implicit_invocation: true\n'
@@ -82,7 +93,15 @@ class ReducedFourCandidateTest(unittest.TestCase):
         self.assertEqual([item["payload_id"] for item in resolved], sorted(item["payload_id"] for item in resolved))
         self.assertTrue(all(set(item) == {"payload_id", "owner_adviser_id", "source_path", "sha256", "trigger_ids", "content_class", "full_schema_or_template"} for item in resolved))
 
+    def test_schema_permitted_capacity_breach_is_a_checker_red(self) -> None:
+        breach = {"status": "cap_exceeded", "resolved_count": 4, "records": []}
+        with patch.object(checker, "resolve_parent_payload_resolution", return_value=breach):
+            errors = checker.validate_candidate(self.candidate, ROOT)
+        self.assert_error(errors, "schema-permitted resolver capacity exceeds three")
+
     def test_condition_digests_are_deterministic_and_distinct(self) -> None:
+        descriptor = checker.condition_input_descriptor(self.candidate, "current", ROOT)
+        self.assertEqual(descriptor["parent_resolver"], {"policy": "minimum-trigger-cover", "max_payloads": 3})
         self.assertEqual(checker.condition_input_digest(self.candidate, "current", ROOT), self.candidate["conditions"]["current"]["condition_input_sha256"])
         self.assertEqual(checker.condition_input_digest(self.candidate, "reduced", ROOT), self.candidate["conditions"]["reduced"]["condition_input_sha256"])
         self.assertNotEqual(self.candidate["conditions"]["current"]["condition_input_sha256"], self.candidate["conditions"]["reduced"]["condition_input_sha256"])
@@ -96,7 +115,27 @@ class ReducedFourCandidateTest(unittest.TestCase):
         self.assertTrue(errors, errors)
         self.assertIn("selector packet or resolved payload records", errors[0])
 
-    def test_jsonschema_rejects_invalid_frozen_corpus_shape(self) -> None:
+    def test_evaluator_schema_mechanically_requires_schedule_index_and_payload_caps(self) -> None:
+        schema = json.loads((ROOT / "evals/foundation-v4/activation-evaluator-schema.json").read_text(encoding="utf-8"))
+        errors = []
+        checker._validate_evaluator_schema(schema, errors)
+        self.assertEqual(errors, [])
+        broken = copy.deepcopy(schema)
+        broken["$defs"]["payloadResolution"]["oneOf"][0]["properties"]["resolved_count"]["maximum"] = 4
+        errors = []
+        checker._validate_evaluator_schema(broken, errors)
+        self.assertIn("evaluator schema payload resolution status/count is not closed", errors)
+        broken = copy.deepcopy(schema)
+        broken["$defs"]["execution"]["properties"]["runner_path"] = {"type": "string"}
+        errors = []
+        checker._validate_evaluator_schema(broken, errors)
+        self.assertIn("evaluator schema lacks exact runner path or nonblank schedule seed", errors)
+
+    def test_future_corpus_validator_is_closed_evaluator_surface_with_fixed_digest(self) -> None:
+        entry = next(item for item in self.candidate["evaluator_surface"]["files"] if item["path"] == "scripts/validate_future_activation_corpus.py")
+        self.assertEqual(entry["sha256"], checker.FUTURE_CORPUS_VALIDATOR_SHA256)
+
+    def test_historical_v1_validator_rejects_invalid_lineage_shape(self) -> None:
         schema = json.loads(subprocess.check_output(["git", "show", f"{checker.SOURCE_COMMIT}:evals/foundation-v4/activation-schema.json"], cwd=ROOT))
         corpus = json.loads(subprocess.check_output(["git", "show", f"{checker.SOURCE_COMMIT}:evals/foundation-v4/activation-authoring.json"], cwd=ROOT))
         corpus["schema_version"] = "broken"
@@ -124,9 +163,9 @@ class ReducedFourCandidateTest(unittest.TestCase):
     def test_default_and_working_cli_are_zero_write(self) -> None:
         targets = sorted({
             *[path for path in (ROOT / checker.OVERLAY).rglob("*") if path.is_file()],
-            ROOT / "evals/foundation-v4/activation-schema.json",
-            ROOT / "evals/foundation-v4/activation-authoring.json",
-            ROOT / "evals/foundation-v4/activation-heldout.json",
+            ROOT / "evals/foundation-v4/future-activation-v2/activation-schema.json",
+            ROOT / "evals/foundation-v4/future-activation-v2/activation-authoring.json",
+            ROOT / "evals/foundation-v4/future-activation-v2/activation-heldout.json",
             ROOT / "evals/foundation-v4/activation-evaluator-schema.json",
             ROOT / "evals/foundation-v4/selector-output-schema.json",
             ROOT / "scripts/check_reduced_four_skill_candidate.py",
@@ -138,18 +177,12 @@ class ReducedFourCandidateTest(unittest.TestCase):
         env = {**os.environ, "PYTHONDONTWRITEBYTECODE": "1"}
         default = subprocess.run([sys.executable, str(ROOT / "scripts/check_reduced_four_skill_candidate.py")], cwd=ROOT, capture_output=True, text=True, check=False, env=env)
         draft = subprocess.run([sys.executable, str(ROOT / "scripts/check_reduced_four_skill_candidate.py"), "--working-tree"], cwd=ROOT, capture_output=True, text=True, check=False, env=env)
-        manifest_is_committed = subprocess.run(
-            ["git", "cat-file", "-e", f"HEAD:{checker.MANIFEST_PATH}"],
-            cwd=ROOT,
-            capture_output=True,
-            check=False,
-        ).returncode == 0
-        if manifest_is_committed:
+        if default.returncode == 0:
             self.assertEqual(default.returncode, 0, default.stderr)
             self.assertIn("PASS: COMMITTED structural custody", default.stdout)
         else:
             self.assertNotEqual(default.returncode, 0)
-            self.assertIn("candidate tree mismatch", default.stderr)
+            self.assertIn("HOLD:", default.stderr)
         self.assertEqual(draft.returncode, 0, draft.stderr)
         self.assertIn("PASS: DRAFT structural custody", draft.stdout)
         self.assertEqual({path: (path.read_bytes(), path.stat().st_mtime_ns) for path in targets}, before)

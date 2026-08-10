@@ -8,6 +8,7 @@ candidate.
 from __future__ import annotations
 
 import argparse
+import itertools
 import hashlib
 import json
 import re
@@ -35,14 +36,18 @@ ADVISERS = (
 ADVISER_IDS = tuple(item[0] for item in ADVISERS)
 TRIGGER_ORDER = ("architecture-boundary", "decision-contract", "verification-evidence", "learning-adoption", "decomposition-boundary", "no-change-abstention", "reference-isolation")
 TRIGGERS = frozenset(TRIGGER_ORDER)
-CORPUS_PATHS = {"schema": "evals/foundation-v4/activation-schema.json", "authoring": "evals/foundation-v4/activation-authoring.json", "heldout": "evals/foundation-v4/activation-heldout.json"}
+CORPUS_COMMIT = "25de0cb1fe86a802768de9bf64659206d69650d0"
+CORPUS_TREE = "e5faff4b1a5ba678a7df1727b5bda3b3d0afe00a"
+CORPUS_PATHS = {"schema": "evals/foundation-v4/future-activation-v2/activation-schema.json", "authoring": "evals/foundation-v4/future-activation-v2/activation-authoring.json", "heldout": "evals/foundation-v4/future-activation-v2/activation-heldout.json"}
 EVALUATOR_PATHS = (
     "evals/foundation-v4/activation-evaluator-schema.json",
     "evals/foundation-v4/selector-output-schema.json",
     "scripts/check_reduced_four_skill_candidate.py",
     "scripts/score_activation.py",
     "scripts/run_activation_trials.py",
+    "scripts/validate_future_activation_corpus.py",
 )
+FUTURE_CORPUS_VALIDATOR_SHA256 = "bc59b649ef4c25ca253dee1bbd483d7eb9de5b1a9827f0094c7cb219504333ee"
 CATEGORY_COUNTS = {"decomposition": 6, "task-contract": 6, "verification": 6, "learning": 6, "native-sufficient": 4, "near-neighbor": 4, "explicit-invocation": 4}
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 CONTEXT_ID_RE = re.compile(r"^aq-reduced-four-[a-z0-9]+(?:-[a-z0-9]+)*$")
@@ -172,10 +177,33 @@ def payload_catalog(candidate: dict[str, Any]) -> list[dict[str, Any]]:
     return sorted(records, key=lambda record: str(record["payload_id"]))
 
 
-def resolve_parent_payloads(candidate: dict[str, Any], required_triggers: set[str] | list[str], selected_adviser_ids: list[str]) -> list[dict[str, Any]]:
-    """Resolve eligible parent payload records in deterministic payload-id order."""
+def resolve_parent_payload_resolution(candidate: dict[str, Any], required_triggers: set[str] | list[str], selected_adviser_ids: list[str]) -> dict[str, Any]:
+    """Choose the deterministic minimum trigger cover without exceeding three.
+
+    A true minimum cover above three is represented compactly as a capacity
+    breach; unavailable triggers instead produce the deterministic best partial
+    subset so reference correctness, not parsing/custody, can fail.
+    """
     required = set(required_triggers)
-    return [record for record in payload_catalog(candidate) if record["owner_adviser_id"] in selected_adviser_ids and required.intersection(record["trigger_ids"] or [])]
+    eligible = [record for record in payload_catalog(candidate) if record["owner_adviser_id"] in selected_adviser_ids and required.intersection(record["trigger_ids"] or [])]
+    eligible.sort(key=lambda record: str(record["payload_id"]))
+    def covered(records: tuple[dict[str, Any], ...]) -> set[str]:
+        return set().union(*(set(record["trigger_ids"] or []) for record in records)) & required if records else set()
+    for size in range(len(eligible) + 1):
+        choices = [choice for choice in itertools.combinations(eligible, size) if covered(choice) == required]
+        if choices:
+            choice = min(choices, key=lambda records: tuple(str(record["payload_id"]) for record in records))
+            if size > 3:
+                return {"status": "cap_exceeded", "resolved_count": size, "records": []}
+            return {"status": "resolved", "resolved_count": size, "records": list(choice)}
+    choices = list(itertools.chain.from_iterable(itertools.combinations(eligible, size) for size in range(min(3, len(eligible)) + 1)))
+    best = min(choices, key=lambda records: (-len(covered(records)), len(records), tuple(str(record["payload_id"]) for record in records)))
+    return {"status": "resolved", "resolved_count": len(best), "records": list(best)}
+
+
+def resolve_parent_payloads(candidate: dict[str, Any], required_triggers: set[str] | list[str], selected_adviser_ids: list[str]) -> list[dict[str, Any]]:
+    """Compatibility projection: never returns more than three payload records."""
+    return resolve_parent_payload_resolution(candidate, required_triggers, selected_adviser_ids)["records"]
 
 
 def _skill_for(candidate: dict[str, Any], adviser_id: str) -> dict[str, Any]:
@@ -199,7 +227,7 @@ def condition_input_descriptor(candidate: dict[str, Any], condition: str, root: 
         entry = skill[condition]
         entries.append({"adviser_id": adviser_id, "corpus_alias": skill["corpus_alias"], "skill_sha256": entry["skill_sha256"], "yaml_sha256": entry["yaml_sha256"], "invocation_token": entry["invocation_token"]})
     surface = {key: condition_data[key] for key in ("adviser_ids", "reference_payload_resolution", "reference_payload_catalog", "host_install_claim")}
-    return {"surface": surface, "selector_catalog": selector_catalog(candidate, condition, root, overlay_commit), "advisers": entries, "permitted_payload_catalog": payload_catalog(candidate), "parent_resolver": {"policy": "trigger-intersection", "max_payloads": 3}}
+    return {"surface": surface, "selector_catalog": selector_catalog(candidate, condition, root, overlay_commit), "advisers": entries, "permitted_payload_catalog": payload_catalog(candidate), "parent_resolver": {"policy": "minimum-trigger-cover", "max_payloads": 3}}
 
 
 def condition_input_digest(candidate: dict[str, Any], condition: str, root: Path = ROOT, overlay_commit: str | None = None) -> str:
@@ -223,15 +251,29 @@ def _validate_evaluator_schema(schema: dict[str, Any], errors: list[str]) -> Non
     if not isinstance(defs, dict):
         errors.append("evaluator schema lacks definitions")
         return
-    payload, observation = defs.get("payload"), defs.get("observation")
+    payload, observation, execution = defs.get("payload"), defs.get("observation"), defs.get("execution")
     if not isinstance(payload, dict) or payload.get("additionalProperties") is not False or not {"payload_id", "owner_adviser_id", "source_path", "sha256"}.issubset(payload.get("required", [])):
         errors.append("evaluator schema payload record is not closed owner/path/digest evidence")
-    if not isinstance(observation, dict) or not {"selector_packet_sha256", "resolved_payloads"}.issubset(observation.get("required", [])):
+    if not isinstance(observation, dict) or not {"selector_packet_sha256", "payload_resolution", "resolved_payloads"}.issubset(observation.get("required", [])):
         errors.append("evaluator schema observation lacks selector packet or resolved payload records")
         return
+    index = observation.get("properties", {}).get("presentation_index", {})
+    if "presentation_index" not in observation.get("required", []) or index != {"type": "integer", "minimum": 0, "maximum": 79}:
+        errors.append("evaluator schema observation lacks exact 0..79 presentation index")
+    runner = execution.get("properties", {}).get("runner_path", {}) if isinstance(execution, dict) else {}
+    seed = execution.get("properties", {}).get("schedule_seed", {}) if isinstance(execution, dict) else {}
+    if not isinstance(execution, dict) or "schedule_seed" not in execution.get("required", []) or runner != {"const": "scripts/run_activation_trials.py"} or seed != {"type": "string", "pattern": ".*\\S.*"}:
+        errors.append("evaluator schema lacks exact runner path or nonblank schedule seed")
     resolved = observation.get("properties", {}).get("resolved_payloads", {})
     if resolved.get("type") != "array" or resolved.get("maxItems") != 3 or resolved.get("items") != {"$ref": "#/$defs/payload"}:
         errors.append("evaluator schema resolved_payloads is not a closed max-three payload record array")
+    resolution = defs.get("payloadResolution", {})
+    expected_resolution = [
+        {"properties": {"status": {"const": "resolved"}, "resolved_count": {"maximum": 3}}},
+        {"properties": {"status": {"const": "cap_exceeded"}, "resolved_count": {"minimum": 4}}},
+    ]
+    if not isinstance(resolution, dict) or resolution.get("additionalProperties") is not False or set(resolution.get("required", [])) != {"status", "resolved_count"} or resolution.get("oneOf") != expected_resolution:
+        errors.append("evaluator schema payload resolution status/count is not closed")
 
 
 def _validate_selector_schema(schema: dict[str, Any], errors: list[str]) -> None:
@@ -277,13 +319,14 @@ def validate_candidate(candidate: Any, root: Path = ROOT, overlay_commit: str | 
     corpus_data: list[dict[str, Any]] = []
     corpus_schema: dict[str, Any] | None = None
     corpus = candidate["corpus"]
-    if _closed(corpus, set(CORPUS_PATHS), "corpus", errors):
+    if _closed(corpus, set(CORPUS_PATHS) | {"commit", "tree"}, "corpus", errors):
+        if corpus["commit"] != CORPUS_COMMIT or corpus["tree"] != CORPUS_TREE or git_tree(root, CORPUS_COMMIT) != CORPUS_TREE: errors.append("corpus commit/tree mismatch")
         for split, expected_path in CORPUS_PATHS.items():
             item = corpus[split]
             if not _closed(item, {"path", "sha256"}, f"corpus.{split}", errors): continue
             if item["path"] != expected_path: errors.append(f"corpus {split} path mismatch")
             if not _digest(item["sha256"], f"corpus.{split}.sha256", errors): continue
-            raw = git_show(root, SOURCE_COMMIT, item["path"])
+            raw = git_show(root, CORPUS_COMMIT, item["path"])
             if sha256_bytes(raw) != item["sha256"]: errors.append(f"corpus {split} digest mismatch")
             parsed = json.loads(raw)
             if split != "schema": corpus_data.append(parsed)
@@ -307,6 +350,7 @@ def validate_candidate(candidate: Any, root: Path = ROOT, overlay_commit: str | 
                     errors.append(f"cannot read evaluator surface {entry['path']}: {exc}")
                     continue
                 if sha256_bytes(raw) != entry["sha256"]: errors.append(f"evaluator surface digest mismatch for {entry['path']}")
+                if entry["path"] == "scripts/validate_future_activation_corpus.py" and entry["sha256"] != FUTURE_CORPUS_VALIDATOR_SHA256: errors.append("future corpus validator digest mismatch")
                 if entry["path"] == EVALUATOR_PATHS[0]: evaluator_json = json.loads(raw)
                 if entry["path"] == EVALUATOR_PATHS[1]: selector_json = json.loads(raw)
             if evaluator_json is not None: _validate_evaluator_schema(evaluator_json, errors)
@@ -394,8 +438,18 @@ def validate_candidate(candidate: Any, root: Path = ROOT, overlay_commit: str | 
             if set(paths) != fixture_reference_paths(fixture_text): errors.append(f"{adviser_id} references do not exactly match reduced fixture")
         except (OSError, ValueError): pass
     if len(contexts) != len(set(contexts)) or any(not isinstance(value, str) or not CONTEXT_ID_RE.fullmatch(value) for value in contexts): errors.append("fixture context IDs must be unique nonblank static aq-reduced-four IDs")
+    # Mechanical capacity proof over the entire schema-permitted selection and
+    # trigger surface; it does not depend on a model result or prompt content.
+    for size in range(3):
+        for advisers in itertools.combinations(ADVISER_IDS, size):
+            for trigger_size in range(4):
+                for needed in itertools.combinations(TRIGGER_ORDER, trigger_size):
+                    outcome = resolve_parent_payload_resolution(candidate, set(needed), list(advisers))
+                    if outcome["status"] == "cap_exceeded" or len(outcome["records"]) > 3:
+                        errors.append("schema-permitted resolver capacity exceeds three")
+                        break
     for corpus_item, split in zip(corpus_data, ("authoring", "heldout")):
-        if corpus_item.get("schema_version") != "1.0" or corpus_item.get("corpus_id") != f"foundation-v4-activation-{split}" or corpus_item.get("split") != split or corpus_item.get("candidate_independent") is not True or corpus_item.get("routing_surface") != "fixed-four-adviser" or corpus_item.get("reference_catalog") != list(TRIGGER_ORDER): errors.append(f"{split} corpus schema-shape mismatch")
+        if corpus_item.get("schema_version") != "2.0" or corpus_item.get("corpus_id") != f"foundation-v4-future-activation-v2-{split}" or corpus_item.get("split") != split or corpus_item.get("candidate_independent") is not True or corpus_item.get("routing_surface") != "fixed-four-adviser" or corpus_item.get("reference_catalog") != list(TRIGGER_ORDER): errors.append(f"{split} corpus schema-shape mismatch")
         cases = corpus_item.get("cases")
         if not isinstance(cases, list) or len(cases) != 36: errors.append(f"{split} corpus case-count mismatch"); continue
         counts = {category: 0 for category in CATEGORY_COUNTS}
@@ -406,7 +460,6 @@ def validate_candidate(candidate: Any, root: Path = ROOT, overlay_commit: str | 
             if not isinstance(case, dict) or not set(advisers).issubset(ADVISER_IDS) or not needed.issubset(TRIGGERS): errors.append(f"{split} corpus case schema-shape mismatch"); continue
             counts[case.get("category")] = counts.get(case.get("category"), 0) + 1
             resolved = resolve_parent_payloads(candidate, needed, advisers)
-            if len(resolved) > 3: errors.append(f"corpus payload limit exceeded for {case.get('id')}")
             if not needed.issubset(set().union(*(available.get(adviser, set()) for adviser in advisers)) if advisers else set()): errors.append(f"corpus trigger coverage gap for {case.get('id')}")
             if any(record["owner_adviser_id"] not in advisers or record["content_class"] != "compact-reference" or record["full_schema_or_template"] is not False for record in resolved): errors.append(f"corpus resolver custody mismatch for {case.get('id')}")
         if counts != CATEGORY_COUNTS: errors.append(f"{split} corpus distribution mismatch")

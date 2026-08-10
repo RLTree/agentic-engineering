@@ -328,6 +328,8 @@ evals/foundation-v4/activation-schema.json
 evals/foundation-v4/README.md
 ```
 
+Operational amendment (2026-08-09): the original AQ-v1 corpus above is frozen lineage and must not be replayed after its post-completion batch abort. The active future qualification input is `evals/foundation-v4/future-activation-v2/`, frozen at corpus commit `25de0cb1fe86a802768de9bf64659206d69650d0` and tree `e5faff4b1a5ba678a7df1727b5bda3b3d0afe00a`. This corpus freeze grants no candidate, routing, host, product, or field claim.
+
 Use 64 natural-language automatic-routing prompts:
 
 - 12 cross-domain decomposition;
