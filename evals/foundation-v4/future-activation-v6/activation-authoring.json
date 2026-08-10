@@ -1,0 +1,2043 @@
+{
+  "schema_version": "6.0",
+  "corpus_id": "AQ6-authoring",
+  "claim_ceiling": "structural-corpus-only",
+  "cases": [
+    {
+      "id": "AQ6-A-001",
+      "nonce": "aq6-authoring-001-51f3",
+      "family": "topology-single",
+      "prompt": "Coordinate the service and command-line owners for a shared migration, define their handoff boundary, and leave a reversible rollout map.",
+      "normalized_prompt": "Coordinate the service and command-line owners for a shared migration, define their handoff boundary, and leave a reversible rollout map.",
+      "prompt_sha256": "a421a9b2926578f05432a9bd081066e19e9b36222cf099740c729f4b7c6fc587",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "topology-control-boundary"
+      ],
+      "expected_advisers": [
+        "agentic-engineering"
+      ],
+      "must_not_select": [
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "architecture-boundary",
+          "payload_id": "aq-agentic-architecture"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-agentic-architecture"
+        ],
+        "payload_sha256": [
+          "7b38f8fde0d77fef1136520db3daf55caac50c8654b2c7c7e82866f8b976b3fa"
+        ],
+        "payload_count": 1
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-002",
+      "nonce": "aq6-authoring-002-70e2",
+      "family": "topology-single",
+      "prompt": "Break a cross-team incident-response workflow into accountable layers before the teams begin their separate changes.",
+      "normalized_prompt": "Break a cross-team incident-response workflow into accountable layers before the teams begin their separate changes.",
+      "prompt_sha256": "2d5b0b43abc8f6f78f81c6e211e43b0d7133525150cd643b59c62ee8769b9170",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "topology-control-boundary"
+      ],
+      "expected_advisers": [
+        "agentic-engineering"
+      ],
+      "must_not_select": [
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "decomposition-boundary",
+          "payload_id": "aq-agentic-seven-layer"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-agentic-seven-layer"
+        ],
+        "payload_sha256": [
+          "b32a84de05a0bbebac86064f37be4c9b6e79a0f70b5c83a23d8073e9091a2232"
+        ],
+        "payload_count": 1
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-003",
+      "nonce": "aq6-authoring-003-8fd1",
+      "family": "topology-single",
+      "prompt": "Set the interface for a worker that hands results back to its supervising process.",
+      "normalized_prompt": "Set the interface for a worker that hands results back to its supervising process.",
+      "prompt_sha256": "d08eb21545a47f6c6527ecd1477f3619627077572ffee9f7b0237916ba1da041",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "topology-control-boundary"
+      ],
+      "expected_advisers": [
+        "agentic-engineering"
+      ],
+      "must_not_select": [
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "reference-isolation",
+          "payload_id": "aq-agentic-control"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-agentic-control"
+        ],
+        "payload_sha256": [
+          "cbe3061f9fd11119ed6b69e49207a37e173f900f9df9f538796b41b45be31518"
+        ],
+        "payload_count": 1
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-004",
+      "nonce": "aq6-authoring-004-aec0",
+      "family": "topology-single",
+      "prompt": "Design the control boundary between a scheduler and two independent executors so neither silently owns the other’s decisions.",
+      "normalized_prompt": "Design the control boundary between a scheduler and two independent executors so neither silently owns the other’s decisions.",
+      "prompt_sha256": "51621719dbf87fac9ced6be7e234693fbe47d58c3289c65599f06778a7b7a554",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "topology-control-boundary"
+      ],
+      "expected_advisers": [
+        "agentic-engineering"
+      ],
+      "must_not_select": [
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "architecture-boundary",
+          "payload_id": "aq-agentic-architecture"
+        },
+        {
+          "trigger_id": "reference-isolation",
+          "payload_id": "aq-agentic-control"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-agentic-architecture",
+          "aq-agentic-control"
+        ],
+        "payload_sha256": [
+          "7b38f8fde0d77fef1136520db3daf55caac50c8654b2c7c7e82866f8b976b3fa",
+          "cbe3061f9fd11119ed6b69e49207a37e173f900f9df9f538796b41b45be31518"
+        ],
+        "payload_count": 2
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-005",
+      "nonce": "aq6-authoring-005-cdaf",
+      "family": "topology-single",
+      "prompt": "Map responsibilities across the data, orchestration, and review lanes of a coordinated repair effort.",
+      "normalized_prompt": "Map responsibilities across the data, orchestration, and review lanes of a coordinated repair effort.",
+      "prompt_sha256": "ac981c12da6cf3ebd02216b0a92454b0e63644d88e6d6c4a0c46d1963c2bf38c",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "topology-control-boundary"
+      ],
+      "expected_advisers": [
+        "agentic-engineering"
+      ],
+      "must_not_select": [
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "decomposition-boundary",
+          "payload_id": "aq-agentic-seven-layer"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-agentic-seven-layer"
+        ],
+        "payload_sha256": [
+          "b32a84de05a0bbebac86064f37be4c9b6e79a0f70b5c83a23d8073e9091a2232"
+        ],
+        "payload_count": 1
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-006",
+      "nonce": "aq6-authoring-006-ec9e",
+      "family": "topology-single",
+      "prompt": "Clarify who coordinates a multi-component release gate across its participating components.",
+      "normalized_prompt": "Clarify who coordinates a multi-component release gate across its participating components.",
+      "prompt_sha256": "1aab53db9fb943859b99fa10b6f5bcb9c404a8c086552546a4c8918df6a32cbf",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "topology-control-boundary"
+      ],
+      "expected_advisers": [
+        "agentic-engineering"
+      ],
+      "must_not_select": [
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [],
+      "deterministic_reference_expectations": {
+        "payload_ids": [],
+        "payload_sha256": [],
+        "payload_count": 0
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-007",
+      "nonce": "aq6-authoring-007-10b8d",
+      "family": "contract-single",
+      "prompt": "Write the acceptance boundary for a requested change, including what can proceed without a new approval.",
+      "normalized_prompt": "Write the acceptance boundary for a requested change, including what can proceed without a new approval.",
+      "prompt_sha256": "db9460ff830bc72ccd0adbfa71a553dea6fadab766507735be95cb22a8c5fd2a",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "codex-task-contract"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "reference-isolation",
+          "payload_id": "aq-contract-assumption-approval"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-contract-assumption-approval"
+        ],
+        "payload_sha256": [
+          "3222fe543583cad465fd05e4850e8fe1b03892fe23bafccafc0118d0b36b96ee"
+        ],
+        "payload_count": 1
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-008",
+      "nonce": "aq6-authoring-008-12a7c",
+      "family": "contract-single",
+      "prompt": "Turn an ambiguous request into a compact decision record with scope, owner, and observable acceptance conditions.",
+      "normalized_prompt": "Turn an ambiguous request into a compact decision record with scope, owner, and observable acceptance conditions.",
+      "prompt_sha256": "1d809ec24db92ef4487bedd9b499154408281a067176d9a67860dc33ae3c730b",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "codex-task-contract"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "decision-contract",
+          "payload_id": "aq-contract-vocabulary"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-contract-vocabulary"
+        ],
+        "payload_sha256": [
+          "0a19fbde8ab13b459931e4f353dfbe5ae95108e21414cc5d6087930c5c13c4bb"
+        ],
+        "payload_count": 1
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-009",
+      "nonce": "aq6-authoring-009-1496b",
+      "family": "contract-single",
+      "prompt": "Specify the dependency order and stop rule for a task whose data refresh must finish before the report is edited.",
+      "normalized_prompt": "Specify the dependency order and stop rule for a task whose data refresh must finish before the report is edited.",
+      "prompt_sha256": "6cbffcb96e92732666933ec6323d88473e57f803ddfeb3aa218927333a88b0a4",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "codex-task-contract"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "reference-isolation",
+          "payload_id": "aq-contract-assumption-approval"
+        },
+        {
+          "trigger_id": "decision-contract",
+          "payload_id": "aq-contract-vocabulary"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-contract-assumption-approval",
+          "aq-contract-vocabulary"
+        ],
+        "payload_sha256": [
+          "3222fe543583cad465fd05e4850e8fe1b03892fe23bafccafc0118d0b36b96ee",
+          "0a19fbde8ab13b459931e4f353dfbe5ae95108e21414cc5d6087930c5c13c4bb"
+        ],
+        "payload_count": 2
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-010",
+      "nonce": "aq6-authoring-010-1685a",
+      "family": "contract-single",
+      "prompt": "Decide whether an operator instruction authorizes a local repair or requires a separate approval before it changes user data.",
+      "normalized_prompt": "Decide whether an operator instruction authorizes a local repair or requires a separate approval before it changes user data.",
+      "prompt_sha256": "0aa3d6f5a3986cd15c87ac9ddc0a1bd768cf806d2f226a3db9f6d8767c6a4dab",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "codex-task-contract"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "reference-isolation",
+          "payload_id": "aq-contract-assumption-approval"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-contract-assumption-approval"
+        ],
+        "payload_sha256": [
+          "3222fe543583cad465fd05e4850e8fe1b03892fe23bafccafc0118d0b36b96ee"
+        ],
+        "payload_count": 1
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-011",
+      "nonce": "aq6-authoring-011-18749",
+      "family": "contract-single",
+      "prompt": "Define the completion contract for a maintenance task where the requested outcome and non-goals are currently mixed together.",
+      "normalized_prompt": "Define the completion contract for a maintenance task where the requested outcome and non-goals are currently mixed together.",
+      "prompt_sha256": "bc71cf90536a1d8757e17cc45fc18817c5a6e1920a610237cc9e666d51f87586",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "codex-task-contract"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "decision-contract",
+          "payload_id": "aq-contract-vocabulary"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-contract-vocabulary"
+        ],
+        "payload_sha256": [
+          "0a19fbde8ab13b459931e4f353dfbe5ae95108e21414cc5d6087930c5c13c4bb"
+        ],
+        "payload_count": 1
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-012",
+      "nonce": "aq6-authoring-012-1a638",
+      "family": "contract-single",
+      "prompt": "Set the explicit authority boundary for a queued change before any implementation begins.",
+      "normalized_prompt": "Set the explicit authority boundary for a queued change before any implementation begins.",
+      "prompt_sha256": "6c9d3ec2d23a80086cb3c446a9e2f293755dc8d1214caba359306d048ffb15f1",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "codex-task-contract"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [],
+      "deterministic_reference_expectations": {
+        "payload_ids": [],
+        "payload_sha256": [],
+        "payload_count": 0
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-013",
+      "nonce": "aq6-authoring-013-1c527",
+      "family": "verification-single",
+      "prompt": "Choose the evidence needed to support a claim that a migration preserved its intended behavior.",
+      "normalized_prompt": "Choose the evidence needed to support a claim that a migration preserved its intended behavior.",
+      "prompt_sha256": "e6f6e083f663279d10d0635551e76cc2f90f21417cc599fec4560c3f937cff2f",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "verification-strategy"
+      ],
+      "expected_advisers": [
+        "verification-strategy-engineering"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "verification-evidence",
+          "payload_id": "aq-verify-mode-selection"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-verify-mode-selection"
+        ],
+        "payload_sha256": [
+          "abdae0d6dafd308814d0f10d51d054f8ab3298ed295801666f9716b1a769997c"
+        ],
+        "payload_count": 1
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-014",
+      "nonce": "aq6-authoring-014-1e416",
+      "family": "verification-single",
+      "prompt": "Decide whether the current test oracle can distinguish a correct retry from a superficially successful failure.",
+      "normalized_prompt": "Decide whether the current test oracle can distinguish a correct retry from a superficially successful failure.",
+      "prompt_sha256": "35927cc2de4da3d0a43806ff62306109b10f7ba2da66bf54e9b0eed22f95c120",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "verification-strategy"
+      ],
+      "expected_advisers": [
+        "verification-strategy-engineering"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "verification-evidence",
+          "payload_id": "aq-verify-mode-selection"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-verify-mode-selection"
+        ],
+        "payload_sha256": [
+          "abdae0d6dafd308814d0f10d51d054f8ab3298ed295801666f9716b1a769997c"
+        ],
+        "payload_count": 1
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-015",
+      "nonce": "aq6-authoring-015-20305",
+      "family": "verification-single",
+      "prompt": "Plan how to verify that a browser action produced its claimed effect without treating a unit test as field evidence.",
+      "normalized_prompt": "Plan how to verify that a browser action produced its claimed effect without treating a unit test as field evidence.",
+      "prompt_sha256": "ad71af3a2dd1baec163ad5b6e369ef8fa2a5cf1f3a241a8b0a23c2204935cbb8",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "verification-strategy"
+      ],
+      "expected_advisers": [
+        "verification-strategy-engineering"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "reference-isolation",
+          "payload_id": "aq-verify-boundary"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-verify-boundary"
+        ],
+        "payload_sha256": [
+          "6cfb48d6eb49293f1337a9b2318c83a2eb68e5ae2add5639273db293c13f89a1"
+        ],
+        "payload_count": 1
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-016",
+      "nonce": "aq6-authoring-016-221f4",
+      "family": "verification-single",
+      "prompt": "Select a proportionate check sequence for a change that touches parsing, persistence, and the visible command output.",
+      "normalized_prompt": "Select a proportionate check sequence for a change that touches parsing, persistence, and the visible command output.",
+      "prompt_sha256": "d0078b35d6b85e230b27733a40c17ad17981dc5e9ed3d758fb27e22fce33db0a",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "verification-strategy"
+      ],
+      "expected_advisers": [
+        "verification-strategy-engineering"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "verification-evidence",
+          "payload_id": "aq-verify-mode-selection"
+        },
+        {
+          "trigger_id": "reference-isolation",
+          "payload_id": "aq-verify-boundary"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-verify-boundary",
+          "aq-verify-mode-selection"
+        ],
+        "payload_sha256": [
+          "6cfb48d6eb49293f1337a9b2318c83a2eb68e5ae2add5639273db293c13f89a1",
+          "abdae0d6dafd308814d0f10d51d054f8ab3298ed295801666f9716b1a769997c"
+        ],
+        "payload_count": 2
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-017",
+      "nonce": "aq6-authoring-017-240e3",
+      "family": "verification-single",
+      "prompt": "Determine what observation would falsify the claim that a new retry policy is safe under a partial outage.",
+      "normalized_prompt": "Determine what observation would falsify the claim that a new retry policy is safe under a partial outage.",
+      "prompt_sha256": "31164f37ff2c9c4fef4b32291f6f970455472fe9881d088341ee1ddf32315f9b",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "verification-strategy"
+      ],
+      "expected_advisers": [
+        "verification-strategy-engineering"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "verification-evidence",
+          "payload_id": "aq-verify-mode-selection"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-verify-mode-selection"
+        ],
+        "payload_sha256": [
+          "abdae0d6dafd308814d0f10d51d054f8ab3298ed295801666f9716b1a769997c"
+        ],
+        "payload_count": 1
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-018",
+      "nonce": "aq6-authoring-018-25fd2",
+      "family": "verification-single",
+      "prompt": "Choose the verification boundary before recording a success claim for an integration.",
+      "normalized_prompt": "Choose the verification boundary before recording a success claim for an integration.",
+      "prompt_sha256": "fa5c3d5294ab167c482ff473ac85cdf29761d217014213cfc67768e0b0f6ccab",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "verification-strategy"
+      ],
+      "expected_advisers": [
+        "verification-strategy-engineering"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [],
+      "deterministic_reference_expectations": {
+        "payload_ids": [],
+        "payload_sha256": [],
+        "payload_count": 0
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-019",
+      "nonce": "aq6-authoring-019-27ec1",
+      "family": "learning-single",
+      "prompt": "Classify a repeated failure by likely mechanism before changing the recovery policy.",
+      "normalized_prompt": "Classify a repeated failure by likely mechanism before changing the recovery policy.",
+      "prompt_sha256": "e57958a77335c8abc23d4fa1470465d0be36461c0cf3f7a89b22cb61376f4a50",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "engineering-learning"
+      ],
+      "expected_advisers": [
+        "engineering-learning-loop"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "reference-isolation",
+          "payload_id": "aq-learning-attribution"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-learning-attribution"
+        ],
+        "payload_sha256": [
+          "162e8b622f83083e8075446321ff9a35debf120a5183724e1541d7eb3512adac"
+        ],
+        "payload_count": 1
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-020",
+      "nonce": "aq6-authoring-020-29db0",
+      "family": "learning-single",
+      "prompt": "Decide how a held-out evaluation should evolve after a failure exposes a blind spot in the current check.",
+      "normalized_prompt": "Decide how a held-out evaluation should evolve after a failure exposes a blind spot in the current check.",
+      "prompt_sha256": "b0547d2c46b84913b47ee36fa586c198f4c312c0d5cee1ed9e015f64d6543dc9",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "engineering-learning"
+      ],
+      "expected_advisers": [
+        "engineering-learning-loop"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "verification-evidence",
+          "payload_id": "aq-learning-hidden-evals"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-learning-hidden-evals"
+        ],
+        "payload_sha256": [
+          "84488e858d5bb1243537062d5211937b4d11e1bb751c12c16bfd06177410ad11"
+        ],
+        "payload_count": 1
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-021",
+      "nonce": "aq6-authoring-021-2bc9f",
+      "family": "learning-single",
+      "prompt": "Set the freshness and supersession rule for a knowledge record whose source has been revised.",
+      "normalized_prompt": "Set the freshness and supersession rule for a knowledge record whose source has been revised.",
+      "prompt_sha256": "79731d79115bdd2f0cbc4ae65160ca032b1a0db8c32766390cfcf961fd5a3811",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "engineering-learning"
+      ],
+      "expected_advisers": [
+        "engineering-learning-loop"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "learning-adoption",
+          "payload_id": "aq-learning-freshness"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-learning-freshness"
+        ],
+        "payload_sha256": [
+          "df8ea54b7a6af971f24089bee6945e15f99665ae4578cc0a67340e89852d46a5"
+        ],
+        "payload_count": 1
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-022",
+      "nonce": "aq6-authoring-022-2db8e",
+      "family": "learning-single",
+      "prompt": "Separate a recurring incident’s symptom from its hypothesized cause, then update the mechanism hypothesis.",
+      "normalized_prompt": "Separate a recurring incident’s symptom from its hypothesized cause, then update the mechanism hypothesis.",
+      "prompt_sha256": "e4e7c63c5cdb087b444fa86c761768eebf7773ca78eb16cdd39321a043527694",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "engineering-learning"
+      ],
+      "expected_advisers": [
+        "engineering-learning-loop"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "reference-isolation",
+          "payload_id": "aq-learning-attribution"
+        },
+        {
+          "trigger_id": "verification-evidence",
+          "payload_id": "aq-learning-hidden-evals"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-learning-attribution",
+          "aq-learning-hidden-evals"
+        ],
+        "payload_sha256": [
+          "162e8b622f83083e8075446321ff9a35debf120a5183724e1541d7eb3512adac",
+          "84488e858d5bb1243537062d5211937b4d11e1bb751c12c16bfd06177410ad11"
+        ],
+        "payload_count": 2
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-023",
+      "nonce": "aq6-authoring-023-2fa7d",
+      "family": "learning-single",
+      "prompt": "Determine whether a prior lesson should be retained, revised, or retired after its source assumptions changed.",
+      "normalized_prompt": "Determine whether a prior lesson should be retained, revised, or retired after its source assumptions changed.",
+      "prompt_sha256": "369842465819f13bba7014fd8b80c80f13a3a8f609d2b96352e8307e5b0a96a4",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "engineering-learning"
+      ],
+      "expected_advisers": [
+        "engineering-learning-loop"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "learning-adoption",
+          "payload_id": "aq-learning-freshness"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-learning-freshness"
+        ],
+        "payload_sha256": [
+          "df8ea54b7a6af971f24089bee6945e15f99665ae4578cc0a67340e89852d46a5"
+        ],
+        "payload_count": 1
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-024",
+      "nonce": "aq6-authoring-024-3196c",
+      "family": "learning-single",
+      "prompt": "Choose the adaptation rule for a recurring failure before changing the system’s operating guidance.",
+      "normalized_prompt": "Choose the adaptation rule for a recurring failure before changing the system’s operating guidance.",
+      "prompt_sha256": "a4cd44bfe7d50c6044fb8552591f7c5d5118d4e164d835fad75838465248c37d",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "engineering-learning"
+      ],
+      "expected_advisers": [
+        "engineering-learning-loop"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering"
+      ],
+      "reference_triggers": [],
+      "deterministic_reference_expectations": {
+        "payload_ids": [],
+        "payload_sha256": [],
+        "payload_count": 0
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-025",
+      "nonce": "aq6-authoring-025-3385b",
+      "family": "native-topology-exclusion",
+      "prompt": "Apply the already-approved formatting fix to this one-file utility; its owner, acceptance check, and stop condition are fixed.",
+      "normalized_prompt": "Apply the already-approved formatting fix to this one-file utility; its owner, acceptance check, and stop condition are fixed.",
+      "prompt_sha256": "239effb1ace32ee2e9145654f5b39042a904a38c5425edb4b6fe4df611936465",
+      "mode": "automatic",
+      "expected_decision_atoms": [],
+      "expected_advisers": [],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [],
+      "deterministic_reference_expectations": {
+        "payload_ids": [],
+        "payload_sha256": [],
+        "payload_count": 0
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-026",
+      "nonce": "aq6-authoring-026-3574a",
+      "family": "native-contract-exclusion",
+      "prompt": "Perform the explicitly authorized rename exactly as specified; scope, approver, and completion rule are already settled.",
+      "normalized_prompt": "Perform the explicitly authorized rename exactly as specified; scope, approver, and completion rule are already settled.",
+      "prompt_sha256": "82d1f95e701f135110bf8f94b0ee23d70d65f80200304b4d57f44de36c654731",
+      "mode": "automatic",
+      "expected_decision_atoms": [],
+      "expected_advisers": [],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [],
+      "deterministic_reference_expectations": {
+        "payload_ids": [],
+        "payload_sha256": [],
+        "payload_count": 0
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-027",
+      "nonce": "aq6-authoring-027-37639",
+      "family": "native-verification-exclusion",
+      "prompt": "Run the prescribed checksum comparison and report its recorded result; the method and claim boundary are fixed.",
+      "normalized_prompt": "Run the prescribed checksum comparison and report its recorded result; the method and claim boundary are fixed.",
+      "prompt_sha256": "27a9ce3b95fee4d617064b24fe25c6a88e387c37739e8c959b0b6ee13f5dd43f",
+      "mode": "automatic",
+      "expected_decision_atoms": [],
+      "expected_advisers": [],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [],
+      "deterministic_reference_expectations": {
+        "payload_ids": [],
+        "payload_sha256": [],
+        "payload_count": 0
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-028",
+      "nonce": "aq6-authoring-028-39528",
+      "family": "native-learning-exclusion",
+      "prompt": "Archive the already-classified incident note using the supplied retention rule; no diagnosis or adaptation decision remains.",
+      "normalized_prompt": "Archive the already-classified incident note using the supplied retention rule; no diagnosis or adaptation decision remains.",
+      "prompt_sha256": "2c94a6dddfa4c756c1bee92c8c39934353f18c42a2bdb3d35dd30fffce259551",
+      "mode": "automatic",
+      "expected_decision_atoms": [],
+      "expected_advisers": [],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [],
+      "deterministic_reference_expectations": {
+        "payload_ids": [],
+        "payload_sha256": [],
+        "payload_count": 0
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-029",
+      "nonce": "aq6-authoring-029-3b417",
+      "family": "exactly-two-topology-contract",
+      "prompt": "Coordinate a two-service handoff and define the approval boundary that determines when either service may begin.",
+      "normalized_prompt": "Coordinate a two-service handoff and define the approval boundary that determines when either service may begin.",
+      "prompt_sha256": "47f56da16d4fdbf3257afc47154c820d716206e4f67e93d163093f5dab2b7832",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "topology-control-boundary",
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "agentic-engineering",
+        "codex-task-contract"
+      ],
+      "must_not_select": [
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "architecture-boundary",
+          "payload_id": "aq-agentic-architecture"
+        },
+        {
+          "trigger_id": "decision-contract",
+          "payload_id": "aq-contract-vocabulary"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-agentic-architecture",
+          "aq-contract-vocabulary"
+        ],
+        "payload_sha256": [
+          "7b38f8fde0d77fef1136520db3daf55caac50c8654b2c7c7e82866f8b976b3fa",
+          "0a19fbde8ab13b459931e4f353dfbe5ae95108e21414cc5d6087930c5c13c4bb"
+        ],
+        "payload_count": 2
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": true,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-030",
+      "nonce": "aq6-authoring-030-3d306",
+      "family": "exactly-two-verification-learning",
+      "prompt": "Choose an oracle for a reliability claim and decide how a failed held-out check should change the next evaluation cycle.",
+      "normalized_prompt": "Choose an oracle for a reliability claim and decide how a failed held-out check should change the next evaluation cycle.",
+      "prompt_sha256": "fb509fb673c11b809d9925a9254536c26f75e8f4c322e4a36e9c9d5603124ba2",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "verification-strategy",
+        "engineering-learning"
+      ],
+      "expected_advisers": [
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "verification-evidence",
+          "payload_id": "aq-learning-hidden-evals"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-learning-hidden-evals"
+        ],
+        "payload_sha256": [
+          "84488e858d5bb1243537062d5211937b4d11e1bb751c12c16bfd06177410ad11"
+        ],
+        "payload_count": 1
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": true,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-031",
+      "nonce": "aq6-authoring-031-3f1f5",
+      "family": "precedence-neighbor-topology",
+      "prompt": "Design the boundary between two collaborating components even though the downstream acceptance criteria have already been approved.",
+      "normalized_prompt": "Design the boundary between two collaborating components even though the downstream acceptance criteria have already been approved.",
+      "prompt_sha256": "0ca27b10c03e4e8f99eb5fb2c18499d5cd5dff3cc2beb561a3fa7666e22e04c8",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "topology-control-boundary"
+      ],
+      "expected_advisers": [
+        "agentic-engineering"
+      ],
+      "must_not_select": [
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "reference-isolation",
+          "payload_id": "aq-agentic-control"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-agentic-control"
+        ],
+        "payload_sha256": [
+          "cbe3061f9fd11119ed6b69e49207a37e173f900f9df9f538796b41b45be31518"
+        ],
+        "payload_count": 1
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-032",
+      "nonce": "aq6-authoring-032-410e4",
+      "family": "precedence-neighbor-verification",
+      "prompt": "Select the evidence that can support a behavior claim while the team’s old incident notes remain unchanged.",
+      "normalized_prompt": "Select the evidence that can support a behavior claim while the team’s old incident notes remain unchanged.",
+      "prompt_sha256": "6787e21a8eaa4906a888f1fec8946e0e6530c9e5bbdaca8f6916af993bd719fa",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "verification-strategy"
+      ],
+      "expected_advisers": [
+        "verification-strategy-engineering"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "verification-evidence",
+          "payload_id": "aq-verify-mode-selection"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-verify-mode-selection"
+        ],
+        "payload_sha256": [
+          "abdae0d6dafd308814d0f10d51d054f8ab3298ed295801666f9716b1a769997c"
+        ],
+        "payload_count": 1
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "automatic-eligibility",
+      "declared_invocation": "",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-033",
+      "nonce": "aq6-authoring-033-42fd3",
+      "family": "explicit-topology",
+      "prompt": "Use $agentic-engineering to guide a review of this narrow request; the surrounding text also mentions a test plan.",
+      "normalized_prompt": "Use $agentic-engineering to guide a review of this narrow request; the surrounding text also mentions a test plan.",
+      "prompt_sha256": "ffcfad0c710904c4bcfa43dfdb5083c9cb7704e13f38e580c8d87279dff8e1fe",
+      "mode": "explicit",
+      "expected_decision_atoms": [
+        "topology-control-boundary"
+      ],
+      "expected_advisers": [
+        "agentic-engineering"
+      ],
+      "must_not_select": [
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "architecture-boundary",
+          "payload_id": "aq-agentic-architecture"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-agentic-architecture"
+        ],
+        "payload_sha256": [
+          "7b38f8fde0d77fef1136520db3daf55caac50c8654b2c7c7e82866f8b976b3fa"
+        ],
+        "payload_count": 1
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "exact-explicit-constraint",
+      "declared_invocation": "$agentic-engineering",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-034",
+      "nonce": "aq6-authoring-034-44ec2",
+      "family": "explicit-contract",
+      "prompt": "Use $codex-task-contract for this task; a separate workflow diagram may be useful later.",
+      "normalized_prompt": "Use $codex-task-contract for this task; a separate workflow diagram may be useful later.",
+      "prompt_sha256": "5a646f868eeca2db5874093fa543dd581e7884e68c5c50b56bf074ec3458cbe4",
+      "mode": "explicit",
+      "expected_decision_atoms": [
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "codex-task-contract"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "decision-contract",
+          "payload_id": "aq-contract-vocabulary"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-contract-vocabulary"
+        ],
+        "payload_sha256": [
+          "0a19fbde8ab13b459931e4f353dfbe5ae95108e21414cc5d6087930c5c13c4bb"
+        ],
+        "payload_count": 1
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "exact-explicit-constraint",
+      "declared_invocation": "$codex-task-contract",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-035",
+      "nonce": "aq6-authoring-035-46db1",
+      "family": "explicit-verification",
+      "prompt": "Use $verification-strategy-engineering to assess this request; the delivery schedule is already known.",
+      "normalized_prompt": "Use $verification-strategy-engineering to assess this request; the delivery schedule is already known.",
+      "prompt_sha256": "e3bcbbe9a52fa886585d1b26fafb4ce58b6ec9df44143c84ba54106bf0df5b18",
+      "mode": "explicit",
+      "expected_decision_atoms": [
+        "verification-strategy"
+      ],
+      "expected_advisers": [
+        "verification-strategy-engineering"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "verification-evidence",
+          "payload_id": "aq-verify-mode-selection"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-verify-mode-selection"
+        ],
+        "payload_sha256": [
+          "abdae0d6dafd308814d0f10d51d054f8ab3298ed295801666f9716b1a769997c"
+        ],
+        "payload_count": 1
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "exact-explicit-constraint",
+      "declared_invocation": "$verification-strategy-engineering",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ6-A-036",
+      "nonce": "aq6-authoring-036-48ca0",
+      "family": "explicit-learning",
+      "prompt": "Use $engineering-learning-loop to frame this task; a component boundary was discussed in an earlier meeting.",
+      "normalized_prompt": "Use $engineering-learning-loop to frame this task; a component boundary was discussed in an earlier meeting.",
+      "prompt_sha256": "8c0054f531c127bcd830c8e057a3adece838d7839715812ce590a92760baac2f",
+      "mode": "explicit",
+      "expected_decision_atoms": [
+        "engineering-learning"
+      ],
+      "expected_advisers": [
+        "engineering-learning-loop"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering"
+      ],
+      "reference_triggers": [
+        {
+          "trigger_id": "learning-adoption",
+          "payload_id": "aq-learning-freshness"
+        }
+      ],
+      "deterministic_reference_expectations": {
+        "payload_ids": [
+          "aq-learning-freshness"
+        ],
+        "payload_sha256": [
+          "df8ea54b7a6af971f24089bee6945e15f99665ae4578cc0a67340e89852d46a5"
+        ],
+        "payload_count": 1
+      },
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": "exact-explicit-constraint",
+      "declared_invocation": "$engineering-learning-loop",
+      "condition_blind": "both-condition-identical",
+      "blinding_flags": [
+        "future-only",
+        "authoring-blinded",
+        "no-result-or-replay"
+      ],
+      "full_schema_or_template_expected": false
+    }
+  ]
+}

@@ -1,0 +1,382 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/agentic-engineering/evals/foundation-v4/future-activation-v6/activation-schema.json",
+  "title": "AQ6 future activation split corpus",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "corpus_id",
+    "claim_ceiling",
+    "cases"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "6.0"
+    },
+    "corpus_id": {
+      "enum": [
+        "AQ6-authoring",
+        "AQ6-heldout"
+      ]
+    },
+    "claim_ceiling": {
+      "const": "structural-corpus-only"
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 36,
+      "maxItems": 36,
+      "items": {
+        "$ref": "#/$defs/case"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "corpus_id": {
+            "const": "AQ6-authoring"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "cases": {
+            "items": {
+              "$ref": "#/$defs/authoring_case"
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "corpus_id": {
+            "const": "AQ6-heldout"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "cases": {
+            "items": {
+              "$ref": "#/$defs/heldout_case"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "atom": {
+      "type": "string",
+      "enum": [
+        "topology-control-boundary",
+        "task-contract",
+        "verification-strategy",
+        "engineering-learning"
+      ]
+    },
+    "adviser": {
+      "type": "string",
+      "enum": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ]
+    },
+    "payload": {
+      "type": "string",
+      "enum": [
+        "aq-agentic-architecture",
+        "aq-agentic-seven-layer",
+        "aq-agentic-control",
+        "aq-contract-assumption-approval",
+        "aq-contract-vocabulary",
+        "aq-verify-mode-selection",
+        "aq-verify-oracle-quality",
+        "aq-verify-boundary",
+        "aq-learning-attribution",
+        "aq-learning-hidden-evals",
+        "aq-learning-freshness"
+      ]
+    },
+    "sha": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "trigger": {
+      "type": "string",
+      "enum": [
+        "architecture-boundary",
+        "decomposition-boundary",
+        "reference-isolation",
+        "decision-contract",
+        "verification-evidence",
+        "oracle-quality",
+        "failure-attribution",
+        "evaluation-lifecycle",
+        "learning-adoption"
+      ]
+    },
+    "reference_trigger": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "trigger_id",
+        "payload_id"
+      ],
+      "properties": {
+        "trigger_id": {
+          "$ref": "#/$defs/trigger"
+        },
+        "payload_id": {
+          "$ref": "#/$defs/payload"
+        }
+      }
+    },
+    "reference_expectations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "payload_ids",
+        "payload_sha256",
+        "payload_count"
+      ],
+      "properties": {
+        "payload_ids": {
+          "type": "array",
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/payload"
+          }
+        },
+        "payload_sha256": {
+          "type": "array",
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/sha"
+          }
+        },
+        "payload_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        }
+      }
+    },
+    "case": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "nonce",
+        "family",
+        "prompt",
+        "normalized_prompt",
+        "prompt_sha256",
+        "mode",
+        "expected_decision_atoms",
+        "expected_advisers",
+        "must_not_select",
+        "reference_triggers",
+        "deterministic_reference_expectations",
+        "authority_prohibitions",
+        "effect_prohibitions",
+        "claim_prohibitions",
+        "exactly_two",
+        "precedence",
+        "declared_invocation",
+        "condition_blind",
+        "blinding_flags",
+        "full_schema_or_template_expected"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^AQ6-[AH]-(?:00[1-9]|0[12][0-9]|03[0-6])$"
+        },
+        "nonce": {
+          "type": "string",
+          "pattern": "^aq6-(?:authoring|heldout)-[0-9]{3}-[a-f0-9]+$"
+        },
+        "family": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prompt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "normalized_prompt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prompt_sha256": {
+          "$ref": "#/$defs/sha"
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "automatic",
+            "explicit"
+          ]
+        },
+        "expected_decision_atoms": {
+          "type": "array",
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/atom"
+          }
+        },
+        "expected_advisers": {
+          "type": "array",
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/adviser"
+          }
+        },
+        "must_not_select": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/adviser"
+          }
+        },
+        "reference_triggers": {
+          "type": "array",
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/reference_trigger"
+          }
+        },
+        "deterministic_reference_expectations": {
+          "$ref": "#/$defs/reference_expectations"
+        },
+        "authority_prohibitions": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "no_authority_assignment",
+              "no_policy_adoption"
+            ]
+          }
+        },
+        "effect_prohibitions": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "no_effect_execution",
+              "no_external_action"
+            ]
+          }
+        },
+        "claim_prohibitions": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "no_completion_claim",
+              "no_efficacy_claim",
+              "no_product_claim"
+            ]
+          }
+        },
+        "exactly_two": {
+          "type": "boolean"
+        },
+        "precedence": {
+          "type": "string",
+          "enum": [
+            "automatic-eligibility",
+            "exact-explicit-constraint"
+          ]
+        },
+        "declared_invocation": {
+          "type": "string",
+          "enum": [
+            "",
+            "$agentic-engineering",
+            "$codex-task-contract",
+            "$verification-strategy-engineering",
+            "$engineering-learning-loop"
+          ]
+        },
+        "condition_blind": {
+          "const": "both-condition-identical"
+        },
+        "blinding_flags": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "future-only",
+              "authoring-blinded",
+              "no-result-or-replay"
+            ]
+          }
+        },
+        "full_schema_or_template_expected": {
+          "const": false
+        }
+      }
+    },
+    "authoring_case": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/case"
+        },
+        {
+          "properties": {
+            "id": {
+              "pattern": "^AQ6-A-(?:00[1-9]|0[12][0-9]|03[0-6])$"
+            },
+            "nonce": {
+              "pattern": "^aq6-authoring-[0-9]{3}-[a-f0-9]+$"
+            }
+          }
+        }
+      ]
+    },
+    "heldout_case": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/case"
+        },
+        {
+          "properties": {
+            "id": {
+              "pattern": "^AQ6-H-(?:00[1-9]|0[12][0-9]|03[0-6])$"
+            },
+            "nonce": {
+              "pattern": "^aq6-heldout-[0-9]{3}-[a-f0-9]+$"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
