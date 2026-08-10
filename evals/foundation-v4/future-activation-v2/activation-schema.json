@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/agentic-engineering/evals/foundation-v4/future-activation-v2/activation-schema.json",
+  "title": "Foundation V4 future fixed-four-adviser activation corpus",
+  "type": "object",
+  "$ref": "#/$defs/corpus",
+  "$defs": {
+    "adviser": {"type": "string", "enum": ["agentic-engineering", "codex-task-contract", "verification-strategy-engineering", "engineering-learning-loop"]},
+    "referenceTrigger": {"type": "string", "enum": ["architecture-boundary", "decision-contract", "verification-evidence", "learning-adoption", "decomposition-boundary", "no-change-abstention", "reference-isolation"]},
+    "hiddenLabels": {
+      "type": "object", "additionalProperties": false,
+      "required": ["expected_advisers", "must_not_select", "reference_triggers"],
+      "properties": {
+        "expected_advisers": {"type": "array", "items": {"$ref": "#/$defs/adviser"}, "uniqueItems": true, "maxItems": 2},
+        "must_not_select": {"type": "array", "items": {"$ref": "#/$defs/adviser"}, "uniqueItems": true},
+        "reference_triggers": {"type": "array", "items": {"$ref": "#/$defs/referenceTrigger"}, "uniqueItems": true, "maxItems": 3}
+      }
+    },
+    "authority": {
+      "type": "object", "additionalProperties": false,
+      "required": ["effect_authority", "claim_authority"],
+      "properties": {"effect_authority": {"const": false}, "claim_authority": {"const": false}}
+    },
+    "case": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "family_id", "category", "mode", "prompt", "authority", "condition_blind", "labels_visible_to_runner", "outcomes_visible_to_authoring", "hidden_labels", "near_neighbor_kind", "declared_invocation"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^AQ2-(A|H)-[0-9]{3}$"},
+        "family_id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+        "category": {"type": "string", "enum": ["decomposition", "task-contract", "verification", "learning", "native-sufficient", "near-neighbor", "explicit-invocation"]},
+        "mode": {"type": "string", "enum": ["automatic", "explicit"]},
+        "prompt": {"type": "string", "minLength": 24},
+        "authority": {"$ref": "#/$defs/authority"},
+        "condition_blind": {"const": true},
+        "labels_visible_to_runner": {"const": false},
+        "outcomes_visible_to_authoring": {"const": false},
+        "hidden_labels": {"$ref": "#/$defs/hiddenLabels"},
+        "near_neighbor_kind": {"type": ["string", "null"], "enum": ["exactly_two", "precedence", null]},
+        "declared_invocation": {"type": ["string", "null"], "enum": ["agentic-engineering", "codex-task-contract", "verification-strategy-engineering", "engineering-learning-loop", null]}
+      }
+    },
+    "corpus": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema_version", "corpus_id", "split", "candidate_independent", "routing_surface", "reference_catalog", "cases"],
+      "properties": {
+        "schema_version": {"const": "2.0"},
+        "corpus_id": {"type": "string", "pattern": "^foundation-v4-future-activation-v2-(authoring|heldout)$"},
+        "split": {"type": "string", "enum": ["authoring", "heldout"]},
+        "candidate_independent": {"const": true},
+        "routing_surface": {"const": "fixed-four-adviser"},
+        "reference_catalog": {"type": "array", "items": {"$ref": "#/$defs/referenceTrigger"}, "uniqueItems": true, "minItems": 7, "maxItems": 7},
+        "cases": {"type": "array", "items": {"$ref": "#/$defs/case"}, "minItems": 36, "maxItems": 36}
+      }
+    }
+  }
+}
