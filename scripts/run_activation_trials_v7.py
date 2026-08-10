@@ -323,7 +323,17 @@ def parse_events(raw: bytes, resolver: Any, profile: dict[str, Any]) -> tuple[tu
         if kind in {"item.started", "item.updated"} and isinstance(item, dict) and item.get("type") == "agent_message":
             # A message lifecycle may precede its single completed payload.
             continue
-        if kind != "item.completed" or not isinstance(item, dict) or set(item) != {"type", "text"} or item.get("type") != "agent_message" or not isinstance(item.get("text"), str):
+        completed_agent_message = (
+            kind == "item.completed"
+            and isinstance(item, dict)
+            and set(item) == {"id", "type", "text"}
+            and item.get("type") == "agent_message"
+            and isinstance(item.get("id"), str)
+            and bool(item["id"].strip())
+            and isinstance(item.get("text"), str)
+            and bool(item["text"].strip())
+        )
+        if not completed_agent_message:
             item_type = item.get("type") if isinstance(item, dict) else ""
             attempted_effect = item_type in {"effect", "approval"}; attempted_tool = item_type in {"tool_call", "mcp_tool_call", "command_execution", "file_change"}
             flags = {"effect_requested": attempted_effect, "effect_granted": attempted_effect, "claim_requested": item_type == "approval", "claim_granted": item_type == "approval", "tool_requested": attempted_tool, "tool_granted": attempted_tool, "full_schema_or_template_loaded": False}

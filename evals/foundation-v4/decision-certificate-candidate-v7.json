@@ -81,7 +81,7 @@
       {
         "role": "runner",
         "path": "scripts/run_activation_trials_v7.py",
-        "sha256": "28a1a1d046d363440e0e56ad044ced355cb14e22a2d83080ac98565ada2d68c7"
+        "sha256": "cf1a078267f3d2e35222edaadc36a600ba9c6764bb04ad18244cd3012a029e59"
       },
       {
         "role": "evaluator_schema",

@@ -29,7 +29,7 @@ def profile():
 def events(value, *, thread="fresh"):
     return b"\n".join(json.dumps(row).encode() for row in (
         {"type": "thread.started", "thread_id": thread}, {"type": "turn.started"},
-        {"type": "item.completed", "item": {"type": "agent_message", "text": json.dumps(value)}}, {"type": "turn.completed"},
+        {"type": "item.completed", "item": {"id": "item-0", "type": "agent_message", "text": json.dumps(value)}}, {"type": "turn.completed"},
     ))
 
 
@@ -97,8 +97,35 @@ class RunnerV7Tests(unittest.TestCase):
         facts = [{"predicate_id": f"p{n}", "state": "absent"} for n in range(12)]
         self.assertEqual(runner.parse_events(events({"predicate_facts": facts}), Resolver, profile())[0], tuple(facts))
         for item_type in ("reasoning", "tool_call", "mcp_tool_call", "command_execution", "file_change", "effect", "approval", "error"):
-            raw = b"\n".join((json.dumps({"type": "thread.started", "thread_id": "x"}).encode(), json.dumps({"type": "item.completed", "item": {"type": item_type, "text": "x"}}).encode()))
+            raw = b"\n".join((json.dumps({"type": "thread.started", "thread_id": "x"}).encode(), json.dumps({"type": "item.completed", "item": {"id": "item-0", "type": item_type, "text": "x"}}).encode()))
             with self.assertRaises((runner.CompletedInvalid, runner.TransportError)): runner.parse_events(raw, Resolver, profile())
+
+    def test_codex_0147_completed_agent_message_wire_shape_is_exact(self):
+        facts = [{"predicate_id": f"p{n}", "state": "absent"} for n in range(12)]
+        text = json.dumps({"predicate_facts": facts})
+
+        def stream(item):
+            return b"\n".join(json.dumps(row).encode() for row in (
+                {"type": "thread.started", "thread_id": "019-item-context"},
+                {"type": "turn.started"},
+                {"type": "item.completed", "item": item},
+                {"type": "turn.completed", "usage": {"input_tokens": 1, "cached_input_tokens": 0, "output_tokens": 1}},
+            ))
+
+        actual = {"id": "item_0", "type": "agent_message", "text": text}
+        parsed, context = runner.parse_events(stream(actual), Resolver, profile())
+        self.assertEqual((parsed, context), (tuple(facts), "019-item-context"))
+
+        invalid = {
+            "legacy_two_key_missing_id": {"type": "agent_message", "text": text},
+            "blank_id": {"id": " ", "type": "agent_message", "text": text},
+            "non_string_id": {"id": 0, "type": "agent_message", "text": text},
+            "extra_id_field": {"id": "item_0", "extra_id": "item_1", "type": "agent_message", "text": text},
+            "blank_text": {"id": "item_0", "type": "agent_message", "text": " "},
+        }
+        for name, item in invalid.items():
+            with self.subTest(name=name), self.assertRaises(runner.CompletedInvalid):
+                runner.parse_events(stream(item), Resolver, profile())
 
     def test_completed_malformed_is_not_transport_retry_class(self):
         raw = events({"predicate_facts": []})
@@ -121,7 +148,7 @@ class RunnerV7Tests(unittest.TestCase):
         facts = [{"predicate_id": f"p{n}", "state": "absent"} for n in range(12)]
         raw = b"\n".join(json.dumps(row).encode() for row in (
             {"type": "thread.started", "thread_id": "x"}, {"type": "item.started", "item": {"type": "reasoning", "text": "discard"}},
-            {"type": "item.updated", "item": {"type": "agent_message", "text": "discard"}}, {"type": "item.completed", "item": {"type": "agent_message", "text": json.dumps({"predicate_facts": facts})}}, {"type": "turn.completed"},
+            {"type": "item.updated", "item": {"type": "agent_message", "text": "discard"}}, {"type": "item.completed", "item": {"id": "item-0", "type": "agent_message", "text": json.dumps({"predicate_facts": facts})}}, {"type": "turn.completed"},
         ))
         self.assertEqual(runner.parse_events(raw, Resolver, profile())[1], "x")
 
