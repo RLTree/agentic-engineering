@@ -153,10 +153,24 @@ class RunnerV4Tests(unittest.TestCase):
                 with self.assertRaisesRegex(runner.RunnerError, "live evaluator input"):
                     runner.immutable_preflight(root, candidate_commit, candidate)
 
-    def test_default_cli_is_zero_call_and_fail_closed_on_uncommitted_candidate(self) -> None:
+    def test_default_cli_is_zero_call_and_tracks_exact_clean_candidate(self) -> None:
+        committed = subprocess.run(
+            ["git", "show", "HEAD:scripts/run_activation_trials_v4.py"],
+            cwd=ROOT, capture_output=True,
+        )
+        clean = not subprocess.run(
+            ["git", "status", "--porcelain=v1", "--untracked-files=all"],
+            cwd=ROOT, capture_output=True, text=True, check=True,
+        ).stdout
+        exact = committed.returncode == 0 and committed.stdout == (ROOT / "scripts/run_activation_trials_v4.py").read_bytes()
         result = subprocess.run(["python3", "scripts/run_activation_trials_v4.py", "--dry-run"], cwd=ROOT, capture_output=True, text=True)
-        self.assertEqual(result.returncode, 2)
-        self.assertIn("HOLD:", result.stderr)
+        self.assertEqual(result.returncode, 0 if exact and clean else 2)
+        if exact and clean:
+            payload = json.loads(result.stdout)
+            self.assertEqual(payload["live_calls"], 0)
+            self.assertFalse(payload["raw_trajectories_persisted"])
+        else:
+            self.assertIn("HOLD:", result.stderr)
 
 
 if __name__ == "__main__":
