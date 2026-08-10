@@ -30,6 +30,8 @@ ADVISERS = (
     "agentic-engineering", "codex-task-contract",
     "verification-strategy-engineering", "engineering-learning-loop",
 )
+MODEL = "gpt-5.5"
+REASONING = "medium"
 DISABLED_FEATURES = (
     "apply_patch_streaming_events", "apps", "artifact", "auth_elicitation",
     "browser_use", "browser_use_external",
@@ -44,7 +46,7 @@ DISABLED_FEATURES = (
     "workspace_dependencies",
 )
 CONFIG_OVERRIDES = (
-    'model_reasoning_effort="medium"',
+    f'model_reasoning_effort="{REASONING}"',
     'web_search="disabled"',
     "skills.bundled.enabled=false",
     "skills.include_instructions=false",
@@ -252,7 +254,7 @@ def codex_preflight(codex: str, probe: Callable[..., Any] = subprocess.run) -> d
     required = ("--ephemeral", "--ignore-user-config", "--strict-config", "--output-schema", "--json", "--sandbox", "--disable")
     if help_result.returncode or any(flag not in help_text for flag in required):
         raise RunnerError("codex exec capability preflight failed")
-    prompt_argv = [str(executable), "-c", 'model="gpt-5.6-terra"']
+    prompt_argv = [str(executable), "-c", f'model="{MODEL}"']
     for override in CONFIG_OVERRIDES:
         prompt_argv.extend(["-c", override])
     for feature in DISABLED_FEATURES:
@@ -273,7 +275,7 @@ def codex_preflight(codex: str, probe: Callable[..., Any] = subprocess.run) -> d
 
 def child_argv(codex_path: str, temporary_cwd: str, schema_path: Path) -> list[str]:
     # ``--ask-for-approval`` is a global Codex option and must precede ``exec``.
-    argv = [codex_path, "--ask-for-approval", "never", "exec", "--ephemeral", "--ignore-user-config", "--ignore-rules", "--strict-config", "--skip-git-repo-check", "--cd", temporary_cwd, "--sandbox", "read-only", "--model", "gpt-5.6-terra"]
+    argv = [codex_path, "--ask-for-approval", "never", "exec", "--ephemeral", "--ignore-user-config", "--ignore-rules", "--strict-config", "--skip-git-repo-check", "--cd", temporary_cwd, "--sandbox", "read-only", "--model", MODEL]
     for override in CONFIG_OVERRIDES:
         argv.extend(["-c", override])
     for feature in DISABLED_FEATURES:
@@ -367,7 +369,7 @@ def resolve_payloads(checker: Any, candidate: dict[str, Any], case: dict[str, An
 
 def execution_contract(codex_info: dict[str, str], schedule_digest: str, catalog_digest: str, reduced_commit: str) -> dict[str, Any]:
     contract = {
-        "model": "gpt-5.6-terra", "reasoning": "medium", "cli_path": codex_info["path"], "cli_version": codex_info["version"], "cli_sha256": codex_info["sha256"],
+        "model": MODEL, "reasoning": REASONING, "cli_path": codex_info["path"], "cli_version": codex_info["version"], "cli_sha256": codex_info["sha256"],
         "tools_sha256": sha256_json({"permitted": [], "disabled": DISABLED_FEATURES, "sandbox": "read-only", "approval": "never"}),
         "host_surface_sha256": sha256_json({"cli": codex_info, "argv": child_argv("<codex>", "<fresh-empty>", SCHEMA_PATH), "empty_temp_cwd": True, "selector_catalog_sha256": catalog_digest}),
         "runner_path": "scripts/run_activation_trials.py", "runner_protocol_sha256": sha256_file(Path(__file__)),

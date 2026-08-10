@@ -16,7 +16,7 @@ class AQScorerTests(unittest.TestCase):
  def runtime(self):
   return patch.multiple(aq,load_manifest=lambda root,commit:self.manifest,git_tree=lambda root,commit: aq.SOURCE_TREE if commit==aq.SOURCE_COMMIT else self.reduced_tree,committed_evaluator_schema=lambda root,commit:(ROOT/aq.SCHEMA_PATH).read_bytes(),selector_catalog=lambda *args:[{"adviser_id":name,"description":name} for name in aq.ADVISERS])
  def payload(self,mode="synthetic_test"):
-  execution={"model":"gpt-5.6-terra","reasoning":"medium","cli_path":"codex","cli_version":"test","cli_sha256":"a"*64,"tools_sha256":"b"*64,"host_surface_sha256":"c"*64,"runner_path":"scripts/run_activation_trials.py","runner_protocol_sha256":"d"*64,"schedule_sha256":"e"*64,"evaluator_schema_sha256":aq.digest_bytes((ROOT/aq.SCHEMA_PATH).read_bytes()),"zero_write":True,"raw_trajectories_persisted":False,"condition_parity_sha256":""}
+  execution={"model":"gpt-5.5","reasoning":"medium","cli_path":"codex","cli_version":"test","cli_sha256":"a"*64,"tools_sha256":"b"*64,"host_surface_sha256":"c"*64,"runner_path":"scripts/run_activation_trials.py","runner_protocol_sha256":"d"*64,"schedule_sha256":"e"*64,"evaluator_schema_sha256":aq.digest_bytes((ROOT/aq.SCHEMA_PATH).read_bytes()),"zero_write":True,"raw_trajectories_persisted":False,"condition_parity_sha256":""}
   execution["condition_parity_sha256"]=aq.condition_parity_digest(execution)
   digest=aq.digest_json(execution); cs=[]
   for name in ("current","reduced"):
