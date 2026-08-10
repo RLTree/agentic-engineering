@@ -12,10 +12,10 @@
     "jsonschema_dialect": "Draft 2020-12",
     "files": [
       {"path": "evals/foundation-v4/activation-evaluator-schema.json", "sha256": "42a7d4d2feb1ad3ea089087e36be939b1fde27d0fee1b635d4c09ee89693d578"},
-      {"path": "evals/foundation-v4/selector-output-schema.json", "sha256": "fae9e32745fb59cc062a3b52912aa8dbdd29e3c8c6fda67c0d0b823116413a70"},
+      {"path": "evals/foundation-v4/selector-output-schema.json", "sha256": "70b6b7d3e4ac024d4f9ad33eec371fd9fbbcb7782589759da5d9919322ad3ace"},
       {"path": "scripts/check_reduced_four_skill_candidate.py", "sha256": "d1cd2aef127f8019eb1b4e7221e6464e56754d5c6b42dfc991519e9cefffce80"},
       {"path": "scripts/score_activation.py", "sha256": "4f43117511f357297596c35b6a296929e710e3c2be0e0abbffe726301b06c35c"},
-      {"path": "scripts/run_activation_trials.py", "sha256": "6eaeca05a69e2e89f011f5f4845abb135a5be4c02ebb337ac78d4edb3cd50c66"}
+      {"path": "scripts/run_activation_trials.py", "sha256": "d3db8bf93955682e7ffb367cab0a159de433237a9c4b163e9ba1e86e1c759500"}
     ]
   },
   "conditions": {

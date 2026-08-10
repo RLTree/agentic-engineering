@@ -164,7 +164,8 @@ def validate_selector_schema(path: Path = SCHEMA_PATH, raw: bytes | None = None)
     if not isinstance(value, dict) or set(value) != expected or value.get("type") != "object" or value.get("required") != ["selected_advisers"] or value.get("additionalProperties") is not False:
         raise RunnerError("selector output schema is not closed")
     selected = value["properties"].get("selected_advisers") if isinstance(value.get("properties"), dict) else None
-    if not isinstance(selected, dict) or selected.get("uniqueItems") is not True or selected.get("maxItems") != 2 or selected.get("items", {}).get("enum") != list(ADVISERS):
+    items = selected.get("items") if isinstance(selected, dict) else None
+    if not isinstance(selected, dict) or set(selected) != {"type", "items", "maxItems"} or selected.get("type") != "array" or selected.get("maxItems") != 2 or not isinstance(items, dict) or set(items) != {"type", "enum"} or items.get("type") != "string" or items.get("enum") != list(ADVISERS):
         raise RunnerError("selector output schema has the wrong adviser universe")
     return value
 

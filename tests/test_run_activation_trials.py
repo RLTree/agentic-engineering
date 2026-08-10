@@ -41,6 +41,8 @@ def events_with_reasoning(thread: str = "thread-a") -> bytes:
 
 class RunnerTests(unittest.TestCase):
     def test_selection_schema_is_closed(self):
+        schema = runner.validate_selector_schema()
+        self.assertNotIn("uniqueItems", schema["properties"]["selected_advisers"])
         self.assertEqual(runner.validate_selection({"selected_advisers": []}), [])
         for invalid in ({}, {"selected_advisers": ["bad"]}, {"selected_advisers": [], "x": 1}, {"selected_advisers": ["agentic-engineering"] * 2}):
             with self.assertRaises(runner.RunnerError): runner.validate_selection(invalid)
