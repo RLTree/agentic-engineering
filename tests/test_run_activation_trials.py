@@ -58,6 +58,7 @@ class RunnerTests(unittest.TestCase):
         self.assertTrue(all(override in argv for override in runner.CONFIG_OVERRIDES))
         self.assertIn("skills.bundled.enabled=false", argv)
         self.assertIn("skills.include_instructions=false", argv)
+        self.assertIn('web_search="disabled"', argv)
         self.assertIn("code_mode", runner.DISABLED_FEATURES)
         self.assertIn("code_mode_only", runner.DISABLED_FEATURES)
         for feature in ("view_image", "image_generation", "goals", "workspace_dependencies", "default_mode_request_user_input"):
@@ -86,6 +87,15 @@ class RunnerTests(unittest.TestCase):
             subprocess.CompletedProcess([], 0, stdout="codex-cli test\n", stderr=""),
             subprocess.CompletedProcess([], 0, stdout="--ephemeral --ignore-user-config --strict-config --output-schema --json --sandbox --disable", stderr=""),
             subprocess.CompletedProcess([], 0, stdout='[{"content":"<skills_instructions>SKILL.md</skills_instructions>"}]', stderr=""),
+        ))
+        with self.assertRaisesRegex(runner.RunnerError, "prompt isolation preflight failed"):
+            runner.codex_preflight(str(Path(__file__).resolve()), probe=lambda *args, **kwargs: next(results))
+
+    def test_codex_preflight_rejects_config_warning(self):
+        results = iter((
+            subprocess.CompletedProcess([], 0, stdout="codex-cli test\n", stderr=""),
+            subprocess.CompletedProcess([], 0, stdout="--ephemeral --ignore-user-config --strict-config --output-schema --json --sandbox --disable", stderr=""),
+            subprocess.CompletedProcess([], 0, stdout='[{"content":"clean"}]', stderr="deprecated config warning"),
         ))
         with self.assertRaisesRegex(runner.RunnerError, "prompt isolation preflight failed"):
             runner.codex_preflight(str(Path(__file__).resolve()), probe=lambda *args, **kwargs: next(results))
