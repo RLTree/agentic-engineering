@@ -364,6 +364,8 @@ The independently authored and blinded AQ8 corpus J is frozen at commit `46174c0
 
 Before any AQ8 model observation, the missing metric arithmetic was closed in a separate corpus-blind and result-blind authority at commit `a07147eee19ac17f22113fc6b8cc673a0c761764` and tree `8ddbad21796ece86c2676dea622d0235e37990d8`. It defines 27 exact gate formulas evaluated 20 times per condition plus seven complete-run gates, with evaluator-owned eligibility, exact typed nonnegative arithmetic, explicit numerator and denominator algebra, per-condition isolation, completed-malformed denominator retention, zero-denominator value `0.0` plus forced failure, and a global `20 × 2 + 7` logical AND. Independent primary and clean-room adversarial reviews passed rebased semantic, recursive key-closure, malformed, compensation, direction, boundary, extra-row, corpus-binding and outcome-binding mutation probes. This freezes structural metric arithmetic only; it does not establish behavioral qualification, runtime, provider, model, sandbox, product, efficacy, promotion, authority or effect claims. Corpus J remains unconsumed, and the evaluator must bind these exact bytes before canary or batch.
 
+AQ8-RUN-AUTHORITY corpus=46174c0c5eb3da9b6134305329ebc36cc5108847 status=unconsumed
+
 Use 64 natural-language automatic-routing prompts:
 
 - 12 cross-domain decomposition;
