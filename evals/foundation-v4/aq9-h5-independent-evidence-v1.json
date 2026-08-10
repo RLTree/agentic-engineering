@@ -1,0 +1,820 @@
+{
+  "schema_version": "1.0",
+  "packet_id": "AQ9-H5-E0-INDEPENDENT-EVIDENCE-V1",
+  "status": "frozen-evidence-awaiting-independent-verdict",
+  "claim_ceiling": "structural-external-evidence-only",
+  "amendment_authority": {
+    "commit": "e7ca9e9b89aad1a1933da5378d11d84240c210f7",
+    "tree": "475d93faf9b4853eb120a6230f5e5cef36178f84",
+    "path": "EXECPLAN.md",
+    "blob": "9d26f09877ea55ddc17eddd8b97ce8b387b96f1b",
+    "sha256": "acf1b68b3194ee4852f773aac7c18b8e7222fd47f6091e5858b5e06eea0bc141",
+    "byte_count": 46262
+  },
+  "foundation_snapshot_authority": {
+    "commit": "56f42c2b134fa961bbe6f986428fd57e9271f082",
+    "tree": "f905601840e370c4fc94baf0e3440fc7ac513670",
+    "artifacts": [
+      {
+        "role": "current_foundation_authority",
+        "path": "docs/foundations/current-2026-08-08.md",
+        "blob": "f6add640a93090b9297444fa5eb5c96f4374907e",
+        "sha256": "48791730f64ca4a452a686a9078e6bf14a0ac2ccc6d0cec1c2b9c69924df3b27",
+        "byte_count": 16372
+      },
+      {
+        "role": "foundation_register",
+        "path": "docs/foundations/register.csv",
+        "blob": "eade50e09f117bb7c40e394f5c7b8b2686fb48ad",
+        "sha256": "3043ad8ff93cbf35779638be9e8a7c8e7082d14166297fdddab9b9d1ddadeaf3",
+        "byte_count": 21203
+      },
+      {
+        "role": "foundation_update_policy",
+        "path": "UPDATE-POLICY.md",
+        "blob": "4cad2ea965621a5d78cbefc804d719d2f1023b9f",
+        "sha256": "7ab2b9f627236e5adab2368a44ec476a77442186709894a0006e8129021e2ebe",
+        "byte_count": 2504
+      }
+    ]
+  },
+  "zero_access_declaration": {
+    "scope": "all E0 evidence-packet work performed by this author role",
+    "sole_permitted_prior_fact": "AQ8 aggregate=fail",
+    "prohibited_material": [
+      "corpus I task text",
+      "corpus J task text",
+      "corpus I outputs",
+      "corpus J outputs",
+      "I/J per-case observations",
+      "I/J metrics",
+      "I/J provider logs",
+      "I/J trajectories",
+      "any other I/J result"
+    ],
+    "accessed_any_prohibited_material": false,
+    "received_prohibited_disclosure_or_summary": false,
+    "used_role_transfer_or_intermediary_to_access": false,
+    "used_any_aq8_result_beyond_permitted_fact": false
+  },
+  "provenance_families": [
+    {
+      "provenance_family_id": "PF1-selective-prediction-calibration",
+      "label": "selective prediction, risk control, and calibration",
+      "independence_basis": "Distinct external statistical-learning authors and institutions; all artifacts predate this AQ9 lineage and were produced without this repository.",
+      "source_ids": [
+        "E1",
+        "E2",
+        "E3",
+        "E4"
+      ]
+    },
+    {
+      "provenance_family_id": "PF2-staged-routing",
+      "label": "staged conditional computation and early exit",
+      "independence_basis": "Two independent primary method papers from distinct author teams and eras on hierarchical mixture gating and neural early exit; both predate AQ9 and are external to this repository.",
+      "source_ids": [
+        "E5",
+        "E6"
+      ]
+    },
+    {
+      "provenance_family_id": "PF3-decomposition-local-classification",
+      "label": "local multi-label classification and modular decomposition",
+      "independence_basis": "Independent work from Waikato and Allen Institute collaborators on multi-label transformation and modular language-model reasoning.",
+      "source_ids": [
+        "E7",
+        "E8"
+      ]
+    },
+    {
+      "provenance_family_id": "PF4-adversarial-prompt-isolation",
+      "label": "adversarial prompt and control-data isolation",
+      "independence_basis": "Separate security research teams from Berkeley, OpenAI, Google, Google DeepMind, and ETH Zurich with distinct defenses and threat models.",
+      "source_ids": [
+        "E9",
+        "E10",
+        "E11"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "E1",
+      "title": "Selective Classification for Deep Neural Networks",
+      "provenance_family_id": "PF1-selective-prediction-calibration",
+      "source_kind": "primary_method_and_empirical_paper",
+      "provenance_owner": "Yonatan Geifman and Ran El-Yaniv; arXiv",
+      "authors": [
+        "Yonatan Geifman",
+        "Ran El-Yaniv"
+      ],
+      "publication_date": "2017-05-23",
+      "publication_date_precision": "day",
+      "identity": {
+        "doi": "10.48550/arXiv.1705.08500",
+        "arxiv_id": "1705.08500",
+        "proceedings_identity": null
+      },
+      "artifact": {
+        "uri": "https://arxiv.org/pdf/1705.08500v2",
+        "version": "arXiv:1705.08500v2, revised 2017-06-01",
+        "retrieved_on": "2026-08-10",
+        "media_type": "application/pdf",
+        "byte_count": 614365,
+        "sha256": "91899dfcbc41553f571f7a491839733e4d16f81d82e9274278e8f06ffc42022b",
+        "retrieval_disposition": "directly-retrieved-hashed-not-vendored"
+      },
+      "supported_claims": [
+        "Selective classification separates a predictor from an acceptance function and evaluates conditional error against accepted coverage.",
+        "Under the paper's independent and identically distributed labeled-sample assumptions, confidence-ranked acceptance supports a high-probability selective-risk bound."
+      ],
+      "unsupported_extrapolations": [
+        "No per-case correctness, distribution-shift robustness, adversarial robustness, language-model routing, or H5 efficacy follows from this source."
+      ],
+      "uncertainties": [
+        "Coverage depends on ranking quality, and the paper's supervised image-classification setting does not establish transfer to unresolved-decision selection."
+      ],
+      "tension_ids": [
+        "C2-selective-guarantee-scope"
+      ],
+      "prospective_discriminator_ids": [
+        "D1-selective-risk-coverage"
+      ]
+    },
+    {
+      "source_id": "E2",
+      "title": "Conformal Risk Control",
+      "provenance_family_id": "PF1-selective-prediction-calibration",
+      "source_kind": "primary_method_and_empirical_paper",
+      "provenance_owner": "Anastasios N. Angelopoulos, Stephen Bates, Adam Fisch, Lihua Lei, and Tal Schuster; arXiv",
+      "authors": [
+        "Anastasios N. Angelopoulos",
+        "Stephen Bates",
+        "Adam Fisch",
+        "Lihua Lei",
+        "Tal Schuster"
+      ],
+      "publication_date": "2022-08-04",
+      "publication_date_precision": "day",
+      "identity": {
+        "doi": "10.48550/arXiv.2208.02814",
+        "arxiv_id": "2208.02814",
+        "proceedings_identity": null
+      },
+      "artifact": {
+        "uri": "https://arxiv.org/pdf/2208.02814v4",
+        "version": "arXiv:2208.02814v4, revised 2025-06-13",
+        "retrieved_on": "2026-08-10",
+        "media_type": "application/pdf",
+        "byte_count": 1623636,
+        "sha256": "32c3b9689cb69dbec96ce87ba8b0fe98293bb1c9a59247480b16dbae6aa37df2",
+        "retrieval_disposition": "directly-retrieved-hashed-not-vendored"
+      },
+      "supported_claims": [
+        "The paper gives finite-sample expected control for bounded monotone losses under its exchangeability and regularity conditions."
+      ],
+      "unsupported_extrapolations": [
+        "Expected risk control is not per-instance correctness and does not automatically define or validate an H5 loss or mechanism."
+      ],
+      "uncertainties": [
+        "Any later application would have to establish exchangeability, boundedness, monotonicity, and the exact loss before invoking the result."
+      ],
+      "tension_ids": [
+        "C2-selective-guarantee-scope"
+      ],
+      "prospective_discriminator_ids": [
+        "D1-selective-risk-coverage"
+      ]
+    },
+    {
+      "source_id": "E3",
+      "title": "On Calibration of Modern Neural Networks",
+      "provenance_family_id": "PF1-selective-prediction-calibration",
+      "source_kind": "primary_method_and_empirical_paper",
+      "provenance_owner": "Chuan Guo, Geoff Pleiss, Yu Sun, and Kilian Q. Weinberger; PMLR",
+      "authors": [
+        "Chuan Guo",
+        "Geoff Pleiss",
+        "Yu Sun",
+        "Kilian Q. Weinberger"
+      ],
+      "publication_date": "2017-08-06",
+      "publication_date_precision": "day",
+      "identity": {
+        "doi": "10.48550/arXiv.1706.04599",
+        "arxiv_id": "1706.04599",
+        "proceedings_identity": "Proceedings of Machine Learning Research 70:1321-1330, ICML 2017"
+      },
+      "artifact": {
+        "uri": "https://proceedings.mlr.press/v70/guo17a/guo17a.pdf",
+        "version": "PMLR volume 70 proceedings artifact, ICML 2017",
+        "retrieved_on": "2026-08-10",
+        "media_type": "application/pdf",
+        "byte_count": 828420,
+        "sha256": "df7c93f97204f8a3c2b10f6d5bf5265baac25f00c1ae3b473a3e1dbc102dacb2",
+        "retrieval_disposition": "directly-retrieved-hashed-not-vendored"
+      },
+      "supported_claims": [
+        "The studied modern neural networks were empirically miscalibrated, and temperature scaling was effective on most tested image and document datasets."
+      ],
+      "unsupported_extrapolations": [
+        "Temperature scaling alone does not establish selective-risk control, shifted-distribution robustness, or H5 correctness."
+      ],
+      "uncertainties": [
+        "Calibration quality is dataset and model dependent, and the source does not study anonymous unresolved-decision selection."
+      ],
+      "tension_ids": [
+        "C1-calibration-under-shift",
+        "C3-staged-confidence-risk"
+      ],
+      "prospective_discriminator_ids": [
+        "D1-selective-risk-coverage",
+        "D2-calibration-under-shift"
+      ]
+    },
+    {
+      "source_id": "E4",
+      "title": "Can You Trust Your Model's Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift",
+      "provenance_family_id": "PF1-selective-prediction-calibration",
+      "source_kind": "primary_empirical_benchmark_paper",
+      "provenance_owner": "Yaniv Ovadia and coauthors; arXiv and NeurIPS 2019",
+      "authors": [
+        "Yaniv Ovadia",
+        "Emily Fertig",
+        "Jie Ren",
+        "Zachary Nado",
+        "D Sculley",
+        "Sebastian Nowozin",
+        "Joshua V. Dillon",
+        "Balaji Lakshminarayanan",
+        "Jasper Snoek"
+      ],
+      "publication_date": "2019-06-06",
+      "publication_date_precision": "day",
+      "identity": {
+        "doi": "10.48550/arXiv.1906.02530",
+        "arxiv_id": "1906.02530",
+        "proceedings_identity": "Advances in Neural Information Processing Systems 2019"
+      },
+      "artifact": {
+        "uri": "https://arxiv.org/pdf/1906.02530v2",
+        "version": "arXiv:1906.02530v2, revised 2019-12-17",
+        "retrieved_on": "2026-08-10",
+        "media_type": "application/pdf",
+        "byte_count": 5887184,
+        "sha256": "1610d04d7f69d10751f0e9ff1db9fbd8b3fdf5306798879016192eb2dbf17a6f",
+        "retrieval_disposition": "directly-retrieved-hashed-not-vendored"
+      },
+      "supported_claims": [
+        "Across the paper's benchmark, accuracy and calibration degraded under dataset shift, and ordinary post-hoc calibration could fall short."
+      ],
+      "unsupported_extrapolations": [
+        "The empirical benchmark does not provide a universal uncertainty guarantee or validate any H5 route selector."
+      ],
+      "uncertainties": [
+        "The benchmark covers supervised classification shifts, not the future distribution or structure of an H5 evaluation."
+      ],
+      "tension_ids": [
+        "C1-calibration-under-shift",
+        "C2-selective-guarantee-scope"
+      ],
+      "prospective_discriminator_ids": [
+        "D2-calibration-under-shift"
+      ]
+    },
+    {
+      "source_id": "E5",
+      "title": "Hierarchical Mixtures of Experts and the EM Algorithm",
+      "provenance_family_id": "PF2-staged-routing",
+      "source_kind": "primary_method_and_empirical_paper",
+      "provenance_owner": "Michael I. Jordan and Robert A. Jacobs; Neural Computation and the Berkeley author archive",
+      "authors": [
+        "Michael I. Jordan",
+        "Robert A. Jacobs"
+      ],
+      "publication_date": "1994-03-01",
+      "publication_date_precision": "day",
+      "identity": {
+        "doi": "10.1162/neco.1994.6.2.181",
+        "arxiv_id": null,
+        "proceedings_identity": "Neural Computation 6(2):181-214"
+      },
+      "artifact": {
+        "uri": "https://web.archive.org/web/20230521045924id_/https://people.eecs.berkeley.edu/~jordan/papers/hierarchies.ps",
+        "version": "Wayback timestamp 20230521045924 immutable capture of the author-hosted primary PostScript",
+        "retrieved_on": "2026-08-10",
+        "media_type": "application/postscript",
+        "byte_count": 478612,
+        "sha256": "afb5abbefaffbf6538369c9c488f57ff4859f5d15ddd14826794ba9b06670278",
+        "retrieval_disposition": "directly-retrieved-hashed-not-vendored"
+      },
+      "supported_claims": [
+        "The paper presents a tree-structured supervised hierarchical mixture in which gating coefficients and expert components are learned, including expectation-maximization and online learning procedures."
+      ],
+      "unsupported_extrapolations": [
+        "Robot-dynamics simulations with generalized linear models do not establish sparse hard language-model routing, H5 performance, or safety."
+      ],
+      "uncertainties": [
+        "Soft mixture behavior, supervised training assumptions, and the historical task domain may not transfer to unresolved-decision selection."
+      ],
+      "tension_ids": [
+        "C3-staged-confidence-risk"
+      ],
+      "prospective_discriminator_ids": [
+        "D3-staged-exit-behavior"
+      ]
+    },
+    {
+      "source_id": "E6",
+      "title": "BranchyNet: Fast Inference via Early Exiting from Deep Neural Networks",
+      "provenance_family_id": "PF2-staged-routing",
+      "source_kind": "primary_method_and_empirical_paper",
+      "provenance_owner": "Surat Teerapittayanon, Bradley McDanel, and H. T. Kung; arXiv",
+      "authors": [
+        "Surat Teerapittayanon",
+        "Bradley McDanel",
+        "H. T. Kung"
+      ],
+      "publication_date": "2017-09-06",
+      "publication_date_precision": "day",
+      "identity": {
+        "doi": "10.48550/arXiv.1709.01686",
+        "arxiv_id": "1709.01686",
+        "proceedings_identity": null
+      },
+      "artifact": {
+        "uri": "https://arxiv.org/pdf/1709.01686v1",
+        "version": "arXiv:1709.01686v1, submitted 2017-09-06",
+        "retrieved_on": "2026-08-10",
+        "media_type": "application/pdf",
+        "byte_count": 2197768,
+        "sha256": "afd580e5df49906874c104b6dcaab361a8650569126997b90146b4d27dca9613",
+        "retrieval_disposition": "directly-retrieved-hashed-not-vendored"
+      },
+      "supported_claims": [
+        "Side classifiers permit confidence-gated early exits for easier tested samples while later layers process harder samples, creating an empirical accuracy-latency tradeoff."
+      ],
+      "unsupported_extrapolations": [
+        "Vision early-exit results do not establish an H5 routing benefit, calibrated gates, or language-model safety."
+      ],
+      "uncertainties": [
+        "An early stage can be confidently wrong, so stage-conditional error and propagation require prospective measurement."
+      ],
+      "tension_ids": [
+        "C3-staged-confidence-risk"
+      ],
+      "prospective_discriminator_ids": [
+        "D3-staged-exit-behavior"
+      ]
+    },
+    {
+      "source_id": "E7",
+      "title": "Classifier Chains for Multi-label Classification",
+      "provenance_family_id": "PF3-decomposition-local-classification",
+      "source_kind": "primary_method_and_empirical_paper",
+      "provenance_owner": "Jesse Read, Bernhard Pfahringer, Geoffrey Holmes, and Eibe Frank; University of Waikato Research Commons",
+      "authors": [
+        "Jesse Read",
+        "Bernhard Pfahringer",
+        "Geoffrey Holmes",
+        "Eibe Frank"
+      ],
+      "publication_date": "2009",
+      "publication_date_precision": "year",
+      "identity": {
+        "doi": "10.1007/978-3-642-04174-7_17",
+        "arxiv_id": null,
+        "proceedings_identity": "ECML PKDD 2009, pages 254-269"
+      },
+      "artifact": {
+        "uri": "https://researchcommons.waikato.ac.nz/bitstreams/defdb423-a83f-4851-aeeb-034b6339a9f2/download",
+        "version": "ECML PKDD 2009 author-accepted manuscript deposited under DOI 10.1007/978-3-642-04174-7_17",
+        "retrieved_on": "2026-08-10",
+        "media_type": "application/pdf",
+        "byte_count": 183762,
+        "sha256": "2e4cae545c49690547a35b1a0ec522f46f202a4187cef6c6a7cef60c5cad3de2",
+        "retrieval_disposition": "directly-retrieved-hashed-not-vendored"
+      },
+      "supported_claims": [
+        "An ordered chain of binary label classifiers can model label correlations with competitive empirical predictive and time complexity on the studied multi-label datasets."
+      ],
+      "unsupported_extrapolations": [
+        "The source does not establish H5 performance, security, abstention, or immunity to chain-order error propagation."
+      ],
+      "uncertainties": [
+        "Order sensitivity and dependence on earlier predictions are prospective risks rather than assumed benefits."
+      ],
+      "tension_ids": [
+        "C4-decomposition-propagation"
+      ],
+      "prospective_discriminator_ids": [
+        "D4-decomposition-locality"
+      ]
+    },
+    {
+      "source_id": "E8",
+      "title": "Decomposed Prompting: A Modular Approach for Solving Complex Tasks",
+      "provenance_family_id": "PF3-decomposition-local-classification",
+      "source_kind": "primary_method_and_empirical_paper",
+      "provenance_owner": "Tushar Khot and coauthors; arXiv and ICLR 2023",
+      "authors": [
+        "Tushar Khot",
+        "Harsh Trivedi",
+        "Matthew Finlayson",
+        "Yao Fu",
+        "Kyle Richardson",
+        "Peter Clark",
+        "Ashish Sabharwal"
+      ],
+      "publication_date": "2022-10-05",
+      "publication_date_precision": "day",
+      "identity": {
+        "doi": "10.48550/arXiv.2210.02406",
+        "arxiv_id": "2210.02406",
+        "proceedings_identity": "ICLR 2023 camera-ready paper"
+      },
+      "artifact": {
+        "uri": "https://arxiv.org/pdf/2210.02406v2",
+        "version": "arXiv:2210.02406v2, ICLR 2023 camera ready, revised 2023-04-11",
+        "retrieved_on": "2026-08-10",
+        "media_type": "application/pdf",
+        "byte_count": 1634349,
+        "sha256": "93cb61f35249c60a9e91a5fac66673c373d30070925ba05ac9f79098dd2e7d87",
+        "retrieval_disposition": "directly-retrieved-hashed-not-vendored"
+      },
+      "supported_claims": [
+        "A decomposer can delegate simpler subtasks to independently replaceable or recursively decomposed prompt, model, or symbolic modules, with gains on the studied GPT-3 reasoning tasks."
+      ],
+      "unsupported_extrapolations": [
+        "The studied reasoning gains do not prove route-selection, abstention, calibration, security, or H5 improvement."
+      ],
+      "uncertainties": [
+        "Decomposer and recomposition errors can dominate, and the evaluated tasks do not match anonymous unresolved-decision selection."
+      ],
+      "tension_ids": [
+        "C4-decomposition-propagation"
+      ],
+      "prospective_discriminator_ids": [
+        "D4-decomposition-locality"
+      ]
+    },
+    {
+      "source_id": "E9",
+      "title": "StruQ: Defending Against Prompt Injection with Structured Queries",
+      "provenance_family_id": "PF4-adversarial-prompt-isolation",
+      "source_kind": "primary_method_and_empirical_paper",
+      "provenance_owner": "Sizhe Chen, Julien Piet, Chawin Sitawarin, and David Wagner; USENIX Association",
+      "authors": [
+        "Sizhe Chen",
+        "Julien Piet",
+        "Chawin Sitawarin",
+        "David Wagner"
+      ],
+      "publication_date": "2025-08-13",
+      "publication_date_precision": "day",
+      "identity": {
+        "doi": "10.48550/arXiv.2402.06363",
+        "arxiv_id": "2402.06363",
+        "proceedings_identity": "34th USENIX Security Symposium, ISBN 978-1-939133-52-6, pages 2383-2400"
+      },
+      "artifact": {
+        "uri": "https://www.usenix.org/system/files/usenixsecurity25-chen-sizhe.pdf",
+        "version": "USENIX Security 2025 proceedings version, 2025-08-13 to 2025-08-15",
+        "retrieved_on": "2026-08-10",
+        "media_type": "application/pdf",
+        "byte_count": 560992,
+        "sha256": "322be0fd6d305a362fc2571fb7b779df6ed3761a19f75f9828d9498d3fc71926",
+        "retrieval_disposition": "directly-retrieved-hashed-not-vendored"
+      },
+      "supported_claims": [
+        "The paper separates prompt and data channels with a filtering front end and structured instruction tuning, improving resistance on its tested attacks with little or no measured utility loss."
+      ],
+      "unsupported_extrapolations": [
+        "The source does not provide worst-case security or blanket coverage of multi-turn, jailbreak, tool-effect, or unseen adaptive attacks."
+      ],
+      "uncertainties": [
+        "The final paper reports nonzero success for optimization-based attacks and explicitly does not establish full security."
+      ],
+      "tension_ids": [
+        "C5-security-benchmark-ceiling"
+      ],
+      "prospective_discriminator_ids": [
+        "D5-adaptive-prompt-injection"
+      ]
+    },
+    {
+      "source_id": "E10",
+      "title": "The Instruction Hierarchy: Training LLMs to Prioritize Privileged Instructions",
+      "provenance_family_id": "PF4-adversarial-prompt-isolation",
+      "source_kind": "primary_method_and_empirical_paper",
+      "provenance_owner": "Eric Wallace, Kai Xiao, Reimar Leike, Lilian Weng, Johannes Heidecke, and Alex Beutel; arXiv",
+      "authors": [
+        "Eric Wallace",
+        "Kai Xiao",
+        "Reimar Leike",
+        "Lilian Weng",
+        "Johannes Heidecke",
+        "Alex Beutel"
+      ],
+      "publication_date": "2024-04-19",
+      "publication_date_precision": "day",
+      "identity": {
+        "doi": "10.48550/arXiv.2404.13208",
+        "arxiv_id": "2404.13208",
+        "proceedings_identity": null
+      },
+      "artifact": {
+        "uri": "https://arxiv.org/pdf/2404.13208v1",
+        "version": "arXiv:2404.13208v1, submitted 2024-04-19",
+        "retrieved_on": "2026-08-10",
+        "media_type": "application/pdf",
+        "byte_count": 488381,
+        "sha256": "fbc2d65e913e75b8f0ae74e83e3443c36a727636d1038a071a2f10d8be63dac4",
+        "retrieval_disposition": "directly-retrieved-hashed-not-vendored"
+      },
+      "supported_claims": [
+        "Training GPT-3.5 to prioritize system over user and third-party instructions improved measured robustness, including on some attack types held out from training."
+      ],
+      "unsupported_extrapolations": [
+        "The model-level defense is not a formal or general prompt-injection security guarantee and does not validate H5."
+      ],
+      "uncertainties": [
+        "Robustness and over-refusal remain dependent on the model, generated training data, and evaluated attack distribution."
+      ],
+      "tension_ids": [
+        "C5-security-benchmark-ceiling"
+      ],
+      "prospective_discriminator_ids": [
+        "D5-adaptive-prompt-injection"
+      ]
+    },
+    {
+      "source_id": "E11",
+      "title": "Defeating Prompt Injections by Design",
+      "provenance_family_id": "PF4-adversarial-prompt-isolation",
+      "source_kind": "primary_method_and_empirical_paper",
+      "provenance_owner": "Edoardo Debenedetti and coauthors; arXiv",
+      "authors": [
+        "Edoardo Debenedetti",
+        "Ilia Shumailov",
+        "Tianqi Fan",
+        "Jamie Hayes",
+        "Nicholas Carlini",
+        "Daniel Fabian",
+        "Christoph Kern",
+        "Chongyang Shi",
+        "Andreas Terzis",
+        "Florian Tramèr"
+      ],
+      "publication_date": "2025-03-24",
+      "publication_date_precision": "day",
+      "identity": {
+        "doi": "10.48550/arXiv.2503.18813",
+        "arxiv_id": "2503.18813",
+        "proceedings_identity": null
+      },
+      "artifact": {
+        "uri": "https://arxiv.org/pdf/2503.18813v2",
+        "version": "arXiv:2503.18813v2, revised 2025-06-24",
+        "retrieved_on": "2026-08-10",
+        "media_type": "application/pdf",
+        "byte_count": 5531468,
+        "sha256": "c3719f6ce73eecf45e3764debef8a3d8ff8c9233b37d128c558b694ec3790cc7",
+        "retrieval_disposition": "directly-retrieved-hashed-not-vendored"
+      },
+      "supported_claims": [
+        "CaMeL separates trusted-query control-flow generation from quarantined untrusted-data handling and enforces capability and data-flow policies at tool calls within its threat model.",
+        "The paper reports 77 percent AgentDojo task completion with its stated security property, compared with 84 percent completion for the undefended system."
+      ],
+      "unsupported_extrapolations": [
+        "The result does not cover compromised trusted prompts or memory, every text-only manipulation, phishing, or security outside explicit policies and the stated threat model."
+      ],
+      "uncertainties": [
+        "Utility, policy completeness, trusted-query assumptions, and clarification requirements remain material deployment constraints."
+      ],
+      "tension_ids": [
+        "C5-security-benchmark-ceiling"
+      ],
+      "prospective_discriminator_ids": [
+        "D5-adaptive-prompt-injection",
+        "D6-privileged-control-flow-invariance"
+      ]
+    }
+  ],
+  "excluded_sources": [],
+  "cross_source_tensions": [
+    {
+      "tension_id": "C1-calibration-under-shift",
+      "source_ids": [
+        "E3",
+        "E4"
+      ],
+      "statement": "Post-hoc calibration can be effective on studied in-distribution datasets while still falling short under dataset shift."
+    },
+    {
+      "tension_id": "C2-selective-guarantee-scope",
+      "source_ids": [
+        "E1",
+        "E2",
+        "E4"
+      ],
+      "statement": "Selective or conformal risk statements depend on sampling, exchangeability, loss, and ranking assumptions that shifted data can violate."
+    },
+    {
+      "tension_id": "C3-staged-confidence-risk",
+      "source_ids": [
+        "E3",
+        "E5",
+        "E6"
+      ],
+      "statement": "Hierarchical or confidence-gated routing can specialize or save computation, but learned gates and miscalibrated confidence can still route incorrectly."
+    },
+    {
+      "tension_id": "C4-decomposition-propagation",
+      "source_ids": [
+        "E7",
+        "E8"
+      ],
+      "statement": "Local or modular decomposition can expose structure while ordering, decomposer, and recomposition errors can propagate globally."
+    },
+    {
+      "tension_id": "C5-security-benchmark-ceiling",
+      "source_ids": [
+        "E9",
+        "E10",
+        "E11"
+      ],
+      "statement": "Measured prompt-injection robustness remains bounded by model, training data, policy, benchmark, and threat-model assumptions; none establishes universal immunity."
+    }
+  ],
+  "mechanism_families": [
+    {
+      "family_id": "F1-calibrated-selective-prediction",
+      "label": "empirically calibrated selective prediction and risk control",
+      "status": "independent-evidence-only",
+      "evidence_source_ids": [
+        "E1",
+        "E2",
+        "E3",
+        "E4"
+      ],
+      "non_isomorphism_to_h4": "Acceptance is constrained by externally measured risk, coverage, calibration, or set loss rather than H4 graph topology and categorical graph uncertainty.",
+      "supported_constraints": [
+        "Any use of confidence requires an explicit calibration and shift evaluation.",
+        "Any claimed risk control must state and verify its sampling, loss, and monotonicity assumptions."
+      ],
+      "unsupported_extrapolations": [
+        "The evidence does not choose a score, acceptance rule, loss, calibration sample, or operating point."
+      ],
+      "prospective_discriminator_ids": [
+        "D1-selective-risk-coverage",
+        "D2-calibration-under-shift"
+      ]
+    },
+    {
+      "family_id": "F2-staged-hierarchical-routing",
+      "label": "staged conditional routing and early exit",
+      "status": "independent-evidence-only",
+      "evidence_source_ids": [
+        "E5",
+        "E6"
+      ],
+      "non_isomorphism_to_h4": "Sequential gates create path-dependent conditional computation; H4 uses one whole-case joint extraction followed by deterministic graph-root resolution.",
+      "supported_constraints": [
+        "Stage-conditional errors, exit behavior, and compute cost must be observed separately.",
+        "Early confidence must not be assumed correct without calibration evidence."
+      ],
+      "unsupported_extrapolations": [
+        "The evidence does not choose a stage count, gate, exit rule, model call, or routing hierarchy."
+      ],
+      "prospective_discriminator_ids": [
+        "D3-staged-exit-behavior"
+      ]
+    },
+    {
+      "family_id": "F3-local-decomposition-recomposition",
+      "label": "local classification or modular decomposition and recomposition",
+      "status": "independent-evidence-only",
+      "evidence_source_ids": [
+        "E7",
+        "E8"
+      ],
+      "non_isomorphism_to_h4": "Multiple localized label or subtask decisions are composed, rather than jointly extracting every candidate state and pairwise relation before graph resolution.",
+      "supported_constraints": [
+        "Local accuracy, decomposition validity, recomposition consistency, ordering, and propagation require separate observation.",
+        "Modularity is supported only if failures remain attributable and bounded."
+      ],
+      "unsupported_extrapolations": [
+        "The evidence does not choose subtasks, order, module interfaces, recomposition, prompts, or model allocation."
+      ],
+      "prospective_discriminator_ids": [
+        "D4-decomposition-locality"
+      ]
+    },
+    {
+      "family_id": "F4-privilege-separated-control-data",
+      "label": "privilege-separated prompt, control, and data architecture",
+      "status": "independent-evidence-only",
+      "evidence_source_ids": [
+        "E9",
+        "E10",
+        "E11"
+      ],
+      "non_isomorphism_to_h4": "The family changes trust boundaries and information or control flow through separate channels, privilege levels, quarantine, or enforcement rather than changing H4's output graph.",
+      "supported_constraints": [
+        "Untrusted instructions require an explicit provenance and privilege boundary.",
+        "Security claims must bind a threat model, policies, adaptive attacks, benign utility, and unauthorized effects."
+      ],
+      "unsupported_extrapolations": [
+        "The evidence does not choose channel syntax, privilege levels, models, policies, interpreter behavior, or a security claim for H5."
+      ],
+      "prospective_discriminator_ids": [
+        "D5-adaptive-prompt-injection",
+        "D6-privileged-control-flow-invariance"
+      ]
+    }
+  ],
+  "prospective_discriminators": [
+    {
+      "discriminator_id": "D1-selective-risk-coverage",
+      "family_ids": [
+        "F1-calibrated-selective-prediction"
+      ],
+      "observable": "Accepted-case error and accepted coverage across preregistered acceptance settings.",
+      "falsifying_observation": "Tighter acceptance fails to trade coverage for lower accepted error on held-out data.",
+      "claim_boundary": "A curve is diagnostic evidence only and does not establish population or per-case correctness."
+    },
+    {
+      "discriminator_id": "D2-calibration-under-shift",
+      "family_ids": [
+        "F1-calibrated-selective-prediction"
+      ],
+      "observable": "Reliability and accepted-case error on held-out in-distribution and prespecified shift slices.",
+      "falsifying_observation": "Apparent calibration or selective performance collapses on the held-out shift slices.",
+      "claim_boundary": "Observed robustness remains limited to the frozen slices and exact evaluation conditions."
+    },
+    {
+      "discriminator_id": "D3-staged-exit-behavior",
+      "family_ids": [
+        "F2-staged-hierarchical-routing"
+      ],
+      "observable": "Exit-depth distribution, stage-conditional error, calls, latency, and early false-exit propagation.",
+      "falsifying_observation": "Cases do not separate by stage difficulty or early exits create disproportionate false decisions.",
+      "claim_boundary": "The observation cannot by itself justify a stage design or deployment latency claim."
+    },
+    {
+      "discriminator_id": "D4-decomposition-locality",
+      "family_ids": [
+        "F3-local-decomposition-recomposition"
+      ],
+      "observable": "Per-local decision error, exact-set and per-label error, decomposition validity, recomposition consistency, ordering sensitivity, and propagation.",
+      "falsifying_observation": "A localized failure routinely contaminates unrelated outputs or recomposition dominates the error budget.",
+      "claim_boundary": "Locality evidence does not choose a decomposition or prove global efficacy."
+    },
+    {
+      "discriminator_id": "D5-adaptive-prompt-injection",
+      "family_ids": [
+        "F4-privilege-separated-control-data"
+      ],
+      "observable": "Adaptive injection success, benign utility, privileged-instruction retention, false blocks, and clarification rate under a frozen threat model.",
+      "falsifying_observation": "Untrusted payload instructions redirect privileged behavior or the defense destroys benign utility.",
+      "claim_boundary": "Results remain bounded to the exact attacks, models, policies, and threat model."
+    },
+    {
+      "discriminator_id": "D6-privileged-control-flow-invariance",
+      "family_ids": [
+        "F4-privilege-separated-control-data"
+      ],
+      "observable": "Control-flow invariance and unauthorized tool or data-flow effects when untrusted payload instructions vary.",
+      "falsifying_observation": "Untrusted instructions alter privileged control flow outside explicitly authorized data dependencies.",
+      "claim_boundary": "Passing a policy-bound check is not universal prompt-injection security."
+    }
+  ],
+  "design_firewall": {
+    "family_order_semantics": "identifier order only; no preference, score, or rank",
+    "mechanism_choice_made": false,
+    "mechanism_composition_made": false,
+    "h5_prompt_authored": false,
+    "h5_threshold_authored": false,
+    "h5_schema_authored": false,
+    "h5_corpus_authored": false,
+    "h5_tuning_performed": false
+  },
+  "claims_proven": {
+    "source_identity_and_digest_metadata_frozen": true,
+    "source_artifact_bytes_retained": false,
+    "source_artifact_byte_reverification_in_test": false,
+    "independent_external_provenance_families": true,
+    "h5_mechanism_selected": false,
+    "h5_mechanism_composed": false,
+    "h5_efficacy": false,
+    "runtime": false,
+    "provider": false,
+    "model": false,
+    "security": false,
+    "product": false,
+    "promotion": false,
+    "authority_effect": false
+  }
+}

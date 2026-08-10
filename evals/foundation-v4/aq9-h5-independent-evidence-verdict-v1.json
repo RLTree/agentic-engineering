@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0",
+  "verdict_id": "AQ9-H5-independent-evidence-E0-terminal-failure-v1",
+  "status": "E0=FAIL",
+  "reason_code": "role-wide-firewall-breach-during-independent-review",
+  "claim_ceiling": "structural-process-failure-only",
+  "authority_basis": {
+    "amendment": {
+      "commit": "e7ca9e9b89aad1a1933da5378d11d84240c210f7",
+      "tree": "475d93faf9b4853eb120a6230f5e5cef36178f84",
+      "path": "EXECPLAN.md",
+      "git_blob_sha1": "9d26f09877ea55ddc17eddd8b97ce8b387b96f1b",
+      "sha256": "acf1b68b3194ee4852f773aac7c18b8e7222fd47f6091e5858b5e06eea0bc141"
+    },
+    "evidence_packet": {
+      "path": "evals/foundation-v4/aq9-h5-independent-evidence-v1.json",
+      "sha256": "1ec15fa32f3ad262eb95d913c964854799546a0397874cfa803322b4bb761fcd"
+    },
+    "packet_test": {
+      "path": "tests/test_aq9_h5_independent_evidence_v1.py",
+      "sha256": "8d8c298af881b0e8d80a773dbdacae35fba8614acf5ffae4301fe169ca8aa876"
+    }
+  },
+  "review_disposition": {
+    "allowed_durable_bit": "AQ8 aggregate=fail",
+    "access_boundary_status": "exceeded_allowed_durable_bit",
+    "packet_content_inspected": false,
+    "source_artifacts_inspected": false,
+    "review_aborted_before_packet_or_source_inspection": true,
+    "e0_pass_recorded": false,
+    "mechanism_selection_performed": false,
+    "mechanism_ranking_performed": false
+  },
+  "independence_and_role_exclusions": {
+    "reviewer_role": "independent-E0-verdict-owner",
+    "independent_of_packet_authors": true,
+    "excluded_future_roles": [
+      "H5-author",
+      "H5-reviewer",
+      "H5-validator",
+      "H5-integrator",
+      "H5-executor",
+      "H5-decision-owner",
+      "K-author",
+      "K-reviewer",
+      "K-validator",
+      "K-integrator",
+      "K-executor",
+      "K-decision-owner"
+    ],
+    "future_h5_or_k_role_allowed": false,
+    "no_further_access_declaration": "No further access to the packet, its sources, additional amendment context, or protected evaluation material is permitted."
+  },
+  "terminal_transition": {
+    "aq9_status": "terminally_closed",
+    "e0_status": "failed",
+    "h5_work_allowed": false,
+    "k_work_allowed": false,
+    "recovery_allowed": false,
+    "review_restart_allowed": false,
+    "role_transfer_cures_breach": false,
+    "only_allowed_next_transition": "AR-bounded-retirement"
+  },
+  "prohibitions": [
+    "no-e0-pass",
+    "no-h5-or-k-work",
+    "no-role-transfer-recovery",
+    "no-further-protected-material-access",
+    "no-mechanism-selection-or-ranking",
+    "no-expanded-claim"
+  ],
+  "maximum_claim": "This artifact establishes only a structural process failure and its terminal transition; it makes no behavioral or external-system claim."
+}
