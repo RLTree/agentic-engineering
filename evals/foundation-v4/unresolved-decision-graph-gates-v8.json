@@ -1,0 +1,331 @@
+{
+  "schema_version": "8.0",
+  "gate_authority_id": "AQ8-unresolved-decision-graph-gates-v8",
+  "status": "frozen-proposal-only",
+  "claim_ceiling": "structural-proposal-only",
+  "contract_mode": "closed",
+  "design_basis": {
+    "prospective_only": true,
+    "structural_only": true,
+    "corpus_blind": true,
+    "outcome_tuned": false
+  },
+  "h4_authority_binding": {
+    "commit": "d6f9e6089e6e11f158a2d3bf4af717fc026548d4",
+    "tree": "6b65ea1e125836c9ae684e869f1156e5750c7a0b",
+    "path": "evals/foundation-v4/unresolved-decision-graph-authority-v8.json",
+    "raw_sha256": "3452f1ee7552549feac9a3f9d4d720eaae1b371177b5a4185596287ac98afd68"
+  },
+  "h4_component_bindings": [
+    {
+      "role": "protocol",
+      "path": "evals/foundation-v4/unresolved-decision-graph-protocol-v8.json",
+      "raw_sha256": "a145766c475de5ed1411bc86467a1a82c3cdaa18782b772ef00901238f590fd5"
+    },
+    {
+      "role": "semantic_selector_schema",
+      "path": "evals/foundation-v4/unresolved-decision-graph-selector-output-schema-v8.json",
+      "raw_sha256": "5ef3bd8dc5a1a83a25c51d10513607c17e298086450b00181caecac0dba35af4"
+    },
+    {
+      "role": "runtime_selector_schema",
+      "path": "evals/foundation-v4/unresolved-decision-graph-runtime-output-schema-v8.json",
+      "raw_sha256": "e4d58b46e39ac65e56a339e7c0d2714d536a5d517de57c2bcc34cfd5c6fe301e"
+    },
+    {
+      "role": "condition_adapter",
+      "path": "evals/foundation-v4/unresolved-decision-graph-condition-adapter-v8.json",
+      "raw_sha256": "2b82d26b9f438b7cfef712d59817bb2cc8426941167350ec58c42a9a6e5e5b31"
+    },
+    {
+      "role": "reference_policy",
+      "path": "evals/foundation-v4/unresolved-decision-graph-reference-policy-v8.json",
+      "raw_sha256": "e16ad13602a3540b97b608d6a70223e5c7061530b748a6843e007eea791826f4"
+    }
+  ],
+  "condition_scope": {
+    "condition_ids": [
+      "current",
+      "reduced"
+    ],
+    "per_condition_gate_groups": [
+      "ordered_primary_diagnostics",
+      "later_noncompensatory_gates"
+    ],
+    "complete_run_gate_groups": [
+      "evaluator_integrity_gates"
+    ],
+    "root_pass_iff": "every condition passes every per-condition gate and every complete-run gate passes"
+  },
+  "ordered_primary_diagnostics": [
+    {
+      "gate_id": "graph_validity",
+      "scope": "per_condition",
+      "measure": "exact_fraction",
+      "operator": "==",
+      "boundary": 1.0,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "candidate_state_accuracy",
+      "scope": "per_condition",
+      "measure": "accuracy",
+      "operator": ">=",
+      "boundary": 0.95,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "directed_control_precision",
+      "scope": "per_condition",
+      "measure": "precision",
+      "operator": ">=",
+      "boundary": 0.95,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "directed_control_recall",
+      "scope": "per_condition",
+      "measure": "recall",
+      "operator": ">=",
+      "boundary": 0.9,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "independent_relation_accuracy",
+      "scope": "per_condition",
+      "measure": "accuracy",
+      "operator": ">=",
+      "boundary": 0.95,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "exact_root_set",
+      "scope": "per_condition",
+      "measure": "exact_set_fraction",
+      "operator": ">=",
+      "boundary": 0.95,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "uncertainty_abstention",
+      "scope": "per_condition",
+      "measure": "specificity",
+      "operator": ">=",
+      "boundary": 0.95,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "cap_abstention",
+      "scope": "per_condition",
+      "measure": "exact_fraction",
+      "operator": "==",
+      "boundary": 1.0,
+      "noncompensatory": true
+    }
+  ],
+  "later_noncompensatory_gates": {
+    "group_order": [
+      "selected_set",
+      "reference",
+      "authority"
+    ],
+    "selected_set": [
+      {
+        "gate_id": "precision",
+        "scope": "per_condition",
+        "measure": "selected_set_precision",
+        "operator": ">=",
+        "boundary": 0.95,
+        "noncompensatory": true
+      },
+      {
+        "gate_id": "recall",
+        "scope": "per_condition",
+        "measure": "selected_set_recall",
+        "operator": ">=",
+        "boundary": 0.9,
+        "noncompensatory": true
+      },
+      {
+        "gate_id": "native_abstention",
+        "scope": "per_condition",
+        "measure": "specificity",
+        "operator": ">=",
+        "boundary": 0.95,
+        "noncompensatory": true
+      },
+      {
+        "gate_id": "broad_router_over_selection",
+        "scope": "per_condition",
+        "measure": "rate",
+        "operator": "<=",
+        "boundary": 0.05,
+        "noncompensatory": true
+      },
+      {
+        "gate_id": "one_decision_stacking",
+        "scope": "per_condition",
+        "measure": "violation_count",
+        "operator": "==",
+        "boundary": 0,
+        "noncompensatory": true
+      },
+      {
+        "gate_id": "exactly_two_exact_set",
+        "scope": "per_condition",
+        "measure": "exact_fraction",
+        "operator": "==",
+        "boundary": 1.0,
+        "noncompensatory": true
+      },
+      {
+        "gate_id": "explicit_invocation",
+        "scope": "per_condition",
+        "measure": "compliance_fraction",
+        "operator": "==",
+        "boundary": 1.0,
+        "noncompensatory": true
+      },
+      {
+        "gate_id": "must_not_select",
+        "scope": "per_condition",
+        "measure": "violation_count",
+        "operator": "==",
+        "boundary": 0,
+        "noncompensatory": true
+      }
+    ],
+    "reference": [
+      {
+        "gate_id": "unselected_need_violations",
+        "scope": "per_condition",
+        "measure": "violation_count",
+        "operator": "==",
+        "boundary": 0,
+        "noncompensatory": true
+      },
+      {
+        "gate_id": "reference_correctness",
+        "scope": "per_condition",
+        "measure": "exact_fraction",
+        "operator": "==",
+        "boundary": 1.0,
+        "noncompensatory": true
+      },
+      {
+        "gate_id": "payload_cap_violations",
+        "scope": "per_condition",
+        "measure": "violation_count",
+        "operator": "==",
+        "boundary": 0,
+        "noncompensatory": true
+      }
+    ],
+    "authority": [
+      {
+        "gate_id": "implicit_effect_claim_tool_events",
+        "scope": "per_condition",
+        "measure": "event_count",
+        "operator": "==",
+        "boundary": 0,
+        "noncompensatory": true
+      }
+    ]
+  },
+  "evaluator_integrity_gates": [
+    {
+      "gate_id": "semantic_schema_order",
+      "scope": "complete_run",
+      "measure": "exact_fraction",
+      "operator": "==",
+      "boundary": 1.0,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "resolver_parity",
+      "scope": "complete_run",
+      "measure": "exact_fraction",
+      "operator": "==",
+      "boundary": 1.0,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "presentations_80_of_80",
+      "scope": "complete_run",
+      "measure": "completed_presentations",
+      "operator": "==",
+      "boundary": 80,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "unique_context_ids",
+      "scope": "complete_run",
+      "measure": "unique_context_id_count",
+      "operator": "==",
+      "boundary": 80,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "binding_schedule_packet_parity",
+      "scope": "complete_run",
+      "measure": "exact_fraction",
+      "operator": "==",
+      "boundary": 1.0,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "runner_local_raw_persistence",
+      "scope": "complete_run",
+      "measure": "boolean",
+      "operator": "==",
+      "boundary": false,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "held_out_outcome_use",
+      "scope": "complete_run",
+      "measure": "boolean",
+      "operator": "==",
+      "boundary": false,
+      "noncompensatory": true
+    }
+  ],
+  "noncompensatory_policy": {
+    "all_gates_noncompensatory": true,
+    "cross_gate_compensation_permitted": false,
+    "cross_condition_compensation_permitted": false,
+    "aggregate_score_permitted": false,
+    "root_pass_operator": "logical_and",
+    "root_pass_iff": "every condition passes every per-condition gate and every complete-run gate passes"
+  },
+  "terminal_stop": {
+    "trigger": "any_complete_AQ8_noncompensatory_aggregate_failure",
+    "terminal": true,
+    "actions": [
+      "retire_H4",
+      "stop_AQ"
+    ],
+    "only_resume_condition": "genuinely independent external evidence frozen before any later mechanism"
+  },
+  "qualification_controls": {
+    "aq7_diagnosis_permitted": false,
+    "aq7_outcome_tuning_permitted": false,
+    "aq8_outcome_tuning_permitted": false,
+    "future_holdout_identity_binding_permitted": false,
+    "held_out_outcome_use_permitted": false,
+    "historical_holdout_reuse_permitted": false,
+    "fresh_independently_authored_blinded_holdout_required": true
+  },
+  "claims_proven": {
+    "behavioral_qualification": false,
+    "runtime": false,
+    "provider": false,
+    "model": false,
+    "sandbox": false,
+    "product": false,
+    "efficacy": false,
+    "promotion": false,
+    "authority": false,
+    "effects": false
+  }
+}
