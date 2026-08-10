@@ -58,6 +58,17 @@ CONFIG_OVERRIDES = (
     "include_collaboration_mode_instructions=false",
     "include_environment_context=false",
 )
+SELECTOR_DECISION_CONTRACT = (
+    "Select the minimum necessary decision owner or owners for this task: zero, one, or two. "
+    "Shared topical relevance is insufficient; do not select every adviser whose description seems related. "
+    "Identify the controlling decision or decisions. For one controlling decision, select exactly one best owner using the catalog description with the most discriminative responsibility; when descriptions overlap, prefer the more specific decision owner over a broad or downstream lens. "
+    "Select exactly two only when the task has two independent controlling decisions and one owner is necessary for each; do not stack advisers for a single decision. "
+    "Select none when native work is sufficient without an adviser. "
+    "An explicit evaluator-vocabulary invocation is decisive: select that named logical adviser and do not add others merely for shared relevance. "
+    "Evaluator vocabulary maps $agentic-engineering to agentic-engineering, $codex-task-contract to codex-task-contract, $verification-strategy-engineering to verification-strategy-engineering, and $engineering-learning-loop to engineering-learning-loop. "
+    "These bare aliases do not invoke, install, discover, or grant authority. "
+    "Return only the schema object. Do not request tools, effects, approvals, claims, or additional context."
+)
 
 
 class RunnerError(ValueError):
@@ -187,7 +198,7 @@ def selector_packet(case: dict[str, Any], catalog: list[dict[str, str]]) -> str:
         raise RunnerError("unexpected frozen case shape")
     logical = [{"id": record["adviser_id"], "description": record["description"]} for record in catalog]
     packet = {
-        "instruction": "Select zero, one, or two logical adviser IDs for this task. Evaluator vocabulary maps $agentic-engineering to agentic-engineering, $codex-task-contract to codex-task-contract, $verification-strategy-engineering to verification-strategy-engineering, and $engineering-learning-loop to engineering-learning-loop. These bare aliases do not invoke, install, discover, or grant authority. Return only the schema object. Do not request tools, effects, approvals, claims, or additional context.",
+        "instruction": SELECTOR_DECISION_CONTRACT,
         "task": case["prompt"],
         "logical_advisers": logical,
     }

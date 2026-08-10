@@ -53,6 +53,32 @@ class RunnerTests(unittest.TestCase):
         packet = runner.selector_packet(case, [{"adviser_id": item, "description": item + " description"} for item in runner.ADVISERS])
         self.assertNotIn("hidden_labels", packet); self.assertNotIn("architecture-boundary", packet); self.assertNotIn("current", packet); self.assertNotIn("plugins/", packet); self.assertIn("logical_advisers", packet); self.assertIn("$agentic-engineering", packet); self.assertIn(case["prompt"], packet)
 
+    def test_packet_orders_the_minimum_owner_decision_contract(self):
+        catalog = [{"adviser_id": item, "description": item + " description"} for item in runner.ADVISERS]
+        packet = json.loads(runner.selector_packet({"id": "synthetic", "prompt": "Synthetic routing decision."}, catalog))
+        instruction = packet["instruction"]
+        clauses = (
+            "Select the minimum necessary decision owner or owners",
+            "Shared topical relevance is insufficient",
+            "For one controlling decision, select exactly one best owner",
+            "Select exactly two only when the task has two independent controlling decisions",
+            "Select none when native work is sufficient",
+            "An explicit evaluator-vocabulary invocation is decisive",
+            "Evaluator vocabulary maps $agentic-engineering",
+            "Return only the schema object",
+        )
+        self.assertEqual([record["id"] for record in packet["logical_advisers"]], list(runner.ADVISERS))
+        self.assertEqual(sorted(packet), ["instruction", "logical_advisers", "task"])
+        self.assertEqual([instruction.index(clause) for clause in clauses], sorted(instruction.index(clause) for clause in clauses))
+
+    def test_packet_rejects_shared_relevance_as_a_reason_to_stack(self):
+        packet = json.loads(runner.selector_packet({"id": "synthetic", "prompt": "Synthetic routing decision."}, [{"adviser_id": item, "description": "related decision support"} for item in runner.ADVISERS]))
+        instruction = packet["instruction"]
+        self.assertIn("do not select every adviser whose description seems related", instruction)
+        self.assertIn("prefer the more specific decision owner over a broad or downstream lens", instruction)
+        self.assertIn("do not stack advisers for a single decision", instruction)
+        self.assertIn("do not add others merely for shared relevance", instruction)
+
     def test_argv_keeps_approval_after_exec_and_disables_features(self):
         argv = runner.child_argv("/tmp/codex", "/tmp/clean", runner.SCHEMA_PATH)
         self.assertEqual(argv[:4], ["/tmp/codex", "--ask-for-approval", "never", "exec"])
