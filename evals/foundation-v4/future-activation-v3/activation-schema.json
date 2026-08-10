@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/agentic-engineering/evals/foundation-v4/future-activation-v3/activation-schema.json",
+  "title": "AQ3 blinded future activation corpus and route observation",
+  "type": "object",
+  "$ref": "#/$defs/corpus",
+  "$defs": {
+    "adviser": {
+      "type": "string",
+      "enum": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ]
+    },
+    "referenceTrigger": {
+      "type": "string",
+      "enum": [
+        "architecture-boundary",
+        "decision-contract",
+        "verification-evidence",
+        "learning-adoption",
+        "decomposition-boundary",
+        "no-change-abstention",
+        "reference-isolation"
+      ]
+    },
+    "referenceTitle": {
+      "type": "string",
+      "enum": [
+        "architecture-decision-table",
+        "seven-layer-diagnostic",
+        "control-architecture-review",
+        "execution-contract-schema",
+        "vocabulary-translator",
+        "assumption-approval-policy",
+        "verification-mode-selection",
+        "test-oracle-quality",
+        "risk-based-evidence-ladder",
+        "browser-field-and-effect-verification",
+        "learning-adoption-record",
+        "failure-attribution-and-mechanism-hypotheses",
+        "hidden-evals-mutation-spec-evolution",
+        "knowledge-freshness-supersession"
+      ]
+    },
+    "authority": {
+      "type": "object",
+      "properties": {
+        "effect_authority": {"const": false},
+        "claim_authority": {"const": false}
+      },
+      "required": ["effect_authority", "claim_authority"],
+      "additionalProperties": false
+    },
+    "referenceExpectation": {
+      "type": "object",
+      "properties": {
+        "trigger": {"$ref": "#/$defs/referenceTrigger"},
+        "reference_title": {"$ref": "#/$defs/referenceTitle"},
+        "required": {"const": true}
+      },
+      "required": ["trigger", "reference_title", "required"],
+      "additionalProperties": false
+    },
+    "precedence": {
+      "type": "object",
+      "properties": {
+        "rule": {
+          "type": "string",
+          "enum": ["single-owner", "specific-over-umbrella", "exactly-two-owners", "native-sufficient"]
+        },
+        "primary_owner": {"type": ["string", "null"], "oneOf": [{"$ref": "#/$defs/adviser"}, {"type": "null"}]},
+        "competing_owner": {"type": ["string", "null"], "oneOf": [{"$ref": "#/$defs/adviser"}, {"type": "null"}]}
+      },
+      "required": ["rule", "primary_owner", "competing_owner"],
+      "additionalProperties": false
+    },
+    "antiReuse": {
+      "type": "object",
+      "properties": {
+        "origin": {"const": "aq3-independent-future-corpus"},
+        "prior_prompt_content_reviewed": {"const": false},
+        "case_nonce": {"type": "string", "pattern": "^AQ3-(A|H)-[0-9]{3}-[a-z0-9-]+$"},
+        "semantic_signature": {"type": "array", "items": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"}, "uniqueItems": true, "minItems": 3, "maxItems": 6},
+        "preuse_status": {"const": "unconsumed"},
+        "post_result_policy": {"const": "no-replay-create-new-future-holdout"}
+      },
+      "required": ["origin", "prior_prompt_content_reviewed", "case_nonce", "semantic_signature", "preuse_status", "post_result_policy"],
+      "additionalProperties": false
+    },
+    "hiddenLabels": {
+      "type": "object",
+      "properties": {
+        "expected_advisers": {"type": "array", "items": {"$ref": "#/$defs/adviser"}, "uniqueItems": true, "maxItems": 2},
+        "must_not_select": {"type": "array", "items": {"$ref": "#/$defs/adviser"}, "uniqueItems": true},
+        "reference_triggers": {"type": "array", "items": {"$ref": "#/$defs/referenceTrigger"}, "uniqueItems": true, "maxItems": 3},
+        "reference_expectations": {"type": "array", "items": {"$ref": "#/$defs/referenceExpectation"}, "uniqueItems": true, "maxItems": 3}
+      },
+      "required": ["expected_advisers", "must_not_select", "reference_triggers", "reference_expectations"],
+      "additionalProperties": false
+    },
+    "case": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string", "pattern": "^AQ3-(A|H)-[0-9]{3}$"},
+        "family_id": {"type": "string", "pattern": "^aq3-[a-z0-9]+(?:-[a-z0-9]+)*$"},
+        "category": {"type": "string", "enum": ["decomposition", "task-contract", "verification", "learning", "native-sufficient", "near-neighbor", "explicit-invocation"]},
+        "mode": {"type": "string", "enum": ["automatic", "explicit"]},
+        "prompt": {"type": "string", "minLength": 24},
+        "authority": {"$ref": "#/$defs/authority"},
+        "condition_blind": {"const": true},
+        "labels_visible_to_runner": {"const": false},
+        "outcomes_visible_to_authoring": {"const": false},
+        "hidden_labels": {"$ref": "#/$defs/hiddenLabels"},
+        "precedence": {"$ref": "#/$defs/precedence"},
+        "near_neighbor_kind": {"type": ["string", "null"], "enum": ["exactly_two", "precedence", null]},
+        "declared_invocation": {"type": ["string", "null"], "oneOf": [{"$ref": "#/$defs/adviser"}, {"type": "null"}]},
+        "anti_reuse": {"$ref": "#/$defs/antiReuse"}
+      },
+      "required": ["id", "family_id", "category", "mode", "prompt", "authority", "condition_blind", "labels_visible_to_runner", "outcomes_visible_to_authoring", "hidden_labels", "precedence", "near_neighbor_kind", "declared_invocation", "anti_reuse"],
+      "additionalProperties": false
+    },
+    "corpus": {
+      "type": "object",
+      "properties": {
+        "schema_version": {"const": "3.0"},
+        "corpus_id": {"type": "string", "pattern": "^foundation-v4-future-activation-v3-(authoring|heldout)$"},
+        "split": {"type": "string", "enum": ["authoring", "heldout"]},
+        "candidate_independent": {"const": true},
+        "routing_surface": {"const": "fixed-four-adviser"},
+        "future_run_only": {"const": true},
+        "no_replay_after_use": {"const": true},
+        "reference_catalog": {"type": "array", "items": {"$ref": "#/$defs/referenceTrigger"}, "uniqueItems": true, "minItems": 7, "maxItems": 7},
+        "structural_validation": {"type": "array", "items": {"type": "string"}, "uniqueItems": true, "minItems": 5},
+        "cases": {"type": "array", "items": {"$ref": "#/$defs/case"}, "minItems": 36, "maxItems": 36}
+      },
+      "required": ["schema_version", "corpus_id", "split", "candidate_independent", "routing_surface", "future_run_only", "no_replay_after_use", "reference_catalog", "structural_validation", "cases"],
+      "additionalProperties": false
+    },
+    "routeObservation": {
+      "type": "object",
+      "properties": {
+        "case_id": {"type": "string", "pattern": "^AQ3-(A|H)-[0-9]{3}$"},
+        "selected_advisers": {"type": "array", "items": {"$ref": "#/$defs/adviser"}, "uniqueItems": true, "maxItems": 2},
+        "resolved_reference_ids": {"type": "array", "items": {"$ref": "#/$defs/referenceTrigger"}, "uniqueItems": true, "maxItems": 3},
+        "context_id": {"type": "string", "minLength": 1},
+        "parse_status": {"type": "string", "enum": ["parsed", "unavailable", "error"]},
+        "effect_requested": {"type": "boolean"},
+        "effect_granted": {"type": "boolean"},
+        "claim_requested": {"type": "boolean"},
+        "claim_granted": {"type": "boolean"},
+        "full_schema_or_template_loaded": {"type": "boolean"}
+      },
+      "required": ["case_id", "selected_advisers", "resolved_reference_ids", "context_id", "parse_status", "effect_requested", "effect_granted", "claim_requested", "claim_granted", "full_schema_or_template_loaded"],
+      "additionalProperties": false
+    }
+  }
+}

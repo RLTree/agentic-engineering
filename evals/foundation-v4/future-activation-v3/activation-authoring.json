@@ -1,0 +1,1937 @@
+{
+  "schema_version": "3.0",
+  "corpus_id": "foundation-v4-future-activation-v3-authoring",
+  "split": "authoring",
+  "candidate_independent": true,
+  "routing_surface": "fixed-four-adviser",
+  "future_run_only": true,
+  "no_replay_after_use": true,
+  "reference_catalog": [
+    "architecture-boundary",
+    "decision-contract",
+    "verification-evidence",
+    "learning-adoption",
+    "decomposition-boundary",
+    "no-change-abstention",
+    "reference-isolation"
+  ],
+  "structural_validation": [
+    "AQ3 identifiers, families, nonces, and normalized prompts are unique across both splits",
+    "automatic prompts contain no fixed-four adviser name",
+    "explicit prompts contain exactly one backticked dollar-prefixed declared alias and no residual canonical adviser name",
+    "expected and prohibited adviser labels partition the fixed four",
+    "precedence labels agree with expected adviser cardinality",
+    "reference expectations cover reference triggers exactly",
+    "all cases are unconsumed and cannot be replayed after results"
+  ],
+  "cases": [
+    {
+      "id": "AQ3-A-001",
+      "family_id": "aq3-queue-topology",
+      "category": "decomposition",
+      "mode": "automatic",
+      "prompt": "A support queue needs retry, cancellation, and a human checkpoint. Recommend the smallest execution shape and explain what would justify a more complex one.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "agentic-engineering"
+        ],
+        "must_not_select": [
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [
+          "architecture-boundary"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "architecture-boundary",
+            "reference_title": "architecture-decision-table",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "agentic-engineering",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-001-queue-topology",
+        "semantic_signature": [
+          "support-queue",
+          "retry",
+          "cancellation",
+          "human-checkpoint"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-002",
+      "family_id": "aq3-recovery-state",
+      "category": "decomposition",
+      "mode": "automatic",
+      "prompt": "An approval service can restart halfway through a request. Map the state, recovery boundary, and idempotency responsibilities before proposing implementation work.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "agentic-engineering"
+        ],
+        "must_not_select": [
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [
+          "architecture-boundary"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "architecture-boundary",
+            "reference_title": "architecture-decision-table",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "agentic-engineering",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-002-recovery-state",
+        "semantic_signature": [
+          "approval-service",
+          "restart",
+          "idempotency",
+          "state-boundary"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-003",
+      "family_id": "aq3-tool-permission-boundary",
+      "category": "decomposition",
+      "mode": "automatic",
+      "prompt": "A research assistant may draft actions but must never send them. Design the ownership and permission boundary for drafting, approval, and execution.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "agentic-engineering"
+        ],
+        "must_not_select": [
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [
+          "architecture-boundary"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "architecture-boundary",
+            "reference_title": "architecture-decision-table",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "agentic-engineering",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-003-tool-permission-boundary",
+        "semantic_signature": [
+          "research-assistant",
+          "drafting",
+          "approval",
+          "execution-boundary"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-004",
+      "family_id": "aq3-workflow-escalation",
+      "category": "decomposition",
+      "mode": "automatic",
+      "prompt": "A document intake process is currently sequential. Decide whether branching coordination is necessary, and name the evidence that would support escalation.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "agentic-engineering"
+        ],
+        "must_not_select": [
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [],
+        "reference_expectations": []
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "agentic-engineering",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-004-workflow-escalation",
+        "semantic_signature": [
+          "document-intake",
+          "sequential",
+          "branching",
+          "escalation-evidence"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-005",
+      "family_id": "aq3-shared-state",
+      "category": "decomposition",
+      "mode": "automatic",
+      "prompt": "Three independent specialists need a single source of task state while a coordinator can resume after failure. Propose the control architecture and recovery checkpoints.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "agentic-engineering"
+        ],
+        "must_not_select": [
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [
+          "architecture-boundary",
+          "decomposition-boundary"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "architecture-boundary",
+            "reference_title": "architecture-decision-table",
+            "required": true
+          },
+          {
+            "trigger": "decomposition-boundary",
+            "reference_title": "seven-layer-diagnostic",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "agentic-engineering",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-005-shared-state",
+        "semantic_signature": [
+          "specialists",
+          "shared-state",
+          "coordinator",
+          "resume-checkpoint"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-006",
+      "family_id": "aq3-control-placement",
+      "category": "decomposition",
+      "mode": "automatic",
+      "prompt": "A classifier keeps making the same routing mistake. Decide whether the correction belongs in a permission, deterministic rule, task context, or topology change.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "agentic-engineering"
+        ],
+        "must_not_select": [
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [
+          "architecture-boundary"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "architecture-boundary",
+            "reference_title": "architecture-decision-table",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "agentic-engineering",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-006-control-placement",
+        "semantic_signature": [
+          "classifier",
+          "routing-mistake",
+          "permission",
+          "deterministic-control"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-007",
+      "family_id": "aq3-ambiguous-deliverable",
+      "category": "task-contract",
+      "mode": "automatic",
+      "prompt": "The request says make the onboarding flow robust. Turn that into a bounded deliverable, explicit non-goals, and observable completion evidence.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "codex-task-contract"
+        ],
+        "must_not_select": [
+          "agentic-engineering",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [
+          "decision-contract"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "decision-contract",
+            "reference_title": "vocabulary-translator",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "codex-task-contract",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-007-ambiguous-deliverable",
+        "semantic_signature": [
+          "onboarding",
+          "robust",
+          "non-goals",
+          "completion-evidence"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-008",
+      "family_id": "aq3-approval-threshold",
+      "category": "task-contract",
+      "mode": "automatic",
+      "prompt": "Define what work may proceed under reversible assumptions and what must pause for a decision before changing a customer billing export.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "codex-task-contract"
+        ],
+        "must_not_select": [
+          "agentic-engineering",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [
+          "decision-contract"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "decision-contract",
+            "reference_title": "vocabulary-translator",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "codex-task-contract",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-008-approval-threshold",
+        "semantic_signature": [
+          "billing-export",
+          "reversible-assumption",
+          "customer-data",
+          "approval-threshold"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-009",
+      "family_id": "aq3-migration-scope",
+      "category": "task-contract",
+      "mode": "automatic",
+      "prompt": "A team asks to modernize an import path with no stated compatibility window. Establish scope, exclusions, owners, and the information that would change the plan.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "codex-task-contract"
+        ],
+        "must_not_select": [
+          "agentic-engineering",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [
+          "decision-contract"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "decision-contract",
+            "reference_title": "vocabulary-translator",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "codex-task-contract",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-009-migration-scope",
+        "semantic_signature": [
+          "import-path",
+          "compatibility-window",
+          "scope",
+          "decision-owner"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-010",
+      "family_id": "aq3-acceptance-handoff",
+      "category": "task-contract",
+      "mode": "automatic",
+      "prompt": "A designer and implementer disagree on what counts as done for a searchable table. Write a handoff contract with outcomes, constraints, and evidence.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "codex-task-contract"
+        ],
+        "must_not_select": [
+          "agentic-engineering",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [],
+        "reference_expectations": []
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "codex-task-contract",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-010-acceptance-handoff",
+        "semantic_signature": [
+          "searchable-table",
+          "designer",
+          "implementer",
+          "handoff-contract"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-011",
+      "family_id": "aq3-constraint-inventory",
+      "category": "task-contract",
+      "mode": "automatic",
+      "prompt": "Plan a local refactor requested as quick and safe when the repository has uncommitted work. Identify constraints, anti-goals, and escalation boundaries.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "codex-task-contract"
+        ],
+        "must_not_select": [
+          "agentic-engineering",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [
+          "decision-contract"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "decision-contract",
+            "reference_title": "vocabulary-translator",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "codex-task-contract",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-011-constraint-inventory",
+        "semantic_signature": [
+          "refactor",
+          "uncommitted-work",
+          "anti-goals",
+          "escalation-boundary"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-012",
+      "family_id": "aq3-uncertain-request",
+      "category": "task-contract",
+      "mode": "automatic",
+      "prompt": "A manager wants a polished analytics page by Friday but has not named its users or decisions. Specify the smallest question set and a reversible first slice.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "codex-task-contract"
+        ],
+        "must_not_select": [
+          "agentic-engineering",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [
+          "decision-contract"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "decision-contract",
+            "reference_title": "vocabulary-translator",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "codex-task-contract",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-012-uncertain-request",
+        "semantic_signature": [
+          "analytics-page",
+          "friday",
+          "unknown-users",
+          "reversible-slice"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-013",
+      "family_id": "aq3-race-condition-proof",
+      "category": "verification",
+      "mode": "automatic",
+      "prompt": "A duplicate notification appears only when two workers finish together. Select a proof strategy that can detect the race and define the claim it supports.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "verification-strategy-engineering"
+        ],
+        "must_not_select": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [],
+        "reference_expectations": []
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "verification-strategy-engineering",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-013-race-condition-proof",
+        "semantic_signature": [
+          "duplicate-notification",
+          "two-workers",
+          "race",
+          "fault-detection"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-014",
+      "family_id": "aq3-browser-boundary",
+      "category": "verification",
+      "mode": "automatic",
+      "prompt": "A revised checkout form passes component tests but may block keyboard completion in a real browser. Choose the smallest credible evidence portfolio.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "verification-strategy-engineering"
+        ],
+        "must_not_select": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [
+          "verification-evidence"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "verification-evidence",
+            "reference_title": "verification-mode-selection",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "verification-strategy-engineering",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-014-browser-boundary",
+        "semantic_signature": [
+          "checkout-form",
+          "component-tests",
+          "keyboard",
+          "browser-journey"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-015",
+      "family_id": "aq3-migration-oracle",
+      "category": "verification",
+      "mode": "automatic",
+      "prompt": "A data conversion preserves row count but might alter currency rounding. Define the oracle, representative fixtures, and evidence freshness needed for this change.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "verification-strategy-engineering"
+        ],
+        "must_not_select": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [
+          "verification-evidence"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "verification-evidence",
+            "reference_title": "verification-mode-selection",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "verification-strategy-engineering",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-015-migration-oracle",
+        "semantic_signature": [
+          "data-conversion",
+          "row-count",
+          "currency-rounding",
+          "oracle-fixtures"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-016",
+      "family_id": "aq3-no-defect-characterization",
+      "category": "verification",
+      "mode": "automatic",
+      "prompt": "A reported API defect cannot be reproduced on the current revision. Decide how to establish the current behavior and when no code change is the right result.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "verification-strategy-engineering"
+        ],
+        "must_not_select": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [
+          "verification-evidence",
+          "no-change-abstention"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "verification-evidence",
+            "reference_title": "verification-mode-selection",
+            "required": true
+          },
+          {
+            "trigger": "no-change-abstention",
+            "reference_title": "verification-mode-selection",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "verification-strategy-engineering",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-016-no-defect-characterization",
+        "semantic_signature": [
+          "api-defect",
+          "current-revision",
+          "characterization",
+          "no-change"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-017",
+      "family_id": "aq3-third-party-contract",
+      "category": "verification",
+      "mode": "automatic",
+      "prompt": "A third-party adapter is mocked in tests and handles account deletion. Specify the real-boundary check and what mock evidence cannot establish.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "verification-strategy-engineering"
+        ],
+        "must_not_select": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [
+          "verification-evidence"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "verification-evidence",
+            "reference_title": "verification-mode-selection",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "verification-strategy-engineering",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-017-third-party-contract",
+        "semantic_signature": [
+          "third-party-adapter",
+          "mock",
+          "account-deletion",
+          "real-boundary"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-018",
+      "family_id": "aq3-package-freshness",
+      "category": "verification",
+      "mode": "automatic",
+      "prompt": "The source tests passed before packaging, but the delivered command now fails on a clean machine. Set the verification surface, artifact identity, and rerun rule.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "verification-strategy-engineering"
+        ],
+        "must_not_select": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [
+          "verification-evidence"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "verification-evidence",
+            "reference_title": "verification-mode-selection",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "verification-strategy-engineering",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-018-package-freshness",
+        "semantic_signature": [
+          "source-tests",
+          "packaging",
+          "clean-machine",
+          "artifact-identity"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-019",
+      "family_id": "aq3-recurring-timeout",
+      "category": "learning",
+      "mode": "automatic",
+      "prompt": "Several deployments show the same timeout after a new retry setting. Turn the observation into a bounded change decision with competing explanations and a holdout check.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "engineering-learning-loop"
+        ],
+        "must_not_select": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "reference_triggers": [
+          "learning-adoption"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "learning-adoption",
+            "reference_title": "knowledge-freshness-supersession",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "engineering-learning-loop",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-019-recurring-timeout",
+        "semantic_signature": [
+          "deployments",
+          "timeout",
+          "retry-setting",
+          "competing-explanations"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-020",
+      "family_id": "aq3-single-incident",
+      "category": "learning",
+      "mode": "automatic",
+      "prompt": "One operator reports that a generated summary was misleading, with no reproduction or comparison data. Decide whether to adopt a durable rule, hold, or record no change.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "engineering-learning-loop"
+        ],
+        "must_not_select": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "reference_triggers": [
+          "learning-adoption",
+          "no-change-abstention"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "learning-adoption",
+            "reference_title": "knowledge-freshness-supersession",
+            "required": true
+          },
+          {
+            "trigger": "no-change-abstention",
+            "reference_title": "knowledge-freshness-supersession",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "engineering-learning-loop",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-020-single-incident",
+        "semantic_signature": [
+          "operator-report",
+          "misleading-summary",
+          "no-reproduction",
+          "durable-rule"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-021",
+      "family_id": "aq3-stale-checklist",
+      "category": "learning",
+      "mode": "automatic",
+      "prompt": "A release checklist was adopted six months ago, but recent evidence suggests one step creates delay without catching defects. Design the supersession decision and invalidation trigger.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "engineering-learning-loop"
+        ],
+        "must_not_select": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "reference_triggers": [
+          "learning-adoption"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "learning-adoption",
+            "reference_title": "knowledge-freshness-supersession",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "engineering-learning-loop",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-021-stale-checklist",
+        "semantic_signature": [
+          "release-checklist",
+          "delay",
+          "defect-detection",
+          "supersession"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-022",
+      "family_id": "aq3-eval-gaming-risk",
+      "category": "learning",
+      "mode": "automatic",
+      "prompt": "A new instruction improves visible benchmark scores but users report no change. Propose a minimal experiment that checks the mechanism and guards against gaming.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "engineering-learning-loop"
+        ],
+        "must_not_select": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "reference_triggers": [
+          "learning-adoption",
+          "reference-isolation"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "learning-adoption",
+            "reference_title": "knowledge-freshness-supersession",
+            "required": true
+          },
+          {
+            "trigger": "reference-isolation",
+            "reference_title": "failure-attribution-and-mechanism-hypotheses",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "engineering-learning-loop",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-022-eval-gaming-risk",
+        "semantic_signature": [
+          "instruction",
+          "benchmark-score",
+          "user-report",
+          "anti-gaming"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-023",
+      "family_id": "aq3-recovery-pattern",
+      "category": "learning",
+      "mode": "automatic",
+      "prompt": "Two teams use the same workaround for a failing handoff, but their environments differ. Determine the evidence class, operating envelope, and smallest possible intervention.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "engineering-learning-loop"
+        ],
+        "must_not_select": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "reference_triggers": [
+          "learning-adoption"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "learning-adoption",
+            "reference_title": "knowledge-freshness-supersession",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "engineering-learning-loop",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-023-recovery-pattern",
+        "semantic_signature": [
+          "two-teams",
+          "workaround",
+          "handoff",
+          "operating-envelope"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-024",
+      "family_id": "aq3-adoption-owner",
+      "category": "learning",
+      "mode": "automatic",
+      "prompt": "A local safeguard appears effective in one project. Define what provenance, counterevidence, owner, expiry, and rollback are needed before it becomes a shared practice.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "engineering-learning-loop"
+        ],
+        "must_not_select": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "reference_triggers": [],
+        "reference_expectations": []
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "engineering-learning-loop",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-024-adoption-owner",
+        "semantic_signature": [
+          "local-safeguard",
+          "shared-practice",
+          "expiry",
+          "rollback"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-025",
+      "family_id": "aq3-copyedit-label",
+      "category": "native-sufficient",
+      "mode": "automatic",
+      "prompt": "Rewrite this button label in plain language: Initiate the data synchronization procedure.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [],
+        "must_not_select": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [],
+        "reference_expectations": []
+      },
+      "precedence": {
+        "rule": "native-sufficient",
+        "primary_owner": null,
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-025-copyedit-label",
+        "semantic_signature": [
+          "button-label",
+          "plain-language",
+          "synchronization"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-026",
+      "family_id": "aq3-simple-arithmetic",
+      "category": "native-sufficient",
+      "mode": "automatic",
+      "prompt": "What is the total of 18, 27, and 46? Return only the number.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [],
+        "must_not_select": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [],
+        "reference_expectations": []
+      },
+      "precedence": {
+        "rule": "native-sufficient",
+        "primary_owner": null,
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-026-simple-arithmetic",
+        "semantic_signature": [
+          "arithmetic",
+          "three-addends",
+          "number-only"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-027",
+      "family_id": "aq3-format-date",
+      "category": "native-sufficient",
+      "mode": "automatic",
+      "prompt": "Convert 2026-08-09 to the form August 9, 2026.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [],
+        "must_not_select": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [],
+        "reference_expectations": []
+      },
+      "precedence": {
+        "rule": "native-sufficient",
+        "primary_owner": null,
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-027-format-date",
+        "semantic_signature": [
+          "date-format",
+          "iso-date",
+          "month-name"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-028",
+      "family_id": "aq3-brief-summary",
+      "category": "native-sufficient",
+      "mode": "automatic",
+      "prompt": "Summarize this status in five words: The import completed with no errors.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [],
+        "must_not_select": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [],
+        "reference_expectations": []
+      },
+      "precedence": {
+        "rule": "native-sufficient",
+        "primary_owner": null,
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-028-brief-summary",
+        "semantic_signature": [
+          "five-words",
+          "import-status",
+          "no-errors"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-029",
+      "family_id": "aq3-precedence-proof-not-scope",
+      "category": "near-neighbor",
+      "mode": "automatic",
+      "prompt": "A request already states the feature and constraints, but the team is unsure whether its new cache invalidation path needs fault injection or a normal test. Select the needed proof approach.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "verification-strategy-engineering"
+        ],
+        "must_not_select": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [
+          "verification-evidence"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "verification-evidence",
+            "reference_title": "verification-mode-selection",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "specific-over-umbrella",
+        "primary_owner": "verification-strategy-engineering",
+        "competing_owner": "agentic-engineering"
+      },
+      "near_neighbor_kind": "precedence",
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-029-precedence-proof-not-scope",
+        "semantic_signature": [
+          "cache-invalidation",
+          "fault-injection",
+          "proof-approach",
+          "fixed-constraints"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-030",
+      "family_id": "aq3-precedence-learning-not-design",
+      "category": "near-neighbor",
+      "mode": "automatic",
+      "prompt": "An existing scheduling rule causes repeat cancellations in multiple regions. Decide how to govern the observed pattern before proposing a replacement rule.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "engineering-learning-loop"
+        ],
+        "must_not_select": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "reference_triggers": [
+          "learning-adoption"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "learning-adoption",
+            "reference_title": "knowledge-freshness-supersession",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "specific-over-umbrella",
+        "primary_owner": "engineering-learning-loop",
+        "competing_owner": "agentic-engineering"
+      },
+      "near_neighbor_kind": "precedence",
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-030-precedence-learning-not-design",
+        "semantic_signature": [
+          "scheduling-rule",
+          "repeat-cancellations",
+          "multiple-regions",
+          "governance"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-031",
+      "family_id": "aq3-two-owners-architecture-proof",
+      "category": "near-neighbor",
+      "mode": "automatic",
+      "prompt": "A new durable queue will coordinate approval work across restarts. Define both the state-and-effect design and the evidence needed to prove recovery behavior.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "agentic-engineering",
+          "verification-strategy-engineering"
+        ],
+        "must_not_select": [
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [
+          "architecture-boundary",
+          "verification-evidence"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "architecture-boundary",
+            "reference_title": "architecture-decision-table",
+            "required": true
+          },
+          {
+            "trigger": "verification-evidence",
+            "reference_title": "verification-mode-selection",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "exactly-two-owners",
+        "primary_owner": "agentic-engineering",
+        "competing_owner": "verification-strategy-engineering"
+      },
+      "near_neighbor_kind": "exactly_two",
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-031-two-owners-architecture-proof",
+        "semantic_signature": [
+          "durable-queue",
+          "approval-work",
+          "restart",
+          "recovery-proof"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-032",
+      "family_id": "aq3-two-owners-contract-proof",
+      "category": "near-neighbor",
+      "mode": "automatic",
+      "prompt": "A team must replace an export format before a partner deadline. Define the decision boundary and the verification evidence for backward compatibility.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "must_not_select": [
+          "agentic-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [
+          "decision-contract",
+          "verification-evidence"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "decision-contract",
+            "reference_title": "vocabulary-translator",
+            "required": true
+          },
+          {
+            "trigger": "verification-evidence",
+            "reference_title": "verification-mode-selection",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "exactly-two-owners",
+        "primary_owner": "codex-task-contract",
+        "competing_owner": "verification-strategy-engineering"
+      },
+      "near_neighbor_kind": "exactly_two",
+      "declared_invocation": null,
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-032-two-owners-contract-proof",
+        "semantic_signature": [
+          "export-format",
+          "partner-deadline",
+          "decision-boundary",
+          "backward-compatibility"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-033",
+      "family_id": "aq3-explicit-architecture",
+      "category": "explicit-invocation",
+      "mode": "explicit",
+      "prompt": "Invoke `$agentic-engineering` exactly once to assess whether a retrying document processor needs durable state or a simple workflow.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "agentic-engineering"
+        ],
+        "must_not_select": [
+          "codex-task-contract",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [
+          "architecture-boundary"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "architecture-boundary",
+            "reference_title": "architecture-decision-table",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "agentic-engineering",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": "agentic-engineering",
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-033-explicit-architecture",
+        "semantic_signature": [
+          "explicit",
+          "document-processor",
+          "durable-state",
+          "workflow"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-034",
+      "family_id": "aq3-explicit-contract",
+      "category": "explicit-invocation",
+      "mode": "explicit",
+      "prompt": "Invoke `$codex-task-contract` exactly once to turn a request for a safer account merge into outcomes, exclusions, and approval boundaries.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "codex-task-contract"
+        ],
+        "must_not_select": [
+          "agentic-engineering",
+          "verification-strategy-engineering",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [
+          "decision-contract"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "decision-contract",
+            "reference_title": "vocabulary-translator",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "codex-task-contract",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": "codex-task-contract",
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-034-explicit-contract",
+        "semantic_signature": [
+          "explicit",
+          "account-merge",
+          "outcomes",
+          "approval-boundaries"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-035",
+      "family_id": "aq3-explicit-verification",
+      "category": "explicit-invocation",
+      "mode": "explicit",
+      "prompt": "Invoke `$verification-strategy-engineering` exactly once to choose evidence for a rate-limit change that could reject valid requests.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "verification-strategy-engineering"
+        ],
+        "must_not_select": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "engineering-learning-loop"
+        ],
+        "reference_triggers": [
+          "verification-evidence"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "verification-evidence",
+            "reference_title": "verification-mode-selection",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "verification-strategy-engineering",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": "verification-strategy-engineering",
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-035-explicit-verification",
+        "semantic_signature": [
+          "explicit",
+          "rate-limit",
+          "valid-requests",
+          "evidence"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    },
+    {
+      "id": "AQ3-A-036",
+      "family_id": "aq3-explicit-learning",
+      "category": "explicit-invocation",
+      "mode": "explicit",
+      "prompt": "Invoke `$engineering-learning-loop` exactly once to assess whether repeated support corrections justify a governed repository change.",
+      "authority": {
+        "effect_authority": false,
+        "claim_authority": false
+      },
+      "condition_blind": true,
+      "labels_visible_to_runner": false,
+      "outcomes_visible_to_authoring": false,
+      "hidden_labels": {
+        "expected_advisers": [
+          "engineering-learning-loop"
+        ],
+        "must_not_select": [
+          "agentic-engineering",
+          "codex-task-contract",
+          "verification-strategy-engineering"
+        ],
+        "reference_triggers": [
+          "learning-adoption"
+        ],
+        "reference_expectations": [
+          {
+            "trigger": "learning-adoption",
+            "reference_title": "knowledge-freshness-supersession",
+            "required": true
+          }
+        ]
+      },
+      "precedence": {
+        "rule": "single-owner",
+        "primary_owner": "engineering-learning-loop",
+        "competing_owner": null
+      },
+      "near_neighbor_kind": null,
+      "declared_invocation": "engineering-learning-loop",
+      "anti_reuse": {
+        "origin": "aq3-independent-future-corpus",
+        "prior_prompt_content_reviewed": false,
+        "case_nonce": "AQ3-A-036-explicit-learning",
+        "semantic_signature": [
+          "explicit",
+          "support-corrections",
+          "repository-change",
+          "governed"
+        ],
+        "preuse_status": "unconsumed",
+        "post_result_policy": "no-replay-create-new-future-holdout"
+      }
+    }
+  ]
+}
