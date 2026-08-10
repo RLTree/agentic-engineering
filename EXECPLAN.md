@@ -336,6 +336,8 @@ Because AQ2 and AQ3 are two materially similar precision/must-not/reference-isol
 
 AQ4 corpus F was consumed once against candidate `8b43cb5faa6349ce2917402c6078af6c1ec0f671` and tree `6cf7d8b0bdb0344f3b0d794ff36960923f3d6a24`. The non-corpus canary passed. The batch stopped after its first selector response was parsed but before observation construction because the runner incorrectly read `hidden_labels.reference_triggers` instead of the schema-defined top-level field. No raw child bytes, selection, observation, score, or aggregate was persisted. AQ4 is infrastructure-invalid rather than an AQ pass or behavioral failure; corpus F is no-replay. H2 remains untested and may remain unchanged only for an independently authored, blinded, newly frozen AQ5 corpus after the runner defect is repaired and reviewed. AQ remains open, AS stays blocked, and no activation, adviser-value, runtime, provider, model, sandbox, product, promotion, or field claim is established.
 
+Independently authored and blinded AQ5 corpus G is frozen at commit `39fd55df96e99e38d51d5fee13faa6b6294f9c43` and tree `b7b9eb94ffe14a59e924ac2c40926e1a2dc513dd`; it is unconsumed and future-run-only. Any AQ5 canary or batch must bind those exact corpus bytes, the committed validator, and a repaired exact candidate that completes the full zero-model label-to-score preflight before any child invocation.
+
 Use 64 natural-language automatic-routing prompts:
 
 - 12 cross-domain decomposition;
