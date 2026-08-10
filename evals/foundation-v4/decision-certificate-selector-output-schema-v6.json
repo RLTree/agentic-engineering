@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/agentic-engineering/evals/foundation-v4/decision-certificate-selector-output-schema-v6.json",
+  "title": "AQ6 closed decision-certificate fact output",
+  "type": "object",
+  "properties": {
+    "predicate_facts": {
+      "type": "array",
+      "prefixItems": [
+        { "$ref": "#/$defs/multi_domain_coordination" },
+        { "$ref": "#/$defs/cross_component_or_agent_boundary" },
+        { "$ref": "#/$defs/scope_acceptance_or_authority_contract" },
+        { "$ref": "#/$defs/execution_dependencies_or_stop_conditions" },
+        { "$ref": "#/$defs/claim_or_behavior_requires_verification_strategy" },
+        { "$ref": "#/$defs/oracle_or_evidence_adequacy_is_a_decision" },
+        { "$ref": "#/$defs/failure_attribution_or_adaptation_is_a_decision" },
+        { "$ref": "#/$defs/evaluation_or_knowledge_lifecycle_is_a_decision" },
+        { "$ref": "#/$defs/single_domain_native_execution_is_sufficient" },
+        { "$ref": "#/$defs/contract_is_already_complete_and_no_contract_decision_remains" },
+        { "$ref": "#/$defs/verification_method_is_already_fixed_and_no_verification_decision_remains" },
+        { "$ref": "#/$defs/no_learning_or_adaptation_decision_remains" }
+      ],
+      "items": false,
+      "minItems": 12,
+      "maxItems": 12
+    }
+  },
+  "required": ["predicate_facts"],
+  "additionalProperties": false,
+  "$defs": {
+    "fact_state": { "type": "string", "enum": ["present", "absent", "uncertain"] },
+    "multi_domain_coordination": { "$ref": "#/$defs/fact_multi_domain_coordination" },
+    "cross_component_or_agent_boundary": { "$ref": "#/$defs/fact_cross_component_or_agent_boundary" },
+    "scope_acceptance_or_authority_contract": { "$ref": "#/$defs/fact_scope_acceptance_or_authority_contract" },
+    "execution_dependencies_or_stop_conditions": { "$ref": "#/$defs/fact_execution_dependencies_or_stop_conditions" },
+    "claim_or_behavior_requires_verification_strategy": { "$ref": "#/$defs/fact_claim_or_behavior_requires_verification_strategy" },
+    "oracle_or_evidence_adequacy_is_a_decision": { "$ref": "#/$defs/fact_oracle_or_evidence_adequacy_is_a_decision" },
+    "failure_attribution_or_adaptation_is_a_decision": { "$ref": "#/$defs/fact_failure_attribution_or_adaptation_is_a_decision" },
+    "evaluation_or_knowledge_lifecycle_is_a_decision": { "$ref": "#/$defs/fact_evaluation_or_knowledge_lifecycle_is_a_decision" },
+    "single_domain_native_execution_is_sufficient": { "$ref": "#/$defs/fact_single_domain_native_execution_is_sufficient" },
+    "contract_is_already_complete_and_no_contract_decision_remains": { "$ref": "#/$defs/fact_contract_is_already_complete_and_no_contract_decision_remains" },
+    "verification_method_is_already_fixed_and_no_verification_decision_remains": { "$ref": "#/$defs/fact_verification_method_is_already_fixed_and_no_verification_decision_remains" },
+    "no_learning_or_adaptation_decision_remains": { "$ref": "#/$defs/fact_no_learning_or_adaptation_decision_remains" },
+    "fact_multi_domain_coordination": { "$ref": "#/$defs/fact", "allOf": [{ "properties": { "predicate_id": { "const": "multi_domain_coordination" } } }] },
+    "fact_cross_component_or_agent_boundary": { "$ref": "#/$defs/fact", "allOf": [{ "properties": { "predicate_id": { "const": "cross_component_or_agent_boundary" } } }] },
+    "fact_scope_acceptance_or_authority_contract": { "$ref": "#/$defs/fact", "allOf": [{ "properties": { "predicate_id": { "const": "scope_acceptance_or_authority_contract" } } }] },
+    "fact_execution_dependencies_or_stop_conditions": { "$ref": "#/$defs/fact", "allOf": [{ "properties": { "predicate_id": { "const": "execution_dependencies_or_stop_conditions" } } }] },
+    "fact_claim_or_behavior_requires_verification_strategy": { "$ref": "#/$defs/fact", "allOf": [{ "properties": { "predicate_id": { "const": "claim_or_behavior_requires_verification_strategy" } } }] },
+    "fact_oracle_or_evidence_adequacy_is_a_decision": { "$ref": "#/$defs/fact", "allOf": [{ "properties": { "predicate_id": { "const": "oracle_or_evidence_adequacy_is_a_decision" } } }] },
+    "fact_failure_attribution_or_adaptation_is_a_decision": { "$ref": "#/$defs/fact", "allOf": [{ "properties": { "predicate_id": { "const": "failure_attribution_or_adaptation_is_a_decision" } } }] },
+    "fact_evaluation_or_knowledge_lifecycle_is_a_decision": { "$ref": "#/$defs/fact", "allOf": [{ "properties": { "predicate_id": { "const": "evaluation_or_knowledge_lifecycle_is_a_decision" } } }] },
+    "fact_single_domain_native_execution_is_sufficient": { "$ref": "#/$defs/fact", "allOf": [{ "properties": { "predicate_id": { "const": "single_domain_native_execution_is_sufficient" } } }] },
+    "fact_contract_is_already_complete_and_no_contract_decision_remains": { "$ref": "#/$defs/fact", "allOf": [{ "properties": { "predicate_id": { "const": "contract_is_already_complete_and_no_contract_decision_remains" } } }] },
+    "fact_verification_method_is_already_fixed_and_no_verification_decision_remains": { "$ref": "#/$defs/fact", "allOf": [{ "properties": { "predicate_id": { "const": "verification_method_is_already_fixed_and_no_verification_decision_remains" } } }] },
+    "fact_no_learning_or_adaptation_decision_remains": { "$ref": "#/$defs/fact", "allOf": [{ "properties": { "predicate_id": { "const": "no_learning_or_adaptation_decision_remains" } } }] },
+    "fact": {
+      "type": "object",
+      "properties": {
+        "predicate_id": { "type": "string" },
+        "state": { "$ref": "#/$defs/fact_state" }
+      },
+      "required": ["predicate_id", "state"],
+      "additionalProperties": false
+    }
+  }
+}

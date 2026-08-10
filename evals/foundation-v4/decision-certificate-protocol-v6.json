@@ -1,0 +1,135 @@
+{
+  "schema_version": "6.0",
+  "protocol_id": "H3-decision-certificate",
+  "status": "frozen-proposal-only",
+  "claim_ceiling": "structural-proposal-only",
+  "purpose": "H3 separates model fact extraction from deterministic parent selection. It is a qualification proposal, not an outcome-tuned routing result.",
+  "model_output_contract": {
+    "schema_path": "evals/foundation-v4/decision-certificate-selector-output-schema-v6.json",
+    "required_root": "predicate_facts",
+    "ordered_fact_count": 12,
+    "allowed_fact_states": [
+      "present",
+      "absent",
+      "uncertain"
+    ],
+    "model_must_not_output": [
+      "atoms",
+      "advisers",
+      "routes",
+      "authority",
+      "effects",
+      "claims"
+    ]
+  },
+  "predicate_order": [
+    "multi_domain_coordination",
+    "cross_component_or_agent_boundary",
+    "scope_acceptance_or_authority_contract",
+    "execution_dependencies_or_stop_conditions",
+    "claim_or_behavior_requires_verification_strategy",
+    "oracle_or_evidence_adequacy_is_a_decision",
+    "failure_attribution_or_adaptation_is_a_decision",
+    "evaluation_or_knowledge_lifecycle_is_a_decision",
+    "single_domain_native_execution_is_sufficient",
+    "contract_is_already_complete_and_no_contract_decision_remains",
+    "verification_method_is_already_fixed_and_no_verification_decision_remains",
+    "no_learning_or_adaptation_decision_remains"
+  ],
+  "deterministic_selection": {
+    "derived_atom_order": [
+      "topology-control-boundary",
+      "task-contract",
+      "verification-strategy",
+      "engineering-learning"
+    ],
+    "eligibility_rules": [
+      {
+        "derived_atom": "topology-control-boundary",
+        "positive_predicates": [
+          "multi_domain_coordination",
+          "cross_component_or_agent_boundary"
+        ],
+        "exclusion_predicate": "single_domain_native_execution_is_sufficient"
+      },
+      {
+        "derived_atom": "task-contract",
+        "positive_predicates": [
+          "scope_acceptance_or_authority_contract",
+          "execution_dependencies_or_stop_conditions"
+        ],
+        "exclusion_predicate": "contract_is_already_complete_and_no_contract_decision_remains"
+      },
+      {
+        "derived_atom": "verification-strategy",
+        "positive_predicates": [
+          "claim_or_behavior_requires_verification_strategy",
+          "oracle_or_evidence_adequacy_is_a_decision"
+        ],
+        "exclusion_predicate": "verification_method_is_already_fixed_and_no_verification_decision_remains"
+      },
+      {
+        "derived_atom": "engineering-learning",
+        "positive_predicates": [
+          "failure_attribution_or_adaptation_is_a_decision",
+          "evaluation_or_knowledge_lifecycle_is_a_decision"
+        ],
+        "exclusion_predicate": "no_learning_or_adaptation_decision_remains"
+      }
+    ],
+    "eligibility_definition": "An atom is eligible exactly when at least one of its positive predicates is present, its exclusion predicate is absent, and every predicate relevant to that atom is present or absent. Any relevant uncertain state makes that atom ineligible.",
+    "automatic_selection": "Select exactly all eligible atoms in derived_atom_order. If more than two are eligible, return cap_exceeded with no selected atom. Otherwise return the eligible ordered set.",
+    "selection_cap": 2
+  },
+  "explicit_constraint": {
+    "parse_boundary": "The parent, not the model output, parses task text for qualified explicit invocation syntax.",
+    "qualified_invocation_grammar": {
+      "normalization": "Normalize task text as Unicode NFC, then scan it without trimming, case folding, substring expansion, or token rewriting.",
+      "exact_pattern": "(?<![A-Za-z0-9_-])\\$(?:agentic-engineering|codex-task-contract|verification-strategy-engineering|engineering-learning-loop)(?![A-Za-z0-9_-])",
+      "invocation_like_pattern": "(?<![A-Za-z0-9_-])\\$[A-Za-z][A-Za-z0-9-]*(?![A-Za-z0-9_-])"
+    },
+    "ordered_token_to_logical_atom": [
+      {
+        "token": "$agentic-engineering",
+        "logical_atom": "topology-control-boundary"
+      },
+      {
+        "token": "$codex-task-contract",
+        "logical_atom": "task-contract"
+      },
+      {
+        "token": "$verification-strategy-engineering",
+        "logical_atom": "verification-strategy"
+      },
+      {
+        "token": "$engineering-learning-loop",
+        "logical_atom": "engineering-learning"
+      }
+    ],
+    "exact": "After the predicate facts are schema-valid, exactly one exact qualified $adviser invocation selects exactly its mapped logical atom.",
+    "ambiguous": "More than one qualified invocation is ambiguous and selects no atom.",
+    "absence": "When task text contains no invocation-like token, automatic eligibility remains in force.",
+    "unrecognized": "Any unrecognized invocation-like token, including one mixed with a qualified token, selects no atom.",
+    "precedence": "A schema-valid exact explicit constraint takes precedence over automatic eligibility. The eligible set remains deterministic telemetry only."
+  },
+  "parent_only_resolution": {
+    "mapping": "Only after selection, the parent maps selected logical atoms to advisers using the separately qualified candidate mapping.",
+    "references": "Only after parent mapping, the parent may resolve zero through three deterministic references.",
+    "prohibitions": [
+      "no_authority_assignment",
+      "no_policy_adoption",
+      "no_effect_execution",
+      "no_external_action",
+      "no_completion_claim",
+      "no_efficacy_claim",
+      "no_product_claim"
+    ]
+  },
+  "qualification_controls": {
+    "aq5_g_no_replay": true,
+    "outcome_tuned": false,
+    "fresh_blinded_corpus_required": true,
+    "authorized_observation_schedule": "one_canary_then_one_batch",
+    "claim_ceiling": "A frozen protocol, schema validation, synthetic resolver tests, and any later qualification observations do not establish runtime behavior, product behavior, efficacy, promotion, authority, effects, or external claims."
+  }
+}
