@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/agentic-engineering/evals/foundation-v4/decision-atom-selector-output-schema.json",
+  "title": "AQ4 closed decision-atom selector output",
+  "type": "object",
+  "properties": {
+    "selected_decision_atoms": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "topology-control-boundary",
+          "task-contract",
+          "verification-strategy",
+          "engineering-learning"
+        ]
+      },
+      "uniqueItems": true,
+      "maxItems": 2
+    }
+  },
+  "required": ["selected_decision_atoms"],
+  "additionalProperties": false
+}

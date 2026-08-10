@@ -1,0 +1,65 @@
+{
+  "schema_version": "4.0",
+  "claim_ceiling": "structural-proposal-only",
+  "source": {
+    "commit": "407a2ac124856f0ce1fa33af8a61d0607e413820",
+    "tree": "8314ca6ad82fa4687720692d8c5762c7aabf6261"
+  },
+  "base_candidate": {
+    "path": "evals/foundation-v4/reduced-four-skills/candidate.json",
+    "sha256": "854f67bdd03e7121bd20e5513ef61ac806d016b3a5f1d6e5891bf4d9e546eb1f"
+  },
+  "corpus": {
+    "commit": "f110be6ccb3460719141fea74b2fdb4313924718",
+    "tree": "ed3a0ee0afeb32f25033620519658b7b4774068c",
+    "schema_path": "evals/foundation-v4/future-activation-v4/activation-schema.json",
+    "schema_sha256": "cf6652dc71aab3a0283b81a1eaff0da7073b836359409fbc006586d247b8af72",
+    "authoring_path": "evals/foundation-v4/future-activation-v4/activation-authoring.json",
+    "authoring_sha256": "149a4b88ba49493d03d9ac625891f1a45e818e6d2349f108e4129ba2dd2548f4",
+    "heldout_path": "evals/foundation-v4/future-activation-v4/activation-heldout.json",
+    "heldout_sha256": "376291b0f0b6c3a9e20cbe608aa74dd1cbcbf3241d59b33c2f2ec717f4964fac",
+    "validator_path": "scripts/validate_future_activation_corpus_v4.py",
+    "validator_sha256": "0f5757a5b94f4601434add605910a6e438897de5d84bb57f4d63c8cb2e656327",
+    "validator_source": "candidate_commit"
+  },
+  "evaluator_surface": {
+    "claim_ceiling": "decision-atom-structural-and-deterministic-telemetry-only",
+    "jsonschema_dialect": "Draft 2020-12",
+    "files": [
+      {"path": "evals/foundation-v4/activation-evaluator-schema-v4.json", "sha256": "66f825bb62fde9ec6f929634d55f384a6ebbf807a5ccbec7f5c9d41475a5c870"},
+      {"path": "evals/foundation-v4/decision-atom-selector-output-schema.json", "sha256": "54507270e5efb96a7666d975b3e454dadaf736d6030767350854ac447bc38dbd"},
+      {"path": "scripts/check_reduced_four_skill_candidate_v4.py", "sha256": "cb6573dffefbb603f9664043f8be967298f3e1b8f1e01cf0686ba483d85529e2"},
+      {"path": "scripts/score_activation_v4.py", "sha256": "e143b5946c9a783634c8d17c7ccd805b4627ab248d152dd848ee91ed1066cd2d"},
+      {"path": "scripts/run_activation_trials_v4.py", "sha256": "b4a6c11bb38dfe099f29ec2f872b799b4fc48ddd15a2df413004d5365f9a0aef"},
+      {"path": "scripts/validate_future_activation_corpus_v4.py", "sha256": "0f5757a5b94f4601434add605910a6e438897de5d84bb57f4d63c8cb2e656327"}
+    ]
+  },
+  "atom_to_adviser": [
+    {"atom_id": "topology-control-boundary", "adviser_id": "agentic-engineering", "explicit_token": "$agentic-engineering"},
+    {"atom_id": "task-contract", "adviser_id": "codex-task-contract", "explicit_token": "$codex-task-contract"},
+    {"atom_id": "verification-strategy", "adviser_id": "verification-strategy-engineering", "explicit_token": "$verification-strategy-engineering"},
+    {"atom_id": "engineering-learning", "adviser_id": "engineering-learning-loop", "explicit_token": "$engineering-learning-loop"}
+  ],
+  "conditions": {
+    "current": {
+      "condition_input_sha256": "3d937a795979b109dd4c86dc69f85bc40cbe6e9b4b9f74f5562f9c6c55675ed7",
+      "atom_catalog_sha256": "041a17c0ce7101366aacebe4b3abcfa14757729a92f751111641de403b24f6d4",
+      "atom_catalog": [
+        {"atom_id": "topology-control-boundary", "declared_scope": "Use when an AI or agent product needs architecture, lifecycle, assurance, field-learning, or Rust engineering decisions.", "positive_boundary": "Own the topology or control-boundary decision itself.", "admission_rule": "Admit only for a direct instance of this controlling decision; topical relevance, downstream usefulness, and possible future need are insufficient.", "pairwise_exclusions": [{"atom_id": "task-contract", "boundary": "Exclude when task-contract definition is the direct decision and topology is only context."}, {"atom_id": "verification-strategy", "boundary": "Exclude when verification strategy is the direct decision and topology is only context."}, {"atom_id": "engineering-learning", "boundary": "Exclude when governed learning is the direct decision and topology is only context."}]},
+        {"atom_id": "task-contract", "declared_scope": "Use when a consequential or ambiguous Codex request needs an explicit outcome, authority, evidence, and done contract.", "positive_boundary": "Own the task outcome, authority, evidence, and done contract itself.", "admission_rule": "Admit only for a direct instance of this controlling decision; topical relevance, downstream usefulness, and possible future need are insufficient.", "pairwise_exclusions": [{"atom_id": "topology-control-boundary", "boundary": "Exclude when topology or control-boundary design is the direct decision and contract wording is only downstream."}, {"atom_id": "verification-strategy", "boundary": "Exclude when verification strategy is the direct decision and contract wording is only context."}, {"atom_id": "engineering-learning", "boundary": "Exclude when governed learning is the direct decision and contract wording is only context."}]},
+        {"atom_id": "verification-strategy", "declared_scope": "Use when a software or agent change needs a proportional proof strategy before implementation, review, or release.", "positive_boundary": "Own the proportional verification strategy itself.", "admission_rule": "Admit only for a direct instance of this controlling decision; topical relevance, downstream usefulness, and possible future need are insufficient.", "pairwise_exclusions": [{"atom_id": "topology-control-boundary", "boundary": "Exclude when topology or control-boundary design is the direct decision and proof is only downstream."}, {"atom_id": "task-contract", "boundary": "Exclude when task-contract definition is the direct decision and proof wording is only context."}, {"atom_id": "engineering-learning", "boundary": "Exclude when governed learning from an observation is the direct decision rather than proof selection."}]},
+        {"atom_id": "engineering-learning", "declared_scope": "Use when observed agent or product outcomes should become governed changes to evals, tools, rules, prompts, or architecture.", "positive_boundary": "Own the governed engineering-learning decision itself.", "admission_rule": "Admit only for a direct instance of this controlling decision; topical relevance, downstream usefulness, and possible future need are insufficient.", "pairwise_exclusions": [{"atom_id": "topology-control-boundary", "boundary": "Exclude when topology or control-boundary design is the direct decision without an observed learning input."}, {"atom_id": "task-contract", "boundary": "Exclude when task-contract definition is the direct decision without an observed learning input."}, {"atom_id": "verification-strategy", "boundary": "Exclude when choosing proof before observation is the direct decision."}]}
+      ]
+    },
+    "reduced": {
+      "condition_input_sha256": "3e8429cb501657f3d2253078031027685d451e601e94ee06e4332cedc2eaaa9a",
+      "atom_catalog_sha256": "d1ba2828bd03edbef7c912950b7fddd403e132792fbbe508e913337e39f5aa9e",
+      "atom_catalog": [
+        {"atom_id": "topology-control-boundary", "declared_scope": "Proposal-only advice for choosing the smallest agentic topology or control boundary.", "positive_boundary": "Own the topology or control-boundary decision itself.", "admission_rule": "Admit only for a direct instance of this controlling decision; topical relevance, downstream usefulness, and possible future need are insufficient.", "pairwise_exclusions": [{"atom_id": "task-contract", "boundary": "Exclude when task-contract definition is the direct decision and topology is only context."}, {"atom_id": "verification-strategy", "boundary": "Exclude when verification strategy is the direct decision and topology is only context."}, {"atom_id": "engineering-learning", "boundary": "Exclude when governed learning is the direct decision and topology is only context."}]},
+        {"atom_id": "task-contract", "declared_scope": "Proposal-only advice for turning an ambiguous task into a bounded, evidence-linked contract.", "positive_boundary": "Own the task outcome, authority, evidence, and done contract itself.", "admission_rule": "Admit only for a direct instance of this controlling decision; topical relevance, downstream usefulness, and possible future need are insufficient.", "pairwise_exclusions": [{"atom_id": "topology-control-boundary", "boundary": "Exclude when topology or control-boundary design is the direct decision and contract wording is only downstream."}, {"atom_id": "verification-strategy", "boundary": "Exclude when verification strategy is the direct decision and contract wording is only context."}, {"atom_id": "engineering-learning", "boundary": "Exclude when governed learning is the direct decision and contract wording is only context."}]},
+        {"atom_id": "verification-strategy", "declared_scope": "Explicit, proposal-only advice for choosing proportional verification evidence for an exact software or agent candidate.", "positive_boundary": "Own the proportional verification strategy itself.", "admission_rule": "Admit only for a direct instance of this controlling decision; topical relevance, downstream usefulness, and possible future need are insufficient.", "pairwise_exclusions": [{"atom_id": "topology-control-boundary", "boundary": "Exclude when topology or control-boundary design is the direct decision and proof is only downstream."}, {"atom_id": "task-contract", "boundary": "Exclude when task-contract definition is the direct decision and proof wording is only context."}, {"atom_id": "engineering-learning", "boundary": "Exclude when governed learning from an observation is the direct decision rather than proof selection."}]},
+        {"atom_id": "engineering-learning", "declared_scope": "Explicit, proposal-only advice for turning a bounded engineering observation into a governed learning recommendation.", "positive_boundary": "Own the governed engineering-learning decision itself.", "admission_rule": "Admit only for a direct instance of this controlling decision; topical relevance, downstream usefulness, and possible future need are insufficient.", "pairwise_exclusions": [{"atom_id": "topology-control-boundary", "boundary": "Exclude when topology or control-boundary design is the direct decision without an observed learning input."}, {"atom_id": "task-contract", "boundary": "Exclude when task-contract definition is the direct decision without an observed learning input."}, {"atom_id": "verification-strategy", "boundary": "Exclude when choosing proof before observation is the direct decision."}]}
+      ]
+    }
+  }
+}
