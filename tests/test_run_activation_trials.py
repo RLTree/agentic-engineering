@@ -73,6 +73,22 @@ class RunnerTests(unittest.TestCase):
         selected, raw, context = runner.run_one(argv=["codex"], packet="{}", invoke=fake)
         self.assertEqual(selected, []); self.assertTrue(raw.startswith(b'{"type": "thread.started"')); self.assertEqual(len(fake.calls), 2)
 
+    def test_terminal_error_item_is_diagnostic_and_not_retried(self):
+        raw = b'{"type":"thread.started","thread_id":"x"}\n{"type":"item.completed","item":{"type":"error","message":"provider unavailable"}}\n'
+        fake = Fake([response(raw), response(events())])
+        with self.assertRaisesRegex(runner.RunnerError, "child error item: provider unavailable"):
+            runner.run_one(argv=["codex"], packet="{}", invoke=fake)
+        self.assertEqual(len(fake.calls), 1)
+
+    def test_top_level_and_turn_errors_are_diagnostic(self):
+        cases = (
+            (b'{"type":"error","message":"stream failed"}\n', "child stream error: stream failed"),
+            (b'{"type":"turn.failed","error":{"message":"turn failed"}}\n', "child turn failed: turn failed"),
+        )
+        for raw, expected in cases:
+            with self.subTest(expected=expected), self.assertRaisesRegex(runner.RunnerError, expected):
+                runner.parse_events(raw)
+
     def test_tool_event_is_rejected(self):
         with self.assertRaises(runner.RunnerError):
             runner.parse_events(b'{"type":"thread.started","thread_id":"x"}\n{"type":"item.completed","item":{"type":"tool_call"}}\n')
@@ -115,16 +131,23 @@ class RunnerTests(unittest.TestCase):
             ROOT / "scripts/run_activation_trials.py",
             ROOT / "evals/foundation-v4/selector-output-schema.json",
             ROOT / "evals/foundation-v4/activation-heldout.json",
+            ROOT / "evals/foundation-v4/reduced-four-skills/candidate.json",
         ]
         before = {path: path.read_bytes() for path in watched}
         status_before = subprocess.run(["git", "status", "--porcelain"], cwd=ROOT, capture_output=True, check=True).stdout
         stdout = io.StringIO()
         codex_info = {"path": "/test/codex", "version": "codex-cli test", "sha256": "a" * 64}
-        with mock.patch.object(runner, "codex_preflight", return_value=codex_info), \
+        committed = all(
+            subprocess.run(["git", "show", f"HEAD:{path.relative_to(ROOT)}"], cwd=ROOT, capture_output=True).stdout == path.read_bytes()
+            for path in watched
+        )
+        preflight = mock.Mock(return_value=codex_info) if committed else mock.Mock(side_effect=AssertionError("draft HOLD must precede Codex preflight"))
+        with mock.patch.object(runner, "codex_preflight", preflight), \
              mock.patch.object(runner, "invoke_packet", side_effect=AssertionError("dry-run must not make a model call")), \
              contextlib.redirect_stderr(io.StringIO()), contextlib.redirect_stdout(stdout):
-            self.assertEqual(runner.main(["--dry-run", "--candidate-commit", "HEAD"]), 0)
-        self.assertEqual(json.loads(stdout.getvalue())["live_calls"], 0)
+            self.assertEqual(runner.main(["--dry-run", "--candidate-commit", "HEAD"]), 0 if committed else 2)
+        if committed:
+            self.assertEqual(json.loads(stdout.getvalue())["live_calls"], 0)
         status_after = subprocess.run(["git", "status", "--porcelain"], cwd=ROOT, capture_output=True, check=True).stdout
         self.assertEqual(before, {path: path.read_bytes() for path in watched})
         self.assertEqual(status_before, status_after)

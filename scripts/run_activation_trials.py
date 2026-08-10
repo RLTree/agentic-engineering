@@ -245,6 +245,15 @@ def child_argv(codex_path: str, temporary_cwd: str, schema_path: Path) -> list[s
     return argv + ["--output-schema", str(schema_path.resolve()), "--color", "never", "--json", "-"]
 
 
+def error_message(value: Any) -> str:
+    """Return a bounded diagnostic for a terminal child error event."""
+    if isinstance(value, dict):
+        value = value.get("message")
+    if not isinstance(value, str) or not value.strip():
+        return "unspecified child error"
+    return " ".join(value.split())[:240]
+
+
 def parse_events(raw: bytes) -> tuple[list[str], bytes, str]:
     """Parse Codex JSONL and retain the actual ephemeral thread identity only."""
     completed: list[str] = []
@@ -269,10 +278,16 @@ def parse_events(raw: bytes) -> tuple[list[str], bytes, str]:
         if event_type == "turn.completed":
             turn_completed = True
             continue
+        if event_type == "turn.failed":
+            raise RunnerError(f"child turn failed: {error_message(event.get('error'))}")
+        if event_type == "error":
+            raise RunnerError(f"child stream error: {error_message(event.get('message'))}")
         item = event.get("item")
         if event_type not in {"item.started", "item.updated", "item.completed"} or not isinstance(item, dict):
             raise RunnerError("unrecognized Codex JSONL event")
         item_type = item.get("type")
+        if item_type == "error":
+            raise RunnerError(f"child error item: {error_message(item.get('message'))}")
         forbidden = {"tool_call", "mcp_tool_call", "command_execution", "file_change", "mcp_call", "function_call", "web_search_call", "effect", "approval", "approval_request"}
         if item_type in forbidden:
             raise RunnerError("child emitted an authority or tool event")
