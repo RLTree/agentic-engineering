@@ -66,7 +66,7 @@
       {
         "role": "checker",
         "path": "scripts/check_reduced_four_skill_candidate_v7.py",
-        "sha256": "ca08b4d663bb240e2a3ef07e0bdb564e757e5bfcfc3713e471080951e2500021"
+        "sha256": "b1034415f9afda7e49fa32008a87a8240a7d45dce2271f931623c7c3a04bd780"
       },
       {
         "role": "resolver",
@@ -81,12 +81,17 @@
       {
         "role": "runner",
         "path": "scripts/run_activation_trials_v7.py",
-        "sha256": "0dd5046bbea44977fd97adeebdfcb8356acc8f51c44f431f1491580fa3620d5c"
+        "sha256": "28a1a1d046d363440e0e56ad044ced355cb14e22a2d83080ac98565ada2d68c7"
       },
       {
         "role": "evaluator_schema",
         "path": "evals/foundation-v4/activation-evaluator-schema-v7.json",
         "sha256": "53d1b70b1231b31c9396ebc241db29f0ba774f7d9d56207f9383932a2ce5a0d7"
+      },
+      {
+        "role": "runtime_selector_schema",
+        "path": "evals/foundation-v4/decision-certificate-runtime-output-schema-v7.json",
+        "sha256": "feff43b0d6b1a5abe8b905c7cc3767576e3dfc21ade6324f3fda3bb9593aa474"
       },
       {
         "role": "validator",

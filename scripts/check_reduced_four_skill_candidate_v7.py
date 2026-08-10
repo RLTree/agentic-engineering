@@ -40,6 +40,7 @@ RUN_INDEX = ("f63670dda7e5bba4127ce59750844b52e35835fb", "b1cd3a8cde4a0867cb7da0
 ADAPTER = ("ca046add50cdececfdbe14fe897d27a538431d55", "3fd841749eb117041e814a01890fda5cffe448d4")
 H3_PROTOCOL = "evals/foundation-v4/decision-certificate-protocol-v6.json"
 SELECTOR_SCHEMA = "evals/foundation-v4/decision-certificate-selector-output-schema-v6.json"
+RUNTIME_SELECTOR_SCHEMA = "evals/foundation-v4/decision-certificate-runtime-output-schema-v7.json"
 POLICY_PATH = "evals/foundation-v4/decision-certificate-reference-policy-v6.json"
 BASE_PATH = "evals/foundation-v4/reduced-four-skills/candidate.json"
 CORPUS_ROOT = "evals/foundation-v4/future-activation-v7"
@@ -51,7 +52,7 @@ RUN_INDEX_PATH = "scripts/aq_run_index_v7.py"
 ADAPTER_PATH = "evals/foundation-v4/decision-certificate-condition-adapter-v7.json"
 HEX40 = re.compile(r"^[0-9a-f]{40}$")
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
-ROLES = ("checker", "resolver", "scorer", "runner", "evaluator_schema", "validator", "run_index", "condition_adapter")
+ROLES = ("checker", "resolver", "scorer", "runner", "evaluator_schema", "runtime_selector_schema", "validator", "run_index", "condition_adapter")
 CONDITIONS = (
     ("current", "6aea72c13ffc2aa8be66aa7ea2131b0b9045adc1fc23d3e338a04ad8fad7d6a0"),
     ("reduced", "237502bfde87c3b3cd2ad813fcda2e229591a858213816f7a903ade2746c8e8f"),
@@ -131,6 +132,52 @@ def _require_closed(value: Any, keys: set[str], message: str) -> dict[str, Any]:
     return value
 
 
+def _expected_runtime_selector_schema(protocol: Any) -> dict[str, Any]:
+    """Project the frozen H3 fact contract into the provider schema subset."""
+    if not isinstance(protocol, dict):
+        raise CandidateError("H3 protocol is not an object")
+    predicate_order = protocol.get("predicate_order")
+    output_contract = protocol.get("model_output_contract")
+    states = ["present", "absent", "uncertain"]
+    if (not isinstance(predicate_order, list)
+            or len(predicate_order) != 12
+            or any(not isinstance(predicate, str) or not predicate for predicate in predicate_order)
+            or len(set(predicate_order)) != 12):
+        raise CandidateError("H3 predicate order cannot project to runtime schema")
+    if (not isinstance(output_contract, dict)
+            or output_contract.get("required_root") != "predicate_facts"
+            or output_contract.get("ordered_fact_count") != 12
+            or output_contract.get("allowed_fact_states") != states):
+        raise CandidateError("H3 output contract cannot project to runtime schema")
+    return {
+        "type": "object",
+        "properties": {
+            "predicate_facts": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "predicate_id": {"type": "string", "enum": predicate_order},
+                        "state": {"type": "string", "enum": states},
+                    },
+                    "required": ["predicate_id", "state"],
+                    "additionalProperties": False,
+                },
+                "minItems": 12,
+                "maxItems": 12,
+            },
+        },
+        "required": ["predicate_facts"],
+        "additionalProperties": False,
+    }
+
+
+def validate_runtime_selector_schema(protocol: Any, runtime_schema: Any) -> None:
+    """Reject any runtime schema that is not the exact provider-safe projection."""
+    if runtime_schema != _expected_runtime_selector_schema(protocol):
+        raise CandidateError("runtime selector schema is not the exact H3 projection")
+
+
 def _live_clean(root: Path, commit: str) -> None:
     head = _git(root, ["rev-parse", "--verify", "HEAD^{commit}"]).decode().strip()
     if head != commit or _git(root, ["status", "--porcelain=v1", "--untracked-files=all"]):
@@ -185,7 +232,7 @@ def validate_manifest_document(manifest: Any, root: Path | None = None, candidat
         files = surface["files"]
         if not isinstance(files, list) or len(files) != len(ROLES):
             raise CandidateError("evaluator surface cardinality mismatch")
-        paths = {"checker": "scripts/check_reduced_four_skill_candidate_v7.py", "resolver": "scripts/resolve_h3_decision_certificate_v7.py", "scorer": "scripts/score_activation_v7.py", "runner": "scripts/run_activation_trials_v7.py", "evaluator_schema": "evals/foundation-v4/activation-evaluator-schema-v7.json", "validator": VALIDATOR_PATH, "run_index": RUN_INDEX_PATH, "condition_adapter": ADAPTER_PATH}
+        paths = {"checker": "scripts/check_reduced_four_skill_candidate_v7.py", "resolver": "scripts/resolve_h3_decision_certificate_v7.py", "scorer": "scripts/score_activation_v7.py", "runner": "scripts/run_activation_trials_v7.py", "evaluator_schema": "evals/foundation-v4/activation-evaluator-schema-v7.json", "runtime_selector_schema": RUNTIME_SELECTOR_SCHEMA, "validator": VALIDATOR_PATH, "run_index": RUN_INDEX_PATH, "condition_adapter": ADAPTER_PATH}
         if [row.get("role") if isinstance(row, dict) else None for row in files] != list(ROLES):
             raise CandidateError("evaluator surface roles are unordered or incomplete")
         for row in files:
@@ -212,6 +259,10 @@ def validate_manifest_document(manifest: Any, root: Path | None = None, candidat
                     raise CandidateError("evaluator surface digest mismatch")
                 if require_live and (workspace / row["path"]).read_bytes() != _show(workspace, commit, row["path"]):
                     raise CandidateError("live evaluator surface bytes differ")
+            validate_runtime_selector_schema(
+                _json(_show(workspace, commit, H3_PROTOCOL), "H3 protocol"),
+                _json(_show(workspace, commit, RUNTIME_SELECTOR_SCHEMA), "runtime selector schema"),
+            )
         return []
     except CandidateError:
         raise
@@ -253,6 +304,8 @@ def load_verified_candidate(root: Path | str, candidate_commit: str, require_liv
         raise CandidateError("AQ7 frozen qualified-id receipt is unavailable")
     protocol = _json(_show(workspace, commit, H3_PROTOCOL), "H3 protocol")
     selector_schema = _json(_show(workspace, commit, SELECTOR_SCHEMA), "selector schema")
+    runtime_selector_schema = _json(_show(workspace, commit, RUNTIME_SELECTOR_SCHEMA), "runtime selector schema")
+    validate_runtime_selector_schema(protocol, runtime_selector_schema)
     profile = {
         "candidate_commit": commit,
         "tree": _tree(workspace, commit),
@@ -260,6 +313,7 @@ def load_verified_candidate(root: Path | str, candidate_commit: str, require_liv
         "manifest": manifest,
         "protocol": protocol,
         "selector_schema": selector_schema,
+        "runtime_selector_schema": runtime_selector_schema,
         "reference_policy": _json(_show(workspace, commit, POLICY_PATH), "reference policy"),
         "base_manifest": _json(_show(workspace, commit, BASE_PATH), "base manifest"),
         "adapter": _json(_show(workspace, commit, ADAPTER_PATH), "condition adapter"),
@@ -270,7 +324,7 @@ def load_verified_candidate(root: Path | str, candidate_commit: str, require_liv
         "qualified_ids": tuple(getattr(result, "qualified_ids")),
         "execution_contract": manifest["execution_contract"],
     }
-    if set(profile) != {"candidate_commit", "tree", "digest", "manifest", "protocol", "selector_schema", "reference_policy", "base_manifest", "adapter", "corpus_schema", "authoring", "heldout", "qualified_cases", "qualified_ids", "execution_contract"}:
+    if set(profile) != {"candidate_commit", "tree", "digest", "manifest", "protocol", "selector_schema", "runtime_selector_schema", "reference_policy", "base_manifest", "adapter", "corpus_schema", "authoring", "heldout", "qualified_cases", "qualified_ids", "execution_contract"}:
         raise CandidateError("verified profile shape drift")
     return profile
 

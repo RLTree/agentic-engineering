@@ -19,10 +19,11 @@ spec = importlib.util.spec_from_file_location("aq7_runner_test", PATH)
 runner = importlib.util.module_from_spec(spec); assert spec and spec.loader; sys.modules[spec.name] = runner; spec.loader.exec_module(runner)
 sys.path.insert(0, str(ROOT / "scripts"))
 import check_reduced_four_skill_candidate_v7 as candidate_checker  # noqa: E402
+import aq_run_index_v7 as run_index  # noqa: E402
 
 
 def profile():
-    return {"protocol": {"predicate_order": [f"p{n}" for n in range(12)]}, "selector_schema": {}, "adapter": {}, "reference_policy": {}, "base_manifest": {}}
+    return {"protocol": {"predicate_order": [f"p{n}" for n in range(12)]}, "selector_schema": {}, "runtime_selector_schema": {}, "adapter": {}, "reference_policy": {}, "base_manifest": {}}
 
 
 def events(value, *, thread="fresh"):
@@ -50,21 +51,13 @@ def committed_fixture():
         subprocess.run(["git", "config", "user.name", "AQ7 runner test"], cwd=root, check=True)
         subprocess.run(["git", "config", "user.email", "aq7@example.invalid"], cwd=root, check=True)
         files = (runner.CHECKER_PATH, runner.RESOLVER_PATH, runner.SCORER_PATH, runner.RUNNER_PATH,
-                 runner.SELECTOR_SCHEMA_PATH, candidate_checker.ADAPTER_PATH)
+                 runner.EVALUATOR_SCHEMA_PATH, candidate_checker.RUNTIME_SELECTOR_SCHEMA, candidate_checker.ADAPTER_PATH)
         for relative in files:
             target = root / relative; target.parent.mkdir(parents=True, exist_ok=True); shutil.copy2(ROOT / relative, target)
-        # The checker loads its committed validator through importlib; register
-        # that transient module so Python 3.14 dataclass annotation resolution
-        # has its defining module namespace during the isolated fixture.
-        checker_source = root / runner.CHECKER_PATH
-        checker_source.write_text(checker_source.read_text(encoding="utf-8").replace(
-            "import importlib.util", "import importlib.util\nimport sys").replace(
-            "module = importlib.util.module_from_spec(spec)\n    spec.loader.exec_module(module)",
-            "module = importlib.util.module_from_spec(spec)\n    sys.modules[name] = module\n    spec.loader.exec_module(module)"), encoding="utf-8")
         def digest(relative): return hashlib.sha256((root / relative).read_bytes()).hexdigest()
         surface = []
         paths = (runner.CHECKER_PATH, runner.RESOLVER_PATH, runner.SCORER_PATH, runner.RUNNER_PATH,
-                 runner.SELECTOR_SCHEMA_PATH, candidate_checker.VALIDATOR_PATH, candidate_checker.RUN_INDEX_PATH,
+                 runner.EVALUATOR_SCHEMA_PATH, candidate_checker.RUNTIME_SELECTOR_SCHEMA, candidate_checker.VALIDATOR_PATH, candidate_checker.RUN_INDEX_PATH,
                  candidate_checker.ADAPTER_PATH)
         for role, relative in zip(candidate_checker.ROLES, paths, strict=True):
             surface.append({"role": role, "path": relative, "sha256": digest(relative)})
@@ -117,12 +110,12 @@ class RunnerV7Tests(unittest.TestCase):
             with self.assertRaises(runner.TransportError): runner.parse_events(raw, Resolver, profile())
 
     def test_negative_child_exit_is_transport_even_with_parseable_stdout(self):
-        state = {"resolver": Resolver, "profile": profile()}
+        state = {"resolver": Resolver, "profile": profile(), "checker": object()}
         facts = [{"predicate_id": f"p{n}", "state": "absent"} for n in range(12)]
         child = lambda *_args, **_kwargs: SimpleNamespace(returncode=-9, stdout=events({"predicate_facts": facts}))
-        with mock.patch.object(runner, "require_exact_live_head"), mock.patch.object(runner, "sha256_file", return_value="a" * 64), mock.patch.object(runner, "_selector_schema_path", return_value=Path("/schema")):
+        with mock.patch.object(runner, "require_exact_live_head"), mock.patch.object(runner, "sha256_file", return_value="a" * 64), mock.patch.object(runner, "_runtime_selector_schema_path", return_value=Path("/runtime-schema")):
             with self.assertRaises(runner.TransportError):
-                runner._invoke({"path": sys.executable, "digest": "a" * 64}, Path("/schema"), {}, root=ROOT, commit="a" * 40, state=state, invoke=child)
+                runner._invoke({"path": sys.executable, "digest": "a" * 64}, {}, root=ROOT, commit="a" * 40, state=state, invoke=child)
 
     def test_message_and_reasoning_lifecycle_is_discarded_until_one_completion(self):
         facts = [{"predicate_id": f"p{n}", "state": "absent"} for n in range(12)]
@@ -150,10 +143,45 @@ class RunnerV7Tests(unittest.TestCase):
             with self.assertRaises(runner.PreflightError): runner.preflight(root, commit)
             codex.assert_not_called()
 
+    def test_unsupported_runtime_schema_holds_before_codex_and_index(self):
+        with committed_fixture() as (root, _commit):
+            schema_path = root / candidate_checker.RUNTIME_SELECTOR_SCHEMA
+            bad = json.loads(schema_path.read_text(encoding="utf-8")); bad["allOf"] = []
+            schema_path.write_text(json.dumps(bad), encoding="utf-8")
+            manifest_path = root / candidate_checker.MANIFEST_PATH
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            row = next(item for item in manifest["evaluator_surface"]["files"] if item["role"] == runner.RUNTIME_SELECTOR_SCHEMA_ROLE)
+            row["sha256"] = hashlib.sha256(schema_path.read_bytes()).hexdigest()
+            manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+            subprocess.run(["git", "add", candidate_checker.RUNTIME_SELECTOR_SCHEMA, candidate_checker.MANIFEST_PATH], cwd=root, check=True)
+            subprocess.run(["git", "commit", "-qm", "unsupported runtime schema"], cwd=root, check=True)
+            commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
+            with mock.patch.object(runner, "codex_preflight") as codex:
+                with self.assertRaisesRegex(ValueError, "runtime selector schema"):
+                    runner.run_canary(root=root, candidate_commit=commit, codex="fake")
+            codex.assert_not_called()
+            self.assertFalse((run_index.git_common_dir(root) / run_index.INDEX_NAME).exists())
+
+    def test_runtime_schema_byte_drift_holds_before_index_or_child(self):
+        with committed_fixture() as (root, commit):
+            state = runner.preflight(root, commit)
+            schema_path = root / candidate_checker.RUNTIME_SELECTOR_SCHEMA
+            schema_path.write_bytes(schema_path.read_bytes() + b"\n")
+            info = {"id": "codex-cli", "path": sys.executable, "version": "fake", "digest": runner.sha256_file(Path(sys.executable))}
+            child = mock.Mock()
+            with self.assertRaises(runner.PreflightError):
+                runner._invoke(info, {}, root=root, commit=commit, state=state, invoke=child)
+            child.assert_not_called()
+            with mock.patch.object(runner, "preflight", return_value=state), mock.patch.object(runner, "codex_preflight", return_value=info), mock.patch.object(state["index_module"], "AQ7RunIndex") as index_factory:
+                with self.assertRaises(runner.PreflightError):
+                    runner.run_canary(root=root, candidate_commit=commit, codex="fake", invoke=child)
+            index_factory.assert_not_called(); child.assert_not_called()
+
     def test_child_argv_isolated_and_contains_no_prompt_argument(self):
-        argv = runner.child_argv({"path": "/x"}, Path("/schema"))
+        argv = runner.child_argv({"path": "/x"}, Path("/runtime-schema"))
         self.assertEqual(argv[:4], ["/x", "--ask-for-approval", "never", "exec"])
         self.assertIn("--ephemeral", argv); self.assertIn("--skip-git-repo-check", argv); self.assertIn("read-only", argv)
+        self.assertEqual(argv[argv.index("--output-schema") + 1], "/runtime-schema")
         self.assertNotIn("task_text", " ".join(argv)); self.assertNotIn("prompt", " ".join(argv))
 
     def test_probe_and_child_share_medium_reasoning_and_disable_surface(self):
@@ -197,16 +225,38 @@ class RunnerV7Tests(unittest.TestCase):
             canary.assert_not_called()
 
     def test_canary_retries_only_transport_once(self):
-        state = {"profile": profile(), "schedule_digest": "a" * 64, "commit": "a" * 40, "tree": "b" * 40, "binding": {}, "index_module": SimpleNamespace(AQ7RunIndex=lambda _root: Index()), "resolver": Resolver}
+        state = {"profile": profile(), "schedule_digest": "a" * 64, "commit": "a" * 40, "tree": "b" * 40, "binding": {}, "index_module": SimpleNamespace(AQ7RunIndex=lambda _root: Index()), "resolver": Resolver, "checker": object()}
         class Index:
             def begin_canary(self, *_a, **_k): return b"x"
             def retry_canary(self, *_a, **_k): calls.append("retry")
             def complete_canary(self, *_a, **_k): calls.append("complete")
             def fail_canary(self, *_a, **_k): calls.append("fail")
         calls = []
-        with mock.patch.object(runner, "preflight", return_value=state), mock.patch.object(runner, "codex_preflight", return_value={"id": "codex-cli", "path": sys.executable, "digest": "a" * 64}), mock.patch.object(runner, "binding_from_profile", return_value={}), mock.patch.object(runner, "_unconsumed_marker", return_value="marker"), mock.patch.object(runner, "_selector_schema_path", return_value=Path("/schema")), mock.patch.object(runner, "_invoke", side_effect=[runner.TransportError("x"), (tuple({"predicate_id": f"p{n}", "state": "absent"} for n in range(12)), "x")]):
+        with mock.patch.object(runner, "preflight", return_value=state), mock.patch.object(runner, "codex_preflight", return_value={"id": "codex-cli", "path": sys.executable, "digest": "a" * 64}), mock.patch.object(runner, "binding_from_profile", return_value={}), mock.patch.object(runner, "_unconsumed_marker", return_value="marker"), mock.patch.object(runner, "_runtime_selector_schema_path", return_value=Path("/runtime-schema")), mock.patch.object(runner, "_invoke", side_effect=[runner.TransportError("x"), (tuple({"predicate_id": f"p{n}", "state": "absent"} for n in range(12)), "x")]):
             result = runner.run_canary(root=ROOT, candidate_commit="a" * 40, codex="fake")
         self.assertEqual(result["status"], "passed"); self.assertEqual(calls, ["retry", "complete"])
+
+    def test_repaired_binding_can_start_after_failed_precompletion_canary_but_cannot_replay(self):
+        def sealed(commit_char, tree_char):
+            return {"commit": commit_char * 40, "tree": tree_char * 40, "digest": commit_char * 64}
+        identities = {name: sealed(commit_char, tree_char) for name, commit_char, tree_char in zip(run_index._IDENTITY_NAMES, "1234567", "2345678", strict=True)}
+        old = {**identities, "cli": {"id": "codex-cli", "digest": "8" * 64}, "model": {"id": "gpt-5.5", "digest": "9" * 64}, "reasoning": {"id": "medium", "digest": "a" * 64}, "tools": {"digest": "b" * 64}, "host": {"digest": "c" * 64}, "schedule": {"seed": runner.SCHEDULE_SEED, "digest": "d" * 64}}
+        repaired = json.loads(json.dumps(old)); repaired["candidate"] = sealed("a", "b"); repaired["runner"] = sealed("c", "d")
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "repo"; root.mkdir(); subprocess.run(["git", "init", "-q"], cwd=root, check=True)
+            marker = f"AQ7-RUN-AUTHORITY corpus={old['corpus']['commit']} status=unconsumed"
+            (root / "EXECPLAN.md").write_text(marker + "\n", encoding="utf-8")
+            subprocess.run(["git", "add", "EXECPLAN.md"], cwd=root, check=True)
+            subprocess.run(["git", "-c", "user.name=AQ7", "-c", "user.email=aq7@example.invalid", "commit", "-qm", "authority"], cwd=root, check=True)
+            index = run_index.AQ7RunIndex(root)
+            old_cap = index.begin_canary(old, unconsumed_marker=marker)
+            index.retry_canary(old, unconsumed_marker=marker, canary_cap=old_cap, reason="precompletion_infrastructure")
+            index.fail_canary(old, unconsumed_marker=marker, canary_cap=old_cap, reason="retry_exhausted")
+            self.assertEqual((index.state(old)["canary_status"], index.state(old)["corpus_status"]), ("failed", "unconsumed"))
+            repaired_cap = index.begin_canary(repaired, unconsumed_marker=marker)
+            self.assertIsInstance(repaired_cap, bytes)
+            with self.assertRaises(run_index.RunIndexError):
+                index.begin_canary(repaired, unconsumed_marker=marker)
 
     def test_real_committed_preflight_canary_then_exact_80_batch_with_fake_child(self):
         with committed_fixture() as (root, commit):
@@ -229,6 +279,10 @@ class RunnerV7Tests(unittest.TestCase):
             self.assertEqual(len({row[1] for row in calls}), 81)
             self.assertTrue(all("--ephemeral" in row[0] and "--skip-git-repo-check" in row[0] and "read-only" in row[0] for row in calls))
             self.assertTrue(all(tuple(row[2]) == ("instruction", "task_text", "predicate_order", "condition_guidance") for row in calls))
+            runtime_path = str(root / candidate_checker.RUNTIME_SELECTOR_SCHEMA)
+            semantic_path = str(root / candidate_checker.SELECTOR_SCHEMA)
+            self.assertTrue(all(row[0][row[0].index("--output-schema") + 1] == runtime_path for row in calls))
+            self.assertTrue(all(semantic_path not in row[0] for row in calls))
             self.assertEqual([row[2]["condition_guidance"] for row in calls[1:]].count(calls[1][2]["condition_guidance"]), 40)
             self.assertEqual(batch["live_calls"], 80)
 

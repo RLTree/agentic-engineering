@@ -30,6 +30,7 @@ resolver = load("scripts/resolve_h3_decision_certificate_v7.py", "aq7_resolver")
 checker = load("scripts/check_reduced_four_skill_candidate_v7.py", "aq7_checker")
 PROTOCOL = json.loads((ROOT / "evals/foundation-v4/decision-certificate-protocol-v6.json").read_text())
 SCHEMA = json.loads((ROOT / "evals/foundation-v4/decision-certificate-selector-output-schema-v6.json").read_text())
+RUNTIME_SCHEMA = json.loads((ROOT / "evals/foundation-v4/decision-certificate-runtime-output-schema-v7.json").read_text())
 POLICY = json.loads((ROOT / "evals/foundation-v4/decision-certificate-reference-policy-v6.json").read_text())
 ADAPTER = json.loads((ROOT / "evals/foundation-v4/decision-certificate-condition-adapter-v7.json").read_text())
 
@@ -63,7 +64,7 @@ def candidate_fixture():
         git("config", "user.name", "AQ7 test")
         git("config", "user.email", "aq7@example.invalid")
         paths = {
-            checker.H3_PROTOCOL, checker.SELECTOR_SCHEMA, checker.POLICY_PATH, checker.BASE_PATH,
+            checker.H3_PROTOCOL, checker.SELECTOR_SCHEMA, checker.RUNTIME_SELECTOR_SCHEMA, checker.POLICY_PATH, checker.BASE_PATH,
             checker.CORPUS_SCHEMA, checker.AUTHORING, checker.HELDOUT, checker.VALIDATOR_PATH,
             checker.RUN_INDEX_PATH, checker.ADAPTER_PATH, f"{checker.CORPUS_ROOT}/README.md",
             "scripts/check_reduced_four_skill_candidate_v7.py", "scripts/resolve_h3_decision_certificate_v7.py",
@@ -73,6 +74,8 @@ def candidate_fixture():
         for index, path in enumerate(sorted(paths)):
             target = root / path; target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(b"{}" if path.endswith(".json") else f"fixture-{index}".encode())
+        (root / checker.H3_PROTOCOL).write_text(json.dumps(PROTOCOL))
+        (root / checker.RUNTIME_SELECTOR_SCHEMA).write_text(json.dumps(RUNTIME_SCHEMA))
         git("add", "."); git("commit", "-qm", "authority")
         authority_commit, authority_tree = git("rev-parse", "HEAD"), git("rev-parse", "HEAD^{tree}")
         def digest(path: str) -> str: return hashlib.sha256((root / path).read_bytes()).hexdigest()
@@ -84,7 +87,7 @@ def candidate_fixture():
         patched = {"H3": (authority_commit, authority_tree), "POLICY": (authority_commit, authority_tree), "BASE": (authority_commit, authority_tree), "CONTRACT": (authority_commit, authority_tree), "CORPUS": (authority_commit, authority_tree), "VALIDATOR": (authority_commit, authority_tree), "RUN_INDEX": (authority_commit, authority_tree), "ADAPTER": (authority_commit, authority_tree), "H3_BINDING": h3, "SCHEMA_BINDING": schema, "POLICY_BINDING": policy, "BASE_BINDING": base_binding, "CONTRACT_BINDING": contract, "CORPUS_BINDING": corpus, "VALIDATOR_BINDING": validator, "RUN_INDEX_BINDING": run_index, "ADAPTER_BINDING": adapter}
         with patch.multiple(checker, **patched):
             files = []
-            for role, path in zip(checker.ROLES, ("scripts/check_reduced_four_skill_candidate_v7.py", "scripts/resolve_h3_decision_certificate_v7.py", "scripts/score_activation_v7.py", "scripts/run_activation_trials_v7.py", "evals/foundation-v4/activation-evaluator-schema-v7.json", checker.VALIDATOR_PATH, checker.RUN_INDEX_PATH, checker.ADAPTER_PATH), strict=True):
+            for role, path in zip(checker.ROLES, ("scripts/check_reduced_four_skill_candidate_v7.py", "scripts/resolve_h3_decision_certificate_v7.py", "scripts/score_activation_v7.py", "scripts/run_activation_trials_v7.py", "evals/foundation-v4/activation-evaluator-schema-v7.json", checker.RUNTIME_SELECTOR_SCHEMA, checker.VALIDATOR_PATH, checker.RUN_INDEX_PATH, checker.ADAPTER_PATH), strict=True):
                 files.append({"role": role, "path": path, "sha256": digest(path)})
             manifest = {"schema_version": "7.0", "claim_ceiling": "structural-only", "h3_authority": h3, "selector_schema_authority": schema, "reference_policy_authority": policy, "base_manifest_authority": base_binding, "aq7_contract_authority": contract, "corpus_authority": corpus, "validator_authority": validator, "run_index_authority": run_index, "condition_adapter_authority": adapter, "evaluator_surface": {"files": files}, "execution_contract": CheckerTests._contract()}
             (root / checker.MANIFEST_PATH).write_text(json.dumps(manifest))
@@ -187,6 +190,42 @@ class ResolverTests(unittest.TestCase):
 
 
 class CheckerTests(unittest.TestCase):
+    def test_runtime_selector_schema_is_exact_supported_projection(self) -> None:
+        checker.validate_runtime_selector_schema(PROTOCOL, RUNTIME_SCHEMA)
+        self.assertEqual(
+            RUNTIME_SCHEMA["properties"]["predicate_facts"]["items"]["properties"]["predicate_id"]["enum"],
+            PROTOCOL["predicate_order"],
+        )
+        self.assertEqual(
+            RUNTIME_SCHEMA["properties"]["predicate_facts"]["items"]["properties"]["state"]["enum"],
+            ["present", "absent", "uncertain"],
+        )
+        forbidden = ("prefixItems", "allOf", "not", "if", "then", "else", "const")
+        encoded = json.dumps(RUNTIME_SCHEMA)
+        for keyword in forbidden:
+            self.assertNotIn(json.dumps(keyword), encoded)
+        mutations = tuple(
+            (lambda value, keyword=keyword: value.__setitem__(keyword, []))
+            for keyword in forbidden
+        ) + (
+            lambda value: value["properties"]["predicate_facts"].__setitem__("prefixItems", []),
+            lambda value: value["properties"]["predicate_facts"].__setitem__("minItems", 11),
+            lambda value: value["properties"]["predicate_facts"]["items"]["properties"]["predicate_id"]["enum"].reverse(),
+            lambda value: value["properties"]["predicate_facts"]["items"]["properties"]["predicate_id"].__setitem__("const", PROTOCOL["predicate_order"][0]),
+            lambda value: value["properties"]["predicate_facts"]["items"]["properties"]["state"]["enum"].reverse(),
+            lambda value: value["properties"]["predicate_facts"]["items"]["required"].pop(),
+            lambda value: value["properties"]["predicate_facts"]["items"].__setitem__("additionalProperties", True),
+        )
+        for mutate in mutations:
+            broken = copy.deepcopy(RUNTIME_SCHEMA)
+            mutate(broken)
+            with self.assertRaises(checker.CandidateError):
+                checker.validate_runtime_selector_schema(PROTOCOL, broken)
+        broken_protocol = copy.deepcopy(PROTOCOL)
+        broken_protocol["predicate_order"].reverse()
+        with self.assertRaises(checker.CandidateError):
+            checker.validate_runtime_selector_schema(broken_protocol, RUNTIME_SCHEMA)
+
     def test_execution_contract_is_exact(self) -> None:
         contract = {
             "conditions": [{"id": ident, "condition_guidance_canonical_sha256": digest} for ident, digest in checker.CONDITIONS],

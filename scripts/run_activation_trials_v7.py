@@ -27,7 +27,8 @@ RESOLVER_PATH = "scripts/resolve_h3_decision_certificate_v7.py"
 SCORER_PATH = "scripts/score_activation_v7.py"
 INDEX_PATH = "scripts/aq_run_index_v7.py"
 RUNNER_PATH = "scripts/run_activation_trials_v7.py"
-SELECTOR_SCHEMA_PATH = "evals/foundation-v4/activation-evaluator-schema-v7.json"
+EVALUATOR_SCHEMA_PATH = "evals/foundation-v4/activation-evaluator-schema-v7.json"
+RUNTIME_SELECTOR_SCHEMA_ROLE = "runtime_selector_schema"
 MODEL, REASONING, SCHEDULE_SEED = "gpt-5.5", "medium", "aq7-h3-ci1-v1"
 APPROVAL = "aq7-authorized-canary-batch"
 HEX40 = re.compile(r"^[0-9a-f]{40}$")
@@ -161,6 +162,7 @@ def preflight(root: Path, requested: str) -> dict[str, Any]:
     profile = checker.load_verified_candidate(root, commit, require_live=True)
     if not isinstance(profile, dict) or profile.get("candidate_commit") != commit or profile.get("tree") != tree:
         raise PreflightError("candidate custody unavailable")
+    runtime_selector_schema_path = _runtime_selector_schema_path(root, commit, profile, checker)
     ids = profile.get("qualified_cases")
     identifiers = profile.get("qualified_ids")
     if not isinstance(ids, (tuple, list)) or len(ids) != 40 or not isinstance(identifiers, (tuple, list)) or len(set(identifiers)) != 40:
@@ -184,7 +186,7 @@ def preflight(root: Path, requested: str) -> dict[str, Any]:
         if current["predicate_order"] != profile["protocol"]["predicate_order"]:
             raise PreflightError("packet predicate order unavailable")
     binding = binding_from_profile(profile, cli=None, schedule_digest=digest)
-    state = {"checker": checker, "resolver": resolver, "scorer": scorer, "index_module": index_module, "profile": profile, "cases": by_id, "schedule": list(schedule), "schedule_digest": digest, "commit": commit, "tree": tree, "binding": binding}
+    state = {"checker": checker, "resolver": resolver, "scorer": scorer, "index_module": index_module, "profile": profile, "cases": by_id, "schedule": list(schedule), "schedule_digest": digest, "commit": commit, "tree": tree, "binding": binding, "runtime_selector_schema_path": runtime_selector_schema_path}
     zero_model_score_preflight(state)
     return state
 
@@ -248,13 +250,42 @@ def codex_preflight(codex: str, probe: Callable[..., Any] = subprocess.run) -> d
     return info
 
 
-def _selector_schema_path(root: Path, commit: str, profile: dict[str, Any] | None = None) -> Path:
-    authority = profile.get("manifest", {}).get("selector_schema_authority") if isinstance(profile, dict) and isinstance(profile.get("manifest"), dict) else None
-    path = authority.get("path") if isinstance(authority, dict) else SELECTOR_SCHEMA_PATH
-    if not isinstance(path, str): raise PreflightError("selector schema authority unavailable")
+def _runtime_selector_schema_path(root: Path, commit: str, profile: dict[str, Any], checker: Any) -> Path:
+    """Return only the candidate-bound provider schema after live byte checks.
+
+    ``profile["selector_schema"]`` remains the frozen semantic validation
+    authority used by :func:`parse_events`.  The runtime schema is a separate,
+    mechanically checked projection used only for the provider boundary.
+    """
+    manifest = profile.get("manifest") if isinstance(profile, dict) else None
+    surface = manifest.get("evaluator_surface") if isinstance(manifest, dict) else None
+    rows = surface.get("files") if isinstance(surface, dict) else None
+    matches = [row for row in rows if isinstance(row, dict) and row.get("role") == RUNTIME_SELECTOR_SCHEMA_ROLE] if isinstance(rows, list) else []
+    if len(matches) != 1 or set(matches[0]) != {"role", "path", "sha256"}:
+        raise PreflightError("runtime selector schema binding unavailable")
+    row = matches[0]
+    path, digest = row.get("path"), row.get("sha256")
+    if (not isinstance(path, str) or not path or Path(path).is_absolute() or ".." in Path(path).parts
+            or not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest)):
+        raise PreflightError("runtime selector schema binding unavailable")
     raw = git_show(root, commit, path)
     destination = root / path
-    if destination.read_bytes() != raw: raise PreflightError("selector schema byte drift")
+    try:
+        live = destination.read_bytes()
+        value = json.loads(raw)
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as error:
+        raise PreflightError("runtime selector schema unavailable") from error
+    if sha256_bytes(raw) != digest or live != raw or not isinstance(value, dict):
+        raise PreflightError("runtime selector schema byte drift")
+    if value != profile.get("runtime_selector_schema"):
+        raise PreflightError("runtime selector schema profile drift")
+    validate = getattr(checker, "validate_runtime_selector_schema", None)
+    if not callable(validate):
+        raise PreflightError("runtime selector schema validator unavailable")
+    try:
+        validate(profile.get("protocol"), value)
+    except Exception as error:
+        raise PreflightError("runtime selector schema projection unavailable") from error
     return destination
 
 
@@ -305,11 +336,11 @@ def parse_events(raw: bytes, resolver: Any, profile: dict[str, Any]) -> tuple[tu
     except Exception as error: raise _completed_invalid("completed selector output invalid", context) from error
 
 
-def _invoke(info: dict[str, str], schema: Path, packet: dict[str, Any], *, root: Path, commit: str, state: dict[str, Any], invoke: Callable[..., Any], on_raw: Callable[[], None] | None = None) -> tuple[tuple[dict[str, str], ...], str]:
+def _invoke(info: dict[str, str], packet: dict[str, Any], *, root: Path, commit: str, state: dict[str, Any], invoke: Callable[..., Any], on_raw: Callable[[], None] | None = None) -> tuple[tuple[dict[str, str], ...], str]:
     # Hash/authority rechecks immediately precede every child launch.
     require_exact_live_head(root, commit)
     if sha256_file(Path(info["path"])) != info["digest"]: raise PreflightError("resolved executable drift")
-    _selector_schema_path(root, commit, state["profile"])
+    schema = _runtime_selector_schema_path(root, commit, state["profile"], state["checker"])
     encoded = json.dumps(packet, separators=(",", ":"), ensure_ascii=True).encode("utf-8")
     with tempfile.TemporaryDirectory(prefix="aq7-isolated-") as directory:
         try: result = invoke(child_argv(info, schema), cwd=directory, input=encoded, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
@@ -338,11 +369,11 @@ def _unconsumed_marker(root: Path) -> str:
 
 def run_canary(*, root: Path, candidate_commit: str, codex: str, invoke: Callable[..., Any] = subprocess.run) -> dict[str, Any]:
     state = preflight(root, candidate_commit); info = codex_preflight(codex); state["binding"] = binding_from_profile(state["profile"], cli=info, schedule_digest=state["schedule_digest"])
+    _runtime_selector_schema_path(root, state["commit"], state["profile"], state["checker"])
     index = state["index_module"].AQ7RunIndex(root); marker = _unconsumed_marker(root); cap = index.begin_canary(state["binding"], unconsumed_marker=marker)
-    schema = _selector_schema_path(root, state["commit"], state["profile"])
     for attempt in range(2):
         try:
-            facts, _context = _invoke(info, schema, _canary_packet(state["profile"]), root=root, commit=state["commit"], state=state, invoke=invoke)
+            facts, _context = _invoke(info, _canary_packet(state["profile"]), root=root, commit=state["commit"], state=state, invoke=invoke)
             expected = tuple({"predicate_id": name, "state": "absent"} for name in state["profile"]["protocol"]["predicate_order"])
             if facts != expected: raise CompletedInvalid("canary selector mismatch")
             index.complete_canary(state["binding"], unconsumed_marker=marker, canary_cap=cap)
@@ -379,7 +410,8 @@ def _observation(state: dict[str, Any], case: dict[str, Any], condition: str, in
 
 def execute_trials(*, root: Path, candidate_commit: str, codex: str, invoke: Callable[..., Any] = subprocess.run) -> dict[str, Any]:
     state = preflight(root, candidate_commit); info = codex_preflight(codex); state["binding"] = binding_from_profile(state["profile"], cli=info, schedule_digest=state["schedule_digest"])
-    index = state["index_module"].AQ7RunIndex(root); marker = _unconsumed_marker(root); schema = _selector_schema_path(root, state["commit"], state["profile"])
+    _runtime_selector_schema_path(root, state["commit"], state["profile"], state["checker"])
+    index = state["index_module"].AQ7RunIndex(root); marker = _unconsumed_marker(root)
     # This only accepts a durable passed canary.  It never invokes one.
     cap = index.begin_batch(state["binding"], unconsumed_marker=marker); session = state["scorer"].create_live_score_session(state["profile"], state["binding"]); contexts: set[str] = set(); grouped = {"current": [], "reduced": []}
     try:
@@ -393,7 +425,7 @@ def execute_trials(*, root: Path, candidate_commit: str, codex: str, invoke: Cal
             packet = state["resolver"].build_condition_packet(state["profile"]["adapter"], condition, task)
             _validate_packet_pair(packet, state["resolver"].build_condition_packet(state["profile"]["adapter"], "reduced" if condition == "current" else "current", task))
             try:
-                facts, context = _invoke(info, schema, packet, root=root, commit=state["commit"], state=state, invoke=invoke, on_raw=(lambda: index.response_observed(state["binding"], batch_cap=cap)) if presentation_index == 0 else None)
+                facts, context = _invoke(info, packet, root=root, commit=state["commit"], state=state, invoke=invoke, on_raw=(lambda: index.response_observed(state["binding"], batch_cap=cap)) if presentation_index == 0 else None)
                 if context in contexts: raise CompletedInvalid("duplicate context")
                 contexts.add(context)
                 resolution = state["resolver"].resolve_decision_certificate(task, list(facts), state["profile"]["protocol"], state["profile"]["reference_policy"], state["profile"]["base_manifest"])
