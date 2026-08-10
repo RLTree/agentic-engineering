@@ -1,0 +1,675 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/agentic-engineering/evals/foundation-v4/future-activation-v8/activation-schema.json",
+  "title": "AQ8 fresh blinded unresolved-decision graph corpus",
+  "description": "Closed authoring/heldout document shape. Semantic labels are evaluator-owned; every parent/reference field is recomputed and equality-checked by the companion contract validator.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "8.0"
+    },
+    "corpus_id": {
+      "enum": [
+        "AQ8-authoring",
+        "AQ8-heldout"
+      ]
+    },
+    "split_nonce": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "authority": {
+      "const": {
+        "h4": {
+          "commit": "d6f9e6089e6e11f158a2d3bf4af717fc026548d4",
+          "tree": "6b65ea1e125836c9ae684e869f1156e5750c7a0b",
+          "components": [
+            {
+              "role": "authority",
+              "path": "evals/foundation-v4/unresolved-decision-graph-authority-v8.json",
+              "sha256": "3452f1ee7552549feac9a3f9d4d720eaae1b371177b5a4185596287ac98afd68"
+            },
+            {
+              "role": "protocol",
+              "path": "evals/foundation-v4/unresolved-decision-graph-protocol-v8.json",
+              "sha256": "a145766c475de5ed1411bc86467a1a82c3cdaa18782b772ef00901238f590fd5"
+            },
+            {
+              "role": "semantic_selector_schema",
+              "path": "evals/foundation-v4/unresolved-decision-graph-selector-output-schema-v8.json",
+              "sha256": "5ef3bd8dc5a1a83a25c51d10513607c17e298086450b00181caecac0dba35af4"
+            },
+            {
+              "role": "runtime_selector_schema",
+              "path": "evals/foundation-v4/unresolved-decision-graph-runtime-output-schema-v8.json",
+              "sha256": "e4d58b46e39ac65e56a339e7c0d2714d536a5d517de57c2bcc34cfd5c6fe301e"
+            },
+            {
+              "role": "condition_adapter",
+              "path": "evals/foundation-v4/unresolved-decision-graph-condition-adapter-v8.json",
+              "sha256": "2b82d26b9f438b7cfef712d59817bb2cc8426941167350ec58c42a9a6e5e5b31"
+            },
+            {
+              "role": "reference_policy",
+              "path": "evals/foundation-v4/unresolved-decision-graph-reference-policy-v8.json",
+              "sha256": "e16ad13602a3540b97b608d6a70223e5c7061530b748a6843e007eea791826f4"
+            }
+          ],
+          "active_parent_parser_projection": {
+            "path": "explicit_constraint.h4_parent_parser_contract",
+            "canonical_sha256": "8920ab58abd9618fb1af4894e1b664d76d3c6f478d335e1d61e08ac47b9360d1"
+          }
+        },
+        "aq8_gate": {
+          "commit": "953651815e76c56f0cf8d23d9eae9ef6a480726f",
+          "tree": "83c5aa7ecd3930733071e509ba56d307ae49aa59",
+          "path": "evals/foundation-v4/unresolved-decision-graph-gates-v8.json",
+          "sha256": "d17c6de19b456100a0c930d9cbe898d123dab882fe924c92226f9962fc7784d8"
+        },
+        "base_candidate": {
+          "commit": "f09a0544acf4b7a95fff796434273511a0683ca9",
+          "tree": "38c8c8adf3bb633d33200df1ec65f33e985ae244",
+          "path": "evals/foundation-v4/reduced-four-skills/candidate.json",
+          "sha256": "854f67bdd03e7121bd20e5513ef61ac806d016b3a5f1d6e5891bf4d9e546eb1f"
+        },
+        "recorded_plan": {
+          "commit": "b304aa09a8228b8c96e50a7c678a45baf84a7a49",
+          "tree": "adbf28fdd11120f5a567e2be56eb90da21c4eafe"
+        }
+      }
+    },
+    "claim_boundary": {
+      "const": {
+        "observation_state": "no-results",
+        "replay_policy": "no-replay",
+        "tuning_policy": "no-tuning",
+        "failure_policy": "terminal-AQ8",
+        "claim_ceiling": "structural-only",
+        "runtime": false,
+        "provider": false,
+        "model": false,
+        "sandbox": false,
+        "product": false,
+        "efficacy": false,
+        "promotion": false,
+        "authority": false,
+        "effects": false,
+        "external_action": false
+      }
+    },
+    "cases": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/case"
+      },
+      "minItems": 36,
+      "maxItems": 36
+    }
+  },
+  "required": [
+    "schema_version",
+    "corpus_id",
+    "split_nonce",
+    "authority",
+    "claim_boundary",
+    "cases"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "corpus_id": {
+            "const": "AQ8-authoring"
+          }
+        },
+        "required": [
+          "corpus_id"
+        ]
+      },
+      "then": {
+        "properties": {
+          "split_nonce": {
+            "const": "fcedacb4116091fe69d412a085fd40e350b8f1c7e70348dd3dd950d1752da1c2"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "split_nonce": {
+            "const": "20651a71f2e6739a41089b5fc0ea3474120f2e9e97f8f0f6274d926abc5b2671"
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "slot_id": {
+      "enum": [
+        "s0",
+        "s1",
+        "s2",
+        "s3"
+      ]
+    },
+    "adviser_id": {
+      "enum": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ]
+    },
+    "slot_array": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/slot_id"
+      },
+      "minItems": 0,
+      "maxItems": 4,
+      "uniqueItems": true
+    },
+    "adviser_array": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/adviser_id"
+      },
+      "minItems": 0,
+      "maxItems": 4,
+      "uniqueItems": true
+    },
+    "candidate_state_row": {
+      "type": "object",
+      "properties": {
+        "slot_id": {
+          "$ref": "#/$defs/slot_id"
+        },
+        "state": {
+          "enum": [
+            "unresolved",
+            "resolved_or_absent",
+            "uncertain"
+          ]
+        }
+      },
+      "required": [
+        "slot_id",
+        "state"
+      ],
+      "additionalProperties": false
+    },
+    "pairwise_relation_row": {
+      "type": "object",
+      "properties": {
+        "left_slot": {
+          "$ref": "#/$defs/slot_id"
+        },
+        "right_slot": {
+          "$ref": "#/$defs/slot_id"
+        },
+        "relation": {
+          "enum": [
+            "left_controls_right_downstream",
+            "right_controls_left_downstream",
+            "independent",
+            "unrelated",
+            "uncertain"
+          ]
+        }
+      },
+      "required": [
+        "left_slot",
+        "right_slot",
+        "relation"
+      ],
+      "additionalProperties": false
+    },
+    "reference_need_row": {
+      "type": "object",
+      "properties": {
+        "slot_id": {
+          "$ref": "#/$defs/slot_id"
+        },
+        "need": {
+          "enum": [
+            "none",
+            "primary",
+            "secondary",
+            "uncertain"
+          ]
+        }
+      },
+      "required": [
+        "slot_id",
+        "need"
+      ],
+      "additionalProperties": false
+    },
+    "semantic_output": {
+      "type": "object",
+      "description": "Evaluator-owned expected H4 semantic output; this is the only label surface corresponding to model output.",
+      "properties": {
+        "candidate_states": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/candidate_state_row"
+                },
+                {
+                  "properties": {
+                    "slot_id": {
+                      "const": "s0"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/candidate_state_row"
+                },
+                {
+                  "properties": {
+                    "slot_id": {
+                      "const": "s1"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/candidate_state_row"
+                },
+                {
+                  "properties": {
+                    "slot_id": {
+                      "const": "s2"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/candidate_state_row"
+                },
+                {
+                  "properties": {
+                    "slot_id": {
+                      "const": "s3"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "items": false,
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "pairwise_relations": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/pairwise_relation_row"
+                },
+                {
+                  "properties": {
+                    "left_slot": {
+                      "const": "s0"
+                    },
+                    "right_slot": {
+                      "const": "s1"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/pairwise_relation_row"
+                },
+                {
+                  "properties": {
+                    "left_slot": {
+                      "const": "s0"
+                    },
+                    "right_slot": {
+                      "const": "s2"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/pairwise_relation_row"
+                },
+                {
+                  "properties": {
+                    "left_slot": {
+                      "const": "s0"
+                    },
+                    "right_slot": {
+                      "const": "s3"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/pairwise_relation_row"
+                },
+                {
+                  "properties": {
+                    "left_slot": {
+                      "const": "s1"
+                    },
+                    "right_slot": {
+                      "const": "s2"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/pairwise_relation_row"
+                },
+                {
+                  "properties": {
+                    "left_slot": {
+                      "const": "s1"
+                    },
+                    "right_slot": {
+                      "const": "s3"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/pairwise_relation_row"
+                },
+                {
+                  "properties": {
+                    "left_slot": {
+                      "const": "s2"
+                    },
+                    "right_slot": {
+                      "const": "s3"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "items": false,
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "reference_needs": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/reference_need_row"
+                },
+                {
+                  "properties": {
+                    "slot_id": {
+                      "const": "s0"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/reference_need_row"
+                },
+                {
+                  "properties": {
+                    "slot_id": {
+                      "const": "s1"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/reference_need_row"
+                },
+                {
+                  "properties": {
+                    "slot_id": {
+                      "const": "s2"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/reference_need_row"
+                },
+                {
+                  "properties": {
+                    "slot_id": {
+                      "const": "s3"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "items": false,
+          "minItems": 4,
+          "maxItems": 4
+        }
+      },
+      "required": [
+        "candidate_states",
+        "pairwise_relations",
+        "reference_needs"
+      ],
+      "additionalProperties": false
+    },
+    "reference_request": {
+      "type": "object",
+      "properties": {
+        "owner_adviser_id": {
+          "$ref": "#/$defs/adviser_id"
+        },
+        "trigger_id": {
+          "enum": [
+            "decomposition-boundary",
+            "architecture-boundary",
+            "decision-contract",
+            "reference-isolation",
+            "verification-evidence",
+            "learning-adoption"
+          ]
+        }
+      },
+      "required": [
+        "owner_adviser_id",
+        "trigger_id"
+      ],
+      "additionalProperties": false
+    },
+    "reference_resolution": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "resolved",
+            "unresolved",
+            "cap_exceeded"
+          ]
+        },
+        "resolved_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4
+        },
+        "canonical_payload_id_tuple": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "aq-agentic-architecture",
+              "aq-agentic-seven-layer",
+              "aq-contract-assumption-approval",
+              "aq-contract-vocabulary",
+              "aq-learning-attribution",
+              "aq-learning-freshness",
+              "aq-verify-boundary",
+              "aq-verify-mode-selection"
+            ]
+          },
+          "minItems": 0,
+          "maxItems": 3,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "status",
+        "resolved_count",
+        "canonical_payload_id_tuple"
+      ],
+      "additionalProperties": false
+    },
+    "parent_derivation": {
+      "type": "object",
+      "description": "Evaluator-owned mirror of parent computation. The validator recomputes this entire object and requires exact equality.",
+      "properties": {
+        "graph_status": {
+          "enum": [
+            "valid",
+            "graph_uncertain",
+            "graph_invalid",
+            "graph_cycle"
+          ]
+        },
+        "automatic_selection_status": {
+          "enum": [
+            "automatic",
+            "cap_exceeded",
+            "graph_uncertain",
+            "graph_invalid",
+            "graph_cycle"
+          ]
+        },
+        "selection_status": {
+          "enum": [
+            "automatic",
+            "exact",
+            "ambiguous",
+            "unrecognized",
+            "cap_exceeded",
+            "graph_uncertain",
+            "graph_invalid",
+            "graph_cycle"
+          ]
+        },
+        "root_slots": {
+          "$ref": "#/$defs/slot_array"
+        },
+        "selected_slots": {
+          "$ref": "#/$defs/slot_array"
+        },
+        "selected_adviser_ids": {
+          "$ref": "#/$defs/adviser_array"
+        },
+        "complement_adviser_ids": {
+          "$ref": "#/$defs/adviser_array"
+        },
+        "reference_requests": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reference_request"
+          },
+          "minItems": 0,
+          "maxItems": 2,
+          "uniqueItems": true
+        },
+        "reference_uncertain_slots": {
+          "$ref": "#/$defs/slot_array"
+        },
+        "reference_resolution": {
+          "$ref": "#/$defs/reference_resolution"
+        }
+      },
+      "required": [
+        "graph_status",
+        "automatic_selection_status",
+        "selection_status",
+        "root_slots",
+        "selected_slots",
+        "selected_adviser_ids",
+        "complement_adviser_ids",
+        "reference_requests",
+        "reference_uncertain_slots",
+        "reference_resolution"
+      ],
+      "additionalProperties": false
+    },
+    "case": {
+      "type": "object",
+      "properties": {
+        "case_id": {
+          "type": "string",
+          "pattern": "^AQ8-(authoring|heldout)-(0[1-9]|[12][0-9]|3[0-6])$"
+        },
+        "case_nonce": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "task_text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "task_text_nfc_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "expected_semantic_output": {
+          "$ref": "#/$defs/semantic_output"
+        },
+        "expected_parent_derivation": {
+          "$ref": "#/$defs/parent_derivation"
+        }
+      },
+      "required": [
+        "case_id",
+        "case_nonce",
+        "task_text",
+        "task_text_nfc_sha256",
+        "expected_semantic_output",
+        "expected_parent_derivation"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
