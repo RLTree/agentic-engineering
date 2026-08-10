@@ -37,6 +37,13 @@ def event_stream(selection):
 
 
 class RunnerV4Tests(unittest.TestCase):
+    def test_selector_schema_uses_the_supported_closed_subset(self) -> None:
+        raw = (ROOT / runner.SELECTOR_SCHEMA_PATH).read_bytes()
+        schema = runner.validate_selector_schema(raw)
+        selected = schema["properties"]["selected_decision_atoms"]
+        self.assertEqual(set(selected), {"type", "items", "maxItems"})
+        self.assertNotIn("uniqueItems", selected)
+
     def test_selector_packet_excludes_labels_mapping_and_adviser_catalog(self) -> None:
         candidate = checker.load_candidate(ROOT)
         packet = runner.selector_packet(scorer=scorer, task="Synthetic task text.", catalog=candidate["conditions"]["current"]["atom_catalog"], constraint={"status": "none", "atom_id": None})

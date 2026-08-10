@@ -163,7 +163,7 @@ def validate_selector_schema(raw: bytes) -> dict[str, Any]:
     items = selected.get("items", {}) if isinstance(selected, dict) else {}
     if set(value) != {"$schema", "$id", "title", "type", "properties", "required", "additionalProperties"} or value.get("type") != "object" or value.get("required") != ["selected_decision_atoms"] or value.get("additionalProperties") is not False:
         raise RunnerError("selector schema is not closed")
-    if selected.get("type") != "array" or selected.get("uniqueItems") is not True or selected.get("maxItems") != 2 or items.get("enum") != ["topology-control-boundary", "task-contract", "verification-strategy", "engineering-learning"]:
+    if set(selected) != {"type", "items", "maxItems"} or selected.get("type") != "array" or selected.get("maxItems") != 2 or items.get("enum") != ["topology-control-boundary", "task-contract", "verification-strategy", "engineering-learning"]:
         raise RunnerError("selector schema atom universe mismatch")
     return value
 
