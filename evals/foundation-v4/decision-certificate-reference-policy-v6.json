@@ -1,0 +1,162 @@
+{
+  "schema_version": "6.0",
+  "policy_id": "H3-owner-qualified-first-present-reference-policy",
+  "status": "frozen-proposal-only",
+  "claim_ceiling": "structural-proposal-only",
+  "authority_basis": {
+    "h3_commit": "ccbe06be9a2ef5feca4104b6918985ee9c4527c0",
+    "h3_tree": "dd20449fdc45a73c55adb349d8c828687728ef4d",
+    "h3_protocol": {
+      "path": "evals/foundation-v4/decision-certificate-protocol-v6.json",
+      "sha256": "9ad483a26fe339f81c947507de9c1c66d54b2823a38f68b1c5ee7fdf5c426f84"
+    },
+    "base_candidate": {
+      "path": "evals/foundation-v4/reduced-four-skills/candidate.json",
+      "sha256": "854f67bdd03e7121bd20e5513ef61ac806d016b3a5f1d6e5891bf4d9e546eb1f"
+    }
+  },
+  "model_boundary": {
+    "model_visible": false,
+    "model_output_used": "schema-valid ordered predicate_facts only",
+    "parent_owned_inputs": [
+      "selection_status",
+      "selected_atoms",
+      "atom_to_adviser_mapping",
+      "reference_payload_catalog"
+    ]
+  },
+  "request_derivation": {
+    "selected_atom_order": [
+      "topology-control-boundary",
+      "task-contract",
+      "verification-strategy",
+      "engineering-learning"
+    ],
+    "emitting_selection_statuses": [
+      "automatic",
+      "exact"
+    ],
+    "non_emitting_selection_statuses": [
+      "ambiguous",
+      "cap_exceeded",
+      "unrecognized"
+    ],
+    "empty_selection": "emit_no_requests",
+    "state_rule": {
+      "emitting_state": "present",
+      "non_emitting_states": [
+        "absent",
+        "uncertain"
+      ],
+      "exclusion_predicates": "A present exclusion suppresses every request for that atom; absent and uncertain exclusions emit no request themselves.",
+      "explicit_override_without_present_positive": "emit_no_requests"
+    },
+    "per_selected_atom_rule": "Scan that atom's mapping rows in their frozen order and emit only the first row whose predicate state is present.",
+    "ordered_mapping_rows": [
+      {
+        "atom_id": "topology-control-boundary",
+        "adviser_id": "agentic-engineering",
+        "predicate_id": "multi_domain_coordination",
+        "trigger_id": "decomposition-boundary"
+      },
+      {
+        "atom_id": "topology-control-boundary",
+        "adviser_id": "agentic-engineering",
+        "predicate_id": "cross_component_or_agent_boundary",
+        "trigger_id": "architecture-boundary"
+      },
+      {
+        "atom_id": "task-contract",
+        "adviser_id": "codex-task-contract",
+        "predicate_id": "scope_acceptance_or_authority_contract",
+        "trigger_id": "decision-contract"
+      },
+      {
+        "atom_id": "task-contract",
+        "adviser_id": "codex-task-contract",
+        "predicate_id": "execution_dependencies_or_stop_conditions",
+        "trigger_id": "decision-contract"
+      },
+      {
+        "atom_id": "verification-strategy",
+        "adviser_id": "verification-strategy-engineering",
+        "predicate_id": "claim_or_behavior_requires_verification_strategy",
+        "trigger_id": "verification-evidence"
+      },
+      {
+        "atom_id": "verification-strategy",
+        "adviser_id": "verification-strategy-engineering",
+        "predicate_id": "oracle_or_evidence_adequacy_is_a_decision",
+        "trigger_id": "verification-evidence"
+      },
+      {
+        "atom_id": "engineering-learning",
+        "adviser_id": "engineering-learning-loop",
+        "predicate_id": "failure_attribution_or_adaptation_is_a_decision",
+        "trigger_id": "reference-isolation"
+      },
+      {
+        "atom_id": "engineering-learning",
+        "adviser_id": "engineering-learning-loop",
+        "predicate_id": "evaluation_or_knowledge_lifecycle_is_a_decision",
+        "trigger_id": "learning-adoption"
+      }
+    ],
+    "request_shape": [
+      "owner_adviser_id",
+      "trigger_id"
+    ],
+    "deduplication": "Stable first occurrence by owner_adviser_id then trigger_id."
+  },
+  "canonical_cover": {
+    "requirement_identity": [
+      "owner_adviser_id",
+      "trigger_id"
+    ],
+    "payload_eligibility": "A payload is eligible only when its owner adviser equals the request owner and its trigger_ids contain the request trigger.",
+    "objective_order": [
+      "minimum_payload_count",
+      "lexicographically_smallest_payload_id_tuple"
+    ],
+    "payload_output_order": "payload_id_ascending",
+    "maximum_payloads": 3,
+    "statuses": [
+      "resolved",
+      "unresolved",
+      "cap_exceeded"
+    ],
+    "branch_contracts": {
+      "resolved": {
+        "payloads": "exact_chosen_cover_in_payload_id_order",
+        "resolved_count": "exact_chosen_payload_count_at_most_maximum"
+      },
+      "unresolved": {
+        "payloads": "empty",
+        "resolved_count": 0
+      },
+      "cap_exceeded": {
+        "payloads": "empty",
+        "resolved_count": "minimum_required_payload_count_greater_than_maximum"
+      }
+    }
+  },
+  "qualification_controls": {
+    "outcome_tuned": false,
+    "corpus_inputs_permitted": false,
+    "hidden_label_inputs_permitted": false,
+    "prohibitions": [
+      "no_model_visible_reference_policy",
+      "no_authority_assignment",
+      "no_policy_adoption",
+      "no_effect_execution",
+      "no_external_action",
+      "no_completion_claim",
+      "no_efficacy_claim",
+      "no_product_claim",
+      "no_runtime_claim",
+      "no_provider_claim",
+      "no_promotion_claim"
+    ],
+    "maximum_claim": "A frozen parent-owned deterministic reference policy can establish structural closure and reproducible catalog resolution only."
+  }
+}
