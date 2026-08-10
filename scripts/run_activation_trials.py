@@ -31,9 +31,27 @@ ADVISERS = (
     "verification-strategy-engineering", "engineering-learning-loop",
 )
 DISABLED_FEATURES = (
-    "plugins", "memories", "apps", "multi_agent", "multi_agent_v2", "browser_use",
-    "browser_use_external", "browser_use_full_cdp_access", "in_app_browser",
-    "computer_use", "skill_search", "shell_tool", "unified_exec",
+    "apply_patch_freeform", "apply_patch_streaming_events", "apps", "artifact",
+    "auth_elicitation", "browser_use", "browser_use_external",
+    "browser_use_full_cdp_access", "chronicle", "code_mode",
+    "code_mode_buffered_exec", "code_mode_host", "code_mode_only",
+    "collaboration_modes", "computer_use", "default_mode_request_user_input",
+    "enable_mcp_apps", "goals", "guardian_approval", "hooks", "image_generation",
+    "in_app_browser", "js_repl", "js_repl_tools_only", "memories", "multi_agent",
+    "multi_agent_v2", "plugin_sharing", "plugins", "recommended_plugins",
+    "remote_plugin", "request_permissions_tool", "search_tool", "shell_tool",
+    "skill_mcp_dependency_install", "skill_search", "standalone_web_search",
+    "tool_call_mcp_elicitation", "tool_search", "tool_suggest", "unified_exec",
+    "view_image", "web_search_cached", "web_search_request", "workspace_dependencies",
+)
+CONFIG_OVERRIDES = (
+    'model_reasoning_effort="medium"',
+    "skills.bundled.enabled=false",
+    "skills.include_instructions=false",
+    "include_permissions_instructions=false",
+    "include_apps_instructions=false",
+    "include_collaboration_mode_instructions=false",
+    "include_environment_context=false",
 )
 
 
@@ -234,12 +252,30 @@ def codex_preflight(codex: str, probe: Callable[..., Any] = subprocess.run) -> d
     required = ("--ephemeral", "--ignore-user-config", "--strict-config", "--output-schema", "--json", "--sandbox", "--disable")
     if help_result.returncode or any(flag not in help_text for flag in required):
         raise RunnerError("codex exec capability preflight failed")
+    prompt_argv = [str(executable), "-c", 'model="gpt-5.6-terra"']
+    for override in CONFIG_OVERRIDES:
+        prompt_argv.extend(["-c", override])
+    for feature in DISABLED_FEATURES:
+        prompt_argv.extend(["--disable", feature])
+    prompt_argv.extend(["debug", "prompt-input", "AQ local isolation preflight"])
+    with tempfile.TemporaryDirectory(prefix="aq-local-preflight-") as temporary:
+        rendered = probe(prompt_argv, cwd=temporary, capture_output=True, text=True)
+    try:
+        prompt_input = json.loads(rendered.stdout)
+    except (json.JSONDecodeError, TypeError) as error:
+        raise RunnerError("codex prompt isolation preflight failed") from error
+    prompt_text = json.dumps(prompt_input, sort_keys=True)
+    prohibited = ("<skills_instructions>", "SKILL.md", "<apps_instructions>", "<permissions instructions>", "<collaboration_mode>", "<environment_context>")
+    if rendered.returncode or any(marker in prompt_text for marker in prohibited):
+        raise RunnerError("codex prompt isolation preflight failed")
     return {"path": str(executable), "version": version.stdout.strip(), "sha256": sha256_file(executable)}
 
 
 def child_argv(codex_path: str, temporary_cwd: str, schema_path: Path) -> list[str]:
     # ``--ask-for-approval`` is a global Codex option and must precede ``exec``.
-    argv = [codex_path, "--ask-for-approval", "never", "exec", "--ephemeral", "--ignore-user-config", "--ignore-rules", "--strict-config", "--skip-git-repo-check", "--cd", temporary_cwd, "--sandbox", "read-only", "--model", "gpt-5.6-terra", "-c", 'model_reasoning_effort="medium"']
+    argv = [codex_path, "--ask-for-approval", "never", "exec", "--ephemeral", "--ignore-user-config", "--ignore-rules", "--strict-config", "--skip-git-repo-check", "--cd", temporary_cwd, "--sandbox", "read-only", "--model", "gpt-5.6-terra"]
+    for override in CONFIG_OVERRIDES:
+        argv.extend(["-c", override])
     for feature in DISABLED_FEATURES:
         argv.extend(["--disable", feature])
     return argv + ["--output-schema", str(schema_path.resolve()), "--color", "never", "--json", "-"]

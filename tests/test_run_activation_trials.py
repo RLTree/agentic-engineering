@@ -55,6 +55,40 @@ class RunnerTests(unittest.TestCase):
         self.assertEqual(argv[:4], ["/tmp/codex", "--ask-for-approval", "never", "exec"])
         self.assertIn("--ephemeral", argv); self.assertIn("--json", argv); self.assertEqual(argv[-1], "-")
         self.assertTrue(all(feature in argv for feature in runner.DISABLED_FEATURES))
+        self.assertTrue(all(override in argv for override in runner.CONFIG_OVERRIDES))
+        self.assertIn("skills.bundled.enabled=false", argv)
+        self.assertIn("skills.include_instructions=false", argv)
+        self.assertIn("code_mode", runner.DISABLED_FEATURES)
+        self.assertIn("code_mode_only", runner.DISABLED_FEATURES)
+        for feature in ("view_image", "image_generation", "goals", "workspace_dependencies", "default_mode_request_user_input"):
+            self.assertIn(feature, runner.DISABLED_FEATURES)
+
+    def test_codex_preflight_proves_prompt_blocks_absent_without_model_call(self):
+        calls = []
+        def probe(argv, **kwargs):
+            calls.append((argv, kwargs))
+            if argv[-1] == "--version":
+                return subprocess.CompletedProcess(argv, 0, stdout="codex-cli test\n", stderr="")
+            if argv[-2:] == ["exec", "--help"]:
+                flags = "--ephemeral --ignore-user-config --strict-config --output-schema --json --sandbox --disable"
+                return subprocess.CompletedProcess(argv, 0, stdout=flags, stderr="")
+            self.assertEqual(argv[-3:], ["debug", "prompt-input", "AQ local isolation preflight"])
+            self.assertTrue(all(feature in argv for feature in runner.DISABLED_FEATURES))
+            self.assertTrue(all(override in argv for override in runner.CONFIG_OVERRIDES))
+            self.assertIn("cwd", kwargs)
+            return subprocess.CompletedProcess(argv, 0, stdout='[{"role":"user","content":"AQ local isolation preflight"}]', stderr="")
+        info = runner.codex_preflight(str(Path(__file__).resolve()), probe=probe)
+        self.assertEqual(info["version"], "codex-cli test")
+        self.assertEqual(len(calls), 3)
+
+    def test_codex_preflight_rejects_injected_skill_prompt(self):
+        results = iter((
+            subprocess.CompletedProcess([], 0, stdout="codex-cli test\n", stderr=""),
+            subprocess.CompletedProcess([], 0, stdout="--ephemeral --ignore-user-config --strict-config --output-schema --json --sandbox --disable", stderr=""),
+            subprocess.CompletedProcess([], 0, stdout='[{"content":"<skills_instructions>SKILL.md</skills_instructions>"}]', stderr=""),
+        ))
+        with self.assertRaisesRegex(runner.RunnerError, "prompt isolation preflight failed"):
+            runner.codex_preflight(str(Path(__file__).resolve()), probe=lambda *args, **kwargs: next(results))
 
     def test_schedule_is_deterministic_strict_and_complete(self):
         cases = [{"id": f"AQ-H-{index:03d}", "prompt": "x"} for index in range(1, 41)]
