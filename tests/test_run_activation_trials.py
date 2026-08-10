@@ -93,6 +93,15 @@ class RunnerTests(unittest.TestCase):
         with self.assertRaises(runner.RunnerError):
             runner.parse_events(b'{"type":"thread.started","thread_id":"x"}\n{"type":"item.completed","item":{"type":"tool_call"}}\n')
 
+    def test_unknown_event_and_item_report_only_bounded_type_metadata(self):
+        cases = (
+            (b'{"type":"future.event"}\n', "unrecognized Codex JSONL event type: future.event"),
+            (b'{"type":"item.completed","item":{"type":"future_item"}}\n', "unrecognized Codex JSONL item type: future_item"),
+        )
+        for raw, expected in cases:
+            with self.subTest(expected=expected), self.assertRaisesRegex(runner.RunnerError, expected):
+                runner.parse_events(raw)
+
     def test_mcp_tool_item_is_rejected_in_any_phase(self):
         with self.assertRaises(runner.RunnerError):
             runner.parse_events(b'{"type":"thread.started","thread_id":"x"}\n{"type":"item.started","item":{"type":"mcp_tool_call"}}\n')

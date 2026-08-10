@@ -284,7 +284,7 @@ def parse_events(raw: bytes) -> tuple[list[str], bytes, str]:
             raise RunnerError(f"child stream error: {error_message(event.get('message'))}")
         item = event.get("item")
         if event_type not in {"item.started", "item.updated", "item.completed"} or not isinstance(item, dict):
-            raise RunnerError("unrecognized Codex JSONL event")
+            raise RunnerError(f"unrecognized Codex JSONL event type: {error_message(event_type)}")
         item_type = item.get("type")
         if item_type == "error":
             raise RunnerError(f"child error item: {error_message(item.get('message'))}")
@@ -292,7 +292,7 @@ def parse_events(raw: bytes) -> tuple[list[str], bytes, str]:
         if item_type in forbidden:
             raise RunnerError("child emitted an authority or tool event")
         if item_type not in {"agent_message", "reasoning"}:
-            raise RunnerError("unrecognized Codex JSONL item")
+            raise RunnerError(f"unrecognized Codex JSONL item type: {error_message(item_type)}")
         if event_type == "item.completed":
             if item_type == "reasoning":
                 continue
