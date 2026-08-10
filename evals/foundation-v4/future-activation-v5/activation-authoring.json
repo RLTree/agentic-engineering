@@ -1,0 +1,2004 @@
+{
+  "schema_version": "aq5-activation-corpus-v5",
+  "corpus_id": "aq5-authoring-v5",
+  "condition_blind": true,
+  "claim_ceiling": "structural-proposal-only",
+  "cases": [
+    {
+      "id": "AQ5-A-001",
+      "nonce": "aq5v5-cobalt-kite",
+      "family": "topology-kite",
+      "prompt": "Sketch the operating boundary for a field agent that may hand work to a reviewer, including where its lifecycle must stop.",
+      "normalized_prompt": "sketch the operating boundary for a field agent that may hand work to a reviewer, including where its lifecycle must stop.",
+      "prompt_sha256": "cba88cc056834c6d7bcc38a8dbdd64b159f05b86cfec66a5d23b537395f7e656",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "topology-control-boundary"
+      ],
+      "expected_advisers": [
+        "agentic-engineering"
+      ],
+      "must_not_select": [
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        "decomposition-boundary"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "topology-control-boundary",
+          "trigger_id": "decomposition-boundary",
+          "payload_id": "aq-agentic-seven-layer"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-002",
+      "nonce": "aq5v5-ember-slate",
+      "family": "topology-slate",
+      "prompt": "Where should a Rust control plane end and the disposable execution worker begin for a tool-using assistant?",
+      "normalized_prompt": "where should a rust control plane end and the disposable execution worker begin for a tool-using assistant?",
+      "prompt_sha256": "aedf38d03461a1061bb9ad5c4fbef18d5827b4cd7db52ba35593a69c1ab04538",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "topology-control-boundary"
+      ],
+      "expected_advisers": [
+        "agentic-engineering"
+      ],
+      "must_not_select": [
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        "architecture-boundary"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "topology-control-boundary",
+          "trigger_id": "architecture-boundary",
+          "payload_id": "aq-agentic-architecture"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-003",
+      "nonce": "aq5v5-ivory-fern",
+      "family": "topology-fern",
+      "prompt": "Propose a clean seam between a planner that remembers prior work and a fresh implementation process that must not inherit it.",
+      "normalized_prompt": "propose a clean seam between a planner that remembers prior work and a fresh implementation process that must not inherit it.",
+      "prompt_sha256": "47008ec5d03779bfb16dd3d162486fb006cdfc23ffdf3ea2d16c6d46ccad9b2d",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "topology-control-boundary"
+      ],
+      "expected_advisers": [
+        "agentic-engineering"
+      ],
+      "must_not_select": [
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        "reference-isolation"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "topology-control-boundary",
+          "trigger_id": "reference-isolation",
+          "payload_id": "aq-agentic-control"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-004",
+      "nonce": "aq5v5-lumen-arch",
+      "family": "topology-arch",
+      "prompt": "Choose the architectural split that keeps production authority outside an experimental agent while preserving a useful feedback path.",
+      "normalized_prompt": "choose the architectural split that keeps production authority outside an experimental agent while preserving a useful feedback path.",
+      "prompt_sha256": "e6ed09b36fe32fa2235b57019f385df318fbabcc44ef4cc3393fc9d8376e07cd",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "topology-control-boundary"
+      ],
+      "expected_advisers": [
+        "agentic-engineering"
+      ],
+      "must_not_select": [
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        "architecture-boundary"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "topology-control-boundary",
+          "trigger_id": "architecture-boundary",
+          "payload_id": "aq-agentic-architecture"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-005",
+      "nonce": "aq5v5-north-pine",
+      "family": "topology-pine",
+      "prompt": "Design the layers for an engineering agent so assurance work can challenge execution without becoming part of the executor.",
+      "normalized_prompt": "design the layers for an engineering agent so assurance work can challenge execution without becoming part of the executor.",
+      "prompt_sha256": "0e52a5eaa7dc9963740d0e75197e23afa2707679b92594a7e78ee4a6405d9a33",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "topology-control-boundary"
+      ],
+      "expected_advisers": [
+        "agentic-engineering"
+      ],
+      "must_not_select": [
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        "decomposition-boundary"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "topology-control-boundary",
+          "trigger_id": "decomposition-boundary",
+          "payload_id": "aq-agentic-seven-layer"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-006",
+      "nonce": "aq5v5-silver-mesa",
+      "family": "topology-mesa",
+      "prompt": "For a multi-stage coding system, decide whether recovery belongs in orchestration or in each worker.",
+      "normalized_prompt": "for a multi-stage coding system, decide whether recovery belongs in orchestration or in each worker.",
+      "prompt_sha256": "aa03b7818832050b5accdf18c00b3e4fb0142d0301fcede0499542ad69c53325",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "topology-control-boundary"
+      ],
+      "expected_advisers": [
+        "agentic-engineering"
+      ],
+      "must_not_select": [
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [],
+      "deterministic_reference_expectations": [],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-007",
+      "nonce": "aq5v5-amber-quill",
+      "family": "contract-quill",
+      "prompt": "Before anyone starts the cleanup, define what decision the coding task is actually authorized to make and what proof makes it done.",
+      "normalized_prompt": "before anyone starts the cleanup, define what decision the coding task is actually authorized to make and what proof makes it done.",
+      "prompt_sha256": "9d94d45da1f338d595b280743d92e3cf755d4b07214f71df8bd1fc5623257a95",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "codex-task-contract"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        "decision-contract"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "task-contract",
+          "trigger_id": "decision-contract",
+          "payload_id": "aq-contract-vocabulary"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-008",
+      "nonce": "aq5v5-cedar-dawn",
+      "family": "contract-dawn",
+      "prompt": "Write the outcome boundary for a request that could either document a deployment issue or alter its configuration; do not assume the latter is allowed.",
+      "normalized_prompt": "write the outcome boundary for a request that could either document a deployment issue or alter its configuration; do not assume the latter is allowed.",
+      "prompt_sha256": "b96b5c9e16ea31f9e7d7572845fa84de3748fa4bd1b9314a2713a65743d46865",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "codex-task-contract"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        "no-change-abstention"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "task-contract",
+          "trigger_id": "no-change-abstention",
+          "payload_id": "aq-contract-assumption-approval"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-009",
+      "nonce": "aq5v5-frost-harbor",
+      "family": "contract-harbor",
+      "prompt": "Set the acceptance contract for investigating an intermittent CI alert when the repository state must remain untouched.",
+      "normalized_prompt": "set the acceptance contract for investigating an intermittent ci alert when the repository state must remain untouched.",
+      "prompt_sha256": "5f449e2e075eec3598901a4aaec97d32683ef0e967040e9d84db6d24bd257120",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "codex-task-contract"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        "reference-isolation"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "task-contract",
+          "trigger_id": "reference-isolation",
+          "payload_id": "aq-contract-assumption-approval"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-010",
+      "nonce": "aq5v5-golden-fjord",
+      "family": "contract-fjord",
+      "prompt": "A request says “make this safer” without naming the system or the allowed effect. Establish the decision and approval boundaries first.",
+      "normalized_prompt": "a request says “make this safer” without naming the system or the allowed effect. establish the decision and approval boundaries first.",
+      "prompt_sha256": "fdb1216d0d4af911a6e2da707e4e82c69f13fd2191dce0b1b1406a38f9684299",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "codex-task-contract"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        "decision-contract"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "task-contract",
+          "trigger_id": "decision-contract",
+          "payload_id": "aq-contract-vocabulary"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-011",
+      "nonce": "aq5v5-indigo-cairn",
+      "family": "contract-cairn",
+      "prompt": "Frame a bounded Codex task for comparing two migration plans, including whose confirmation is needed before either is adopted.",
+      "normalized_prompt": "frame a bounded codex task for comparing two migration plans, including whose confirmation is needed before either is adopted.",
+      "prompt_sha256": "e934db1f295cca8f8b19d125e1dccd1021f2fa1d0ecfc5056742f83aaeddcff3",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "codex-task-contract"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        "decision-contract"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "task-contract",
+          "trigger_id": "decision-contract",
+          "payload_id": "aq-contract-vocabulary"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-012",
+      "nonce": "aq5v5-velvet-ridge",
+      "family": "contract-ridge",
+      "prompt": "Clarify whether “finish the incident note” means drafting a proposal, sending it, or closing the incident, and state the stopping point.",
+      "normalized_prompt": "clarify whether “finish the incident note” means drafting a proposal, sending it, or closing the incident, and state the stopping point.",
+      "prompt_sha256": "18207fd178265f7a024fcb6ec7749f60e22488f15e50102e6215096c4d111761",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "codex-task-contract"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [],
+      "deterministic_reference_expectations": [],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-013",
+      "nonce": "aq5v5-orchid-gale",
+      "family": "proof-gale",
+      "prompt": "Choose the smallest convincing pre-merge proof for a parser rewrite that changes error handling but not the public API.",
+      "normalized_prompt": "choose the smallest convincing pre-merge proof for a parser rewrite that changes error handling but not the public api.",
+      "prompt_sha256": "fc220382a84f08a02cb61ec369320a94a08956bff908eb201b22fd179ec829b6",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "verification-strategy"
+      ],
+      "expected_advisers": [
+        "verification-strategy-engineering"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        "verification-evidence"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "verification-strategy",
+          "trigger_id": "verification-evidence",
+          "payload_id": "aq-verify-mode-selection"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-014",
+      "nonce": "aq5v5-bronze-vale",
+      "family": "proof-vale",
+      "prompt": "Before reviewing a permission change, decide which oracle could actually falsify the intended access boundary.",
+      "normalized_prompt": "before reviewing a permission change, decide which oracle could actually falsify the intended access boundary.",
+      "prompt_sha256": "a132e2e7a13a1d51934618da20755fb4797b5fe1de81403e4d8643ce617d3b54",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "verification-strategy"
+      ],
+      "expected_advisers": [
+        "verification-strategy-engineering"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        "verification-evidence"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "verification-strategy",
+          "trigger_id": "verification-evidence",
+          "payload_id": "aq-verify-mode-selection"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-015",
+      "nonce": "aq5v5-quiet-cedar",
+      "family": "proof-cedar",
+      "prompt": "What evidence should be required before proposing a retry-policy change when live traffic cannot be exercised?",
+      "normalized_prompt": "what evidence should be required before proposing a retry-policy change when live traffic cannot be exercised?",
+      "prompt_sha256": "89f56562b3b74cfcb4db5654ca1bb95cd94d713ef53828f6a491b70bd33fb1c3",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "verification-strategy"
+      ],
+      "expected_advisers": [
+        "verification-strategy-engineering"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        "reference-isolation"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "verification-strategy",
+          "trigger_id": "reference-isolation",
+          "payload_id": "aq-verify-boundary"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-016",
+      "nonce": "aq5v5-ruby-delta",
+      "family": "proof-delta",
+      "prompt": "Select a proportionate falsification plan for a cache invalidation patch whose main risk is an unnoticed stale read.",
+      "normalized_prompt": "select a proportionate falsification plan for a cache invalidation patch whose main risk is an unnoticed stale read.",
+      "prompt_sha256": "953d096a20959b27df47e95cfa0643297d18caea6a580aa33649c7fd64eaf19b",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "verification-strategy"
+      ],
+      "expected_advisers": [
+        "verification-strategy-engineering"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        "verification-evidence"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "verification-strategy",
+          "trigger_id": "verification-evidence",
+          "payload_id": "aq-verify-mode-selection"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-017",
+      "nonce": "aq5v5-saffron-bay",
+      "family": "proof-bay",
+      "prompt": "A reviewer cannot run the integration environment. Decide what limited proof can still support a proposal and what it cannot show.",
+      "normalized_prompt": "a reviewer cannot run the integration environment. decide what limited proof can still support a proposal and what it cannot show.",
+      "prompt_sha256": "2c063d937eb0fa6e20c17d411f96e9a53cccea198b90a6481dbc6a1740880809",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "verification-strategy"
+      ],
+      "expected_advisers": [
+        "verification-strategy-engineering"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        "no-change-abstention"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "verification-strategy",
+          "trigger_id": "no-change-abstention",
+          "payload_id": "aq-verify-mode-selection"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-018",
+      "nonce": "aq5v5-mint-lantern",
+      "family": "proof-lantern",
+      "prompt": "For a narrowly scoped formatter change, determine whether a snapshot check, a property test, or neither is warranted before implementation.",
+      "normalized_prompt": "for a narrowly scoped formatter change, determine whether a snapshot check, a property test, or neither is warranted before implementation.",
+      "prompt_sha256": "11a0b8f1573ae616b8a02f2b3f63bb207c5de52c5aa11810e9f4661c27170b7e",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "verification-strategy"
+      ],
+      "expected_advisers": [
+        "verification-strategy-engineering"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [],
+      "deterministic_reference_expectations": [],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-019",
+      "nonce": "aq5v5-marble-wren",
+      "family": "learning-wren",
+      "prompt": "After three independent runs exposed the same mistaken fallback, decide how that observation should revise the evaluation suite.",
+      "normalized_prompt": "after three independent runs exposed the same mistaken fallback, decide how that observation should revise the evaluation suite.",
+      "prompt_sha256": "51203811c9ae4b77b4cfbfe5ee28d2bcc655b0b5ae54da026357d35b2d1369f4",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "engineering-learning"
+      ],
+      "expected_advisers": [
+        "engineering-learning-loop"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering"
+      ],
+      "reference_triggers": [
+        "verification-evidence"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "engineering-learning",
+          "trigger_id": "verification-evidence",
+          "payload_id": "aq-learning-hidden-evals"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-020",
+      "nonce": "aq5v5-blue-aster",
+      "family": "learning-aster",
+      "prompt": "Observed review notes show that a helper was repeatedly misunderstood. Govern whether and how that signal becomes a durable prompt revision.",
+      "normalized_prompt": "observed review notes show that a helper was repeatedly misunderstood. govern whether and how that signal becomes a durable prompt revision.",
+      "prompt_sha256": "d0d024d57d7b2f7659fc0b6c72a6eae7e39fb82777d365c24c2c5be5a460c40e",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "engineering-learning"
+      ],
+      "expected_advisers": [
+        "engineering-learning-loop"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering"
+      ],
+      "reference_triggers": [
+        "learning-adoption"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "engineering-learning",
+          "trigger_id": "learning-adoption",
+          "payload_id": "aq-learning-freshness"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-021",
+      "nonce": "aq5v5-echo-stone",
+      "family": "learning-stone",
+      "prompt": "A controlled trial produced one surprising failure mode. Decide the evidence path for turning that observation into a new guardrail.",
+      "normalized_prompt": "a controlled trial produced one surprising failure mode. decide the evidence path for turning that observation into a new guardrail.",
+      "prompt_sha256": "f83f136fb18385f5387c3c4cf405ce7ec05d63ce1c9cd667df6654adce61de7e",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "engineering-learning"
+      ],
+      "expected_advisers": [
+        "engineering-learning-loop"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering"
+      ],
+      "reference_triggers": [
+        "reference-isolation"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "engineering-learning",
+          "trigger_id": "reference-isolation",
+          "payload_id": "aq-learning-attribution"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-022",
+      "nonce": "aq5v5-copper-swell",
+      "family": "learning-swell",
+      "prompt": "The last release review found a recurring blind spot. Specify how to decide whether the lesson belongs in tools, evaluation cases, or neither.",
+      "normalized_prompt": "the last release review found a recurring blind spot. specify how to decide whether the lesson belongs in tools, evaluation cases, or neither.",
+      "prompt_sha256": "29fda5f68c7de373b2f8b07fc34d94190d9cdf0d8f60b538a35ee925147a9d0c",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "engineering-learning"
+      ],
+      "expected_advisers": [
+        "engineering-learning-loop"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering"
+      ],
+      "reference_triggers": [
+        "learning-adoption"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "engineering-learning",
+          "trigger_id": "learning-adoption",
+          "payload_id": "aq-learning-freshness"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-023",
+      "nonce": "aq5v5-pearl-branch",
+      "family": "learning-branch",
+      "prompt": "A postmortem records that a stale instruction caused rework. Decide what must be observed before refreshing guidance and how to preserve attribution.",
+      "normalized_prompt": "a postmortem records that a stale instruction caused rework. decide what must be observed before refreshing guidance and how to preserve attribution.",
+      "prompt_sha256": "94466c2547a49e955e49eac1e8b965a2da802ddd07c68255ce06dfa55e304ca4",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "engineering-learning"
+      ],
+      "expected_advisers": [
+        "engineering-learning-loop"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering"
+      ],
+      "reference_triggers": [
+        "no-change-abstention"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "engineering-learning",
+          "trigger_id": "no-change-abstention",
+          "payload_id": "aq-learning-freshness"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-024",
+      "nonce": "aq5v5-willow-spark",
+      "family": "learning-spark",
+      "prompt": "Results from repeated code reviews show a consistent misconception about cancellation. Decide how the observed pattern should influence future engineering guidance.",
+      "normalized_prompt": "results from repeated code reviews show a consistent misconception about cancellation. decide how the observed pattern should influence future engineering guidance.",
+      "prompt_sha256": "5ccadabadcf365e458bcf00582f47caa8a69a507d855b6cd37eeed572e24c032",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "engineering-learning"
+      ],
+      "expected_advisers": [
+        "engineering-learning-loop"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering"
+      ],
+      "reference_triggers": [],
+      "deterministic_reference_expectations": [],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-025",
+      "nonce": "aq5v5-twin-passage",
+      "family": "dual-passage",
+      "prompt": "For an autonomous repair service, independently decide the boundary between coordinator and worker and the approval contract for applying a generated patch.",
+      "normalized_prompt": "for an autonomous repair service, independently decide the boundary between coordinator and worker and the approval contract for applying a generated patch.",
+      "prompt_sha256": "06dfbb07894b3be0269f719a927a74e802de7e7a7b2a988b208b6120ee4cfc2c",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "topology-control-boundary",
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "agentic-engineering",
+        "codex-task-contract"
+      ],
+      "must_not_select": [
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        "architecture-boundary",
+        "decision-contract"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "topology-control-boundary",
+          "trigger_id": "architecture-boundary",
+          "payload_id": "aq-agentic-architecture"
+        },
+        {
+          "owner_atom": "task-contract",
+          "trigger_id": "decision-contract",
+          "payload_id": "aq-contract-vocabulary"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": true,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-026",
+      "nonce": "aq5v5-double-orbit",
+      "family": "dual-orbit",
+      "prompt": "Given observed flaky checks, independently choose the proof needed for the next patch and how the resulting evidence should update future test design.",
+      "normalized_prompt": "given observed flaky checks, independently choose the proof needed for the next patch and how the resulting evidence should update future test design.",
+      "prompt_sha256": "db29cdc49862c18ce575a4d47c878ceca174f1fb9521df389cbce4f96d84fddd",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "verification-strategy",
+        "engineering-learning"
+      ],
+      "expected_advisers": [
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract"
+      ],
+      "reference_triggers": [
+        "verification-evidence",
+        "learning-adoption"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "engineering-learning",
+          "trigger_id": "verification-evidence",
+          "payload_id": "aq-learning-hidden-evals"
+        },
+        {
+          "owner_atom": "engineering-learning",
+          "trigger_id": "learning-adoption",
+          "payload_id": "aq-learning-freshness"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": true,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-027",
+      "nonce": "aq5v5-priority-lens",
+      "family": "precedence-lens",
+      "prompt": "A proposed agent split mentions testability, but the controlling choice is where planning authority ends and execution begins; treat proof concerns as downstream.",
+      "normalized_prompt": "a proposed agent split mentions testability, but the controlling choice is where planning authority ends and execution begins; treat proof concerns as downstream.",
+      "prompt_sha256": "405a23d8020925150a90a05bd791f4e33cf044a62784f369a38645972128bd64",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "topology-control-boundary"
+      ],
+      "expected_advisers": [
+        "agentic-engineering"
+      ],
+      "must_not_select": [
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        "architecture-boundary"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "topology-control-boundary",
+          "trigger_id": "architecture-boundary",
+          "payload_id": "aq-agentic-architecture"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": true,
+        "candidate_atoms": [
+          "topology-control-boundary",
+          "verification-strategy"
+        ],
+        "winner": "topology-control-boundary",
+        "rule": "The control-boundary decision owns; proof is a downstream consequence."
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-028",
+      "nonce": "aq5v5-priority-gate",
+      "family": "precedence-gate",
+      "prompt": "A request mentions testing a configuration change, but first decide whether the task may modify configuration at all; proof planning follows that authority boundary.",
+      "normalized_prompt": "a request mentions testing a configuration change, but first decide whether the task may modify configuration at all; proof planning follows that authority boundary.",
+      "prompt_sha256": "078c9f004685430479b2fa56127b9a8ed50a44a221609393e99479fa2178dc1c",
+      "mode": "automatic",
+      "expected_decision_atoms": [
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "codex-task-contract"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        "no-change-abstention"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "task-contract",
+          "trigger_id": "no-change-abstention",
+          "payload_id": "aq-contract-assumption-approval"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": true,
+        "candidate_atoms": [
+          "task-contract",
+          "verification-strategy"
+        ],
+        "winner": "task-contract",
+        "rule": "The authority and done boundary owns; verification is subordinate."
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-029",
+      "nonce": "aq5v5-native-birch",
+      "family": "native-birch",
+      "prompt": "Summarize the difference between a mutex and a semaphore for a new teammate.",
+      "normalized_prompt": "summarize the difference between a mutex and a semaphore for a new teammate.",
+      "prompt_sha256": "14901886fd0e4d2f3c0e7addb489ed2f71072d525bb78128df6ae7e28a0f1d9b",
+      "mode": "automatic",
+      "expected_decision_atoms": [],
+      "expected_advisers": [],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [],
+      "deterministic_reference_expectations": [],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-030",
+      "nonce": "aq5v5-native-pollen",
+      "family": "native-pollen",
+      "prompt": "Suggest three neutral names for a command that prints a compact status summary.",
+      "normalized_prompt": "suggest three neutral names for a command that prints a compact status summary.",
+      "prompt_sha256": "26e572d49e41f0d54959ccab02cdb2d69670e8b616049de3d7e9607252cb9b4e",
+      "mode": "automatic",
+      "expected_decision_atoms": [],
+      "expected_advisers": [],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [],
+      "deterministic_reference_expectations": [],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-031",
+      "nonce": "aq5v5-native-sunrise",
+      "family": "native-sunrise",
+      "prompt": "Explain why deterministic ordering makes command-line output easier to compare.",
+      "normalized_prompt": "explain why deterministic ordering makes command-line output easier to compare.",
+      "prompt_sha256": "1478938239e507a0db460f86e6ad1dd6d0bf31cdcef7c06cac77ee710620b2c0",
+      "mode": "automatic",
+      "expected_decision_atoms": [],
+      "expected_advisers": [],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [],
+      "deterministic_reference_expectations": [],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-032",
+      "nonce": "aq5v5-native-tide",
+      "family": "native-tide",
+      "prompt": "Convert the phrase “build passed” into a calm, user-facing status sentence.",
+      "normalized_prompt": "convert the phrase “build passed” into a calm, user-facing status sentence.",
+      "prompt_sha256": "219d2a910581841f4e76b6a1da5f497210d8418e569d12ed20fe52b95ffffbdf",
+      "mode": "automatic",
+      "expected_decision_atoms": [],
+      "expected_advisers": [],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [],
+      "deterministic_reference_expectations": [],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": null,
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-033",
+      "nonce": "aq5v5-explicit-vertex",
+      "family": "explicit-vertex",
+      "prompt": "$agentic-engineering: propose the component boundary for an agent that delegates implementation but retains recovery control.",
+      "normalized_prompt": "$agentic-engineering: propose the component boundary for an agent that delegates implementation but retains recovery control.",
+      "prompt_sha256": "62e3a143ae68fc874b829efaeb78c777f97d0b1a4ccadeb9d57321fea77a0e11",
+      "mode": "explicit",
+      "expected_decision_atoms": [
+        "topology-control-boundary"
+      ],
+      "expected_advisers": [
+        "agentic-engineering"
+      ],
+      "must_not_select": [
+        "codex-task-contract",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        "architecture-boundary"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "topology-control-boundary",
+          "trigger_id": "architecture-boundary",
+          "payload_id": "aq-agentic-architecture"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": "$agentic-engineering",
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-034",
+      "nonce": "aq5v5-explicit-compass",
+      "family": "explicit-compass",
+      "prompt": "$codex-task-contract: define the authorized outcome and stopping rule for a request to investigate a production discrepancy.",
+      "normalized_prompt": "$codex-task-contract: define the authorized outcome and stopping rule for a request to investigate a production discrepancy.",
+      "prompt_sha256": "185a885f14dc6f9c137b27caa449c9d58832938e5d0399e397f0a18ade6073c6",
+      "mode": "explicit",
+      "expected_decision_atoms": [
+        "task-contract"
+      ],
+      "expected_advisers": [
+        "codex-task-contract"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "verification-strategy-engineering",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        "decision-contract"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "task-contract",
+          "trigger_id": "decision-contract",
+          "payload_id": "aq-contract-vocabulary"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": "$codex-task-contract",
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-035",
+      "nonce": "aq5v5-explicit-oracle",
+      "family": "explicit-oracle",
+      "prompt": "$verification-strategy-engineering: select a falsification plan for a change that may alter request routing under load.",
+      "normalized_prompt": "$verification-strategy-engineering: select a falsification plan for a change that may alter request routing under load.",
+      "prompt_sha256": "775146f842757ce580edbd1ded5ed2b7aff590f64c327cde5f7a5c5c57972d51",
+      "mode": "explicit",
+      "expected_decision_atoms": [
+        "verification-strategy"
+      ],
+      "expected_advisers": [
+        "verification-strategy-engineering"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "engineering-learning-loop"
+      ],
+      "reference_triggers": [
+        "verification-evidence"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "verification-strategy",
+          "trigger_id": "verification-evidence",
+          "payload_id": "aq-verify-mode-selection"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": "$verification-strategy-engineering",
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    },
+    {
+      "id": "AQ5-A-036",
+      "nonce": "aq5v5-explicit-echo",
+      "family": "explicit-echo",
+      "prompt": "$engineering-learning-loop: use the observed regression pattern to decide what durable evaluation or guidance update is justified.",
+      "normalized_prompt": "$engineering-learning-loop: use the observed regression pattern to decide what durable evaluation or guidance update is justified.",
+      "prompt_sha256": "70a87f2d9a4c4e7c2ad1e380e21c25b39266b47d19134e3058e745b3f5f6c6b1",
+      "mode": "explicit",
+      "expected_decision_atoms": [
+        "engineering-learning"
+      ],
+      "expected_advisers": [
+        "engineering-learning-loop"
+      ],
+      "must_not_select": [
+        "agentic-engineering",
+        "codex-task-contract",
+        "verification-strategy-engineering"
+      ],
+      "reference_triggers": [
+        "learning-adoption"
+      ],
+      "deterministic_reference_expectations": [
+        {
+          "owner_atom": "engineering-learning",
+          "trigger_id": "learning-adoption",
+          "payload_id": "aq-learning-freshness"
+        }
+      ],
+      "authority_prohibitions": [
+        "no_authority_assignment",
+        "no_policy_adoption"
+      ],
+      "effect_prohibitions": [
+        "no_effect_execution",
+        "no_external_action"
+      ],
+      "claim_prohibitions": [
+        "no_completion_claim",
+        "no_efficacy_claim",
+        "no_product_claim"
+      ],
+      "exactly_two": false,
+      "precedence": {
+        "applies": false,
+        "candidate_atoms": [],
+        "winner": null,
+        "rule": null
+      },
+      "declared_invocation": "$engineering-learning-loop",
+      "condition_blind": true,
+      "blinding_flags": [
+        "author_blind_to_candidate_selector",
+        "author_blind_to_prior_outcomes"
+      ],
+      "full_schema_or_template_expected": false
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/aq5/activation-corpus-v5.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "corpus_id", "condition_blind", "claim_ceiling", "cases"],
+  "properties": {
+    "schema_version": {"const": "aq5-activation-corpus-v5"},
+    "corpus_id": {"type": "string", "pattern": "^aq5-(?:authoring|heldout)-v5$"},
+    "condition_blind": {"const": true},
+    "claim_ceiling": {"const": "structural-proposal-only"},
+    "cases": {"type": "array", "items": {"$ref": "#/$defs/case"}}
+  },
+  "$defs": {
+    "adviser": {"enum": ["agentic-engineering", "codex-task-contract", "verification-strategy-engineering", "engineering-learning-loop"]},
+    "atom": {"enum": ["topology-control-boundary", "task-contract", "verification-strategy", "engineering-learning"]},
+    "trigger": {"enum": ["decomposition-boundary", "architecture-boundary", "reference-isolation", "no-change-abstention", "decision-contract", "verification-evidence", "learning-adoption"]},
+    "referenceExpectation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["owner_atom", "trigger_id", "payload_id"],
+      "properties": {
+        "owner_atom": {"$ref": "#/$defs/atom"},
+        "trigger_id": {"$ref": "#/$defs/trigger"},
+        "payload_id": {"type": "string", "pattern": "^aq-(?:agentic-(?:seven-layer|architecture|control)|contract-(?:assumption-approval|vocabulary)|verify-(?:mode-selection|boundary)|learning-(?:attribution|hidden-evals|freshness))$"}
+      }
+    },
+    "precedence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["applies", "candidate_atoms", "winner", "rule"],
+      "properties": {
+        "applies": {"type": "boolean"},
+        "candidate_atoms": {"type": "array", "items": {"$ref": "#/$defs/atom"}, "uniqueItems": true},
+        "winner": {"anyOf": [{"$ref": "#/$defs/atom"}, {"type": "null"}]},
+        "rule": {"anyOf": [{"type": "string"}, {"type": "null"}]}
+      }
+    },
+    "case": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "nonce", "family", "prompt", "normalized_prompt", "prompt_sha256", "mode", "expected_decision_atoms", "expected_advisers", "must_not_select", "reference_triggers", "deterministic_reference_expectations", "authority_prohibitions", "effect_prohibitions", "claim_prohibitions", "exactly_two", "precedence", "declared_invocation", "condition_blind", "blinding_flags", "full_schema_or_template_expected"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^AQ5-(?:A|H)-[0-9]{3}$"},
+        "nonce": {"type": "string", "pattern": "^aq5v5-[a-z0-9-]+$"},
+        "family": {"type": "string", "pattern": "^[a-z][a-z0-9-]*$", "minLength": 3},
+        "prompt": {"type": "string", "minLength": 1},
+        "normalized_prompt": {"type": "string", "minLength": 1},
+        "prompt_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "mode": {"enum": ["automatic", "explicit"]},
+        "expected_decision_atoms": {"type": "array", "items": {"$ref": "#/$defs/atom"}, "uniqueItems": true, "maxItems": 2},
+        "expected_advisers": {"type": "array", "items": {"$ref": "#/$defs/adviser"}, "uniqueItems": true, "maxItems": 2},
+        "must_not_select": {"type": "array", "items": {"$ref": "#/$defs/adviser"}, "uniqueItems": true},
+        "reference_triggers": {"type": "array", "items": {"$ref": "#/$defs/trigger"}, "uniqueItems": true, "maxItems": 3},
+        "deterministic_reference_expectations": {"type": "array", "items": {"$ref": "#/$defs/referenceExpectation"}, "maxItems": 3},
+        "authority_prohibitions": {"const": ["no_authority_assignment", "no_policy_adoption"]},
+        "effect_prohibitions": {"const": ["no_effect_execution", "no_external_action"]},
+        "claim_prohibitions": {"const": ["no_completion_claim", "no_efficacy_claim", "no_product_claim"]},
+        "exactly_two": {"type": "boolean"},
+        "precedence": {"$ref": "#/$defs/precedence"},
+        "declared_invocation": {"anyOf": [{"type": "null"}, {"enum": ["$agentic-engineering", "$codex-task-contract", "$verification-strategy-engineering", "$engineering-learning-loop"]}]},
+        "condition_blind": {"const": true},
+        "blinding_flags": {"const": ["author_blind_to_candidate_selector", "author_blind_to_prior_outcomes"]},
+        "full_schema_or_template_expected": {"const": false}
+      },
+      "allOf": [
+        {"if": {"properties": {"mode": {"const": "automatic"}}}, "then": {"properties": {"declared_invocation": {"type": "null"}}}},
+        {"if": {"properties": {"mode": {"const": "explicit"}}}, "then": {"properties": {"declared_invocation": {"type": "string"}}, "required": ["declared_invocation"]}}
+      ]
+    }
+  }
+}
