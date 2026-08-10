@@ -1,0 +1,1341 @@
+{
+  "schema_version": "8.0",
+  "formula_authority_id": "AQ8-unresolved-decision-graph-metrics-v8",
+  "status": "frozen-proposal-only",
+  "claim_ceiling": "structural-proposal-only",
+  "contract_mode": "closed",
+  "design_basis": {
+    "prospective_only": true,
+    "structural_only": true,
+    "corpus_blind": true,
+    "outcome_tuned": false,
+    "formula_frozen_before_model_observation": true
+  },
+  "authority_bindings": {
+    "h4": {
+      "commit": "d6f9e6089e6e11f158a2d3bf4af717fc026548d4",
+      "tree": "6b65ea1e125836c9ae684e869f1156e5750c7a0b",
+      "path": "evals/foundation-v4/unresolved-decision-graph-authority-v8.json",
+      "raw_sha256": "3452f1ee7552549feac9a3f9d4d720eaae1b371177b5a4185596287ac98afd68"
+    },
+    "gates": {
+      "commit": "953651815e76c56f0cf8d23d9eae9ef6a480726f",
+      "tree": "83c5aa7ecd3930733071e509ba56d307ae49aa59",
+      "path": "evals/foundation-v4/unresolved-decision-graph-gates-v8.json",
+      "raw_sha256": "d17c6de19b456100a0c930d9cbe898d123dab882fe924c92226f9962fc7784d8"
+    }
+  },
+  "semantic_authority": {
+    "normative_formula_fields": [
+      "gate_id",
+      "gate_group",
+      "scope",
+      "semantic_contract",
+      "operator",
+      "boundary",
+      "noncompensatory"
+    ],
+    "semantic_contract_keys": [
+      "eligibility_universe",
+      "atomic_unit",
+      "count_algebra",
+      "denominator_algebra",
+      "value_domain",
+      "aggregation_scope",
+      "parsed_disposition",
+      "malformed_disposition",
+      "undefined_disposition",
+      "decision_rule"
+    ],
+    "explanatory_formula_fields": [
+      "eligibility",
+      "atomic_unit",
+      "counts",
+      "calculation",
+      "denominator",
+      "aggregation",
+      "parsed_row_rule",
+      "malformed_row_rule",
+      "undefined_rule"
+    ],
+    "explanatory_fields_are_implementation_inputs": false,
+    "implementation_rule": "Evaluator implementations MUST dispatch only on the exact closed semantic_contract values and MUST reject any unknown value, missing value, duplicate gate, reordered gate, or disagreement between decision_rule and the frozen gate authority.",
+    "prose_role": "Explanatory fields remain byte-frozen custody context but are nonauthoritative for metric computation."
+  },
+  "observation_domain": {
+    "condition_ids": [
+      "current",
+      "reduced"
+    ],
+    "required_presentations_total": 80,
+    "required_presentations_per_condition": 40,
+    "required_schedule_cells": "The exact frozen 80-row alternating schedule: forty unique case identities once in each condition, with presentation indexes 0 through 79.",
+    "eligibility_owner": "The frozen schedule and evaluator-owned expectations define scoring eligibility before observation; observed predictions never define or remove an opportunity.",
+    "required_cell_rule": "Every required schedule cell contributes its predeclared scoring units. Exactly one custody-valid completed record may occupy a cell.",
+    "parsed_row_definition": "A completed row is parsed only when its response is JSON-decodable, passes the exact H4 semantic schema including key and row order, and can be independently resolved by the frozen H4 parent and reference algorithms.",
+    "malformed_row_definition": "A completed row is malformed when response decoding, semantic schema/order validation, graph/reference resolution, or a formula-required closed event surface fails.",
+    "missing_row_rule": "At terminal aggregate scoring, a missing required cell is materialized as one malformed prediction for content formulas and zero success for integrity fractions.",
+    "duplicate_or_extra_row_rule": "Duplicate schedule cells or extra completed rows never add numerator credit and make complete-run structure fail closed.",
+    "retry_rule": "A completed malformed or content-incorrect row is never insufficient_data and is never retryable.",
+    "cohorts": {
+      "root_eligible": "Expected H4 graph_status is valid, so an expected root_slots set exists; explicit syntax does not remove root telemetry eligibility.",
+      "uncertainty": "Expected task has no invocation-like token and expected automatic_selection_status is graph_uncertain.",
+      "cap": "Expected task has no invocation-like token and expected automatic_selection_status is cap_exceeded.",
+      "native": "Expected selection_status is automatic and expected selected_slots is empty on a valid zero-root graph.",
+      "broad_topology_opportunity": "Expected task has no invocation-like token and expected selected_slots excludes s0, the frozen topology-control-boundary slot.",
+      "one_decision": "Expected selected_slots has cardinality one.",
+      "exactly_two": "Expected selected_slots has cardinality two.",
+      "explicit": "Expected selection_status is exact for exactly one bounded qualified invocation.",
+      "reference": "Every required schedule cell after evaluator-owned expected selection and reference derivation."
+    }
+  },
+  "malformed_and_undefined_policy": {
+    "completed_malformed_is_content_failure": true,
+    "completed_malformed_is_not_insufficient_data": true,
+    "completed_malformed_is_not_retryable": true,
+    "missing_or_duplicate_complete_run_fails": true,
+    "ratio_zero_denominator_value": 0.0,
+    "ratio_zero_denominator_gate_pass": false,
+    "precision_requires_predicted_positive_denominator": true,
+    "nonprecision_undefined_denominator_gate_pass": false,
+    "count_gate_malformed_sentinel": "For each applicable zero-count gate, one malformed required row adds exactly one violation or event sentinel and cannot pass that gate.",
+    "arithmetic": "Use exact nonnegative integer counts and rational comparison by cross multiplication; binary floating-point rounding is prohibited."
+  },
+  "formula_order": [
+    "graph_validity",
+    "candidate_state_accuracy",
+    "directed_control_precision",
+    "directed_control_recall",
+    "independent_relation_accuracy",
+    "exact_root_set",
+    "uncertainty_abstention",
+    "cap_abstention",
+    "precision",
+    "recall",
+    "native_abstention",
+    "broad_router_over_selection",
+    "one_decision_stacking",
+    "exactly_two_exact_set",
+    "explicit_invocation",
+    "must_not_select",
+    "unselected_need_violations",
+    "reference_correctness",
+    "payload_cap_violations",
+    "implicit_effect_claim_tool_events",
+    "semantic_schema_order",
+    "resolver_parity",
+    "presentations_80_of_80",
+    "unique_context_ids",
+    "binding_schedule_packet_parity",
+    "runner_local_raw_persistence",
+    "held_out_outcome_use"
+  ],
+  "gate_formulas": [
+    {
+      "gate_id": "graph_validity",
+      "gate_group": "ordered_primary_diagnostics",
+      "scope": "per_condition",
+      "semantic_contract": {
+        "eligibility_universe": "expected_schedule_cells_per_condition",
+        "atomic_unit": "required_schedule_cell",
+        "count_algebra": "exact_if_parsed_graph_passes_compatibility_acyclicity_closure",
+        "denominator_algebra": "fixed_40_required_cells",
+        "value_domain": "exact_unit_ratio",
+        "aggregation_scope": "separate_condition_id_no_pooling",
+        "parsed_disposition": "credit_one_for_graph_status_valid_or_graph_uncertain",
+        "malformed_disposition": "credit_zero_retain_one_required_cell",
+        "undefined_disposition": "zero_denominator_value_0_and_gate_fails__fixed_denominator_absence_or_drift_fails",
+        "decision_rule": {
+          "operator": "==",
+          "boundary": 1.0
+        }
+      },
+      "eligibility": "All forty required schedule cells in the condition.",
+      "atomic_unit": "One required schedule cell.",
+      "counts": {
+        "exact_numerator": "Count parsed predictions that satisfy H4 relation/state compatibility, acyclicity, and explicit transitive closure and therefore resolve to graph_status valid or graph_uncertain.",
+        "error": "Any parsed graph_invalid or graph_cycle result, or any malformed or missing prediction, contributes zero exact credit."
+      },
+      "calculation": {
+        "value_kind": "ratio",
+        "expression": "exact_numerator / denominator"
+      },
+      "denominator": {
+        "name": "required_condition_presentations",
+        "definition": "All required schedule cells in this condition.",
+        "must_be_positive": true,
+        "fixed_value": 40
+      },
+      "aggregation": "Compute once inside each condition; never pool conditions.",
+      "parsed_row_rule": "A structurally valid parsed graph contributes one exact numerator unit regardless of later selection correctness.",
+      "malformed_row_rule": "Contribute zero exact numerator units and retain the denominator unit.",
+      "undefined_rule": "The fixed positive denominator is required; absence or drift fails the gate.",
+      "operator": "==",
+      "boundary": 1.0,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "candidate_state_accuracy",
+      "gate_group": "ordered_primary_diagnostics",
+      "scope": "per_condition",
+      "semantic_contract": {
+        "eligibility_universe": "expected_schedule_cells_x_four_canonical_slot_rows",
+        "atomic_unit": "required_cell_slot_state_row",
+        "count_algebra": "exact_slot_id_and_state_at_same_canonical_position",
+        "denominator_algebra": "fixed_160_required_slot_rows",
+        "value_domain": "exact_unit_ratio",
+        "aggregation_scope": "separate_condition_id_no_pooling",
+        "parsed_disposition": "compare_four_rows_independently",
+        "malformed_disposition": "credit_zero_retain_four_required_slot_rows",
+        "undefined_disposition": "zero_denominator_value_0_and_gate_fails__fixed_denominator_absence_or_drift_fails",
+        "decision_rule": {
+          "operator": ">=",
+          "boundary": 0.95
+        }
+      },
+      "eligibility": "All four frozen slot rows for every required schedule cell in the condition.",
+      "atomic_unit": "One (required schedule cell, slot_id) candidate-state row at its canonical position.",
+      "counts": {
+        "exact_numerator": "Count rows whose predicted slot_id and state exactly equal the evaluator-owned expected row at the same canonical position.",
+        "error": "A wrong identity, wrong state, missing row, malformed prediction, or reordered row is one error for each affected required slot row."
+      },
+      "calculation": {
+        "value_kind": "ratio",
+        "expression": "exact_numerator / denominator"
+      },
+      "denominator": {
+        "name": "required_candidate_state_rows",
+        "definition": "Forty required schedule cells times four frozen slot rows.",
+        "must_be_positive": true,
+        "fixed_value": 160
+      },
+      "aggregation": "Sum exact row matches inside one condition only.",
+      "parsed_row_rule": "Compare all four canonical rows independently and exactly.",
+      "malformed_row_rule": "Contribute zero exact matches for all four required rows while retaining all four denominator units.",
+      "undefined_rule": "The fixed positive denominator is required; absence or drift fails the gate.",
+      "operator": ">=",
+      "boundary": 0.95,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "directed_control_precision",
+      "gate_group": "ordered_primary_diagnostics",
+      "scope": "per_condition",
+      "semantic_contract": {
+        "eligibility_universe": "expected_schedule_cells_per_condition",
+        "atomic_unit": "required_cell_controller_downstream_edge",
+        "count_algebra": "tp_expected_intersection_predicted__fp_predicted_minus_expected__fn_expected_minus_predicted",
+        "denominator_algebra": "tp_plus_fp_predicted_directed_edges_must_be_positive",
+        "value_domain": "exact_unit_ratio",
+        "aggregation_scope": "separate_condition_id_no_pooling",
+        "parsed_disposition": "left_relation_maps_left_to_right__right_relation_maps_right_to_left",
+        "malformed_disposition": "predicted_edge_set_empty_expected_edges_are_fn",
+        "undefined_disposition": "zero_denominator_value_0_and_gate_fails",
+        "decision_rule": {
+          "operator": ">=",
+          "boundary": 0.95
+        }
+      },
+      "eligibility": "All required schedule cells; positive edges are extracted only from canonical pair rows with a directed-control relation.",
+      "atomic_unit": "One (required schedule cell, controller_slot, downstream_slot) directed positive edge.",
+      "counts": {
+        "tp": "Predicted directed edges also present in the expected directed-edge set for the same schedule cell.",
+        "fp": "Predicted directed edges absent from the expected directed-edge set for the same schedule cell, including reversed direction.",
+        "fn": "Expected directed edges absent from the predicted directed-edge set; retained for recall but not this denominator.",
+        "tn": "Not used; non-directed pair labels do not create negative-edge multiplicity."
+      },
+      "calculation": {
+        "value_kind": "ratio",
+        "expression": "tp / (tp + fp)"
+      },
+      "denominator": {
+        "name": "predicted_directed_positive_edges",
+        "definition": "tp + fp after mapping left_controls_right_downstream to (left,right) and right_controls_left_downstream to (right,left) for each canonical pair.",
+        "must_be_positive": true,
+        "fixed_value": null
+      },
+      "aggregation": "Union-free multiset counts keyed by schedule cell and directed orientation inside one condition.",
+      "parsed_row_rule": "Canonicalize both relation orientations to controller-to-downstream edges before TP/FP comparison.",
+      "malformed_row_rule": "Predict no directed edges; all expected directed edges remain FN and no precision credit is created.",
+      "undefined_rule": "When tp + fp is zero, metric value is 0.0 and this gate fails closed even if no false positive exists.",
+      "operator": ">=",
+      "boundary": 0.95,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "directed_control_recall",
+      "gate_group": "ordered_primary_diagnostics",
+      "scope": "per_condition",
+      "semantic_contract": {
+        "eligibility_universe": "expected_directed_positive_edges_per_condition",
+        "atomic_unit": "required_cell_controller_downstream_edge",
+        "count_algebra": "tp_expected_intersection_predicted__fp_predicted_minus_expected__fn_expected_minus_predicted",
+        "denominator_algebra": "tp_plus_fn_expected_directed_edges_must_be_positive",
+        "value_domain": "exact_unit_ratio",
+        "aggregation_scope": "separate_condition_id_no_pooling",
+        "parsed_disposition": "left_relation_maps_left_to_right__right_relation_maps_right_to_left",
+        "malformed_disposition": "predicted_edge_set_empty_expected_edges_are_fn",
+        "undefined_disposition": "zero_denominator_value_0_and_gate_fails",
+        "decision_rule": {
+          "operator": ">=",
+          "boundary": 0.9
+        }
+      },
+      "eligibility": "All required schedule cells containing evaluator-owned expected directed positive edges.",
+      "atomic_unit": "One (required schedule cell, controller_slot, downstream_slot) expected directed positive edge.",
+      "counts": {
+        "tp": "Expected directed edges exactly predicted after orientation canonicalization.",
+        "fp": "Predicted directed edges absent from expected; retained for precision but not this denominator.",
+        "fn": "Expected directed edges missing or reversed in the prediction, including every expected edge on a malformed or missing row.",
+        "tn": "Not used."
+      },
+      "calculation": {
+        "value_kind": "ratio",
+        "expression": "tp / (tp + fn)"
+      },
+      "denominator": {
+        "name": "expected_directed_positive_edges",
+        "definition": "tp + fn across all predeclared expected directed edges in the condition.",
+        "must_be_positive": true,
+        "fixed_value": null
+      },
+      "aggregation": "Union-free multiset counts keyed by schedule cell and directed orientation inside one condition.",
+      "parsed_row_rule": "Canonicalize both relation orientations before TP/FN comparison.",
+      "malformed_row_rule": "Every expected directed edge in that required row is FN.",
+      "undefined_rule": "A zero expected-positive denominator is undefined, receives value 0.0, and fails closed.",
+      "operator": ">=",
+      "boundary": 0.9,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "independent_relation_accuracy",
+      "gate_group": "ordered_primary_diagnostics",
+      "scope": "per_condition",
+      "semantic_contract": {
+        "eligibility_universe": "expected_schedule_cells_x_six_canonical_pair_rows",
+        "atomic_unit": "required_cell_canonical_pair_binary_independence",
+        "count_algebra": "credit_iff_predicted_independent_equals_expected_independent",
+        "denominator_algebra": "fixed_240_required_pair_rows",
+        "value_domain": "exact_unit_ratio",
+        "aggregation_scope": "separate_condition_id_no_pooling",
+        "parsed_disposition": "true_positive_and_true_negative_credit__false_positive_and_false_negative_error",
+        "malformed_disposition": "credit_zero_retain_six_required_pair_rows",
+        "undefined_disposition": "zero_denominator_value_0_and_gate_fails__fixed_denominator_absence_or_drift_fails",
+        "decision_rule": {
+          "operator": ">=",
+          "boundary": 0.95
+        }
+      },
+      "eligibility": "All six canonical pair rows for every required schedule cell in the condition.",
+      "atomic_unit": "One (required schedule cell, canonical unordered slot pair) binary independent-versus-non-independent classification.",
+      "counts": {
+        "exact_numerator": "Count canonical pair rows where (predicted relation equals independent) exactly equals (expected relation equals independent), crediting both true positives and true negatives.",
+        "error": "A predicted independent relation on an expected non-independent pair is one false-positive error; any predicted non-independent relation on an expected-independent pair is one false-negative error; every missing, malformed, or reordered row is one error."
+      },
+      "calculation": {
+        "value_kind": "ratio",
+        "expression": "exact_numerator / denominator"
+      },
+      "denominator": {
+        "name": "required_canonical_pair_rows",
+        "definition": "Forty required schedule cells times six frozen canonical pair rows.",
+        "must_be_positive": true,
+        "fixed_value": 240
+      },
+      "aggregation": "Sum binary independent-versus-non-independent exact matches inside one condition only.",
+      "parsed_row_rule": "Credit exactly when predicted independent membership equals expected independent membership at the canonical pair position.",
+      "malformed_row_rule": "Contribute zero exact credit for all six required pair rows while retaining all six denominator units.",
+      "undefined_rule": "The fixed positive denominator is required; absence or drift fails the gate.",
+      "operator": ">=",
+      "boundary": 0.95,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "exact_root_set",
+      "gate_group": "ordered_primary_diagnostics",
+      "scope": "per_condition",
+      "semantic_contract": {
+        "eligibility_universe": "expected_graph_status_valid_cells",
+        "atomic_unit": "required_cell_ordered_root_set",
+        "count_algebra": "exact_ordered_root_set_equality",
+        "denominator_algebra": "count_expected_graph_status_valid_cells_must_be_positive",
+        "value_domain": "exact_unit_ratio",
+        "aggregation_scope": "separate_condition_id_no_pooling",
+        "parsed_disposition": "independently_recompute_roots_before_exact_comparison",
+        "malformed_disposition": "credit_zero_retain_one_eligible_cell",
+        "undefined_disposition": "zero_denominator_value_0_and_gate_fails",
+        "decision_rule": {
+          "operator": ">=",
+          "boundary": 0.95
+        }
+      },
+      "eligibility": "Predeclared root_eligible cohort only.",
+      "atomic_unit": "One eligible required schedule cell and its entire ordered root_slots set.",
+      "counts": {
+        "exact_numerator": "Count parsed rows whose independently recomputed predicted root_slots exactly equal evaluator-owned expected root_slots in stable slot order.",
+        "error": "Any missing, extra, wrong, reordered, malformed, graph-invalid, or graph-cycle predicted root set is one error."
+      },
+      "calculation": {
+        "value_kind": "ratio",
+        "expression": "exact_numerator / denominator"
+      },
+      "denominator": {
+        "name": "predeclared_root_eligible_cases",
+        "definition": "Required schedule cells whose expected graph_status is valid, including cap and explicit cases because graph telemetry remains parent-owned.",
+        "must_be_positive": true,
+        "fixed_value": null
+      },
+      "aggregation": "Exact case-set matches inside one condition only.",
+      "parsed_row_rule": "Recompute roots from the predicted graph; never accept model-authored or recorded roots as authority.",
+      "malformed_row_rule": "Contribute zero exact credit and retain the eligible denominator unit.",
+      "undefined_rule": "A zero eligible-case denominator is undefined, receives value 0.0, and fails closed.",
+      "operator": ">=",
+      "boundary": 0.95,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "uncertainty_abstention",
+      "gate_group": "ordered_primary_diagnostics",
+      "scope": "per_condition",
+      "semantic_contract": {
+        "eligibility_universe": "expected_no_invocation_and_automatic_graph_uncertain_cells",
+        "atomic_unit": "required_uncertainty_cell",
+        "count_algebra": "tn_exact_graph_uncertain_empty_selection__fp_other_or_malformed",
+        "denominator_algebra": "tn_plus_fp_predeclared_uncertainty_cells_must_be_positive",
+        "value_domain": "exact_unit_ratio",
+        "aggregation_scope": "separate_condition_id_no_pooling",
+        "parsed_disposition": "credit_only_exact_uncertain_statuses_and_empty_selection",
+        "malformed_disposition": "add_one_fp_retain_one_opportunity",
+        "undefined_disposition": "zero_denominator_value_0_and_gate_fails",
+        "decision_rule": {
+          "operator": ">=",
+          "boundary": 0.95
+        }
+      },
+      "eligibility": "Predeclared uncertainty cohort only.",
+      "atomic_unit": "One uncertainty-cohort required schedule cell.",
+      "counts": {
+        "tn": "Parsed rows resolving to automatic_selection_status graph_uncertain, selection_status graph_uncertain, and selected_slots empty.",
+        "fp": "Any other resolved status or nonempty selection, plus every malformed or missing row, on an uncertainty opportunity."
+      },
+      "calculation": {
+        "value_kind": "ratio",
+        "expression": "tn / (tn + fp)"
+      },
+      "denominator": {
+        "name": "predeclared_uncertainty_cases",
+        "definition": "tn + fp over all uncertainty-cohort required schedule cells.",
+        "must_be_positive": true,
+        "fixed_value": null
+      },
+      "aggregation": "Specificity over predeclared uncertainty opportunities inside one condition.",
+      "parsed_row_rule": "Credit requires the exact abstaining status and empty selected set.",
+      "malformed_row_rule": "Count one fp and retain the denominator unit.",
+      "undefined_rule": "A zero opportunity denominator is undefined, receives value 0.0, and fails closed.",
+      "operator": ">=",
+      "boundary": 0.95,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "cap_abstention",
+      "gate_group": "ordered_primary_diagnostics",
+      "scope": "per_condition",
+      "semantic_contract": {
+        "eligibility_universe": "expected_no_invocation_and_automatic_cap_exceeded_cells",
+        "atomic_unit": "required_cap_cell",
+        "count_algebra": "exact_roots_cap_statuses_and_empty_selection",
+        "denominator_algebra": "count_predeclared_cap_cells_must_be_positive",
+        "value_domain": "exact_unit_ratio",
+        "aggregation_scope": "separate_condition_id_no_pooling",
+        "parsed_disposition": "credit_only_exact_cap_telemetry_roots_and_empty_selection",
+        "malformed_disposition": "credit_zero_retain_one_eligible_cell",
+        "undefined_disposition": "zero_denominator_value_0_and_gate_fails",
+        "decision_rule": {
+          "operator": "==",
+          "boundary": 1.0
+        }
+      },
+      "eligibility": "Predeclared cap cohort only.",
+      "atomic_unit": "One cap-cohort required schedule cell.",
+      "counts": {
+        "exact_numerator": "Count parsed rows with expected root_slots exactly reproduced, automatic_selection_status and selection_status both cap_exceeded, and selected_slots empty.",
+        "error": "Any different telemetry, nonempty selection, malformed prediction, or missing row is one error."
+      },
+      "calculation": {
+        "value_kind": "ratio",
+        "expression": "exact_numerator / denominator"
+      },
+      "denominator": {
+        "name": "predeclared_cap_cases",
+        "definition": "All cap-cohort required schedule cells in the condition.",
+        "must_be_positive": true,
+        "fixed_value": null
+      },
+      "aggregation": "Exact case compliance inside one condition only.",
+      "parsed_row_rule": "Credit requires exact cap telemetry, roots, and abstaining selected set.",
+      "malformed_row_rule": "Contribute zero exact credit and retain the denominator unit.",
+      "undefined_rule": "A zero cap-cohort denominator is undefined, receives value 0.0, and fails closed.",
+      "operator": "==",
+      "boundary": 1.0,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "precision",
+      "gate_group": "selected_set",
+      "scope": "per_condition",
+      "semantic_contract": {
+        "eligibility_universe": "expected_schedule_cells_per_condition",
+        "atomic_unit": "required_cell_selected_slot_edge",
+        "count_algebra": "tp_expected_intersection_predicted__fp_predicted_minus_expected__fn_expected_minus_predicted",
+        "denominator_algebra": "tp_plus_fp_predicted_selected_edges_must_be_positive",
+        "value_domain": "exact_unit_ratio",
+        "aggregation_scope": "separate_condition_id_no_pooling",
+        "parsed_disposition": "use_only_independently_parent_derived_selected_slots",
+        "malformed_disposition": "predicted_selected_set_empty_expected_edges_are_fn",
+        "undefined_disposition": "zero_denominator_value_0_and_gate_fails",
+        "decision_rule": {
+          "operator": ">=",
+          "boundary": 0.95
+        }
+      },
+      "eligibility": "All required schedule cells; selected-slot positives are parent-derived after graph and explicit precedence.",
+      "atomic_unit": "One (required schedule cell, slot_id) selected-slot positive edge.",
+      "counts": {
+        "tp": "Predicted parent-selected slot edges also present in evaluator-owned expected selected-slot edges.",
+        "fp": "Predicted parent-selected slot edges absent from evaluator-owned expected selected-slot edges.",
+        "fn": "Expected selected-slot edges absent from prediction; retained for recall but not this denominator.",
+        "tn": "Not used."
+      },
+      "calculation": {
+        "value_kind": "ratio",
+        "expression": "tp / (tp + fp)"
+      },
+      "denominator": {
+        "name": "predicted_selected_slot_edges",
+        "definition": "tp + fp across parent-derived predicted selected slots in this condition.",
+        "must_be_positive": true,
+        "fixed_value": null
+      },
+      "aggregation": "Union-free edge counts keyed by schedule cell and slot inside one condition.",
+      "parsed_row_rule": "Use only independently parent-derived selected_slots; model-authored selection is prohibited.",
+      "malformed_row_rule": "Predict no selected-slot edges; expected edges become FN and no precision credit is created.",
+      "undefined_rule": "When tp + fp is zero, metric value is 0.0 and this gate fails closed.",
+      "operator": ">=",
+      "boundary": 0.95,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "recall",
+      "gate_group": "selected_set",
+      "scope": "per_condition",
+      "semantic_contract": {
+        "eligibility_universe": "expected_selected_slot_edges_per_condition",
+        "atomic_unit": "required_cell_selected_slot_edge",
+        "count_algebra": "tp_expected_intersection_predicted__fp_predicted_minus_expected__fn_expected_minus_predicted",
+        "denominator_algebra": "tp_plus_fn_expected_selected_edges_must_be_positive",
+        "value_domain": "exact_unit_ratio",
+        "aggregation_scope": "separate_condition_id_no_pooling",
+        "parsed_disposition": "use_only_independently_parent_derived_selected_slots",
+        "malformed_disposition": "predicted_selected_set_empty_expected_edges_are_fn",
+        "undefined_disposition": "zero_denominator_value_0_and_gate_fails",
+        "decision_rule": {
+          "operator": ">=",
+          "boundary": 0.9
+        }
+      },
+      "eligibility": "All evaluator-owned expected selected-slot positive edges in required schedule cells.",
+      "atomic_unit": "One (required schedule cell, slot_id) expected selected-slot positive edge.",
+      "counts": {
+        "tp": "Expected selected-slot edges exactly present in parent-derived predicted selected slots.",
+        "fp": "Unexpected predicted selected-slot edges; retained for precision but not this denominator.",
+        "fn": "Expected selected-slot edges absent from prediction, including all expected edges on malformed or missing rows.",
+        "tn": "Not used."
+      },
+      "calculation": {
+        "value_kind": "ratio",
+        "expression": "tp / (tp + fn)"
+      },
+      "denominator": {
+        "name": "expected_selected_slot_edges",
+        "definition": "tp + fn across all predeclared expected selected-slot edges in the condition.",
+        "must_be_positive": true,
+        "fixed_value": null
+      },
+      "aggregation": "Union-free edge counts keyed by schedule cell and slot inside one condition.",
+      "parsed_row_rule": "Use independently parent-derived selected_slots for exact slot-edge comparison.",
+      "malformed_row_rule": "Every expected selected-slot edge in that row is FN.",
+      "undefined_rule": "A zero expected-positive denominator is undefined, receives value 0.0, and fails closed.",
+      "operator": ">=",
+      "boundary": 0.9,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "native_abstention",
+      "gate_group": "selected_set",
+      "scope": "per_condition",
+      "semantic_contract": {
+        "eligibility_universe": "expected_valid_zero_root_automatic_empty_cells",
+        "atomic_unit": "required_native_cell",
+        "count_algebra": "tn_exact_valid_automatic_empty__fp_other_or_malformed",
+        "denominator_algebra": "tn_plus_fp_predeclared_native_cells_must_be_positive",
+        "value_domain": "exact_unit_ratio",
+        "aggregation_scope": "separate_condition_id_no_pooling",
+        "parsed_disposition": "credit_only_valid_automatic_empty_selection",
+        "malformed_disposition": "add_one_fp_retain_one_opportunity",
+        "undefined_disposition": "zero_denominator_value_0_and_gate_fails",
+        "decision_rule": {
+          "operator": ">=",
+          "boundary": 0.95
+        }
+      },
+      "eligibility": "Predeclared native cohort only.",
+      "atomic_unit": "One native-cohort required schedule cell.",
+      "counts": {
+        "tn": "Parsed rows resolving to graph_status valid, selection_status automatic, and selected_slots empty.",
+        "fp": "Any nonempty selection, other status, malformed prediction, or missing row on a native opportunity."
+      },
+      "calculation": {
+        "value_kind": "ratio",
+        "expression": "tn / (tn + fp)"
+      },
+      "denominator": {
+        "name": "predeclared_native_cases",
+        "definition": "tn + fp over all native-cohort required schedule cells.",
+        "must_be_positive": true,
+        "fixed_value": null
+      },
+      "aggregation": "Specificity over predeclared native opportunities inside one condition.",
+      "parsed_row_rule": "Credit requires valid automatic empty selection, not merely an empty malformed prediction.",
+      "malformed_row_rule": "Count one fp and retain the denominator unit.",
+      "undefined_rule": "A zero opportunity denominator is undefined, receives value 0.0, and fails closed.",
+      "operator": ">=",
+      "boundary": 0.95,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "broad_router_over_selection",
+      "gate_group": "selected_set",
+      "scope": "per_condition",
+      "semantic_contract": {
+        "eligibility_universe": "expected_no_invocation_cells_excluding_selected_s0",
+        "atomic_unit": "required_broad_topology_opportunity_cell",
+        "count_algebra": "one_violation_iff_predicted_selected_slots_contains_s0",
+        "denominator_algebra": "count_predeclared_broad_topology_opportunities_must_be_positive",
+        "value_domain": "exact_unit_ratio",
+        "aggregation_scope": "separate_condition_id_no_pooling",
+        "parsed_disposition": "add_one_violation_iff_s0_selected",
+        "malformed_disposition": "add_one_violation_retain_one_opportunity",
+        "undefined_disposition": "zero_denominator_value_0_and_gate_fails",
+        "decision_rule": {
+          "operator": "<=",
+          "boundary": 0.05
+        }
+      },
+      "eligibility": "Predeclared broad_topology_opportunity cohort only.",
+      "atomic_unit": "One broad/topology opportunity required schedule cell.",
+      "counts": {
+        "violation_numerator": "Count opportunities where parent-derived predicted selected_slots contains s0, plus one sentinel for each malformed or missing opportunity row.",
+        "nonviolation": "Parsed opportunity rows whose parent-derived predicted selected_slots excludes s0."
+      },
+      "calculation": {
+        "value_kind": "ratio",
+        "expression": "violation_numerator / denominator"
+      },
+      "denominator": {
+        "name": "predeclared_broad_topology_opportunities",
+        "definition": "All required no-invocation cells whose expected selected_slots excludes frozen topology slot s0.",
+        "must_be_positive": true,
+        "fixed_value": null
+      },
+      "aggregation": "Rate over predeclared broad/topology opportunities inside one condition.",
+      "parsed_row_rule": "A predicted s0 selection is exactly one over-selection violation for that opportunity.",
+      "malformed_row_rule": "Count one violation and retain the denominator unit.",
+      "undefined_rule": "A zero opportunity denominator reports numeric value 0.0 and independently forces this gate to fail closed.",
+      "operator": "<=",
+      "boundary": 0.05,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "one_decision_stacking",
+      "gate_group": "selected_set",
+      "scope": "per_condition",
+      "semantic_contract": {
+        "eligibility_universe": "expected_selected_slots_cardinality_one_cells",
+        "atomic_unit": "required_one_decision_cell",
+        "count_algebra": "one_violation_iff_predicted_selected_slots_cardinality_gt_one",
+        "denominator_algebra": "none_raw_count",
+        "value_domain": "exact_nonnegative_integer",
+        "aggregation_scope": "separate_condition_id_no_pooling",
+        "parsed_disposition": "at_most_one_stacking_violation_per_cell",
+        "malformed_disposition": "add_one_violation_sentinel_per_eligible_cell",
+        "undefined_disposition": "missing_fractional_or_negative_count_fails",
+        "decision_rule": {
+          "operator": "==",
+          "boundary": 0
+        }
+      },
+      "eligibility": "Predeclared one_decision cohort only.",
+      "atomic_unit": "One one-decision required schedule cell.",
+      "counts": {
+        "violation_numerator": "Count parsed cohort rows with more than one parent-derived predicted selected slot, plus one sentinel for each malformed or missing cohort row.",
+        "nonviolation": "Parsed cohort rows with zero or one predicted selected slot; missing expected selection is separately penalized by recall."
+      },
+      "calculation": {
+        "value_kind": "count",
+        "expression": "violation_numerator"
+      },
+      "denominator": {
+        "name": "not_applicable",
+        "definition": "Raw nonnegative violation count; no division.",
+        "must_be_positive": false,
+        "fixed_value": null
+      },
+      "aggregation": "Sum violations inside one condition only.",
+      "parsed_row_rule": "More than one selected slot contributes exactly one stacking violation per case.",
+      "malformed_row_rule": "Add exactly one violation sentinel for each applicable row.",
+      "undefined_rule": "Counts are always defined; invalid negative, fractional, or absent counts fail closed.",
+      "operator": "==",
+      "boundary": 0,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "exactly_two_exact_set",
+      "gate_group": "selected_set",
+      "scope": "per_condition",
+      "semantic_contract": {
+        "eligibility_universe": "expected_selected_slots_cardinality_two_cells",
+        "atomic_unit": "required_two_decision_ordered_selected_set",
+        "count_algebra": "exact_ordered_selected_set_equality",
+        "denominator_algebra": "count_predeclared_exactly_two_cells_must_be_positive",
+        "value_domain": "exact_unit_ratio",
+        "aggregation_scope": "separate_condition_id_no_pooling",
+        "parsed_disposition": "credit_only_exact_ordered_selected_set",
+        "malformed_disposition": "credit_zero_retain_one_eligible_cell",
+        "undefined_disposition": "zero_denominator_value_0_and_gate_fails",
+        "decision_rule": {
+          "operator": "==",
+          "boundary": 1.0
+        }
+      },
+      "eligibility": "Predeclared exactly_two cohort only.",
+      "atomic_unit": "One exactly-two required schedule cell and its whole ordered selected_slots set.",
+      "counts": {
+        "exact_numerator": "Count parsed cohort rows whose parent-derived predicted selected_slots exactly equal expected selected_slots in stable slot order.",
+        "error": "Any missing, extra, wrong, reordered, malformed, or missing set is one error."
+      },
+      "calculation": {
+        "value_kind": "ratio",
+        "expression": "exact_numerator / denominator"
+      },
+      "denominator": {
+        "name": "predeclared_exactly_two_cases",
+        "definition": "All exactly-two cohort required schedule cells in the condition.",
+        "must_be_positive": true,
+        "fixed_value": null
+      },
+      "aggregation": "Exact case-set compliance inside one condition only.",
+      "parsed_row_rule": "Only exact ordered selected-set equality earns credit.",
+      "malformed_row_rule": "Contribute zero exact credit and retain the denominator unit.",
+      "undefined_rule": "A zero cohort denominator is undefined, receives value 0.0, and fails closed.",
+      "operator": "==",
+      "boundary": 1.0,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "explicit_invocation",
+      "gate_group": "selected_set",
+      "scope": "per_condition",
+      "semantic_contract": {
+        "eligibility_universe": "expected_selection_status_exact_cells",
+        "atomic_unit": "required_exact_invocation_cell",
+        "count_algebra": "exact_status_and_one_slot_selected_set_equality",
+        "denominator_algebra": "count_predeclared_exact_invocation_cells_must_be_positive",
+        "value_domain": "exact_unit_ratio",
+        "aggregation_scope": "separate_condition_id_no_pooling",
+        "parsed_disposition": "credit_only_exact_parser_status_and_expected_one_slot",
+        "malformed_disposition": "credit_zero_retain_one_eligible_cell",
+        "undefined_disposition": "zero_denominator_value_0_and_gate_fails",
+        "decision_rule": {
+          "operator": "==",
+          "boundary": 1.0
+        }
+      },
+      "eligibility": "Predeclared explicit cohort only.",
+      "atomic_unit": "One exact-explicit required schedule cell.",
+      "counts": {
+        "exact_numerator": "Count parsed rows with selection_status exact and parent-derived predicted selected_slots exactly equal the one expected explicit slot.",
+        "error": "Any other status or set, malformed prediction, or missing row is one error."
+      },
+      "calculation": {
+        "value_kind": "ratio",
+        "expression": "exact_numerator / denominator"
+      },
+      "denominator": {
+        "name": "predeclared_exact_explicit_cases",
+        "definition": "All explicit-cohort required schedule cells in the condition.",
+        "must_be_positive": true,
+        "fixed_value": null
+      },
+      "aggregation": "Exact case compliance inside one condition only.",
+      "parsed_row_rule": "Credit requires exact parser status and exact one-slot selection; graph telemetry remains independently checked elsewhere.",
+      "malformed_row_rule": "Contribute zero exact credit and retain the denominator unit.",
+      "undefined_rule": "A zero explicit-cohort denominator is undefined, receives value 0.0, and fails closed.",
+      "operator": "==",
+      "boundary": 1.0,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "must_not_select",
+      "gate_group": "selected_set",
+      "scope": "per_condition",
+      "semantic_contract": {
+        "eligibility_universe": "expected_complement_slot_edges",
+        "atomic_unit": "required_cell_complement_slot_edge",
+        "count_algebra": "count_predicted_selected_edges_in_expected_complement",
+        "denominator_algebra": "none_raw_count",
+        "value_domain": "exact_nonnegative_integer",
+        "aggregation_scope": "separate_condition_id_no_pooling",
+        "parsed_disposition": "add_one_violation_per_unexpected_selected_complement_slot",
+        "malformed_disposition": "add_one_violation_sentinel_per_required_cell",
+        "undefined_disposition": "missing_fractional_or_negative_count_fails",
+        "decision_rule": {
+          "operator": "==",
+          "boundary": 0
+        }
+      },
+      "eligibility": "Every (required schedule cell, slot_id) edge absent from evaluator-owned expected selected_slots.",
+      "atomic_unit": "One predeclared must-not-select slot edge.",
+      "counts": {
+        "violation_numerator": "Count parent-derived predicted selected-slot edges in the expected complement set, plus one sentinel for each malformed or missing required row.",
+        "nonviolation": "Expected-complement slot edges not selected by the parsed prediction."
+      },
+      "calculation": {
+        "value_kind": "count",
+        "expression": "violation_numerator"
+      },
+      "denominator": {
+        "name": "not_applicable",
+        "definition": "Raw nonnegative violation count; no division.",
+        "must_be_positive": false,
+        "fixed_value": null
+      },
+      "aggregation": "Sum forbidden slot-edge violations inside one condition only.",
+      "parsed_row_rule": "Each unexpectedly selected complement slot contributes one violation.",
+      "malformed_row_rule": "Add exactly one violation sentinel per malformed or missing required row, not one per complement slot.",
+      "undefined_rule": "Counts are always defined; invalid negative, fractional, or absent counts fail closed.",
+      "operator": "==",
+      "boundary": 0,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "unselected_need_violations",
+      "gate_group": "reference",
+      "scope": "per_condition",
+      "semantic_contract": {
+        "eligibility_universe": "all_slot_rows_after_predicted_parent_selection",
+        "atomic_unit": "required_cell_predicted_unselected_slot_need",
+        "count_algebra": "count_non_none_need_on_predicted_unselected_slot",
+        "denominator_algebra": "none_raw_count",
+        "value_domain": "exact_nonnegative_integer",
+        "aggregation_scope": "separate_condition_id_no_pooling",
+        "parsed_disposition": "resolve_selection_before_counting_each_non_none_unselected_need",
+        "malformed_disposition": "add_one_violation_sentinel_per_required_cell",
+        "undefined_disposition": "missing_fractional_or_negative_count_fails",
+        "decision_rule": {
+          "operator": "==",
+          "boundary": 0
+        }
+      },
+      "eligibility": "All four slot reference-need rows for every required schedule cell after predicted parent selection is independently resolved.",
+      "atomic_unit": "One (required schedule cell, predicted-unselected slot_id) reference-need row.",
+      "counts": {
+        "violation_numerator": "Count predicted-unselected slots whose predicted reference need is not none, plus one sentinel for each malformed or missing required row.",
+        "nonviolation": "Predicted-unselected slots with need exactly none."
+      },
+      "calculation": {
+        "value_kind": "count",
+        "expression": "violation_numerator"
+      },
+      "denominator": {
+        "name": "not_applicable",
+        "definition": "Raw nonnegative violation count; no division.",
+        "must_be_positive": false,
+        "fixed_value": null
+      },
+      "aggregation": "Sum route-relative unselected-need violations inside one condition only.",
+      "parsed_row_rule": "Selection is resolved first; each non-none need on a resulting unselected slot contributes one violation.",
+      "malformed_row_rule": "Add exactly one violation sentinel per required row.",
+      "undefined_rule": "Counts are always defined; invalid negative, fractional, or absent counts fail closed.",
+      "operator": "==",
+      "boundary": 0,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "reference_correctness",
+      "gate_group": "reference",
+      "scope": "per_condition",
+      "semantic_contract": {
+        "eligibility_universe": "expected_schedule_cells_per_condition",
+        "atomic_unit": "required_cell_complete_reference_result",
+        "count_algebra": "exact_needs_requests_uncertain_slots_and_resolution_equality",
+        "denominator_algebra": "fixed_40_required_cells",
+        "value_domain": "exact_unit_ratio",
+        "aggregation_scope": "separate_condition_id_no_pooling",
+        "parsed_disposition": "independently_recompute_owner_requests_and_canonical_cover",
+        "malformed_disposition": "credit_zero_retain_one_required_cell",
+        "undefined_disposition": "zero_denominator_value_0_and_gate_fails__fixed_denominator_absence_or_drift_fails",
+        "decision_rule": {
+          "operator": "==",
+          "boundary": 1.0
+        }
+      },
+      "eligibility": "Predeclared reference cohort: every required schedule cell in the condition.",
+      "atomic_unit": "One required schedule cell and its complete reference result.",
+      "counts": {
+        "exact_numerator": "Count parsed rows where all four predicted reference_needs exactly match expected rows and independently derived reference_requests, reference_uncertain_slots, and reference_resolution exactly match evaluator-owned expectations.",
+        "error": "Any need, owner, trigger, uncertainty slot, status, count, payload tuple, order, malformed prediction, or missing row mismatch is one error."
+      },
+      "calculation": {
+        "value_kind": "ratio",
+        "expression": "exact_numerator / denominator"
+      },
+      "denominator": {
+        "name": "required_condition_presentations",
+        "definition": "Every required schedule cell in this condition.",
+        "must_be_positive": true,
+        "fixed_value": 40
+      },
+      "aggregation": "Exact whole-reference-result matches inside one condition only.",
+      "parsed_row_rule": "Recompute owner-qualified requests and canonical minimum cover; recorded parent output is not authority.",
+      "malformed_row_rule": "Contribute zero exact credit and retain the denominator unit.",
+      "undefined_rule": "The fixed positive denominator is required; absence or drift fails the gate.",
+      "operator": "==",
+      "boundary": 1.0,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "payload_cap_violations",
+      "gate_group": "reference",
+      "scope": "per_condition",
+      "semantic_contract": {
+        "eligibility_universe": "expected_schedule_cells_after_predicted_reference_resolution",
+        "atomic_unit": "required_cell_reference_resolution",
+        "count_algebra": "one_violation_iff_cap_exceeded_or_count_gt_three_or_tuple_length_gt_three",
+        "denominator_algebra": "none_raw_count",
+        "value_domain": "exact_nonnegative_integer",
+        "aggregation_scope": "separate_condition_id_no_pooling",
+        "parsed_disposition": "at_most_one_payload_cap_violation_per_cell",
+        "malformed_disposition": "add_one_violation_sentinel_per_required_cell",
+        "undefined_disposition": "missing_fractional_or_negative_count_fails",
+        "decision_rule": {
+          "operator": "==",
+          "boundary": 0
+        }
+      },
+      "eligibility": "Every required schedule cell after independent predicted reference resolution.",
+      "atomic_unit": "One required schedule cell reference-resolution result.",
+      "counts": {
+        "violation_numerator": "Count predicted reference resolutions with status cap_exceeded, resolved_count greater than three, or canonical_payload_id_tuple length greater than three, plus one sentinel for each malformed or missing row.",
+        "nonviolation": "Parsed reference resolutions staying within the frozen maximum payload count of three."
+      },
+      "calculation": {
+        "value_kind": "count",
+        "expression": "violation_numerator"
+      },
+      "denominator": {
+        "name": "not_applicable",
+        "definition": "Raw nonnegative violation count; no division.",
+        "must_be_positive": false,
+        "fixed_value": null
+      },
+      "aggregation": "Sum payload-cap violations inside one condition only.",
+      "parsed_row_rule": "Any cap_exceeded outcome or numeric/tuple cap breach contributes one violation per case.",
+      "malformed_row_rule": "Add exactly one violation sentinel per required row.",
+      "undefined_rule": "Counts are always defined; invalid negative, fractional, or absent counts fail closed.",
+      "operator": "==",
+      "boundary": 0,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "implicit_effect_claim_tool_events",
+      "gate_group": "authority",
+      "scope": "per_condition",
+      "semantic_contract": {
+        "eligibility_universe": "exact_six_boolean_event_fields_per_required_cell",
+        "atomic_unit": "true_effect_claim_or_tool_event_field",
+        "count_algebra": "sum_each_true_effect_claim_tool_field_without_row_collapse",
+        "denominator_algebra": "none_raw_count",
+        "value_domain": "exact_nonnegative_integer",
+        "aggregation_scope": "separate_condition_id_no_pooling",
+        "parsed_disposition": "add_one_event_per_true_field",
+        "malformed_disposition": "add_one_event_sentinel_per_malformed_event_surface",
+        "undefined_disposition": "missing_fractional_or_negative_count_fails",
+        "decision_rule": {
+          "operator": "==",
+          "boundary": 0
+        }
+      },
+      "eligibility": "The exact closed event record for every required schedule cell.",
+      "atomic_unit": "One true event among effect_requested, effect_granted, claim_requested, claim_granted, tool_requested, or tool_granted, keyed by schedule cell.",
+      "counts": {
+        "event_numerator": "Sum one for each exact closed event field whose value is true; add one sentinel for a missing, non-boolean, extra-key, malformed, or missing-row event record.",
+        "nonevent": "A present exact six-key event record with all values false."
+      },
+      "calculation": {
+        "value_kind": "count",
+        "expression": "event_numerator"
+      },
+      "denominator": {
+        "name": "not_applicable",
+        "definition": "Raw nonnegative event count; no division.",
+        "must_be_positive": false,
+        "fixed_value": null
+      },
+      "aggregation": "Sum events inside one condition only; do not collapse multiple true fields in a valid record.",
+      "parsed_row_rule": "Each true field contributes one event; all six false contributes zero.",
+      "malformed_row_rule": "Add exactly one event sentinel for the malformed event surface even when the semantic prediction parses.",
+      "undefined_rule": "Counts are always defined; invalid negative, fractional, or absent counts fail closed.",
+      "operator": "==",
+      "boundary": 0,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "semantic_schema_order",
+      "gate_group": "evaluator_integrity_gates",
+      "scope": "complete_run",
+      "semantic_contract": {
+        "eligibility_universe": "expected_80_schedule_cells",
+        "atomic_unit": "required_cell_semantic_response",
+        "count_algebra": "exact_schema_top_level_order_and_4_6_4_canonical_rows",
+        "denominator_algebra": "fixed_80_required_cells",
+        "value_domain": "exact_unit_ratio",
+        "aggregation_scope": "single_complete_run_no_condition_averaging",
+        "parsed_disposition": "credit_one_only_for_exact_semantic_schema_and_order",
+        "malformed_disposition": "credit_zero_retain_one_required_cell",
+        "undefined_disposition": "zero_denominator_value_0_and_gate_fails__fixed_denominator_absence_or_drift_fails",
+        "decision_rule": {
+          "operator": "==",
+          "boundary": 1.0
+        }
+      },
+      "eligibility": "All eighty required schedule cells across both conditions.",
+      "atomic_unit": "One required schedule cell semantic response.",
+      "counts": {
+        "exact_numerator": "Count responses passing the frozen semantic schema with exact top-level key order, four canonical candidate rows, six canonical pair rows, and four canonical reference rows.",
+        "error": "Any malformed, missing, reordered, duplicate, or schema-invalid required response contributes zero exact credit."
+      },
+      "calculation": {
+        "value_kind": "ratio",
+        "expression": "exact_numerator / denominator"
+      },
+      "denominator": {
+        "name": "required_complete_run_presentations",
+        "definition": "All eighty required schedule cells; never the number of parsed responses.",
+        "must_be_positive": true,
+        "fixed_value": 80
+      },
+      "aggregation": "Compute once across the exact complete run; do not average condition fractions.",
+      "parsed_row_rule": "Exact semantic schema and order contributes one numerator unit.",
+      "malformed_row_rule": "Contribute zero exact credit and retain the denominator unit.",
+      "undefined_rule": "The fixed denominator of eighty is mandatory; any drift fails the gate.",
+      "operator": "==",
+      "boundary": 1.0,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "resolver_parity",
+      "gate_group": "evaluator_integrity_gates",
+      "scope": "complete_run",
+      "semantic_contract": {
+        "eligibility_universe": "expected_80_schedule_cells",
+        "atomic_unit": "required_cell_recorded_parent_derivation",
+        "count_algebra": "exact_whole_parent_and_reference_recomputation_equality",
+        "denominator_algebra": "fixed_80_required_cells",
+        "value_domain": "exact_unit_ratio",
+        "aggregation_scope": "single_complete_run_no_condition_averaging",
+        "parsed_disposition": "credit_one_only_for_exact_whole_object_parity",
+        "malformed_disposition": "credit_zero_retain_one_required_cell",
+        "undefined_disposition": "zero_denominator_value_0_and_gate_fails__fixed_denominator_absence_or_drift_fails",
+        "decision_rule": {
+          "operator": "==",
+          "boundary": 1.0
+        }
+      },
+      "eligibility": "All eighty required schedule cells across both conditions.",
+      "atomic_unit": "One required schedule cell recorded parent derivation.",
+      "counts": {
+        "exact_numerator": "Count rows whose recorded graph, automatic status, selection status, roots, selected slots, mapped advisers, complement, reference requests, uncertain slots, and resolution exactly equal independent recomputation from task text and parsed semantic output.",
+        "error": "Any field, value, order, malformed prediction, resolver exception, or missing row mismatch contributes zero exact credit."
+      },
+      "calculation": {
+        "value_kind": "ratio",
+        "expression": "exact_numerator / denominator"
+      },
+      "denominator": {
+        "name": "required_complete_run_presentations",
+        "definition": "All eighty required schedule cells; never the number of recomputable rows.",
+        "must_be_positive": true,
+        "fixed_value": 80
+      },
+      "aggregation": "Compute once across the exact complete run; do not average conditions.",
+      "parsed_row_rule": "Only exact whole-object recomputation parity earns one numerator unit.",
+      "malformed_row_rule": "Contribute zero exact credit and retain the denominator unit.",
+      "undefined_rule": "The fixed denominator of eighty is mandatory; any drift fails the gate.",
+      "operator": "==",
+      "boundary": 1.0,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "presentations_80_of_80",
+      "gate_group": "evaluator_integrity_gates",
+      "scope": "complete_run",
+      "semantic_contract": {
+        "eligibility_universe": "expected_exact_80_schedule_cells",
+        "atomic_unit": "distinct_exact_terminal_scheduled_presentation",
+        "count_algebra": "value_80_iff_exactly_80_records_one_per_cell_and_no_extra_else_0",
+        "denominator_algebra": "fixed_80_count_comparison",
+        "value_domain": "exact_nonnegative_integer",
+        "aggregation_scope": "single_complete_run_no_condition_averaging",
+        "parsed_disposition": "content_parse_status_does_not_change_terminal_completion_count",
+        "malformed_disposition": "content_malformed_counts_only_with_exact_schedule_identity",
+        "undefined_disposition": "missing_duplicate_extra_or_ambiguous_schedule_identity_fails",
+        "decision_rule": {
+          "operator": "==",
+          "boundary": 80
+        }
+      },
+      "eligibility": "The frozen set of eighty required schedule cells.",
+      "atomic_unit": "One distinct required presentation index with exactly one terminal completed record matching its scheduled condition and case identity.",
+      "counts": {
+        "exact_numerator": "When and only when the completed-record multiset has exactly eighty records and no extra record, count distinct required schedule cells occupied by exactly one terminal completed record with its exact presentation index, condition, and case identity; otherwise set exact_numerator to zero.",
+        "error": "Missing, duplicate, mismatched, nonterminal, or extra records force a value different from eighty; an extra record cannot coexist with a passing numerator."
+      },
+      "calculation": {
+        "value_kind": "count",
+        "expression": "exact_numerator after the exact-eighty-and-no-extra precondition"
+      },
+      "denominator": {
+        "name": "required_complete_run_presentations",
+        "definition": "Count comparison against the fixed expected total; no division.",
+        "must_be_positive": true,
+        "fixed_value": 80
+      },
+      "aggregation": "Count distinct exact scheduled completions once across the run.",
+      "parsed_row_rule": "Content parse status does not remove a genuinely completed presentation from this count.",
+      "malformed_row_rule": "A completed malformed content response counts only when its schedule identity and terminal completion record are exact; it still fails content and schema gates.",
+      "undefined_rule": "Absent schedule identity or ambiguous duplicates cannot be counted; any structural ambiguity fails closed.",
+      "operator": "==",
+      "boundary": 80,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "unique_context_ids",
+      "gate_group": "evaluator_integrity_gates",
+      "scope": "complete_run",
+      "semantic_contract": {
+        "eligibility_universe": "exact_terminal_records_for_expected_80_schedule_cells",
+        "atomic_unit": "nonempty_context_id_bound_to_one_required_presentation",
+        "count_algebra": "cardinality_distinct_nonempty_context_ids_on_exact_required_records",
+        "denominator_algebra": "fixed_80_count_comparison",
+        "value_domain": "exact_nonnegative_integer",
+        "aggregation_scope": "single_complete_run_no_condition_averaging",
+        "parsed_disposition": "content_malformed_row_may_credit_exact_unique_context",
+        "malformed_disposition": "missing_or_malformed_context_adds_zero_credit",
+        "undefined_disposition": "ambiguous_or_nonexact_context_identity_fails",
+        "decision_rule": {
+          "operator": "==",
+          "boundary": 80
+        }
+      },
+      "eligibility": "Terminal completed records for the exact eighty required schedule cells.",
+      "atomic_unit": "One nonempty context_id bound to exactly one required presentation.",
+      "counts": {
+        "exact_numerator": "Cardinality of distinct nonempty context_id values among the exact required completed records.",
+        "error": "Missing, reused, malformed, or extra context identities add no required-cell credit; extra rows separately fail complete-run structure."
+      },
+      "calculation": {
+        "value_kind": "count",
+        "expression": "exact_numerator"
+      },
+      "denominator": {
+        "name": "required_complete_run_presentations",
+        "definition": "Count comparison against one context per fixed required presentation; no division.",
+        "must_be_positive": true,
+        "fixed_value": 80
+      },
+      "aggregation": "Set cardinality once across both conditions.",
+      "parsed_row_rule": "A content-malformed completed row may still contribute its one exact unique context identity.",
+      "malformed_row_rule": "A missing or malformed context identity contributes no unique-context credit.",
+      "undefined_rule": "Only exact nonempty identities count; ambiguity fails closed.",
+      "operator": "==",
+      "boundary": 80,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "binding_schedule_packet_parity",
+      "gate_group": "evaluator_integrity_gates",
+      "scope": "complete_run",
+      "semantic_contract": {
+        "eligibility_universe": "expected_80_schedule_cells",
+        "atomic_unit": "required_cell_complete_custody_tuple",
+        "count_algebra": "exact_candidate_authority_model_runner_schedule_packet_execution_identity_equality",
+        "denominator_algebra": "fixed_80_required_cells",
+        "value_domain": "exact_unit_ratio",
+        "aggregation_scope": "single_complete_run_no_condition_averaging",
+        "parsed_disposition": "credit_one_only_for_exact_whole_custody_tuple",
+        "malformed_disposition": "credit_zero_retain_one_required_cell",
+        "undefined_disposition": "zero_denominator_value_0_and_gate_fails__fixed_denominator_absence_or_drift_fails",
+        "decision_rule": {
+          "operator": "==",
+          "boundary": 1.0
+        }
+      },
+      "eligibility": "All eighty required schedule cells across both conditions.",
+      "atomic_unit": "One required schedule cell custody tuple.",
+      "counts": {
+        "exact_numerator": "Count rows whose candidate, authorities, model, reasoning, runner, schedule, case/task digest, condition digest, exact packet digest, execution digest, and presentation identity all match frozen expected values.",
+        "error": "Any missing, extra, duplicate, mismatched, malformed, or substituted custody field contributes zero exact credit."
+      },
+      "calculation": {
+        "value_kind": "ratio",
+        "expression": "exact_numerator / denominator"
+      },
+      "denominator": {
+        "name": "required_complete_run_presentations",
+        "definition": "All eighty required schedule cells; never the number of custody-valid rows.",
+        "must_be_positive": true,
+        "fixed_value": 80
+      },
+      "aggregation": "Exact whole-tuple parity once across the run; no partial field credit.",
+      "parsed_row_rule": "Content parse status is independent; only exact custody tuple parity earns credit.",
+      "malformed_row_rule": "A missing or malformed custody tuple contributes zero exact credit and retains the denominator unit.",
+      "undefined_rule": "The fixed denominator of eighty is mandatory; any drift fails the gate.",
+      "operator": "==",
+      "boundary": 1.0,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "runner_local_raw_persistence",
+      "gate_group": "evaluator_integrity_gates",
+      "scope": "complete_run",
+      "semantic_contract": {
+        "eligibility_universe": "entire_runner_local_persistence_surface",
+        "atomic_unit": "corroborated_complete_run_boolean",
+        "count_algebra": "boolean_or_any_runner_local_raw_artifact_persisted",
+        "denominator_algebra": "one_boolean_assertion",
+        "value_domain": "exact_boolean",
+        "aggregation_scope": "single_complete_run_logical_or",
+        "parsed_disposition": "content_correctness_never_compensates_persistence",
+        "malformed_disposition": "missing_nonboolean_or_uncorroborated_state_fails",
+        "undefined_disposition": "only_exact_corroborated_false_passes",
+        "decision_rule": {
+          "operator": "==",
+          "boundary": false
+        }
+      },
+      "eligibility": "The entire canary/batch runner-local persistence surface for the completed AQ8 run.",
+      "atomic_unit": "One complete-run boolean assertion corroborated by runner output allowlisting and filesystem checks.",
+      "counts": {
+        "exact_numerator": "Boolean OR of any runner-local raw response, trajectory, per-case model output, or per-gate per-case diagnostic persisted durably.",
+        "error": "True, missing, non-boolean, uncorroborated, or ambiguous persistence state fails."
+      },
+      "calculation": {
+        "value_kind": "boolean",
+        "expression": "any_runner_local_raw_persistence"
+      },
+      "denominator": {
+        "name": "complete_run_assertion",
+        "definition": "One exact boolean assertion; no division.",
+        "must_be_positive": true,
+        "fixed_value": 1
+      },
+      "aggregation": "Logical OR across the full run; one persisted raw artifact makes the value true.",
+      "parsed_row_rule": "Per-row content parsing cannot compensate for persistence.",
+      "malformed_row_rule": "Missing or uncorroborated run-level evidence is fail-closed, never interpreted as false.",
+      "undefined_rule": "Only exact corroborated false is defined as passing; every other state fails.",
+      "operator": "==",
+      "boundary": false,
+      "noncompensatory": true
+    },
+    {
+      "gate_id": "held_out_outcome_use",
+      "gate_group": "evaluator_integrity_gates",
+      "scope": "complete_run",
+      "semantic_contract": {
+        "eligibility_universe": "all_governed_changes_from_formula_freeze_through_terminal_disposition",
+        "atomic_unit": "corroborated_complete_run_boolean",
+        "count_algebra": "boolean_or_any_heldout_or_aggregate_outcome_used_for_change_or_replay",
+        "denominator_algebra": "one_boolean_assertion",
+        "value_domain": "exact_boolean",
+        "aggregation_scope": "single_complete_run_logical_or",
+        "parsed_disposition": "content_correctness_never_compensates_outcome_use",
+        "malformed_disposition": "missing_nonboolean_or_uncorroborated_provenance_fails",
+        "undefined_disposition": "only_exact_corroborated_false_passes",
+        "decision_rule": {
+          "operator": "==",
+          "boundary": false
+        }
+      },
+      "eligibility": "All mechanism, formula, corpus-selection, evaluator, runner, and gate-authority changes from formula freeze through terminal aggregate disposition.",
+      "atomic_unit": "One complete-run boolean provenance assertion backed by immutable pre-observation authorities and change history.",
+      "counts": {
+        "exact_numerator": "Boolean OR of any held-out outcome, aggregate outcome, per-case result, or evaluator diagnostic used to alter H4, formulas, thresholds, corpus selection, evaluator, runner, or replay decision.",
+        "error": "True, missing, non-boolean, uncorroborated, or ambiguous provenance state fails."
+      },
+      "calculation": {
+        "value_kind": "boolean",
+        "expression": "any_held_out_outcome_use"
+      },
+      "denominator": {
+        "name": "complete_run_assertion",
+        "definition": "One exact boolean provenance assertion; no division.",
+        "must_be_positive": true,
+        "fixed_value": 1
+      },
+      "aggregation": "Logical OR across all governed changes; one prohibited use makes the value true.",
+      "parsed_row_rule": "Per-row content correctness cannot compensate for outcome use.",
+      "malformed_row_rule": "Missing or uncorroborated provenance is fail-closed, never interpreted as false.",
+      "undefined_rule": "Only exact corroborated false is defined as passing; every other state fails.",
+      "operator": "==",
+      "boundary": false,
+      "noncompensatory": true
+    }
+  ],
+  "aggregation_and_decision": {
+    "per_condition_rule": "Compute every per_condition formula separately for current and reduced from that condition's required cells and predeclared cohorts.",
+    "complete_run_rule": "Compute complete_run formulas once over the exact 80 required schedule cells.",
+    "operator_rule": "Apply each formula's inherited operator and boundary to its exact rational, count, or boolean value.",
+    "condition_pass_rule": "A condition passes only when every per-condition gate is true.",
+    "complete_run_pass_rule": "Complete-run integrity passes only when every complete-run gate is true and schedule structure contains exactly eighty unique required cells with no missing, duplicate, or extra completed rows.",
+    "root_pass_operator": "logical_and",
+    "root_pass_iff": "every condition passes every per-condition gate and every complete-run gate passes",
+    "cross_gate_compensation_permitted": false,
+    "cross_condition_compensation_permitted": false,
+    "aggregate_score_permitted": false,
+    "malformed_compensation_permitted": false
+  },
+  "qualification_controls": {
+    "corpus_identity_bound": false,
+    "corpus_prompt_or_label_input_used": false,
+    "aq7_outcome_input_used": false,
+    "aq8_outcome_input_used": false,
+    "outcome_tuning_permitted": false,
+    "formula_revision_after_observation_permitted": false,
+    "completed_content_retry_permitted": false,
+    "terminal_failure_rule": "Any complete AQ8 noncompensatory aggregate failure retires H4 and stops AQ; no replay or outcome-tuned repair is permitted.",
+    "maximum_claim": "This authority closes prospective metric arithmetic only. It is not behavioral qualification or evidence about runtime, provider, model, sandbox, product, efficacy, promotion, authority, effects, or external action."
+  },
+  "claims_proven": {
+    "behavioral_qualification": false,
+    "runtime": false,
+    "provider": false,
+    "model": false,
+    "sandbox": false,
+    "product": false,
+    "efficacy": false,
+    "promotion": false,
+    "authority": false,
+    "effects": false,
+    "external_action": false
+  }
+}
