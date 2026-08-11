@@ -34,7 +34,7 @@
     "runner_test"
   ],
   "files": [
-    {"role": "program_authority", "commit": "0757237664cac761e20267b826dc1651f7188a1a", "tree": "467912986379f5ba8cc9117e9fbe80e9b514e876", "path": "evals/ae-sq1/program-authority.json", "blob": "55e3e418959c5d1e1bed424838cc0891d5efb728", "sha256": "a5987d2015fe8a5ac0f1318e39846f6e5ed7e7b05612e3b909fab75674a81315"},
+    {"role": "program_authority", "commit": "7d77f4d40643adbbd3736205273caed645679291", "tree": "4bebae7c6d551abd85f6369b0f592546f673e63b", "path": "evals/ae-sq1/program-authority.json", "blob": "f7cc4c365a8a956ede322732b2bb18446b6e0b05", "sha256": "9694b85c45796392827ad29768a3fad57b0eac9598d27eb37c8e6770608e515d"},
     {"role": "external_evidence", "commit": "6eb10b19bfa2437eae8f264ebe4f1556b32231ba", "tree": "8ed35d46a373ed61a487611ab1912322f23178a6", "path": "evals/ae-sq1/external-evidence.json", "blob": "44c05dfbe224476ce00621c88f619c73ba8ed668", "sha256": "fb9ff669f848fde71dcf2eb0d223edb63dce271cd9cfbb297519377ab31eb55f"},
     {"role": "historical_task_digests", "commit": "0635f3d633f02bb99afd2e1218ec1135735a7496", "tree": "5b756da72fd112ce365c5e0e3957385ee5e6aa2a", "path": "evals/ae-sq1/historical-task-digests.json", "blob": "312120fda95e6f4f5ab3c9b381704aa6f4d122b9", "sha256": "d2151090e75464aa16e416fcd1df29676fd43d75bab47fc57271d5338ee26bf0"},
     {"role": "candidate_authority", "commit": "0635f3d633f02bb99afd2e1218ec1135735a7496", "tree": "5b756da72fd112ce365c5e0e3957385ee5e6aa2a", "path": "evals/ae-sq1/slec1-authority.json", "blob": "a2fb8ede0a6945818d81fb6a7a13811814b51fbe", "sha256": "0f3f1fa8806f7df6315680a8359f0929e37688e3f7d325338e785fb361e4ec28"},
