@@ -99,7 +99,7 @@ Keep ephemeral or in expiring CI artifacts:
 - [ ] AC test bounded composition only if AS passes.
 - [ ] AH verify exact archives, host behavior, UltraGoal coexistence, and protocol/supply-chain truth.
 - [ ] AF run field evidence only if separately authorized and actually needed.
-- [ ] AR retire superseded current authority, publish the bounded decision, and stop.
+- [x] AR retire superseded current authority, publish the bounded decision, and stop.
 
 ---
 
@@ -652,6 +652,24 @@ This program is complete when:
 - exact archives pass the host/coexistence journey;
 - every claim is bounded to its stage; and
 - no parallel audit, receipt, source-law, or superseded-plan graph remains active.
+
+```text
+AR-TERMINAL-RECORD:
+decision=DO_NOT_RELEASE_OR_PROMOTE
+claim_ceiling=structural-terminal-closeout-only
+custody_commit=8b08f2a829e05d8de6ed737321b4d1a32cc9df87
+custody_tree=777ab9af3450802b03679650d87441ab6a07495d
+artifact=evals/foundation-v4/ar-terminal-decision-v1.json|blob=841bab37a125a986da8b41d8591e6fc09da6ed26|sha256=62f4f2f222962c58fdd5cca09231edb533ad5a4339e2f09a0e0084decb3dbc3b
+test=tests/test_ar_terminal_decision_v1.py|blob=ab8da0e5bc38c2d8eb1ec9b4518abcb3f0c2b41e|sha256=20ca2404034dc21e0aba1cfa2411f5255e664b49cec6a8a4d755f3ca9a7d767c
+unmet_successful_program_conditions=package_reproducibility,archive_safety,four_skill_activation_and_isolated_value,exact_archive_host_install_discovery_coexistence,protocol_AH_verification,field_usefulness
+deletion=not_authorized_or_executed
+migration=not_authorized_or_executed
+action=none_authorized_or_executed
+forbidden_actions=release,promote,publish,model_execution,field_execution,deletion,migration_execution,reopen,downstream_stage_execution
+owner_decisions_below=superseded_for_this_terminal_program_no_later_authorization_cure
+permanently_blocked=AQ9,AS,AC,AH,AF
+terminal_state=STOP
+```
 
 Stop. Do not automatically expand the reduction, run all models, add field telemetry, publish, or create another framework.
 
