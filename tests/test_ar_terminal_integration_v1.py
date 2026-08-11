@@ -13,6 +13,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PLAN = ROOT / "EXECPLAN.md"
 DECISION_LOG = ROOT / "docs" / "foundations" / "decision-log.csv"
+CURRENT_FOUNDATION = ROOT / "docs" / "foundations" / "current-2026-08-08.md"
+SUCCESSOR_AUTHORITY = ROOT / "evals" / "ae-sq1" / "program-authority.json"
 PLAN_PATH = "EXECPLAN.md"
 DECISION_LOG_PATH = "docs/foundations/decision-log.csv"
 
@@ -144,6 +146,45 @@ TERMINAL_DECISION_ROW = (
     ),
 )
 
+CURRENT_FOUNDATION_SUCCESSOR_POINTER = (
+    "**Active successor plan:** `docs/exec-plans/active/ae-sq1.md` for AE-SQ1 "
+    "only; `EXECPLAN.md` remains immutable predecessor terminal history"
+)
+SUCCESSOR_F0_DECISION_ROW = (
+    "AE-SQ1-F0-2026-08-10",
+    "RLTree/agentic-engineering",
+    "current-2026-08-08",
+    (
+        "Owner authorized AE-SQ1 as a distinct successor after immutable "
+        "predecessor terminal closeout; only terminal bits cross the boundary"
+    ),
+    "active successor program authority",
+    "root conductor",
+    "update",
+    (
+        "Freeze docs/exec-plans/active/ae-sq1.md and "
+        "evals/ae-sq1/program-authority.json before candidate, heldout, or model "
+        "work; preserve predecessor Git bytes"
+    ),
+    (
+        "structural-program-authority-frozen only; no candidate, evaluation, "
+        "runtime, host, field, release, publication, promotion, deletion, or "
+        "migration claim"
+    ),
+    ("F1 independent external-evidence authority or any proposed F0 semantic change"),
+    "2026-08-10",
+    "340b79399a987e6aad0d5435fa540a1db511489d",
+    (
+        "Plan raw SHA256 "
+        "a7080db226bf499dd3037afe683361e4ccba0c1093ce3bc4e456520e2176a382; "
+        "predecessor tree c47aeb3642d7fdcf90f47f990ddf3915f3cbb933; base commit "
+        "is historical custody, not a future AE-SQ1 commit; AE-SQ1 is not AQ10, "
+        "H6, retry, resume, reopen, cure, or reinterpretation; all stage work "
+        "remains HOLD"
+    ),
+)
+VALIDATED_SUCCESSOR_DECISION_ROWS = (SUCCESSOR_F0_DECISION_ROW,)
+
 FORBIDDEN_ACTIONS = (
     "release",
     "promote",
@@ -195,13 +236,43 @@ def canonical_csv_row(row: tuple[str, ...]) -> bytes:
     return buffer.getvalue().encode("utf-8")
 
 
-def strict_csv_rows(raw: str) -> tuple[tuple[str, ...], ...]:
+def canonical_successor_csv_row(row: tuple[str, ...]) -> bytes:
+    buffer = io.StringIO(newline="")
+    csv.writer(buffer, lineterminator="\n", quoting=csv.QUOTE_ALL).writerow(row)
+    return buffer.getvalue().encode("utf-8")
+
+
+def strict_csv_rows(
+    raw: str,
+    historical_raw: str,
+    foundation_raw: str,
+    successor_authority_raw: bytes,
+) -> tuple[tuple[str, ...], ...]:
     rows = parse_csv_rows(raw)
+    historical_rows = parse_csv_rows(historical_raw)
     matching = tuple(row for row in rows[1:] if row[0] == TERMINAL_DECISION_ROW[0])
     if matching != (TERMINAL_DECISION_ROW,):
         raise AssertionError("terminal decision row is missing, duplicated, or changed")
-    if rows[-1] != TERMINAL_DECISION_ROW:
-        raise AssertionError("terminal decision row was not appended last")
+
+    terminal_index = len(historical_rows)
+    if rows[:terminal_index] != historical_rows:
+        raise AssertionError("historical decision-log rows differ")
+    if len(rows) <= terminal_index or rows[terminal_index] != TERMINAL_DECISION_ROW:
+        raise AssertionError("terminal decision row moved from its historical index")
+
+    validated_successors = validate_successor_authority(
+        foundation_raw,
+        successor_authority_raw,
+    )
+    if rows[terminal_index + 1 :] != validated_successors:
+        raise AssertionError("post-terminal row is not a validated successor decision")
+
+    expected = project_terminal_decision_log(historical_raw.encode("utf-8"))
+    expected += b"".join(
+        canonical_successor_csv_row(row) for row in validated_successors
+    )
+    if raw.encode("utf-8") != expected:
+        raise AssertionError("decision log is not the exact canonical projection")
     return rows
 
 
@@ -303,6 +374,84 @@ def parse_ar_artifact(raw: bytes) -> dict[str, object]:
     return document
 
 
+def validate_successor_authority(
+    foundation_raw: str,
+    successor_authority_raw: bytes,
+) -> tuple[tuple[str, ...], ...]:
+    if foundation_raw.count(CURRENT_FOUNDATION_SUCCESSOR_POINTER) != 1:
+        raise AssertionError("current foundation lacks the exact successor pointer")
+
+    authority = parse_ar_artifact(successor_authority_raw)
+    if authority.get("schema_version") != "AE-SQ1-program-authority-v1":
+        raise AssertionError("successor authority schema differs")
+    if authority.get("program_id") != "AE-SQ1":
+        raise AssertionError("successor program identity differs")
+    if authority.get("authority_status") != "F0_STATIC_AUTHORITY_FROZEN":
+        raise AssertionError("successor F0 authority is not closed")
+    if authority.get("claim_ceiling") != "structural-program-authority-frozen-only":
+        raise AssertionError("successor F0 claim ceiling differs")
+
+    owner = authority.get("owner_authorization")
+    if not isinstance(owner, dict):
+        raise AssertionError("successor owner authorization is absent")
+    if owner.get("authorized") is not True:
+        raise AssertionError("successor owner authorization is not affirmative")
+    if owner.get("successor_kind") != "distinct-owner-authorized-successor-program":
+        raise AssertionError("successor is not explicitly distinct")
+    if tuple(owner.get("not_semantics", ())) != (
+        "AQ10",
+        "H6",
+        "retry",
+        "resume",
+        "reopen",
+        "cure",
+        "reinterpretation",
+    ):
+        raise AssertionError("successor anti-reopen semantics differ")
+    for key in (
+        "candidate_authority_authorized",
+        "heldout_authoring_authorized",
+        "model_work_authorized",
+        "model_or_corpus_observation_authorized",
+        "downstream_staging_or_commit_authorized",
+        "external_action_authorized",
+    ):
+        if owner.get(key) is not False:
+            raise AssertionError(f"successor F0 unexpectedly authorizes {key}")
+
+    predecessor = authority.get("predecessor_terminal_history")
+    if not isinstance(predecessor, dict):
+        raise AssertionError("predecessor terminal binding is absent")
+    if predecessor.get("commit") != SUCCESSOR_F0_DECISION_ROW[11]:
+        raise AssertionError("successor row and predecessor commit binding differ")
+    if predecessor.get("tree") != "c47aeb3642d7fdcf90f47f990ddf3915f3cbb933":
+        raise AssertionError("successor predecessor tree binding differs")
+    if predecessor.get("custody_purpose") != "immutable-history-verification-only":
+        raise AssertionError("successor authority can mutate predecessor custody")
+    if tuple(predecessor.get("permitted_imported_bits", ())) != (
+        "terminal-and-stopped",
+        "successful-program-conditions-unmet",
+        "public-release-and-promotion-negative",
+        "artifacts-remain-immutable-history",
+    ):
+        raise AssertionError("successor imports more than terminal predecessor bits")
+
+    active_plan = authority.get("active_plan")
+    if not isinstance(active_plan, dict):
+        raise AssertionError("successor active-plan binding is absent")
+    if active_plan.get("path") != "docs/exec-plans/active/ae-sq1.md":
+        raise AssertionError("successor active-plan path differs")
+    if (
+        active_plan.get("raw_sha256")
+        != "a7080db226bf499dd3037afe683361e4ccba0c1093ce3bc4e456520e2176a382"
+    ):
+        raise AssertionError("successor active-plan digest differs")
+    if active_plan.get("successor_commit") != "ABSENT_NOT_SELF_BOUND":
+        raise AssertionError("successor F0 authority is unexpectedly self-bound")
+
+    return VALIDATED_SUCCESSOR_DECISION_ROWS
+
+
 def validate_ar_contract(document: dict[str, object]) -> None:
     if document.get("decision") != "DO_NOT_RELEASE_OR_PROMOTE":
         raise AssertionError("AR decision differs")
@@ -344,6 +493,8 @@ class ARTerminalIntegrationV1Tests(unittest.TestCase):
         cls.plan = cls.plan_bytes.decode("utf-8")
         cls.decision_log_bytes = DECISION_LOG.read_bytes()
         cls.decision_log = cls.decision_log_bytes.decode("utf-8")
+        cls.current_foundation = CURRENT_FOUNDATION.read_text(encoding="utf-8")
+        cls.successor_authority_bytes = SUCCESSOR_AUTHORITY.read_bytes()
 
     def git_text(self, *arguments: str) -> str:
         completed = subprocess.run(
@@ -378,7 +529,13 @@ class ARTerminalIntegrationV1Tests(unittest.TestCase):
         self.assertEqual(project_terminal_plan(base), self.plan_bytes)
 
     def test_decision_log_is_strict_unique_13_column_and_exact(self) -> None:
-        rows = strict_csv_rows(self.decision_log)
+        historical = self.historical_bytes(DECISION_LOG_PATH).decode("utf-8")
+        rows = strict_csv_rows(
+            self.decision_log,
+            historical,
+            self.current_foundation,
+            self.successor_authority_bytes,
+        )
         self.assertEqual(13, len(rows[0]))
         self.assertEqual(
             1,
@@ -388,13 +545,28 @@ class ARTerminalIntegrationV1Tests(unittest.TestCase):
     def test_decision_log_is_exact_canonical_historical_append(self) -> None:
         base = self.historical_bytes(DECISION_LOG_PATH)
         base_rows = parse_csv_rows(base.decode("utf-8"))
-        live_rows = strict_csv_rows(self.decision_log)
-        self.assertEqual(project_terminal_decision_log(base), self.decision_log_bytes)
-        self.assertEqual(base_rows, live_rows[:-1])
-        self.assertEqual(len(base_rows) + 1, len(live_rows))
+        live_rows = strict_csv_rows(
+            self.decision_log,
+            base.decode("utf-8"),
+            self.current_foundation,
+            self.successor_authority_bytes,
+        )
+        expected = project_terminal_decision_log(base) + canonical_successor_csv_row(
+            SUCCESSOR_F0_DECISION_ROW
+        )
+        self.assertEqual(expected, self.decision_log_bytes)
+        terminal_index = len(base_rows)
+        self.assertEqual(base_rows, live_rows[:terminal_index])
+        self.assertEqual(TERMINAL_DECISION_ROW, live_rows[terminal_index])
+        self.assertEqual(
+            VALIDATED_SUCCESSOR_DECISION_ROWS,
+            live_rows[terminal_index + 1 :],
+        )
         self.assertEqual(
             canonical_csv_row(TERMINAL_DECISION_ROW),
-            self.decision_log_bytes[len(base) :],
+            self.decision_log_bytes[
+                len(base) : len(base) + len(canonical_csv_row(TERMINAL_DECISION_ROW))
+            ],
         )
 
     def test_ar_pair_has_exact_historical_git_custody(self) -> None:
@@ -468,6 +640,8 @@ class ARTerminalIntegrationV1Tests(unittest.TestCase):
             ):
                 validate_plan(mutation)
 
+        historical = self.historical_bytes(DECISION_LOG_PATH).decode("utf-8")
+        successor_row_bytes = canonical_successor_csv_row(SUCCESSOR_F0_DECISION_ROW)
         csv_mutations = (
             self.decision_log + self.decision_log.splitlines()[-1] + "\n",
             self.decision_log.replace(
@@ -486,13 +660,59 @@ class ARTerminalIntegrationV1Tests(unittest.TestCase):
                 1,
             ),
             self.decision_log + "too,few,columns\n",
+            self.decision_log.replace(
+                successor_row_bytes.decode("utf-8"),
+                canonical_successor_csv_row(
+                    (
+                        *SUCCESSOR_F0_DECISION_ROW[:3],
+                        "Owner authorized AQ10 to reopen the predecessor program",
+                        *SUCCESSOR_F0_DECISION_ROW[4:],
+                    )
+                ).decode("utf-8"),
+                1,
+            ),
+            self.decision_log.replace(
+                successor_row_bytes.decode("utf-8"),
+                canonical_successor_csv_row(
+                    (
+                        "AE-SQ1-H6-2026-08-10",
+                        *SUCCESSOR_F0_DECISION_ROW[1:4],
+                        "predecessor AQ9/H5 continuation",
+                        *SUCCESSOR_F0_DECISION_ROW[5:],
+                    )
+                ).decode("utf-8"),
+                1,
+            ),
+            self.decision_log
+            + canonical_csv_row(
+                (
+                    "AE-SQ1-F1-2026-08-10",
+                    "RLTree/agentic-engineering",
+                    "current-2026-08-08",
+                    "arbitrary successor-looking append",
+                    "active successor program authority",
+                    "root conductor",
+                    "update",
+                    "unvalidated delta",
+                    "structural-only",
+                    "none",
+                    "2026-08-10",
+                    "340b79399a987e6aad0d5435fa540a1db511489d",
+                    "unvalidated",
+                )
+            ).decode("utf-8"),
         )
         for index, mutation in enumerate(csv_mutations):
             with (
                 self.subTest(kind="csv", index=index),
                 self.assertRaises(AssertionError),
             ):
-                strict_csv_rows(mutation)
+                strict_csv_rows(
+                    mutation,
+                    historical,
+                    self.current_foundation,
+                    self.successor_authority_bytes,
+                )
 
         artifact = parse_ar_artifact(self.historical_bytes(AR_FILES[0][0]))
         artifact_mutations = []
