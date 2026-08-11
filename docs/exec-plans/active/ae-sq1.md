@@ -1,6 +1,6 @@
 # AE-SQ1 successor qualification program
 
-Status: **F0 STATIC AUTHORITY FREEZE ONLY**
+Status: **TERMINAL SQ1-AR CLOSEOUT**
 Program owner: repository owner
 Program integrator: root conductor
 Active-plan path: `docs/exec-plans/active/ae-sq1.md`
@@ -408,11 +408,37 @@ conditions, the AS automatic-routing prohibition, permissions, network access,
 claim ceilings, AF omission, or forbidden actions. Changing one requires
 terminal closeout and a genuinely new owner-authorized program.
 
-## 11. Current checkpoint
+## 11. Terminal checkpoint
 
-F0 is the only in-scope checkpoint. On successful static validation, report:
+AE-SQ1 reached its only authorized AQ attempt. The exact non-corpus canary was
+started with four isolated calls and closed invalid with zero completed assessor
+capsules. The one unchanged-byte infrastructure retry was used before any
+completed child observation; the heldout corpus was never consumed, the batch
+never started, and no post-observation retry or content change occurred.
 
-- **PASS:** AE-SQ1 F0 static authority is internally closed and predecessor
-  history reproduces from the named Git base.
-- **HOLD:** F1 independent external evidence and all candidate, heldout, model,
-  host, field, release, publication, promotion, deletion, and migration work.
+- **AQ:** `FAIL`, canary terminal invalid; 4 calls started, 0 completed;
+  aggregate digest is null because no valid aggregate existed.
+- **AS/AC/AH:** blocked by the AQ failure under the pass-only graph.
+- **AF:** `OMITTED_NO_FIELD_CLAIM`; no separate field authority exists.
+- **AR:** terminal `DO_NOT_RELEASE_OR_PROMOTE`, `STOP`.
+- **Release, publication, promotion, deletion, migration, reopen, resume, H6,
+  and further model/corpus execution:** not authorized and permanently closed
+  for AE-SQ1.
+
+Exact terminal custody:
+
+- run commit/tree: `0417fdd1174508fc0591be9a3e89263f25592b25` /
+  `ee4b0d8d07b14c5ee545956ebec119cdb077eb7e`;
+- candidate freeze: `0635f3d633f02bb99afd2e1218ec1135735a7496` /
+  `5b756da72fd112ce365c5e0e3957385ee5e6aa2a`;
+- aggregate: `evals/ae-sq1/aq/aggregate.json`, SHA-256
+  `db08bb0c33b6016fb321011359c67639ee5b396d62095bc1aad1086dca76795f`;
+- AR decision: `evals/ae-sq1/ar/decision.json`, SHA-256
+  `6c36eeeab8759b1c064e14e2f65f57a98953ee4dacf15a4dec909642f32e2d21`;
+- terminal test: `tests/test_ae_sq1_terminal.py`, SHA-256
+  `4b14e4cf9f40277fd2dc12feda63e42a49c56788495d3d66e5ba96813ddbe2ba`.
+
+The terminal record claims only exact-candidate process status and structural
+closeout. It does not claim activation quality, adviser value, composition,
+host behavior, field usefulness, production security, release readiness,
+provider/model generalization, or program success.
