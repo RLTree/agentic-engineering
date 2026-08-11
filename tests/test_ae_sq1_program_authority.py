@@ -21,7 +21,8 @@ DECISION_LOG_PATH = ROOT / "docs" / "foundations" / "decision-log.csv"
 
 BASE_COMMIT = "340b79399a987e6aad0d5435fa540a1db511489d"
 BASE_TREE = "c47aeb3642d7fdcf90f47f990ddf3915f3cbb933"
-PLAN_RAW_SHA256 = "a7080db226bf499dd3037afe683361e4ccba0c1093ce3bc4e456520e2176a382"
+PLAN_RAW_SHA256 = "ebc53ca6305837ecd089dd201542dcbb35c5478b6bbf31e1003a227440868418"
+F0_PLAN_RAW_SHA256 = "a7080db226bf499dd3037afe683361e4ccba0c1093ce3bc4e456520e2176a382"
 
 TOP_LEVEL_KEYS = (
     "schema_version",
@@ -270,8 +271,16 @@ LANE_ROWS = (
         "F3-schemas-formulas-thresholds-four-output-join-aggregate-projection",
         "heldout-access-and-pre-freeze-model-observation-access",
     ),
-    ("split-A-author", "F4-split-A-only", "split-B-outcome-and-candidate-internal-access"),
-    ("split-B-author", "F5-split-B-only", "split-A-outcome-and-candidate-internal-access"),
+    (
+        "split-A-author",
+        "F4-split-A-only",
+        "split-B-outcome-and-candidate-internal-access",
+    ),
+    (
+        "split-B-author",
+        "F5-split-B-only",
+        "split-A-outcome-and-candidate-internal-access",
+    ),
     (
         "corpus-custodian",
         "F6-validation-digests-schedule-blinding-no-replay",
@@ -465,17 +474,26 @@ EXPECTED_LOG_ROW = {
         "migration claim"
     ),
     "review_trigger": (
-        "F1 independent external-evidence authority or any proposed F0 semantic "
-        "change"
+        "F1 independent external-evidence authority or any proposed F0 semantic change"
     ),
     "date": "2026-08-10",
     "candidate_commit": BASE_COMMIT,
     "notes": (
-        f"Plan raw SHA256 {PLAN_RAW_SHA256}; predecessor tree {BASE_TREE}; base "
+        f"Plan raw SHA256 {F0_PLAN_RAW_SHA256}; predecessor tree {BASE_TREE}; base "
         "commit is historical custody, not a future AE-SQ1 commit; AE-SQ1 is not "
         "AQ10, H6, retry, resume, reopen, cure, or reinterpretation; all stage "
         "work remains HOLD"
     ),
+}
+
+EXPECTED_TERMINAL_LOG_FIELDS = {
+    "decision_id": "AE-SQ1-AQ-AR-2026-08-11",
+    "repository": "RLTree/agentic-engineering",
+    "foundation_id": "current-2026-08-08",
+    "affected_decision": "AE-SQ1 successor qualification",
+    "decision_owner": "root conductor",
+    "disposition_no_change_update_replace_retire": "retire",
+    "candidate_commit": "0417fdd1174508fc0591be9a3e89263f25592b25",
 }
 
 
@@ -1066,9 +1084,7 @@ def validate_manifest(document: dict[str, Any]) -> None:
         raise AssertionError("AR cannot authorize a public action")
     if tuple(document["forbidden_actions"]) != FORBIDDEN_ACTIONS:
         raise AssertionError("forbidden actions differ")
-    if document["acceptance"]["f0_status"] != (
-        "structural-program-authority-frozen"
-    ):
+    if document["acceptance"]["f0_status"] != ("structural-program-authority-frozen"):
         raise AssertionError("F0 status differs")
     if document["acceptance"]["f0_next_state"] != "HOLD_F1_AND_ALL_EXECUTION":
         raise AssertionError("F0 next state differs")
@@ -1138,13 +1154,13 @@ class AeSq1ProgramAuthorityTests(unittest.TestCase):
             '{"value":-Infinity}',
             "[]",
         ):
-            with self.subTest(raw=raw), self.assertRaises(
-                (ValueError, AssertionError)
-            ):
+            with self.subTest(raw=raw), self.assertRaises((ValueError, AssertionError)):
                 parse_manifest(raw)
 
     def test_predecessor_commit_tree_blobs_and_raw_bytes_reproduce(self) -> None:
-        commit = git_output("rev-parse", "--verify", f"{BASE_COMMIT}^{{commit}}", text=True)
+        commit = git_output(
+            "rev-parse", "--verify", f"{BASE_COMMIT}^{{commit}}", text=True
+        )
         tree = git_output("rev-parse", "--verify", f"{BASE_COMMIT}^{{tree}}", text=True)
         self.assertEqual(BASE_COMMIT, str(commit).strip())
         self.assertEqual(BASE_TREE, str(tree).strip())
@@ -1231,7 +1247,7 @@ class AeSq1ProgramAuthorityTests(unittest.TestCase):
         self.assertTrue(current.startswith(base))
         suffix = current[len(base) :]
         self.assertTrue(suffix.endswith(b"\n"))
-        self.assertEqual(1, len(suffix.splitlines()))
+        self.assertEqual(2, len(suffix.splitlines()))
 
         base_reader = csv.DictReader(io.StringIO(base.decode("utf-8")))
         current_reader = csv.DictReader(io.StringIO(current.decode("utf-8")))
@@ -1239,8 +1255,15 @@ class AeSq1ProgramAuthorityTests(unittest.TestCase):
         self.assertEqual(DECISION_LOG_FIELDS, tuple(current_reader.fieldnames or ()))
         base_rows = list(base_reader)
         current_rows = list(current_reader)
-        self.assertEqual(base_rows, current_rows[:-1])
-        self.assertEqual(EXPECTED_LOG_ROW, current_rows[-1])
+        self.assertEqual(base_rows, current_rows[:-2])
+        self.assertEqual(EXPECTED_LOG_ROW, current_rows[-2])
+        for key, expected in EXPECTED_TERMINAL_LOG_FIELDS.items():
+            self.assertEqual(expected, current_rows[-1][key], key)
+        self.assertIn(
+            "DO_NOT_RELEASE_OR_PROMOTE",
+            current_rows[-1]["implementation_or_test_delta"],
+        )
+        self.assertIn("heldout corpus unconsumed", current_rows[-1]["notes"])
         self.assertEqual(
             1,
             sum(row["decision_id"] == "AE-SQ1-F0-2026-08-10" for row in current_rows),
@@ -1270,17 +1293,23 @@ class AeSq1ProgramAuthorityTests(unittest.TestCase):
             ),
             "reserved paths must be unique",
         )
-        base_names = git_output(
-            "ls-tree", "-r", "--name-only", BASE_COMMIT, text=True
-        )
+        base_names = git_output("ls-tree", "-r", "--name-only", BASE_COMMIT, text=True)
         self.assertTrue(reserved.isdisjoint(str(base_names).splitlines()))
         staged_names = git_output("diff", "--cached", "--name-only", text=True)
         self.assertTrue(reserved.isdisjoint(str(staged_names).splitlines()))
-        self.assertTrue(all(path.startswith("evals/ae-sq1/") for path in reserved if path.startswith("evals/")))
+        self.assertTrue(
+            all(
+                path.startswith("evals/ae-sq1/")
+                for path in reserved
+                if path.startswith("evals/")
+            )
+        )
 
     def test_no_disallowed_predecessor_imports(self) -> None:
         history = self.manifest["predecessor_terminal_history"]
-        self.assertEqual(PERMITTED_TERMINAL_BITS, tuple(history["permitted_imported_bits"]))
+        self.assertEqual(
+            PERMITTED_TERMINAL_BITS, tuple(history["permitted_imported_bits"])
+        )
         self.assertEqual(
             FORBIDDEN_IMPORT_CLASSES,
             tuple(history["forbidden_import_classes"]),
@@ -1358,9 +1387,7 @@ class AeSq1ProgramAuthorityTests(unittest.TestCase):
         mutations.append(("second candidate", wrong_candidate))
 
         wrong_contexts = copy.deepcopy(self.manifest)
-        wrong_contexts["aq_contract"]["mechanism"][
-            "unique_child_contexts_per_unit"
-        ] = 1
+        wrong_contexts["aq_contract"]["mechanism"]["unique_child_contexts_per_unit"] = 1
         mutations.append(("shared child context", wrong_contexts))
 
         wrong_canary = copy.deepcopy(self.manifest)
@@ -1382,9 +1409,7 @@ class AeSq1ProgramAuthorityTests(unittest.TestCase):
         mutations.append(("subaggregate disclosure", partial_reporting))
 
         missing_fail_open = copy.deepcopy(self.manifest)
-        missing_fail_open["aq_contract"]["global_and"]["fail_values"].remove(
-            "missing"
-        )
+        missing_fail_open["aq_contract"]["global_and"]["fail_values"].remove("missing")
         mutations.append(("missing no longer fails", missing_fail_open))
 
         fallback = copy.deepcopy(self.manifest)
@@ -1400,9 +1425,9 @@ class AeSq1ProgramAuthorityTests(unittest.TestCase):
         mutations.append(("obsolete total budget", wrong_total))
 
         rerun_routing = copy.deepcopy(self.manifest)
-        rerun_routing["downstream_design"]["SQ1-AS"][
-            "automatic_routing_reexecuted"
-        ] = True
+        rerun_routing["downstream_design"]["SQ1-AS"]["automatic_routing_reexecuted"] = (
+            True
+        )
         mutations.append(("AS routing rerun", rerun_routing))
 
         wrong_as_condition = copy.deepcopy(self.manifest)
@@ -1416,9 +1441,9 @@ class AeSq1ProgramAuthorityTests(unittest.TestCase):
         mutations.append(("wrong AC negative control", wrong_ac_condition))
 
         clean_host_claim = copy.deepcopy(self.manifest)
-        clean_host_claim["stage_claims"]["SQ1-AH"][
-            "production_or_clean_host_proof"
-        ] = True
+        clean_host_claim["stage_claims"]["SQ1-AH"]["production_or_clean_host_proof"] = (
+            True
+        )
         mutations.append(("clean-host claim", clean_host_claim))
 
         field_claim = copy.deepcopy(self.manifest)
