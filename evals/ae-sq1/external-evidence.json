@@ -1,0 +1,503 @@
+{
+  "schema_version": "2.0",
+  "packet_id": "AE-SQ1-SLEC-1-independent-source-packet",
+  "status": "frozen-proposal-only",
+  "claim_ceiling": "source-grounded-structural-proposal-only",
+  "retrieval": {
+    "retrieved_at_utc": "2026-08-11T05:34:54Z",
+    "method": "Direct HTTPS retrieval of owner, publisher, or immutable versioned-archive bytes; SHA-256 and byte size were computed over each complete response before claim extraction. An unavailable Saltzer URL was excluded rather than credited.",
+    "network_content_is_evidence_not_authority": true,
+    "packet_embeds_source_bytes": false,
+    "reproducibility_limit": "Each urn:sha256 value identifies exact bytes but is not a storage or retrieval service. A later HTTPS retrieval can fail or return different bytes; exact reproduction requires a separately retained copy that matches the declared digest."
+  },
+  "sources": [
+    {
+      "source_id": "anthropic-building-effective-agents",
+      "disposition": "accepted_with_limits",
+      "identity": {
+        "title": "Building effective agents",
+        "owner": "Anthropic",
+        "authors": [
+          "Erik S.",
+          "Barry Zhang"
+        ],
+        "publication_date": "2024-12-19",
+        "version": "Owner page published 2024-12-19; retrieved representation identified by digest",
+        "canonical_uri": "https://www.anthropic.com/engineering/building-effective-agents",
+        "version_uri": "https://www.anthropic.com/engineering/building-effective-agents",
+        "retrieval_uri": "https://www.anthropic.com/engineering/building-effective-agents"
+      },
+      "content_custody": {
+        "sha256": "3ce0e5b4f87aee1fee306bafba2a39a2275d9e9a424c112ea7d18707daa07ed9",
+        "size_bytes": 180307,
+        "media_type": "text/html",
+        "digest_scope": "complete retrieved HTTP response body",
+        "content_addressed_uri": "urn:sha256:3ce0e5b4f87aee1fee306bafba2a39a2275d9e9a424c112ea7d18707daa07ed9",
+        "publisher_bytes_mutable": true,
+        "retrieval_reproducibility": "The owner page is mutable and supplies no immutable byte archive. The URI may later return different bytes; exact reproduction requires retained bytes matching this digest."
+      },
+      "claims_used": [
+        {
+          "claim_id": "ANTHROPIC-SIMPLEST-SUFFICIENT",
+          "claim": "The owner guidance recommends beginning with the simplest sufficient solution and increasing agentic complexity only when needed.",
+          "pinpoint": {
+            "section": "When (and when not) to use agents",
+            "page": null,
+            "anchor": "when-and-when-not-to-use-agents",
+            "uri": "https://www.anthropic.com/engineering/building-effective-agents#when-and-when-not-to-use-agents"
+          },
+          "evidence_excerpt": "finding the simplest solution possible, and only increasing complexity when needed",
+          "evidence_excerpt_utf8_sha256": "c24865dc464b1d8d5cb26f060c0a7fcbcb9ec8b4a40fd07c28be045a698e425f",
+          "supports_constraints": [
+            "C03_NO_ADAPTIVE_ORCHESTRATION",
+            "C10_SMALL_PURE_FOLD"
+          ],
+          "inference": false
+        },
+        {
+          "claim_id": "ANTHROPIC-PARALLEL-SECTIONING",
+          "claim": "The guidance identifies isolated independent subtasks as one use of parallel calls and programmatic aggregation.",
+          "pinpoint": {
+            "section": "Workflow: Parallelization, Sectioning",
+            "page": null,
+            "anchor": "workflow-parallelization",
+            "uri": "https://www.anthropic.com/engineering/building-effective-agents#workflow-parallelization"
+          },
+          "evidence_excerpt": "Breaking a task into independent subtasks run in parallel.",
+          "evidence_excerpt_utf8_sha256": "a1c8bbbaea8ba940be4d06bc05b79bc8a7d1780af400e9ba3e159c42f56cae35",
+          "supports_constraints": [
+            "C01_FIXED_SLOT_LOCAL_WORK",
+            "C02_DETERMINISTIC_PARENT_FOLD"
+          ],
+          "inference": false
+        }
+      ],
+      "transfer_limits": [
+        "This is practitioner guidance, not a controlled comparison of SLEC-1.",
+        "It does not establish assessor independence, routing accuracy, or effectiveness for this repository.",
+        "The mapping from generic parallel sectioning to exactly four slot-local assessors is a proposal constraint, not a result reported by the source."
+      ],
+      "contradictions_or_tensions": [
+        "Parallel calls trade additional latency and cost for easier subtasks; four assessors therefore require bounded evaluation rather than an assumed benefit."
+      ],
+      "mechanism_constraints": [
+        "C01_FIXED_SLOT_LOCAL_WORK",
+        "C02_DETERMINISTIC_PARENT_FOLD",
+        "C03_NO_ADAPTIVE_ORCHESTRATION",
+        "C10_SMALL_PURE_FOLD"
+      ]
+    },
+    {
+      "source_id": "nist-sp-800-207",
+      "disposition": "accepted_with_limits",
+      "identity": {
+        "title": "Zero Trust Architecture",
+        "owner": "National Institute of Standards and Technology",
+        "authors": [
+          "Scott Rose",
+          "Oliver Borchert",
+          "Stu Mitchell",
+          "Sean Connelly"
+        ],
+        "publication_date": "2020-08-11",
+        "version": "NIST Special Publication 800-207, final",
+        "canonical_uri": "https://doi.org/10.6028/NIST.SP.800-207",
+        "version_uri": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-207.pdf",
+        "retrieval_uri": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-207.pdf"
+      },
+      "content_custody": {
+        "sha256": "0290d6ece24874287316f4bf430fef770aa4ec08a2227c8f2c1e5b2ff975e03d",
+        "size_bytes": 966908,
+        "media_type": "application/pdf",
+        "digest_scope": "complete publisher PDF response body",
+        "content_addressed_uri": "urn:sha256:0290d6ece24874287316f4bf430fef770aa4ec08a2227c8f2c1e5b2ff975e03d",
+        "publisher_bytes_mutable": true,
+        "retrieval_reproducibility": "The DOI and NIST URL identify the publication but do not cryptographically promise the same future bytes. Exact reproduction requires retained PDF bytes matching this digest."
+      },
+      "claims_used": [
+        {
+          "claim_id": "NIST-NO-LOCATION-TRUST",
+          "claim": "The zero-trust tenets reject automatic trust based on network location.",
+          "pinpoint": {
+            "section": "2.1 Tenets of Zero Trust, tenet 2",
+            "page": "printed page 6",
+            "anchor": "tenet-2",
+            "uri": "https://doi.org/10.6028/NIST.SP.800-207"
+          },
+          "evidence_excerpt": "Network location alone does not imply trust.",
+          "evidence_excerpt_utf8_sha256": "25c10a6034494addef68e627cf0c629fb764d909bf415f29baeb1d74e0900a31",
+          "supports_constraints": [
+            "C04_NO_IMPLICIT_CAPABILITY_TRUST",
+            "C07_FAIL_CLOSED"
+          ],
+          "inference": false
+        },
+        {
+          "claim_id": "NIST-PER-RESOURCE-ACCESS",
+          "claim": "The zero-trust tenets call for per-session decisions for individual resources and deny automatic authority propagation to another resource.",
+          "pinpoint": {
+            "section": "2.1 Tenets of Zero Trust, tenet 3",
+            "page": "printed page 6",
+            "anchor": "tenet-3",
+            "uri": "https://doi.org/10.6028/NIST.SP.800-207"
+          },
+          "evidence_excerpt": "Access to individual enterprise resources is granted on a per-session basis.",
+          "evidence_excerpt_utf8_sha256": "c88294be3abc0f85b0ad2e504c6c2f9f35943602279caab3fe17b8c9d7f0d4ad",
+          "supports_constraints": [
+            "C05_FIXED_RESOURCE_IDENTITY",
+            "C06_MEDIATE_EACH_REFERENCE_REQUEST",
+            "C08_COMPLETE_LOCAL_MEDIATION"
+          ],
+          "inference": false
+        }
+      ],
+      "transfer_limits": [
+        "The publication concerns enterprise zero-trust architecture, not model routing.",
+        "Its tenets motivate explicit trust boundaries but do not validate the local broker or prove that a capability digest is sufficient authorization.",
+        "Per-session enterprise access is translated only as a conservative per-request broker rule.",
+        "Fail-closed and complete-local-mediation rules are conservative design inferences from rejecting implicit trust and evaluating each resource request; NIST does not specify this broker."
+      ],
+      "contradictions_or_tensions": [
+        "A full zero-trust deployment is broader than a small local reference broker; importing the whole architecture would violate the simplicity constraint."
+      ],
+      "mechanism_constraints": [
+        "C04_NO_IMPLICIT_CAPABILITY_TRUST",
+        "C05_FIXED_RESOURCE_IDENTITY",
+        "C06_MEDIATE_EACH_REFERENCE_REQUEST",
+        "C07_FAIL_CLOSED",
+        "C08_COMPLETE_LOCAL_MEDIATION"
+      ]
+    },
+    {
+      "source_id": "mcp-security-best-practices-2026-07-28",
+      "disposition": "accepted_with_limits",
+      "identity": {
+        "title": "Security Best Practices",
+        "owner": "Model Context Protocol project",
+        "authors": [],
+        "publication_date": "2026-07-28",
+        "version": "MCP documentation edition 2026-07-28",
+        "canonical_uri": "https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices",
+        "version_uri": "https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices",
+        "retrieval_uri": "https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices"
+      },
+      "content_custody": {
+        "sha256": "37c3cd910aa853769f6c815321d4a2452647c4ef61c92a12f9f95a0f5cd1f876",
+        "size_bytes": 545388,
+        "media_type": "text/html",
+        "digest_scope": "complete date-versioned documentation HTTP response body",
+        "content_addressed_uri": "urn:sha256:37c3cd910aa853769f6c815321d4a2452647c4ef61c92a12f9f95a0f5cd1f876",
+        "publisher_bytes_mutable": true,
+        "retrieval_reproducibility": "The date-versioned documentation URL is a mutable publisher endpoint, not a content-addressed archive. Exact reproduction requires retained bytes matching this digest."
+      },
+      "claims_used": [
+        {
+          "claim_id": "MCP-LOCAL-SANDBOX",
+          "claim": "The guidance recommends minimal default privileges and restricted filesystem, network, and system-resource access for locally launched MCP servers.",
+          "pinpoint": {
+            "section": "Local MCP Server Compromise, Mitigation",
+            "page": null,
+            "anchor": "local-mcp-server-compromise",
+            "uri": "https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices#local-mcp-server-compromise"
+          },
+          "evidence_excerpt": "sandboxed environment with minimal default privileges",
+          "evidence_excerpt_utf8_sha256": "55d18f23c419ce877b9bb814ba31a8ee66c0a835325a21bffde652f5944c6ca6",
+          "supports_constraints": [
+            "C13_STATIC_SCOPE_LIMITS",
+            "C14_NO_NETWORK_REFERENCE_FETCH"
+          ],
+          "inference": false
+        },
+        {
+          "claim_id": "MCP-TOCTOU",
+          "claim": "The guidance identifies time-of-check to time-of-use risk and recommends binding a validated resolution result through use.",
+          "pinpoint": {
+            "section": "Server-Side Request Forgery, Mitigation, DNS Resolution Considerations",
+            "page": null,
+            "anchor": "server-side-request-forgery-ssrf",
+            "uri": "https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices#server-side-request-forgery-ssrf"
+          },
+          "evidence_excerpt": "pinning DNS resolution results between check and use",
+          "evidence_excerpt_utf8_sha256": "9ee016684c527c7a756dd5ca25a73fa8eb874e968b87316803e411f84ce9087c",
+          "supports_constraints": [
+            "C12_PATH_AND_OPEN_RACE_DEFENSE"
+          ],
+          "inference": false
+        },
+        {
+          "claim_id": "MCP-PROGRESSIVE-SCOPE",
+          "claim": "By least-privilege analogy, progressive scope minimization motivates withholding task and capsule data from the reference broker.",
+          "pinpoint": {
+            "section": "Scope Minimization, Mitigation",
+            "page": null,
+            "anchor": "scope-minimization",
+            "uri": "https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices#scope-minimization"
+          },
+          "evidence_excerpt": "Implement a progressive, least-privilege scope model",
+          "evidence_excerpt_utf8_sha256": "d9b1ca8cf07ecf363b187273518dab74af4a97db45ea7327ac678c31b42e79ed",
+          "supports_constraints": [
+            "C09_LEAST_REFERENCE_PRIVILEGE",
+            "C11_TASK_DATA_NEVER_REACHES_BROKER"
+          ],
+          "inference": true
+        }
+      ],
+      "transfer_limits": [
+        "The guidance covers MCP implementations broadly; SLEC-1 is not itself an MCP authorization implementation.",
+        "The source supports threat selection and conservative local controls, not a security certification.",
+        "DNS pinning is analogous to, but does not itself specify, regular-file descriptor custody; task-data withholding and the fixed least-reference rule are explicit least-privilege inferences."
+      ],
+      "contradictions_or_tensions": [
+        "The guide recommends environment-dependent defenses; a portable local broker can enforce file custody but cannot claim host-wide sandboxing."
+      ],
+      "mechanism_constraints": [
+        "C09_LEAST_REFERENCE_PRIVILEGE",
+        "C11_TASK_DATA_NEVER_REACHES_BROKER",
+        "C12_PATH_AND_OPEN_RACE_DEFENSE",
+        "C13_STATIC_SCOPE_LIMITS",
+        "C14_NO_NETWORK_REFERENCE_FETCH"
+      ]
+    },
+    {
+      "source_id": "json-schema-draft-2020-12",
+      "disposition": "accepted_with_limits",
+      "identity": {
+        "title": "JSON Schema: A Media Type for Describing JSON Documents",
+        "owner": "Internet Engineering Task Force archive; JSON Schema project",
+        "authors": [
+          "Austin Wright",
+          "Henry Andrews",
+          "Ben Hutton",
+          "Greg Dennis"
+        ],
+        "publication_date": "2022-06-10",
+        "version": "Draft 2020-12, draft-bhutton-json-schema-01; archived draft text dated 2022-06-10; canonical HTML reports 2022-06-16",
+        "canonical_uri": "https://json-schema.org/draft/2020-12/json-schema-core.html",
+        "version_uri": "https://www.ietf.org/archive/id/draft-bhutton-json-schema-01.txt",
+        "retrieval_uri": "https://www.ietf.org/archive/id/draft-bhutton-json-schema-01.txt"
+      },
+      "content_custody": {
+        "sha256": "03834e2a60caff313476df9913dac2ccf9a34aad569df570f8ab80db7bd6d24a",
+        "size_bytes": 162227,
+        "media_type": "text/plain",
+        "digest_scope": "complete version-numbered IETF Internet-Draft archive text response body",
+        "content_addressed_uri": "urn:sha256:03834e2a60caff313476df9913dac2ccf9a34aad569df570f8ab80db7bd6d24a",
+        "publisher_bytes_mutable": false,
+        "retrieval_reproducibility": "The numbered IETF Internet-Draft archive is version-pinned. Exact reproduction is verified by the declared digest over the complete archived text bytes."
+      },
+      "claims_used": [
+        {
+          "claim_id": "JSON-SCHEMA-ASSERTIONS",
+          "claim": "JSON Schema assertions can express pass-or-fail constraints on JSON documents; closedness remains a property of the selected schema, not an automatic guarantee.",
+          "pinpoint": {
+            "section": "7.6 Assertions",
+            "page": "Internet-Draft page 18",
+            "anchor": "section-7.6",
+            "uri": "https://www.ietf.org/archive/id/draft-bhutton-json-schema-01.txt"
+          },
+          "evidence_excerpt": "assert constraints on a JSON document",
+          "evidence_excerpt_utf8_sha256": "b38fcb6390c7489197493155e33c15ef4d66ce24cc06e849b97b7d90049bedc1",
+          "supports_constraints": [
+            "C15_CLOSED_DRAFT_2020_12_SCHEMAS"
+          ],
+          "inference": false
+        },
+        {
+          "claim_id": "JSON-SCHEMA-PREFIX-ORDER",
+          "claim": "The prefixItems applicator validates array elements against schemas at corresponding positions, supporting an ordered tuple contract.",
+          "pinpoint": {
+            "section": "10.3.1.1 prefixItems",
+            "page": "Internet-Draft page 45",
+            "anchor": "section-10.3.1.1",
+            "uri": "https://www.ietf.org/archive/id/draft-bhutton-json-schema-01.txt"
+          },
+          "evidence_excerpt": "each element of the instance validates against the schema at the same position",
+          "evidence_excerpt_utf8_sha256": "0bd863d9948de3227d0be9ab88ce69c9e326146acefced98d2537ee1c0187e52",
+          "supports_constraints": [
+            "C16_ORDER_AWARE_TUPLES"
+          ],
+          "inference": false
+        },
+        {
+          "claim_id": "JSON-SCHEMA-DECLARED-ASSERTIONS-ONLY",
+          "claim": "Because only declared assertions can fail an instance, separate deterministic checks are required for semantic anchors, byte custody, and filesystem invariants outside the schema.",
+          "pinpoint": {
+            "section": "7.6 Assertions",
+            "page": "Internet-Draft page 18",
+            "anchor": "section-7.6",
+            "uri": "https://www.ietf.org/archive/id/draft-bhutton-json-schema-01.txt"
+          },
+          "evidence_excerpt": "assertion that is present",
+          "evidence_excerpt_utf8_sha256": "0f5ea5ace7507f5cf346761ba88763a09e42dec7ef955f6317cb2e87f71d5973",
+          "supports_constraints": [
+            "C17_SCHEMA_PLUS_SEMANTIC_VALIDATION"
+          ],
+          "inference": true
+        }
+      ],
+      "transfer_limits": [
+        "Schema conformance establishes declared structural constraints only; it does not establish semantic-anchor validity, byte custody, order outside declared arrays, or filesystem safety.",
+        "The archived core document relies on companion vocabularies for many validation keywords; SLEC-1 must declare and enforce its chosen dialect and keywords.",
+        "A schema can remain valid while being too permissive, so unexpected fields and non-schema invariants require explicit deterministic checks."
+      ],
+      "contradictions_or_tensions": [
+        "The specification permits extensibility and annotations, while this proposal deliberately selects closed structures and treats undeclared fields as invalid."
+      ],
+      "mechanism_constraints": [
+        "C15_CLOSED_DRAFT_2020_12_SCHEMAS",
+        "C16_ORDER_AWARE_TUPLES",
+        "C17_SCHEMA_PLUS_SEMANTIC_VALIDATION"
+      ]
+    },
+    {
+      "source_id": "angelopoulos-et-al-conformal-risk-control",
+      "disposition": "rejected_alternative",
+      "identity": {
+        "title": "Conformal Risk Control",
+        "owner": "International Conference on Learning Representations",
+        "authors": [
+          "Anastasios N. Angelopoulos",
+          "Stephen Bates",
+          "Adam Fisch",
+          "Lihua Lei",
+          "Tal Schuster"
+        ],
+        "publication_date": "2024",
+        "version": "ICLR 2024 conference paper; arXiv:2208.02814",
+        "canonical_uri": "https://arxiv.org/abs/2208.02814",
+        "version_uri": "https://proceedings.iclr.cc/paper_files/paper/2024/file/f3549ef9b5ff520a7e41ff3cc306ab2b-Paper-Conference.pdf",
+        "retrieval_uri": "https://proceedings.iclr.cc/paper_files/paper/2024/file/f3549ef9b5ff520a7e41ff3cc306ab2b-Paper-Conference.pdf"
+      },
+      "content_custody": {
+        "sha256": "0fff32a0254a47f06a399522b83ba463d0ca62f71e3a0e094985d80cba166c0c",
+        "size_bytes": 1468508,
+        "media_type": "application/pdf",
+        "digest_scope": "complete ICLR conference PDF response body",
+        "content_addressed_uri": "urn:sha256:0fff32a0254a47f06a399522b83ba463d0ca62f71e3a0e094985d80cba166c0c",
+        "publisher_bytes_mutable": true,
+        "retrieval_reproducibility": "The conference URL is version-specific but not a cryptographic archive. Exact reproduction requires retained PDF bytes matching this digest."
+      },
+      "claims_used": [
+        {
+          "claim_id": "CRC-EXCHANGEABLE-MONOTONE-BOUNDED",
+          "claim": "The main conformal-risk-control setup assumes exchangeable, non-increasing, bounded random loss functions.",
+          "pinpoint": {
+            "section": "1.1 Algorithm and Preview of Main Results",
+            "page": "printed page 2",
+            "anchor": "assumptions-before-equation-3",
+            "uri": "https://proceedings.iclr.cc/paper_files/paper/2024/file/f3549ef9b5ff520a7e41ff3cc306ab2b-Paper-Conference.pdf"
+          },
+          "evidence_excerpt": "exchangeable collection of non-increasing, bounded, random functions",
+          "evidence_excerpt_utf8_sha256": "f959f945ad1f7e512adae15bd1b5c1e0b7d9b2fdab6224f4e67e874f94493c0d",
+          "supports_constraints": [
+            "C19_NO_UNSUPPORTED_STATISTICAL_GUARANTEE"
+          ],
+          "inference": false
+        },
+        {
+          "claim_id": "CRC-DATA-DEPENDENT-SELECTION",
+          "claim": "The procedure selects its control parameter from observed calibration data.",
+          "pinpoint": {
+            "section": "1.1 Algorithm and Preview of Main Results",
+            "page": "printed page 2",
+            "anchor": "parameter-selection-before-equation-3",
+            "uri": "https://proceedings.iclr.cc/paper_files/paper/2024/file/f3549ef9b5ff520a7e41ff3cc306ab2b-Paper-Conference.pdf"
+          },
+          "evidence_excerpt": "based on the observed data",
+          "evidence_excerpt_utf8_sha256": "62c2e6d380100e2a7f2a656ef9f0f525ba4326f44c2bd6f180bd6357e12ec81c",
+          "supports_constraints": [
+            "C18_NO_CONFORMAL_THRESHOLD"
+          ],
+          "inference": false
+        },
+        {
+          "claim_id": "CRC-NONMONOTONE-FAILURE",
+          "claim": "The paper states that its conformal-risk-control algorithm does not control risk without the monotonicity assumption.",
+          "pinpoint": {
+            "section": "2.3 Controlling General Loss Functions",
+            "page": "printed page 4",
+            "anchor": "proposition-2",
+            "uri": "https://proceedings.iclr.cc/paper_files/paper/2024/file/f3549ef9b5ff520a7e41ff3cc306ab2b-Paper-Conference.pdf"
+          },
+          "evidence_excerpt": "does not control the risk",
+          "evidence_excerpt_utf8_sha256": "d9fbb0651c398fb94ab2bdb6df4906b54f95e2b779e8ad49981412bc3c398275",
+          "supports_constraints": [
+            "C19_NO_UNSUPPORTED_STATISTICAL_GUARANTEE"
+          ],
+          "inference": false
+        }
+      ],
+      "transfer_limits": [
+        "SLEC-1 has no independently justified calibration population, monotone loss family, exchangeability argument, or sample size for a conformal guarantee.",
+        "A conformal threshold would introduce observed-data-dependent selection into a mechanism required to be fixed before held-out evaluation.",
+        "Rejecting this method does not show that fixed deterministic rules are statistically optimal; it only prevents an unsupported guarantee and an incompatible calibration path."
+      ],
+      "contradictions_or_tensions": [
+        "The method can offer stronger statistical guarantees when its prerequisites hold, but those prerequisites are absent here; using it would overstate evidence and add unjustified machinery."
+      ],
+      "mechanism_constraints": [
+        "C18_NO_CONFORMAL_THRESHOLD",
+        "C19_NO_UNSUPPORTED_STATISTICAL_GUARANTEE"
+      ]
+    }
+  ],
+  "cross_source_constraints": [
+    {
+      "constraint_id": "SLEC1-INDEPENDENT-FOUR",
+      "derivation": [
+        "C01_FIXED_SLOT_LOCAL_WORK",
+        "C02_DETERMINISTIC_PARENT_FOLD",
+        "C03_NO_ADAPTIVE_ORCHESTRATION",
+        "C10_SMALL_PURE_FOLD"
+      ],
+      "rule": "Use four independently produced slot-local capsules and a deterministic parent fold; no assessor receives another slot or another assessor output."
+    },
+    {
+      "constraint_id": "SLEC1-FAIL-CLOSED",
+      "derivation": [
+        "C07_FAIL_CLOSED",
+        "C15_CLOSED_DRAFT_2020_12_SCHEMAS",
+        "C16_ORDER_AWARE_TUPLES",
+        "C17_SCHEMA_PLUS_SEMANTIC_VALIDATION"
+      ],
+      "rule": "Any invalid, missing, duplicate, uncertain, digest-mismatched, or anchor-invalid capsule produces no selection."
+    },
+    {
+      "constraint_id": "SLEC1-LEAST-REFERENCE",
+      "derivation": [
+        "C04_NO_IMPLICIT_CAPABILITY_TRUST",
+        "C05_FIXED_RESOURCE_IDENTITY",
+        "C09_LEAST_REFERENCE_PRIVILEGE",
+        "C11_TASK_DATA_NEVER_REACHES_BROKER",
+        "C13_STATIC_SCOPE_LIMITS",
+        "C14_NO_NETWORK_REFERENCE_FETCH"
+      ],
+      "rule": "Broker at most two fixed capability IDs into at most one digest-pinned local regular file per slot, without task or capsule data."
+    },
+    {
+      "constraint_id": "SLEC1-ATOMIC-CUSTODY",
+      "derivation": [
+        "C06_MEDIATE_EACH_REFERENCE_REQUEST",
+        "C08_COMPLETE_LOCAL_MEDIATION",
+        "C12_PATH_AND_OPEN_RACE_DEFENSE"
+      ],
+      "rule": "A path, type, size, digest, or time-of-check failure discards the entire request without partial bytes."
+    },
+    {
+      "constraint_id": "SLEC1-NO-STATISTICAL-PRETENSE",
+      "derivation": [
+        "C18_NO_CONFORMAL_THRESHOLD",
+        "C19_NO_UNSUPPORTED_STATISTICAL_GUARANTEE"
+      ],
+      "rule": "Use fixed deterministic abstention rules and retain a structural-proposal-only claim ceiling."
+    }
+  ],
+  "forbidden_bindings": [
+    "historical task text",
+    "historical labels",
+    "historical per-case outputs",
+    "historical aggregate measurements",
+    "calibration thresholds derived from evaluation data"
+  ],
+  "conclusion": "The five-source packet supports a bounded, independently assessed, deterministic, least-privilege proposal and its falsifiers. The unavailable Saltzer preprint custody was removed rather than treated as evidence; simplicity, fail-closed mediation, and least-reference constraints therefore rest on conservative cross-source inferences from Anthropic, NIST, and MCP guidance. The packet does not establish activation quality, runtime behavior, provider behavior, security certification, product value, or promotion readiness."
+}
