@@ -1,0 +1,64 @@
+{
+  "schema_version": "ae-sq1-run-manifest-v1",
+  "program_id": "AE-SQ1",
+  "run_id": "AE-SQ1-AQ-2026-08-11-01",
+  "candidate_manifest": {
+    "commit": "97d85cae9abc690c618c3e6d2f49c61d990127b5",
+    "tree": "86157d61bb8b9450dd31cc2240aa9f35c3152601",
+    "path": "evals/ae-sq1/candidate-manifest.json",
+    "blob": "186b6613b9bf21db13351d4c449cb7c45ebf98ed",
+    "sha256": "c9c7292e963c8799f08ca5876a63ceea0e8d172fbd404ee1407570dcc4a1a5fe"
+  },
+  "candidate_freeze": {
+    "commit": "0635f3d633f02bb99afd2e1218ec1135735a7496",
+    "tree": "5b756da72fd112ce365c5e0e3957385ee5e6aa2a"
+  },
+  "corpus_freeze": {
+    "commit": "f0b377accbebc9612f198123cacf7f34b5fce89e",
+    "tree": "bfc25b7a77fa1d1c2a4102e0dfb23ad1b329a28d"
+  },
+  "corpus": {
+    "corpus_id": "AE-SQ1-AQ-FRESH-V1",
+    "schema": {
+      "path": "evals/ae-sq1/aq/corpus-schema.json",
+      "blob": "b6e3fafce24b54aad7ae0be9be88a732573e564c",
+      "sha256": "d480cbe2cc25d96f329011c5b788edcda701b9df56c527644237fff32d45a9dd"
+    },
+    "split_a": {
+      "path": "evals/ae-sq1/aq/corpus-split-a.json",
+      "blob": "2b9803375d617aa0e4325845f05492ca076bcab2",
+      "sha256": "d75dfb4ad1b72838729fb47343081cadcc741fd39e5f893a05fd92b53d36d11a"
+    },
+    "split_b": {
+      "path": "evals/ae-sq1/aq/corpus-split-b.json",
+      "blob": "1659006fb2e809563e0718691435cdbf01749f38",
+      "sha256": "e10b41fd2a48b3fdd254e64f8543d8613a824f2daaacf070d0d5f27e7921ba93"
+    },
+    "historical_inventory": {
+      "path": "evals/ae-sq1/historical-task-digests.json",
+      "blob": "312120fda95e6f4f5ab3c9b381704aa6f4d122b9",
+      "sha256": "d2151090e75464aa16e416fcd1df29676fd43d75bab47fc57271d5338ee26bf0"
+    }
+  },
+  "schedule": {
+    "seed": "AE-SQ1-AQ-FRESH-V1-SCHEDULE",
+    "sha256": "3e01e86ae83452c46f08209bc09b8f0c5805e5fb2c6c10c9d8833769a4214890",
+    "presentations": 80,
+    "calls_per_presentation": 4
+  },
+  "runtime": {
+    "cli": {
+      "id": "codex-cli",
+      "version": "codex-cli 0.147.0",
+      "sha256": "19c4f144c5226a9f17c58e6f0fa854843b0f77a6eb420f40e2745a12f10f5d37"
+    },
+    "model": "gpt-5.5",
+    "reasoning": "medium",
+    "fallback": false,
+    "max_concurrency": 8
+  },
+  "usage_authority": {
+    "canary": "ae-sq1-authorized-canary",
+    "batch": "ae-sq1-authorized-batch"
+  }
+}
