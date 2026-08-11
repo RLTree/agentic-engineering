@@ -1,0 +1,865 @@
+{
+  "schema_version": "1.0",
+  "program_id": "AE-SQ1",
+  "corpus_id": "AE-SQ1-AQ-FRESH-V1",
+  "split_id": "B",
+  "split_nonce": "e574435eb3a61f9fcd7d5c77f461ec9ce50ab314cea803ca080098d09a27c4d0",
+  "authority": {
+    "program_id": "AE-SQ1",
+    "candidate_id": "SLEC-1",
+    "candidate_commit": "0635f3d633f02bb99afd2e1218ec1135735a7496",
+    "candidate_tree": "5b756da72fd112ce365c5e0e3957385ee5e6aa2a",
+    "candidate_manifest_sha256": "c9c7292e963c8799f08ca5876a63ceea0e8d172fbd404ee1407570dcc4a1a5fe",
+    "corpus_contract_sha256": "d480cbe2cc25d96f329011c5b788edcda701b9df56c527644237fff32d45a9dd",
+    "gates_sha256": "c5278f7b7da46ff9da0df5369ba313b36be96240a4825a7a5916aed8441838bc",
+    "metrics_sha256": "5171180e8b093b07d5341a626cea7270e878b201ad02c2c1b256e82dc2df86a4",
+    "evaluator_schema_sha256": "056f2c0576d6e0b7ba741519ede3caf8262993472449742c7a66703436af958d",
+    "outcome_blind_at_authoring": true,
+    "prior_corpus_text_access": false
+  },
+  "no_replay": {
+    "normalization_id": "ae-sq1-task-v1",
+    "historical_digest_inventory_sha256": "d2151090e75464aa16e416fcd1df29676fd43d75bab47fc57271d5338ee26bf0",
+    "historical_text_embedded": false
+  },
+  "cases": [
+    {
+      "case_id": "AE-SQ1-B-01",
+      "case_nonce": "490dc8795a75210365599a4db2855139f5f1c029a19a343e00d53cf11dff67da",
+      "task_text": "brindle orchard memorandum 01 seeks an independent selection judgment concerning saffron compasses, with separate evidence notes and a distinct review steward.",
+      "task_text_nfc_sha256": "188f6c3ea7418c5cb84842c271bc790a66ece5dc9c63bd49ae31220e9252a97f",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "focused"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s3",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-B-02",
+      "case_nonce": "e7b0071b1480b4db7780a4bfecdd52c8d8bcc1510613401c2e0253993f715734",
+      "task_text": "cedar plateau memorandum 02 seeks an independent selection judgment concerning saffron compasses, with separate evidence notes and a distinct review steward.",
+      "task_text_nfc_sha256": "367277bc92a71e142d1c40a485c05fbbacd4f32ab20ee892a62d9ddb406c7fe8",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "focused"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s3",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-B-03",
+      "case_nonce": "6192d126cae526164201249c772ec99b356fc1990354a5db22b2e03af6724199",
+      "task_text": "driftwood manor memorandum 03 seeks an independent selection judgment concerning saffron compasses, with separate evidence notes and a distinct review steward.",
+      "task_text_nfc_sha256": "3dd98758f175a259e5db598f095f10ac4327ab58cf26bfb00ed8335e6a2ef1d7",
+      "profile": "two",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0",
+          "s1"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "focused"
+          },
+          {
+            "slot_id": "s1",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-B-04",
+      "case_nonce": "40dedeeb0d95d9099004bc590c310cb2c01ffcf64105903ddbaec958927abb26",
+      "task_text": "elm passage memorandum 04 seeks an independent selection judgment concerning saffron compasses, with separate evidence notes and a distinct review steward.",
+      "task_text_nfc_sha256": "da681656bea46ac99da2e8df45cdbb9604e7af990d8d09ffed4d7ee03df2beab",
+      "profile": "two",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0",
+          "s2"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "focused"
+          },
+          {
+            "slot_id": "s2",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-B-05",
+      "case_nonce": "10a3c854d84f1fd33c90bd7edaae4cb5d0e0e3ae6f7ec8cc9095348d5284f2d1",
+      "task_text": "fallow citadel memorandum 05 seeks an independent selection judgment concerning saffron compasses, with separate evidence notes and a distinct review steward.",
+      "task_text_nfc_sha256": "ba60d0ecedc9e975557a049e4eb79b81a239959e0d467a58ad0ca840168a2a4d",
+      "profile": "two",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "focused"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0",
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "focused"
+          },
+          {
+            "slot_id": "s3",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-B-06",
+      "case_nonce": "2b9282e40031efcbadcd1aff7e4b2e67deda8cf5edd9de08b41da31145c66e5d",
+      "task_text": "garnet meadow memorandum 06 seeks an independent selection judgment concerning saffron compasses, with separate evidence notes and a distinct review steward.",
+      "task_text_nfc_sha256": "be483d1fa384d68325417bb9a9b05c6221b8ff2ad1b0e63d5b8cdd5ceabf1f67",
+      "profile": "two",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s1",
+          "s2"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s1",
+            "need": "focused"
+          },
+          {
+            "slot_id": "s2",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-B-07",
+      "case_nonce": "57c51c64bd588327d06a6e738bda708c4d89327cb2a607f650e1ab59db6fb3ce",
+      "task_text": "helium station memorandum 07 seeks an independent selection judgment concerning saffron compasses, with separate evidence notes and a distinct review steward.",
+      "task_text_nfc_sha256": "5e6713161792956120e84c8b9b4298de06f5de714c9320bf489894bd70aba05b",
+      "profile": "two",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "focused"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s1",
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s1",
+            "need": "focused"
+          },
+          {
+            "slot_id": "s3",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-B-08",
+      "case_nonce": "e5045a689963689664941089031997ed51be4526d7c262de948e0e42e4494c2b",
+      "task_text": "indigo harbor memorandum 08 seeks an independent selection judgment concerning saffron compasses, with separate evidence notes and a distinct review steward.",
+      "task_text_nfc_sha256": "1d5a4531962e367b2b520ae31bd776c85d163562c5fae860928a6fdeace7ce26",
+      "profile": "two",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "focused"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s2",
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s2",
+            "need": "focused"
+          },
+          {
+            "slot_id": "s3",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-B-09",
+      "case_nonce": "425018dca447fb3e0d64bdbb3ef0f709a9aabd359395cc21bac73f1d2c19cd05",
+      "task_text": "jasper meadow memorandum 09 seeks an independent selection judgment concerning saffron compasses, with separate evidence notes and a distinct review steward.",
+      "task_text_nfc_sha256": "8e5e35be0b27b345fda8accb98ce06805507110e1d9e3f6387572992dcadc132",
+      "profile": "two",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0",
+          "s1"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "focused"
+          },
+          {
+            "slot_id": "s1",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-B-10",
+      "case_nonce": "527eae102ac394bcbb0caa4244b3c214df239f417289fff651903eb5b91dbadb",
+      "task_text": "kiwi annex memorandum 10 seeks an independent selection judgment concerning saffron compasses, with separate evidence notes and a distinct review steward.",
+      "task_text_nfc_sha256": "c884ae4a3688e1e16019810d463f73ace0d4101edbf7ff652bd087e46c39fa7d",
+      "profile": "two",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "focused"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s2",
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s2",
+            "need": "focused"
+          },
+          {
+            "slot_id": "s3",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-B-11",
+      "case_nonce": "24f93c287fbaa0dbba0ef6ace644159f297abbb14ea28331b655984abf2a97cf",
+      "task_text": "lilac crossing memorandum 11 seeks an independent selection judgment concerning saffron compasses, with separate evidence notes and a distinct review steward.",
+      "task_text_nfc_sha256": "d2f23c3b2e2f1aabd70eab2e5321406b78e9c0294524f5653a793ef64a199296",
+      "profile": "cap",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "cap_abstain",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ1-B-12",
+      "case_nonce": "bef1bf5fc59492d3cdb6139e12a3952c6bdff05a9f6721b7a3f8abf64842340c",
+      "task_text": "marble prairie memorandum 12 seeks an independent selection judgment concerning saffron compasses, with separate evidence notes and a distinct review steward.",
+      "task_text_nfc_sha256": "19ce202c8ff5065f036fb88d518af3cbb65146489af2547d9e0913ddb5924099",
+      "profile": "cap",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "cap_abstain",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ1-B-13",
+      "case_nonce": "1e8f207f680ac9d7019fd09bc9021932febde8e4313d9f30ce1baf59335aef10",
+      "task_text": "nebula court memorandum 13 seeks an independent selection judgment concerning saffron compasses, with separate evidence notes and a distinct review steward.",
+      "task_text_nfc_sha256": "d8cd3de2a4360ea2bfb130dd66dea47f3c76401b7ae11aabd4d5626732c863b0",
+      "profile": "cap",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "cap_abstain",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ1-B-14",
+      "case_nonce": "a38ba554270fcfb875fa9626b4b4dc7e8887777c0946aee6425f57c55d6654b6",
+      "task_text": "ochre terminal memorandum 14 seeks an independent selection judgment concerning saffron compasses, with separate evidence notes and a distinct review steward.",
+      "task_text_nfc_sha256": "b232943833c75c1fea281600fb3a9c0d0e846c6144124e320ffe174ba6971d68",
+      "profile": "cap",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "cap_abstain",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ1-B-15",
+      "case_nonce": "eb0c1e45ae70519972f23f30cdce43d28258ad7d48c384058041b8bdeeea55cc",
+      "task_text": "plum village memorandum 15 seeks an independent selection judgment concerning saffron compasses, with separate evidence notes and a distinct review steward.",
+      "task_text_nfc_sha256": "e7a3fa63c8d6ad0ec351bc93313609679a980c36f86dd0272a6713febeae0012",
+      "profile": "explicit",
+      "explicit_slot_id": "s0",
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-B-16",
+      "case_nonce": "9e2b459a4840e5fd7d95a0fab71952150362444dc38dcd96dafe541e99854507",
+      "task_text": "radian summit memorandum 16 seeks an independent selection judgment concerning saffron compasses, with separate evidence notes and a distinct review steward.",
+      "task_text_nfc_sha256": "e2592b83bb7daa2321bf1d74864388e0a8387e7cf5109a3f43416014babff907",
+      "profile": "explicit",
+      "explicit_slot_id": "s1",
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s1"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s1",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-B-17",
+      "case_nonce": "56c2dc6f5e82a7c7377193cccc0d4bb90b837aa40e4f8f909d590cadfc062fc4",
+      "task_text": "saffron compass memorandum 17 seeks an independent selection judgment concerning saffron compasses, with separate evidence notes and a distinct review steward.",
+      "task_text_nfc_sha256": "ec8c9390cdc15ac03836a79014d736cec1e9d12cc4657759a62b665b7cb78cff",
+      "profile": "explicit",
+      "explicit_slot_id": "s2",
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s2"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s2",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-B-18",
+      "case_nonce": "3970076380d0a9a9c656a5754b31386cd4c823eeff3ff1c61c8d45a814062958",
+      "task_text": "topaz retreat memorandum 18 seeks an independent selection judgment concerning saffron compasses, with separate evidence notes and a distinct review steward.",
+      "task_text_nfc_sha256": "8ccdf81df5bd124e64ff888b1fb420e8ebaeb086d906c445d2636051efc92d6a",
+      "profile": "explicit",
+      "explicit_slot_id": "s3",
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "focused"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s3",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-B-19",
+      "case_nonce": "c3aaeaa3f34b142cb936e53a070fb7ace3ef9d96117e21d0a835f1d27d17796f",
+      "task_text": "violet station memorandum 19 seeks an independent selection judgment concerning saffron compasses, with separate evidence notes and a distinct review steward.",
+      "task_text_nfc_sha256": "20b5a16d41a5e2d8ae052e43c02881683225f802d779df8202d04d9e7e252382",
+      "profile": "uncertain",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "uncertain",
+          "reference_need": "uncertain"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "uncertain_abstain",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ1-B-20",
+      "case_nonce": "03c4d8b3605d743b1d6d9f64c7a2938197ddbe3d20bbcb5e1d6c0b1dbd4b311f",
+      "task_text": "willow crescent memorandum 20 seeks an independent selection judgment concerning saffron compasses, with separate evidence notes and a distinct review steward.",
+      "task_text_nfc_sha256": "93ad8af5e161db2210ad11740ca490c76483c3ecf39dda03135132fb94b72f0d",
+      "profile": "uncertain",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "uncertain",
+          "reference_need": "uncertain"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "uncertain_abstain",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,825 @@
+{
+  "schema_version": "1.0",
+  "program_id": "AE-SQ1",
+  "corpus_id": "AE-SQ1-AQ-FRESH-V1",
+  "split_id": "A",
+  "split_nonce": "2807fa33c735a83c3aba5aef3d3df5c4fa1a1029bc12ee9eca4a62fd8b96b6d9",
+  "authority": {
+    "program_id": "AE-SQ1",
+    "candidate_id": "SLEC-1",
+    "candidate_commit": "0635f3d633f02bb99afd2e1218ec1135735a7496",
+    "candidate_tree": "5b756da72fd112ce365c5e0e3957385ee5e6aa2a",
+    "candidate_manifest_sha256": "c9c7292e963c8799f08ca5876a63ceea0e8d172fbd404ee1407570dcc4a1a5fe",
+    "corpus_contract_sha256": "d480cbe2cc25d96f329011c5b788edcda701b9df56c527644237fff32d45a9dd",
+    "gates_sha256": "c5278f7b7da46ff9da0df5369ba313b36be96240a4825a7a5916aed8441838bc",
+    "metrics_sha256": "5171180e8b093b07d5341a626cea7270e878b201ad02c2c1b256e82dc2df86a4",
+    "evaluator_schema_sha256": "056f2c0576d6e0b7ba741519ede3caf8262993472449742c7a66703436af958d",
+    "outcome_blind_at_authoring": true,
+    "prior_corpus_text_access": false
+  },
+  "no_replay": {
+    "normalization_id": "ae-sq1-task-v1",
+    "historical_digest_inventory_sha256": "d2151090e75464aa16e416fcd1df29676fd43d75bab47fc57271d5338ee26bf0",
+    "historical_text_embedded": false
+  },
+  "cases": [
+    {
+      "case_id": "AE-SQ1-A-01",
+      "case_nonce": "75d0165a23f868552af683b2d7227c3216c1e7b1d4a03581193b00e558694692",
+      "task_text": "aster kiln brief 01 requests a bounded routing decision about copper lanterns, with a fresh constraint ledger and a named approval owner.",
+      "task_text_nfc_sha256": "85413d3fe3629e114161e597a1375f860cff78bc7a591d46f27bb5ddf28ba32e",
+      "profile": "none",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "none",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ1-A-02",
+      "case_nonce": "93a4cd2e81328d7e600ad2e60c46dcc14ec88a6596aff6abe12331e114cccd57",
+      "task_text": "cobalt ferry brief 02 requests a bounded routing decision about copper lanterns, with a fresh constraint ledger and a named approval owner.",
+      "task_text_nfc_sha256": "e7222ac3dd42caca0e4455bd64bf9c90459e252c88dcdc8d8c9d46f91541d73c",
+      "profile": "none",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "none",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ1-A-03",
+      "case_nonce": "ae420c4e181c50b86a0d415d4b9694f145bb022cb6ddd5c81ec5a0d44a1213c5",
+      "task_text": "dune observatory brief 03 requests a bounded routing decision about copper lanterns, with a fresh constraint ledger and a named approval owner.",
+      "task_text_nfc_sha256": "07abedbbd9fc068ba782a2d1ff825b7d6dad2926f14b72ab929680c34a24f32f",
+      "profile": "none",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "none",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ1-A-04",
+      "case_nonce": "2aa45295e45d73e9c93310530dc70c85becb5f3a46bac026b24c062dc4098c23",
+      "task_text": "ember archive brief 04 requests a bounded routing decision about copper lanterns, with a fresh constraint ledger and a named approval owner.",
+      "task_text_nfc_sha256": "4c380121b8b203121a18a0a1b871148bdc2d31ecb0899f34e042a95dd809cc4f",
+      "profile": "none",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "none",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ1-A-05",
+      "case_nonce": "6a684d607cafcf6acb5aea6d538186abf551a7748edb10723c435037e601fcef",
+      "task_text": "fjord workshop brief 05 requests a bounded routing decision about copper lanterns, with a fresh constraint ledger and a named approval owner.",
+      "task_text_nfc_sha256": "b9d92035c5030c342a442d9f847bcbc8aab13a44cc9a2071ca4e3954b679f837",
+      "profile": "none",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "none",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ1-A-06",
+      "case_nonce": "d1c4f2625abb52dcc8b3de48d119a03e584cd8efa1ad564c3c03f65cb15d81fc",
+      "task_text": "granite meadow brief 06 requests a bounded routing decision about copper lanterns, with a fresh constraint ledger and a named approval owner.",
+      "task_text_nfc_sha256": "5889f0c55b6b52b14467bf894c00aaed4d6d959d14300ef8444ceea4935dce29",
+      "profile": "none",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "none",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ1-A-07",
+      "case_nonce": "88416e7d305ebfdf9123a6626539a91f4f416f2b7939d7adcd9a8f51bb530ec6",
+      "task_text": "harbor turbine brief 07 requests a bounded routing decision about copper lanterns, with a fresh constraint ledger and a named approval owner.",
+      "task_text_nfc_sha256": "9c97367f0419d1fe920d7da5eea6b56844ae08c5193a5ff735e5806981ee25bb",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-A-08",
+      "case_nonce": "196c876d7ddd2a92accf395e4173e30c0d76c571688a16d4a99c7532f2ac5fd7",
+      "task_text": "ivory atlas brief 08 requests a bounded routing decision about copper lanterns, with a fresh constraint ledger and a named approval owner.",
+      "task_text_nfc_sha256": "1df421c7d2274e49758378e8ed15b9bde72435eaef532741f558597aef6b01e5",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-A-09",
+      "case_nonce": "9d09761a508870e6eefe093acbcb58501e0ca67b684153171fb0d661782f16fc",
+      "task_text": "juniper foundry brief 09 requests a bounded routing decision about copper lanterns, with a fresh constraint ledger and a named approval owner.",
+      "task_text_nfc_sha256": "0bd066b318747d744fe875f262585513093ce47910d9b06baf6a70d0798dafe5",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-A-10",
+      "case_nonce": "06bceb9d959ebda1c9e4805bc20f35f1dbdb37b0ca12423ce8f1755e2fb98c9a",
+      "task_text": "kepler orchard brief 10 requests a bounded routing decision about copper lanterns, with a fresh constraint ledger and a named approval owner.",
+      "task_text_nfc_sha256": "6fdd08f3981faa51b5671b5cf666e6fffba49cb4dced7e4b530ca2f615081d66",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-A-11",
+      "case_nonce": "ed1f7f2c39a84e55df4c844512b499450e2e557d658089ef761a48e62de58d8d",
+      "task_text": "lumen quarry brief 11 requests a bounded routing decision about copper lanterns, with a fresh constraint ledger and a named approval owner.",
+      "task_text_nfc_sha256": "8de858fa9688b6a920bfc6f7f86987e0ac51686e72cd01009a48ca9003eea2e2",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s1"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s1",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-A-12",
+      "case_nonce": "44da991b8575a69bfd360f0b7c652cf2716628b23d73689e7a698a5cd99ce7b8",
+      "task_text": "maple circuit brief 12 requests a bounded routing decision about copper lanterns, with a fresh constraint ledger and a named approval owner.",
+      "task_text_nfc_sha256": "5902503c67e34a1c5c19829b735314dee5401d9ff8a291044a7ec4f9e933b430",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s1"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s1",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-A-13",
+      "case_nonce": "1e48bacebce13074b9827e38c67cd597e886dc3ed7fe2d16168abf4e1cc636f2",
+      "task_text": "northstar vessel brief 13 requests a bounded routing decision about copper lanterns, with a fresh constraint ledger and a named approval owner.",
+      "task_text_nfc_sha256": "f911341f41e288687479e0c96bf2f8af2a6131dacc9b7a073a409ed668a51f99",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s1"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s1",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-A-14",
+      "case_nonce": "d4752ddeaf896c5746b8c575c38f4fbd1b408ae733917c3545397e824a4e1d85",
+      "task_text": "opal studio brief 14 requests a bounded routing decision about copper lanterns, with a fresh constraint ledger and a named approval owner.",
+      "task_text_nfc_sha256": "24f051c0f316a1aff68d11a0a99610c6f2dda507ee37297724cb529d7390b719",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s1"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s1",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-A-15",
+      "case_nonce": "e345c8ff4c506dd6ca576f8442001a0447fa3b389b71db81d66a2390883b8f06",
+      "task_text": "prairie relay brief 15 requests a bounded routing decision about copper lanterns, with a fresh constraint ledger and a named approval owner.",
+      "task_text_nfc_sha256": "552e1bcc0ef581bbad4cc88c52f3af6b8c61bf8a0d4d9ca3d92373ee9cb36a16",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s2"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s2",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-A-16",
+      "case_nonce": "707afeeaa613bd7548bf3efa27c58ac5fc3fee7b47bd71fb5829ca6b9fa5939c",
+      "task_text": "quartz garden brief 16 requests a bounded routing decision about copper lanterns, with a fresh constraint ledger and a named approval owner.",
+      "task_text_nfc_sha256": "357bc9f2767a389b2bc3db5ff3532adc61b2da1290fb2d9e5aeb407f872c7ca0",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s2"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s2",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-A-17",
+      "case_nonce": "a7a1681edd7ee0d06d962f019e5c0ac0e1ada1f68cd94c644a3ad25e77e71a61",
+      "task_text": "river beacon brief 17 requests a bounded routing decision about copper lanterns, with a fresh constraint ledger and a named approval owner.",
+      "task_text_nfc_sha256": "a98330bafa0e9ce1942fbbabe271eaaf343a09cfec89c26c51a43120416013da",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s2"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s2",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-A-18",
+      "case_nonce": "5c7cb12db44d01e0b9d7eb35ab34fd77f8f635bf5ab28844fa6373335c9644ee",
+      "task_text": "silica depot brief 18 requests a bounded routing decision about copper lanterns, with a fresh constraint ledger and a named approval owner.",
+      "task_text_nfc_sha256": "85762a42b2f8fc8028e90fecf4ca7ac447dda95a57a00f8ab2fd3fafa7309f88",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s2"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s2",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-A-19",
+      "case_nonce": "5904bf17f5c06d8eab2195041d35567c1fab105964b69ab9115e3ad6807808fc",
+      "task_text": "timber compass brief 19 requests a bounded routing decision about copper lanterns, with a fresh constraint ledger and a named approval owner.",
+      "task_text_nfc_sha256": "dc1aa4d8b3a2825e1d87ac4d151e03907b3cacab8704f87f00ea66d174dbf7eb",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "focused"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s3",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ1-A-20",
+      "case_nonce": "4501768842330e043d4f69b5e301b1e0ecc6a40d7fab10bd9c3ec0402784a122",
+      "task_text": "umber gallery brief 20 requests a bounded routing decision about copper lanterns, with a fresh constraint ledger and a named approval owner.",
+      "task_text_nfc_sha256": "57630e6afa8e19adaf21d97b36d9bbf90de66ab6efaa76f1e7e0b147ff058444",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none"
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "focused"
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s3",
+            "need": "focused"
+          }
+        ]
+      }
+    }
+  ]
+}
