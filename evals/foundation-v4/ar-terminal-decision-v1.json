@@ -1,0 +1,359 @@
+{
+  "schema_version": "AR-terminal-decision-v1",
+  "candidate": {
+    "commit": "bbd1c53de6000bb51dbb128c81ae39ab5c1ff554",
+    "tree": "e600a17c18ec1517233a89a47ab4093049d7ebf1"
+  },
+  "authority_custody": {
+    "commit": "bbd1c53de6000bb51dbb128c81ae39ab5c1ff554",
+    "tree": "e600a17c18ec1517233a89a47ab4093049d7ebf1",
+    "files": [
+      {
+        "role": "terminal_plan",
+        "path": "EXECPLAN.md",
+        "blob": "a6fd3d461c8fcde9cdfc82c8b75f20baa4365535",
+        "sha256": "0d70e3984a1e68726d7fe1e8c38455a1205f2b6660174aa280a55be06e66943f"
+      },
+      {
+        "role": "terminal_decision_log",
+        "path": "docs/foundations/decision-log.csv",
+        "blob": "eecf25ceb534a856bc5a9915247a1166e755512a",
+        "sha256": "80289a531d8e4dde54ea03ec2539fe024d9bef015acf76d0f617e89608a63aa6"
+      },
+      {
+        "role": "current_foundation",
+        "path": "docs/foundations/current-2026-08-08.md",
+        "blob": "f264a69485bed2882a84d36d375f249603db5900",
+        "sha256": "1cc550b2539cd638bd046dcc40c7d0f7251948e575bbdb060f3d2add5ed4ca34"
+      },
+      {
+        "role": "current_foundation_register",
+        "path": "docs/foundations/register.csv",
+        "blob": "eade50e09f117bb7c40e394f5c7b8b2686fb48ad",
+        "sha256": "3043ad8ff93cbf35779638be9e8a7c8e7082d14166297fdddab9b9d1ddadeaf3"
+      },
+      {
+        "role": "structural_release_checker",
+        "path": "scripts/release_check.py",
+        "blob": "3e8bee25d8c3a13b8224a9393ceb20374ffa5d70",
+        "sha256": "8038b19990ad800047e20088ddfcb5eb5f51b91a9dbb05b28a3762bf14e7e8a9"
+      }
+    ]
+  },
+  "e0_terminal_authority": {
+    "status": "fail",
+    "commit": "a8ae421c4e8619f4cc72cd91bbd7f65da1928f5d",
+    "tree": "077968d10f9172c2cf86468c3b91c2137dfbffa4",
+    "inspection_scope": "git_object_metadata_only",
+    "files": [
+      {
+        "role": "packet",
+        "path": "evals/foundation-v4/aq9-h5-independent-evidence-v1.json",
+        "blob": "34bb5efc8411961227b374d7ae3b610cda628de7",
+        "sha256": "1ec15fa32f3ad262eb95d913c964854799546a0397874cfa803322b4bb761fcd"
+      },
+      {
+        "role": "verdict",
+        "path": "evals/foundation-v4/aq9-h5-independent-evidence-verdict-v1.json",
+        "blob": "b6b142e935381baada66e4d148364d4f22d55e88",
+        "sha256": "374825c130d076e4d298c0a8d004fc5d6f33c201715ffefb190f98c2c87815da"
+      }
+    ]
+  },
+  "package_structural_result": {
+    "command": [
+      "python3",
+      "scripts/release_check.py"
+    ],
+    "executed_check_count": 1,
+    "stdout_sha256": "d67c600bb49642f38b7da0fe41699f5bfffe4bfd06935c620bf5d74e0aedb996",
+    "result": {
+      "candidate": {
+        "commit": "bbd1c53de6000bb51dbb128c81ae39ab5c1ff554",
+        "tree": "e600a17c18ec1517233a89a47ab4093049d7ebf1",
+        "validation_input_digest": "sha256:33bc963d170b5be3a3000bcef39b64f429e45565372736dac27b6d8be252994f"
+      },
+      "checks": [
+        {
+          "id": "package-structure",
+          "maximum_claim": "structural",
+          "observations": {
+            "candidate_commit": "bbd1c53de6000bb51dbb128c81ae39ab5c1ff554",
+            "candidate_tree": "e600a17c18ec1517233a89a47ab4093049d7ebf1",
+            "marketplace_contract_version": "1.0",
+            "package_count": "4",
+            "package_names": "agentic-engineering,agentic-engineering-lifecycle,agentic-engineering-rust,agentic-engineering-systems",
+            "package_set_digest": "sha256:376fa7f43a052658319979aa8200e82006dd61235d345cb8e5b3be94f5fbf1b3",
+            "package_set_version": "4.0.0",
+            "package_versions": "agentic-engineering@4.0.0,agentic-engineering-lifecycle@4.0.0,agentic-engineering-rust@4.0.0,agentic-engineering-systems@4.0.0",
+            "skill_count": "30",
+            "validation_input_digest": "sha256:33bc963d170b5be3a3000bcef39b64f429e45565372736dac27b6d8be252994f"
+          },
+          "status": "passed"
+        }
+      ],
+      "claim_states": {
+        "activation_abstention": "unobserved",
+        "composition": "unobserved",
+        "field_usefulness": "unobserved",
+        "host_install_discovery": "unobserved",
+        "isolated_advice_value": "unobserved",
+        "structural_package": "observed"
+      },
+      "package_set": {
+        "aggregate_digest": "sha256:376fa7f43a052658319979aa8200e82006dd61235d345cb8e5b3be94f5fbf1b3",
+        "gateway": "external:harness-ultragoal",
+        "package_set_version": "4.0.0",
+        "packs": [
+          {
+            "enabled_skills": [
+              "agent-evals-observability",
+              "agent-security-governance",
+              "agentic-product-lifecycle",
+              "authentic-use-engineering",
+              "codex-task-contract",
+              "engineering-learning-loop",
+              "product-fitness-engineering",
+              "verification-strategy-engineering"
+            ],
+            "manifest_digest": "sha256:23bae48d6063fe876fc644e0f1b25b34964b591c149bfc7cf0e8b3e81fa4113a",
+            "name": "agentic-engineering",
+            "version": "4.0.0"
+          },
+          {
+            "enabled_skills": [
+              "agent-product-discovery",
+              "agentic-engineering",
+              "architecture-delivery-planning",
+              "concept-feasibility-validation",
+              "continuous-product-experimentation",
+              "maintenance-retirement-engineering",
+              "production-readiness-sre",
+              "requirements-systems-engineering",
+              "secure-delivery-release",
+              "software-construction-quality"
+            ],
+            "manifest_digest": "sha256:4e9bee9ca7d8507e63e5f08eadedcdc33e22e61436200dd32ae0a91d3ff7bab2",
+            "name": "agentic-engineering-lifecycle",
+            "version": "4.0.0"
+          },
+          {
+            "enabled_skills": [
+              "harness-engineering",
+              "rust-agent-durability",
+              "rust-agent-observability",
+              "rust-agent-protocols",
+              "rust-agent-runtime",
+              "rust-agent-verification",
+              "rust-agentic-architecture"
+            ],
+            "manifest_digest": "sha256:29abb1645304e45a1e795fdb75b6655e5f2edab964cbd84b48662c8646664e9a",
+            "name": "agentic-engineering-rust",
+            "version": "4.0.0"
+          },
+          {
+            "enabled_skills": [
+              "agent-first-software-engineering",
+              "context-repository-engineering",
+              "graph-workflow-engineering",
+              "loop-engineering",
+              "multi-agent-engineering"
+            ],
+            "manifest_digest": "sha256:8fc500ea1deb0c8ab3231bb25b4082afc9ed0333f33708f8410dacc1f0ea9655",
+            "name": "agentic-engineering-systems",
+            "version": "4.0.0"
+          }
+        ],
+        "schema_version": "AgenticPackSet-v1",
+        "skill_union": [
+          "agent-evals-observability",
+          "agent-first-software-engineering",
+          "agent-product-discovery",
+          "agent-security-governance",
+          "agentic-engineering",
+          "agentic-product-lifecycle",
+          "architecture-delivery-planning",
+          "authentic-use-engineering",
+          "codex-task-contract",
+          "concept-feasibility-validation",
+          "context-repository-engineering",
+          "continuous-product-experimentation",
+          "engineering-learning-loop",
+          "graph-workflow-engineering",
+          "harness-engineering",
+          "loop-engineering",
+          "maintenance-retirement-engineering",
+          "multi-agent-engineering",
+          "product-fitness-engineering",
+          "production-readiness-sre",
+          "requirements-systems-engineering",
+          "rust-agent-durability",
+          "rust-agent-observability",
+          "rust-agent-protocols",
+          "rust-agent-runtime",
+          "rust-agent-verification",
+          "rust-agentic-architecture",
+          "secure-delivery-release",
+          "software-construction-quality",
+          "verification-strategy-engineering"
+        ]
+      },
+      "passed": true
+    }
+  },
+  "claim_vector": {
+    "foundation_currentness": "observed_current_authority",
+    "release_identity": "observed_structural_exact_candidate",
+    "executed_structural_checks": "observed_one_package_structure_pass",
+    "package_reproducibility": "unobserved",
+    "archive_safety": "unobserved",
+    "activation_abstention": "unobserved_terminally_blocked",
+    "isolated_advice_value": "unobserved_terminally_blocked",
+    "composition": "explicitly_not_adopted",
+    "host_install_discovery_coexistence": "unobserved_terminally_blocked",
+    "protocol_currentness": "source_review_only_terminally_blocked",
+    "field_usefulness": "unobserved_terminally_blocked_not_requested_or_authorized"
+  },
+  "retention_no_delete": [
+    {
+      "surface": "historical_source_count_coverage_release_gates",
+      "disposition": "retain_in_place",
+      "deletion_authorized": false,
+      "migration_executed": false,
+      "reason": "active_or_external_readers_remain_or_rendered_absence_not_proven"
+    },
+    {
+      "surface": "obsolete_confidence_model",
+      "disposition": "retain_in_place",
+      "deletion_authorized": false,
+      "migration_executed": false,
+      "reason": "active_or_external_readers_remain_or_rendered_absence_not_proven"
+    },
+    {
+      "surface": "synchronized_research_update_choreography",
+      "disposition": "retain_in_place",
+      "deletion_authorized": false,
+      "migration_executed": false,
+      "reason": "active_or_external_readers_remain_or_rendered_absence_not_proven"
+    },
+    {
+      "surface": "executable_version_3_history",
+      "disposition": "retain_in_place",
+      "deletion_authorized": false,
+      "migration_executed": false,
+      "reason": "active_or_external_readers_remain_or_rendered_absence_not_proven"
+    },
+    {
+      "surface": "generic_shared_reference_catalogs_without_measured_use",
+      "disposition": "retain_in_place",
+      "deletion_authorized": false,
+      "migration_executed": false,
+      "reason": "active_or_external_readers_remain_or_rendered_absence_not_proven"
+    },
+    {
+      "surface": "duplicated_draft_sources",
+      "disposition": "retain_in_place",
+      "deletion_authorized": false,
+      "migration_executed": false,
+      "reason": "active_or_external_readers_remain_or_rendered_absence_not_proven"
+    },
+    {
+      "surface": "superseded_protocol_guidance",
+      "disposition": "retain_in_place",
+      "deletion_authorized": false,
+      "migration_executed": false,
+      "reason": "active_or_external_readers_remain_or_rendered_absence_not_proven"
+    }
+  ],
+  "unmet_success_conditions": [
+    {
+      "condition": "package_reproducibility_is_observed",
+      "status": "unmet_unobserved_terminal_stop_no_execution"
+    },
+    {
+      "condition": "archive_safety_is_observed",
+      "status": "unmet_unobserved_terminal_stop_no_execution"
+    },
+    {
+      "condition": "four_skill_activation_and_isolated_value_decisions_are_measured",
+      "status": "unmet_terminally_blocked"
+    },
+    {
+      "condition": "exact_archives_pass_host_install_discovery_coexistence_journey",
+      "status": "unmet_terminally_blocked"
+    },
+    {
+      "condition": "protocol_currentness_is_AH_verified",
+      "status": "unmet_source_review_only_terminally_blocked"
+    },
+    {
+      "condition": "field_usefulness_is_observed",
+      "status": "unmet_terminally_blocked_not_requested_or_authorized"
+    }
+  ],
+  "forbidden_stage_edges": [
+    {
+      "from": "AR",
+      "to": "AQ"
+    },
+    {
+      "from": "AR",
+      "to": "H5"
+    },
+    {
+      "from": "AR",
+      "to": "H6"
+    },
+    {
+      "from": "AR",
+      "to": "AS"
+    },
+    {
+      "from": "AR",
+      "to": "AC"
+    },
+    {
+      "from": "AR",
+      "to": "AH"
+    },
+    {
+      "from": "AR",
+      "to": "AF"
+    }
+  ],
+  "forbidden_actions": [
+    "release",
+    "promote",
+    "publish",
+    "install",
+    "monitor",
+    "model_execution",
+    "field_execution",
+    "deletion",
+    "migration_execution",
+    "retry",
+    "reopen",
+    "resume",
+    "h6_execution",
+    "activation_execution",
+    "corpus_execution",
+    "later_authorization"
+  ],
+  "forbidden_results": [
+    "release_or_promotion_claim",
+    "package_reproducibility_observed",
+    "archive_safety_observed",
+    "activation_abstention_observed",
+    "isolated_advice_value_observed",
+    "composition_adopted",
+    "host_install_discovery_coexistence_observed",
+    "protocol_AH_verified",
+    "field_usefulness_observed",
+    "later_authorization_cure",
+    "reopen_cure",
+    "aggregate_confidence"
+  ],
+  "decision": "DO_NOT_RELEASE_OR_PROMOTE",
+  "terminal_state": "STOP",
+  "claim_ceiling": "structural-terminal-closeout-only"
+}
