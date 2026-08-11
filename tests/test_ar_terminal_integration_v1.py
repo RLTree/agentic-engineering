@@ -183,7 +183,25 @@ SUCCESSOR_F0_DECISION_ROW = (
         "remains HOLD"
     ),
 )
-VALIDATED_SUCCESSOR_DECISION_ROWS = (SUCCESSOR_F0_DECISION_ROW,)
+SUCCESSOR_AQ_AR_DECISION_ROW = (
+    "AE-SQ1-AQ-AR-2026-08-11",
+    "RLTree/agentic-engineering",
+    "current-2026-08-08",
+    "AE-SQ1 exact AQ canary was terminally invalid with four calls started and zero completed assessor capsules; no heldout observation or batch occurred",
+    "AE-SQ1 successor qualification",
+    "root conductor",
+    "retire",
+    "Record the exact AQ aggregate failure and AR DO_NOT_RELEASE_OR_PROMOTE/STOP; retain all surfaces; execute no AS, AC, AH, AF field action, release, publication, promotion, deletion, migration, reopen, resume, H6, retry, or further model/corpus call",
+    "Exact-candidate canary terminal status and structural terminal closeout only; no activation, adviser value, composition, host, field, production, provider, model, release, or effect claim",
+    "AR terminal record and stop; no downstream edge",
+    "2026-08-11",
+    "0417fdd1174508fc0591be9a3e89263f25592b25",
+    "Run tree ee4b0d8d07b14c5ee545956ebec119cdb077eb7e; candidate freeze 0635f3d633f02bb99afd2e1218ec1135735a7496/5b756da72fd112ce365c5e0e3957385ee5e6aa2a; aggregate db08bb0c33b6016fb321011359c67639ee5b396d62095bc1aad1086dca76795f; AR decision 6c36eeeab8759b1c064e14e2f65f57a98953ee4dacf15a4dec909642f32e2d21; terminal test 4b14e4cf9f40277fd2dc12feda63e42a49c56788495d3d66e5ba96813ddbe2ba; heldout corpus unconsumed; AS/AC/AH blocked; AF omitted",
+)
+VALIDATED_SUCCESSOR_DECISION_ROWS = (
+    SUCCESSOR_F0_DECISION_ROW,
+    SUCCESSOR_AQ_AR_DECISION_ROW,
+)
 
 FORBIDDEN_ACTIONS = (
     "release",
@@ -443,7 +461,7 @@ def validate_successor_authority(
         raise AssertionError("successor active-plan path differs")
     if (
         active_plan.get("raw_sha256")
-        != "a7080db226bf499dd3037afe683361e4ccba0c1093ce3bc4e456520e2176a382"
+        != "ebc53ca6305837ecd089dd201542dcbb35c5478b6bbf31e1003a227440868418"
     ):
         raise AssertionError("successor active-plan digest differs")
     if active_plan.get("successor_commit") != "ABSENT_NOT_SELF_BOUND":
@@ -551,8 +569,9 @@ class ARTerminalIntegrationV1Tests(unittest.TestCase):
             self.current_foundation,
             self.successor_authority_bytes,
         )
-        expected = project_terminal_decision_log(base) + canonical_successor_csv_row(
-            SUCCESSOR_F0_DECISION_ROW
+        expected = project_terminal_decision_log(base) + b"".join(
+            canonical_successor_csv_row(row)
+            for row in VALIDATED_SUCCESSOR_DECISION_ROWS
         )
         self.assertEqual(expected, self.decision_log_bytes)
         terminal_index = len(base_rows)
