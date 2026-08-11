@@ -1,0 +1,618 @@
+{
+  "schema_version": "AE-SQ1-program-authority-v1",
+  "program_id": "AE-SQ1",
+  "authority_status": "F0_STATIC_AUTHORITY_FROZEN",
+  "claim_ceiling": "structural-program-authority-frozen-only",
+  "owner_authorization": {
+    "authorized": true,
+    "scope": "local-static-authority-surfaces-only",
+    "successor_kind": "distinct-owner-authorized-successor-program",
+    "not_semantics": [
+      "AQ10",
+      "H6",
+      "retry",
+      "resume",
+      "reopen",
+      "cure",
+      "reinterpretation"
+    ],
+    "successor_commit_binding": "ABSENT_NOT_SELF_BOUND",
+    "provisional_noncanonical_drafts_may_coexist": true,
+    "provisional_drafts_confer_authority": false,
+    "candidate_authority_authorized": false,
+    "heldout_authoring_authorized": false,
+    "model_work_authorized": false,
+    "model_or_corpus_observation_authorized": false,
+    "downstream_staging_or_commit_authorized": false,
+    "external_action_authorized": false
+  },
+  "predecessor_terminal_history": {
+    "commit": "340b79399a987e6aad0d5435fa540a1db511489d",
+    "tree": "c47aeb3642d7fdcf90f47f990ddf3915f3cbb933",
+    "custody_purpose": "immutable-history-verification-only",
+    "permitted_imported_bits": [
+      "terminal-and-stopped",
+      "successful-program-conditions-unmet",
+      "public-release-and-promotion-negative",
+      "artifacts-remain-immutable-history"
+    ],
+    "forbidden_import_classes": [
+      "task-text",
+      "case",
+      "corpus",
+      "prompt",
+      "candidate-mechanism-as-design-or-tuning-input",
+      "diagnostic",
+      "score",
+      "raw-observation",
+      "aggregate-result",
+      "inferred-failure-cause",
+      "outcome"
+    ],
+    "non_isomorphism_inspection": {
+      "permission": "read-only-pinned-H4-protocol-inspection-only",
+      "purpose": "prove-SLEC-1-material-non-isomorphism",
+      "commit": "d6f9e6089e6e11f158a2d3bf4af717fc026548d4",
+      "tree": "6b65ea1e125836c9ae684e869f1156e5750c7a0b",
+      "path": "evals/foundation-v4/unresolved-decision-graph-protocol-v8.json",
+      "blob": "5fe35b98dce5373d974d05ba3a29819605f5bc4f",
+      "raw_sha256": "a145766c475de5ed1411bc86467a1a82c3cdaa18782b772ef00901238f590fd5",
+      "mechanics_as_design_input": false,
+      "outcomes_as_input": false
+    },
+    "files": [
+      {
+        "role": "predecessor_terminal_plan",
+        "path": "EXECPLAN.md",
+        "blob": "68883e5f7af6fe71c49bc191c1c7fad2a08bcbbc",
+        "raw_sha256": "b7e57933a36e6442d61a7e920a5f98fd370620f93cffdb5342cf268b1139ebeb"
+      },
+      {
+        "role": "current_foundation_at_terminal_base",
+        "path": "docs/foundations/current-2026-08-08.md",
+        "blob": "f264a69485bed2882a84d36d375f249603db5900",
+        "raw_sha256": "1cc550b2539cd638bd046dcc40c7d0f7251948e575bbdb060f3d2add5ed4ca34"
+      },
+      {
+        "role": "decision_log_at_terminal_base",
+        "path": "docs/foundations/decision-log.csv",
+        "blob": "f6800cfc92eec12a91b6ed3bc2e15d4a84bbb353",
+        "raw_sha256": "96f43b51d23a9d16024c159bbd2bf328df1b70814eafae1e7c7cec2bf776db47"
+      },
+      {
+        "role": "foundation_register_at_terminal_base",
+        "path": "docs/foundations/register.csv",
+        "blob": "eade50e09f117bb7c40e394f5c7b8b2686fb48ad",
+        "raw_sha256": "3043ad8ff93cbf35779638be9e8a7c8e7082d14166297fdddab9b9d1ddadeaf3"
+      },
+      {
+        "role": "release_checker_at_terminal_base",
+        "path": "scripts/release_check.py",
+        "blob": "3e8bee25d8c3a13b8224a9393ceb20374ffa5d70",
+        "raw_sha256": "8038b19990ad800047e20088ddfcb5eb5f51b91a9dbb05b28a3762bf14e7e8a9"
+      },
+      {
+        "role": "aq9_e0_packet_history",
+        "path": "evals/foundation-v4/aq9-h5-independent-evidence-v1.json",
+        "blob": "34bb5efc8411961227b374d7ae3b610cda628de7",
+        "raw_sha256": "1ec15fa32f3ad262eb95d913c964854799546a0397874cfa803322b4bb761fcd"
+      },
+      {
+        "role": "aq9_e0_verdict_history",
+        "path": "evals/foundation-v4/aq9-h5-independent-evidence-verdict-v1.json",
+        "blob": "b6b142e935381baada66e4d148364d4f22d55e88",
+        "raw_sha256": "374825c130d076e4d298c0a8d004fc5d6f33c201715ffefb190f98c2c87815da"
+      },
+      {
+        "role": "ar_terminal_decision",
+        "path": "evals/foundation-v4/ar-terminal-decision-v1.json",
+        "blob": "841bab37a125a986da8b41d8591e6fc09da6ed26",
+        "raw_sha256": "62f4f2f222962c58fdd5cca09231edb533ad5a4339e2f09a0e0084decb3dbc3b"
+      },
+      {
+        "role": "ar_terminal_decision_test",
+        "path": "tests/test_ar_terminal_decision_v1.py",
+        "blob": "ab8da0e5bc38c2d8eb1ec9b4518abcb3f0c2b41e",
+        "raw_sha256": "20ca2404034dc21e0aba1cfa2411f5255e664b49cec6a8a4d755f3ca9a7d767c"
+      },
+      {
+        "role": "ar_terminal_integration_test",
+        "path": "tests/test_ar_terminal_integration_v1.py",
+        "blob": "0d133103e391eafb7ebc0ea5b6e8b9ecefdbaf62",
+        "raw_sha256": "e4767bfd61187c713144e68a35fc0bff8b8088a813814fdb5d8559ebf164b926"
+      }
+    ]
+  },
+  "active_plan": {
+    "path": "docs/exec-plans/active/ae-sq1.md",
+    "raw_sha256": "a7080db226bf499dd3037afe683361e4ccba0c1093ce3bc4e456520e2176a382",
+    "successor_commit": "ABSENT_NOT_SELF_BOUND"
+  },
+  "imported_prerequisites": [
+    {
+      "stage": "A0",
+      "disposition": "revalidated-imported-prerequisite-only",
+      "imported_bit": "current-foundation-authority",
+      "claim_expansion": false
+    },
+    {
+      "stage": "A1",
+      "disposition": "revalidated-imported-prerequisite-only",
+      "imported_bit": "exact-structural-package-identity",
+      "claim_expansion": false
+    }
+  ],
+  "stage_graph": {
+    "ordered_stages": [
+      "SQ1-AQ",
+      "SQ1-AS",
+      "SQ1-AC",
+      "SQ1-AH",
+      "SQ1-AF",
+      "SQ1-AR"
+    ],
+    "success_edges": [
+      "SQ1-AQ->SQ1-AS",
+      "SQ1-AS->SQ1-AC",
+      "SQ1-AC->SQ1-AH",
+      "SQ1-AH->SQ1-AF",
+      "SQ1-AF->SQ1-AR"
+    ],
+    "blocking_failure_edges": [
+      "SQ1-AQ->SQ1-AR",
+      "SQ1-AS->SQ1-AR",
+      "SQ1-AC->SQ1-AR",
+      "SQ1-AH->SQ1-AR",
+      "SQ1-AF->SQ1-AR"
+    ],
+    "later_stage_compensation": false,
+    "additional_active_stages_permitted": false,
+    "additional_active_edges_permitted": false
+  },
+  "freeze_points": [
+    {
+      "id": "F0",
+      "owner": "program-owner-and-root-conductor",
+      "surface": "program-plan-authority-pointer-log-predecessor-bindings",
+      "precedes": "all-canonical-candidate-evaluator-authority-heldout-and-model-corpus-observation"
+    },
+    {
+      "id": "F1",
+      "owner": "external-evidence-steward",
+      "surface": "post-F0-reviewed-or-regenerated-independent-evidence-provenance-and-admissibility",
+      "precedes": "canonical-candidate-authority"
+    },
+    {
+      "id": "F2",
+      "owner": "candidate-steward",
+      "surface": "post-F0-reviewed-or-regenerated-one-materially-non-H4-SLEC-1-candidate-and-condition-bytes",
+      "precedes": "evaluator-completion-and-heldout-authoring"
+    },
+    {
+      "id": "F3",
+      "owner": "evaluator-steward",
+      "surface": "evaluator-schemas-formulas-thresholds-join-global-AND-aggregate-budgets",
+      "precedes": "both-independent-heldout-splits"
+    },
+    {
+      "id": "F4",
+      "owner": "split-A-author",
+      "surface": "first-independent-20-case-heldout-split",
+      "precedes": "combined-corpus-freeze"
+    },
+    {
+      "id": "F5",
+      "owner": "split-B-author",
+      "surface": "second-independent-20-case-heldout-split",
+      "precedes": "combined-corpus-freeze"
+    },
+    {
+      "id": "F6",
+      "owner": "corpus-custodian",
+      "surface": "40-case-corpus-validator-80-presentation-schedule-no-replay-run-index",
+      "precedes": "canary-and-heldout-execution"
+    },
+    {
+      "id": "F7",
+      "owner": "run-custodian",
+      "surface": "exact-run-packet-four-call-canary-counter-retry-state-usage-authorization",
+      "precedes": "first-heldout-backed-model-call"
+    },
+    {
+      "id": "F8",
+      "owner": "aggregate-scorer",
+      "surface": "sole-AQ-aggregate-consumption-bit-direct-route",
+      "precedes": "SQ1-AS-or-terminal-closeout"
+    },
+    {
+      "id": "F9",
+      "owner": "AS-owner",
+      "surface": "AS-tasks-isolation-evaluator-156-call-ceiling-and-aggregate-route",
+      "precedes": "SQ1-AC-or-terminal-closeout"
+    },
+    {
+      "id": "F10",
+      "owner": "AC-owner",
+      "surface": "AC-two-decision-tasks-evaluator-144-call-ceiling-and-aggregate-route",
+      "precedes": "SQ1-AH-or-terminal-closeout"
+    },
+    {
+      "id": "F11",
+      "owner": "AH-AF-AR-owners",
+      "surface": "offline-AH-envelope-AF-authority-check-separated-AR-claim-vector",
+      "precedes": "AH-checks-and-final-closeout"
+    }
+  ],
+  "ownership_lanes": [
+    {
+      "lane": "program-owner",
+      "owns": "objective-F0-authorization-consequential-exceptions",
+      "forbidden": "heldout-access-raw-output-access-outcome-driven-contract-change"
+    },
+    {
+      "lane": "root-conductor",
+      "owns": "stage-order-custody-counters-PASS-HOLD-direct-failure-routing",
+      "forbidden": "candidate-authorship-split-authorship-scoring-discretion-release-actions"
+    },
+    {
+      "lane": "external-evidence-steward",
+      "owns": "F1-public-source-provenance-and-independence",
+      "forbidden": "predecessor-task-corpus-mechanism-diagnostic-score-result-outcome-access"
+    },
+    {
+      "lane": "candidate-steward",
+      "owns": "one-F2-SLEC-1-candidate-from-F1-only",
+      "forbidden": "heldout-label-author-identity-model-observation-predecessor-nonterminal-access"
+    },
+    {
+      "lane": "evaluator-steward",
+      "owns": "F3-schemas-formulas-thresholds-four-output-join-aggregate-projection",
+      "forbidden": "heldout-access-and-pre-freeze-model-observation-access"
+    },
+    {
+      "lane": "split-A-author",
+      "owns": "F4-split-A-only",
+      "forbidden": "split-B-outcome-and-candidate-internal-access"
+    },
+    {
+      "lane": "split-B-author",
+      "owns": "F5-split-B-only",
+      "forbidden": "split-A-outcome-and-candidate-internal-access"
+    },
+    {
+      "lane": "corpus-custodian",
+      "owns": "F6-validation-digests-schedule-blinding-no-replay",
+      "forbidden": "case-candidate-evaluator-edit-and-result-interpretation"
+    },
+    {
+      "lane": "run-custodian",
+      "owns": "F7-execution-envelope-bytes-counter-stop",
+      "forbidden": "contract-change-content-retry-scoring-change-raw-publication"
+    },
+    {
+      "lane": "aggregate-scorer",
+      "owns": "F8-deterministic-global-AND-and-aggregate-projection",
+      "forbidden": "candidate-evaluator-corpus-change-and-subaggregate-disclosure"
+    },
+    {
+      "lane": "AS-owner",
+      "owns": "F9-isolated-adviser-builder-stage",
+      "forbidden": "AQ-reinterpretation-pre-pass-AC-work-field-host-claims"
+    },
+    {
+      "lane": "AC-owner",
+      "owns": "F10-exact-two-decision-composition-stage",
+      "forbidden": "AS-reinterpretation-pre-pass-AH-work-generalized-composition-claims"
+    },
+    {
+      "lane": "AH-operator",
+      "owns": "F11-offline-unprivileged-disposable-home-checks",
+      "forbidden": "network-credentials-production-installed-home-clean-host-claim-privilege"
+    },
+    {
+      "lane": "AF-authority-custodian",
+      "owns": "F11-separate-privacy-consent-envelope-authority-check",
+      "forbidden": "participant-contact-data-collection-inferred-field-authority"
+    },
+    {
+      "lane": "AR-integrator",
+      "owns": "separated-claim-vector-retention-stop",
+      "forbidden": "claim-averaging-reopen-release-publish-promote-delete-migrate"
+    }
+  ],
+  "namespace": {
+    "artifact_root": "evals/ae-sq1",
+    "predecessor_root_write_permitted": false,
+    "draft_workspace_presence_confers_authority": false,
+    "f0_commit_may_include_reserved_paths": false,
+    "f0_files": [
+      "docs/exec-plans/active/ae-sq1.md",
+      "evals/ae-sq1/program-authority.json",
+      "tests/test_ae_sq1_program_authority.py",
+      "docs/foundations/current-2026-08-08.md",
+      "docs/foundations/decision-log.csv"
+    ],
+    "reserved_artifacts": [
+      "evals/ae-sq1/external-evidence.json",
+      "evals/ae-sq1/historical-task-digests.json",
+      "evals/ae-sq1/candidate-manifest.json",
+      "evals/ae-sq1/slec1-authority.json",
+      "evals/ae-sq1/slec1-capsule-schema.json",
+      "evals/ae-sq1/slec1-resolution-schema.json",
+      "evals/ae-sq1/slec1-reference-policy.json",
+      "evals/ae-sq1/aq/corpus-schema.json",
+      "evals/ae-sq1/aq/evaluator-schema.json",
+      "evals/ae-sq1/aq/gates.json",
+      "evals/ae-sq1/aq/metrics.json",
+      "evals/ae-sq1/aq/split-a.json",
+      "evals/ae-sq1/aq/split-b.json",
+      "evals/ae-sq1/aq/corpus-manifest.json",
+      "evals/ae-sq1/aq/run-manifest-schema.json",
+      "evals/ae-sq1/aq/run-manifest.json",
+      "evals/ae-sq1/aq/aggregate.json",
+      "evals/ae-sq1/as/schema.json",
+      "evals/ae-sq1/ac/schema.json",
+      "evals/ae-sq1/ah/stage-authority.json",
+      "evals/ae-sq1/ah/result.json",
+      "evals/ae-sq1/af/omission.json",
+      "evals/ae-sq1/ar/decision.json"
+    ],
+    "reserved_scripts": [
+      "scripts/resolve_ae_sq1_slec.py",
+      "scripts/check_ae_sq1_candidate.py",
+      "scripts/validate_ae_sq1_corpus.py",
+      "scripts/ae_sq1_run_index.py",
+      "scripts/run_ae_sq1_aq.py",
+      "scripts/score_ae_sq1_aq.py",
+      "scripts/run_ae_sq1_as.py",
+      "scripts/run_ae_sq1_ac.py",
+      "scripts/check_ae_sq1_ah.py",
+      "scripts/close_ae_sq1.py"
+    ],
+    "reserved_tests": [
+      "tests/test_ae_sq1_external_evidence.py",
+      "tests/test_ae_sq1_historical_task_digests.py",
+      "tests/test_ae_sq1_slec.py",
+      "tests/test_ae_sq1_corpus_contract.py",
+      "tests/test_ae_sq1_evaluator.py",
+      "tests/test_ae_sq1_run_index.py",
+      "tests/test_run_ae_sq1_aq.py",
+      "tests/test_check_ae_sq1_candidate.py",
+      "tests/test_ae_sq1_as.py",
+      "tests/test_ae_sq1_ac.py",
+      "tests/test_ae_sq1_ah.py",
+      "tests/test_ae_sq1_ar.py"
+    ]
+  },
+  "aq_contract": {
+    "candidate": {
+      "count": 1,
+      "fresh": true,
+      "materially_non_H4": true,
+      "sole_design_input": "independent-external-evidence-frozen-at-F1",
+      "predecessor_outcome_tuning_permitted": false
+    },
+    "mechanism": {
+      "id": "SLEC-1",
+      "kind": "four-isolated-assessor-capsules-with-deterministic-parent-join",
+      "calls_per_unit": 4,
+      "unique_child_contexts_per_unit": 4,
+      "sibling_state_visible": false
+    },
+    "heldout": {
+      "split_count": 2,
+      "cases_per_split": 20,
+      "total_unique_cases": 40,
+      "independent_authors_required": true,
+      "candidate_and_evaluator_frozen_first": true
+    },
+    "presentations": {
+      "conditions": [
+        "current",
+        "reduced"
+      ],
+      "presentations_per_case": 2,
+      "total_presentations": 80,
+      "calls_per_presentation": 4,
+      "total_heldout_calls": 320
+    },
+    "canary": {
+      "units": 1,
+      "normal_calls": 4,
+      "absolute_calls_with_retry": 8,
+      "corpus_content_permitted": false,
+      "heldout_consumed": false
+    },
+    "consumption": {
+      "trigger": "first-heldout-backed-model-invocation",
+      "scope": "both-frozen-splits",
+      "irreversible": true,
+      "status_after_trigger": "NO_REPLAY"
+    },
+    "retry": {
+      "post_observation_retries": 0,
+      "pre_model_infrastructure_retries_max": 1,
+      "scope": "entire-four-call-non-corpus-canary-attempt-only",
+      "zero_completed_child_outputs_required": true,
+      "zero_semantic_child_observations_required": true,
+      "unchanged_bytes_required": true,
+      "launched_retry_calls_count": true,
+      "second_infrastructure_failure_route": "SQ1-AR"
+    },
+    "reporting": {
+      "result_count": 1,
+      "visibility": "candidate-bound-aggregate-only",
+      "subaggregate_disclosure_permitted": false,
+      "raw_disclosure_permitted": false
+    },
+    "global_and": {
+      "operator": "logical-AND",
+      "condition_scope": "all-required-values-both-conditions",
+      "fail_values": [
+        "missing",
+        "skipped",
+        "undefined",
+        "nonfinite",
+        "malformed",
+        "duplicate",
+        "extra",
+        "unevaluable"
+      ],
+      "compensation_permitted": false
+    },
+    "model": {
+      "id": "gpt-5.5",
+      "reasoning_effort": "medium",
+      "fallback_permitted": false
+    }
+  },
+  "downstream_design": {
+    "SQ1-AS": {
+      "fresh_tasks": 12,
+      "conditions": [
+        "native-one-shot",
+        "equal-budget-neutral-analysis-plus-fresh-builder",
+        "current-explicit-specialist-advice-plus-fresh-builder",
+        "reduced-explicit-specialist-advice-plus-fresh-builder"
+      ],
+      "automatic_routing_reexecuted": false,
+      "automatic_routing_authority": "SQ1-AQ-only",
+      "base_calls_per_task_max": 7,
+      "residual_review_calls_per_task_max": 2,
+      "design_calls_max": 108,
+      "hard_ceiling": 156
+    },
+    "SQ1-AC": {
+      "fresh_tasks": 8,
+      "conditions": [
+        "neutral-decomposition",
+        "current-explicit-two-specialist-composition",
+        "reduced-explicit-two-specialist-composition",
+        "wrong-neighbor-negative-control"
+      ],
+      "base_calls_per_task_max": 10,
+      "residual_review_calls_per_task_max": 2,
+      "design_calls_max": 96,
+      "hard_ceiling": 144
+    },
+    "nonduplicative_successor_design": true,
+    "unused_margin_transfer_or_retry_permitted": false
+  },
+  "model_budget": {
+    "SQ1-AQ_normal": 324,
+    "SQ1-AQ_absolute": 328,
+    "SQ1-AS_hard_ceiling": 156,
+    "SQ1-AC_hard_ceiling": 144,
+    "SQ1-AH_hard_ceiling": 0,
+    "SQ1-AF_hard_ceiling": 0,
+    "SQ1-AR_hard_ceiling": 0,
+    "normal_all_pass_ceiling": 624,
+    "absolute_all_program_ceiling": 628,
+    "unused_transfer_permitted": false,
+    "diagnostic_overrun_permitted": false
+  },
+  "stage_claims": {
+    "SQ1-AQ": {
+      "maximum": "exact-candidate-aggregate-for-frozen-SLEC-1-envelope-only",
+      "production": false,
+      "release": false
+    },
+    "SQ1-AS": {
+      "maximum": "isolated-advice-value-on-frozen-representative-tasks-only",
+      "composition": false,
+      "field": false
+    },
+    "SQ1-AC": {
+      "maximum": "composition-on-frozen-exact-two-decision-tasks-only",
+      "general_composition": false,
+      "field": false
+    },
+    "SQ1-AH": {
+      "environment": "offline-unprivileged-disposable-home",
+      "passing_literal": "NARROW_PASS",
+      "production_or_clean_host_proof": false
+    },
+    "SQ1-AF": {
+      "default_literal": "OMITTED_NO_FIELD_CLAIM",
+      "separate_privacy_consent_envelope_authority_required": true,
+      "field_claim": false
+    },
+    "SQ1-AR": {
+      "aggregation": "forbidden-separated-vector-only",
+      "coordinates": [
+        "program_authority",
+        "aq_activation_selection",
+        "as_isolated_advice_value",
+        "ac_two_decision_composition",
+        "ah_offline_disposable_home",
+        "af_field_usefulness",
+        "production_clean_host_security",
+        "public_release_publish_promotion",
+        "deletion_migration"
+      ],
+      "public_action_authorized": false
+    }
+  },
+  "forbidden_actions": [
+    "public-release",
+    "publish",
+    "promotion",
+    "deletion",
+    "migration",
+    "production-action",
+    "credentialed-host-action",
+    "networked-AH-action",
+    "field-action-without-separate-authority",
+    "predecessor-reopen",
+    "corpus-replay",
+    "post-observation-retry",
+    "model-fallback",
+    "later-stage-compensation",
+    "subaggregate-disclosure",
+    "raw-result-disclosure"
+  ],
+  "acceptance": {
+    "f0_status": "structural-program-authority-frozen",
+    "f0_next_state": "HOLD_F1_AND_ALL_EXECUTION",
+    "required_checks": [
+      "strict-duplicate-key-type-order-closure",
+      "predecessor-bytes-at-base",
+      "plan-raw-digest",
+      "stage-order-budget-no-replay-claims",
+      "pointer-and-single-log-row",
+      "mutation-reds",
+      "no-disallowed-imports",
+      "focused-tests",
+      "foundation-tests",
+      "ruff-no-cache",
+      "json-parse",
+      "diff-and-status"
+    ],
+    "next_authorized_transition": "none-until-F1-independent-external-evidence-authority"
+  },
+  "low_risk_substitutions": {
+    "permitted_before_owning_freeze": [
+      "temporary-directory-or-disposable-home-path",
+      "deterministic-JSON-serialization-implementation",
+      "local-process-runner-implementation",
+      "semantically-identical-deterministic-schedule-seed",
+      "task-wording-preserving-frozen-AS-or-AC-semantics",
+      "test-helper-organization-or-internal-function-name",
+      "equivalent-offline-AH-fixture"
+    ],
+    "forbidden_without_new_program": [
+      "predecessor-input",
+      "candidate-mechanism",
+      "evidence-independence-rule",
+      "model-or-reasoning-or-fallback",
+      "candidate-or-case-or-presentation-or-call-count",
+      "budget",
+      "evaluator-formula-or-threshold-or-aggregation",
+      "stage-or-edge",
+      "retry-or-no-replay-or-consumption-point",
+      "isolation-or-permission-or-network",
+      "AS-or-AC-task-count-condition-or-routing-authority",
+      "claim-ceiling-or-AF-omission-or-forbidden-action"
+    ]
+  }
+}
