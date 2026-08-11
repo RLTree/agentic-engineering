@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/ae-sq1/aq/run-manifest-schema.json",
+  "title": "AE-SQ1 immutable AQ run manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "program_id",
+    "run_id",
+    "candidate_manifest",
+    "candidate_freeze",
+    "corpus_freeze",
+    "corpus",
+    "schedule",
+    "runtime",
+    "usage_authority"
+  ],
+  "properties": {
+    "schema_version": {"const": "ae-sq1-run-manifest-v1"},
+    "program_id": {"const": "AE-SQ1"},
+    "run_id": {
+      "type": "string",
+      "pattern": "^AE-SQ1-AQ-[A-Za-z0-9._-]{1,96}$"
+    },
+    "candidate_manifest": {"$ref": "#/$defs/sealedPath"},
+    "candidate_freeze": {"$ref": "#/$defs/gitIdentity"},
+    "corpus_freeze": {"$ref": "#/$defs/gitIdentity"},
+    "corpus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["corpus_id", "schema", "split_a", "split_b", "historical_inventory"],
+      "properties": {
+        "corpus_id": {"const": "AE-SQ1-AQ-FRESH-V1"},
+        "schema": {"$ref": "#/$defs/pathDigest"},
+        "split_a": {"$ref": "#/$defs/pathDigest"},
+        "split_b": {"$ref": "#/$defs/pathDigest"},
+        "historical_inventory": {"$ref": "#/$defs/pathDigest"}
+      }
+    },
+    "schedule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["seed", "sha256", "presentations", "calls_per_presentation"],
+      "properties": {
+        "seed": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]{0,127}$"
+        },
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "presentations": {"const": 80},
+        "calls_per_presentation": {"const": 4}
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cli", "model", "reasoning", "fallback", "max_concurrency"],
+      "properties": {
+        "cli": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "version", "sha256"],
+          "properties": {
+            "id": {"const": "codex-cli"},
+            "version": {"type": "string", "pattern": "^codex-cli 0\\.147\\.[0-9]+$"},
+            "sha256": {"$ref": "#/$defs/sha256"}
+          }
+        },
+        "model": {"const": "gpt-5.5"},
+        "reasoning": {"const": "medium"},
+        "fallback": {"const": false},
+        "max_concurrency": {"type": "integer", "minimum": 1, "maximum": 8}
+      }
+    },
+    "usage_authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canary", "batch"],
+      "properties": {
+        "canary": {"const": "ae-sq1-authorized-canary"},
+        "batch": {"const": "ae-sq1-authorized-batch"}
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "gitObject": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "repoPath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\u0000]+$"
+    },
+    "gitIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["commit", "tree"],
+      "properties": {
+        "commit": {"$ref": "#/$defs/gitObject"},
+        "tree": {"$ref": "#/$defs/gitObject"}
+      }
+    },
+    "pathDigest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "blob", "sha256"],
+      "properties": {
+        "path": {"$ref": "#/$defs/repoPath"},
+        "blob": {"$ref": "#/$defs/gitObject"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "sealedPath": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["commit", "tree", "path", "blob", "sha256"],
+      "properties": {
+        "commit": {"$ref": "#/$defs/gitObject"},
+        "tree": {"$ref": "#/$defs/gitObject"},
+        "path": {"$ref": "#/$defs/repoPath"},
+        "blob": {"$ref": "#/$defs/gitObject"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  }
+}

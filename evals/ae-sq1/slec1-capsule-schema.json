@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/agentic-engineering/evals/ae-sq1/slec1-capsule-schema.json",
+  "title": "AE-SQ1 SLEC-1 closed slot-local runtime capsule",
+  "type": "object",
+  "properties": {
+    "slot_id": {
+      "type": "string",
+      "enum": ["s0", "s1", "s2", "s3"]
+    },
+    "local_need": {
+      "type": "string",
+      "enum": ["yes", "no", "uncertain"]
+    },
+    "reference_need": {
+      "type": "string",
+      "enum": ["none", "core", "focused", "uncertain"]
+    },
+    "anchors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "start": {"type": "integer", "minimum": 0},
+          "end": {"type": "integer", "minimum": 1},
+          "text": {"type": "string", "minLength": 1, "maxLength": 256}
+        },
+        "required": ["start", "end", "text"],
+        "additionalProperties": false
+      },
+      "uniqueItems": true,
+      "maxItems": 2
+    }
+  },
+  "required": ["slot_id", "local_need", "reference_need", "anchors"],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "anyOf": [
+          {"properties": {"local_need": {"const": "uncertain"}}, "required": ["local_need"]},
+          {"properties": {"reference_need": {"const": "uncertain"}}, "required": ["reference_need"]}
+        ]
+      },
+      "then": {"properties": {"anchors": {"maxItems": 0}}},
+      "else": {"properties": {"anchors": {"minItems": 1, "maxItems": 2}}}
+    },
+    {
+      "if": {"properties": {"local_need": {"const": "no"}}, "required": ["local_need"]},
+      "then": {"properties": {"reference_need": {"const": "none"}}}
+    },
+    {
+      "if": {"properties": {"local_need": {"const": "uncertain"}}, "required": ["local_need"]},
+      "then": {"properties": {"reference_need": {"const": "uncertain"}}}
+    }
+  ]
+}

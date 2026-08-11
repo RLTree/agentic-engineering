@@ -1,0 +1,777 @@
+#!/usr/bin/env python3
+"""Strict, zero-write validator for the fresh AE-SQ1 AQ corpus pair.
+
+Corpus splits may be caller-supplied bytes or in-memory mappings.  The one-way
+historical digest authority is accepted only as its trusted raw bytes.  The
+validator never opens historical corpora, never emits task text, and cannot
+turn an absent historical authority into a non-replay PASS.
+"""
+
+from __future__ import annotations
+
+import hashlib
+import json
+import math
+import random
+import re
+import sys
+import unicodedata
+from collections import Counter
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any, Mapping, Sequence
+
+from jsonschema import Draft202012Validator
+
+
+sys.dont_write_bytecode = True
+
+ROOT = Path(__file__).resolve().parents[1]
+AQ_ROOT = ROOT / "evals/ae-sq1/aq"
+SCHEMA_PATH = AQ_ROOT / "corpus-schema.json"
+GATES_PATH = AQ_ROOT / "gates.json"
+METRICS_PATH = AQ_ROOT / "metrics.json"
+EVALUATOR_SCHEMA_PATH = AQ_ROOT / "evaluator-schema.json"
+
+PROGRAM_ID = "AE-SQ1"
+CORPUS_ID = "AE-SQ1-AQ-FRESH-V1"
+SLOT_ORDER = ("s0", "s1", "s2", "s3")
+CONDITIONS = ("current", "reduced")
+SCHEDULE_SEED = "AE-SQ1-AQ-FRESH-V1-SCHEDULE"
+NORMALIZATION_ID = "ae-sq1-task-v1"
+EXPECTED_PROFILES = Counter(
+    {"none": 6, "single": 16, "two": 8, "cap": 4, "explicit": 4, "uncertain": 2}
+)
+EXPECTED_SINGLE_SLOTS = Counter({slot: 4 for slot in SLOT_ORDER})
+EXPECTED_EXPLICIT_SLOTS = Counter({slot: 1 for slot in SLOT_ORDER})
+ALL_PAIRS = {
+    (left, right)
+    for index, left in enumerate(SLOT_ORDER)
+    for right in SLOT_ORDER[index + 1 :]
+}
+NEAR_SIMILARITY_THRESHOLD = 0.80
+MIN_NEAR_TEXT_LENGTH = 24
+_HEX64 = re.compile(r"^[0-9a-f]{64}$")
+_TOKEN = re.compile(r"[a-z0-9]+")
+TRUSTED_HISTORICAL_INVENTORY_SHA256 = (
+    "d2151090e75464aa16e416fcd1df29676fd43d75bab47fc57271d5338ee26bf0"
+)
+TRUSTED_HISTORICAL_CONTENT_SHA256 = (
+    "432c3c08fc72c25a2625a447d50f4d4771a21a096ecd083e76e263f9f5412ef8"
+)
+HISTORICAL_TOP_KEYS = (
+    "schema_version",
+    "program_id",
+    "claim_ceiling",
+    "source",
+    "files",
+    "task_text_nfc_sha256",
+    "inventory_count",
+    "inventory_sha256",
+    "limitations",
+)
+HISTORICAL_SOURCE = {
+    "commit": "340b79399a987e6aad0d5435fa540a1db511489d",
+    "tree": "c47aeb3642d7fdcf90f47f990ddf3915f3cbb933",
+    "task_digest_derivation": "SHA256(UTF-8(NFC(exact extracted task text)))",
+}
+HISTORICAL_FILE_ROWS = (
+    (
+        "evals/foundation-v4/future-activation-v2/activation-authoring.json",
+        "abe198d0c7f97797a1112454edabbdbd4b2c4aa1",
+        "e077a07b99f8782656cd59619eb13e287bb3fc4e6fed3e5fdc8b256b9b97f038",
+        "cases[].prompt",
+        36,
+    ),
+    (
+        "evals/foundation-v4/future-activation-v2/activation-heldout.json",
+        "5200a3c4fb529fc5673d83ae7c1e248cceb3842f",
+        "2af0e58c0c8b9e009bc7b8716850dc02e000e9702cfdd0bc90cf96740e45d66e",
+        "cases[].prompt",
+        36,
+    ),
+    (
+        "evals/foundation-v4/future-activation-v3/activation-authoring.json",
+        "3c4d307e6ca85a7a251bb97926125e297d47a50a",
+        "f67d9e31e64e3c37dde389f984e41b963224263cbe8e82c1643c25a9fee91b65",
+        "cases[].prompt",
+        36,
+    ),
+    (
+        "evals/foundation-v4/future-activation-v3/activation-heldout.json",
+        "3f0f5c7544f96e59c282acc9e56cf15a466e40a9",
+        "b02773d6757f37a332aaf8d43f78cc1061ac060ef45a253451fded012c40bd75",
+        "cases[].prompt",
+        36,
+    ),
+    (
+        "evals/foundation-v4/future-activation-v4/activation-authoring.json",
+        "867610fe6219fbc7302e74e58dbd4caaead1cc22",
+        "149a4b88ba49493d03d9ac625891f1a45e818e6d2349f108e4129ba2dd2548f4",
+        "cases[].prompt",
+        36,
+    ),
+    (
+        "evals/foundation-v4/future-activation-v4/activation-heldout.json",
+        "205b6c0e5820e0759a1f0267d05b283d4cf220a5",
+        "376291b0f0b6c3a9e20cbe608aa74dd1cbcbf3241d59b33c2f2ec717f4964fac",
+        "cases[].prompt",
+        36,
+    ),
+    (
+        "evals/foundation-v4/future-activation-v5/activation-authoring.json",
+        "3bc824272b308dae8046ff82fb3e6a9e74f1e26a",
+        "69e5e796f191165a2556054caf3aa961e4a03a48025ac18bccc6b2e7b1bca4b3",
+        "cases[].prompt",
+        36,
+    ),
+    (
+        "evals/foundation-v4/future-activation-v5/activation-heldout.json",
+        "c98e13c1f7382ead31704ffe21492ff8fc67ab4e",
+        "c884713124f12271cd7bdd4cbed43f47312f2d15c0f16339ab954b9db65b971f",
+        "cases[].prompt",
+        36,
+    ),
+    (
+        "evals/foundation-v4/future-activation-v6/activation-authoring.json",
+        "d569b81e4a8a6c0de73c38b76e6f47979c539eec",
+        "0c8b8430cfde0dea2f40c78423dd5aaeaf2a8c97052252bd11c448693d087d3f",
+        "cases[].prompt",
+        36,
+    ),
+    (
+        "evals/foundation-v4/future-activation-v6/activation-heldout.json",
+        "9a58fe46ff58a35ac4bde6ab3f4ed128f13b37d3",
+        "05f4570284a4149e40d8f710100490e1a67d0a8362e69a3b40e5901214ded102",
+        "cases[].prompt",
+        36,
+    ),
+    (
+        "evals/foundation-v4/future-activation-v7/activation-authoring.json",
+        "fafc31402ab1c604069bfa4595e9e78fb8b6d239",
+        "331c24018ca70164eaddf88ac6ff4a0cbe6a94b6017a9e73223559f6d264a225",
+        "cases[].packet.task_text",
+        36,
+    ),
+    (
+        "evals/foundation-v4/future-activation-v7/activation-heldout.json",
+        "298b2bc9a07b4eedbed98c5aacf02ca0911dc4a0",
+        "fec755bd8838b3e23e96e8374bb28ad3e06229c176058a5a020f4a528326afd3",
+        "cases[].packet.task_text",
+        36,
+    ),
+    (
+        "evals/foundation-v4/future-activation-v8/activation-authoring.json",
+        "5698051d33cf69768fa7f26b06116576cf2001e7",
+        "08318e0f01b386bba2a0932915a87d07e637ed5b495e822308c42c8371d63a4d",
+        "cases[].task_text",
+        36,
+    ),
+    (
+        "evals/foundation-v4/future-activation-v8/activation-heldout.json",
+        "72086b219f1a92210bbf31c4b70caa711ee09baa",
+        "db9c55fff89bdb636f977bb6bebd4b88830d09e6ffa3d0f09c8d4c120eb42227",
+        "cases[].task_text",
+        36,
+    ),
+)
+HISTORICAL_LIMITATIONS = {
+    "task_text_exposed_to_successor_authors": False,
+    "semantic_similarity_proven": False,
+    "near_rewrite_detection_proven": False,
+    "dictionary_resistance_claimed": False,
+    "legacy_v4_v5_stored_prompt_sha256_used_as_task_digest": False,
+}
+
+
+class CorpusContractError(ValueError):
+    """A closed corpus or authority invariant was violated."""
+
+
+@dataclass(frozen=True)
+class ValidationResult:
+    status: str
+    errors: tuple[str, ...]
+    holds: tuple[str, ...]
+    metrics: dict[str, int]
+    qualified_case_ids: tuple[str, ...]
+    corpus_digest: str | None
+
+    @property
+    def passed(self) -> bool:
+        return self.status == "pass"
+
+    @property
+    def structurally_valid(self) -> bool:
+        return not self.errors
+
+
+def canonical_json(value: Any) -> bytes:
+    """Return the sole canonical byte representation used for local digests."""
+    try:
+        text = json.dumps(
+            value,
+            ensure_ascii=False,
+            allow_nan=False,
+            sort_keys=True,
+            separators=(",", ":"),
+        )
+    except (TypeError, ValueError) as error:
+        raise CorpusContractError("value is not canonical JSON") from error
+    return text.encode("utf-8")
+
+
+def sha256(value: bytes) -> str:
+    return hashlib.sha256(value).hexdigest()
+
+
+def digest(value: Any) -> str:
+    return sha256(canonical_json(value))
+
+
+def _closed_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise CorpusContractError("duplicate JSON object key")
+        result[key] = value
+    return result
+
+
+def _reject_constant(_: str) -> Any:
+    raise CorpusContractError("non-finite JSON constant")
+
+
+def parse_json(raw: bytes) -> dict[str, Any]:
+    """Parse strict UTF-8 JSON while rejecting duplicate keys and NaN/Infinity."""
+    try:
+        text = raw.decode("utf-8", errors="strict")
+        value = json.loads(
+            text,
+            object_pairs_hook=_closed_object,
+            parse_constant=_reject_constant,
+        )
+    except (UnicodeDecodeError, json.JSONDecodeError) as error:
+        raise CorpusContractError("invalid strict JSON") from error
+    if not isinstance(value, dict):
+        raise CorpusContractError("root must be an object")
+    _validate_json_domain(value)
+    return value
+
+
+def _validate_json_domain(value: Any) -> None:
+    if isinstance(value, str):
+        if unicodedata.normalize("NFC", value) != value:
+            raise CorpusContractError("all strings must be NFC")
+        return
+    if isinstance(value, bool) or value is None or isinstance(value, int):
+        return
+    if isinstance(value, float):
+        if not math.isfinite(value):
+            raise CorpusContractError("non-finite number")
+        return
+    if isinstance(value, list):
+        for item in value:
+            _validate_json_domain(item)
+        return
+    if isinstance(value, Mapping):
+        for key, item in value.items():
+            if not isinstance(key, str):
+                raise CorpusContractError("object key must be a string")
+            _validate_json_domain(key)
+            _validate_json_domain(item)
+        return
+    raise CorpusContractError("unsupported JSON value")
+
+
+def _as_document(value: bytes | Mapping[str, Any]) -> dict[str, Any]:
+    if isinstance(value, bytes):
+        return parse_json(value)
+    if not isinstance(value, Mapping):
+        raise CorpusContractError("document must be bytes or a mapping")
+    # Round-trip mappings through the strict representation.  Duplicate keys
+    # cannot survive construction, while all other byte-domain rules still do.
+    return parse_json(canonical_json(value))
+
+
+def contract_digests() -> dict[str, str]:
+    paths = {
+        "corpus_contract_sha256": SCHEMA_PATH,
+        "gates_sha256": GATES_PATH,
+        "metrics_sha256": METRICS_PATH,
+        "evaluator_schema_sha256": EVALUATOR_SCHEMA_PATH,
+    }
+    try:
+        return {name: sha256(path.read_bytes()) for name, path in paths.items()}
+    except OSError as error:
+        raise CorpusContractError("AQ contract authority unavailable") from error
+
+
+def authority_digest(authority: Mapping[str, Any]) -> str:
+    return digest(dict(authority))
+
+
+def task_digest(task_text: str) -> str:
+    if unicodedata.normalize("NFC", task_text) != task_text:
+        raise CorpusContractError("task is not NFC")
+    return sha256(task_text.encode("utf-8"))
+
+
+def expected_case_nonce(split_nonce: str, case_id: str, task_sha256: str) -> str:
+    return sha256(f"{PROGRAM_ID}|{split_nonce}|{case_id}|{task_sha256}".encode("ascii"))
+
+
+def resolve_capsules(capsules: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
+    """Pure SLEC-1 resolver shared by corpus validation and aggregate scoring."""
+    if not isinstance(capsules, (list, tuple)) or len(capsules) != 4:
+        raise CorpusContractError("four capsule rows required")
+    rows: list[dict[str, str]] = []
+    for index, capsule in enumerate(capsules):
+        if not isinstance(capsule, Mapping) or set(capsule) != {
+            "slot_id",
+            "local_need",
+            "reference_need",
+        }:
+            raise CorpusContractError("capsule schema or key order invalid")
+        row = {
+            "slot_id": capsule.get("slot_id"),
+            "local_need": capsule.get("local_need"),
+            "reference_need": capsule.get("reference_need"),
+        }
+        if row["slot_id"] != SLOT_ORDER[index]:
+            raise CorpusContractError("capsule slot order invalid")
+        if row["local_need"] not in {"yes", "no", "uncertain"}:
+            raise CorpusContractError("capsule local_need invalid")
+        if row["reference_need"] not in {"none", "core", "focused", "uncertain"}:
+            raise CorpusContractError("capsule reference_need invalid")
+        rows.append(row)
+
+    if any(
+        row["local_need"] == "uncertain" or row["reference_need"] == "uncertain"
+        for row in rows
+    ):
+        return {
+            "status": "uncertain_abstain",
+            "selected_slots": [],
+            "reference_bundle": [],
+        }
+
+    selected = [row["slot_id"] for row in rows if row["local_need"] == "yes"]
+    if len(selected) > 2:
+        return {"status": "cap_abstain", "selected_slots": [], "reference_bundle": []}
+
+    references = [
+        {"slot_id": row["slot_id"], "need": row["reference_need"]}
+        for row in rows
+        if row["slot_id"] in selected and row["reference_need"] in {"core", "focused"}
+    ]
+    return {
+        "status": "selected" if selected else "none",
+        "selected_slots": selected,
+        "reference_bundle": references,
+    }
+
+
+def _derived_profile(case: Mapping[str, Any]) -> str:
+    capsules = case["expected_capsules"]
+    explicit = case["explicit_slot_id"]
+    resolution = resolve_capsules(capsules)
+    yes_slots = [row["slot_id"] for row in capsules if row["local_need"] == "yes"]
+    if explicit is not None:
+        if resolution["status"] != "selected" or yes_slots != [explicit]:
+            raise CorpusContractError("explicit profile is not exact")
+        return "explicit"
+    if resolution["status"] == "uncertain_abstain":
+        return "uncertain"
+    if resolution["status"] == "cap_abstain":
+        return "cap"
+    if len(yes_slots) == 0:
+        return "none"
+    if len(yes_slots) == 1:
+        return "single"
+    if len(yes_slots) == 2:
+        return "two"
+    raise CorpusContractError("profile cannot be derived")
+
+
+def normalize_task(task_text: str) -> str:
+    normalized = unicodedata.normalize("NFC", task_text).casefold()
+    return " ".join(_TOKEN.findall(normalized))
+
+
+def normalized_task_digest(task_text: str) -> str:
+    return sha256(normalize_task(task_text).encode("utf-8"))
+
+
+def _fivegrams(value: str) -> set[str]:
+    compact = " ".join(value.split())
+    if len(compact) < 5:
+        return {compact}
+    return {compact[index : index + 5] for index in range(len(compact) - 4)}
+
+
+def near_similarity(left: str, right: str) -> float:
+    left_set, right_set = (
+        _fivegrams(normalize_task(left)),
+        _fivegrams(normalize_task(right)),
+    )
+    union = left_set | right_set
+    return len(left_set & right_set) / len(union) if union else 1.0
+
+
+def build_schedule(
+    case_ids: Sequence[str], seed: str = SCHEDULE_SEED
+) -> tuple[dict[str, Any], ...]:
+    if (
+        len(case_ids) != 40
+        or len(set(case_ids)) != 40
+        or any(not isinstance(item, str) for item in case_ids)
+    ):
+        raise CorpusContractError("schedule requires forty unique case IDs")
+    if not isinstance(seed, str) or not seed:
+        raise CorpusContractError("schedule seed invalid")
+    rng = random.Random(int(sha256(seed.encode("utf-8")), 16))
+    current, reduced = sorted(case_ids), sorted(case_ids)
+    rng.shuffle(current)
+    rng.shuffle(reduced)
+    first = CONDITIONS[rng.randrange(2)]
+    second = CONDITIONS[1] if first == CONDITIONS[0] else CONDITIONS[0]
+    rows: list[dict[str, Any]] = []
+    for current_id, reduced_id in zip(current, reduced, strict=True):
+        for condition in (first, second):
+            case_id = current_id if condition == "current" else reduced_id
+            index = len(rows)
+            presentation_id = sha256(
+                f"{PROGRAM_ID}|{seed}|{index}|{condition}|{case_id}".encode("ascii")
+            )
+            rows.append(
+                {
+                    "presentation_index": index,
+                    "presentation_id": presentation_id,
+                    "condition": condition,
+                    "case_id": case_id,
+                }
+            )
+    return tuple(rows)
+
+
+def schedule_digest(schedule: Sequence[Mapping[str, Any]]) -> str:
+    return digest([dict(row) for row in schedule])
+
+
+def capsule_packet_digest(
+    *,
+    binding_digest: str,
+    schedule_sha256: str,
+    condition: str,
+    case_id: str,
+    task_sha256: str,
+    slot_id: str,
+) -> str:
+    packet = {
+        "program_id": PROGRAM_ID,
+        "binding_digest": binding_digest,
+        "schedule_digest": schedule_sha256,
+        "condition": condition,
+        "case_id": case_id,
+        "task_sha256": task_sha256,
+        "slot_id": slot_id,
+    }
+    return digest(packet)
+
+
+def _inventory(
+    inventory: bytes,
+    *,
+    trusted_raw_sha256: str,
+) -> tuple[str, set[str]]:
+    if not isinstance(trusted_raw_sha256, str) or not _HEX64.fullmatch(
+        trusted_raw_sha256
+    ):
+        raise CorpusContractError("trusted historical inventory digest invalid")
+    if not isinstance(inventory, bytes):
+        raise CorpusContractError("historical inventory must be trusted raw bytes")
+    document = parse_json(inventory)
+    inventory_digest = sha256(inventory)
+    if inventory_digest != trusted_raw_sha256:
+        raise CorpusContractError("historical inventory is not the trusted artifact")
+    if tuple(document) != HISTORICAL_TOP_KEYS:
+        raise CorpusContractError("historical inventory is not closed")
+    if document["schema_version"] != "1.1" or document["program_id"] != PROGRAM_ID:
+        raise CorpusContractError("historical inventory identity invalid")
+    if document["claim_ceiling"] != "exact-nfc-sha256-nonreuse-only":
+        raise CorpusContractError("historical inventory claim invalid")
+
+    source = document["source"]
+    if (
+        not isinstance(source, Mapping)
+        or tuple(source) != tuple(HISTORICAL_SOURCE)
+        or dict(source) != HISTORICAL_SOURCE
+    ):
+        raise CorpusContractError("historical inventory source invalid")
+
+    files = document["files"]
+    if not isinstance(files, list) or len(files) != len(HISTORICAL_FILE_ROWS):
+        raise CorpusContractError("historical inventory files invalid")
+    observed_rows: list[tuple[Any, Any, Any, Any, Any]] = []
+    for row in files:
+        if not isinstance(row, Mapping) or tuple(row) != (
+            "path",
+            "git_blob",
+            "sha256",
+            "task_text_selector",
+            "digest_count",
+        ):
+            raise CorpusContractError("historical inventory file row invalid")
+        observed_rows.append(
+            (
+                row["path"],
+                row["git_blob"],
+                row["sha256"],
+                row["task_text_selector"],
+                row["digest_count"],
+            )
+        )
+    if tuple(observed_rows) != HISTORICAL_FILE_ROWS:
+        raise CorpusContractError("historical inventory file custody invalid")
+
+    values = document["task_text_nfc_sha256"]
+    if (
+        not isinstance(values, list)
+        or len(values) != 504
+        or values != sorted(values)
+        or len(values) != len(set(values))
+    ):
+        raise CorpusContractError("historical digest inventory invalid")
+    if any(not isinstance(item, str) or not _HEX64.fullmatch(item) for item in values):
+        raise CorpusContractError("historical digest inventory invalid")
+    expected_count = sum(row[4] for row in HISTORICAL_FILE_ROWS)
+    if (
+        type(document["inventory_count"]) is not int
+        or document["inventory_count"] != 504
+        or document["inventory_count"] != len(values)
+        or document["inventory_count"] != expected_count
+    ):
+        raise CorpusContractError("historical digest count mismatch")
+    recomputed_inventory = sha256(("\n".join(values) + "\n").encode("ascii"))
+    if (
+        document["inventory_sha256"] != recomputed_inventory
+        or document["inventory_sha256"] != TRUSTED_HISTORICAL_CONTENT_SHA256
+    ):
+        raise CorpusContractError("historical digest inventory custody invalid")
+    limitations = document["limitations"]
+    if (
+        not isinstance(limitations, Mapping)
+        or tuple(limitations) != tuple(HISTORICAL_LIMITATIONS)
+        or dict(limitations) != HISTORICAL_LIMITATIONS
+        or any(type(value) is not bool for value in limitations.values())
+    ):
+        raise CorpusContractError("historical inventory privacy claim invalid")
+    return inventory_digest, set(values)
+
+
+def _schema() -> dict[str, Any]:
+    try:
+        return parse_json(SCHEMA_PATH.read_bytes())
+    except OSError as error:
+        raise CorpusContractError("corpus schema unavailable") from error
+
+
+def validate_corpora(
+    documents: Sequence[bytes | Mapping[str, Any]],
+    *,
+    historical_digest_inventory: bytes | None = None,
+    trusted_historical_inventory_sha256: str = TRUSTED_HISTORICAL_INVENTORY_SHA256,
+) -> ValidationResult:
+    """Validate two splits; historical authority, when supplied, is raw bytes."""
+    errors: list[str] = []
+    holds: list[str] = []
+    metrics: Counter[str] = Counter()
+    parsed: list[dict[str, Any]] = []
+    if not isinstance(documents, (list, tuple)) or len(documents) != 2:
+        return ValidationResult("fail", ("split_count",), (), {}, (), None)
+    try:
+        schema = _schema()
+        validator = Draft202012Validator(schema)
+        expected_contracts = contract_digests()
+        for value in documents:
+            document = _as_document(value)
+            if list(validator.iter_errors(document)):
+                errors.append("schema")
+            parsed.append(document)
+    except (CorpusContractError, OSError, TypeError, ValueError):
+        return ValidationResult(
+            "fail", ("strict_parse_or_authority",), (), {}, (), None
+        )
+
+    if errors:
+        return ValidationResult("fail", tuple(sorted(set(errors))), (), {}, (), None)
+
+    by_split = {document["split_id"]: document for document in parsed}
+    if set(by_split) != {"A", "B"} or len(by_split) != 2:
+        errors.append("split_identity")
+    else:
+        parsed = [by_split["A"], by_split["B"]]
+
+    if len({document["split_nonce"] for document in parsed}) != 2:
+        errors.append("split_nonce")
+    authorities = [document["authority"] for document in parsed]
+    if authorities[0] != authorities[1]:
+        errors.append("authority_mismatch")
+    for authority in authorities:
+        for field, expected in expected_contracts.items():
+            if authority.get(field) != expected:
+                errors.append("contract_binding")
+
+    case_by_id: dict[str, dict[str, Any]] = {}
+    task_normalizations: dict[str, str] = {}
+    profile_counts: Counter[str] = Counter()
+    single_slots: Counter[str] = Counter()
+    explicit_slots: Counter[str] = Counter()
+    two_pairs: Counter[tuple[str, str]] = Counter()
+    split_texts: dict[str, list[str]] = {"A": [], "B": []}
+    case_nonces: set[str] = set()
+
+    for document in parsed:
+        split_id = document["split_id"]
+        expected_ids = [f"AE-SQ1-{split_id}-{ordinal:02d}" for ordinal in range(1, 21)]
+        if [case["case_id"] for case in document["cases"]] != expected_ids:
+            errors.append("case_identity_or_order")
+        for case in document["cases"]:
+            case_id = case["case_id"]
+            if case_id in case_by_id:
+                errors.append("duplicate_case")
+                continue
+            case_by_id[case_id] = case
+            task_sha = task_digest(case["task_text"])
+            if case["task_text_nfc_sha256"] != task_sha:
+                errors.append("task_digest")
+            expected_nonce = expected_case_nonce(
+                document["split_nonce"], case_id, task_sha
+            )
+            if (
+                case["case_nonce"] != expected_nonce
+                or case["case_nonce"] in case_nonces
+            ):
+                errors.append("case_nonce")
+            case_nonces.add(case["case_nonce"])
+            try:
+                resolution = resolve_capsules(case["expected_capsules"])
+                profile = _derived_profile(case)
+            except (CorpusContractError, KeyError, TypeError):
+                errors.append("derivation")
+                continue
+            if case["expected_resolution"] != resolution:
+                errors.append("resolution_parity")
+            if case["profile"] != profile:
+                errors.append("profile_derivation")
+            expected_selected = resolution["selected_slots"]
+            selected_rows = {
+                row["slot_id"]: row
+                for row in case["expected_capsules"]
+                if row["slot_id"] in expected_selected
+            }
+            if any(
+                row["reference_need"] not in {"core", "focused"}
+                for row in selected_rows.values()
+            ):
+                errors.append("selected_reference_anchor")
+            profile_counts[profile] += 1
+            if profile == "single":
+                single_slots[expected_selected[0]] += 1
+            elif profile == "explicit":
+                explicit_slots[case["explicit_slot_id"]] += 1
+            elif profile == "two":
+                two_pairs[tuple(expected_selected)] += 1
+            normalized = normalize_task(case["task_text"])
+            if normalized in task_normalizations:
+                errors.append("exact_task_collision")
+            task_normalizations[normalized] = case_id
+            split_texts[split_id].append(case["task_text"])
+
+    if len(case_by_id) != 40:
+        errors.append("case_count")
+    if profile_counts != EXPECTED_PROFILES:
+        errors.append("profile_distribution")
+    if single_slots != EXPECTED_SINGLE_SLOTS:
+        errors.append("single_slot_distribution")
+    if explicit_slots != EXPECTED_EXPLICIT_SLOTS:
+        errors.append("explicit_slot_distribution")
+    if set(two_pairs) != ALL_PAIRS:
+        errors.append("two_pair_coverage")
+
+    near_checks = 0
+    for left in split_texts["A"]:
+        for right in split_texts["B"]:
+            near_checks += 1
+            if (
+                min(len(left), len(right)) >= MIN_NEAR_TEXT_LENGTH
+                and near_similarity(left, right) >= NEAR_SIMILARITY_THRESHOLD
+            ):
+                errors.append("cross_split_near_collision")
+    metrics["cross_split_similarity_checks"] = near_checks
+
+    inventory_digest: str | None = None
+    inventory_values: set[str] = set()
+    if historical_digest_inventory is None:
+        holds.append("historical_digest_inventory_unavailable")
+    else:
+        try:
+            inventory_digest, inventory_values = _inventory(
+                historical_digest_inventory,
+                trusted_raw_sha256=trusted_historical_inventory_sha256,
+            )
+        except (CorpusContractError, TypeError, KeyError):
+            errors.append("historical_inventory")
+        if inventory_digest is not None:
+            if any(
+                document["no_replay"]["historical_digest_inventory_sha256"]
+                != inventory_digest
+                for document in parsed
+            ):
+                errors.append("historical_inventory_binding")
+            if any(
+                task_digest(case["task_text"]) in inventory_values
+                for case in case_by_id.values()
+            ):
+                errors.append("historical_digest_collision")
+    if historical_digest_inventory is None and any(
+        document["no_replay"]["historical_digest_inventory_sha256"] is not None
+        for document in parsed
+    ):
+        holds.append("historical_digest_inventory_not_supplied_for_bound_digest")
+
+    metrics.update(profile_counts)
+    metrics["total_cases"] = len(case_by_id)
+    metrics["historical_digest_count"] = len(inventory_values)
+    corpus_digest_value = digest(parsed) if len(parsed) == 2 else None
+    unique_errors = tuple(sorted(set(errors)))
+    unique_holds = tuple(sorted(set(holds)))
+    status = "fail" if unique_errors else ("hold" if unique_holds else "pass")
+    return ValidationResult(
+        status,
+        unique_errors,
+        unique_holds,
+        dict(metrics),
+        tuple(sorted(case_by_id)),
+        corpus_digest_value,
+    )
+
+
+def _main(argv: Sequence[str]) -> int:
+    if len(argv) != 3:
+        print("usage: validate_ae_sq1_corpus.py SPLIT_A SPLIT_B", file=sys.stderr)
+        return 2
+    try:
+        documents = (Path(argv[1]).read_bytes(), Path(argv[2]).read_bytes())
+        result = validate_corpora(documents)
+    except OSError:
+        print("AE-SQ1 corpus validation: FAIL", file=sys.stderr)
+        return 1
+    # The CLI deliberately emits no task, case, or historical content.
+    print(f"AE-SQ1 corpus validation: {result.status.upper()}")
+    return 0 if result.passed else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(_main(sys.argv))
