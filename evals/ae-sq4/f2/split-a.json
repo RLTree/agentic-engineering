@@ -1,0 +1,1391 @@
+{
+  "schema_version": "1.0",
+  "program_id": "AE-SQ4",
+  "corpus_id": "AE-SQ4-AQ-FRESH-V1",
+  "split_id": "A",
+  "split_nonce": "92ed304ea3839374b5f86adf6c0000fc2bfba9777d352795fd766877d94cdbab",
+  "author_id": "sq4-author-a",
+  "authority": {
+    "program_id": "AE-SQ4",
+    "candidate_id": "AE-SQ4-SLEC-4",
+    "candidate_commit": "6357b87cfae9e488bbb1489541ec03d577803463",
+    "candidate_tree": "6a04e5aa846cbe196425c58671bf390c499b4d59",
+    "f1_freeze_sha256": "580b08484a5ae9f35a942d1063ba7ce82ca83521533b0f8e0e6f763187f83893",
+    "corpus_contract_sha256": "6a396d1fec60270c1175968ef47766bee8576fe650f139491a337e6f4f3bd724",
+    "gates_sha256": "dc6056c0dc8fcc16b4208a9639a3932f4ea644f45cb311751c3a6c879390c537",
+    "metrics_sha256": "1ca000132e2ed57f0ac979e6f098d2ec10772421a6d3794639f79bd5cc45e081",
+    "evaluator_schema_sha256": "8d01d29156983441554ff8772be1d7493542e360edeeb65fe2305e0183feedf4"
+  },
+  "no_replay": {
+    "normalization_id": "ae-sq4-task-v1",
+    "historical_digest_inventory_sha256": "0e49a967d9a59021c0f1aa5fc8d80fd53fdf3ab1885925b0d86f1e8c4f9dc157",
+    "historical_inventory_content_sha256": "8ee69ae06f388c1b47386b312d31bcce7ae408d04e76659653335d55e12ac270",
+    "historical_inventory_count": 768,
+    "historical_text_embedded": false,
+    "predecessor_case_label_or_result_material_embedded": false
+  },
+  "cases": [
+    {
+      "case_id": "AE-SQ4-A-01",
+      "case_nonce": "13fe3851896c1b1652dfa70ce926563c168565a6a3ec74dc0e8be9e0a983dc12",
+      "task_text": "Alphabetize this list of planet names and return only comma-separated names: Venus, Earth, Mars, Mercury.",
+      "task_text_nfc_sha256": "3e52e5c155fee832d734fec98bdf80bb32dc6bb250ecc3f0431e49824b601566",
+      "profile": "none",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 105,
+              "text": "Alphabetize this list of planet names and return only comma-separated names: Venus, Earth, Mars, Mercury."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 105,
+              "text": "Alphabetize this list of planet names and return only comma-separated names: Venus, Earth, Mars, Mercury."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 105,
+              "text": "Alphabetize this list of planet names and return only comma-separated names: Venus, Earth, Mars, Mercury."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 105,
+              "text": "Alphabetize this list of planet names and return only comma-separated names: Venus, Earth, Mars, Mercury."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "none",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ4-A-02",
+      "case_nonce": "d265a719e05bfc73e57b446c341d72b7c1a8cd5bff7b67cebad4150faf38a228",
+      "task_text": "Rewrite this sentence in plain language while preserving its factual meaning: The meeting commenced subsequent to the arrival of all participants.",
+      "task_text_nfc_sha256": "b321efee5856d5c1f14ea967158c58fe6d10fbb893dbbe5005c79f0451d0efb6",
+      "profile": "none",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 146,
+              "text": "Rewrite this sentence in plain language while preserving its factual meaning: The meeting commenced subsequent to the arrival of all participants."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 146,
+              "text": "Rewrite this sentence in plain language while preserving its factual meaning: The meeting commenced subsequent to the arrival of all participants."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 146,
+              "text": "Rewrite this sentence in plain language while preserving its factual meaning: The meeting commenced subsequent to the arrival of all participants."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 146,
+              "text": "Rewrite this sentence in plain language while preserving its factual meaning: The meeting commenced subsequent to the arrival of all participants."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "none",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ4-A-03",
+      "case_nonce": "23efe453b3dd905bcdbd7293594db3d2c24ca7c9cd893cce6a8ce02eddad81e4",
+      "task_text": "Convert 68 degrees Fahrenheit to Celsius and show the arithmetic in one line.",
+      "task_text_nfc_sha256": "2d0db663b52e7f44f6961b4f44f62f2e793edd24487f7d4ff3b7abeb7c62be29",
+      "profile": "none",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 77,
+              "text": "Convert 68 degrees Fahrenheit to Celsius and show the arithmetic in one line."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 77,
+              "text": "Convert 68 degrees Fahrenheit to Celsius and show the arithmetic in one line."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 77,
+              "text": "Convert 68 degrees Fahrenheit to Celsius and show the arithmetic in one line."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 77,
+              "text": "Convert 68 degrees Fahrenheit to Celsius and show the arithmetic in one line."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "none",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ4-A-04",
+      "case_nonce": "dabf1cc6482e55e26d919ecb06a3dfd2d8918a72dbe67a1ec536cd0eb0498df2",
+      "task_text": "A local research assistant must queue tools, recover after crashes, and never execute writes without an explicit approval token. Propose the smallest control-plane architecture and identify where each invariant is enforced.",
+      "task_text_nfc_sha256": "d59041f7a63684dfdc1b1dd06429110a20bb3e6454934a993fbc76112c5544cf",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 150,
+              "end": 176,
+              "text": "control-plane architecture"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 223,
+              "text": "A local research assistant must queue tools, recover after crashes, and never execute writes without an explicit approval token. Propose the smallest control-plane architecture and identify where each invariant is enforced."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 223,
+              "text": "A local research assistant must queue tools, recover after crashes, and never execute writes without an explicit approval token. Propose the smallest control-plane architecture and identify where each invariant is enforced."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 223,
+              "text": "A local research assistant must queue tools, recover after crashes, and never execute writes without an explicit approval token. Propose the smallest control-plane architecture and identify where each invariant is enforced."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ4-A-05",
+      "case_nonce": "d8296f590704852b55e4a44eab04cfb88c087e1e6b23bcd823d383211c051fc0",
+      "task_text": "Choose between a single-agent loop and a supervisor-worker graph for an offline log triage tool that must bound concurrency and resume from checkpoints. Return a topology decision with failure-recovery boundaries.",
+      "task_text_nfc_sha256": "4244d2e94d9d699923f2236a54024bced4f3299be5087919843146be01b95920",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 41,
+              "end": 64,
+              "text": "supervisor-worker graph"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 213,
+              "text": "Choose between a single-agent loop and a supervisor-worker graph for an offline log triage tool that must bound concurrency and resume from checkpoints. Return a topology decision with failure-recovery boundaries."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 213,
+              "text": "Choose between a single-agent loop and a supervisor-worker graph for an offline log triage tool that must bound concurrency and resume from checkpoints. Return a topology decision with failure-recovery boundaries."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 213,
+              "text": "Choose between a single-agent loop and a supervisor-worker graph for an offline log triage tool that must bound concurrency and resume from checkpoints. Return a topology decision with failure-recovery boundaries."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ4-A-06",
+      "case_nonce": "6f9eabef7701118daed6551ec0924d69efb6cbf57d6c64771002a25216f11a02",
+      "task_text": "Turn this request into an execution contract before any changes are made: 'Clean up the deployment setup.' Specify the observable outcome, in-scope systems, approval boundaries, acceptance evidence, and unresolved assumptions.",
+      "task_text_nfc_sha256": "52f3c12679b17a19df93d719d34dcab7daa9c2033c2a7ed68ddeeea36932e989",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 226,
+              "text": "Turn this request into an execution contract before any changes are made: 'Clean up the deployment setup.' Specify the observable outcome, in-scope systems, approval boundaries, acceptance evidence, and unresolved assumptions."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 26,
+              "end": 44,
+              "text": "execution contract"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 226,
+              "text": "Turn this request into an execution contract before any changes are made: 'Clean up the deployment setup.' Specify the observable outcome, in-scope systems, approval boundaries, acceptance evidence, and unresolved assumptions."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 226,
+              "text": "Turn this request into an execution contract before any changes are made: 'Clean up the deployment setup.' Specify the observable outcome, in-scope systems, approval boundaries, acceptance evidence, and unresolved assumptions."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s1"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s1",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ4-A-07",
+      "case_nonce": "0b4cdd30132accc49fab10f4d9a0da5ca7d57730a4b28d4cca08fa163cf368a9",
+      "task_text": "A maintainer says, 'Make the data migration safe by Friday,' but has not defined allowable downtime or rollback authority. Produce a bounded task contract that exposes the decisions they must own and the evidence required for done.",
+      "task_text_nfc_sha256": "e229b6ccac50d2c6b216275a3f213211875af21fb54b2bd594959c3f11006146",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 231,
+              "text": "A maintainer says, 'Make the data migration safe by Friday,' but has not defined allowable downtime or rollback authority. Produce a bounded task contract that exposes the decisions they must own and the evidence required for done."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 133,
+              "end": 154,
+              "text": "bounded task contract"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 231,
+              "text": "A maintainer says, 'Make the data migration safe by Friday,' but has not defined allowable downtime or rollback authority. Produce a bounded task contract that exposes the decisions they must own and the evidence required for done."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 231,
+              "text": "A maintainer says, 'Make the data migration safe by Friday,' but has not defined allowable downtime or rollback authority. Produce a bounded task contract that exposes the decisions they must own and the evidence required for done."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s1"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s1",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ4-A-08",
+      "case_nonce": "0dc3871159c09b7ddf7a9f1f7f15766177bd51821e4eb18ce82d3f2d91b781fd",
+      "task_text": "A patch changes retry backoff and duplicate suppression in a message worker. Design the smallest verification portfolio that can falsify lost messages, duplicate effects, timer drift, and unsafe rollback before release.",
+      "task_text_nfc_sha256": "40b1b3618b13504165cb8f41d8c195c3d2dadebdb5b36dd6e5a214c6a5432688",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 219,
+              "text": "A patch changes retry backoff and duplicate suppression in a message worker. Design the smallest verification portfolio that can falsify lost messages, duplicate effects, timer drift, and unsafe rollback before release."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 219,
+              "text": "A patch changes retry backoff and duplicate suppression in a message worker. Design the smallest verification portfolio that can falsify lost messages, duplicate effects, timer drift, and unsafe rollback before release."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 97,
+              "end": 119,
+              "text": "verification portfolio"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 219,
+              "text": "A patch changes retry backoff and duplicate suppression in a message worker. Design the smallest verification portfolio that can falsify lost messages, duplicate effects, timer drift, and unsafe rollback before release."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s2"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s2",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ4-A-09",
+      "case_nonce": "89410f53fe6f5cda8a6b903d5bf93ce3dcbe418b7f43b3931e789f16523c2fea",
+      "task_text": "We replaced a parser with a streaming implementation under the same public API. Propose risk-proportional evidence at unit, property, integration, and resource boundaries, naming what each check could actually disprove.",
+      "task_text_nfc_sha256": "8b3482f7d0d783d1a714a3639377a217427924f889a52a4ef2cfb94fdad5ee7e",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 219,
+              "text": "We replaced a parser with a streaming implementation under the same public API. Propose risk-proportional evidence at unit, property, integration, and resource boundaries, naming what each check could actually disprove."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 219,
+              "text": "We replaced a parser with a streaming implementation under the same public API. Propose risk-proportional evidence at unit, property, integration, and resource boundaries, naming what each check could actually disprove."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 88,
+              "end": 114,
+              "text": "risk-proportional evidence"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 219,
+              "text": "We replaced a parser with a streaming implementation under the same public API. Propose risk-proportional evidence at unit, property, integration, and resource boundaries, naming what each check could actually disprove."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s2"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s2",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ4-A-10",
+      "case_nonce": "bad7f692827e48727372f131f2493da20b386b660b74a9ca4627ab06a0d2804d",
+      "task_text": "Three recent agent runs failed after accepting stale configuration. Convert that observed pattern into a governed learning proposal with provenance, mechanism hypothesis, counterevidence, held-out evaluation, owner, expiry, and rollback.",
+      "task_text_nfc_sha256": "9a982a18adf89f9867cf875b4245a8c770513dfe6090fb446ac70b0801b2b98f",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 237,
+              "text": "Three recent agent runs failed after accepting stale configuration. Convert that observed pattern into a governed learning proposal with provenance, mechanism hypothesis, counterevidence, held-out evaluation, owner, expiry, and rollback."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 237,
+              "text": "Three recent agent runs failed after accepting stale configuration. Convert that observed pattern into a governed learning proposal with provenance, mechanism hypothesis, counterevidence, held-out evaluation, owner, expiry, and rollback."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 237,
+              "text": "Three recent agent runs failed after accepting stale configuration. Convert that observed pattern into a governed learning proposal with provenance, mechanism hypothesis, counterevidence, held-out evaluation, owner, expiry, and rollback."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 105,
+              "end": 131,
+              "text": "governed learning proposal"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s3",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ4-A-11",
+      "case_nonce": "3275d40cf44af4528f43f0f7dd337e4f2f8b514b42e6c6bd3c9c65442b7b9558",
+      "task_text": "An eval shows a prompt rule helps code review but hurts debugging. Decide whether to adopt, narrow, or reject the rule, and define the experiment, lifecycle, and ownership needed before changing durable guidance.",
+      "task_text_nfc_sha256": "4d1ce0de78a1cf0ca1f22903d6d5203ea81e4258770b3e089642c0fb60ca1afe",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 212,
+              "text": "An eval shows a prompt rule helps code review but hurts debugging. Decide whether to adopt, narrow, or reject the rule, and define the experiment, lifecycle, and ownership needed before changing durable guidance."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 212,
+              "text": "An eval shows a prompt rule helps code review but hurts debugging. Decide whether to adopt, narrow, or reject the rule, and define the experiment, lifecycle, and ownership needed before changing durable guidance."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 212,
+              "text": "An eval shows a prompt rule helps code review but hurts debugging. Decide whether to adopt, narrow, or reject the rule, and define the experiment, lifecycle, and ownership needed before changing durable guidance."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 135,
+              "end": 171,
+              "text": "experiment, lifecycle, and ownership"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s3",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ4-A-12",
+      "case_nonce": "3cc73ae8b9ee95f54af7a7eb6a0d42e977db358adabb4d162fd6ec3984e95f20",
+      "task_text": "Design an agent workflow for emergency database maintenance where topology, write authority, rollback boundaries, success evidence, and approval handoffs are explicit. First state a bounded execution contract, then place each control in the architecture.",
+      "task_text_nfc_sha256": "6ffcffb949ab2064fa33ccf11aaeabaf75509a4bb7204281cd368e87c2290048",
+      "profile": "two",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 215,
+              "end": 253,
+              "text": "place each control in the architecture"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 182,
+              "end": 208,
+              "text": "bounded execution contract"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 254,
+              "text": "Design an agent workflow for emergency database maintenance where topology, write authority, rollback boundaries, success evidence, and approval handoffs are explicit. First state a bounded execution contract, then place each control in the architecture."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 254,
+              "text": "Design an agent workflow for emergency database maintenance where topology, write authority, rollback boundaries, success evidence, and approval handoffs are explicit. First state a bounded execution contract, then place each control in the architecture."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0",
+          "s1"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "focused"
+          },
+          {
+            "slot_id": "s1",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ4-A-13",
+      "case_nonce": "ca75cf938d71d12b025b5fbdc57d92939575adfcf252686236e211d99ce4c2e7",
+      "task_text": "Propose an architecture for a resumable multi-agent batch processor and a proof strategy for its lease, checkpoint, idempotency, and crash-recovery invariants. Keep implementation and verification responsibilities distinct.",
+      "task_text_nfc_sha256": "5e3e7d49aa94bd276f89a5ebf0e4a5af287bcb2843d5ad46be266eb02d7fe633",
+      "profile": "two",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 30,
+              "end": 67,
+              "text": "resumable multi-agent batch processor"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 223,
+              "text": "Propose an architecture for a resumable multi-agent batch processor and a proof strategy for its lease, checkpoint, idempotency, and crash-recovery invariants. Keep implementation and verification responsibilities distinct."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 74,
+              "end": 88,
+              "text": "proof strategy"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 223,
+              "text": "Propose an architecture for a resumable multi-agent batch processor and a proof strategy for its lease, checkpoint, idempotency, and crash-recovery invariants. Keep implementation and verification responsibilities distinct."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0",
+          "s2"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "focused"
+          },
+          {
+            "slot_id": "s2",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ4-A-14",
+      "case_nonce": "671322cd791afb03520b7953108159ebce338a2bbf8ad4c49e27797c6dc05d2a",
+      "task_text": "Turn a vague request to 'learn from support incidents' into an authorized task contract, then define how incident evidence may become a governed rule change with counterevidence, ownership, evaluation, expiry, and rollback.",
+      "task_text_nfc_sha256": "ffa56f37fcf4265461855745f54ffff33d37478bcf0cffd1021671f1c6a164de",
+      "profile": "two",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 223,
+              "text": "Turn a vague request to 'learn from support incidents' into an authorized task contract, then define how incident evidence may become a governed rule change with counterevidence, ownership, evaluation, expiry, and rollback."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 63,
+              "end": 87,
+              "text": "authorized task contract"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 223,
+              "text": "Turn a vague request to 'learn from support incidents' into an authorized task contract, then define how incident evidence may become a governed rule change with counterevidence, ownership, evaluation, expiry, and rollback."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 136,
+              "end": 156,
+              "text": "governed rule change"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s1",
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s1",
+            "need": "core"
+          },
+          {
+            "slot_id": "s3",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ4-A-15",
+      "case_nonce": "83ab4ce00658948065874a6883a1be12caa83afb79f163e38bcc0482760684aa",
+      "task_text": "A flaky end-to-end test has caused repeated blind retries. Design evidence to distinguish product defects from harness defects, then define the governed learning path for any proposed test-policy change.",
+      "task_text_nfc_sha256": "a032475faf8d115b018d5652342900c7a010660ecf3ed08c4c17f9ad3beab6fe",
+      "profile": "two",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 203,
+              "text": "A flaky end-to-end test has caused repeated blind retries. Design evidence to distinguish product defects from harness defects, then define the governed learning path for any proposed test-policy change."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 203,
+              "text": "A flaky end-to-end test has caused repeated blind retries. Design evidence to distinguish product defects from harness defects, then define the governed learning path for any proposed test-policy change."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 78,
+              "end": 126,
+              "text": "distinguish product defects from harness defects"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 144,
+              "end": 166,
+              "text": "governed learning path"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s2",
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s2",
+            "need": "core"
+          },
+          {
+            "slot_id": "s3",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ4-A-16",
+      "case_nonce": "b0ff3b9103e8cd20063b36ce8c3bd9d0d070192fd25ca6d7aab8491ab751d95d",
+      "task_text": "Before rebuilding a privileged deployment agent, define the execution contract, propose the control-plane architecture, and design a verification strategy for approval, rollback, recovery, and audit invariants.",
+      "task_text_nfc_sha256": "6d9d6969c4896553eac7c1a2e834d5b7585cc10b05ec1d6b82ca1afa8a324435",
+      "profile": "cap",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 92,
+              "end": 118,
+              "text": "control-plane architecture"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 60,
+              "end": 78,
+              "text": "execution contract"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 133,
+              "end": 154,
+              "text": "verification strategy"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 210,
+              "text": "Before rebuilding a privileged deployment agent, define the execution contract, propose the control-plane architecture, and design a verification strategy for approval, rollback, recovery, and audit invariants."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "cap_abstain",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ4-A-17",
+      "case_nonce": "67938659dc71726a334f68da19d186c47f1e73abc711b384823cad78be24c0c0",
+      "task_text": "A team wants an agent system that turns production incidents into automatic policy updates. Define the authorized task contract, choose an architecture that separates observation from mutation, and specify a governed learning loop with counterevidence and rollback.",
+      "task_text_nfc_sha256": "5c4d88f60014c4c3c38ab941a970f319e3ee45e8c1b8e6bc7699f954e4fbb719",
+      "profile": "cap",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 139,
+              "end": 192,
+              "text": "architecture that separates observation from mutation"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 103,
+              "end": 127,
+              "text": "authorized task contract"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 91,
+              "text": "A team wants an agent system that turns production incidents into automatic policy updates."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 208,
+              "end": 230,
+              "text": "governed learning loop"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "cap_abstain",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ4-A-18",
+      "case_nonce": "678ccdbf6f183fba3992a5a3443efe4877b63e91375b72452e4e63bcd5bbcbbf",
+      "task_text": "Use $agentic-engineering-lifecycle:agentic-engineering to choose a minimal orchestration topology for a sandboxed document-processing service; return only a proposal and enforcement-boundary map.",
+      "task_text_nfc_sha256": "5154f1985abad894382f1afdecf7c668714adc5fe6956904a83b2a2989a802b7",
+      "profile": "explicit",
+      "explicit_slot_id": "s0",
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 4,
+              "end": 54,
+              "text": "$agentic-engineering-lifecycle:agentic-engineering"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 195,
+              "text": "Use $agentic-engineering-lifecycle:agentic-engineering to choose a minimal orchestration topology for a sandboxed document-processing service; return only a proposal and enforcement-boundary map."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 195,
+              "text": "Use $agentic-engineering-lifecycle:agentic-engineering to choose a minimal orchestration topology for a sandboxed document-processing service; return only a proposal and enforcement-boundary map."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 195,
+              "text": "Use $agentic-engineering-lifecycle:agentic-engineering to choose a minimal orchestration topology for a sandboxed document-processing service; return only a proposal and enforcement-boundary map."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0"
+        ],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ4-A-19",
+      "case_nonce": "d460a307e8fa8e1f734aab78c419ac8f973c224a0332e0ffb39bee39f33ce64d",
+      "task_text": "Use $agentic-engineering:verification-strategy-engineering to propose the smallest evidence portfolio for a cache invalidation change that may serve stale authorization decisions.",
+      "task_text_nfc_sha256": "04d11f9598d68c777f3e11ab8efb9faa319868091ac418c6bfa2e8b094306e21",
+      "profile": "explicit",
+      "explicit_slot_id": "s2",
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 179,
+              "text": "Use $agentic-engineering:verification-strategy-engineering to propose the smallest evidence portfolio for a cache invalidation change that may serve stale authorization decisions."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 179,
+              "text": "Use $agentic-engineering:verification-strategy-engineering to propose the smallest evidence portfolio for a cache invalidation change that may serve stale authorization decisions."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 4,
+              "end": 58,
+              "text": "$agentic-engineering:verification-strategy-engineering"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 179,
+              "text": "Use $agentic-engineering:verification-strategy-engineering to propose the smallest evidence portfolio for a cache invalidation change that may serve stale authorization decisions."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s2"
+        ],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ4-A-20",
+      "case_nonce": "8f0517889980b5a6a10c1d29220e67dd97afc012020c206a13b00d2715330029",
+      "task_text": "We may replace a nightly shell script with either a queue-backed service or a slightly safer script, but workload size, failure cost, and recovery requirements are unknown. Advise what architecture to use.",
+      "task_text_nfc_sha256": "97781c0b8fd0920b053077e0e5a24e23d1b205a1bb17fcaf333713f66ee99481",
+      "profile": "uncertain",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "uncertain",
+          "reference_need": "uncertain",
+          "anchors": []
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 205,
+              "text": "We may replace a nightly shell script with either a queue-backed service or a slightly safer script, but workload size, failure cost, and recovery requirements are unknown. Advise what architecture to use."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 205,
+              "text": "We may replace a nightly shell script with either a queue-backed service or a slightly safer script, but workload size, failure cost, and recovery requirements are unknown. Advise what architecture to use."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 205,
+              "text": "We may replace a nightly shell script with either a queue-backed service or a slightly safer script, but workload size, failure cost, and recovery requirements are unknown. Advise what architecture to use."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "uncertain_abstain",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    }
+  ]
+}
