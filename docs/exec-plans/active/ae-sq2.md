@@ -1,9 +1,9 @@
 # AE-SQ2 successor qualification program authority
 
-Status: **ACTIVE — F0 AUTHORITY CLOSED; SQ2-D0 NEXT**
+Status: **TERMINAL — SQ2-AR; NO F1, CORPUS, QUALIFICATION, OR DOWNSTREAM EDGE**
 Program owner: repository owner
 Program integrator: root conductor
-Active-plan path: `docs/exec-plans/active/ae-sq2.md`
+Terminal-plan path: `docs/exec-plans/active/ae-sq2.md`
 Machine-readable authority: `evals/ae-sq2/program-authority.json`
 Authority date: 2026-08-12, America/Los_Angeles
 Claim ceiling: structural authority and unexecuted owner authorization only
@@ -357,3 +357,37 @@ F0 performs zero model calls and authors zero corpus cases. The next authorized
 transition is to predeclare the four synthetic non-corpus D0 slots and execute
 `SQ2-D0` under its bounded diagnostic-only authority. That transition may not
 be described as AQ qualification, retry, reopen, resume, or H6.
+
+## 16. Terminal checkpoint after SQ2-D0
+
+AE-SQ2 executed its sole four-call diagnostic at commit
+`e2562ca4da5f3dc14fb07c1522f911e2dfe4334d`. The bounded record is
+`evals/ae-sq2/d0/diagnostic-record.json`, blob
+`f5dc5b67435c78d0b214ac21fc69531c9bae7d3e`, raw SHA-256
+`1e2352fe42453b03cafac06e9c2e98638af17ad6a3e5dfaf389baf9da39d6502`,
+internal record SHA-256
+`5bb323666e5fe54d39df3fb91a65e1dd44c96ac5a4f3c9e967d2481a5eda5e9c`,
+and aggregate SHA-256
+`d333397b1bc0a633d80ac43bbf1ae6e9b5aafdfb6af5b01ad5493f9fb3292235`.
+All four slots classified `schema_unsupported`; every other classification and
+all usage counters were zero. This is diagnostic evidence only.
+
+The diagnostic also persisted a one-shot state under the Git common directory.
+Its top-level fields included `schema_version`, `custody_key`, `binding`, and
+`state_sha256`, plus five nested binding keys. Those fields were not in F0's
+exhaustive list of permitted durable D0 fields. The state was safety-motivated
+and bounded, but its persistence still violated the frozen authority. Under the
+predeclared `budget_or_persistence_violation_route`, AE-SQ2 therefore entered
+`SQ2-AR` and is terminal.
+
+- **F1, corpus, preflight, canary, batch, and F6:** not started.
+- **AQ:** no result; D0 cannot qualify AQ.
+- **AS and every downstream stage:** blocked.
+- **AR:** `DO_NOT_RELEASE_OR_PROMOTE`, `STOP`.
+- **Retry, reopen, resume, H6, further SQ2 model/corpus work, release,
+  publication, promotion, deletion, and migration:** forbidden.
+
+The closed terminal decision is
+`evals/ae-sq2/ar/terminal-decision.json`. All AE-SQ2 and durable one-shot state
+surfaces remain retained. A repair requires a distinct owner-authorized program
+identity; it cannot be an AE-SQ2 retry, continuation, cure, or reinterpretation.

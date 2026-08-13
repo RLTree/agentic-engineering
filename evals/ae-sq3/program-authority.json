@@ -1,0 +1,500 @@
+{
+  "schema_version": "AE-SQ3-program-authority-v1",
+  "program_id": "AE-SQ3",
+  "authority_status": "F0_INITIAL_AUTHORITY_CLOSED",
+  "claim_ceiling": "structural-successor-authority-and-bounded-predecessor-diagnosis-only",
+  "owner_authorization": {
+    "authorized": true,
+    "scope": "SQ3-F1A-through-SQ3-F6-subject-to-exact-closed-gates-and-budgets",
+    "successor_kind": "distinct-owner-authorized-new-program",
+    "candidate_id": "AE-SQ3-SLEC-3",
+    "not_semantics": [
+      "retry",
+      "reopen",
+      "resume",
+      "continuation",
+      "H6",
+      "cure",
+      "reinterpretation",
+      "delayed-AE-SQ2-phase"
+    ],
+    "authorized_phases": [
+      "SQ3-F1A",
+      "SQ3-F1B",
+      "SQ3-F2",
+      "SQ3-F3",
+      "SQ3-F4",
+      "SQ3-F5",
+      "SQ3-F6"
+    ],
+    "live_model_phases": [
+      "SQ3-F4",
+      "SQ3-F5"
+    ],
+    "additional_diagnostic_calls_authorized": false,
+    "live_calls_authorized_within_gate_and_budget": true,
+    "additional_owner_approval_required_for_authorized_phases": false,
+    "corpus_authoring_authorized_only_after_F1B": true,
+    "downstream_execution_authorized_by_this_artifact": false,
+    "release_publish_promotion_authorized": false,
+    "deletion_or_migration_authorized": false
+  },
+  "predecessor_terminal_history": {
+    "program_id": "AE-SQ2",
+    "status": "terminal",
+    "terminal_stage": "SQ2-AR",
+    "terminal_decision": {
+      "path": "evals/ae-sq2/ar/terminal-decision.json",
+      "raw_sha256": "f705401afd219eafaf13be273a7386b503400cc2f1ef0b072d74a7ec14919ada"
+    },
+    "terminal_plan": {
+      "path": "docs/exec-plans/active/ae-sq2.md",
+      "raw_sha256": "b854f3d3794e924dd3e778c29bc81c602d058c287c9f45b7ede92ed708e7a027"
+    },
+    "frozen_program_authority": {
+      "path": "evals/ae-sq2/program-authority.json",
+      "raw_sha256": "d27262f7a40f773224e96926d85e25be314115d248e5ae240cc90a02a93e4e00"
+    },
+    "diagnostic_record": {
+      "path": "evals/ae-sq2/d0/diagnostic-record.json",
+      "commit": "e2562ca4da5f3dc14fb07c1522f911e2dfe4334d",
+      "blob": "f5dc5b67435c78d0b214ac21fc69531c9bae7d3e",
+      "raw_sha256": "1e2352fe42453b03cafac06e9c2e98638af17ad6a3e5dfaf389baf9da39d6502",
+      "record_sha256": "5bb323666e5fe54d39df3fb91a65e1dd44c96ac5a4f3c9e967d2481a5eda5e9c",
+      "aggregate_sha256": "d333397b1bc0a633d80ac43bbf1ae6e9b5aafdfb6af5b01ad5493f9fb3292235"
+    },
+    "persistence_violation": {
+      "kind": "durable-fields-outside-frozen-exhaustive-allowlist",
+      "state_raw_sha256": "45fb94c73ec0469393fc1c1d2df085ebf265d6a0f6e840aa0b8b6d6a84887902",
+      "state_sha256": "026f03ca874ba1d8954dd3a56b942bd34cc5fd892de9811ec718f725a19f0cd8",
+      "custody_key": "8aecf7304bd6eb56bf760279b8fefcfc4f4efd32fe93b9b431788e4d7774d976",
+      "route": "SQ2-AR",
+      "AE_SQ2_repair_permitted": false
+    },
+    "predecessor_bytes_write_permitted": false,
+    "predecessor_state_delete_or_migrate_permitted": false,
+    "EXECPLAN_write_permitted": false
+  },
+  "imported_diagnosis": {
+    "kind": "bounded-non-corpus-interface-diagnosis-only",
+    "calls_started": 4,
+    "calls_completed": 4,
+    "classification_counts": {
+      "transport_spawn": 0,
+      "process_exit": 0,
+      "signal_exit": 0,
+      "timeout": 0,
+      "empty_stdout": 0,
+      "invalid_jsonl": 0,
+      "unknown_event": 0,
+      "missing_completed_message": 0,
+      "provider_request_rejected": 0,
+      "schema_unsupported": 4,
+      "schema_invalid": 0,
+      "semantic_invalid": 0,
+      "valid_completed": 0,
+      "other_fail_closed": 0
+    },
+    "usage": {
+      "input_tokens": 0,
+      "cached_input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0
+    },
+    "permitted_use": "select-provider-schema-compatibility-repair-and-no-other-purpose",
+    "qualification_effect": "none",
+    "behavioral_tuning_permitted": false,
+    "evaluator_tuning_permitted": false,
+    "corpus_or_label_use_permitted": false,
+    "raw_or_event_material_imported": false
+  },
+  "phase_graph": {
+    "ordered_phases": [
+      "SQ3-F0",
+      "SQ3-F1A",
+      "SQ3-F1B",
+      "SQ3-F2",
+      "SQ3-F3",
+      "SQ3-F4",
+      "SQ3-F5",
+      "SQ3-F6",
+      "SQ3-AS-HANDOFF",
+      "SQ3-AR"
+    ],
+    "success_edges": [
+      "SQ3-F0->SQ3-F1A",
+      "SQ3-F1A:PASS->SQ3-F1B",
+      "SQ3-F1B:PASS->SQ3-F2",
+      "SQ3-F2:PASS->SQ3-F3",
+      "SQ3-F3:PASS->SQ3-F4",
+      "SQ3-F4:PASS->SQ3-F5",
+      "SQ3-F5:COMPLETE_VALID->SQ3-F6",
+      "SQ3-F6:PASS->SQ3-AS-HANDOFF"
+    ],
+    "terminal_edges": [
+      "SQ3-F1A:NOT_PASS->SQ3-AR",
+      "SQ3-F1B:NOT_PASS->SQ3-AR",
+      "SQ3-F2:NOT_PASS->SQ3-AR",
+      "SQ3-F3:NOT_PASS->SQ3-AR",
+      "SQ3-F4:NOT_PASS->SQ3-AR",
+      "SQ3-F5:NOT_COMPLETE_VALID->SQ3-AR",
+      "SQ3-F6:NOT_PASS->SQ3-AR"
+    ],
+    "later_phase_compensation_permitted": false,
+    "additional_active_phases_permitted": false,
+    "additional_active_edges_permitted": false,
+    "reopen_or_resume_permitted": false
+  },
+  "diagnosed_repair": {
+    "repair_id": "SQ3-provider-schema-subset-plus-local-semantics",
+    "additional_diagnostic_calls": 0,
+    "provider_schema_permitted_keywords": [
+      "type",
+      "properties",
+      "required",
+      "additionalProperties",
+      "items",
+      "enum",
+      "description",
+      "minItems",
+      "maxItems",
+      "$defs",
+      "$ref"
+    ],
+    "provider_schema_forbidden_keywords": [
+      "allOf",
+      "if",
+      "then",
+      "else",
+      "not",
+      "uniqueItems",
+      "pattern",
+      "minLength",
+      "maxLength",
+      "minimum",
+      "maximum",
+      "dependentRequired",
+      "dependentSchemas",
+      "unevaluatedItems",
+      "unevaluatedProperties"
+    ],
+    "provider_object_contract": {
+      "all_properties_required": true,
+      "additionalProperties_must_be_false": true,
+      "undeclared_keywords_permitted": false,
+      "recursive_closure_required": true
+    },
+    "local_semantic_validation": {
+      "required": true,
+      "position": "after-provider-decode-before-parent-resolver-evaluator-or-scorer",
+      "enforces": [
+        "conditional-invariants",
+        "uniqueness",
+        "anchors-and-references",
+        "cardinality",
+        "syntax",
+        "domain-invariants"
+      ],
+      "provider_validation_substitute": false,
+      "fail_closed": true
+    },
+    "lifecycle_contract": {
+      "observation_requires": "recognized-completed-event-plus-provider-valid-plus-local-semantic-valid-capsule",
+      "stdout_presence_is_observation": false,
+      "process_exit_alone_is_observation": false,
+      "stderr_text_is_observation": false,
+      "timeout_is_observation": false,
+      "unknown_tool_effect_malformed_duplicate_or_extra_event_route": "fail-closed"
+    },
+    "raw_persistence_permitted": false,
+    "aggregate_only_projection_required": true,
+    "result_informed_repair_permitted": false
+  },
+  "model_configuration": {
+    "model_id": "gpt-5.5",
+    "reasoning_effort": "medium",
+    "applies_to_phases": [
+      "SQ3-F4",
+      "SQ3-F5"
+    ],
+    "model_fallback_permitted": false,
+    "provider_fallback_permitted": false,
+    "reasoning_fallback_permitted": false,
+    "mode_fallback_permitted": false
+  },
+  "call_budgets": {
+    "counting_unit": "attempted-model-invocation",
+    "diagnostic_calls": 0,
+    "canary_calls": 4,
+    "conditional_batch_calls": 320,
+    "qualification_hard_ceiling": 324,
+    "retry_calls_hard_ceiling": 0,
+    "failed_malformed_rejected_empty_or_timed_out_attempts_count": true,
+    "unused_calls_transfer_permitted": false,
+    "top_up_replacement_or_replay_calls_permitted": false,
+    "downstream_call_budget_in_this_authority": 0
+  },
+  "f1_freeze": {
+    "implementation_phase": "SQ3-F1A",
+    "freeze_phase": "SQ3-F1B",
+    "commit_sequence": [
+      "F1A-implementation-commit",
+      "F1B-manifest-only-freeze-commit"
+    ],
+    "candidate_id": "AE-SQ3-SLEC-3",
+    "F1A_forbidden_artifacts": [
+      "freeze-manifest",
+      "corpus",
+      "split",
+      "schedule",
+      "preflight-result",
+      "live-result"
+    ],
+    "F1B_only_new_program_artifact": "evals/ae-sq3/f1/repaired-freeze.json",
+    "required_exact_bindings": [
+      "F0-authority",
+      "bounded-SQ2-diagnosis",
+      "F1A-commit-and-tree",
+      "all-required-paths-blobs-and-raw-SHA256",
+      "candidate-and-condition-adapter",
+      "provider-schema-and-local-semantic-validator",
+      "resolver-runner-lifecycle-and-event-rejection",
+      "evaluator-scorer-formulas-thresholds-and-global-AND",
+      "model-effort-budgets-and-zero-retry",
+      "durable-state-contract",
+      "raw-retention-prohibition-and-aggregate-only-projection"
+    ],
+    "independent_strict_review_required": true,
+    "corpus_authoring_before_F1B_pass_permitted": false,
+    "post_F1B_semantic_change_permitted": false,
+    "same_program_refreeze_permitted": false,
+    "not_pass_route": "SQ3-AR"
+  },
+  "durable_state_contract": {
+    "schema_version": "ae-sq3-one-shot-run-index-v1",
+    "purpose": "unified-one-shot-execution-boundary-and-run-index",
+    "exact_top_level_keys_in_canonical_order": [
+      "binding",
+      "custody_key",
+      "program_id",
+      "record_sha256",
+      "schema_version",
+      "state_sha256",
+      "status"
+    ],
+    "program_id": "AE-SQ3",
+    "exact_binding_keys_in_canonical_order": [
+      "corpus_manifest_sha256",
+      "f1_freeze_sha256",
+      "preflight_record_sha256",
+      "program_authority_sha256",
+      "run_manifest_sha256"
+    ],
+    "binding_value_type": "lowercase-64-hex-SHA256",
+    "custody_key_derivation": "SHA256-canonical-binding",
+    "status_enum": [
+      "claimed",
+      "completed",
+      "invalid"
+    ],
+    "record_sha256_contract": "null-iff-claimed-otherwise-lowercase-64-hex-SHA256",
+    "state_sha256_derivation": "SHA256-canonical-record-with-state_sha256-omitted",
+    "additional_top_level_or_nested_keys_permitted": false,
+    "atomic_claim": "owner-only-no-follow-O_CREAT-O_EXCL-before-first-canary-child",
+    "existing_or_unsafe_state_route": "fail-closed-no-child-spawn",
+    "interruption_after_claim_route": "durable-terminal-no-reuse",
+    "terminal_replacement": "atomic",
+    "dry_run_or_preflight_claim_permitted": false,
+    "strict_recursive_and_mutation_red_tests_required": true
+  },
+  "corpus_contract": {
+    "phase": "SQ3-F2",
+    "authoring_gate": "SQ3-F1B:PASS",
+    "fresh_relative_to_all_predecessors": true,
+    "predecessor_candidate_or_corpus_continuation_permitted": false,
+    "independent_author_count": 2,
+    "cases_per_author": 20,
+    "total_unique_cases": 40,
+    "authors_may_access_each_other_split": false,
+    "authors_may_access_predecessor_task_case_corpus_or_label_material": false,
+    "authors_may_access_diagnostic_model_material_or_live_results": false,
+    "independent_validation_required": true,
+    "conditions": [
+      "current",
+      "reduced"
+    ],
+    "total_presentations": 80,
+    "calls_per_presentation": 4,
+    "total_batch_calls": 320,
+    "historical_no_replay_digest_check_required": true,
+    "result_informed_change_permitted": false,
+    "consumption_trigger": "first-SQ3-F5-heldout-backed-call",
+    "post_consumption_status": "NO_REPLAY",
+    "retry_replay_duplicate_replacement_extra_or_top_up_permitted": false
+  },
+  "zero_model_preflight": {
+    "phase": "SQ3-F3",
+    "attempts": 1,
+    "model_calls": 0,
+    "requires": "SQ3-F2:PASS",
+    "required_checks": [
+      "F1B-and-F2-exact-custody",
+      "provider-supported-subset-and-local-semantics",
+      "strict-recursive-schema-closure",
+      "two-independent-twenty-case-splits-and-forty-unique-cases",
+      "eighty-presentations-times-four-calls",
+      "formula-totality-global-AND-and-required-value-coverage",
+      "lifecycle-effect-event-and-counter-closure",
+      "budgets-zero-retry-aggregate-only-and-zero-raw-persistence",
+      "unclaimed-one-shot-state"
+    ],
+    "pass_required_for_canary": true,
+    "repair_or_second_preflight_permitted": false,
+    "not_pass_route": "SQ3-AR"
+  },
+  "qualification_execution": {
+    "canary": {
+      "phase": "SQ3-F4",
+      "requires": "SQ3-F3:PASS",
+      "units": 1,
+      "calls": 4,
+      "corpus_content_permitted": false,
+      "calls_per_isolated_child_context": 1,
+      "pass_requirements": [
+        "four-calls-started-and-completed-once",
+        "all-capsules-provider-and-local-semantic-valid",
+        "parent-join-closes",
+        "counters-reconcile",
+        "no-tool-effect-or-unknown-event-accepted",
+        "zero-forbidden-raw-persistence"
+      ],
+      "retry_top_up_replacement_second_canary_or_byte_change_permitted": false,
+      "qualification_effect": "gateway-only-not-AQ-pass",
+      "not_pass_route": "SQ3-AR"
+    },
+    "batch": {
+      "phase": "SQ3-F5",
+      "requires": "SQ3-F4:PASS",
+      "conditional": true,
+      "total_presentations": 80,
+      "calls_per_presentation": 4,
+      "hard_call_ceiling": 320,
+      "each_case_condition_presented_once": true,
+      "first_call_consumes_both_splits": true,
+      "failed_or_malformed_attempts_count": true,
+      "retry_replay_duplicate_replacement_extra_or_top_up_permitted": false,
+      "complete_valid_route": "SQ3-F6",
+      "incomplete_failed_or_invalid_route": "SQ3-AR"
+    }
+  },
+  "global_and": {
+    "phase": "SQ3-F6",
+    "model_calls": 0,
+    "operator": "logical-AND",
+    "scope": "all-required-run-integrity-capsule-evaluator-gate-metric-condition-and-presentation-values",
+    "required_conditions": [
+      "current",
+      "reduced"
+    ],
+    "false_values": [
+      "missing",
+      "skipped",
+      "undefined",
+      "nonfinite",
+      "malformed",
+      "duplicate",
+      "extra",
+      "unevaluable",
+      "rejected",
+      "failed"
+    ],
+    "compensation_threshold_repair_override_or_later_cure_permitted": false,
+    "pass_literal": "PASS",
+    "fail_literal": "FAIL",
+    "result_count": 1,
+    "result_projection": "candidate-bound-aggregate-status-and-digest-only",
+    "subaggregate_or_raw_result_disclosure_permitted": false
+  },
+  "routing_and_claims": {
+    "diagnosis_can_qualify_AQ": false,
+    "canary_alone_can_qualify_AQ": false,
+    "incomplete_or_invalid_batch_can_reach_F6": false,
+    "pass_edge": "SQ3-F6:PASS->SQ3-AS-HANDOFF",
+    "nonpass_edge": "SQ3-F6:NOT_PASS->SQ3-AR",
+    "SQ3_AS_HANDOFF_is_execution_authority": false,
+    "SQ3_AR_is_terminal": true,
+    "maximum_AQ_claim": "exact-candidate-aggregate-in-frozen-forty-case-two-condition-AE-SQ3-envelope-only",
+    "isolated_advice_composition_host_field_or_production_claim": false,
+    "release_publish_or_promotion_claim": false
+  },
+  "namespace": {
+    "artifact_root": "evals/ae-sq3",
+    "active_plan": {
+      "path": "docs/exec-plans/active/ae-sq3.md",
+      "raw_sha256": "875e4ab27e164c1d5dee583399021a8c98a18f6649eeb317aa885db50e7d8fe6"
+    },
+    "program_base_commit": "e2562ca4da5f3dc14fb07c1522f911e2dfe4334d",
+    "foundation_pointer": "docs/exec-plans/active/ae-sq3.md for AE-SQ3 only",
+    "decision_log_row_ids": [
+      "AE-SQ2-AR-2026-08-12",
+      "AE-SQ3-F0-2026-08-12"
+    ],
+    "F0_files": [
+      "docs/exec-plans/active/ae-sq2.md",
+      "docs/exec-plans/active/ae-sq3.md",
+      "evals/ae-sq2/ar/terminal-decision.json",
+      "evals/ae-sq3/program-authority.json",
+      "docs/foundations/current-2026-08-08.md",
+      "docs/foundations/decision-log.csv",
+      "tests/test_ae_sq2_terminal.py",
+      "tests/test_ae_sq3_program_authority.py"
+    ],
+    "predecessor_root_write_permitted": false,
+    "predecessor_durable_state_write_delete_or_migrate_permitted": false,
+    "EXECPLAN_write_permitted": false,
+    "reserved_future_artifacts_confer_state": false
+  },
+  "forbidden_actions": [
+    "retry-reopen-resume-continue-cure-or-reinterpret-AE-SQ2",
+    "H6",
+    "write-AE-SQ1-or-AE-SQ2-predecessor-bytes",
+    "delete-or-migrate-predecessor-durable-state",
+    "mutate-EXECPLAN",
+    "make-an-additional-diagnostic-call",
+    "use-diagnosis-as-AQ-or-behavioral-evidence",
+    "use-predecessor-task-case-corpus-label-raw-result-or-event-material",
+    "author-corpus-before-F1B-pass",
+    "continue-a-predecessor-candidate-or-corpus",
+    "change-F1-semantics-after-F1B",
+    "model-call-during-F1-F2-F3-or-F6",
+    "canary-before-F3-pass",
+    "batch-before-F4-pass",
+    "retry-replay-replace-duplicate-extra-or-top-up-call-or-presentation",
+    "model-provider-reasoning-or-mode-fallback",
+    "persist-forbidden-raw-or-subaggregate-material",
+    "later-stage-compensation",
+    "route-nonpass-downstream",
+    "release-publish-promote-delete-or-migrate"
+  ],
+  "acceptance": {
+    "F0_status": "structural-successor-authority-closed",
+    "F0_execution_claim": "zero-model-calls-zero-corpus-zero-candidate-or-runner-change",
+    "required_checks": [
+      "strict-duplicate-key-type-order-recursive-closure",
+      "SQ2-terminal-and-diagnostic-exact-custody",
+      "new-candidate-and-corpus-noncontinuation",
+      "no-additional-diagnostic-call",
+      "provider-subset-plus-local-semantic-repair",
+      "F1-two-commit-freeze-before-corpus",
+      "exact-durable-state-field-and-binding-schema",
+      "independent-two-times-twenty-fresh-corpus",
+      "one-zero-model-preflight",
+      "one-four-call-canary-and-conditional-320-call-batch",
+      "zero-retry-global-AND-and-pass-only-routing",
+      "foundation-pointer-and-two-decision-rows",
+      "mutation-reds-targeted-tests-Ruff-JSON-diff-and-status"
+    ],
+    "next_authorized_transition": "SQ3-F1A-implement-diagnosed-repair-with-zero-model-calls-and-zero-corpus",
+    "semantic_change_requires_new_program_id": true
+  }
+}

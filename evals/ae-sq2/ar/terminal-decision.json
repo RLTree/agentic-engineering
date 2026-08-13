@@ -1,0 +1,114 @@
+{
+  "schema_version": "ae-sq2-ar-terminal-decision-v1",
+  "program_id": "AE-SQ2",
+  "stage": "SQ2-AR",
+  "status": "terminal",
+  "decision": "DO_NOT_RELEASE_OR_PROMOTE",
+  "stop": true,
+  "claim_ceiling": "structural-governance-and-diagnostic-closeout-only",
+  "terminal_reason": "durable-one-shot-state-fields-outside-frozen-F0-exhaustive-persistence-allowlist",
+  "diagnostic_outcome": {
+    "status": "completed-diagnostic-only-not-qualification",
+    "classification": "schema_unsupported",
+    "calls_started": 4,
+    "calls_completed": 4,
+    "classification_counts": {
+      "transport_spawn": 0,
+      "process_exit": 0,
+      "signal_exit": 0,
+      "timeout": 0,
+      "empty_stdout": 0,
+      "invalid_jsonl": 0,
+      "unknown_event": 0,
+      "missing_completed_message": 0,
+      "provider_request_rejected": 0,
+      "schema_unsupported": 4,
+      "schema_invalid": 0,
+      "semantic_invalid": 0,
+      "valid_completed": 0,
+      "other_fail_closed": 0
+    },
+    "usage": {
+      "input_tokens": 0,
+      "cached_input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0
+    }
+  },
+  "diagnostic_record_custody": {
+    "path": "evals/ae-sq2/d0/diagnostic-record.json",
+    "commit": "e2562ca4da5f3dc14fb07c1522f911e2dfe4334d",
+    "blob": "f5dc5b67435c78d0b214ac21fc69531c9bae7d3e",
+    "raw_sha256": "1e2352fe42453b03cafac06e9c2e98638af17ad6a3e5dfaf389baf9da39d6502",
+    "record_sha256": "5bb323666e5fe54d39df3fb91a65e1dd44c96ac5a4f3c9e967d2481a5eda5e9c",
+    "aggregate_sha256": "d333397b1bc0a633d80ac43bbf1ae6e9b5aafdfb6af5b01ad5493f9fb3292235"
+  },
+  "persistence_violation": {
+    "frozen_program_authority_path": "evals/ae-sq2/program-authority.json",
+    "frozen_program_authority_raw_sha256": "d27262f7a40f773224e96926d85e25be314115d248e5ae240cc90a02a93e4e00",
+    "allowlist_semantics": "exhaustive-only-permitted-durable-D0-fields",
+    "state_location": "git-common-dir/.ae-sq2-d0/state.json",
+    "state_raw_sha256": "45fb94c73ec0469393fc1c1d2df085ebf265d6a0f6e840aa0b8b6d6a84887902",
+    "state_sha256": "026f03ca874ba1d8954dd3a56b942bd34cc5fd892de9811ec718f725a19f0cd8",
+    "custody_key": "8aecf7304bd6eb56bf760279b8fefcfc4f4efd32fe93b9b431788e4d7774d976",
+    "state_status": "completed",
+    "state_record_sha256": "5bb323666e5fe54d39df3fb91a65e1dd44c96ac5a4f3c9e967d2481a5eda5e9c",
+    "persisted_top_level_keys": [
+      "binding",
+      "custody_key",
+      "record_sha256",
+      "schema_version",
+      "state_sha256",
+      "status"
+    ],
+    "persisted_binding": {
+      "cli_sha256": "19c4f144c5226a9f17c58e6f0fa854843b0f77a6eb420f40e2745a12f10f5d37",
+      "diagnostic_authority_sha256": "2452348832f5a4d8a3ba566adfcf1893c6740dc0b66902fae8cf537324c5f379",
+      "diagnostic_schema_sha256": "9b1f037cecf3071ce8d8ddea88e208c55c6f72674375db064eaeb46920fd0c01",
+      "input_schema_sha256": "7124be192fa7d047ae7d9e54f1cfd84c32129164caddf6474277ae5fb3e65f4f",
+      "parent_program_authority_sha256": "d27262f7a40f773224e96926d85e25be314115d248e5ae240cc90a02a93e4e00"
+    },
+    "top_level_keys_outside_allowlist": [
+      "binding",
+      "custody_key",
+      "schema_version",
+      "state_sha256"
+    ],
+    "binding_keys_outside_allowlist": [
+      "diagnostic_authority_sha256",
+      "parent_program_authority_sha256"
+    ],
+    "route": "SQ2-AR",
+    "repair_within_AE_SQ2_permitted": false
+  },
+  "phase_status": {
+    "SQ2_D0": "completed-diagnostic-only",
+    "SQ2_F1": "not_started",
+    "SQ2_F2": "not_started-no-corpus-authored",
+    "SQ2_F3": "not_started",
+    "SQ2_F4": "not_started",
+    "SQ2_F5": "not_started",
+    "SQ2_F6": "not_started-no-AQ-result",
+    "SQ2_AS_HANDOFF": "blocked"
+  },
+  "retention": "retain-all-SQ2-surfaces-and-durable-one-shot-state-no-delete-or-migration",
+  "successor_route": "new-owner-authorized-program-id-only",
+  "terminal_edges": [
+    "no_SQ2_F1",
+    "no_SQ2_corpus",
+    "no_SQ2_preflight",
+    "no_SQ2_canary",
+    "no_SQ2_batch",
+    "no_SQ2_AQ_result",
+    "no_SQ2_retry",
+    "no_reopen",
+    "no_resume",
+    "no_H6",
+    "no_downstream",
+    "no_release",
+    "no_publish",
+    "no_promotion",
+    "no_deletion",
+    "no_migration"
+  ]
+}

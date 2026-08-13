@@ -21,12 +21,18 @@ DECISION_LOG_PATH = ROOT / "docs" / "foundations" / "decision-log.csv"
 
 BASE_COMMIT = "9861df7c7894b35f5ce758ee1b005f80ceb0426e"
 BASE_TREE = "573f53baa839a3b088548a7e7ba2050003911a7a"
+SQ2_F0_COMMIT = "a702910d7f00077491b0ffe796ee818e928150c6"
+SQ2_D0_RECORD_COMMIT = "e2562ca4da5f3dc14fb07c1522f911e2dfe4334d"
 SQ1_TAG = "ae-sq1-terminal-2026-08-11"
 SQ1_PLAN_BLOB = "ff649a88cdf8ffa1f1a4b6a8b6a71b2c01cc43b4"
 SQ1_PLAN_SHA256 = "ebc53ca6305837ecd089dd201542dcbb35c5478b6bbf31e1003a227440868418"
 SQ1_NAMESPACE_TREE = "47e799543415c8834d9753f5252dd73e33eb3639"
 DECISION_ROW_ID = "AE-SQ2-F0-2026-08-12"
-AUTHORITY_SEMANTIC_SHA256 = "52ff479e81cd143bd682f0dcf875a12d055d403695e569e0534925b762550b24"
+TERMINAL_ROW_ID = "AE-SQ2-AR-2026-08-12"
+SUCCESSOR_ROW_ID = "AE-SQ3-F0-2026-08-12"
+AUTHORITY_SEMANTIC_SHA256 = (
+    "52ff479e81cd143bd682f0dcf875a12d055d403695e569e0534925b762550b24"
+)
 
 TOP_LEVEL_KEYS = (
     "schema_version",
@@ -313,7 +319,10 @@ def validate_authority(document: dict[str, Any]) -> None:
     )
     require(owner["live_model_phases"] == ["SQ2-D0", "SQ2-F4", "SQ2-F5"], "live phases")
     require(owner["corpus_authoring_authorized_only_after_F1"] is True, "corpus gate")
-    require(owner["downstream_execution_authorized_by_this_artifact"] is False, "downstream authority")
+    require(
+        owner["downstream_execution_authorized_by_this_artifact"] is False,
+        "downstream authority",
+    )
     require(owner["release_publish_promotion_authorized"] is False, "release authority")
 
     predecessor = document["predecessor_terminal_history"]
@@ -360,7 +369,9 @@ def validate_authority(document: dict[str, Any]) -> None:
     model = document["model_configuration"]
     require(model["model_id"] == "gpt-5.5", "model")
     require(model["reasoning_effort"] == "medium", "effort")
-    require(model["applies_to_phases"] == ["SQ2-D0", "SQ2-F4", "SQ2-F5"], "model phases")
+    require(
+        model["applies_to_phases"] == ["SQ2-D0", "SQ2-F4", "SQ2-F5"], "model phases"
+    )
     for key in (
         "model_fallback_permitted",
         "provider_fallback_permitted",
@@ -386,7 +397,9 @@ def validate_authority(document: dict[str, Any]) -> None:
         "D0 repeat or reorder",
     )
     require(diagnostic["retry_calls"] == 0, "D0 retry")
-    require(diagnostic["classification_enum"] == list(CLASSIFICATIONS), "D0 classifications")
+    require(
+        diagnostic["classification_enum"] == list(CLASSIFICATIONS), "D0 classifications"
+    )
     require(
         diagnostic["classification_precedence"] == list(CLASSIFICATION_PRECEDENCE),
         "D0 classification precedence",
@@ -399,22 +412,53 @@ def validate_authority(document: dict[str, Any]) -> None:
     require(counters["keys_in_exact_order"] == list(CLASSIFICATIONS), "D0 counter keys")
     require(counters["each_key_exactly_once"] is True, "D0 counter key cardinality")
     require(counters["value_type"] == "integer-not-boolean", "D0 counter type")
-    require(type(counters["minimum"]) is int and counters["minimum"] == 0, "D0 counter min")
-    require(type(counters["maximum"]) is int and counters["maximum"] == 4, "D0 counter max")
-    require(type(counters["sum_required"]) is int and counters["sum_required"] == 4, "D0 counter sum")
-    require(diagnostic["permitted_persisted_fields"] == list(PERMITTED_D0_FIELDS), "D0 fields")
-    require("calls_started" in diagnostic["permitted_persisted_fields"], "D0 started name")
-    require("calls_completed" in diagnostic["permitted_persisted_fields"], "D0 completed name")
-    require("usage_observed_calls" not in diagnostic["permitted_persisted_fields"], "D0 usage aggregate")
-    require(diagnostic["forbidden_persisted_material"] == list(FORBIDDEN_D0_MATERIAL), "D0 raw ban")
-    require(diagnostic["transient_bytes_discarded_after_hash_and_classification"] is True, "D0 discard")
-    require(diagnostic["budget_or_persistence_violation_route"] == "SQ2-AR", "D0 failure route")
+    require(
+        type(counters["minimum"]) is int and counters["minimum"] == 0, "D0 counter min"
+    )
+    require(
+        type(counters["maximum"]) is int and counters["maximum"] == 4, "D0 counter max"
+    )
+    require(
+        type(counters["sum_required"]) is int and counters["sum_required"] == 4,
+        "D0 counter sum",
+    )
+    require(
+        diagnostic["permitted_persisted_fields"] == list(PERMITTED_D0_FIELDS),
+        "D0 fields",
+    )
+    require(
+        "calls_started" in diagnostic["permitted_persisted_fields"], "D0 started name"
+    )
+    require(
+        "calls_completed" in diagnostic["permitted_persisted_fields"],
+        "D0 completed name",
+    )
+    require(
+        "usage_observed_calls" not in diagnostic["permitted_persisted_fields"],
+        "D0 usage aggregate",
+    )
+    require(
+        diagnostic["forbidden_persisted_material"] == list(FORBIDDEN_D0_MATERIAL),
+        "D0 raw ban",
+    )
+    require(
+        diagnostic["transient_bytes_discarded_after_hash_and_classification"] is True,
+        "D0 discard",
+    )
+    require(
+        diagnostic["budget_or_persistence_violation_route"] == "SQ2-AR",
+        "D0 failure route",
+    )
 
     repaired = document["repaired_freeze"]
     require(repaired["requires"] == "SQ2-D0:CLOSED_DIAGNOSTIC_ONLY", "F1 gate")
     require(repaired["corpus_or_label_input_permitted"] is False, "F1 corpus input")
-    require(repaired["qualification_result_input_permitted"] is False, "F1 result input")
-    require(repaired["corpus_authoring_before_close_permitted"] is False, "F1 authoring")
+    require(
+        repaired["qualification_result_input_permitted"] is False, "F1 result input"
+    )
+    require(
+        repaired["corpus_authoring_before_close_permitted"] is False, "F1 authoring"
+    )
     require(repaired["post_close_semantic_change_permitted"] is False, "F1 mutation")
     require(repaired["same_program_refreeze_permitted"] is False, "F1 refreeze")
 
@@ -460,7 +504,9 @@ def validate_authority(document: dict[str, Any]) -> None:
     global_and = document["global_and"]
     require(global_and["model_calls"] == 0, "F6 calls")
     require(global_and["operator"] == "logical-AND", "F6 operator")
-    require(global_and["required_conditions"] == ["current", "reduced"], "F6 conditions")
+    require(
+        global_and["required_conditions"] == ["current", "reduced"], "F6 conditions"
+    )
     require(global_and["fail_values"] == list(FAIL_VALUES), "F6 fail closure")
     require(global_and["compensation_or_override_permitted"] is False, "F6 override")
     require(global_and["result_count"] == 1, "aggregate count")
@@ -479,7 +525,9 @@ def validate_authority(document: dict[str, Any]) -> None:
     require(routes["SQ2_AR_is_terminal"] is True, "AR terminal")
     require(routes["public_action_authorized"] is False, "public authority")
 
-    require(document["forbidden_actions"] == list(FORBIDDEN_ACTIONS), "forbidden actions")
+    require(
+        document["forbidden_actions"] == list(FORBIDDEN_ACTIONS), "forbidden actions"
+    )
 
     namespace = document["namespace"]
     require(namespace["artifact_root"] == "evals/ae-sq2", "namespace")
@@ -496,7 +544,9 @@ def validate_authority(document: dict[str, Any]) -> None:
     require(namespace["reserved_future_paths_confer_state"] is False, "reserved state")
 
     acceptance = document["acceptance"]
-    require(acceptance["F0_status"] == "structural-program-authority-closed", "F0 status")
+    require(
+        acceptance["F0_status"] == "structural-program-authority-closed", "F0 status"
+    )
     require(
         acceptance["F0_execution_claim"]
         == "zero-live-calls-zero-corpus-zero-candidate-freeze",
@@ -515,9 +565,13 @@ class TestAeSq2ProgramAuthority(unittest.TestCase):
         validate_authority(self.authority)
 
     def test_plan_digest_and_required_semantics(self) -> None:
-        raw = PLAN_PATH.read_bytes()
+        raw = git("show", f"{SQ2_F0_COMMIT}:docs/exec-plans/active/ae-sq2.md")
         expected = self.authority["active_plan"]["raw_sha256"]
         self.assertEqual(hashlib.sha256(raw).hexdigest(), expected)
+        self.assertEqual(
+            git("show", f"{SQ2_F0_COMMIT}:evals/ae-sq2/program-authority.json"),
+            AUTHORITY_PATH.read_bytes(),
+        )
         text = raw.decode("utf-8")
         for literal in (
             "AE-SQ2 is not\nan AE-SQ1 retry, reopen, resume, continuation",
@@ -533,14 +587,20 @@ class TestAeSq2ProgramAuthority(unittest.TestCase):
             self.assertIn(f"`{classification}`", text)
 
     def test_predecessor_git_custody(self) -> None:
-        self.assertEqual(git("rev-parse", f"{BASE_COMMIT}^{{tree}}"), (BASE_TREE + "\n").encode())
-        self.assertEqual(git("rev-parse", f"{SQ1_TAG}^{{}}"), (BASE_COMMIT + "\n").encode())
+        self.assertEqual(
+            git("rev-parse", f"{BASE_COMMIT}^{{tree}}"), (BASE_TREE + "\n").encode()
+        )
+        self.assertEqual(
+            git("rev-parse", f"{SQ1_TAG}^{{}}"), (BASE_COMMIT + "\n").encode()
+        )
         self.assertEqual(
             git("rev-parse", f"{BASE_COMMIT}:docs/exec-plans/active/ae-sq1.md"),
             (SQ1_PLAN_BLOB + "\n").encode(),
         )
         self.assertEqual(
-            hashlib.sha256(git("show", f"{BASE_COMMIT}:docs/exec-plans/active/ae-sq1.md")).hexdigest(),
+            hashlib.sha256(
+                git("show", f"{BASE_COMMIT}:docs/exec-plans/active/ae-sq1.md")
+            ).hexdigest(),
             SQ1_PLAN_SHA256,
         )
         self.assertEqual(
@@ -559,29 +619,57 @@ class TestAeSq2ProgramAuthority(unittest.TestCase):
         self.assertEqual(changed, b"")
 
     def test_foundation_pointer_is_only_foundation_body_change(self) -> None:
-        base = git("show", f"{BASE_COMMIT}:docs/foundations/current-2026-08-08.md").decode()
+        frozen = git(
+            "show", f"{SQ2_F0_COMMIT}:docs/foundations/current-2026-08-08.md"
+        ).decode()
         old = (
-            "**Active successor plan:** `docs/exec-plans/active/ae-sq1.md` for "
-            "AE-SQ1 only; `EXECPLAN.md` remains immutable predecessor terminal history"
-        )
-        new = (
             "**Active successor plan:** `docs/exec-plans/active/ae-sq2.md` for "
             "AE-SQ2 only; AE-SQ1 and `EXECPLAN.md` remain immutable terminal history"
         )
-        self.assertEqual(FOUNDATION_PATH.read_text(encoding="utf-8"), base.replace(old, new))
+        new = (
+            "**Active successor plan:** `docs/exec-plans/active/ae-sq3.md` for "
+            "AE-SQ3 only; AE-SQ2, AE-SQ1, and `EXECPLAN.md` remain immutable terminal history"
+        )
+        self.assertEqual(frozen.count(old), 1)
+        current = FOUNDATION_PATH.read_text(encoding="utf-8")
+        self.assertEqual(current, frozen.replace(old, new))
+        self.assertNotIn("reopen", current.splitlines()[6].lower())
+        self.assertNotIn("H6", current.splitlines()[6])
 
-    def test_decision_log_appends_exactly_one_F0_row(self) -> None:
+    def test_decision_log_preserves_F0_and_admits_exact_terminal_successor_rows(
+        self,
+    ) -> None:
         base = git("show", f"{BASE_COMMIT}:docs/foundations/decision-log.csv")
+        frozen_f0 = git("show", f"{SQ2_F0_COMMIT}:docs/foundations/decision-log.csv")
         current = DECISION_LOG_PATH.read_bytes()
         self.assertTrue(current.startswith(base))
         suffix = current[len(base) :].decode("utf-8")
         rows = list(csv.reader(io.StringIO(suffix)))
-        self.assertEqual(len(rows), 1)
-        self.assertEqual(rows[0][0], DECISION_ROW_ID)
+        self.assertEqual(len(rows), 3)
+        self.assertEqual(
+            [row[0] for row in rows],
+            [DECISION_ROW_ID, TERMINAL_ROW_ID, SUCCESSOR_ROW_ID],
+        )
+        frozen_rows = list(csv.reader(io.StringIO(frozen_f0[len(base) :].decode())))
+        self.assertEqual(frozen_rows, [rows[0]])
         self.assertEqual(rows[0][11], BASE_COMMIT)
         self.assertIn(self.authority["active_plan"]["raw_sha256"], rows[0][12])
         self.assertIn("zero live calls", rows[0][12])
         self.assertIn("zero corpus cases", rows[0][12])
+        self.assertEqual(rows[1][6], "retire")
+        self.assertEqual(rows[1][11], SQ2_D0_RECORD_COMMIT)
+        self.assertIn("DO_NOT_RELEASE_OR_PROMOTE", rows[1][7])
+        self.assertIn("New owner-authorized program identity only", rows[1][9])
+        self.assertIn("no corpus authored", rows[1][12])
+        self.assertEqual(rows[2][6], "update")
+        self.assertEqual(rows[2][11], SQ2_D0_RECORD_COMMIT)
+        self.assertIn("distinct new successor", rows[2][3])
+        self.assertIn("SQ3-F1A", rows[2][9])
+        self.assertIn("retry ceiling zero", rows[2][12])
+        joined = " ".join(cell for row in rows for cell in row).lower()
+        self.assertNotIn("reopen ae-sq2", joined)
+        self.assertNotIn("resume ae-sq2", joined)
+        self.assertNotIn("authorize h6", joined)
 
     def test_contract_mutation_reds(self) -> None:
         mutations: list[tuple[str, dict[str, Any]]] = []
@@ -599,7 +687,9 @@ class TestAeSq2ProgramAuthority(unittest.TestCase):
         mutations.append(("phase order", changed))
 
         changed = copy.deepcopy(self.authority)
-        changed["diagnostic_contract"]["classification_enum"].remove("schema_unsupported")
+        changed["diagnostic_contract"]["classification_enum"].remove(
+            "schema_unsupported"
+        )
         mutations.append(("D0 enum", changed))
 
         changed = copy.deepcopy(self.authority)
@@ -634,11 +724,15 @@ class TestAeSq2ProgramAuthority(unittest.TestCase):
         mutations.append(("redacted error enum", changed))
 
         changed = copy.deepcopy(self.authority)
-        changed["diagnostic_contract"]["classification_counter_contract"]["sum_required"] = 3
+        changed["diagnostic_contract"]["classification_counter_contract"][
+            "sum_required"
+        ] = 3
         mutations.append(("classification counter sum", changed))
 
         changed = copy.deepcopy(self.authority)
-        changed["diagnostic_contract"]["permitted_persisted_fields"].append("raw_output")
+        changed["diagnostic_contract"]["permitted_persisted_fields"].append(
+            "raw_output"
+        )
         mutations.append(("D0 raw persistence", changed))
 
         changed = copy.deepcopy(self.authority)
@@ -692,7 +786,9 @@ class TestAeSq2ProgramAuthority(unittest.TestCase):
         mutations.append(("cleared forbidden actions", changed))
 
         changed = copy.deepcopy(self.authority)
-        changed["routing_and_claims"]["nonpass_edge"] = "SQ2-F6:NOT_PASS->SQ2-AS-HANDOFF"
+        changed["routing_and_claims"]["nonpass_edge"] = (
+            "SQ2-F6:NOT_PASS->SQ2-AS-HANDOFF"
+        )
         mutations.append(("nonpass downstream", changed))
 
         changed = copy.deepcopy(self.authority)
@@ -734,7 +830,10 @@ class TestAeSq2ProgramAuthority(unittest.TestCase):
 
     def test_duplicate_key_rejected(self) -> None:
         with self.assertRaises(ValueError):
-            json.loads('{"program_id":"AE-SQ2","program_id":"AE-SQ1"}', object_pairs_hook=reject_duplicate_keys)
+            json.loads(
+                '{"program_id":"AE-SQ2","program_id":"AE-SQ1"}',
+                object_pairs_hook=reject_duplicate_keys,
+            )
 
 
 if __name__ == "__main__":
