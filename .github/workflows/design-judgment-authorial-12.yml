@@ -1,0 +1,86 @@
+name: Build Design Judgment Authorial 12
+
+on:
+  push:
+    branches:
+      - artifact/design-judgment-authorial-12-20260813
+    paths:
+      - 'artifacts/design-judgment-authorial-12/**'
+      - '.github/workflows/design-judgment-authorial-12.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-and-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
+        working-directory: artifacts/design-judgment-authorial-12
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Install packaging utilities
+        run: sudo apt-get update && sudo apt-get install -y jq zip unzip rsync
+
+      - name: Generate lockfile
+        working-directory: artifacts/design-judgment-authorial-12/plugin/design-judgment/engine-rust
+        run: cargo generate-lockfile
+
+      - name: Rust format
+        working-directory: artifacts/design-judgment-authorial-12/plugin/design-judgment/engine-rust
+        run: cargo fmt --all -- --check
+
+      - name: Rust clippy
+        working-directory: artifacts/design-judgment-authorial-12/plugin/design-judgment/engine-rust
+        run: cargo clippy --locked --all-targets -- -D warnings
+
+      - name: Rust tests
+        working-directory: artifacts/design-judgment-authorial-12/plugin/design-judgment/engine-rust
+        run: cargo test --locked --all-targets
+
+      - name: Rust release build
+        working-directory: artifacts/design-judgment-authorial-12/plugin/design-judgment/engine-rust
+        env:
+          RUSTFLAGS: -D warnings
+        run: cargo build --locked --release
+
+      - name: Shell syntax
+        run: bash -n scripts/validate-package.sh scripts/security-and-gap-tests.sh scripts/package.sh
+
+      - name: Security and gap mutations
+        run: |
+          chmod +x scripts/*.sh
+          ./scripts/security-and-gap-tests.sh
+
+      - name: Validate package
+        run: ./scripts/validate-package.sh
+
+      - name: Build final archives
+        run: ./scripts/package.sh
+
+      - name: Exact archive smoke
+        run: |
+          unzip -tq dist/design-judgment-authorial-12.0.0-experimental.1.zip
+          unzip -tq dist/design-judgment-authorial-12-work-overlay-2026-08-13.zip
+          unzip -tq dist/design-judgment-authorial-12-final-materials-2026-08-13.zip
+          jq -e '.passed == true and .receipt_policy.read_receipts == 0 and .receipt_policy.per_candidate_receipts == 0' dist/FINAL-VERIFICATION.json >/dev/null
+
+      - name: Upload final materials
+        uses: actions/upload-artifact@v4
+        with:
+          name: design-judgment-authorial-12-final-materials
+          path: |
+            artifacts/design-judgment-authorial-12/dist/*.zip
+            artifacts/design-judgment-authorial-12/dist/SHA256SUMS.txt
+            artifacts/design-judgment-authorial-12/dist/FINAL-VERIFICATION.json
+          if-no-files-found: error
+          retention-days: 30
