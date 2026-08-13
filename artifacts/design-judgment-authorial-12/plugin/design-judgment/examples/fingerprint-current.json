@@ -1,0 +1,13 @@
+{
+  "schema_version": "dj-authorial-12-style-fingerprint-v1",
+  "artifact_id": "museum-agentic-route",
+  "domain": "museum-route-planning",
+  "shared_authority": null,
+  "surface": {"lightness": "light", "material": ["paper", "matte"]},
+  "palette_roles": ["moss", "coral", "gold"],
+  "typography": ["editorial-serif", "neutral-sans"],
+  "shape_depth": ["rounded-panels", "soft-shadow"],
+  "composition_shell": ["hero-plus-card-grid", "drawer-inspector"],
+  "interaction_signature": ["proposal-plus-drawer", "drawer-inspector"],
+  "density_energy": ["calm-editorial", "medium-density"]
+}
