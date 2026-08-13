@@ -1,0 +1,151 @@
+{
+  "schema_version": "dj-authorial-12-independent-expanded-panel-v1",
+  "analysis_date": "2026-08-13",
+  "evidence_lock": "2026-08-12 handoff plus frozen prior independent 60-artifact panel",
+  "method": {
+    "prior_conditions": "Retained the previously frozen independent 60-artifact scores and reranked each block after inserting slot 07.",
+    "slot_07": "Reviewed exact final source, artifact manifests, evidence maps, corrective-review findings, repair records, and post-repair Chrome receipts for all ten Authorial 11.1 candidates.",
+    "limitations": [
+      "The supplied additive handoff contains no final blind numeric review for slot 07.",
+      "The slot-07 identity was known during forensic review.",
+      "Slot-07 screenshot files and accessibility-tree captures were not included in the handoff; source and post-repair evidence controlled the review.",
+      "This is an independent forensic panel, not a preregistered release-authority result."
+    ]
+  },
+  "condition_summary": [
+    {"condition": "authorial-11.1", "mean_overall": 4.8, "mean_rank": 1.4, "block_wins": 6, "critical_failures": 0, "unverified": 0},
+    {"condition": "v9", "mean_overall": 4.62, "mean_rank": 4.0, "block_wins": 0, "critical_failures": 0, "unverified": 3},
+    {"condition": "v1.3", "mean_overall": 4.33, "mean_rank": 4.0, "block_wins": 3, "critical_failures": 2, "unverified": 0},
+    {"condition": "v5.0.0-rc1", "mean_overall": 4.28, "mean_rank": 4.7, "block_wins": 2, "critical_failures": 2, "unverified": 0},
+    {"condition": "no-plugin", "mean_overall": 4.22, "mean_rank": 4.6, "block_wins": 1, "critical_failures": 2, "unverified": 0},
+    {"condition": "design-judgment-7.1", "mean_overall": 4.19, "mean_rank": 4.9, "block_wins": 1, "critical_failures": 3, "unverified": 0},
+    {"condition": "vnext-b2", "mean_overall": 4.16, "mean_rank": 4.4, "block_wins": 1, "critical_failures": 3, "unverified": 1}
+  ],
+  "authorial_11_1_blocks": [
+    {
+      "block": 1,
+      "stratum": "identity-concept-development",
+      "overall_score": 5,
+      "rank": 1,
+      "critical_failure": false,
+      "dimensions": {"accessibility":5,"contextual_taste_fit":5,"hierarchy_composition":5,"implementation_correctness":5,"originality_without_arbitrariness":5,"product_specificity":5,"quality_ceiling":5,"responsive_behavior":5,"usability_state_completeness":5,"visual_coherence_craft":5},
+      "strengths": ["Three genuinely legible identity territories", "Strong editorial comparison surface", "Reversible pinning and detail inspection"],
+      "weaknesses": ["Initial narrow-layout overflow required the one repair"],
+      "evidence": ["block-01 final source", "corrective review", "post-repair Chrome receipt"]
+    },
+    {
+      "block": 2,
+      "stratum": "persuasive-product-surface",
+      "overall_score": 5,
+      "rank": 2,
+      "critical_failure": false,
+      "dimensions": {"accessibility":5,"contextual_taste_fit":5,"hierarchy_composition":5,"implementation_correctness":5,"originality_without_arbitrariness":5,"product_specificity":5,"quality_ceiling":5,"responsive_behavior":5,"usability_state_completeness":5,"visual_coherence_craft":5},
+      "strengths": ["Highly authored product story and visual world", "Strong first-view desire and clear outcome", "Modal focus and disclosure repaired correctly"],
+      "weaknesses": ["Initial product-truth phrasing implied bottles were included"],
+      "evidence": ["block-02 final source", "corrective review", "post-repair Chrome receipt"]
+    },
+    {
+      "block": 3,
+      "stratum": "conventional-transaction",
+      "overall_score": 4,
+      "rank": 2,
+      "critical_failure": false,
+      "dimensions": {"accessibility":5,"contextual_taste_fit":5,"hierarchy_composition":5,"implementation_correctness":5,"originality_without_arbitrariness":4,"product_specificity":5,"quality_ceiling":4,"responsive_behavior":5,"usability_state_completeness":5,"visual_coherence_craft":5},
+      "strengths": ["Excellent step orientation and truthful simulation boundary", "Thoughtful editorial craft without breaking transaction conventions", "Focus and progression repaired"],
+      "weaknesses": ["The best v1.3 transaction remains more economically conventional"],
+      "evidence": ["block-03 final source", "corrective review", "post-repair Chrome receipt"]
+    },
+    {
+      "block": 4,
+      "stratum": "read-teaching-system",
+      "overall_score": 5,
+      "rank": 1,
+      "critical_failure": false,
+      "dimensions": {"accessibility":5,"contextual_taste_fit":5,"hierarchy_composition":5,"implementation_correctness":5,"originality_without_arbitrariness":5,"product_specificity":5,"quality_ceiling":5,"responsive_behavior":5,"usability_state_completeness":5,"visual_coherence_craft":5},
+      "strengths": ["Most authored and memorable teaching environment in the set", "Mechanism-focused sequence, focus mode, glossary, and check", "Repair made remediation reflect the actual missed item"],
+      "weaknesses": ["Dense feature set may still be more support than expert readers need"],
+      "evidence": ["block-04 final source", "corrective review", "post-repair Chrome receipt"]
+    },
+    {
+      "block": 5,
+      "stratum": "operational-workspace",
+      "overall_score": 5,
+      "rank": 1,
+      "critical_failure": false,
+      "dimensions": {"accessibility":5,"contextual_taste_fit":5,"hierarchy_composition":4,"implementation_correctness":5,"originality_without_arbitrariness":5,"product_specificity":5,"quality_ceiling":5,"responsive_behavior":5,"usability_state_completeness":5,"visual_coherence_craft":5},
+      "strengths": ["Distinct municipal greenhouse world without losing queue truth", "Strong object/state model and intervention path", "The wide-route defect was repaired into a contained responsive composition"],
+      "weaknesses": ["Summary treatment still competes slightly before urgent work"],
+      "evidence": ["block-05 final source", "corrective review", "post-repair Chrome receipt"]
+    },
+    {
+      "block": 6,
+      "stratum": "agentic-control-recovery",
+      "overall_score": 5,
+      "rank": 1,
+      "critical_failure": false,
+      "dimensions": {"accessibility":5,"contextual_taste_fit":5,"hierarchy_composition":5,"implementation_correctness":5,"originality_without_arbitrariness":5,"product_specificity":5,"quality_ceiling":5,"responsive_behavior":5,"usability_state_completeness":5,"visual_coherence_craft":5},
+      "strengths": ["Best integration of authorial visual language with visible authority boundaries", "Strong proposal/evidence/open-question structure", "Repair restored notes to durable audit history"],
+      "weaknesses": ["The poetic hero is slightly more atmospheric than routine use requires"],
+      "evidence": ["block-06 final source", "corrective review", "post-repair Chrome receipt"]
+    },
+    {
+      "block": 7,
+      "stratum": "audit-repair",
+      "overall_score": 4,
+      "rank": 2,
+      "critical_failure": false,
+      "dimensions": {"accessibility":5,"contextual_taste_fit":5,"hierarchy_composition":4,"implementation_correctness":5,"originality_without_arbitrariness":4,"product_specificity":5,"quality_ceiling":4,"responsive_behavior":5,"usability_state_completeness":5,"visual_coherence_craft":5},
+      "strengths": ["Strong evidence-first repair queue", "Truthful local boundary and history", "State persistence repair completed"],
+      "weaknesses": ["The surface is polished but less structurally transformative than the leading authorial blocks"],
+      "evidence": ["block-07 final source", "corrective review", "post-repair Chrome receipt"]
+    },
+    {
+      "block": 8,
+      "stratum": "design-system-context-handoff",
+      "overall_score": 5,
+      "rank": 1,
+      "critical_failure": false,
+      "dimensions": {"accessibility":5,"contextual_taste_fit":5,"hierarchy_composition":5,"implementation_correctness":5,"originality_without_arbitrariness":5,"product_specificity":5,"quality_ceiling":5,"responsive_behavior":5,"usability_state_completeness":5,"visual_coherence_craft":5},
+      "strengths": ["The handoff reads as a designed product rather than a token dump", "Locked identity, live preview, and implementation context remain coordinated", "Required mobile state became reachable after repair"],
+      "weaknesses": ["The amount of implementation guidance still requires careful scanning"],
+      "evidence": ["block-08 final source", "corrective review", "post-repair Chrome receipt"]
+    },
+    {
+      "block": 9,
+      "stratum": "outcome-measurement",
+      "overall_score": 5,
+      "rank": 1,
+      "critical_failure": false,
+      "dimensions": {"accessibility":5,"contextual_taste_fit":5,"hierarchy_composition":5,"implementation_correctness":5,"originality_without_arbitrariness":5,"product_specificity":5,"quality_ceiling":5,"responsive_behavior":5,"usability_state_completeness":5,"visual_coherence_craft":5},
+      "strengths": ["Decision posture and outcome evidence are immediately legible", "Strong editorial identity with real decision logic", "Decorative overflow was repaired without weakening the composition"],
+      "weaknesses": ["The editorial title remains large relative to compact evidence needs"],
+      "evidence": ["block-09 final source", "corrective review", "post-repair Chrome receipt"]
+    },
+    {
+      "block": 10,
+      "stratum": "identity-production",
+      "overall_score": 5,
+      "rank": 2,
+      "critical_failure": false,
+      "dimensions": {"accessibility":5,"contextual_taste_fit":5,"hierarchy_composition":5,"implementation_correctness":5,"originality_without_arbitrariness":5,"product_specificity":5,"quality_ceiling":5,"responsive_behavior":5,"usability_state_completeness":5,"visual_coherence_craft":5},
+      "strengths": ["Excellent protected-system rail and production workbench", "After repair, preflight values derive from actual assets and queue identity remains stable", "High craft without losing package truth"],
+      "weaknesses": ["The strongest v1.3 package remains slightly more conventionally direct for occasional production users"],
+      "evidence": ["block-10 final source", "corrective review", "post-repair Chrome receipt"]
+    }
+  ],
+  "supplemental_authorial_assessment": {
+    "product_truth_fidelity": 4.9,
+    "product_native_form": 4.7,
+    "authorial_thesis": 4.9,
+    "structural_distinctness": 4.6,
+    "world_coherence": 4.9,
+    "editorial_selectivity": 4.6,
+    "felt_craft": 4.9,
+    "cross_run_style_independence": 2.3
+  },
+  "exploratory_pairwise": [
+    {"comparison": "authorial-11.1 minus no-plugin", "mean_difference": 0.58, "wins_ties_losses": "8-1-1"},
+    {"comparison": "authorial-11.1 minus v1.3", "mean_difference": 0.47, "wins_ties_losses": "7-1-2"},
+    {"comparison": "authorial-11.1 minus v9", "mean_difference": 0.18, "wins_ties_losses": "7-2-1"}
+  ]
+}
