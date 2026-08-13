@@ -1,0 +1,30 @@
+{
+  "fingerprints": [
+    {
+      "schema_version": "dj-authorial-12-style-fingerprint-v1",
+      "artifact_id": "library-identity-board",
+      "domain": "neighborhood-tool-library",
+      "shared_authority": null,
+      "surface": {"lightness": "light", "material": ["paper", "matte"]},
+      "palette_roles": ["moss", "coral", "gold"],
+      "typography": ["editorial-serif", "neutral-sans"],
+      "shape_depth": ["rounded-panels", "soft-shadow"],
+      "composition_shell": ["hero-plus-card-grid", "drawer-inspector"],
+      "interaction_signature": ["reversible-pin", "drawer-inspector"],
+      "density_energy": ["calm-editorial", "medium-density"]
+    },
+    {
+      "schema_version": "dj-authorial-12-style-fingerprint-v1",
+      "artifact_id": "greenhouse-operations",
+      "domain": "municipal-greenhouse-operations",
+      "shared_authority": null,
+      "surface": {"lightness": "light", "material": ["paper", "matte"]},
+      "palette_roles": ["moss", "coral", "gold"],
+      "typography": ["editorial-serif", "neutral-sans"],
+      "shape_depth": ["rounded-panels", "soft-shadow"],
+      "composition_shell": ["hero-plus-card-grid", "drawer-inspector"],
+      "interaction_signature": ["filter-plus-drawer", "drawer-inspector"],
+      "density_energy": ["calm-editorial", "medium-density"]
+    }
+  ]
+}
