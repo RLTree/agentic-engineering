@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "description": "AE-SQ4-SLEC-4 provider-safe slot-local capsule. Rich invariants are enforced by the separately frozen candidate-bound local semantic validator.",
+  "properties": {
+    "slot_id": {
+      "type": "string",
+      "enum": ["s0", "s1", "s2", "s3"],
+      "description": "The one slot assigned to this isolated assessor."
+    },
+    "local_need": {
+      "type": "string",
+      "enum": ["yes", "no", "uncertain"],
+      "description": "Whether this slot-local guidance is needed."
+    },
+    "reference_need": {
+      "type": "string",
+      "enum": ["none", "core", "focused", "uncertain"],
+      "description": "The bounded reference class requested for this slot."
+    },
+    "anchors": {
+      "type": "array",
+      "description": "Zero to two exact task-text anchors; the local validator enforces the conditional count and exact unique slices.",
+      "items": {
+        "type": "object",
+        "description": "One exact code-point slice of the task text.",
+        "properties": {
+          "start": {
+            "type": "integer",
+            "description": "Inclusive code-point offset."
+          },
+          "end": {
+            "type": "integer",
+            "description": "Exclusive code-point offset."
+          },
+          "text": {
+            "type": "string",
+            "description": "Exact text at start:end."
+          }
+        },
+        "required": ["start", "end", "text"],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 2
+    }
+  },
+  "required": ["slot_id", "local_need", "reference_need", "anchors"],
+  "additionalProperties": false
+}

@@ -1,0 +1,441 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/ae-sq4/f1/run-manifest-schema.json",
+  "title": "AE-SQ4 immutable qualification run manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "program_id",
+    "candidate_id",
+    "run_id",
+    "f1_freeze",
+    "implementation_freeze",
+    "corpus_freeze",
+    "corpus",
+    "schedule",
+    "runtime",
+    "execution",
+    "validation_receipt",
+    "usage_authority"
+  ],
+  "properties": {
+    "schema_version": {"const": "ae-sq4-run-manifest-v1"},
+    "program_id": {"const": "AE-SQ4"},
+    "candidate_id": {"const": "AE-SQ4-SLEC-4"},
+    "run_id": {
+      "type": "string",
+      "pattern": "^AE-SQ4-AQ-[A-Za-z0-9._-]{1,96}$"
+    },
+    "f1_freeze": {"$ref": "#/$defs/f1Freeze"},
+    "implementation_freeze": {"$ref": "#/$defs/gitIdentity"},
+    "corpus_freeze": {"$ref": "#/$defs/gitIdentity"},
+    "corpus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "corpus_id",
+        "schema",
+        "manifest",
+        "split_a",
+        "split_b",
+        "historical_inventory"
+      ],
+      "properties": {
+        "corpus_id": {"const": "AE-SQ4-AQ-FRESH-V1"},
+        "schema": {"$ref": "#/$defs/corpusSchema"},
+        "manifest": {"$ref": "#/$defs/corpusManifest"},
+        "split_a": {"$ref": "#/$defs/splitA"},
+        "split_b": {"$ref": "#/$defs/splitB"},
+        "historical_inventory": {"$ref": "#/$defs/historicalInventory"}
+      }
+    },
+    "schedule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "document",
+        "seed",
+        "sha256",
+        "presentations",
+        "calls_per_presentation",
+        "conditions"
+      ],
+      "properties": {
+        "document": {"$ref": "#/$defs/scheduleDocument"},
+        "seed": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]{0,127}$"
+        },
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "presentations": {"const": 80},
+        "calls_per_presentation": {"const": 4},
+        "conditions": {
+          "type": "array",
+          "prefixItems": [
+            {"const": "current"},
+            {"const": "reduced"}
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cli",
+        "model",
+        "reasoning",
+        "fallback",
+        "sandbox",
+        "approval_policy",
+        "ephemeral",
+        "strict_isolation"
+      ],
+      "properties": {
+        "cli": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "version", "sha256"],
+          "properties": {
+            "id": {"const": "codex-cli"},
+            "version": {"const": "codex-cli 0.147.0"},
+            "sha256": {"const": "19c4f144c5226a9f17c58e6f0fa854843b0f77a6eb420f40e2745a12f10f5d37"}
+          }
+        },
+        "model": {"const": "gpt-5.5"},
+        "reasoning": {"const": "medium"},
+        "fallback": {"const": false},
+        "sandbox": {"const": "read-only"},
+        "approval_policy": {"const": "never"},
+        "ephemeral": {"const": true},
+        "strict_isolation": {"const": true}
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "f3_preflight_attempts",
+        "f3_model_calls",
+        "canary_calls",
+        "conditional_batch_presentations",
+        "calls_per_presentation",
+        "conditional_batch_calls",
+        "hard_call_ceiling",
+        "retry_calls",
+        "same_process_canary_then_batch",
+        "standalone_canary_or_resume",
+        "raw_persistence",
+        "aggregate_only_projection"
+      ],
+      "properties": {
+        "f3_preflight_attempts": {"const": 1},
+        "f3_model_calls": {"const": 0},
+        "canary_calls": {"const": 4},
+        "conditional_batch_presentations": {"const": 80},
+        "calls_per_presentation": {"const": 4},
+        "conditional_batch_calls": {"const": 320},
+        "hard_call_ceiling": {"const": 324},
+        "retry_calls": {"const": 0},
+        "same_process_canary_then_batch": {"const": true},
+        "standalone_canary_or_resume": {"const": false},
+        "raw_persistence": {"const": false},
+        "aggregate_only_projection": {"const": true}
+      }
+    },
+    "validation_receipt": {"$ref": "#/$defs/validationReceipt"},
+    "usage_authority": {
+      "const": "ae-sq4-authorized-canary-and-conditional-batch"
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "gitObject": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "repoPath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\u0000]+$"
+    },
+    "gitIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["commit", "tree"],
+      "properties": {
+        "commit": {"$ref": "#/$defs/gitObject"},
+        "tree": {"$ref": "#/$defs/gitObject"}
+      }
+    },
+    "pathDigest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "blob", "sha256"],
+      "properties": {
+        "path": {"$ref": "#/$defs/repoPath"},
+        "blob": {"$ref": "#/$defs/gitObject"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "sealedPath": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["commit", "tree", "path", "blob", "sha256"],
+      "properties": {
+        "commit": {"$ref": "#/$defs/gitObject"},
+        "tree": {"$ref": "#/$defs/gitObject"},
+        "path": {"$ref": "#/$defs/repoPath"},
+        "blob": {"$ref": "#/$defs/gitObject"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "f1Freeze": {
+      "allOf": [
+        {"$ref": "#/$defs/sealedPath"},
+        {"properties": {"path": {"const": "evals/ae-sq4/f1/repaired-freeze.json"}}}
+      ]
+    },
+    "corpusSchema": {
+      "allOf": [
+        {"$ref": "#/$defs/sealedPath"},
+        {"properties": {"path": {"const": "evals/ae-sq4/f1/corpus-schema.json"}}}
+      ]
+    },
+    "historicalInventory": {
+      "allOf": [
+        {"$ref": "#/$defs/sealedPath"},
+        {"properties": {"path": {"const": "evals/ae-sq4/f1/historical-task-digests.json"}}}
+      ]
+    },
+    "corpusManifest": {
+      "allOf": [
+        {"$ref": "#/$defs/pathDigest"},
+        {"properties": {"path": {"const": "evals/ae-sq4/f2/corpus-manifest.json"}}}
+      ]
+    },
+    "corpusManifestDocument": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version", "program_id", "candidate_id", "corpus_id",
+        "f1_freeze", "implementation_freeze", "corpus_contract_sha256",
+        "historical_inventory", "splits", "authoring_provenance", "combined_corpus_sha256",
+        "schedule", "freshness"
+      ],
+      "properties": {
+        "schema_version": {"const": "ae-sq4-corpus-manifest-v1"},
+        "program_id": {"const": "AE-SQ4"},
+        "candidate_id": {"const": "AE-SQ4-SLEC-4"},
+        "corpus_id": {"const": "AE-SQ4-AQ-FRESH-V1"},
+        "f1_freeze": {"$ref": "#/$defs/f1Freeze"},
+        "implementation_freeze": {"$ref": "#/$defs/gitIdentity"},
+        "corpus_contract_sha256": {"$ref": "#/$defs/sha256"},
+        "historical_inventory": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "raw_sha256", "inventory_sha256", "inventory_count", "source_count"],
+          "properties": {
+            "path": {"const": "evals/ae-sq4/f1/historical-task-digests.json"},
+            "raw_sha256": {"$ref": "#/$defs/sha256"},
+            "inventory_sha256": {"$ref": "#/$defs/sha256"},
+            "inventory_count": {"const": 768},
+            "source_count": {"const": 20}
+          }
+        },
+        "splits": {
+          "type": "array",
+          "prefixItems": [
+            {"$ref": "#/$defs/corpusManifestSplitA"},
+            {"$ref": "#/$defs/corpusManifestSplitB"}
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "authoring_provenance": {
+          "type": "array",
+          "prefixItems": [
+            {"$ref": "#/$defs/authoringProvenanceA"},
+            {"$ref": "#/$defs/authoringProvenanceB"}
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "combined_corpus_sha256": {"$ref": "#/$defs/sha256"},
+        "schedule": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "raw_sha256", "schedule_sha256", "presentations", "calls_per_presentation"],
+          "properties": {
+            "path": {"const": "evals/ae-sq4/f2/schedule.json"},
+            "raw_sha256": {"$ref": "#/$defs/sha256"},
+            "schedule_sha256": {"$ref": "#/$defs/sha256"},
+            "presentations": {"const": 80},
+            "calls_per_presentation": {"const": 4}
+          }
+        },
+        "freshness": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "split_authors_distinct", "other_split_access",
+            "predecessor_material_access", "diagnostic_or_live_result_access",
+            "outcome_blind_at_authoring", "corpus_freeze_self_reference"
+          ],
+          "properties": {
+            "split_authors_distinct": {"const": true},
+            "other_split_access": {"const": false},
+            "predecessor_material_access": {"const": false},
+            "diagnostic_or_live_result_access": {"const": false},
+            "outcome_blind_at_authoring": {"const": true},
+            "corpus_freeze_self_reference": {"const": false}
+          }
+        }
+      }
+    },
+    "corpusManifestSplit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["split_id", "path", "raw_sha256", "content_sha256", "case_count"],
+      "properties": {
+        "split_id": {"enum": ["A", "B"]},
+        "path": {"enum": ["evals/ae-sq4/f2/split-a.json", "evals/ae-sq4/f2/split-b.json"]},
+        "raw_sha256": {"$ref": "#/$defs/sha256"},
+        "content_sha256": {"$ref": "#/$defs/sha256"},
+        "case_count": {"const": 20}
+      }
+    },
+    "corpusManifestSplitA": {
+      "allOf": [
+        {"$ref": "#/$defs/corpusManifestSplit"},
+        {"properties": {"split_id": {"const": "A"}, "path": {"const": "evals/ae-sq4/f2/split-a.json"}}}
+      ]
+    },
+    "corpusManifestSplitB": {
+      "allOf": [
+        {"$ref": "#/$defs/corpusManifestSplit"},
+        {"properties": {"split_id": {"const": "B"}, "path": {"const": "evals/ae-sq4/f2/split-b.json"}}}
+      ]
+    },
+    "authoringProvenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provenance_version", "split_id", "author_id", "commit", "tree",
+        "parent_f1b_commit", "path", "blob", "raw_sha256",
+        "content_sha256", "case_count", "other_split_route_permitted",
+        "predecessor_material_route_permitted",
+        "diagnostic_or_live_result_route_permitted", "outcome_route_permitted",
+        "claim_ceiling"
+      ],
+      "properties": {
+        "provenance_version": {"const": "ae-sq4-author-provenance-v1"},
+        "split_id": {"enum": ["A", "B"]},
+        "author_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"},
+        "commit": {"$ref": "#/$defs/gitObject"},
+        "tree": {"$ref": "#/$defs/gitObject"},
+        "parent_f1b_commit": {"$ref": "#/$defs/gitObject"},
+        "path": {"enum": ["evals/ae-sq4/f2/split-a.json", "evals/ae-sq4/f2/split-b.json"]},
+        "blob": {"$ref": "#/$defs/gitObject"},
+        "raw_sha256": {"$ref": "#/$defs/sha256"},
+        "content_sha256": {"$ref": "#/$defs/sha256"},
+        "case_count": {"const": 20},
+        "other_split_route_permitted": {"const": false},
+        "predecessor_material_route_permitted": {"const": false},
+        "diagnostic_or_live_result_route_permitted": {"const": false},
+        "outcome_route_permitted": {"const": false},
+        "claim_ceiling": {"const": "git-object-and-orchestrator-attested-route-custody-only-not-human-identity-or-off-git-observation"}
+      }
+    },
+    "authoringProvenanceA": {
+      "allOf": [
+        {"$ref": "#/$defs/authoringProvenance"},
+        {"properties": {"split_id": {"const": "A"}, "path": {"const": "evals/ae-sq4/f2/split-a.json"}}}
+      ]
+    },
+    "authoringProvenanceB": {
+      "allOf": [
+        {"$ref": "#/$defs/authoringProvenance"},
+        {"properties": {"split_id": {"const": "B"}, "path": {"const": "evals/ae-sq4/f2/split-b.json"}}}
+      ]
+    },
+    "validationSplit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "blob", "raw_sha256", "content_sha256"],
+      "properties": {
+        "path": {"enum": ["evals/ae-sq4/f2/split-a.json", "evals/ae-sq4/f2/split-b.json"]},
+        "blob": {"$ref": "#/$defs/gitObject"},
+        "raw_sha256": {"$ref": "#/$defs/sha256"},
+        "content_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "validationReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_version", "validator_id", "status", "f2a_commit", "f2a_tree",
+        "author_ids", "split_a", "split_b", "validator", "authorship_performed",
+        "claim_ceiling"
+      ],
+      "properties": {
+        "receipt_version": {"const": "ae-sq4-independent-validation-v1"},
+        "validator_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"},
+        "status": {"const": "PASS"},
+        "f2a_commit": {"$ref": "#/$defs/gitObject"},
+        "f2a_tree": {"$ref": "#/$defs/gitObject"},
+        "author_ids": {
+          "type": "array",
+          "prefixItems": [
+            {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"},
+            {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"}
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "split_a": {
+          "allOf": [
+            {"$ref": "#/$defs/validationSplit"},
+            {"properties": {"path": {"const": "evals/ae-sq4/f2/split-a.json"}}}
+          ]
+        },
+        "split_b": {
+          "allOf": [
+            {"$ref": "#/$defs/validationSplit"},
+            {"properties": {"path": {"const": "evals/ae-sq4/f2/split-b.json"}}}
+          ]
+        },
+        "validator": {
+          "allOf": [
+            {"$ref": "#/$defs/sealedPath"},
+            {"properties": {"path": {"const": "scripts/validate_ae_sq4_corpus.py"}}}
+          ]
+        },
+        "authorship_performed": {"const": false},
+        "claim_ceiling": {"const": "git-object-and-orchestrator-attested-validator-route-only-not-human-identity-or-off-git-observation"}
+      }
+    },
+    "splitA": {
+      "allOf": [
+        {"$ref": "#/$defs/pathDigest"},
+        {"properties": {"path": {"const": "evals/ae-sq4/f2/split-a.json"}}}
+      ]
+    },
+    "splitB": {
+      "allOf": [
+        {"$ref": "#/$defs/pathDigest"},
+        {"properties": {"path": {"const": "evals/ae-sq4/f2/split-b.json"}}}
+      ]
+    },
+    "scheduleDocument": {
+      "allOf": [
+        {"$ref": "#/$defs/pathDigest"},
+        {"properties": {"path": {"const": "evals/ae-sq4/f2/schedule.json"}}}
+      ]
+    }
+  }
+}

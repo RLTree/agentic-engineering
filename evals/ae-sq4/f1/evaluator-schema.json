@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/ae-sq4/f1/evaluator-schema.json",
+  "title": "AE-SQ4 memory-only rich aggregate evaluation record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "program_id", "evaluation_mode", "claim_ceiling", "binding_digest", "schedule_digest", "metric_authority_digest", "conditions", "complete_run", "status", "aggregate_digest"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "program_id": {"const": "AE-SQ4"},
+    "evaluation_mode": {"const": "fresh_blinded_qualification"},
+    "claim_ceiling": {"const": "unattested aggregate qualification telemetry from supplied in-memory observations"},
+    "binding_digest": {"$ref": "#/$defs/sha256"},
+    "schedule_digest": {"$ref": "#/$defs/sha256"},
+    "metric_authority_digest": {"$ref": "#/$defs/sha256"},
+    "conditions": {
+      "type": "array",
+      "prefixItems": [
+        {"$ref": "#/$defs/currentCondition"},
+        {"$ref": "#/$defs/reducedCondition"}
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "complete_run": {"$ref": "#/$defs/completeBlock"},
+    "status": {"enum": ["pass", "fail"]},
+    "aggregate_digest": {"$ref": "#/$defs/sha256"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "ratioMetric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "numerator", "denominator", "value", "exact", "defined"],
+      "properties": {
+        "kind": {"const": "ratio"},
+        "numerator": {"type": "integer", "minimum": 0},
+        "denominator": {"type": "integer", "minimum": 0},
+        "value": {"type": "number"},
+        "exact": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["numerator", "denominator"],
+          "properties": {
+            "numerator": {"type": "integer", "minimum": 0},
+            "denominator": {"type": "integer", "minimum": 1}
+          }
+        },
+        "defined": {"type": "boolean"}
+      }
+    },
+    "countMetric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value"],
+      "properties": {
+        "kind": {"const": "count"},
+        "value": {"type": "integer", "minimum": 0}
+      }
+    },
+    "booleanMetric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value"],
+      "properties": {
+        "kind": {"const": "boolean"},
+        "value": {"type": "boolean"}
+      }
+    },
+    "perConditionMetrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["capsule_local_need_accuracy", "capsule_reference_need_accuracy", "selected_precision", "selected_recall", "exact_selected_set", "abstention_specificity", "broad_over_selection", "one_decision_stacking", "exactly_two_exact_set", "cap_abstention", "explicit_invocation", "must_not_select", "anchor_grounding", "reference_bundle_correctness", "payload_cap_violations", "implicit_effect_claim_tool_events"],
+      "properties": {
+        "capsule_local_need_accuracy": {"$ref": "#/$defs/ratioMetric"},
+        "capsule_reference_need_accuracy": {"$ref": "#/$defs/ratioMetric"},
+        "selected_precision": {"$ref": "#/$defs/ratioMetric"},
+        "selected_recall": {"$ref": "#/$defs/ratioMetric"},
+        "exact_selected_set": {"$ref": "#/$defs/ratioMetric"},
+        "abstention_specificity": {"$ref": "#/$defs/ratioMetric"},
+        "broad_over_selection": {"$ref": "#/$defs/ratioMetric"},
+        "one_decision_stacking": {"$ref": "#/$defs/countMetric"},
+        "exactly_two_exact_set": {"$ref": "#/$defs/ratioMetric"},
+        "cap_abstention": {"$ref": "#/$defs/ratioMetric"},
+        "explicit_invocation": {"$ref": "#/$defs/ratioMetric"},
+        "must_not_select": {"$ref": "#/$defs/countMetric"},
+        "anchor_grounding": {"$ref": "#/$defs/ratioMetric"},
+        "reference_bundle_correctness": {"$ref": "#/$defs/ratioMetric"},
+        "payload_cap_violations": {"$ref": "#/$defs/countMetric"},
+        "implicit_effect_claim_tool_events": {"$ref": "#/$defs/countMetric"}
+      }
+    },
+    "perConditionGates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["capsule_local_need_accuracy", "capsule_reference_need_accuracy", "selected_precision", "selected_recall", "exact_selected_set", "abstention_specificity", "broad_over_selection", "one_decision_stacking", "exactly_two_exact_set", "cap_abstention", "explicit_invocation", "must_not_select", "anchor_grounding", "reference_bundle_correctness", "payload_cap_violations", "implicit_effect_claim_tool_events"],
+      "properties": {
+        "capsule_local_need_accuracy": {"type": "boolean"},
+        "capsule_reference_need_accuracy": {"type": "boolean"},
+        "selected_precision": {"type": "boolean"},
+        "selected_recall": {"type": "boolean"},
+        "exact_selected_set": {"type": "boolean"},
+        "abstention_specificity": {"type": "boolean"},
+        "broad_over_selection": {"type": "boolean"},
+        "one_decision_stacking": {"type": "boolean"},
+        "exactly_two_exact_set": {"type": "boolean"},
+        "cap_abstention": {"type": "boolean"},
+        "explicit_invocation": {"type": "boolean"},
+        "must_not_select": {"type": "boolean"},
+        "anchor_grounding": {"type": "boolean"},
+        "reference_bundle_correctness": {"type": "boolean"},
+        "payload_cap_violations": {"type": "boolean"},
+        "implicit_effect_claim_tool_events": {"type": "boolean"}
+      }
+    },
+    "conditionBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["condition", "metrics", "gates", "status"],
+      "properties": {
+        "condition": {"enum": ["current", "reduced"]},
+        "metrics": {"$ref": "#/$defs/perConditionMetrics"},
+        "gates": {"$ref": "#/$defs/perConditionGates"},
+        "status": {"enum": ["pass", "fail"]}
+      }
+    },
+    "currentCondition": {
+      "allOf": [
+        {"$ref": "#/$defs/conditionBase"},
+        {"properties": {"condition": {"const": "current"}}}
+      ]
+    },
+    "reducedCondition": {
+      "allOf": [
+        {"$ref": "#/$defs/conditionBase"},
+        {"properties": {"condition": {"const": "reduced"}}}
+      ]
+    },
+    "completeMetrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["semantic_schema_order", "resolver_parity", "presentations_80_of_80", "unique_capsule_contexts_320", "binding_schedule_packet_parity", "invocation_count_320", "runner_local_raw_persistence", "heldout_outcome_use"],
+      "properties": {
+        "semantic_schema_order": {"$ref": "#/$defs/ratioMetric"},
+        "resolver_parity": {"$ref": "#/$defs/ratioMetric"},
+        "presentations_80_of_80": {"$ref": "#/$defs/countMetric"},
+        "unique_capsule_contexts_320": {"$ref": "#/$defs/countMetric"},
+        "binding_schedule_packet_parity": {"$ref": "#/$defs/ratioMetric"},
+        "invocation_count_320": {"$ref": "#/$defs/countMetric"},
+        "runner_local_raw_persistence": {"$ref": "#/$defs/booleanMetric"},
+        "heldout_outcome_use": {"$ref": "#/$defs/booleanMetric"}
+      }
+    },
+    "completeGates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["semantic_schema_order", "resolver_parity", "presentations_80_of_80", "unique_capsule_contexts_320", "binding_schedule_packet_parity", "invocation_count_320", "runner_local_raw_persistence", "heldout_outcome_use"],
+      "properties": {
+        "semantic_schema_order": {"type": "boolean"},
+        "resolver_parity": {"type": "boolean"},
+        "presentations_80_of_80": {"type": "boolean"},
+        "unique_capsule_contexts_320": {"type": "boolean"},
+        "binding_schedule_packet_parity": {"type": "boolean"},
+        "invocation_count_320": {"type": "boolean"},
+        "runner_local_raw_persistence": {"type": "boolean"},
+        "heldout_outcome_use": {"type": "boolean"}
+      }
+    },
+    "completeBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["metrics", "gates", "status"],
+      "properties": {
+        "metrics": {"$ref": "#/$defs/completeMetrics"},
+        "gates": {"$ref": "#/$defs/completeGates"},
+        "status": {"enum": ["pass", "fail"]}
+      }
+    }
+  }
+}
