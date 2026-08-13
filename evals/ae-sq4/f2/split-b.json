@@ -1,0 +1,1391 @@
+{
+  "schema_version": "1.0",
+  "program_id": "AE-SQ4",
+  "corpus_id": "AE-SQ4-AQ-FRESH-V1",
+  "split_id": "B",
+  "split_nonce": "8e841bf1198c9a0cc9edb2e86d97f553afd5fbec35823478e73536a932b3242c",
+  "author_id": "sq4-author-b",
+  "authority": {
+    "program_id": "AE-SQ4",
+    "candidate_id": "AE-SQ4-SLEC-4",
+    "candidate_commit": "6357b87cfae9e488bbb1489541ec03d577803463",
+    "candidate_tree": "6a04e5aa846cbe196425c58671bf390c499b4d59",
+    "f1_freeze_sha256": "580b08484a5ae9f35a942d1063ba7ce82ca83521533b0f8e0e6f763187f83893",
+    "corpus_contract_sha256": "6a396d1fec60270c1175968ef47766bee8576fe650f139491a337e6f4f3bd724",
+    "gates_sha256": "dc6056c0dc8fcc16b4208a9639a3932f4ea644f45cb311751c3a6c879390c537",
+    "metrics_sha256": "1ca000132e2ed57f0ac979e6f098d2ec10772421a6d3794639f79bd5cc45e081",
+    "evaluator_schema_sha256": "8d01d29156983441554ff8772be1d7493542e360edeeb65fe2305e0183feedf4"
+  },
+  "no_replay": {
+    "normalization_id": "ae-sq4-task-v1",
+    "historical_digest_inventory_sha256": "0e49a967d9a59021c0f1aa5fc8d80fd53fdf3ab1885925b0d86f1e8c4f9dc157",
+    "historical_inventory_content_sha256": "8ee69ae06f388c1b47386b312d31bcce7ae408d04e76659653335d55e12ac270",
+    "historical_inventory_count": 768,
+    "historical_text_embedded": false,
+    "predecessor_case_label_or_result_material_embedded": false
+  },
+  "cases": [
+    {
+      "case_id": "AE-SQ4-B-01",
+      "case_nonce": "f9775fc7e7074c2cf43457742bd5dbf0f500b9a28b941718f090ddb3aa8f00d1",
+      "task_text": "Return the four identifiers amber, cobalt, ivory, and teal in alphabetical order, one per line, without commentary.",
+      "task_text_nfc_sha256": "43aa3b2e137647fd184519492f874a26167be8d4a4989ced8290a5a7da9dcb6a",
+      "profile": "none",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 27,
+              "text": "Return the four identifiers"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 27,
+              "text": "Return the four identifiers"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 27,
+              "text": "Return the four identifiers"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 27,
+              "text": "Return the four identifiers"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "none",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ4-B-02",
+      "case_nonce": "3330107660d5f080058920e932321362106ce45eb3eb0c9dd3f43fcb184c1472",
+      "task_text": "Replace each written marker <TAB> in the supplied string with two spaces and preserve every other character exactly: alpha<TAB>beta<TAB>gamma.",
+      "task_text_nfc_sha256": "ccab1bd1674c5c5f2753d022f83ea16f2e2bcfd5f80c72e7e519feed97867cf9",
+      "profile": "none",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 27,
+              "text": "Replace each written marker"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 27,
+              "text": "Replace each written marker"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 27,
+              "text": "Replace each written marker"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 27,
+              "text": "Replace each written marker"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "none",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ4-B-03",
+      "case_nonce": "2e5e959075b4f9337f5cbc15fb992f23dc130c29fecd55506ecb14829707f4b2",
+      "task_text": "Rewrite the sentence 'The build finished quickly' in the past perfect tense and output only the rewritten sentence.",
+      "task_text_nfc_sha256": "e3440175863c43f3bf9023608dd654030969fc57f06e331883e4449446bd5bd6",
+      "profile": "none",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 20,
+              "text": "Rewrite the sentence"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 20,
+              "text": "Rewrite the sentence"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 20,
+              "text": "Rewrite the sentence"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 20,
+              "text": "Rewrite the sentence"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "none",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ4-B-04",
+      "case_nonce": "d7ecad79098e25ce1fd8f16d716039ca07e1eefb5ac7a9b59c99682cb2861f42",
+      "task_text": "Design the control-plane topology for an agent service that delegates to two workers, must survive coordinator restart, and must prevent duplicate side effects. Place durable state, idempotency, and human approval boundaries.",
+      "task_text_nfc_sha256": "e2c2ebb67b03ec4f9aee663d3e1a69c4e65f07a3f74d1885f2522c7f5c39c2fe",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 11,
+              "end": 33,
+              "text": "control-plane topology"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 60,
+              "end": 84,
+              "text": "delegates to two workers"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 60,
+              "end": 84,
+              "text": "delegates to two workers"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 60,
+              "end": 84,
+              "text": "delegates to two workers"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ4-B-05",
+      "case_nonce": "23808ed2130638cf31b89d3112c857ff65d74e1f5aa40a7441f14f8632d596fc",
+      "task_text": "Choose whether a single loop, supervisor-worker graph, or event-driven state machine should coordinate a document triage agent with resumable jobs and bounded retries; justify where recovery state belongs.",
+      "task_text_nfc_sha256": "86b0cbc9cd46e8550a53943c277a2d1376d62be6a7d7df2a09c95a5795334af9",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 30,
+              "end": 53,
+              "text": "supervisor-worker graph"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 105,
+              "end": 126,
+              "text": "document triage agent"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 105,
+              "end": 126,
+              "text": "document triage agent"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 105,
+              "end": 126,
+              "text": "document triage agent"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ4-B-06",
+      "case_nonce": "633869ba8ddf6182dd853d272dcfe83995e02a8947a3e060dbecf12b0fa1bef1",
+      "task_text": "Turn this ambiguous request into an executable Codex task contract: 'make the migration safer.' Specify outcome, in-scope systems, assumptions, approval thresholds, acceptance evidence, and a definition of done.",
+      "task_text_nfc_sha256": "77298ffb4f55920fa7a14189455d6e1d8dc42f4240785953b9c5e2ae3f717598",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 69,
+              "end": 93,
+              "text": "make the migration safer"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 47,
+              "end": 66,
+              "text": "Codex task contract"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 69,
+              "end": 93,
+              "text": "make the migration safer"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 69,
+              "end": 93,
+              "text": "make the migration safer"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s1"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s1",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ4-B-07",
+      "case_nonce": "31a647766f5c2918a5a5c2ac382664f44440315c2f4ede07fc1a0c84951f2c61",
+      "task_text": "The requester says 'clean up onboarding' but supplies no audience, authority, or success criteria. Draft a bounded outcome-and-evidence contract and identify only questions that cross a consequence threshold.",
+      "task_text_nfc_sha256": "5f5750e84d663f2af5d592bd6846699631ca63dbc607a041b4865ce499fb2de2",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 20,
+              "end": 39,
+              "text": "clean up onboarding"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 107,
+              "end": 144,
+              "text": "bounded outcome-and-evidence contract"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 20,
+              "end": 39,
+              "text": "clean up onboarding"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 20,
+              "end": 39,
+              "text": "clean up onboarding"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s1"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s1",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ4-B-08",
+      "case_nonce": "61ef81d84225e8a9195223325f018895ce71a7d42db869710f29d6caa08732fc",
+      "task_text": "Propose the smallest verification portfolio for a patch that changes an agent's retry and idempotency logic. Map tests and runtime probes to duplicate-side-effect, lost-progress, and stale-state failure modes.",
+      "task_text_nfc_sha256": "79f80b8616c23eaf052887c073965830bcc7a7d306197168d92fd35d017af5f9",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 80,
+              "end": 107,
+              "text": "retry and idempotency logic"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 80,
+              "end": 107,
+              "text": "retry and idempotency logic"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 21,
+              "end": 43,
+              "text": "verification portfolio"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 80,
+              "end": 107,
+              "text": "retry and idempotency logic"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s2"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s2",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ4-B-09",
+      "case_nonce": "75ada59e8ebb85e59e2af757ae25aac9692bb3bb2796ae7d03a0456f8b529db4",
+      "task_text": "A candidate parser now rejects duplicate JSON keys and nonfinite numbers. Design proportional evidence that can falsify malformed-input acceptance, compatibility regressions, and misleading green test results.",
+      "task_text_nfc_sha256": "fa789490b1dad1d92c72fbd67cbbf4919c5b1d6b57bf14f27e9ee67f54d6b2bc",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 2,
+              "end": 18,
+              "text": "candidate parser"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 2,
+              "end": 18,
+              "text": "candidate parser"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 81,
+              "end": 102,
+              "text": "proportional evidence"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 2,
+              "end": 18,
+              "text": "candidate parser"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s2"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s2",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ4-B-10",
+      "case_nonce": "c0898a69fb9b3dacd04cbfc3708dc44214e0d495c1ec7480b467a3bba0fbd9ca",
+      "task_text": "Three production incidents show agents repeatedly choose stale runbooks after a cache refresh. Convert the observations into a governed learning proposal with provenance, mechanism hypothesis, counterevidence, held-out evaluation, owner, and retirement rule.",
+      "task_text_nfc_sha256": "fb3e4368882cf768ef372a1a3860811bb09c62f423051a0a94743cc0ccdd0355",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 57,
+              "end": 71,
+              "text": "stale runbooks"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 57,
+              "end": 71,
+              "text": "stale runbooks"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 57,
+              "end": 71,
+              "text": "stale runbooks"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 127,
+              "end": 153,
+              "text": "governed learning proposal"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s3",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ4-B-11",
+      "case_nonce": "d3e7e193be3188cf8a132bfe2cc8c708f3ad70b486b8c4144a7066578c1fe0d5",
+      "task_text": "A prompt change improved one benchmark but degraded operator recovery in field traces. Decide what evidence is needed before converting that observation into a durable rule, and include a justified no-change path.",
+      "task_text_nfc_sha256": "d13138a8659e36f480e48cd8dd97ea0fb74cc4c58b10c52713ecc5c3162c6d7b",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 43,
+              "end": 69,
+              "text": "degraded operator recovery"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 43,
+              "end": 69,
+              "text": "degraded operator recovery"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 43,
+              "end": 69,
+              "text": "degraded operator recovery"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 160,
+              "end": 172,
+              "text": "durable rule"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s3",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ4-B-12",
+      "case_nonce": "bca0b62ebb5c7e4134df12701e497511d7829eaea07320dd94bb601b7eca6cbd",
+      "task_text": "An ambiguous request asks for 'a resilient multi-agent reviewer' that may post external comments. Define the task contract and select a topology that places approval, durable custody, restart recovery, and side-effect ownership at enforceable boundaries.",
+      "task_text_nfc_sha256": "ee6c9f079c8c1eb096cccac780f1cdd542b86e0d65a5e2014ca16a1e7d911abc",
+      "profile": "two",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 127,
+              "end": 144,
+              "text": "select a topology"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 98,
+              "end": 122,
+              "text": "Define the task contract"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 74,
+              "end": 96,
+              "text": "post external comments"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 74,
+              "end": 96,
+              "text": "post external comments"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0",
+          "s1"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "focused"
+          },
+          {
+            "slot_id": "s1",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ4-B-13",
+      "case_nonce": "f8143ec2680163b90d4e15f5b69d23998d08e8dab7a55f0b6016841a53af181a",
+      "task_text": "Field evidence shows a supervisor graph deadlocks when two workers publish competing recovery decisions. Propose the architectural correction and a governed learning loop that tests the mechanism, captures counterevidence, assigns ownership, and retires the rule if it stops helping.",
+      "task_text_nfc_sha256": "243e798d14eba3e6faf35ad5e3b06fefd05a716431f27df1e71e368f9fc52416",
+      "profile": "two",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 117,
+              "end": 141,
+              "text": "architectural correction"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 75,
+              "end": 103,
+              "text": "competing recovery decisions"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 75,
+              "end": 103,
+              "text": "competing recovery decisions"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 148,
+              "end": 170,
+              "text": "governed learning loop"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0",
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "core"
+          },
+          {
+            "slot_id": "s3",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ4-B-14",
+      "case_nonce": "d5ab3d0e95d17b3dce6968833a4a18a9b6ff1650ecf4b4775636fb1922c14a4c",
+      "task_text": "A maintainer asks to 'prove the new release process is safe' without naming scope or acceptance. Convert the request into a bounded contract, then design evidence that can falsify credential leakage, wrong-artifact publication, and incomplete rollback.",
+      "task_text_nfc_sha256": "162cc93a8f34d434f5c00c50d00d610042e12baa2fe0cf850e2b9c877f1238da",
+      "profile": "two",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 32,
+              "end": 51,
+              "text": "new release process"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 124,
+              "end": 140,
+              "text": "bounded contract"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 147,
+              "end": 162,
+              "text": "design evidence"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 32,
+              "end": 51,
+              "text": "new release process"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s1",
+          "s2"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s1",
+            "need": "focused"
+          },
+          {
+            "slot_id": "s2",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ4-B-15",
+      "case_nonce": "f436297834d503dc267ab88299f5bd5956297acf056e9619acacbc04bc69c7bd",
+      "task_text": "Recent traces suggest an agent's success metric rewards fast completion while hiding silent data loss. Design a verification portfolio for the exact metric change and a governed learning proposal that requires provenance, counterevidence, held-out evaluation, ownership, and sunset criteria.",
+      "task_text_nfc_sha256": "429a68af2d46af6ab28a7509bfece1fb24d1109fcc38a61e489cbad3d6ad8af2",
+      "profile": "two",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 78,
+              "end": 101,
+              "text": "hiding silent data loss"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 78,
+              "end": 101,
+              "text": "hiding silent data loss"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 112,
+              "end": 134,
+              "text": "verification portfolio"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 169,
+              "end": 195,
+              "text": "governed learning proposal"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s2",
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s2",
+            "need": "focused"
+          },
+          {
+            "slot_id": "s3",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ4-B-16",
+      "case_nonce": "1ed3a87f1d04881a137cefd4779271691c0d52280ee1d63f231b13a0706c0098",
+      "task_text": "A restarted orchestration service duplicates external writes, existing tests miss the race, and incident reviews have not altered future behavior. Redesign the control topology, specify a failure-mode-focused verification portfolio, and turn the incident evidence into a governed learning change with ownership and retirement.",
+      "task_text_nfc_sha256": "b61dbf487164ba4e443d2f50e0ed7820bd517a40f42248d99322bb8f0c57ebb1",
+      "profile": "cap",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 160,
+              "end": 176,
+              "text": "control topology"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 34,
+              "end": 60,
+              "text": "duplicates external writes"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 209,
+              "end": 231,
+              "text": "verification portfolio"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 271,
+              "end": 295,
+              "text": "governed learning change"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "cap_abstain",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ4-B-17",
+      "case_nonce": "6abb3d68305799568b601a839ccd78c54c2599c3a8afa45ce0aa4e96e51b86d3",
+      "task_text": "The vague mandate 'never repeat this outage' follows a deployment regression, but authority and success criteria are undefined, current checks cannot detect the failure, and lessons are not retained. Establish the task contract, design falsifiable release evidence, and create a governed learning proposal.",
+      "task_text_nfc_sha256": "3117147d40352bee9e1273f0914d0d850767ea2ee7417d3d835bc0ffca2d95d0",
+      "profile": "cap",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 55,
+              "end": 76,
+              "text": "deployment regression"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 214,
+              "end": 227,
+              "text": "task contract"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 236,
+              "end": 264,
+              "text": "falsifiable release evidence"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 279,
+              "end": 305,
+              "text": "governed learning proposal"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "cap_abstain",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ4-B-18",
+      "case_nonce": "178bfdae160f3d889f801d90c5cb35f7a9da69b3297a3796c2e92d2355c242ae",
+      "task_text": "Use $agentic-engineering:codex-task-contract to formalize the request 'stabilize this agent' into an outcome, scope, authority, assumptions, approval threshold, acceptance evidence, and done definition.",
+      "task_text_nfc_sha256": "7461c767723f39a8631ebc633253790b8e99ddb3ced5926c9d585602df8df683",
+      "profile": "explicit",
+      "explicit_slot_id": "s1",
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 71,
+              "end": 91,
+              "text": "stabilize this agent"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 4,
+              "end": 44,
+              "text": "$agentic-engineering:codex-task-contract"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 71,
+              "end": 91,
+              "text": "stabilize this agent"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 71,
+              "end": 91,
+              "text": "stabilize this agent"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s1"
+        ],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ4-B-19",
+      "case_nonce": "cc14faeec4b4cc650b39a04e31370112f1011943246a7a259347ad80a60353fa",
+      "task_text": "Use $agentic-engineering:engineering-learning-loop to turn the observation that agents ignore a new rollback guide into a governed recommendation with provenance, counterevidence, evaluation, owner, lifecycle, and an explicit no-change option.",
+      "task_text_nfc_sha256": "7a7d9a690d93feaf1e02acd55855064ea19bac54dab1d87aafc6f4b4a633d438",
+      "profile": "explicit",
+      "explicit_slot_id": "s3",
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 96,
+              "end": 114,
+              "text": "new rollback guide"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 96,
+              "end": 114,
+              "text": "new rollback guide"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 96,
+              "end": 114,
+              "text": "new rollback guide"
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 4,
+              "end": 50,
+              "text": "$agentic-engineering:engineering-learning-loop"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s3"
+        ],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ4-B-20",
+      "case_nonce": "fdfd3a8d881421c8daeee45ebd592663cba4c9fbbaa0be0bab9f76f5b202e711",
+      "task_text": "A colleague says the candidate may already be verified, but provides neither a change description nor any artifact, failure modes, execution context, or acceptance claim. Determine whether a verification strategy is needed without inventing the missing candidate.",
+      "task_text_nfc_sha256": "d51b3c7bd298d3fd23751ec700c0c9bdc64e332b55da47704d9d5ee3642f78a4",
+      "profile": "uncertain",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 245,
+              "end": 262,
+              "text": "missing candidate"
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 245,
+              "end": 262,
+              "text": "missing candidate"
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "uncertain",
+          "reference_need": "uncertain",
+          "anchors": []
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 245,
+              "end": 262,
+              "text": "missing candidate"
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "uncertain_abstain",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    }
+  ]
+}
