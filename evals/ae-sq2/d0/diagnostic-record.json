@@ -1,0 +1,172 @@
+{
+  "diagnostic_id": "AE-SQ2-D0-2026-08-12-01",
+  "mode": "live",
+  "status": "completed",
+  "claim_ceiling": "four-call-synthetic-handshake-diagnostic-only",
+  "authority_sha256": "2452348832f5a4d8a3ba566adfcf1893c6740dc0b66902fae8cf537324c5f379",
+  "diagnostic_schema_sha256": "9b1f037cecf3071ce8d8ddea88e208c55c6f72674375db064eaeb46920fd0c01",
+  "input_schema": {
+    "path": "evals/ae-sq1/slec1-capsule-schema.json",
+    "size_bytes": 1858,
+    "sha256": "7124be192fa7d047ae7d9e54f1cfd84c32129164caddf6474277ae5fb3e65f4f"
+  },
+  "cli": {
+    "path": "/Users/terrynoblin/.codex/packages/standalone/releases/0.147.0-aarch64-apple-darwin/bin/codex",
+    "version": "codex-cli 0.147.0",
+    "sha256": "19c4f144c5226a9f17c58e6f0fa854843b0f77a6eb420f40e2745a12f10f5d37"
+  },
+  "model": "gpt-5.5",
+  "reasoning_effort": "medium",
+  "calls_started": 4,
+  "calls_completed": 4,
+  "classification_counts": {
+    "transport_spawn": 0,
+    "process_exit": 0,
+    "signal_exit": 0,
+    "timeout": 0,
+    "empty_stdout": 0,
+    "invalid_jsonl": 0,
+    "unknown_event": 0,
+    "missing_completed_message": 0,
+    "provider_request_rejected": 0,
+    "schema_unsupported": 4,
+    "schema_invalid": 0,
+    "semantic_invalid": 0,
+    "valid_completed": 0,
+    "other_fail_closed": 0
+  },
+  "usage": {
+    "input_tokens": 0,
+    "cached_input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0
+  },
+  "calls": [
+    {
+      "probe_id": "p0",
+      "classification": "schema_unsupported",
+      "exit_code": 1,
+      "signal": null,
+      "request_bytes": 405,
+      "request_sha256": "91594ddbbbc902142b421b380282ffbeb704f14ab83d7af56d9d066941811693",
+      "stdout_bytes": 801,
+      "stdout_sha256": "ff86161fdfcf73874dca0f5c370164188eeb60c257b6cf8da8741867f7d464e2",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "completed_message_bytes": 0,
+      "completed_message_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "event_type_counts": {
+        "thread_started": 1,
+        "turn_started": 1,
+        "item_completed": 0,
+        "turn_completed": 0,
+        "turn_failed": 1,
+        "error": 1,
+        "unknown": 0
+      },
+      "usage_observed": false,
+      "usage": {
+        "input_tokens": 0,
+        "cached_input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+      },
+      "error_class": "invalid_json_schema"
+    },
+    {
+      "probe_id": "p1",
+      "classification": "schema_unsupported",
+      "exit_code": 1,
+      "signal": null,
+      "request_bytes": 405,
+      "request_sha256": "287e8e57dd05941886a2f51c1d0ebc3d02bdcd70dab33f986a851a68e8b9ae6a",
+      "stdout_bytes": 801,
+      "stdout_sha256": "55f44f458103cb5dd7bc809d0f8422a50f0f4077026000e4319bcce32ed022b1",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "completed_message_bytes": 0,
+      "completed_message_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "event_type_counts": {
+        "thread_started": 1,
+        "turn_started": 1,
+        "item_completed": 0,
+        "turn_completed": 0,
+        "turn_failed": 1,
+        "error": 1,
+        "unknown": 0
+      },
+      "usage_observed": false,
+      "usage": {
+        "input_tokens": 0,
+        "cached_input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+      },
+      "error_class": "invalid_json_schema"
+    },
+    {
+      "probe_id": "p2",
+      "classification": "schema_unsupported",
+      "exit_code": 1,
+      "signal": null,
+      "request_bytes": 405,
+      "request_sha256": "1afc2297e3c6d34f7a1835bdfa782cd965e1d27ff2bba10e08cdad125d7ee910",
+      "stdout_bytes": 801,
+      "stdout_sha256": "0af1b33abbf23abd42c5a54c1fa2764d00d4bacfcaabc34b64829d8919b49a46",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "completed_message_bytes": 0,
+      "completed_message_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "event_type_counts": {
+        "thread_started": 1,
+        "turn_started": 1,
+        "item_completed": 0,
+        "turn_completed": 0,
+        "turn_failed": 1,
+        "error": 1,
+        "unknown": 0
+      },
+      "usage_observed": false,
+      "usage": {
+        "input_tokens": 0,
+        "cached_input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+      },
+      "error_class": "invalid_json_schema"
+    },
+    {
+      "probe_id": "p3",
+      "classification": "schema_unsupported",
+      "exit_code": 1,
+      "signal": null,
+      "request_bytes": 405,
+      "request_sha256": "ee653e53197a617cc1f8961b3c69dd8803b9b17260720564ebddfb31802af559",
+      "stdout_bytes": 801,
+      "stdout_sha256": "dd385aa886e717e8fbf3185eaa3a1b87481d19de0aa078117b6c4a27b45a2ba7",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "completed_message_bytes": 0,
+      "completed_message_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "event_type_counts": {
+        "thread_started": 1,
+        "turn_started": 1,
+        "item_completed": 0,
+        "turn_completed": 0,
+        "turn_failed": 1,
+        "error": 1,
+        "unknown": 0
+      },
+      "usage_observed": false,
+      "usage": {
+        "input_tokens": 0,
+        "cached_input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+      },
+      "error_class": "invalid_json_schema"
+    }
+  ],
+  "aggregate_sha256": "d333397b1bc0a633d80ac43bbf1ae6e9b5aafdfb6af5b01ad5493f9fb3292235",
+  "record_sha256": "5bb323666e5fe54d39df3fb91a65e1dd44c96ac5a4f3c9e967d2481a5eda5e9c"
+}
