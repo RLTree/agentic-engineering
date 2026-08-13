@@ -841,7 +841,12 @@ class AeSq4ProgramAuthorityTests(unittest.TestCase):
         document = strict(AUTHORITY_PATH.read_bytes())
         validate(document)
         self.assertEqual(
-            hashlib.sha256(PLAN_PATH.read_bytes()).hexdigest(),
+            hashlib.sha256(
+                git_show(
+                    "e8163ebfd74799cef546da176e73589f4a50d31a",
+                    "docs/exec-plans/active/ae-sq4.md",
+                )
+            ).hexdigest(),
             document["namespace"]["active_plan"]["raw_sha256"],
         )
         self.assertEqual(
@@ -898,8 +903,8 @@ class AeSq4ProgramAuthorityTests(unittest.TestCase):
             record["aggregate_sha256"], d0["diagnostic_record"]["aggregate_sha256"]
         )
 
-    def test_foundation_pointer_decision_rows_and_no_premature_surfaces(self) -> None:
-        pointer = "**Active successor plan:** `docs/exec-plans/active/ae-sq4.md` for AE-SQ4 only; AE-SQ3, AE-SQ2, AE-SQ1, and `EXECPLAN.md` remain immutable terminal history"
+    def test_foundation_pointer_and_terminal_successor_rows(self) -> None:
+        pointer = "**Active successor plan:** `docs/exec-plans/active/ae-sq5.md` for AE-SQ5 only; AE-SQ4, AE-SQ3, AE-SQ2, AE-SQ1, and `EXECPLAN.md` remain immutable terminal history"
         self.assertEqual(
             FOUNDATION_PATH.read_text(encoding="utf-8").splitlines()[6], pointer
         )
@@ -907,8 +912,10 @@ class AeSq4ProgramAuthorityTests(unittest.TestCase):
         identifiers = [row["decision_id"] for row in rows]
         self.assertEqual(identifiers.count("AE-SQ3-AR-2026-08-12"), 1)
         self.assertEqual(identifiers.count("AE-SQ4-F0-2026-08-12"), 1)
-        for phase in ("f1", "f2", "f3", "f4", "f5", "f6"):
-            self.assertFalse((ROOT / f"evals/ae-sq4/{phase}").exists(), phase)
+        self.assertEqual(identifiers.count("AE-SQ4-AR-2026-08-13"), 1)
+        self.assertEqual(identifiers.count("AE-SQ5-F0-2026-08-13"), 1)
+        self.assertTrue((ROOT / "evals/ae-sq4/f1/repaired-freeze.json").is_file())
+        self.assertTrue((ROOT / "evals/ae-sq4/ar/terminal-decision.json").is_file())
 
     def test_recursive_and_semantic_mutation_reds(self) -> None:
         document = strict(AUTHORITY_PATH.read_bytes())

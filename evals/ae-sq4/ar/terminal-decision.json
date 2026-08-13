@@ -1,0 +1,180 @@
+{
+  "schema_version": "ae-sq4-ar-terminal-decision-v1",
+  "program_id": "AE-SQ4",
+  "candidate_id": "AE-SQ4-SLEC-4",
+  "stage": "SQ4-AR",
+  "status": "terminal",
+  "decision": "DO_NOT_RELEASE_OR_PROMOTE",
+  "stop": true,
+  "claim_ceiling": "structural-F2A-and-standalone-corpus-validation-only-not-F2-pass-qualification-runtime-or-provider-evidence",
+  "terminal_reason": "frozen-runtime-rejects-both-authored-split-authorities-because-they-bind-F1B-instead-of-the-frozen-F1A-implementation",
+  "frozen_program": {
+    "f0": {
+      "commit": "e8163ebfd74799cef546da176e73589f4a50d31a",
+      "tree": "10a7a1f22068045b441ce958c00fe424c036138d",
+      "program_authority_path": "evals/ae-sq4/program-authority.json",
+      "program_authority_blob": "4b9519f2d7d5c45fb50d0c0511377d40918d5192",
+      "program_authority_raw_sha256": "583f103440ba66828e402f3de6ff3e657e8660004cc362b33b8d177b6ebe6ac9",
+      "active_plan_path": "docs/exec-plans/active/ae-sq4.md",
+      "preterminal_active_plan_blob": "6c80a3acd126edafe30c899defb2026fa9b5ef72",
+      "preterminal_active_plan_raw_sha256": "848c85a3bd6c922fb079f673cadea38c59fa9aeb7876ee7ee57e46bff90f41ad"
+    },
+    "f1a": {
+      "commit": "3762efae80ead1461d973b4737c5dcab6bae026a",
+      "tree": "6a071b4ee33246cc2ef448cf4d574f51abc89348",
+      "parent": "e8163ebfd74799cef546da176e73589f4a50d31a",
+      "status": "PASS",
+      "runner_path": "scripts/run_ae_sq4_aq.py",
+      "runner_blob": "537bb66dc5e008c080eb28ca52f3bad8139d283a",
+      "runner_raw_sha256": "52b8a047b2067c847c9b86231a4189a188fc9455dc218f10cce3a50711615cb2"
+    },
+    "f1b": {
+      "commit": "6357b87cfae9e488bbb1489541ec03d577803463",
+      "tree": "6a04e5aa846cbe196425c58671bf390c499b4d59",
+      "parent": "3762efae80ead1461d973b4737c5dcab6bae026a",
+      "status": "PASS",
+      "freeze_path": "evals/ae-sq4/f1/repaired-freeze.json",
+      "freeze_blob": "30dd13fc674fdb45e3934bb5429cf8d20a8d1d0c",
+      "freeze_raw_sha256": "580b08484a5ae9f35a942d1063ba7ce82ca83521533b0f8e0e6f763187f83893"
+    }
+  },
+  "sealed_author_objects": [
+    {
+      "split_id": "A",
+      "commit": "c2a38ef3b797ca8350102eca7e0bd9dc480332eb",
+      "tree": "e3df8110645f3553fa134154cf9a723bd5fa2187",
+      "parent": "6357b87cfae9e488bbb1489541ec03d577803463",
+      "path": "evals/ae-sq4/f2/split-a.json",
+      "blob": "0abe9fc4a6dc6be4a33ae32d2e26f7bc7c1a2601",
+      "raw_sha256": "14b5dba26cea34e20f2fe5726e3a0910a01cb7e714e8ea12ae4545ff59f1050b",
+      "content_sha256": "e2543c804d8cd041e78c1c165454de70023fdcb38ea3d19fa46625d4b6a6f569",
+      "case_count": 20
+    },
+    {
+      "split_id": "B",
+      "commit": "1629eb1c4054d54f397346613a56dba22fcbd607",
+      "tree": "9cef985b680fdab2bbc28f36ed33d7b597f4f27e",
+      "parent": "6357b87cfae9e488bbb1489541ec03d577803463",
+      "path": "evals/ae-sq4/f2/split-b.json",
+      "blob": "cb79d5fb0e4a152fa43fae541b3db39b40f968bf",
+      "raw_sha256": "1c8393a3a0aaf8525564a4fe81e133fd2fd9dde6003dac36b7d76ac00dd3e827",
+      "content_sha256": "76e3129c7fff21163230a24d18a5a4cba5d48e0a7579c75faea89f4cc830c679",
+      "case_count": 20
+    }
+  ],
+  "f2a_object": {
+    "commit": "8b1a26dc6951d7052429197af5d8dffe3636bbb3",
+    "tree": "fd76825a250466fbfabff8b75d307cb8cb017814",
+    "ordered_parents": [
+      "6357b87cfae9e488bbb1489541ec03d577803463",
+      "c2a38ef3b797ca8350102eca7e0bd9dc480332eb",
+      "1629eb1c4054d54f397346613a56dba22fcbd607"
+    ],
+    "status": "NOT_PASS",
+    "corpus_manifest": {
+      "path": "evals/ae-sq4/f2/corpus-manifest.json",
+      "blob": "bf38e2e0f45a66f08bafd89f27a0aa657b5e16ef",
+      "raw_sha256": "4bcdfe75f77099dfcda4301c083b40d277494bff2b43fcab490a72689074f5b4"
+    },
+    "schedule": {
+      "path": "evals/ae-sq4/f2/schedule.json",
+      "blob": "9ef21967259903d49e975d88c520c45d567a0d76",
+      "raw_sha256": "6ce97e14c1a8db3d551ca44c3c305ba659eb7821db688b3255402c506a352468",
+      "semantic_sha256": "59507386b745eb331c8812903d0b4dc6aa8281c4ff10933a4e18713669809ebb",
+      "presentations": 80,
+      "calls_per_presentation": 4
+    }
+  },
+  "durable_evidence_refs": {
+    "evidence_commit": "8b1a26dc6951d7052429197af5d8dffe3636bbb3",
+    "local_branch": {
+      "name": "refs/heads/codex/ae-sq4-f2-not-pass",
+      "target": "8b1a26dc6951d7052429197af5d8dffe3636bbb3"
+    },
+    "remote_tracking_branch": {
+      "name": "refs/remotes/origin/codex/ae-sq4-f2-not-pass",
+      "target": "8b1a26dc6951d7052429197af5d8dffe3636bbb3"
+    },
+    "ref_mutation_authorized": false
+  },
+  "standalone_validation": {
+    "evidence_kind": "recomputed-aggregate-evidence-not-a-prior-durable-receipt",
+    "validator_id": "sq4-independent-validator",
+    "authorship_performed": false,
+    "status": "PASS",
+    "errors": [],
+    "holds": [],
+    "case_count": 40,
+    "historical_digest_count": 768,
+    "similarity_check_count": 400,
+    "maximum_similarity": 0.406626506,
+    "maximum_similarity_threshold": 0.8,
+    "combined_corpus_sha256": "feaa03f2afd815bbc661d6c9de99c2cf53410f472206b2a2cd4b964f5bb1f122",
+    "qualification_effect": "none"
+  },
+  "frozen_runtime_rejection": {
+    "exception_class": "PreflightError",
+    "exception_message": "corpus split authority is not the frozen F1 candidate",
+    "split_authority_actual": {
+      "candidate_commit": "6357b87cfae9e488bbb1489541ec03d577803463",
+      "candidate_tree": "6a04e5aa846cbe196425c58671bf390c499b4d59"
+    },
+    "frozen_runtime_required": {
+      "candidate_commit": "3762efae80ead1461d973b4737c5dcab6bae026a",
+      "candidate_tree": "6a071b4ee33246cc2ef448cf4d574f51abc89348"
+    },
+    "runner_path": "scripts/run_ae_sq4_aq.py",
+    "runner_line_interval": "708-722",
+    "classification": "corpus-split-authority-candidate-identity-mismatch-before-F2B",
+    "route": "SQ4-F2:NOT_PASS->SQ4-AR"
+  },
+  "phase_status": {
+    "SQ4_F0": "completed-authority-only",
+    "SQ4_F1A": "PASS",
+    "SQ4_F1B": "PASS",
+    "SQ4_F2": "NOT_PASS-terminal-authority-mismatch",
+    "SQ4_F2B": "not-created",
+    "SQ4_F3": "not-started-no-preflight",
+    "SQ4_F4": "not-started-zero-canary-calls",
+    "SQ4_F5": "not-started-zero-batch-calls",
+    "SQ4_F6": "not-started-no-AQ-result",
+    "SQ4_AS_HANDOFF": "blocked"
+  },
+  "live_call_accounting": {
+    "diagnostic_calls": 0,
+    "canary_calls": 0,
+    "batch_calls": 0,
+    "total_model_calls": 0
+  },
+  "preservation": {
+    "retain_f0_f1_author_and_f2a_objects": true,
+    "sq4_bytes_rewrite_delete_or_migrate_permitted": false,
+    "sq4_candidate_identity_or_bytes_reuse_permitted": false,
+    "sq4_split_or_f2a_reuse_permitted": false,
+    "sq4_retry_reopen_resume_repair_refreeze_or_H6_permitted": false
+  },
+  "successor_route": "distinct-owner-authorized-new-program-id-with-fresh-candidate-and-fresh-corpus-only",
+  "terminal_edges": [
+    "no_SQ4_F2B",
+    "no_SQ4_F3",
+    "no_SQ4_F4",
+    "no_SQ4_F5",
+    "no_SQ4_F6",
+    "no_SQ4_AS_HANDOFF",
+    "no_SQ4_retry",
+    "no_SQ4_reopen",
+    "no_SQ4_resume",
+    "no_SQ4_repair",
+    "no_SQ4_refreeze",
+    "no_SQ4_H6",
+    "no_SQ4_candidate_identity_or_byte_reuse",
+    "no_SQ4_split_reuse",
+    "no_SQ4_F2A_reuse",
+    "no_downstream",
+    "no_release",
+    "no_publish",
+    "no_promotion",
+    "no_deletion",
+    "no_migration"
+  ]
+}

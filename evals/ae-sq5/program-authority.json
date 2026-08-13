@@ -1,0 +1,781 @@
+{
+  "schema_version": "AE-SQ5-program-authority-v1",
+  "program_id": "AE-SQ5",
+  "candidate_id": "AE-SQ5-SLEC-5",
+  "authority_status": "F0_INITIAL_AUTHORITY_CLOSED",
+  "claim_ceiling": "structural-successor-authority-and-unexecuted-contract-repair-plan-only",
+  "owner_authorization": {
+    "authorized": true,
+    "scope": "SQ5-F1A-through-SQ5-F6-subject-to-exact-closed-gates-and-budgets",
+    "successor_kind": "distinct-owner-authorized-new-program",
+    "authorized_phases": [
+      "SQ5-F1A",
+      "SQ5-F1B",
+      "SQ5-F1G",
+      "SQ5-F2A",
+      "SQ5-F2B",
+      "SQ5-F3",
+      "SQ5-F4",
+      "SQ5-F5",
+      "SQ5-F6"
+    ],
+    "live_model_phases": [
+      "SQ5-F4",
+      "SQ5-F5"
+    ],
+    "additional_diagnostic_calls_authorized": false,
+    "live_calls_authorized_within_gate_and_budget": true,
+    "additional_owner_approval_required_for_authorized_phases": false,
+    "corpus_authoring_authorized_only_after_exact_F1B_and_F1G_pass": true,
+    "downstream_execution_authorized_by_this_artifact": false,
+    "release_publish_promotion_authorized": false,
+    "deletion_or_migration_authorized": false
+  },
+  "predecessor_terminal_history": {
+    "program_id": "AE-SQ4",
+    "candidate_id": "AE-SQ4-SLEC-4",
+    "status": "terminal",
+    "terminal_stage": "SQ4-AR",
+    "terminal_edge": "SQ4-F2:NOT_PASS->SQ4-AR",
+    "terminal_reason": "frozen-runtime-rejects-both-authored-split-authorities-because-they-bind-F1B-instead-of-the-frozen-F1A-implementation",
+    "terminal_decision": {
+      "path": "evals/ae-sq4/ar/terminal-decision.json",
+      "raw_sha256": "d71572df72f6dbf90547388983489e4b87328c5806bcf08b395e6e27bf2b0a12"
+    },
+    "terminal_plan": {
+      "path": "docs/exec-plans/active/ae-sq4.md",
+      "raw_sha256": "1516e94a74e767140890c10b81908e80b298cf8f97c25cd696db7cfcf08b1127"
+    },
+    "sealed_f1a": {
+      "commit": "3762efae80ead1461d973b4737c5dcab6bae026a",
+      "tree": "6a071b4ee33246cc2ef448cf4d574f51abc89348"
+    },
+    "sealed_f1b": {
+      "commit": "6357b87cfae9e488bbb1489541ec03d577803463",
+      "tree": "6a04e5aa846cbe196425c58671bf390c499b4d59",
+      "freeze_raw_sha256": "580b08484a5ae9f35a942d1063ba7ce82ca83521533b0f8e0e6f763187f83893"
+    },
+    "failed_f2a": {
+      "commit": "8b1a26dc6951d7052429197af5d8dffe3636bbb3",
+      "tree": "fd76825a250466fbfabff8b75d307cb8cb017814",
+      "combined_corpus_sha256": "feaa03f2afd815bbc661d6c9de99c2cf53410f472206b2a2cd4b964f5bb1f122",
+      "status": "NOT_PASS"
+    },
+    "later_stage_facts": {
+      "f2b_created": false,
+      "preflight_executed": false,
+      "one_shot_state_claimed": false,
+      "diagnostic_calls": 0,
+      "canary_calls": 0,
+      "batch_calls": 0,
+      "AQ_result_created": false,
+      "downstream_opened": false
+    },
+    "predecessor_bytes_write_permitted": false,
+    "predecessor_state_delete_or_migrate_permitted": false,
+    "predecessor_split_author_or_f2a_reuse_permitted": false,
+    "EXECPLAN_write_permitted": false
+  },
+  "imported_failure_contract": {
+    "kind": "aggregate-structural-candidate-vs-freeze-authority-mismatch-only",
+    "exception_class": "PreflightError",
+    "exception_message": "corpus split authority is not the frozen F1 candidate",
+    "actual_split_candidate_identity": {
+      "commit": "6357b87cfae9e488bbb1489541ec03d577803463",
+      "tree": "6a04e5aa846cbe196425c58671bf390c499b4d59",
+      "role": "F1B-freeze"
+    },
+    "required_candidate_identity": {
+      "commit": "3762efae80ead1461d973b4737c5dcab6bae026a",
+      "tree": "6a071b4ee33246cc2ef448cf4d574f51abc89348",
+      "role": "F1A-implementation"
+    },
+    "sq4_candidate_qualification_imported": false,
+    "sq4_candidate_identity_or_bytes_continued": false,
+    "sq4_task_case_split_corpus_label_schedule_or_result_material_imported": false,
+    "sq4_standalone_validator_pass_has_qualification_effect": false,
+    "behavioral_tuning_permitted": false,
+    "evaluator_threshold_tuning_permitted": false,
+    "result_informed_change_permitted": false,
+    "permitted_use": "build-and-prove-a-new-SQ5-candidate-authority-contract-before-fresh-authoring"
+  },
+  "phase_graph": {
+    "ordered_phases": [
+      "SQ5-F0",
+      "SQ5-F1A",
+      "SQ5-F1B",
+      "SQ5-F1G",
+      "SQ5-F2A",
+      "SQ5-F2B",
+      "SQ5-F3",
+      "SQ5-F4",
+      "SQ5-F5",
+      "SQ5-F6",
+      "SQ5-AS-HANDOFF",
+      "SQ5-AR"
+    ],
+    "success_edges": [
+      "SQ5-F0->SQ5-F1A",
+      "SQ5-F1A:PASS->SQ5-F1B",
+      "SQ5-F1B:PASS->SQ5-F1G",
+      "SQ5-F1G:PASS->SQ5-F2A",
+      "SQ5-F2A:PASS->SQ5-F2B",
+      "SQ5-F2B:PASS->SQ5-F3",
+      "SQ5-F3:PASS->SQ5-F4",
+      "SQ5-F4:PASS->SQ5-F5",
+      "SQ5-F5:COMPLETE_VALID->SQ5-F6",
+      "SQ5-F6:PASS->SQ5-AS-HANDOFF"
+    ],
+    "terminal_edges": [
+      "SQ5-F1A:NOT_PASS->SQ5-AR",
+      "SQ5-F1B:NOT_PASS->SQ5-AR",
+      "SQ5-F1G:NOT_PASS->SQ5-AR",
+      "SQ5-F2A:NOT_PASS->SQ5-AR",
+      "SQ5-F2B:NOT_PASS->SQ5-AR",
+      "SQ5-F3:NOT_PASS->SQ5-AR",
+      "SQ5-F4:NOT_PASS->SQ5-AR",
+      "SQ5-F5:NOT_COMPLETE_VALID->SQ5-AR",
+      "SQ5-F6:NOT_PASS->SQ5-AR"
+    ],
+    "later_phase_compensation_permitted": false,
+    "additional_active_phases_or_edges_permitted": false,
+    "retry_reopen_resume_repair_refreeze_or_H6_permitted": false
+  },
+  "model_configuration": {
+    "model_id": "gpt-5.5",
+    "reasoning_effort": "medium",
+    "applies_to_phases": [
+      "SQ5-F4",
+      "SQ5-F5"
+    ],
+    "model_fallback_permitted": false,
+    "provider_fallback_permitted": false,
+    "reasoning_fallback_permitted": false,
+    "mode_fallback_permitted": false
+  },
+  "call_budgets": {
+    "counting_unit": "attempted-model-invocation",
+    "diagnostic_calls": 0,
+    "canary_calls": 4,
+    "conditional_batch_calls": 320,
+    "qualification_hard_ceiling": 324,
+    "retry_calls_hard_ceiling": 0,
+    "failed_malformed_rejected_empty_or_timed_out_attempts_count": true,
+    "unused_calls_transfer_permitted": false,
+    "top_up_replacement_or_replay_calls_permitted": false,
+    "downstream_call_budget_in_this_authority": 0
+  },
+  "f1_contract": {
+    "implementation_phase": "SQ5-F1A",
+    "freeze_phase": "SQ5-F1B",
+    "required_sequence": [
+      "one-new-F1A-direct-child-of-committed-SQ5-F0",
+      "one-F1B-manifest-only-direct-child-of-passing-F1A",
+      "one-zero-corpus-F1G-author-template-gate-before-F2A"
+    ],
+    "accepted_F1A_count": 1,
+    "alternate_sibling_or_second_F1A_permitted": false,
+    "same_program_repair_or_refreeze_permitted": false,
+    "sq4_candidate_freeze_or-byte-reuse-permitted": false,
+    "F1A_required_components": [
+      "authority-embedded-exact-role-path-ledger",
+      "new-SQ5-candidate-authority-and-exact-external-historical-inventory-binding",
+      "provider-local-semantic-resolution-and-corpus-schemas",
+      "condition-adapter-resolver-gates-metrics-evaluator-and-global-AND-scorer",
+      "runner-durable-one-shot-index-and-target-frozen-candidate-checker",
+      "expected-authority-helper-as-sole-construction-source",
+      "author-template-builder-corpus-validator-and-receipt-schema",
+      "aggregate-result-handoff-and-terminal-decision-schemas",
+      "zero-corpus-real-byte-and-byte-non-alias-contract-tests"
+    ],
+    "F1A_forbidden_artifacts": [
+      "evals/ae-sq5/f1/repaired-freeze.json",
+      "evals/ae-sq5/f1/author-template-gate.json",
+      "evals/ae-sq5/f2/split-a.json",
+      "evals/ae-sq5/f2/split-b.json",
+      "evals/ae-sq5/f2/schedule.json",
+      "evals/ae-sq5/f2/corpus-manifest.json",
+      "evals/ae-sq5/f2/run-manifest.json",
+      "evals/ae-sq5/f3/preflight.json",
+      "evals/ae-sq5/f6/aggregate-result.json",
+      "evals/ae-sq5/as/handoff.json",
+      "evals/ae-sq5/ar/terminal-decision.json"
+    ],
+    "fresh_candidate_closure": {
+      "source_of_truth": "authority-embedded-exact-role-path-ledger",
+      "sq4_baseline": {
+        "implementation_commit": "3762efae80ead1461d973b4737c5dcab6bae026a",
+        "implementation_tree": "6a071b4ee33246cc2ef448cf4d574f51abc89348",
+        "freeze_commit": "6357b87cfae9e488bbb1489541ec03d577803463",
+        "freeze_tree": "6a04e5aa846cbe196425c58671bf390c499b4d59",
+        "freeze_path": "evals/ae-sq4/f1/repaired-freeze.json",
+        "freeze_blob": "30dd13fc674fdb45e3934bb5429cf8d20a8d1d0c",
+        "freeze_raw_sha256": "580b08484a5ae9f35a942d1063ba7ce82ca83521533b0f8e0e6f763187f83893",
+        "active_role_count": 27
+      },
+      "exact_active_role_count": 31,
+      "exact_role_path_ledger": [
+        {"role": "candidate_authority", "sq5_path": "evals/ae-sq5/f1/slec5-authority.json"},
+        {"role": "resolver_and_local_semantic_validator", "sq5_path": "scripts/resolve_ae_sq5_slec.py"},
+        {"role": "capsule_schema", "sq5_path": "evals/ae-sq5/f1/slec5-capsule-schema.json"},
+        {"role": "semantic_capsule_schema", "sq5_path": "evals/ae-sq5/f1/slec5-semantic-capsule-schema.json"},
+        {"role": "resolution_schema", "sq5_path": "evals/ae-sq5/f1/slec5-resolution-schema.json"},
+        {"role": "reference_policy", "sq5_path": "evals/ae-sq5/f1/slec5-reference-policy.json"},
+        {"role": "corpus_schema", "sq5_path": "evals/ae-sq5/f1/corpus-schema.json"},
+        {"role": "gates", "sq5_path": "evals/ae-sq5/f1/gates.json"},
+        {"role": "metrics", "sq5_path": "evals/ae-sq5/f1/metrics.json"},
+        {"role": "evaluator_schema", "sq5_path": "evals/ae-sq5/f1/evaluator-schema.json"},
+        {"role": "corpus_validator_and_expected_authority_helper", "sq5_path": "scripts/validate_ae_sq5_corpus.py"},
+        {"role": "scorer", "sq5_path": "scripts/score_ae_sq5_aq.py"},
+        {"role": "runner", "sq5_path": "scripts/run_ae_sq5_aq.py"},
+        {"role": "run_index", "sq5_path": "scripts/ae_sq5_run_index.py"},
+        {"role": "candidate_checker", "sq5_path": "scripts/check_ae_sq5_candidate.py"},
+        {"role": "run_manifest_schema", "sq5_path": "evals/ae-sq5/f1/run-manifest-schema.json"},
+        {"role": "preflight_schema", "sq5_path": "evals/ae-sq5/f1/preflight-schema.json"},
+        {"role": "result_schema", "sq5_path": "evals/ae-sq5/f1/result-schema.json"},
+        {"role": "historical_digest_test", "sq5_path": "tests/test_ae_sq5_historical_task_digests.py"},
+        {"role": "slec_test", "sq5_path": "tests/test_ae_sq5_slec.py"},
+        {"role": "provider_schema_test", "sq5_path": "tests/test_ae_sq5_provider_schema.py"},
+        {"role": "corpus_contract_test", "sq5_path": "tests/test_ae_sq5_corpus_contract.py"},
+        {"role": "evaluator_test", "sq5_path": "tests/test_ae_sq5_evaluator.py"},
+        {"role": "run_index_test", "sq5_path": "tests/test_ae_sq5_run_index.py"},
+        {"role": "candidate_checker_test", "sq5_path": "tests/test_check_ae_sq5_candidate.py"},
+        {"role": "runner_test", "sq5_path": "tests/test_run_ae_sq5_aq.py"},
+        {"role": "author_template_gate_schema", "sq5_path": "evals/ae-sq5/f1/author-template-gate-schema.json"},
+        {"role": "author_template_builder", "sq5_path": "scripts/build_ae_sq5_author_template.py"},
+        {"role": "author_template_test", "sq5_path": "tests/test_ae_sq5_author_template.py"},
+        {"role": "handoff_schema", "sq5_path": "evals/ae-sq5/f1/handoff-schema.json"},
+        {"role": "terminal_decision_schema", "sq5_path": "evals/ae-sq5/f1/terminal-decision-schema.json"}
+      ],
+      "F0_to_F1A_changed_paths_must_equal_ledger_paths": true,
+      "role_alias_path_alias_omission_or_extra_permitted": false,
+      "sq5_path_may_equal_sq4_role_path": false,
+      "any_sq4_F1A_role_blob_or_raw_sha256_reuse_permitted": false,
+      "every_sq5_role_must_differ_from_every_sq4_role_by_blob_and_raw_sha256": true,
+      "all_role_tree_entries_must_be_100644_regular_blobs": true,
+      "stale_AE_SQ4_or_SLEC_4_identity_in_active_role_permitted": false,
+      "closed_provenance_SQ4_identity_exempted_from_owned_identity_check": true,
+      "immutable_predecessor_evidence_permitted_only_as_nonactive_provenance": true,
+      "predecessor_evidence_may_occupy_active_role": false
+    },
+    "external_provenance": {
+      "permitted_roles": [
+        "SQ4-terminal-decision-and-plan",
+        "SQ4-F1A-F1B-and-failed-F2A-identity-proof",
+        "prior-diagnostic-authority-schema-and-aggregate-record",
+        "historical-exact-task-digest-inventory",
+        "F0-pinned-reference-catalog-payloads",
+        "CLI-executable-identity"
+      ],
+      "historical_digest_inventory": {
+        "commit": "3762efae80ead1461d973b4737c5dcab6bae026a",
+        "tree": "6a071b4ee33246cc2ef448cf4d574f51abc89348",
+        "path": "evals/ae-sq4/f1/historical-task-digests.json",
+        "blob": "6af74b660a9cf8fb04cde70abd527a88307f8cc3",
+        "raw_sha256": "0e49a967d9a59021c0f1aa5fc8d80fd53fdf3ab1885925b0d86f1e8c4f9dc157",
+        "content_kind": "digest-only-no-task-text"
+      },
+      "copied_into_SQ5_namespace_or_counted_as_active_F1A_role_permitted": false,
+      "task_case_label_split_schedule_or_result_material_permitted": false
+    },
+    "F1B_only_new_program_artifact": "evals/ae-sq5/f1/repaired-freeze.json",
+    "F1B_must_bind_F1A_implementation_commit_and_tree": true,
+    "independent_strict_review_required": true,
+    "post_F1B_semantic_change_permitted": false,
+    "not_pass_route": "SQ5-AR"
+  },
+  "author_template_gate": {
+    "phase": "SQ5-F1G",
+    "requires": "SQ5-F1B:PASS",
+    "attempts": 1,
+    "model_calls": 0,
+    "task_case_label_or_corpus_content_permitted": false,
+    "real_canonical_byte_round_trip_required": true,
+    "same_frozen_runtime_validation_path_as_F2B_required": true,
+    "receipt_only_commit": {
+      "path": "evals/ae-sq5/f1/author-template-gate.json",
+      "schema_path": "evals/ae-sq5/f1/author-template-gate-schema.json",
+      "schema_frozen_in": "SQ5-F1A",
+      "direct_parent": "SQ5-F1B",
+      "only_new_program_artifact": "evals/ae-sq5/f1/author-template-gate.json",
+      "exact_receipt_fields": [
+        "schema_version",
+        "program_id",
+        "candidate_id",
+        "attempt",
+        "status",
+        "model_calls",
+        "f1a_implementation",
+        "f1b_freeze",
+        "builder",
+        "validator",
+        "template_sha256",
+        "positive_round_trip",
+        "red_fixture",
+        "aggregate_sha256"
+      ],
+      "aggregate_sha256_derivation": "SHA256-canonical-receipt-with-aggregate_sha256-omitted"
+    },
+    "receipt_required_bindings": [
+      "SQ5-F1A-commit-tree-builder-and-validator-bytes",
+      "SQ5-F1B-commit-tree-and-freeze-raw-SHA256",
+      "exact-taskless-author-template-raw-SHA256",
+      "positive-real-byte-round-trip-PASS",
+      "F1B-as-candidate-red-fixture-exact-PreflightError",
+      "attempt-one-and-model-calls-zero"
+    ],
+    "author_commits_must_be_direct_children_of_F1G": true,
+    "F2A_ordered_parent_roles": [
+      "SQ5-F1G",
+      "author-A",
+      "author-B"
+    ],
+    "F2B_and_F3_must_bind_F1G_commit_tree_receipt_blob_and_raw_sha256": true,
+    "synthetic_authority_required_values": {
+      "program_id": "AE-SQ5",
+      "candidate_id": "AE-SQ5-SLEC-5",
+      "candidate_commit_role": "F1A-implementation-commit",
+      "candidate_tree_role": "F1A-implementation-tree",
+      "f1_freeze_sha256_role": "separate-F1B-manifest-digest",
+      "all_contract_digests_role": "exact-frozen-F1A-profile"
+    },
+    "red_fixture": {
+      "mutation": "replace-candidate-commit-and-tree-with-F1B-freeze-identity",
+      "required_result": "rejected",
+      "required_exception_class": "PreflightError",
+      "required_exception_message": "corpus split authority is not the frozen F1 candidate"
+    },
+    "validated_taskless_author_template_required": true,
+    "dictionary_only_mock_only_or-source-only-proof_permitted": false,
+    "author_lane_open_before_pass_permitted": false,
+    "repair_or_second_gate_permitted": false,
+    "not_pass_route": "SQ5-AR"
+  },
+  "frozen_target_loading": {
+    "expected_authority_helper_role": "sole-source-for-author-template-and-corpus-authority-construction",
+    "validate_corpora_expected_authority_argument_required": true,
+    "validate_corpora_standalone_qualification_PASS_permitted": false,
+    "production_loader_entrypoint": "_load_base_state",
+    "F1G_and_F2B_must_call_exact_production_loader": true,
+    "production_loader_environment": "ephemeral-private-Git-snapshot-of-exact-F1A-bytes",
+    "partial-loader-mock-or-live-worktree-substitution-permitted": false,
+    "checker_source": "target-frozen-F1A-bytes",
+    "authority_source": "target-frozen-F1A-profile-plus-separate-F1B-freeze-digest",
+    "ambient_root_checker_permitted": false,
+    "ambient_root_authority_permitted": false,
+    "ambient_and_target_byte_mismatch_route": "SQ5-AR",
+    "checker_or_authority_target_failure_route": "SQ5-AR"
+  },
+  "corpus_contract": {
+    "phase": "SQ5-F2A",
+    "authoring_gate": "exact-committed-SQ5-F1G-receipt-PASS-direct-child-of-SQ5-F1B",
+    "fresh_relative_to_all_predecessors": true,
+    "sq4_split_author_commit_corpus_manifest_schedule_digest_or_f2a_reuse_permitted": false,
+    "predecessor_candidate_or_corpus_continuation_permitted": false,
+    "independent_author_count": 2,
+    "cases_per_author": 20,
+    "total_unique_cases": 40,
+    "authors_receive_only_validated_taskless_SQ5_template": true,
+    "authors_may_access_each_other_split": false,
+    "authors_may_access_predecessor_task_case_corpus_or_label_material": false,
+    "authors_may_access_diagnostic_model_material_or_live_results": false,
+    "split_authority_must_bind_SQ5_F1A_implementation_identity": true,
+    "split_authority_must_bind_SQ5_F1B_separately": true,
+    "independent_nonauthor_validation_required": true,
+    "F2A_commit_contract": {
+      "commit_kind": "fresh-corpus-merge",
+      "exact_ordered_parent_roles": [
+        "SQ5-F1G",
+        "author-A",
+        "author-B"
+      ],
+      "author_A_direct_parent": "SQ5-F1G",
+      "author_B_direct_parent": "SQ5-F1G",
+      "exact_artifact_paths_relative_to_F1G": [
+        "evals/ae-sq5/f2/split-a.json",
+        "evals/ae-sq5/f2/split-b.json",
+        "evals/ae-sq5/f2/schedule.json",
+        "evals/ae-sq5/f2/corpus-manifest.json"
+      ],
+      "omitted_extra_or_nonregular_artifact_permitted": false,
+      "PASS_requires_exact_topology_artifact_closure_and_content_validation": true,
+      "retry_replacement_or_second_F2A_permitted": false,
+      "not_pass_route": "SQ5-AR"
+    },
+    "F2_JSON_git_object_mode": "100644-regular-blob",
+    "strict_canonical_UTF8_JSON_required_for": [
+      "evals/ae-sq5/f2/split-a.json",
+      "evals/ae-sq5/f2/split-b.json",
+      "evals/ae-sq5/f2/schedule.json",
+      "evals/ae-sq5/f2/corpus-manifest.json",
+      "evals/ae-sq5/f2/run-manifest.json"
+    ],
+    "duplicate_nonfinite_alternate_encoding_trailing_or_noncanonical_bytes_permitted": false,
+    "conditions": [
+      "current",
+      "reduced"
+    ],
+    "total_presentations": 80,
+    "calls_per_presentation": 4,
+    "total_batch_calls": 320,
+    "historical_exact_digest_no_replay_required": true,
+    "result_informed_change_permitted": false,
+    "consumption_trigger": "first-SQ5-F5-heldout-backed-call",
+    "post_consumption_status": "NO_REPLAY",
+    "retry_replay_duplicate_replacement_extra_or_top_up_permitted": false
+  },
+  "f2b_run_manifest_contract": {
+    "phase": "SQ5-F2B",
+    "requires": "SQ5-F2A:PASS",
+    "commit_kind": "manifest-only-direct-child",
+    "direct_parent": "exact-SQ5-F2A-commit",
+    "exact_delta_paths": [
+      "evals/ae-sq5/f2/run-manifest.json"
+    ],
+    "artifact": {
+      "path": "evals/ae-sq5/f2/run-manifest.json",
+      "schema_path": "evals/ae-sq5/f1/run-manifest-schema.json",
+      "schema_frozen_in": "SQ5-F1A",
+      "git_object_mode": "100644-regular-blob",
+      "encoding": "strict-UTF-8",
+      "serialization": "canonical-finite-duplicate-key-free-JSON",
+      "exact_top_level_keys_in_canonical_order": [
+        "author_template_gate",
+        "candidate_id",
+        "corpus",
+        "corpus_freeze",
+        "execution",
+        "f1_freeze",
+        "implementation_freeze",
+        "program_id",
+        "run_id",
+        "runtime",
+        "schedule",
+        "schema_version",
+        "usage_authority",
+        "validation_receipt"
+      ]
+    },
+    "embedded_independent_validator_receipt": {
+      "location": "run-manifest.validation_receipt",
+      "exact_keys_in_canonical_order": [
+        "aggregate_sha256",
+        "artifacts",
+        "author_commits",
+        "authorship_performed",
+        "claim_ceiling",
+        "errors",
+        "f1a_implementation",
+        "f1b_freeze",
+        "f1g_gate",
+        "f2a_corpus",
+        "holds",
+        "receipt_version",
+        "status",
+        "validator"
+      ],
+      "required_bindings": [
+        "SQ5-F1A-commit-tree-and-all-active-role-blobs-and-raw-SHA256",
+        "SQ5-F1B-commit-tree-freeze-blob-and-raw-SHA256",
+        "SQ5-F1G-commit-tree-receipt-blob-and-raw-SHA256",
+        "SQ5-F2A-commit-tree-and-exact-ordered-parents",
+        "author-A-and-author-B-commit-tree-split-path-blob-raw-SHA256-content-SHA256-and-distinct-author-id",
+        "split-a-split-b-schedule-and-corpus-manifest-path-blob-raw-SHA256-and-semantic-or-content-SHA256",
+        "validator-id-path-blob-and-raw-SHA256-from-exact-F1A",
+        "forty-case-independent-validation-PASS-with-empty-errors-and-holds",
+        "authorship-performed-false-and-aggregate-receipt-SHA256"
+      ],
+      "exact_nested_binding_keys": {
+        "f1a_implementation": ["commit", "role_ledger_sha256", "tree"],
+        "f1b_freeze": ["blob", "commit", "path", "raw_sha256", "tree"],
+        "f1g_gate": ["blob", "commit", "path", "raw_sha256", "tree"],
+        "f2a_corpus": ["commit", "ordered_parents", "tree"],
+        "author_commit_row": ["author_id", "blob", "commit", "content_sha256", "path", "raw_sha256", "tree"],
+        "artifact_row": ["blob", "content_or_semantic_sha256", "path", "raw_sha256"],
+        "validator": ["blob", "commit", "path", "raw_sha256", "tree", "validator_id"]
+      },
+      "validator_identity_required": "independent-nonauthor-validator",
+      "status_required": "PASS",
+      "authorship_performed_required": false,
+      "errors_required": [],
+      "holds_required": [],
+      "standalone_validator_PASS_has_qualification_effect": false
+    },
+    "separate_validation_receipt_artifact_permitted": false,
+    "F2B_PASS_requires_exact_parent_delta_bytes_schema_bindings_and_receipt": true,
+    "only_F2B_PASS_opens_F3": true,
+    "retry_replacement_or_second_F2B_permitted": false,
+    "not_pass_route": "SQ5-AR"
+  },
+  "durable_state_contract": {
+    "schema_version": "ae-sq5-one-shot-run-index-v1",
+    "program_id": "AE-SQ5",
+    "purpose": "unified-one-shot-execution-boundary-and-run-index",
+    "exact_top_level_keys_in_canonical_order": [
+      "binding",
+      "custody_key",
+      "program_id",
+      "record_sha256",
+      "schema_version",
+      "state_sha256",
+      "status"
+    ],
+    "exact_binding_keys_in_canonical_order": [
+      "corpus_manifest_sha256",
+      "f1_freeze_sha256",
+      "preflight_record_sha256",
+      "program_authority_sha256",
+      "run_manifest_sha256"
+    ],
+    "atomic_claim": "owner-only-no-follow-single-link-O_CREAT-O_EXCL-before-first-canary-child",
+    "existing_unsafe_or_interrupted_state_route": "terminal-fail-closed-no-reuse",
+    "preflight_or_dry_run_claim_permitted": false
+  },
+  "zero_model_preflight": {
+    "phase": "SQ5-F3",
+    "requires": "SQ5-F2B:PASS",
+    "attempts": 1,
+    "model_calls": 0,
+    "required_checks": [
+      "F1B-F1G-F2A-and-F2B-exact-custody",
+      "F2B-run-manifest-and-embedded-independent-receipt-PASS",
+      "real-byte-F1A-candidate-vs-F1B-freeze-authority-contract",
+      "provider-supported-subset-and-local-semantics",
+      "strict-recursive-schema-closure",
+      "two-independent-twenty-case-splits-and-forty-unique-cases",
+      "eighty-presentations-times-four-calls",
+      "formula-totality-global-AND-and-required-value-coverage",
+      "lifecycle-effect-event-and-counter-closure",
+      "budgets-zero-retry-aggregate-only-and-zero-raw-persistence",
+      "unclaimed-one-shot-state"
+    ],
+    "pass_required_for_canary": true,
+    "repair_or_second_preflight_permitted": false,
+    "not_pass_route": "SQ5-AR"
+  },
+  "qualification_execution": {
+    "canary": {
+      "phase": "SQ5-F4",
+      "requires": "SQ5-F3:PASS",
+      "calls": 4,
+      "corpus_content_permitted": false,
+      "calls_per_isolated_child_context": 1,
+      "all_four_valid_completed_capsules_required": true,
+      "retry_top_up_replacement_second_canary_or_byte_change_permitted": false,
+      "qualification_effect": "gateway-only-not-AQ-pass",
+      "not_pass_route": "SQ5-AR"
+    },
+    "batch": {
+      "phase": "SQ5-F5",
+      "requires": "SQ5-F4:PASS",
+      "conditional": true,
+      "total_presentations": 80,
+      "calls_per_presentation": 4,
+      "hard_call_ceiling": 320,
+      "first_call_consumes_both_splits": true,
+      "failed_or_malformed_attempts_count": true,
+      "retry_replay_duplicate_replacement_extra_or_top_up_permitted": false,
+      "complete_valid_route": "SQ5-F6",
+      "incomplete_failed_or_invalid_route": "SQ5-AR"
+    }
+  },
+  "global_and": {
+    "phase": "SQ5-F6",
+    "model_calls": 0,
+    "operator": "logical-AND",
+    "scope": "all-required-run-integrity-capsule-evaluator-gate-metric-condition-and-presentation-values",
+    "required_conditions": [
+      "current",
+      "reduced"
+    ],
+    "false_values": [
+      "missing",
+      "skipped",
+      "undefined",
+      "nonfinite",
+      "malformed",
+      "duplicate",
+      "extra",
+      "unevaluable",
+      "rejected",
+      "failed"
+    ],
+    "compensation_threshold_repair_override_or_later_cure_permitted": false,
+    "pass_literal": "PASS",
+    "fail_literal": "FAIL",
+    "result_count": 1,
+    "result_projection": "candidate-bound-aggregate-status-and-digest-only",
+    "durable_result_path": "evals/ae-sq5/f6/aggregate-result.json",
+    "durable_result_format": "strict-canonical-UTF8-aggregate-only-JSON",
+    "durable_result_raw_sha256_must_equal_run_index_record_sha256": true,
+    "subaggregate_or_raw_result_disclosure_permitted": false
+  },
+  "outcome_artifact_contract": {
+    "schemas_frozen_in": "SQ5-F1A",
+    "aggregate_result": {
+      "path": "evals/ae-sq5/f6/aggregate-result.json",
+      "schema_path": "evals/ae-sq5/f1/result-schema.json",
+      "created_only_in": "SQ5-F6-after-SQ5-F5-COMPLETE_VALID",
+      "exact_keys_in_canonical_order": [
+        "aggregate_digest",
+        "candidate_id",
+        "program_id",
+        "schema_version",
+        "status"
+      ],
+      "exact_constants": {
+        "schema_version": "ae-sq5-aggregate-result-v1",
+        "program_id": "AE-SQ5",
+        "candidate_id": "AE-SQ5-SLEC-5",
+        "status_values": [
+          "PASS",
+          "FAIL"
+        ]
+      },
+      "aggregate_digest_is_exact_global_AND_digest": true,
+      "raw_sha256_must_equal_run_index_record_sha256": true,
+      "strict_canonical_UTF8_JSON_and_100644_regular_blob_required": true
+    },
+    "handoff": {
+      "path": "evals/ae-sq5/as/handoff.json",
+      "schema_path": "evals/ae-sq5/f1/handoff-schema.json",
+      "created_only_on": "SQ5-F6:PASS->SQ5-AS-HANDOFF",
+      "exact_keys_in_canonical_order": [
+        "aggregate_result",
+        "authority_effect",
+        "candidate_id",
+        "program_id",
+        "schema_version",
+        "source_phase",
+        "source_status"
+      ],
+      "must_bind_aggregate_result_path_and_raw_sha256": true,
+      "source_phase": "SQ5-F6",
+      "source_status": "PASS",
+      "authority_effect": "none",
+      "terminal_decision_may_coexist": false
+    },
+    "terminal_decision": {
+      "path": "evals/ae-sq5/ar/terminal-decision.json",
+      "schema_path": "evals/ae-sq5/f1/terminal-decision-schema.json",
+      "created_only_on": "one-exact-terminal-edge-into-SQ5-AR",
+      "exact_keys_in_canonical_order": [
+        "aggregate_result",
+        "candidate_id",
+        "last_completed_phase",
+        "program_id",
+        "schema_version",
+        "status",
+        "terminal_edge"
+      ],
+      "must_bind_exact_terminal_edge_and_last_completed_phase": true,
+      "aggregate_result_binding_required_only_if_F6_was_entered": true,
+      "status": "terminal",
+      "handoff_may_coexist": false
+    },
+    "aggregate_handoff_and_terminal_paths_pairwise_distinct": true,
+    "schema_or_topology_fallback_permitted": false
+  },
+  "routing_and_claims": {
+    "diagnosis_can_qualify_AQ": false,
+    "author_template_gate_can_qualify_AQ": false,
+    "canary_alone_can_qualify_AQ": false,
+    "incomplete_or_invalid_batch_can_reach_F6": false,
+    "pass_edge": "SQ5-F6:PASS->SQ5-AS-HANDOFF",
+    "nonpass_edge": "SQ5-F6:NOT_PASS->SQ5-AR",
+    "handoff_artifact_path": "evals/ae-sq5/as/handoff.json",
+    "terminal_artifact_path": "evals/ae-sq5/ar/terminal-decision.json",
+    "result_handoff_and_terminal_paths_must_be_pairwise_distinct": true,
+    "SQ5_AS_HANDOFF_is_execution_authority": false,
+    "SQ5_AR_is_terminal": true,
+    "maximum_AQ_claim": "exact-candidate-aggregate-in-frozen-forty-case-two-condition-AE-SQ5-envelope-only",
+    "release_publish_or_promotion_claim": false
+  },
+  "privacy": {
+    "forbidden_durable_material": [
+      "raw-prompt",
+      "task-text",
+      "raw-output",
+      "event-payload",
+      "transcript",
+      "message",
+      "case-level-result",
+      "split-level-result",
+      "condition-level-result",
+      "presentation-level-result",
+      "assessor-level-result",
+      "gate-level-result",
+      "score-level-result"
+    ],
+    "permitted_external_projection": "final-aggregate-status-and-digest-only"
+  },
+  "namespace": {
+    "artifact_root": "evals/ae-sq5",
+    "active_plan": {
+      "path": "docs/exec-plans/active/ae-sq5.md",
+      "raw_sha256": "b53759750fe7822265ebff3feeeb4f457b8973d84d735f8160bf6dec2cbe79b4"
+    },
+    "program_base_commit": "6357b87cfae9e488bbb1489541ec03d577803463",
+    "program_base_tree": "6a04e5aa846cbe196425c58671bf390c499b4d59",
+    "F0_commit": "ABSENT_NOT_SELF_BOUND",
+    "F1A_must_be_direct_child_of_committed_F0": true,
+    "foundation_pointer": "docs/exec-plans/active/ae-sq5.md for AE-SQ5 only",
+    "decision_log_row_ids": [
+      "AE-SQ4-AR-2026-08-13",
+      "AE-SQ5-F0-2026-08-13"
+    ],
+    "predecessor_root_write_permitted": false,
+    "predecessor_durable_state_write_delete_or_migrate_permitted": false,
+    "reserved_future_artifacts_confer_state": false
+  },
+  "forbidden_actions": [
+    "retry-reopen-resume-repair-refreeze-continue-cure-or-reinterpret-AE-SQ4",
+    "H6",
+    "write-delete-or-migrate-AE-SQ4-bytes-or-state",
+    "reuse-AE-SQ4-split-author-object-corpus-manifest-schedule-digest-or-F2A",
+    "continue-or-refreeze-AE-SQ4-candidate-bytes",
+    "copy-or-alias-any-SQ4-F1A-role-blob-or-raw-bytes-into-an-active-SQ5-F1A-role",
+    "omit-add-reorder-or-alias-an-SQ5-F1A-role-or-path",
+    "treat-imported-predecessor-provenance-as-an-active-SQ5-candidate-role",
+    "make-a-diagnostic-call",
+    "author-corpus-before-exact-F1B-and-F1G-pass",
+    "bind-authored-split-candidate-identity-to-F1B",
+    "use-dictionary-only-mock-only-or-source-only-authority-proof",
+    "bypass-F2A-or-F2B-or-open-F3-without-exact-F2B-PASS",
+    "model-call-during-F1-F2A-F2B-F3-or-F6",
+    "canary-before-F3-pass",
+    "batch-before-F4-pass",
+    "retry-replay-replace-duplicate-extra-or-top-up-call-or-presentation",
+    "model-provider-reasoning-or-mode-fallback",
+    "persist-forbidden-raw-or-subaggregate-material",
+    "later-stage-compensation",
+    "route-nonpass-downstream",
+    "release-publish-promote-delete-or-migrate"
+  ],
+  "acceptance": {
+    "F0_status": "structural-successor-authority-closed",
+    "F0_execution_claim": "zero-model-calls-zero-corpus-zero-candidate-or-runner-change",
+    "required_checks": [
+      "strict-duplicate-key-type-order-and-recursive-closure",
+      "SQ4-terminal-exact-custody-and-zero-call-accounting",
+      "exact-F1A-role-path-delta-and-all-role-byte-non-alias-against-SQ4-F1A",
+      "external-predecessor-evidence-is-provenance-only-never-an-active-role",
+      "one-F1A-and-one-manifest-only-F1B",
+      "zero-corpus-real-byte-F1A-vs-F1B-author-template-gate",
+      "F1B-as-candidate-red-fixture-rejected",
+      "F2A-authoring-only-after-exact-F1B-and-F1G-pass",
+      "F2A-exact-merge-and-artifact-closure",
+      "F2B-exact-direct-child-run-manifest-only-with-embedded-independent-PASS-receipt",
+      "all-five-F2-JSON-artifacts-canonical-UTF8-100644-regular-blobs",
+      "independent-two-times-twenty-fresh-corpus",
+      "one-zero-model-preflight",
+      "one-four-call-canary-and-conditional-320-call-batch",
+      "zero-retry-global-AND-and-pass-only-routing",
+      "F1A-frozen-aggregate-result-handoff-and-terminal-schemas-and-exact-topology",
+      "foundation-pointer-and-two-decision-rows",
+      "mutation-reds-targeted-tests-Ruff-JSON-diff-and-status"
+    ],
+    "next_authorized_transition": "SQ5-F1A-one-new-implementation-commit-with-zero-model-calls-and-zero-corpus",
+    "semantic_change_requires_new_program_id": true
+  }
+}
