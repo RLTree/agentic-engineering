@@ -21,6 +21,7 @@ DECISION_LOG_PATH = ROOT / "docs" / "foundations" / "decision-log.csv"
 
 BASE_COMMIT = "340b79399a987e6aad0d5435fa540a1db511489d"
 BASE_TREE = "c47aeb3642d7fdcf90f47f990ddf3915f3cbb933"
+SQ1_TERMINAL_COMMIT = "9861df7c7894b35f5ce758ee1b005f80ceb0426e"
 PLAN_RAW_SHA256 = "ebc53ca6305837ecd089dd201542dcbb35c5478b6bbf31e1003a227440868418"
 F0_PLAN_RAW_SHA256 = "a7080db226bf499dd3037afe683361e4ccba0c1093ce3bc4e456520e2176a382"
 
@@ -433,9 +434,13 @@ RESERVED_TESTS = (
     "tests/test_ae_sq1_ar.py",
 )
 
-POINTER_LINE = (
+SQ1_POINTER_LINE = (
     "**Active successor plan:** `docs/exec-plans/active/ae-sq1.md` for AE-SQ1 "
     "only; `EXECPLAN.md` remains immutable predecessor terminal history"
+)
+POINTER_LINE = (
+    "**Active successor plan:** `docs/exec-plans/active/ae-sq2.md` for AE-SQ2 "
+    "only; AE-SQ1 and `EXECPLAN.md` remain immutable terminal history"
 )
 DECISION_LOG_FIELDS = (
     "decision_id",
@@ -494,6 +499,47 @@ EXPECTED_TERMINAL_LOG_FIELDS = {
     "decision_owner": "root conductor",
     "disposition_no_change_update_replace_retire": "retire",
     "candidate_commit": "0417fdd1174508fc0591be9a3e89263f25592b25",
+}
+
+EXPECTED_SQ2_LOG_ROW = {
+    "decision_id": "AE-SQ2-F0-2026-08-12",
+    "repository": "RLTree/agentic-engineering",
+    "foundation_id": "current-2026-08-08",
+    "observed_change": (
+        "Owner authorized distinct AE-SQ2 after immutable AE-SQ1 terminal "
+        "closeout, including a bounded diagnostic before repaired freeze and "
+        "gated live qualification"
+    ),
+    "affected_decision": "active successor program authority",
+    "decision_owner": "root conductor",
+    "disposition_no_change_update_replace_retire": "update",
+    "implementation_or_test_delta": (
+        "Freeze docs/exec-plans/active/ae-sq2.md and "
+        "evals/ae-sq2/program-authority.json; authorize D0-F6 in order with "
+        "diagnostic 4, canary 4, batch 320, fresh 2 x 20 corpus only after F1, "
+        "zero-model preflight, global AND, and pass-only routing"
+    ),
+    "claim_ceiling": (
+        "Structural program authority and unexecuted owner authorization only; "
+        "no diagnostic, corpus, candidate freeze, qualification, downstream, "
+        "host, field, production, release, publication, promotion, deletion, or "
+        "migration claim"
+    ),
+    "review_trigger": (
+        "Closed SQ2-D0 diagnostic record or any proposed F0 semantic change"
+    ),
+    "date": "2026-08-12",
+    "candidate_commit": SQ1_TERMINAL_COMMIT,
+    "notes": (
+        "Plan raw SHA256 "
+        "21cba55af6067d9af1f934d2a58d964f2d7c11df5791ee9e510cf8ebb2fdaf9b; "
+        "base tree 573f53baa839a3b088548a7e7ba2050003911a7a; AE-SQ1 tag "
+        "ae-sq1-terminal-2026-08-11 remains immutable; AE-SQ2 is not retry, "
+        "reopen, resume, H6, AQ10, cure, reinterpretation, or AE-SQ1 "
+        "continuation; gpt-5.5 medium with no fallback is controlled "
+        "configuration, not behavioral evidence; this F0 lane made zero live "
+        "calls and authored zero corpus cases"
+    ),
 }
 
 
@@ -1232,22 +1278,21 @@ class AeSq1ProgramAuthorityTests(unittest.TestCase):
         self.assertNotIn(" 381 ", text)
 
     def test_pointer_is_the_only_foundation_change(self) -> None:
-        base = git_text(BASE_COMMIT, "docs/foundations/current-2026-08-08.md")
-        marker = (
-            "**Authority:** current research and source-disposition guide for "
-            "implementation; not an automatically loaded skill or release proof"
+        base = git_text(
+            SQ1_TERMINAL_COMMIT,
+            "docs/foundations/current-2026-08-08.md",
         )
-        self.assertEqual(1, base.count(marker))
-        expected = base.replace(marker, f"{marker}\n{POINTER_LINE}", 1)
+        self.assertEqual(1, base.count(SQ1_POINTER_LINE))
+        expected = base.replace(SQ1_POINTER_LINE, POINTER_LINE, 1)
         self.assertEqual(expected, FOUNDATION_PATH.read_text(encoding="utf-8"))
 
     def test_decision_log_has_exactly_one_appended_row(self) -> None:
-        base = git_bytes(BASE_COMMIT, "docs/foundations/decision-log.csv")
+        base = git_bytes(SQ1_TERMINAL_COMMIT, "docs/foundations/decision-log.csv")
         current = DECISION_LOG_PATH.read_bytes()
         self.assertTrue(current.startswith(base))
         suffix = current[len(base) :]
         self.assertTrue(suffix.endswith(b"\n"))
-        self.assertEqual(2, len(suffix.splitlines()))
+        self.assertEqual(1, len(suffix.splitlines()))
 
         base_reader = csv.DictReader(io.StringIO(base.decode("utf-8")))
         current_reader = csv.DictReader(io.StringIO(current.decode("utf-8")))
@@ -1255,18 +1300,23 @@ class AeSq1ProgramAuthorityTests(unittest.TestCase):
         self.assertEqual(DECISION_LOG_FIELDS, tuple(current_reader.fieldnames or ()))
         base_rows = list(base_reader)
         current_rows = list(current_reader)
-        self.assertEqual(base_rows, current_rows[:-2])
-        self.assertEqual(EXPECTED_LOG_ROW, current_rows[-2])
+        self.assertEqual(base_rows, current_rows[:-1])
+        self.assertEqual(EXPECTED_LOG_ROW, base_rows[-2])
         for key, expected in EXPECTED_TERMINAL_LOG_FIELDS.items():
-            self.assertEqual(expected, current_rows[-1][key], key)
+            self.assertEqual(expected, base_rows[-1][key], key)
         self.assertIn(
             "DO_NOT_RELEASE_OR_PROMOTE",
-            current_rows[-1]["implementation_or_test_delta"],
+            base_rows[-1]["implementation_or_test_delta"],
         )
-        self.assertIn("heldout corpus unconsumed", current_rows[-1]["notes"])
+        self.assertIn("heldout corpus unconsumed", base_rows[-1]["notes"])
+        self.assertEqual(EXPECTED_SQ2_LOG_ROW, current_rows[-1])
         self.assertEqual(
             1,
             sum(row["decision_id"] == "AE-SQ1-F0-2026-08-10" for row in current_rows),
+        )
+        self.assertEqual(
+            1,
+            sum(row["decision_id"] == "AE-SQ2-F0-2026-08-12" for row in current_rows),
         )
 
     def test_f0_namespace_reserves_but_does_not_authorize_future_files(self) -> None:
