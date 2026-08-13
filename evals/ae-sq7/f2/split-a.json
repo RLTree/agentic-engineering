@@ -1,0 +1,1391 @@
+{
+  "schema_version": "1.0",
+  "program_id": "AE-SQ7",
+  "corpus_id": "AE-SQ7-AQ-FRESH-V1",
+  "split_id": "A",
+  "split_nonce": "c21ca507e6e0183eecdcfc632f976b9049863698ebf3d400a1f654cd7d87ef69",
+  "author_id": "sq7-author-a",
+  "authority": {
+    "program_id": "AE-SQ7",
+    "candidate_id": "AE-SQ7-SLEC-7",
+    "candidate_commit": "1613d46d8fae71259979371717dd567de17ffded",
+    "candidate_tree": "58a490dfc641ab11a2176c15801bb25b3df428a1",
+    "f1_freeze_sha256": "6565d94cf3fd8015fd4754bdf0735bf68dae4b5729e92ecb9ab6062b7006d084",
+    "corpus_contract_sha256": "4cedd21b892d3ac9824a18244a1472240a5f421ca23ad05afd682cf5e6e5e8f0",
+    "gates_sha256": "df778313c2bcb21c500bdbe644fbc5a6e182c2985b9735af7e6be0d916cd5d81",
+    "metrics_sha256": "8eaf2f91eba0108d61ac20281e7f49c3098809489f7195879b3b4a67dc342cfb",
+    "evaluator_schema_sha256": "5fc2f86af5ac5494f8b65a00cdb209796ddd9b46cf78a257c3c8304182a616a7"
+  },
+  "no_replay": {
+    "normalization_id": "ae-sq7-task-v1",
+    "historical_digest_inventory_sha256": "0e49a967d9a59021c0f1aa5fc8d80fd53fdf3ab1885925b0d86f1e8c4f9dc157",
+    "historical_inventory_content_sha256": "8ee69ae06f388c1b47386b312d31bcce7ae408d04e76659653335d55e12ac270",
+    "historical_inventory_count": 768,
+    "historical_text_embedded": false,
+    "predecessor_case_label_or_result_material_embedded": false
+  },
+  "cases": [
+    {
+      "case_id": "AE-SQ7-A-01",
+      "case_nonce": "9a7dcc91748dedf5c633f2621cd571d6260238f0d677193b2d4714ad34bc5668",
+      "task_text": "Alphabetize the words cedar, amber, quartz, birch, and linen, then return only the comma-separated sequence.",
+      "task_text_nfc_sha256": "107e3c05b536ebd85b28231bb1b530759d953be612b1c32169170e29696d9978",
+      "profile": "none",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 108,
+              "text": "Alphabetize the words cedar, amber, quartz, birch, and linen, then return only the comma-separated sequence."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 108,
+              "text": "Alphabetize the words cedar, amber, quartz, birch, and linen, then return only the comma-separated sequence."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 108,
+              "text": "Alphabetize the words cedar, amber, quartz, birch, and linen, then return only the comma-separated sequence."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 108,
+              "text": "Alphabetize the words cedar, amber, quartz, birch, and linen, then return only the comma-separated sequence."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "none",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ7-A-02",
+      "case_nonce": "cc434d8b267f5176444bbcfddd396f9700e37230d9562ffa9c7d0a8e27177b3b",
+      "task_text": "Rewrite this sentence in the passive voice without changing its meaning: The curator catalogued the brass astrolabe yesterday.",
+      "task_text_nfc_sha256": "b6220f6d1860ebd8343a66139d88651f7779bf229d43a87e791ed4a29378f097",
+      "profile": "none",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 126,
+              "text": "Rewrite this sentence in the passive voice without changing its meaning: The curator catalogued the brass astrolabe yesterday."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 126,
+              "text": "Rewrite this sentence in the passive voice without changing its meaning: The curator catalogued the brass astrolabe yesterday."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 126,
+              "text": "Rewrite this sentence in the passive voice without changing its meaning: The curator catalogued the brass astrolabe yesterday."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 126,
+              "text": "Rewrite this sentence in the passive voice without changing its meaning: The curator catalogued the brass astrolabe yesterday."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "none",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ7-A-03",
+      "case_nonce": "cfc07167962d9beecb889ef844bf19aef523cb4968e33a2cd667e3a3705c9925",
+      "task_text": "Convert 18 degrees Celsius to Fahrenheit and show the arithmetic in one concise line.",
+      "task_text_nfc_sha256": "d26be2a0d85905a293079d86f8d0a35bd55db051c3f659d8162a5463353dfadb",
+      "profile": "none",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 85,
+              "text": "Convert 18 degrees Celsius to Fahrenheit and show the arithmetic in one concise line."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 85,
+              "text": "Convert 18 degrees Celsius to Fahrenheit and show the arithmetic in one concise line."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 85,
+              "text": "Convert 18 degrees Celsius to Fahrenheit and show the arithmetic in one concise line."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 85,
+              "text": "Convert 18 degrees Celsius to Fahrenheit and show the arithmetic in one concise line."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "none",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ7-A-04",
+      "case_nonce": "369f6c14b22da1be830cb18cb8a496f9c0584b24ace3f6be3d52d4a852aabe0f",
+      "task_text": "Design a recovery-safe topology for a coordinator whose workers may crash after performing an effect but before returning their receipts.",
+      "task_text_nfc_sha256": "e5b8e5dcaced1986232d2d3822ea02dc0754623841cfeeeac7fd1830c58a57e3",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 137,
+              "text": "Design a recovery-safe topology for a coordinator whose workers may crash after performing an effect but before returning their receipts."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 137,
+              "text": "Design a recovery-safe topology for a coordinator whose workers may crash after performing an effect but before returning their receipts."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 137,
+              "text": "Design a recovery-safe topology for a coordinator whose workers may crash after performing an effect but before returning their receipts."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 137,
+              "text": "Design a recovery-safe topology for a coordinator whose workers may crash after performing an effect but before returning their receipts."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ7-A-05",
+      "case_nonce": "179068339eb145e62a19d53f5912c63630a29aca97d10d854d0d3058eaa3c089",
+      "task_text": "Decide where a durable approval boundary should live when a desktop agent delegates file edits to short-lived sandboxed subprocesses.",
+      "task_text_nfc_sha256": "7e3c102fd9b80dad8419a4235232e6558fc6a7c3ae430cf746d96f67caa30652",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 133,
+              "text": "Decide where a durable approval boundary should live when a desktop agent delegates file edits to short-lived sandboxed subprocesses."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 133,
+              "text": "Decide where a durable approval boundary should live when a desktop agent delegates file edits to short-lived sandboxed subprocesses."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 133,
+              "text": "Decide where a durable approval boundary should live when a desktop agent delegates file edits to short-lived sandboxed subprocesses."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 133,
+              "text": "Decide where a durable approval boundary should live when a desktop agent delegates file edits to short-lived sandboxed subprocesses."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ7-A-06",
+      "case_nonce": "5140f575190f97a8fded54e0a635b87a70b0070cbe35c87cd87ab0101ecd7931",
+      "task_text": "Turn the request 'make the migration safer' into an explicit outcome, scope, authority, assumptions, and acceptance-evidence contract.",
+      "task_text_nfc_sha256": "9f3c2ab2b19f14539bcad711a40a9be9f089d4a5bf4486753022e1e52529c905",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 134,
+              "text": "Turn the request 'make the migration safer' into an explicit outcome, scope, authority, assumptions, and acceptance-evidence contract."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 134,
+              "text": "Turn the request 'make the migration safer' into an explicit outcome, scope, authority, assumptions, and acceptance-evidence contract."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 134,
+              "text": "Turn the request 'make the migration safer' into an explicit outcome, scope, authority, assumptions, and acceptance-evidence contract."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 134,
+              "text": "Turn the request 'make the migration safer' into an explicit outcome, scope, authority, assumptions, and acceptance-evidence contract."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s1"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s1",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ7-A-07",
+      "case_nonce": "7206fa83277f9ec748abad5b0ceae3cd0822bbd65af27b7e2e967e0b22d9dab2",
+      "task_text": "Define a done contract for adding resumable uploads when the product owner has specified reliability goals but no retry semantics.",
+      "task_text_nfc_sha256": "2c149c230ababf8c934ab12cb1838ec7d5a55119f9ab6c70ad129c5ef098d6f9",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 130,
+              "text": "Define a done contract for adding resumable uploads when the product owner has specified reliability goals but no retry semantics."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 130,
+              "text": "Define a done contract for adding resumable uploads when the product owner has specified reliability goals but no retry semantics."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 130,
+              "text": "Define a done contract for adding resumable uploads when the product owner has specified reliability goals but no retry semantics."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 130,
+              "text": "Define a done contract for adding resumable uploads when the product owner has specified reliability goals but no retry semantics."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s1"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s1",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ7-A-08",
+      "case_nonce": "9c590ebdada66f77036d6b47c9b23000db2f1966a19f86f383d6217e7790d648",
+      "task_text": "Propose the smallest evidence portfolio that could falsify duplicate billing after an idempotency-key implementation changes.",
+      "task_text_nfc_sha256": "75ec8d3c68bde3df6e972e21130cc8f57df9910e9a3f77001996321552a6d9ee",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 125,
+              "text": "Propose the smallest evidence portfolio that could falsify duplicate billing after an idempotency-key implementation changes."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 125,
+              "text": "Propose the smallest evidence portfolio that could falsify duplicate billing after an idempotency-key implementation changes."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 125,
+              "text": "Propose the smallest evidence portfolio that could falsify duplicate billing after an idempotency-key implementation changes."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 125,
+              "text": "Propose the smallest evidence portfolio that could falsify duplicate billing after an idempotency-key implementation changes."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s2"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s2",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ7-A-09",
+      "case_nonce": "00245a3c788a299dcf200f92f209a73a260273b205fda9bbb56cf6ba9562b05e",
+      "task_text": "Choose tests and runtime observations that would justify releasing a parser fix for truncated streaming event frames.",
+      "task_text_nfc_sha256": "9c80ad0b8f1f689bf1042f819621a32c315e1d041edeba90cff6bc2e59f1d85a",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 117,
+              "text": "Choose tests and runtime observations that would justify releasing a parser fix for truncated streaming event frames."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 117,
+              "text": "Choose tests and runtime observations that would justify releasing a parser fix for truncated streaming event frames."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 117,
+              "text": "Choose tests and runtime observations that would justify releasing a parser fix for truncated streaming event frames."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 117,
+              "text": "Choose tests and runtime observations that would justify releasing a parser fix for truncated streaming event frames."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s2"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s2",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ7-A-10",
+      "case_nonce": "231d2d470ef9a3137976ebcc419ad134f16ee921fee1efdfed4d765315651a7d",
+      "task_text": "Convert repeated field reports of agents abandoning long jobs into a governed learning proposal with provenance and a retest plan.",
+      "task_text_nfc_sha256": "ecdc08d1e96ed73649ea93247d1ca1f4b89ea9db380f50225acd9ea868623428",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 130,
+              "text": "Convert repeated field reports of agents abandoning long jobs into a governed learning proposal with provenance and a retest plan."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 130,
+              "text": "Convert repeated field reports of agents abandoning long jobs into a governed learning proposal with provenance and a retest plan."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 130,
+              "text": "Convert repeated field reports of agents abandoning long jobs into a governed learning proposal with provenance and a retest plan."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 130,
+              "text": "Convert repeated field reports of agents abandoning long jobs into a governed learning proposal with provenance and a retest plan."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s3",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ7-A-11",
+      "case_nonce": "5cff927c445a0dc9059aa03cc94f8b9a256eaf496d204d5cba70a7ccf07b93f3",
+      "task_text": "Decide whether a recurring reviewer false positive should become an eval, a tool constraint, a prompt rule, or a documented no-change decision.",
+      "task_text_nfc_sha256": "cbee4f9f5b0dcdd7f633687ff018a356b96ddcd423d24c49c77fb14ad2977fbc",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 143,
+              "text": "Decide whether a recurring reviewer false positive should become an eval, a tool constraint, a prompt rule, or a documented no-change decision."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 143,
+              "text": "Decide whether a recurring reviewer false positive should become an eval, a tool constraint, a prompt rule, or a documented no-change decision."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 143,
+              "text": "Decide whether a recurring reviewer false positive should become an eval, a tool constraint, a prompt rule, or a documented no-change decision."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 143,
+              "text": "Decide whether a recurring reviewer false positive should become an eval, a tool constraint, a prompt rule, or a documented no-change decision."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s3",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ7-A-12",
+      "case_nonce": "441d8987aec53fcbc1bb99f367b113083fcff8db285dcfba827bae73ac697ae9",
+      "task_text": "Specify both the orchestration boundary and the acceptance contract for a resumable agent job that pauses before consequential actions.",
+      "task_text_nfc_sha256": "b440c2207c6674ec370087817f4596e229d938c1a4d2c92e892d10d97806b358",
+      "profile": "two",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 135,
+              "text": "Specify both the orchestration boundary and the acceptance contract for a resumable agent job that pauses before consequential actions."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 135,
+              "text": "Specify both the orchestration boundary and the acceptance contract for a resumable agent job that pauses before consequential actions."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 135,
+              "text": "Specify both the orchestration boundary and the acceptance contract for a resumable agent job that pauses before consequential actions."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 135,
+              "text": "Specify both the orchestration boundary and the acceptance contract for a resumable agent job that pauses before consequential actions."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0",
+          "s1"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "focused"
+          },
+          {
+            "slot_id": "s1",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ7-A-13",
+      "case_nonce": "648b7466c4ea0eced580c79330911b1c31a76445912769481b966d8a06add44e",
+      "task_text": "Design a lease-based worker architecture and a proof strategy for showing that expired workers cannot publish stale results.",
+      "task_text_nfc_sha256": "396de7b2499df3988d66bd5d63eeb2e993d1bcb01642d99748b9bc7b81de676e",
+      "profile": "two",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 124,
+              "text": "Design a lease-based worker architecture and a proof strategy for showing that expired workers cannot publish stale results."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 124,
+              "text": "Design a lease-based worker architecture and a proof strategy for showing that expired workers cannot publish stale results."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 124,
+              "text": "Design a lease-based worker architecture and a proof strategy for showing that expired workers cannot publish stale results."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 124,
+              "text": "Design a lease-based worker architecture and a proof strategy for showing that expired workers cannot publish stale results."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0",
+          "s2"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "focused"
+          },
+          {
+            "slot_id": "s2",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ7-A-14",
+      "case_nonce": "919fca4389c2d40a2036091e5270474dab374bc645849d8c8a529aedf227a8b2",
+      "task_text": "Frame a bounded repair contract for an ambiguous support issue, then define how its observed outcome should update the engineering learning system.",
+      "task_text_nfc_sha256": "8e0bda02269d02900ca96d6ad3c206610a2e9b5515e54c688e89a20c7b96ea09",
+      "profile": "two",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 147,
+              "text": "Frame a bounded repair contract for an ambiguous support issue, then define how its observed outcome should update the engineering learning system."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 147,
+              "text": "Frame a bounded repair contract for an ambiguous support issue, then define how its observed outcome should update the engineering learning system."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 147,
+              "text": "Frame a bounded repair contract for an ambiguous support issue, then define how its observed outcome should update the engineering learning system."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 147,
+              "text": "Frame a bounded repair contract for an ambiguous support issue, then define how its observed outcome should update the engineering learning system."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s1",
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s1",
+            "need": "core"
+          },
+          {
+            "slot_id": "s3",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ7-A-15",
+      "case_nonce": "ab9fc97b6f0e0fca4d907c9b0d6855ac3f43e19818ad11eb0b912b891cfe8b85",
+      "task_text": "Build a verification plan for a new refusal policy and a governed loop for turning post-release counterexamples into held-out evaluations.",
+      "task_text_nfc_sha256": "1334e0808dc2681c6a9195a5af4ca20016a608c9d5eb56851e520ef42f86eca5",
+      "profile": "two",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 138,
+              "text": "Build a verification plan for a new refusal policy and a governed loop for turning post-release counterexamples into held-out evaluations."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 138,
+              "text": "Build a verification plan for a new refusal policy and a governed loop for turning post-release counterexamples into held-out evaluations."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 138,
+              "text": "Build a verification plan for a new refusal policy and a governed loop for turning post-release counterexamples into held-out evaluations."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 138,
+              "text": "Build a verification plan for a new refusal policy and a governed loop for turning post-release counterexamples into held-out evaluations."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s2",
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s2",
+            "need": "focused"
+          },
+          {
+            "slot_id": "s3",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ7-A-16",
+      "case_nonce": "69963345898d605122da2dfe059b218f9ac74213ac1a48378547e57af03d829d",
+      "task_text": "Redesign a privileged multi-agent deployment, formalize its approval contract, and establish release evidence for crash recovery and effect isolation.",
+      "task_text_nfc_sha256": "1e2cc0984e40cf0a0928a06fad5b2434be760ade82993c112662370cb95ed1a3",
+      "profile": "cap",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 150,
+              "text": "Redesign a privileged multi-agent deployment, formalize its approval contract, and establish release evidence for crash recovery and effect isolation."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 150,
+              "text": "Redesign a privileged multi-agent deployment, formalize its approval contract, and establish release evidence for crash recovery and effect isolation."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 150,
+              "text": "Redesign a privileged multi-agent deployment, formalize its approval contract, and establish release evidence for crash recovery and effect isolation."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 150,
+              "text": "Redesign a privileged multi-agent deployment, formalize its approval contract, and establish release evidence for crash recovery and effect isolation."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "cap_abstain",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ7-A-17",
+      "case_nonce": "3abbd8a5ce0ba01fe94f066cf90623c9f917e2765b6b8f1a90a307f5e01404f3",
+      "task_text": "Choose a new control-plane topology, prove that replay cannot duplicate external effects, and govern how production anomalies revise future safeguards.",
+      "task_text_nfc_sha256": "7b61452dfce69d0a141b58b297a31d2d6211b10e080c97ac6bdd2e1e1d86f339",
+      "profile": "cap",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 151,
+              "text": "Choose a new control-plane topology, prove that replay cannot duplicate external effects, and govern how production anomalies revise future safeguards."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 151,
+              "text": "Choose a new control-plane topology, prove that replay cannot duplicate external effects, and govern how production anomalies revise future safeguards."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 151,
+              "text": "Choose a new control-plane topology, prove that replay cannot duplicate external effects, and govern how production anomalies revise future safeguards."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 151,
+              "text": "Choose a new control-plane topology, prove that replay cannot duplicate external effects, and govern how production anomalies revise future safeguards."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "cap_abstain",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ7-A-18",
+      "case_nonce": "7e229f4502cce5834cd9631dbd59c26f27858d32e5a92e7437add8802b21735b",
+      "task_text": "Use $agentic-engineering-lifecycle:agentic-engineering to propose a bounded architecture for recovering a graph runner after its receipt store becomes temporarily unavailable.",
+      "task_text_nfc_sha256": "ea39b228ef40e808a3879f3034092e46fcaee4f65f7e7760c8975513ace27e50",
+      "profile": "explicit",
+      "explicit_slot_id": "s0",
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 175,
+              "text": "Use $agentic-engineering-lifecycle:agentic-engineering to propose a bounded architecture for recovering a graph runner after its receipt store becomes temporarily unavailable."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 175,
+              "text": "Use $agentic-engineering-lifecycle:agentic-engineering to propose a bounded architecture for recovering a graph runner after its receipt store becomes temporarily unavailable."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 175,
+              "text": "Use $agentic-engineering-lifecycle:agentic-engineering to propose a bounded architecture for recovering a graph runner after its receipt store becomes temporarily unavailable."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 175,
+              "text": "Use $agentic-engineering-lifecycle:agentic-engineering to propose a bounded architecture for recovering a graph runner after its receipt store becomes temporarily unavailable."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0"
+        ],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ7-A-19",
+      "case_nonce": "2f2e3df2de9ce5e580b04ea7e0930c7a25e1e857d4ada63e0f6cfee825d971e6",
+      "task_text": "Use $agentic-engineering:verification-strategy-engineering to propose evidence for a cache invalidation repair that changes stale-read behavior.",
+      "task_text_nfc_sha256": "ed09e39a0a0fd5204a4a29f8231f91d7617e13cfbe64331dbaf834b2ad3eb28e",
+      "profile": "explicit",
+      "explicit_slot_id": "s2",
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 144,
+              "text": "Use $agentic-engineering:verification-strategy-engineering to propose evidence for a cache invalidation repair that changes stale-read behavior."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 144,
+              "text": "Use $agentic-engineering:verification-strategy-engineering to propose evidence for a cache invalidation repair that changes stale-read behavior."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 144,
+              "text": "Use $agentic-engineering:verification-strategy-engineering to propose evidence for a cache invalidation repair that changes stale-read behavior."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 144,
+              "text": "Use $agentic-engineering:verification-strategy-engineering to propose evidence for a cache invalidation repair that changes stale-read behavior."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s2"
+        ],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ7-A-20",
+      "case_nonce": "2de1412dcfe40460ab74529ddc334b532f3eb6e593f6908d326c9b56cf3a5ba4",
+      "task_text": "The request says only 'tighten the agent workflow soon' and omits the affected system, desired outcome, permitted changes, and evidence threshold.",
+      "task_text_nfc_sha256": "db6cf350f65b0e440fc318b12cd546f38265e6eb2897ff93ec9575a9fa697171",
+      "profile": "uncertain",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 146,
+              "text": "The request says only 'tighten the agent workflow soon' and omits the affected system, desired outcome, permitted changes, and evidence threshold."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "uncertain",
+          "reference_need": "uncertain",
+          "anchors": []
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 146,
+              "text": "The request says only 'tighten the agent workflow soon' and omits the affected system, desired outcome, permitted changes, and evidence threshold."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 146,
+              "text": "The request says only 'tighten the agent workflow soon' and omits the affected system, desired outcome, permitted changes, and evidence threshold."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "uncertain_abstain",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    }
+  ]
+}
