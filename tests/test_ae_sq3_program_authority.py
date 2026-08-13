@@ -20,6 +20,7 @@ TERMINAL_PATH = ROOT / "evals/ae-sq2/ar/terminal-decision.json"
 FOUNDATION_PATH = ROOT / "docs/foundations/current-2026-08-08.md"
 LOG_PATH = ROOT / "docs/foundations/decision-log.csv"
 RECORD_COMMIT = "e2562ca4da5f3dc14fb07c1522f911e2dfe4334d"
+SQ3_F0_COMMIT = "230354f09045c0f20b03c5080a6d70fcee38acbb"
 RECORD_RAW_SHA = "1e2352fe42453b03cafac06e9c2e98638af17ad6a3e5dfaf389baf9da39d6502"
 HEX64 = set("0123456789abcdef")
 
@@ -634,8 +635,14 @@ class AeSq3ProgramAuthorityTests(unittest.TestCase):
             hashlib.sha256(TERMINAL_PATH.read_bytes()).hexdigest(),
             predecessor["terminal_decision"]["raw_sha256"],
         )
+        preterminal_plan = subprocess.run(
+            ["git", "show", f"{SQ3_F0_COMMIT}:docs/exec-plans/active/ae-sq3.md"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+        ).stdout
         self.assertEqual(
-            hashlib.sha256(PLAN_PATH.read_bytes()).hexdigest(),
+            hashlib.sha256(preterminal_plan).hexdigest(),
             document["namespace"]["active_plan"]["raw_sha256"],
         )
         record = subprocess.run(
@@ -661,14 +668,16 @@ class AeSq3ProgramAuthorityTests(unittest.TestCase):
 
     def test_foundation_pointer_and_decision_rows(self) -> None:
         pointer = (
-            "**Active successor plan:** `docs/exec-plans/active/ae-sq3.md` for AE-SQ3 only; "
-            "AE-SQ2, AE-SQ1, and `EXECPLAN.md` remain immutable terminal history"
+            "**Active successor plan:** `docs/exec-plans/active/ae-sq4.md` for AE-SQ4 only; "
+            "AE-SQ3, AE-SQ2, AE-SQ1, and `EXECPLAN.md` remain immutable terminal history"
         )
         self.assertEqual(FOUNDATION_PATH.read_text().splitlines()[6], pointer)
         rows = list(csv.DictReader(io.StringIO(LOG_PATH.read_text())))
         identifiers = [row["decision_id"] for row in rows]
         self.assertEqual(identifiers.count("AE-SQ2-AR-2026-08-12"), 1)
         self.assertEqual(identifiers.count("AE-SQ3-F0-2026-08-12"), 1)
+        self.assertEqual(identifiers.count("AE-SQ3-AR-2026-08-12"), 1)
+        self.assertEqual(identifiers.count("AE-SQ4-F0-2026-08-12"), 1)
 
     def test_mutation_reds(self) -> None:
         document = strict(AUTHORITY_PATH.read_bytes())

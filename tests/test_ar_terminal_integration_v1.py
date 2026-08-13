@@ -20,6 +20,7 @@ DECISION_LOG_PATH = "docs/foundations/decision-log.csv"
 
 AR_COMMIT = "8b08f2a829e05d8de6ed737321b4d1a32cc9df87"
 AR_TREE = "777ab9af3450802b03679650d87441ab6a07495d"
+SQ1_TERMINAL_COMMIT = "9861df7c7894b35f5ce758ee1b005f80ceb0426e"
 AR_FILES = (
     (
         "evals/foundation-v4/ar-terminal-decision-v1.json",
@@ -509,10 +510,34 @@ class ARTerminalIntegrationV1Tests(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.plan_bytes = PLAN.read_bytes()
         cls.plan = cls.plan_bytes.decode("utf-8")
-        cls.decision_log_bytes = DECISION_LOG.read_bytes()
+        cls.decision_log_bytes = subprocess.run(
+            ["git", "show", f"{SQ1_TERMINAL_COMMIT}:{DECISION_LOG_PATH}"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+        ).stdout
         cls.decision_log = cls.decision_log_bytes.decode("utf-8")
-        cls.current_foundation = CURRENT_FOUNDATION.read_text(encoding="utf-8")
-        cls.successor_authority_bytes = SUCCESSOR_AUTHORITY.read_bytes()
+        cls.current_foundation = subprocess.run(
+            [
+                "git",
+                "show",
+                f"{SQ1_TERMINAL_COMMIT}:docs/foundations/current-2026-08-08.md",
+            ],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout
+        cls.successor_authority_bytes = subprocess.run(
+            [
+                "git",
+                "show",
+                f"{SQ1_TERMINAL_COMMIT}:evals/ae-sq1/program-authority.json",
+            ],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+        ).stdout
 
     def git_text(self, *arguments: str) -> str:
         completed = subprocess.run(

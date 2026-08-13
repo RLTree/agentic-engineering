@@ -23,6 +23,7 @@ BASE_COMMIT = "9861df7c7894b35f5ce758ee1b005f80ceb0426e"
 BASE_TREE = "573f53baa839a3b088548a7e7ba2050003911a7a"
 SQ2_F0_COMMIT = "a702910d7f00077491b0ffe796ee818e928150c6"
 SQ2_D0_RECORD_COMMIT = "e2562ca4da5f3dc14fb07c1522f911e2dfe4334d"
+SQ3_F0_COMMIT = "230354f09045c0f20b03c5080a6d70fcee38acbb"
 SQ1_TAG = "ae-sq1-terminal-2026-08-11"
 SQ1_PLAN_BLOB = "ff649a88cdf8ffa1f1a4b6a8b6a71b2c01cc43b4"
 SQ1_PLAN_SHA256 = "ebc53ca6305837ecd089dd201542dcbb35c5478b6bbf31e1003a227440868418"
@@ -631,17 +632,19 @@ class TestAeSq2ProgramAuthority(unittest.TestCase):
             "AE-SQ3 only; AE-SQ2, AE-SQ1, and `EXECPLAN.md` remain immutable terminal history"
         )
         self.assertEqual(frozen.count(old), 1)
-        current = FOUNDATION_PATH.read_text(encoding="utf-8")
-        self.assertEqual(current, frozen.replace(old, new))
-        self.assertNotIn("reopen", current.splitlines()[6].lower())
-        self.assertNotIn("H6", current.splitlines()[6])
+        sq3_f0 = git(
+            "show", f"{SQ3_F0_COMMIT}:docs/foundations/current-2026-08-08.md"
+        ).decode()
+        self.assertEqual(sq3_f0, frozen.replace(old, new))
+        self.assertNotIn("reopen", sq3_f0.splitlines()[6].lower())
+        self.assertNotIn("H6", sq3_f0.splitlines()[6])
 
     def test_decision_log_preserves_F0_and_admits_exact_terminal_successor_rows(
         self,
     ) -> None:
         base = git("show", f"{BASE_COMMIT}:docs/foundations/decision-log.csv")
         frozen_f0 = git("show", f"{SQ2_F0_COMMIT}:docs/foundations/decision-log.csv")
-        current = DECISION_LOG_PATH.read_bytes()
+        current = git("show", f"{SQ3_F0_COMMIT}:docs/foundations/decision-log.csv")
         self.assertTrue(current.startswith(base))
         suffix = current[len(base) :].decode("utf-8")
         rows = list(csv.reader(io.StringIO(suffix)))

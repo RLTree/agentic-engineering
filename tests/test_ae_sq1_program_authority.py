@@ -22,6 +22,7 @@ DECISION_LOG_PATH = ROOT / "docs" / "foundations" / "decision-log.csv"
 BASE_COMMIT = "340b79399a987e6aad0d5435fa540a1db511489d"
 BASE_TREE = "c47aeb3642d7fdcf90f47f990ddf3915f3cbb933"
 SQ1_TERMINAL_COMMIT = "9861df7c7894b35f5ce758ee1b005f80ceb0426e"
+SQ2_F0_COMMIT = "a702910d7f00077491b0ffe796ee818e928150c6"
 PLAN_RAW_SHA256 = "ebc53ca6305837ecd089dd201542dcbb35c5478b6bbf31e1003a227440868418"
 F0_PLAN_RAW_SHA256 = "a7080db226bf499dd3037afe683361e4ccba0c1093ce3bc4e456520e2176a382"
 
@@ -1284,11 +1285,14 @@ class AeSq1ProgramAuthorityTests(unittest.TestCase):
         )
         self.assertEqual(1, base.count(SQ1_POINTER_LINE))
         expected = base.replace(SQ1_POINTER_LINE, POINTER_LINE, 1)
-        self.assertEqual(expected, FOUNDATION_PATH.read_text(encoding="utf-8"))
+        self.assertEqual(
+            expected,
+            git_text(SQ2_F0_COMMIT, "docs/foundations/current-2026-08-08.md"),
+        )
 
     def test_decision_log_has_exactly_one_appended_row(self) -> None:
         base = git_bytes(SQ1_TERMINAL_COMMIT, "docs/foundations/decision-log.csv")
-        current = DECISION_LOG_PATH.read_bytes()
+        current = git_bytes(SQ2_F0_COMMIT, "docs/foundations/decision-log.csv")
         self.assertTrue(current.startswith(base))
         suffix = current[len(base) :]
         self.assertTrue(suffix.endswith(b"\n"))

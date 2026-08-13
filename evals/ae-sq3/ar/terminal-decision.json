@@ -1,0 +1,134 @@
+{
+  "schema_version": "ae-sq3-ar-terminal-decision-v2",
+  "program_id": "AE-SQ3",
+  "stage": "SQ3-AR",
+  "status": "terminal",
+  "decision": "DO_NOT_RELEASE_OR_PROMOTE",
+  "stop": true,
+  "claim_ceiling": "structural-f1a-custody-and-checker-contract-failure-only",
+  "terminal_reason": "committed-F1A-checker-cannot-validate-exact-immutable-SQ2-D0-record",
+  "f0_custody": {
+    "commit": "230354f09045c0f20b03c5080a6d70fcee38acbb",
+    "program_authority_path": "evals/ae-sq3/program-authority.json",
+    "program_authority_blob": "7dfadbb7fab0545bef3b45532a736f3e48662c3f",
+    "program_authority_raw_sha256": "b5fa758f7c927a21c0b17e8917a45a1b7f8d7a64a62124bf3588fd0ec2f1ba14",
+    "active_plan_path": "docs/exec-plans/active/ae-sq3.md",
+    "preterminal_active_plan_blob": "0d71d8ba8efcb6cad32c8c6607024e388833be38",
+    "preterminal_active_plan_raw_sha256": "875e4ab27e164c1d5dee583399021a8c98a18f6649eeb317aa885db50e7d8fe6"
+  },
+  "f1a_attempts": {
+    "canonical_attempt": {
+      "commit": "c06c433cdc2581e1747c10e520eb2fdd857cdccd",
+      "tree": "54312ecc9469801a90e02a32ca7c44d7a6fcf699",
+      "parent": "230354f09045c0f20b03c5080a6d70fcee38acbb",
+      "status": "NOT_PASS",
+      "checker_path": "scripts/check_ae_sq3_candidate.py",
+      "checker_blob": "4db0968a6873bf819e1fa35ad587dcdcf28dd5f1",
+      "checker_raw_sha256": "d91a0804d86e006da1965bdfe4d0b2111f1885981e4c536ca6c5a13cc4df5c34",
+      "failure": "checker-requires-invented-program_id-and-wrong-mode-diagnostic",
+      "f1b_created": false
+    },
+    "published_sibling": {
+      "commit": "b31e8b619ae1ef75aef179bbba7212235258178f",
+      "tree": "e9f0cd0c6510849056bbbbc772f24a499def2d19",
+      "parent": "230354f09045c0f20b03c5080a6d70fcee38acbb",
+      "status": "superseded-NOT_PASS",
+      "same_checker_blob": "4db0968a6873bf819e1fa35ad587dcdcf28dd5f1",
+      "f1b_created": false
+    },
+    "same_program_repair_permitted": false,
+    "uncommitted_repair_is_authority": false
+  },
+  "checker_mismatch": {
+    "checker_expected_identity": {
+      "program_id": "AE-SQ2",
+      "mode": "diagnostic"
+    },
+    "exact_record_identity": {
+      "program_id_field": "absent",
+      "diagnostic_id": "AE-SQ2-D0-2026-08-12-01",
+      "mode": "live",
+      "status": "completed"
+    },
+    "exact_record_top_level_keys": [
+      "diagnostic_id",
+      "mode",
+      "status",
+      "claim_ceiling",
+      "authority_sha256",
+      "diagnostic_schema_sha256",
+      "input_schema",
+      "cli",
+      "model",
+      "reasoning_effort",
+      "calls_started",
+      "calls_completed",
+      "classification_counts",
+      "usage",
+      "calls",
+      "aggregate_sha256",
+      "record_sha256"
+    ],
+    "D0_rewrite_permitted": false,
+    "route": "SQ3-AR"
+  },
+  "sq2_d0_custody": {
+    "commit": "e2562ca4da5f3dc14fb07c1522f911e2dfe4334d",
+    "record": {
+      "path": "evals/ae-sq2/d0/diagnostic-record.json",
+      "blob": "f5dc5b67435c78d0b214ac21fc69531c9bae7d3e",
+      "raw_sha256": "1e2352fe42453b03cafac06e9c2e98638af17ad6a3e5dfaf389baf9da39d6502",
+      "record_sha256": "5bb323666e5fe54d39df3fb91a65e1dd44c96ac5a4f3c9e967d2481a5eda5e9c",
+      "aggregate_sha256": "d333397b1bc0a633d80ac43bbf1ae6e9b5aafdfb6af5b01ad5493f9fb3292235"
+    },
+    "authority": {
+      "path": "evals/ae-sq2/d0/diagnostic-authority.json",
+      "blob": "6744bf6a1035d127d7ca380b2d5114c2e4f78355",
+      "raw_sha256": "2452348832f5a4d8a3ba566adfcf1893c6740dc0b66902fae8cf537324c5f379"
+    },
+    "schema": {
+      "path": "evals/ae-sq2/d0/diagnostic-schema.json",
+      "blob": "4419e27edcfd14f814993ee9929592bf36edc5f6",
+      "raw_sha256": "9b1f037cecf3071ce8d8ddea88e208c55c6f72674375db064eaeb46920fd0c01"
+    }
+  },
+  "phase_status": {
+    "SQ3_F0": "completed-authority-only",
+    "SQ3_F1A": "NOT_PASS",
+    "SQ3_F1B": "not_started-no-freeze-manifest",
+    "SQ3_F2": "not_started-no-corpus-authored",
+    "SQ3_F3": "not_started-no-preflight",
+    "SQ3_F4": "not_started-zero-canary-calls",
+    "SQ3_F5": "not_started-zero-batch-calls",
+    "SQ3_F6": "not_started-no-AQ-result",
+    "SQ3_AS_HANDOFF": "blocked"
+  },
+  "live_call_accounting": {
+    "diagnostic_calls": 0,
+    "canary_calls": 0,
+    "batch_calls": 0,
+    "total_model_calls": 0
+  },
+  "retention": "retain-all-SQ3-committed-surfaces-and-both-F1A-objects-no-delete-or-rewrite",
+  "successor_route": "distinct-owner-authorized-new-program-id-only",
+  "terminal_edges": [
+    "no_SQ3_second_F1A",
+    "no_SQ3_F1B",
+    "no_SQ3_corpus",
+    "no_SQ3_preflight",
+    "no_SQ3_canary",
+    "no_SQ3_batch",
+    "no_SQ3_AQ_result",
+    "no_SQ3_retry",
+    "no_SQ3_refreeze",
+    "no_reopen",
+    "no_resume",
+    "no_H6",
+    "no_downstream",
+    "no_release",
+    "no_publish",
+    "no_promotion",
+    "no_deletion",
+    "no_rewrite"
+  ]
+}

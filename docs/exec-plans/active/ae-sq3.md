@@ -1,12 +1,12 @@
 # AE-SQ3 distinct successor qualification program
 
-Status: **ACTIVE — SQ3-F0 AUTHORITY; SQ3-F1A NEXT**
+Status: **TERMINAL — SQ3-AR AFTER SQ3-F1A NOT_PASS; NO REOPEN**
 Program owner: repository owner
 Program integrator: root conductor
 Active-plan path: `docs/exec-plans/active/ae-sq3.md`
 Machine-readable authority: `evals/ae-sq3/program-authority.json`
 Authority date: 2026-08-12, America/Los_Angeles
-Claim ceiling: structural successor authority and bounded predecessor diagnosis only
+Claim ceiling: structural F1A custody and checker-contract failure closeout only
 
 ## 1. New program identity and predecessor boundary
 
@@ -267,5 +267,28 @@ weakened authority; the foundation pointer names SQ3 exactly; the two decision
 rows occur exactly once; JSON parses; Ruff and `git diff --check` pass; and no
 out-of-scope byte changed.
 
-The next authorized transition is SQ3-F1A implementation with zero live calls
-and zero corpus authoring. No later phase may begin before its immediate gate.
+The next authorized transition was SQ3-F1A implementation with zero live calls
+and zero corpus authoring. No later phase could begin before its immediate gate.
+
+## 11. Terminal checkpoint after SQ3-F1A
+
+SQ3-F1A commit `c06c433cdc2581e1747c10e520eb2fdd857cdccd`
+(tree `54312ecc9469801a90e02a32ca7c44d7a6fcf699`) is `NOT_PASS`.
+Its frozen checker validates the immutable SQ2-D0 diagnostic record against an
+invented `program_id` field and requires `mode` to equal `diagnostic`. The exact
+record at commit `e2562ca4da5f3dc14fb07c1522f911e2dfe4334d` has no
+`program_id` field and correctly records `mode` as `live`; therefore that
+checker cannot validate the exact bounded predecessor custody authorized by
+SQ3-F0. This is a checker-contract failure, not permission to rewrite D0.
+
+Published sibling `b31e8b619ae1ef75aef179bbba7212235258178f` is superseded,
+uses the same invalid checker contract, and never produced SQ3-F1B. No freeze
+manifest, SQ3 corpus, preflight, canary, batch, aggregate, or downstream result
+exists. SQ3 made zero diagnostic, canary, batch, or other model calls. Uncommitted
+checker repair bytes are not SQ3 authority and cannot cure the committed F1A.
+
+SQ3 is terminal at `SQ3-AR`: no retry, reopen, resume, refreeze, second F1A,
+F1B, F2, F3, F4, F5, F6, H6, downstream action, release, publication, or
+promotion is permitted. The exact terminal record is
+`evals/ae-sq3/ar/terminal-decision.json`. Only a distinct owner-authorized new
+program ID may proceed; no successor result can alter SQ3's terminal record.
