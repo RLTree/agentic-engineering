@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/ae-sq7/f1/corpus-schema.json",
+  "title": "AE-SQ7 fresh blinded F2 split contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "program_id", "corpus_id", "split_id", "split_nonce", "author_id", "authority", "no_replay", "cases"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "program_id": {"const": "AE-SQ7"},
+    "corpus_id": {"const": "AE-SQ7-AQ-FRESH-V1"},
+    "split_id": {"enum": ["A", "B"]},
+    "split_nonce": {"$ref": "#/$defs/sha256"},
+    "author_id": {
+      "allOf": [{"$ref": "#/$defs/identifier"}],
+      "description": "Opaque cross-reference to an externally verified F2 author-commit receipt; not standalone proof of identity, independence, blindness, or off-Git access."
+    },
+    "authority": {"$ref": "#/$defs/authority"},
+    "no_replay": {"$ref": "#/$defs/noReplay"},
+    "cases": {"type": "array", "minItems": 20, "maxItems": 20, "items": {"$ref": "#/$defs/case"}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "gitObject": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "identifier": {"type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"},
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["program_id", "candidate_id", "candidate_commit", "candidate_tree", "f1_freeze_sha256", "corpus_contract_sha256", "gates_sha256", "metrics_sha256", "evaluator_schema_sha256"],
+      "properties": {
+        "program_id": {"const": "AE-SQ7"},
+        "candidate_id": {"const": "AE-SQ7-SLEC-7"},
+        "candidate_commit": {"$ref": "#/$defs/gitObject"},
+        "candidate_tree": {"$ref": "#/$defs/gitObject"},
+        "f1_freeze_sha256": {"$ref": "#/$defs/sha256"},
+        "corpus_contract_sha256": {"$ref": "#/$defs/sha256"},
+        "gates_sha256": {"$ref": "#/$defs/sha256"},
+        "metrics_sha256": {"$ref": "#/$defs/sha256"},
+        "evaluator_schema_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "noReplay": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["normalization_id", "historical_digest_inventory_sha256", "historical_inventory_content_sha256", "historical_inventory_count", "historical_text_embedded", "predecessor_case_label_or_result_material_embedded"],
+      "properties": {
+        "normalization_id": {"const": "ae-sq7-task-v1"},
+        "historical_digest_inventory_sha256": {"$ref": "#/$defs/sha256"},
+        "historical_inventory_content_sha256": {"const": "8ee69ae06f388c1b47386b312d31bcce7ae408d04e76659653335d55e12ac270"},
+        "historical_inventory_count": {"const": 768},
+        "historical_text_embedded": {"const": false},
+        "predecessor_case_label_or_result_material_embedded": {"const": false}
+      }
+    },
+    "slotId": {"enum": ["s0", "s1", "s2", "s3"]},
+    "capsule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slot_id", "local_need", "reference_need", "anchors"],
+      "properties": {
+        "slot_id": {"$ref": "#/$defs/slotId"},
+        "local_need": {"enum": ["yes", "no", "uncertain"]},
+        "reference_need": {"enum": ["none", "core", "focused", "uncertain"]},
+        "anchors": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 2,
+          "items": {"$ref": "#/$defs/anchor"}
+        }
+      }
+    },
+    "anchor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start", "end", "text"],
+      "properties": {
+        "start": {"type": "integer", "minimum": 0},
+        "end": {"type": "integer", "minimum": 1},
+        "text": {"type": "string", "minLength": 1, "maxLength": 256}
+      }
+    },
+    "referenceRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slot_id", "need"],
+      "properties": {"slot_id": {"$ref": "#/$defs/slotId"}, "need": {"enum": ["core", "focused"]}}
+    },
+    "resolution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "selected_slots", "reference_bundle"],
+      "properties": {
+        "status": {"enum": ["selected", "none", "cap_abstain", "uncertain_abstain"]},
+        "selected_slots": {"type": "array", "maxItems": 2, "uniqueItems": true, "items": {"$ref": "#/$defs/slotId"}},
+        "reference_bundle": {"type": "array", "maxItems": 2, "items": {"$ref": "#/$defs/referenceRow"}}
+      }
+    },
+    "case": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["case_id", "case_nonce", "task_text", "task_text_nfc_sha256", "profile", "explicit_slot_id", "expected_capsules", "expected_resolution"],
+      "properties": {
+        "case_id": {"type": "string", "pattern": "^AE-SQ7-[AB]-(0[1-9]|1[0-9]|20)$"},
+        "case_nonce": {"$ref": "#/$defs/sha256"},
+        "task_text": {"type": "string", "minLength": 24, "maxLength": 4000},
+        "task_text_nfc_sha256": {"$ref": "#/$defs/sha256"},
+        "profile": {"enum": ["none", "single", "two", "cap", "explicit", "uncertain"]},
+        "explicit_slot_id": {"oneOf": [{"$ref": "#/$defs/slotId"}, {"type": "null"}]},
+        "expected_capsules": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"$ref": "#/$defs/capsule"}},
+        "expected_resolution": {"$ref": "#/$defs/resolution"}
+      }
+    }
+  }
+}

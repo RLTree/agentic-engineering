@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/ae-sq7/f1/result-schema.json",
+  "title": "AE-SQ7 aggregate-only terminal qualification projection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["aggregate_digest", "candidate_id", "program_id", "schema_version", "status"],
+  "properties": {
+    "aggregate_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "candidate_id": {"const": "AE-SQ7-SLEC-7"},
+    "program_id": {"const": "AE-SQ7"},
+    "schema_version": {"const": "ae-sq7-aggregate-result-v1"},
+    "status": {"enum": ["PASS", "FAIL"]}
+  }
+}
