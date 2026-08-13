@@ -1,0 +1,57 @@
+{
+  "schema_version": "dj-authorial-12-truth-spine-v1",
+  "product_truth": [
+    {
+      "id": "simulation-only",
+      "assertion": "The checkout is a local simulation and cannot charge or submit an order.",
+      "source": "task brief",
+      "observable_test": "No network or payment request occurs; receipt says simulation only."
+    }
+  ],
+  "derived_values": [
+    {
+      "id": "basket-total",
+      "assertion": "Line-item total and review total derive from the same basket records.",
+      "source": "basket state",
+      "observable_test": "Changing quantity updates item, summary, review, and receipt totals consistently."
+    }
+  ],
+  "identity_invariants": [
+    {
+      "id": "line-item-id",
+      "assertion": "Each basket record has one stable unique ID across edit and review states.",
+      "source": "basket fixture",
+      "observable_test": "Edit-back-edit preserves the same item IDs."
+    }
+  ],
+  "required_states": [
+    {
+      "id": "basket",
+      "entry": "initial page load",
+      "visible_result": "Three items and editable quantities are visible.",
+      "reachable_by": ["programmatic"]
+    },
+    {
+      "id": "review",
+      "entry": "activate Review order after fulfillment is complete",
+      "visible_result": "Exact items, fulfillment choice, total, edit paths, and simulated commitment are visible.",
+      "reachable_by": ["pointer", "keyboard"]
+    },
+    {
+      "id": "receipt",
+      "entry": "activate Place simulated order from review",
+      "visible_result": "A truthful local-only receipt and next action are visible.",
+      "reachable_by": ["pointer", "keyboard"]
+    }
+  ],
+  "effect_boundary": {
+    "external_effects": "None; all state stays in the local page.",
+    "confirmation": "The final control names the simulated order and follows a review step.",
+    "truthful_receipt": "Receipt states that no payment or order was sent."
+  },
+  "narrow_width": {
+    "minimum_css_width": 320,
+    "must_remain_visible": ["current step", "primary action", "basket total", "simulation boundary"],
+    "overflow_test": "documentElement.scrollWidth must not exceed clientWidth at 320 and 375 CSS pixels."
+  }
+}
