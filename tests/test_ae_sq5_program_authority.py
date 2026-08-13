@@ -1783,7 +1783,7 @@ class AeSq5ProgramAuthorityTests(unittest.TestCase):
         )
 
     def test_foundation_pointer_and_decision_rows(self) -> None:
-        pointer = "**Active successor plan:** `docs/exec-plans/active/ae-sq6.md` for AE-SQ6 only; AE-SQ5, AE-SQ4, AE-SQ3, AE-SQ2, AE-SQ1, and `EXECPLAN.md` remain immutable terminal history"
+        pointer = "**Active successor plan:** `docs/exec-plans/active/ae-sq7.md` for AE-SQ7 only; AE-SQ6, AE-SQ5, AE-SQ4, AE-SQ3, AE-SQ2, AE-SQ1, and `EXECPLAN.md` remain immutable terminal history"
         self.assertEqual(
             FOUNDATION_PATH.read_text(encoding="utf-8").splitlines()[6], pointer
         )
@@ -1793,9 +1793,11 @@ class AeSq5ProgramAuthorityTests(unittest.TestCase):
         self.assertEqual(ids.count("AE-SQ5-F0-2026-08-13"), 1)
         self.assertEqual(ids.count("AE-SQ5-AR-2026-08-13"), 1)
         self.assertEqual(ids.count("AE-SQ6-F0-2026-08-13"), 1)
+        self.assertEqual(ids.count("AE-SQ6-AR-2026-08-13"), 1)
+        self.assertEqual(ids.count("AE-SQ7-F0-2026-08-13"), 1)
         self.assertEqual(
             [row["decision_id"] for row in rows[-2:]],
-            ["AE-SQ5-AR-2026-08-13", "AE-SQ6-F0-2026-08-13"],
+            ["AE-SQ6-AR-2026-08-13", "AE-SQ7-F0-2026-08-13"],
         )
 
     def test_terminal_sq5_has_no_later_execution_surfaces(self) -> None:

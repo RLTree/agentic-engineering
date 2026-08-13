@@ -668,8 +668,8 @@ class AeSq3ProgramAuthorityTests(unittest.TestCase):
 
     def test_foundation_pointer_and_decision_rows(self) -> None:
         pointer = (
-            "**Active successor plan:** `docs/exec-plans/active/ae-sq6.md` for AE-SQ6 only; "
-            "AE-SQ5, AE-SQ4, AE-SQ3, AE-SQ2, AE-SQ1, and `EXECPLAN.md` remain immutable terminal history"
+            "**Active successor plan:** `docs/exec-plans/active/ae-sq7.md` for AE-SQ7 only; "
+            "AE-SQ6, AE-SQ5, AE-SQ4, AE-SQ3, AE-SQ2, AE-SQ1, and `EXECPLAN.md` remain immutable terminal history"
         )
         self.assertEqual(FOUNDATION_PATH.read_text().splitlines()[6], pointer)
         rows = list(csv.DictReader(io.StringIO(LOG_PATH.read_text())))
@@ -682,6 +682,8 @@ class AeSq3ProgramAuthorityTests(unittest.TestCase):
         self.assertEqual(identifiers.count("AE-SQ5-F0-2026-08-13"), 1)
         self.assertEqual(identifiers.count("AE-SQ5-AR-2026-08-13"), 1)
         self.assertEqual(identifiers.count("AE-SQ6-F0-2026-08-13"), 1)
+        self.assertEqual(identifiers.count("AE-SQ6-AR-2026-08-13"), 1)
+        self.assertEqual(identifiers.count("AE-SQ7-F0-2026-08-13"), 1)
 
     def test_mutation_reds(self) -> None:
         document = strict(AUTHORITY_PATH.read_bytes())

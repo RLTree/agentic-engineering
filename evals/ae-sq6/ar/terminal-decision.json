@@ -1,0 +1,9 @@
+{
+  "aggregate_result": null,
+  "candidate_id": "AE-SQ6-SLEC-6",
+  "last_completed_phase": "SQ6-F1G",
+  "program_id": "AE-SQ6",
+  "schema_version": "ae-sq6-terminal-decision-v1",
+  "status": "terminal",
+  "terminal_edge": "SQ6-F2:NOT_PASS->SQ6-AR"
+}

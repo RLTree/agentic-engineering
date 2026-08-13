@@ -5,6 +5,7 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import subprocess
 import unittest
 from pathlib import Path
 from typing import Any
@@ -13,6 +14,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 AUTHORITY = ROOT / "evals/ae-sq6/program-authority.json"
 PLAN = ROOT / "docs/exec-plans/active/ae-sq6.md"
+F0_COMMIT = "43d489501fe32af2201c07cbbf11d60cb84c21fc"
 EXPECTED_RAW_SHA256 = "e4323a98f23173592b40cf433b24ec68252352b68fecbb8abcd6dc9fbb26639e"
 EXPECTED_SEMANTIC_SHA256 = (
     "81a66ee158a5f39d8387e9ada5b7087d4edc4f17a7836e9363745038ae47aa67"
@@ -290,9 +292,15 @@ class AeSq6ProgramAuthorityTests(unittest.TestCase):
         document = strict(raw)
         validate(document)
         active_plan = document["namespace"]["active_plan"]
+        frozen_plan = subprocess.run(
+            ["git", "show", f"{F0_COMMIT}:docs/exec-plans/active/ae-sq6.md"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+        ).stdout
         self.assertEqual("docs/exec-plans/active/ae-sq6.md", active_plan["path"])
         self.assertEqual(
-            active_plan["raw_sha256"], hashlib.sha256(PLAN.read_bytes()).hexdigest()
+            active_plan["raw_sha256"], hashlib.sha256(frozen_plan).hexdigest()
         )
 
     def test_plan_exposes_the_same_fail_closed_contract(self) -> None:
