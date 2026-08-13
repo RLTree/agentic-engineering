@@ -1,0 +1,28 @@
+{
+  "schema_version": "dj-authorial-11.1-cross-task-style-audit-v1",
+  "analysis_date": "2026-08-13",
+  "artifact_count": 10,
+  "method": "Manual source-level fingerprinting of the ten unrelated slot-07 artifacts; evidence is diagnostic, not a universal style classifier.",
+  "recurring_signals": [
+    {"signal": "light paper, cream, canvas, or matte surface", "observed_count": 10},
+    {"signal": "moss, sage, forest, teal, green, or navy primary role", "observed_count": 10},
+    {"signal": "coral, rust, clay, amber, citrus, or gold secondary accent", "observed_count": 10},
+    {"signal": "editorial or classic serif prominently paired with restrained sans", "observed_count": 7},
+    {"signal": "rounded panels and soft elevation", "observed_count": 9},
+    {"signal": "calm editorial copy and medium information density", "observed_count": 9},
+    {"signal": "rail, inspector, drawer, or card-grid composition shell", "observed_count": 9}
+  ],
+  "interpretation": {
+    "supported": "Authorial 11.1 produced a highly coherent and attractive cross-task visual prior.",
+    "risk": "Unrelated products may inherit the model's preferred material, palette, typography, and shell rather than deriving them independently from product mechanism or audience scene.",
+    "not_supported": "The repeated choices are individually bad or should be banned.",
+    "recommended_test": "Compare cross-task fingerprints while exempting artifacts with explicit shared brand or design-system authority."
+  },
+  "proposed_authorial_12_control": {
+    "name": "Prior Escape",
+    "inputs": ["category default", "recent model prior", "anti-default reflex"],
+    "decision_rule": "Treat all three as spent unless product mechanism, audience scene, platform authority, established design authority, or explicit preference earns one.",
+    "fingerprint_authority": "advisory-only"
+  },
+  "confidence_percent": 96
+}
