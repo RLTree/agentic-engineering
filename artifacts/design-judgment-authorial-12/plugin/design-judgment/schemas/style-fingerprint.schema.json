@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rltree.local/design-judgment/authorial-12/style-fingerprint.schema.json",
+  "title": "Authorial 12 Style Fingerprint",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "artifact_id", "domain", "shared_authority", "surface", "palette_roles", "typography", "shape_depth", "composition_shell", "interaction_signature", "density_energy"],
+  "properties": {
+    "schema_version": {"const": "dj-authorial-12-style-fingerprint-v1"},
+    "artifact_id": {"type": "string", "minLength": 3, "maxLength": 120},
+    "domain": {"type": "string", "minLength": 3, "maxLength": 120},
+    "shared_authority": {"type": ["string", "null"], "maxLength": 120},
+    "surface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lightness", "material"],
+      "properties": {
+        "lightness": {"enum": ["light", "dark", "mixed", "system"]},
+        "material": {"type": "array", "minItems": 1, "maxItems": 4, "items": {"type": "string", "pattern": "^[a-z0-9-]{2,40}$"}}
+      }
+    },
+    "palette_roles": {"type": "array", "minItems": 1, "maxItems": 8, "items": {"type": "string", "pattern": "^[a-z0-9-]{2,40}$"}},
+    "typography": {"type": "array", "minItems": 1, "maxItems": 6, "items": {"type": "string", "pattern": "^[a-z0-9-]{2,40}$"}},
+    "shape_depth": {"type": "array", "minItems": 1, "maxItems": 6, "items": {"type": "string", "pattern": "^[a-z0-9-]{2,40}$"}},
+    "composition_shell": {"type": "array", "minItems": 1, "maxItems": 6, "items": {"type": "string", "pattern": "^[a-z0-9-]{2,50}$"}},
+    "interaction_signature": {"type": "array", "minItems": 1, "maxItems": 6, "items": {"type": "string", "pattern": "^[a-z0-9-]{2,50}$"}},
+    "density_energy": {"type": "array", "minItems": 1, "maxItems": 5, "items": {"type": "string", "pattern": "^[a-z0-9-]{2,40}$"}}
+  }
+}
