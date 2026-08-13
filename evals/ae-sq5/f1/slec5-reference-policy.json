@@ -1,0 +1,148 @@
+{
+  "schema_version": "4.0",
+  "policy_id": "AE-SQ5-SLEC-5-reference-policy",
+  "candidate_id": "AE-SQ5-SLEC-5",
+  "mechanism_id": "SLEC-5",
+  "status": "f1a-implementation",
+  "claim_ceiling": "structural-candidate-implementation-only",
+  "catalog_custody": {
+    "commit": "7f4590b284bfb5e5f60bc96c8cdb15e6ff8194c8",
+    "tree": "2ffba244f6a4ed40f0743309cbafddf10038cad4",
+    "repository_relative_root": ".",
+    "source_kind": "newly-bound-structural-reference-catalog"
+  },
+  "limits": {
+    "maximum_selected_capabilities_per_request": 2,
+    "maximum_files_per_slot": 1,
+    "maximum_files_per_request": 2,
+    "maximum_bytes_per_file": 4096,
+    "maximum_total_bytes_per_request": 8192
+  },
+  "broker_boundary": {
+    "accepted_input": "ordered fixed SLEC-5 reference capability IDs only; exactly one core-or-focused capability per selected slot",
+    "forbidden_input": [
+      "task bytes",
+      "task text",
+      "capsules",
+      "anchors",
+      "assessor prompts",
+      "condition cards"
+    ],
+    "selection_influence": false,
+    "atomic_failure": "Any catalog, path, type, custody, size, digest, or race failure emits no files for the request.",
+    "no_extra_references": "Only the one catalog file bound to a requested capability may be read; discovery, fallback, transitive loads, and substitution are forbidden."
+  },
+  "filesystem_contract": {
+    "path_form": "normalized repository-relative POSIX path",
+    "forbidden_path_components": ["", ".", ".."],
+    "regular_file_required": true,
+    "symbolic_links_permitted": false,
+    "hard_link_count_required": 1,
+    "path_containment_required": true,
+    "open_rule": "Anchor traversal at a no-follow repository-root directory descriptor, open every parent with openat O_DIRECTORY and O_NOFOLLOW, and open the target with openat O_NOFOLLOW.",
+    "race_rule": "Before close, every opened descriptor and its parent-relative entry must retain device, inode, mode, link, size, mtime, and ctime identity; the textual root must still identify the opened root.",
+    "digest_rule": "SHA-256 and Git blob SHA-1 are calculated from exact descriptor bytes and must equal the catalog identities."
+  },
+  "capability_catalog": [
+    {
+      "slot_id": "s0",
+      "reference_need": "core",
+      "capability_id": "cap.ae.architecture.core.v4",
+      "file": {
+        "path": "references/seven-layer-map.md",
+        "sha256": "9e0d56f716eb7bd22b79e98fee1e290c196fe6e9f21ff82dbc0d55ad5896d8a9",
+        "size_bytes": 3335,
+        "git_blob_sha1": "b0cbab0995fda9698b6a462449bce4027a1c43ff"
+      }
+    },
+    {
+      "slot_id": "s0",
+      "reference_need": "focused",
+      "capability_id": "cap.ae.architecture.focused.v4",
+      "file": {
+        "path": "plugins/agentic-engineering-lifecycle/skills/agentic-engineering/references/architecture-decision-table.md",
+        "sha256": "7b38f8fde0d77fef1136520db3daf55caac50c8654b2c7c7e82866f8b976b3fa",
+        "size_bytes": 3926,
+        "git_blob_sha1": "aa604addaf96ccb985df95d4c77abeb85008f6d9"
+      }
+    },
+    {
+      "slot_id": "s1",
+      "reference_need": "core",
+      "capability_id": "cap.ae.task-contract.core.v4",
+      "file": {
+        "path": "references/task-evidence-and-review-contracts.md",
+        "sha256": "adc4a7125fe86d3db8a2b52fd5b58d0c32ec479ce504874989acc5d2467453e1",
+        "size_bytes": 1083,
+        "git_blob_sha1": "f2b024d8df3618aa9521e1e5b477fe5f3f94c358"
+      }
+    },
+    {
+      "slot_id": "s1",
+      "reference_need": "focused",
+      "capability_id": "cap.ae.task-contract.focused.v4",
+      "file": {
+        "path": "plugins/agentic-engineering/skills/codex-task-contract/references/execution-contract-schema.md",
+        "sha256": "0c76e22125dfffc55d05538c347fda17456f2c8b687668d6f97b0107ad2ae286",
+        "size_bytes": 3154,
+        "git_blob_sha1": "81e7ff82f0b4c79b41b9a08a90f6c45e7cc32915"
+      }
+    },
+    {
+      "slot_id": "s2",
+      "reference_need": "core",
+      "capability_id": "cap.ae.verification.core.v4",
+      "file": {
+        "path": "references/proportional-assurance.md",
+        "sha256": "25f53e37d41dd0b191d276d2c64d3d246e8d9ae981ce277593d1dea6f46391a4",
+        "size_bytes": 1146,
+        "git_blob_sha1": "5745f6dfd7fba8cfc5b3021d22bb929604af672e"
+      }
+    },
+    {
+      "slot_id": "s2",
+      "reference_need": "focused",
+      "capability_id": "cap.ae.verification.focused.v4",
+      "file": {
+        "path": "plugins/agentic-engineering/skills/verification-strategy-engineering/references/test-oracle-quality.md",
+        "sha256": "d785fe38ecb60b8326cd0e3b28cd2cf36248ed1e5996c25316d1d68d09244ec7",
+        "size_bytes": 871,
+        "git_blob_sha1": "95fc3ac1f358e10837005d382978b6e3f4d5fbd9"
+      }
+    },
+    {
+      "slot_id": "s3",
+      "reference_need": "core",
+      "capability_id": "cap.ae.learning.core.v4",
+      "file": {
+        "path": "references/knowledge-evolution-and-garbage-collection.md",
+        "sha256": "0403eef5b7472915f30e1a5dd7336cfc3343b0eac47c7966190a5a207eb97d39",
+        "size_bytes": 904,
+        "git_blob_sha1": "cb47c72c73bd50939f0f50b557be36f18ae2f8a6"
+      }
+    },
+    {
+      "slot_id": "s3",
+      "reference_need": "focused",
+      "capability_id": "cap.ae.learning.focused.v4",
+      "file": {
+        "path": "plugins/agentic-engineering/skills/engineering-learning-loop/references/learning-adoption-record.md",
+        "sha256": "c891ba15a4dd8e775ff20878e2cf72e952c1c08e6a177f359e0afaf047b76b8a",
+        "size_bytes": 1030,
+        "git_blob_sha1": "0ebfcbc11e25511285f96df84088a0ca701d4488"
+      }
+    }
+  ],
+  "prohibitions": [
+    "no_network_fetch",
+    "no_dynamic_capability_registration",
+    "no_directory_listing",
+    "no_task_dependent_path_construction",
+    "no_partial_return",
+    "no_unpinned_bytes",
+    "no_fallback",
+    "no_external_effect",
+    "no_authority_assignment",
+    "no_runtime_or_efficacy_claim"
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "$defs": {
+    "hex64": {
+      "type": "string",
+      "description": "A lowercase 64-hex SHA-256; syntax is checked locally."
+    },
+    "hex40": {
+      "type": "string",
+      "description": "A lowercase 40-hex Git blob SHA-1; syntax is checked locally."
+    },
+    "slot": {
+      "type": "string",
+      "enum": ["s0", "s1", "s2", "s3"]
+    },
+    "capability": {
+      "type": "string",
+      "enum": [
+        "cap.ae.architecture.core.v4",
+        "cap.ae.architecture.focused.v4",
+        "cap.ae.task-contract.core.v4",
+        "cap.ae.task-contract.focused.v4",
+        "cap.ae.verification.core.v4",
+        "cap.ae.verification.focused.v4",
+        "cap.ae.learning.core.v4",
+        "cap.ae.learning.focused.v4"
+      ]
+    },
+    "outcome": {
+      "type": "object",
+      "properties": {
+        "slot_id": {"$ref": "#/$defs/slot"},
+        "local_need": {
+          "type": "string",
+          "enum": ["yes", "no", "uncertain", "invalid"]
+        },
+        "reference_need": {
+          "type": "string",
+          "enum": ["none", "core", "focused", "uncertain", "invalid"]
+        }
+      },
+      "required": ["slot_id", "local_need", "reference_need"],
+      "additionalProperties": false
+    },
+    "reference_file": {
+      "type": "object",
+      "properties": {
+        "slot_id": {"$ref": "#/$defs/slot"},
+        "reference_need": {
+          "type": "string",
+          "enum": ["core", "focused"]
+        },
+        "capability_id": {"$ref": "#/$defs/capability"},
+        "path": {"type": "string"},
+        "sha256": {"$ref": "#/$defs/hex64"},
+        "git_blob_sha1": {"$ref": "#/$defs/hex40"},
+        "size_bytes": {"type": "integer"}
+      },
+      "required": [
+        "slot_id",
+        "reference_need",
+        "capability_id",
+        "path",
+        "sha256",
+        "git_blob_sha1",
+        "size_bytes"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "AE-SQ5-SLEC-5 local structural projection of the durable resolution record. Cross-field, reachability, and digest semantics are checked locally.",
+  "properties": {
+    "record_version": {"type": "string", "enum": ["4.0"]},
+    "candidate_id": {"type": "string", "enum": ["AE-SQ5-SLEC-5"]},
+    "mechanism_id": {"type": "string", "enum": ["SLEC-5"]},
+    "condition_id": {
+      "type": "string",
+      "enum": ["current", "reduced"]
+    },
+    "resolution_status": {
+      "type": "string",
+      "enum": [
+        "selected",
+        "no_selection",
+        "abstain_invalid",
+        "abstain_uncertain",
+        "abstain_cap"
+      ]
+    },
+    "selection_mode": {
+      "type": "string",
+      "enum": ["none", "capsule_fold", "explicit_invocation"]
+    },
+    "input_custody": {
+      "type": "object",
+      "properties": {
+        "task_utf8_sha256": {"$ref": "#/$defs/hex64"},
+        "capsule_set_sha256": {"$ref": "#/$defs/hex64"},
+        "capsule_count": {"type": "integer"},
+        "capsule_custody_complete": {"type": "boolean"}
+      },
+      "required": [
+        "task_utf8_sha256",
+        "capsule_set_sha256",
+        "capsule_count",
+        "capsule_custody_complete"
+      ],
+      "additionalProperties": false
+    },
+    "slot_outcomes": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/outcome"},
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "invocation_evidence": {
+      "type": "object",
+      "properties": {
+        "recognized_count": {"type": "integer"},
+        "recognized_slots": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/slot"},
+          "minItems": 0,
+          "maxItems": 4
+        },
+        "has_unrecognized_or_malformed": {"type": "boolean"}
+      },
+      "required": [
+        "recognized_count",
+        "recognized_slots",
+        "has_unrecognized_or_malformed"
+      ],
+      "additionalProperties": false
+    },
+    "selected_slots": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/slot"},
+      "minItems": 0,
+      "maxItems": 2
+    },
+    "reference_capability_ids": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/capability"},
+      "minItems": 0,
+      "maxItems": 2
+    },
+    "references": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["not_requested", "resolved", "custody_failure"]
+        },
+        "files": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/reference_file"},
+          "minItems": 0,
+          "maxItems": 2
+        }
+      },
+      "required": ["status", "files"],
+      "additionalProperties": false
+    },
+    "claim_ceiling": {
+      "type": "string",
+      "enum": ["structural-candidate-implementation-only"]
+    }
+  },
+  "required": [
+    "record_version",
+    "candidate_id",
+    "mechanism_id",
+    "condition_id",
+    "resolution_status",
+    "selection_mode",
+    "input_custody",
+    "slot_outcomes",
+    "invocation_evidence",
+    "selected_slots",
+    "reference_capability_ids",
+    "references",
+    "claim_ceiling"
+  ],
+  "additionalProperties": false
+}

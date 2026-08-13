@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/ae-sq5/f1/terminal-decision-schema.json",
+  "title": "AE-SQ5 fail-closed terminal decision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["aggregate_result", "candidate_id", "last_completed_phase", "program_id", "schema_version", "status", "terminal_edge"],
+  "properties": {
+    "aggregate_result": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "sha256"],
+          "properties": {
+            "path": {"const": "evals/ae-sq5/f6/aggregate-result.json"},
+            "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+          }
+        }
+      ]
+    },
+    "candidate_id": {"const": "AE-SQ5-SLEC-5"},
+    "last_completed_phase": {"enum": ["SQ5-F0", "SQ5-F1A", "SQ5-F1B", "SQ5-F1G", "SQ5-F2A", "SQ5-F2B", "SQ5-F3", "SQ5-F4", "SQ5-F5", "SQ5-F6"]},
+    "program_id": {"const": "AE-SQ5"},
+    "schema_version": {"const": "ae-sq5-terminal-decision-v1"},
+    "status": {"const": "terminal"},
+    "terminal_edge": {"type": "string", "pattern": "^SQ5-F(1A|1B|1G|2A|2B|3|4|5|6):NOT_PASS->SQ5-AR$"}
+  }
+}

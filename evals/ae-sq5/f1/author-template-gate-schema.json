@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/ae-sq5/f1/author-template-gate-schema.json",
+  "title": "AE-SQ5 zero-corpus author-template gate receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "program_id", "candidate_id", "attempt", "status", "model_calls", "f1a_implementation", "f1b_freeze", "builder", "validator", "template_sha256", "positive_round_trip", "red_fixture", "aggregate_sha256"],
+  "properties": {
+    "schema_version": {"const": "ae-sq5-author-template-gate-v1"},
+    "program_id": {"const": "AE-SQ5"},
+    "candidate_id": {"const": "AE-SQ5-SLEC-5"},
+    "attempt": {"const": 1},
+    "status": {"const": "PASS"},
+    "model_calls": {"const": 0},
+    "f1a_implementation": {"$ref": "#/$defs/commitTree"},
+    "f1b_freeze": {"$ref": "#/$defs/sealedPath"},
+    "builder": {"$ref": "#/$defs/sealedPath"},
+    "validator": {"$ref": "#/$defs/sealedPath"},
+    "template_sha256": {"$ref": "#/$defs/sha256"},
+    "positive_round_trip": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["production_loader", "status"],
+      "properties": {
+        "production_loader": {"const": "_load_base_state"},
+        "status": {"const": "PASS"}
+      }
+    },
+    "red_fixture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["exception_class", "exception_message", "mutation", "status"],
+      "properties": {
+        "exception_class": {"const": "PreflightError"},
+        "exception_message": {"const": "corpus split authority is not the frozen F1 candidate"},
+        "mutation": {"const": "F1B-commit-and-tree-substituted-for-F1A-candidate-after-all-digests-rebound"},
+        "status": {"const": "REJECTED"}
+      }
+    },
+    "aggregate_sha256": {"$ref": "#/$defs/sha256"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "gitObject": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "commitTree": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["commit", "tree"],
+      "properties": {"commit": {"$ref": "#/$defs/gitObject"}, "tree": {"$ref": "#/$defs/gitObject"}}
+    },
+    "sealedPath": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["blob", "commit", "path", "sha256", "tree"],
+      "properties": {
+        "blob": {"$ref": "#/$defs/gitObject"},
+        "commit": {"$ref": "#/$defs/gitObject"},
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "tree": {"$ref": "#/$defs/gitObject"}
+      }
+    }
+  }
+}
