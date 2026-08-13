@@ -1,0 +1,9 @@
+{
+  "phase": "direct",
+  "tags": ["prior", "direction", "salience"],
+  "platform": "web",
+  "surface_mode": "any",
+  "max_entries": 3,
+  "word_budget": 220,
+  "allow_trends": false
+}
