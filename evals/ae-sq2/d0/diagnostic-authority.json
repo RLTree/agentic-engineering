@@ -1,0 +1,146 @@
+{
+  "schema_version": "ae-sq2-handshake-diagnostic-authority-v1",
+  "program_id": "AE-SQ2",
+  "authority_status": "bounded-live-diagnostic-authority",
+  "claim_ceiling": "four-call-synthetic-handshake-diagnostic-only",
+  "parent_program_authority": {
+    "path": "evals/ae-sq2/program-authority.json",
+    "sha256": "d27262f7a40f773224e96926d85e25be314115d248e5ae240cc90a02a93e4e00"
+  },
+  "scope": {
+    "live_call_count": 4,
+    "synthetic_task_only": true,
+    "corpus_access_permitted": false,
+    "candidate_change_permitted": false,
+    "persistent_raw_material_permitted": false
+  },
+  "execution": {
+    "modes": ["dry_run", "live"],
+    "live_usage_approval": "ae-sq2-authorized-diagnostic-four-call",
+    "schema_selection": "explicit-path-only-no-substitution",
+    "model": "gpt-5.5",
+    "reasoning_effort": "medium",
+    "timeout_seconds_per_call": 600,
+    "isolation": "fresh-owner-only-codex-home-and-empty-cwd-per-call",
+    "private_tmpdir": "fresh-empty-owner-only-0700-under-isolated-home-per-call",
+    "shared_tmpdir_forwarded": false,
+    "max_request_bytes": 16384,
+    "max_stdout_bytes": 1048576,
+    "max_stderr_bytes": 65536,
+    "cli": {
+      "version": "codex-cli 0.147.0",
+      "sha256": "19c4f144c5226a9f17c58e6f0fa854843b0f77a6eb420f40e2745a12f10f5d37"
+    }
+  },
+  "one_shot_custody": {
+    "directory": ".ae-sq2-d0",
+    "location": "git-common-dir",
+    "directory_mode": "0700",
+    "state_file": "state.json",
+    "state_file_mode": "0600",
+    "atomic_claim": "O_CREAT|O_EXCL-before-any-child-spawn",
+    "binding_roles": [
+      "parent_program_authority_sha256",
+      "diagnostic_authority_sha256",
+      "diagnostic_schema_sha256",
+      "input_schema_sha256",
+      "cli_sha256"
+    ],
+    "existing_state_route": "fail-closed-no-child-spawn",
+    "interruption_after_claim_route": "terminal-invalid-or-durable-claimed-no-reuse",
+    "dry_run_claims_state": false
+  },
+  "input_schema_profiles": {
+    "ae_sq1_reproduction": {
+      "path": "evals/ae-sq1/slec1-capsule-schema.json",
+      "sha256": "7124be192fa7d047ae7d9e54f1cfd84c32129164caddf6474277ae5fb3e65f4f"
+    },
+    "repaired_candidate": "explicit-repository-path-and-exact-sha256-required"
+  },
+  "fixed_probes": [
+    {
+      "probe_id": "p0",
+      "slot_id": "s0",
+      "request_bytes": 405,
+      "request_sha256": "91594ddbbbc902142b421b380282ffbeb704f14ab83d7af56d9d066941811693"
+    },
+    {
+      "probe_id": "p1",
+      "slot_id": "s1",
+      "request_bytes": 405,
+      "request_sha256": "287e8e57dd05941886a2f51c1d0ebc3d02bdcd70dab33f986a851a68e8b9ae6a"
+    },
+    {
+      "probe_id": "p2",
+      "slot_id": "s2",
+      "request_bytes": 405,
+      "request_sha256": "1afc2297e3c6d34f7a1835bdfa782cd965e1d27ff2bba10e08cdad125d7ee910"
+    },
+    {
+      "probe_id": "p3",
+      "slot_id": "s3",
+      "request_bytes": 405,
+      "request_sha256": "ee653e53197a617cc1f8961b3c69dd8803b9b17260720564ebddfb31802af559"
+    }
+  ],
+  "classification_precedence": [
+    "transport_spawn",
+    "timeout",
+    "schema_unsupported",
+    "provider_request_rejected",
+    "signal_exit",
+    "process_exit",
+    "empty_stdout",
+    "invalid_jsonl",
+    "unknown_event",
+    "missing_completed_message",
+    "schema_invalid",
+    "semantic_invalid",
+    "valid_completed",
+    "other_fail_closed"
+  ],
+  "known_event_types": [
+    "thread.started",
+    "turn.started",
+    "item.completed",
+    "turn.completed",
+    "turn.failed",
+    "error"
+  ],
+  "redacted_error_classes": [
+    "none",
+    "invalid_json_schema",
+    "invalid_request",
+    "authentication",
+    "authorization",
+    "rate_limit",
+    "network",
+    "server",
+    "other"
+  ],
+  "retained_call_material": [
+    "probe-id",
+    "classification",
+    "exit-code-or-signal",
+    "byte-counts",
+    "sha256-digests",
+    "closed-event-type-counts",
+    "closed-usage-counters",
+    "redacted-error-class"
+  ],
+  "forbidden_retention": [
+    "prompt",
+    "task-text",
+    "stdout",
+    "stderr",
+    "completed-message",
+    "model-output",
+    "thread-id",
+    "event-payload",
+    "provider-error-message"
+  ],
+  "record_schema": {
+    "path": "evals/ae-sq2/d0/diagnostic-schema.json",
+    "sha256": "9b1f037cecf3071ce8d8ddea88e208c55c6f72674375db064eaeb46920fd0c01"
+  }
+}
