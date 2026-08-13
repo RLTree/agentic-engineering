@@ -1,0 +1,178 @@
+{
+  "schema_version": "AE-SQ6-program-authority-v1",
+  "program_id": "AE-SQ6",
+  "candidate_id": "AE-SQ6-SLEC-6",
+  "authority_status": "F0_INITIAL_AUTHORITY_CLOSED",
+  "claim_ceiling": "structural-successor-authority-and-unexecuted-canonical-receipt-repair-plan-only",
+  "owner_authorization": {
+    "authorized": true,
+    "scope": "SQ6-F1A-through-SQ6-F6-subject-to-exact-closed-gates-and-budgets",
+    "successor_kind": "distinct-owner-authorized-new-program",
+    "authorized_phases": ["SQ6-F1A", "SQ6-F1B", "SQ6-F1G", "SQ6-F2A", "SQ6-F2B", "SQ6-F3", "SQ6-F4", "SQ6-F5", "SQ6-F6"],
+    "live_model_phases": ["SQ6-F4", "SQ6-F5"],
+    "additional_diagnostic_calls_authorized": false,
+    "live_calls_authorized_within_gate_and_budget": true,
+    "additional_owner_approval_required_for_authorized_phases": false,
+    "corpus_authoring_authorized_only_after_exact_F1G_production_loader_pass": true,
+    "downstream_execution_authorized_by_this_artifact": false,
+    "release_publish_promotion_authorized": false,
+    "deletion_or_migration_authorized": false
+  },
+  "predecessor_terminal_history": {
+    "program_id": "AE-SQ5",
+    "candidate_id": "AE-SQ5-SLEC-5",
+    "status": "terminal",
+    "terminal_stage": "SQ5-AR",
+    "terminal_edge": "SQ5-F1G:NOT_PASS->SQ5-AR",
+    "terminal_reason": "committed-F1G-receipt-has-trailing-line-feed-and-is-not-exact-production-canonical-UTF-8-JSON",
+    "terminal_decision_path": "evals/ae-sq5/ar/terminal-decision.json",
+    "sealed_f1": {
+      "f1a_commit": "f382d28b4b034f097170d97d3d04e706f0eb623c",
+      "f1a_tree": "0d6254a35346c79948d80897e96d13836d8b0698",
+      "f1b_commit": "f301438b53b94fd48c9836b40085aed4fad39890",
+      "f1b_tree": "eca70f8282dea79d6ac902c23ccb73f22f534dde",
+      "f1g_commit": "4af4ad00cc11b903a2b6d796b3578d7e76e0aaca",
+      "f1g_tree": "515e94e4847627084b8b809ee910ed81209ea8b7"
+    },
+    "f1g_receipt_mismatch": {
+      "path": "evals/ae-sq5/f1/author-template-gate.json",
+      "blob": "4a307072266ac6e879ca06704e73b2af4b337418",
+      "committed_raw_sha256": "ffe6dca737c8e2a9f93a5bcdf596bec2569d6998efcc79d6583dd39ffb2a216d",
+      "committed_size_bytes": 1623,
+      "committed_ends_with_lf": true,
+      "production_canonical_sha256": "52b7b29bfbe85b8260e659a17273793ebbfa90c3e7c5afb3e0b9d56588a9203d",
+      "production_canonical_size_bytes": 1622,
+      "production_canonical_ends_with_lf": false,
+      "exception_class": "PreflightError",
+      "exception_message": "F1G receipt is not exact canonical UTF-8 JSON"
+    },
+    "unqualified_unpublished_objects": {
+      "f2a_commit": "e74e3ef5055ac95442ecd3b342d4a47bc2b0345d",
+      "f2a_tree": "de5363f1b5ed12f295ae2274910d9a83cc2609a5",
+      "f2b_commit": "4760ecb53997fe693a76531057eaf8c13014434d",
+      "f2b_tree": "289bc7b146fb6b6379dea7ae9b687c357c872b99",
+      "qualification_effect": "none",
+      "reuse_permitted": false,
+      "publication_permitted": false
+    },
+    "later_stage_facts": {
+      "f3_attempted": false,
+      "model_calls": 0,
+      "canary_calls": 0,
+      "batch_calls": 0,
+      "aggregate_result_created": false,
+      "downstream_opened": false
+    },
+    "predecessor_bytes_write_delete_or_migrate_permitted": false,
+    "predecessor_candidate_corpus_author_task_or_result_reuse_permitted": false
+  },
+  "imported_failure_contract": {
+    "kind": "aggregate-canonical-receipt-byte-mismatch-only",
+    "permitted_use": "require-one-shared-production-canonical-receipt-verifier-and-prove-exact-committed-F1G-bytes-before-authoring",
+    "required_repair": "write-canonical-sort-key-compact-UTF-8-JSON-with-no-trailing-line-feed-and-pass-the-actual-production-loader-gate-on-the-committed-blob",
+    "actual_production_route_required": true,
+    "dictionary_mock_source_only_or-reformatted-byte-proof_permitted": false,
+    "sq5_candidate_qualification_imported": false,
+    "sq5_candidate_or_active-role-bytes-imported": false,
+    "sq5_task_case_split_corpus_label_schedule_author-or-result-material-imported": false,
+    "behavioral_or_threshold_tuning_permitted": false,
+    "result_informed_change_permitted": false
+  },
+  "phase_graph": {
+    "ordered_phases": ["SQ6-F0", "SQ6-F1A", "SQ6-F1B", "SQ6-F1G", "SQ6-F2A", "SQ6-F2B", "SQ6-F3", "SQ6-F4", "SQ6-F5", "SQ6-F6", "SQ6-AS-HANDOFF", "SQ6-AR"],
+    "success_edges": ["SQ6-F0->SQ6-F1A", "SQ6-F1A:PASS->SQ6-F1B", "SQ6-F1B:PASS->SQ6-F1G", "SQ6-F1G:PASS->SQ6-F2A", "SQ6-F2A:PASS->SQ6-F2B", "SQ6-F2B:PASS->SQ6-F3", "SQ6-F3:PASS->SQ6-F4", "SQ6-F4:PASS->SQ6-F5", "SQ6-F5:COMPLETE_VALID->SQ6-F6", "SQ6-F6:PASS->SQ6-AS-HANDOFF"],
+    "terminal_edges": ["SQ6-F1A:NOT_PASS->SQ6-AR", "SQ6-F1B:NOT_PASS->SQ6-AR", "SQ6-F1G:NOT_PASS->SQ6-AR", "SQ6-F2A:NOT_PASS->SQ6-AR", "SQ6-F2B:NOT_PASS->SQ6-AR", "SQ6-F3:NOT_PASS->SQ6-AR", "SQ6-F4:NOT_PASS->SQ6-AR", "SQ6-F5:NOT_COMPLETE_VALID->SQ6-AR", "SQ6-F6:NOT_PASS->SQ6-AR"],
+    "later_phase_compensation_permitted": false,
+    "additional_active_phases_or_edges_permitted": false,
+    "retry_reopen_resume_repair_refreeze_or_H6_permitted": false
+  },
+  "model_configuration": {
+    "model_id": "gpt-5.5",
+    "reasoning_effort": "medium",
+    "applies_to_phases": ["SQ6-F4", "SQ6-F5"],
+    "model_provider_reasoning_or_mode_fallback_permitted": false
+  },
+  "call_budgets": {
+    "counting_unit": "attempted-model-invocation",
+    "diagnostic_calls": 0,
+    "canary_calls": 4,
+    "conditional_batch_presentations": 80,
+    "calls_per_presentation": 4,
+    "conditional_batch_calls": 320,
+    "qualification_hard_ceiling": 324,
+    "retry_calls_hard_ceiling": 0,
+    "failed_malformed_rejected_empty_or_timed_out_attempts_count": true,
+    "unused_calls_transfer_permitted": false,
+    "top_up_replacement_or_replay_calls_permitted": false
+  },
+  "f1_contract": {
+    "implementation_phase": "SQ6-F1A",
+    "freeze_phase": "SQ6-F1B",
+    "preauthor_gate_phase": "SQ6-F1G",
+    "candidate_requirements": ["new-SLEC-6-identity", "fresh-SQ6-namespace", "complete-candidate-evaluator-runner-schema-and-test-closure", "no-SQ5-active-role-blob-or-raw-byte-reuse", "zero-corpus-and-zero-model-calls"],
+    "f1b_requirements": ["direct-child-of-exact-passing-F1A", "manifest-only-delta", "bind-exact-F1A-commit-tree-path-blob-and-raw-digests", "no-post-freeze-semantic-change"],
+    "canonical_receipt_contract": {
+      "serialization": "UTF-8-JSON-sort-keys-compact-separators-no-trailing-bytes",
+      "trailing_line_feed_permitted": false,
+      "writer_and_verifier_share_one_canonical_json_implementation": true,
+      "verify_exact_committed_blob_not-in-memory-object": true,
+      "positive_gate": "real-target-frozen-_load_base_state-preauthor-mode-accepts-exact-committed-F1G-receipt-bytes-with-no-trailing-line-feed",
+      "red_gate": "same-real-target-frozen-_load_base_state-preauthor-mode-rejects-exact-receipt-plus-one-line-feed-with-PreflightError",
+      "red_exception_message": "F1G receipt is not exact canonical UTF-8 JSON",
+      "mock_dictionary_source_only_or-worktree-substitution_permitted": false
+    },
+    "f1g_requirements": ["direct-child-of-exact-F1B", "receipt-only-delta", "taskless-and-corpus-free", "attempt-one", "zero-model-calls", "real-target-frozen-_load_base_state-preauthor-mode-PASS-on-exact-committed-receipt-before-any-author-route-opens", "authoring-tool-refuses-to-emit-or-accept-task-material-without-exact-committed-F1G-PASS-receipt"],
+    "authoring_before_exact_committed_F1G_loader_pass_permitted": false,
+    "not_pass_route": "SQ6-F1G:NOT_PASS->SQ6-AR"
+  },
+  "f2_contract": {
+    "fresh_holdout": "two-independent-authors-times-twenty-cases-after-F1G-PASS-only",
+    "prohibited_inputs": ["any-SQ5-task-case-split-corpus-label-schedule-author-or-result-material", "other-author-split", "diagnostic-live-or-outcome-material"],
+    "f2a": {
+      "ordered_parents": ["exact-SQ6-F1G", "author-A", "author-B"],
+      "exact_delta_paths": ["evals/ae-sq6/f2/split-a.json", "evals/ae-sq6/f2/split-b.json", "evals/ae-sq6/f2/schedule.json", "evals/ae-sq6/f2/corpus-manifest.json"],
+      "artifact_mode": "100644",
+      "schedule_presentations": 80,
+      "calls_per_presentation": 4,
+      "independent_nonauthor_validation_required": true
+    },
+    "f2b": {
+      "direct_child_of_passing_F2A": true,
+      "exact_delta_paths": ["evals/ae-sq6/f2/run-manifest.json"],
+      "embedded_closed_independent_receipt_required": true,
+      "binds_F1A_F1B_F1G_F2A_authors_splits_schedule_manifest_and-validator": true,
+      "only_exact_PASS_opens_F3": true
+    },
+    "retry_replacement_replay_duplicate_extra_or_top_up_permitted": false
+  },
+  "execution_contract": {
+    "f3": "one-zero-model-preflight-proving-exact-custody-schema-formula-lifecycle-budget-privacy-and-unclaimed-one-shot-state",
+    "f4": "one-four-call-synthetic-noncorpus-canary-with-all-four-valid-or-terminal",
+    "f5": "conditional-exactly-eighty-presentations-and-at-most-three-hundred-twenty-attempted-calls-with-no-retry",
+    "f6": "deterministic-global-logical-AND-with-every-missing-invalid-undefined-nonfinite-duplicate-extra-rejected-or-failed-value-false",
+    "later_stage_compensation_permitted": false
+  },
+  "outcome_contract": {
+    "durable_result_path": "evals/ae-sq6/f6/aggregate-result.json",
+    "aggregate_result_fields_only": ["schema_version", "program_id", "candidate_id", "status", "aggregate_digest"],
+    "pass_handoff_path": "evals/ae-sq6/as/handoff.json",
+    "nonpass_terminal_path": "evals/ae-sq6/ar/terminal-decision.json",
+    "handoff_and_terminal_may_coexist": false,
+    "handoff_confers_downstream_execution_authority": false
+  },
+  "privacy_and_claims": {
+    "forbidden_durable_or-exfiltrated_material": ["raw-prompts", "task-text", "case-or-split-content", "outputs", "event-payloads", "transcripts", "messages", "presentation-assessor-gate-or-score-level-results"],
+    "maximum_success_claim": "one-exact-candidate-aggregate-in-the-frozen-forty-case-two-condition-SQ6-envelope",
+    "not_proven": ["general-provider-or-model-behavior", "product-or-host-behavior", "field-or-production-effect", "security-or-release-readiness", "publication-or-promotion-authority"]
+  },
+  "namespace": {
+    "active_plan": {
+      "path": "docs/exec-plans/active/ae-sq6.md",
+      "raw_sha256": "70b478470395a33d0468d9196848b058d1ea868a8fb9165bae750c9640908b89"
+    },
+    "program_authority_path": "evals/ae-sq6/program-authority.json",
+    "owned_prefixes": ["AE-SQ6", "SQ6-", "SLEC-6", "ae-sq6", "evals/ae-sq6/"],
+    "predecessor_program_or-candidate-continuation_permitted": false
+  },
+  "forbidden_actions": ["reopen-retry-repair-refreeze-resume-reinterpret-or-continue-AE-SQ5", "reuse-any-SQ5-candidate-author-task-corpus-schedule-result-or-F2-object", "author-corpus-before-exact-committed-F1G-production-loader-PASS", "write-F1G-receipt-with-line-feed-or-any-trailing-byte", "accept-dictionary-mock-source-only-or-reformatted-byte-proof", "make-model-call-before-F4", "enter-batch-before-all-four-canary-calls-pass", "retry-replay-replace-duplicate-extra-or-top-up", "use-model-provider-reasoning-or-mode-fallback", "persist-or-exfiltrate-forbidden-raw-or-subaggregate-material", "use-later-stage-compensation", "route-nonpass-downstream", "release-publish-promote-delete-or-migrate"]
+}

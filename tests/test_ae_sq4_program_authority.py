@@ -904,7 +904,7 @@ class AeSq4ProgramAuthorityTests(unittest.TestCase):
         )
 
     def test_foundation_pointer_and_terminal_successor_rows(self) -> None:
-        pointer = "**Active successor plan:** `docs/exec-plans/active/ae-sq5.md` for AE-SQ5 only; AE-SQ4, AE-SQ3, AE-SQ2, AE-SQ1, and `EXECPLAN.md` remain immutable terminal history"
+        pointer = "**Active successor plan:** `docs/exec-plans/active/ae-sq6.md` for AE-SQ6 only; AE-SQ5, AE-SQ4, AE-SQ3, AE-SQ2, AE-SQ1, and `EXECPLAN.md` remain immutable terminal history"
         self.assertEqual(
             FOUNDATION_PATH.read_text(encoding="utf-8").splitlines()[6], pointer
         )
@@ -914,6 +914,8 @@ class AeSq4ProgramAuthorityTests(unittest.TestCase):
         self.assertEqual(identifiers.count("AE-SQ4-F0-2026-08-12"), 1)
         self.assertEqual(identifiers.count("AE-SQ4-AR-2026-08-13"), 1)
         self.assertEqual(identifiers.count("AE-SQ5-F0-2026-08-13"), 1)
+        self.assertEqual(identifiers.count("AE-SQ5-AR-2026-08-13"), 1)
+        self.assertEqual(identifiers.count("AE-SQ6-F0-2026-08-13"), 1)
         self.assertTrue((ROOT / "evals/ae-sq4/f1/repaired-freeze.json").is_file())
         self.assertTrue((ROOT / "evals/ae-sq4/ar/terminal-decision.json").is_file())
 

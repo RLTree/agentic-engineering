@@ -1,11 +1,41 @@
 # AE-SQ5 distinct successor qualification program
 
-Status: **ACTIVE — SQ5-F0 AUTHORITY; SQ5-F1A NEXT**
+Status: **TERMINAL — SQ5-F1G NOT_PASS -> SQ5-AR**
 Program: `AE-SQ5`
 Candidate: `AE-SQ5-SLEC-5`
 Machine authority: `evals/ae-sq5/program-authority.json`
 Authority date: 2026-08-13, America/Los_Angeles
-Claim ceiling: structural successor authority and unexecuted contract-repair plan only
+Claim ceiling: exact committed-byte custody and production-loader rejection only; no F2 qualification, preflight, model, runtime-success, downstream, release, or effect claim
+
+## 0. Terminal closeout (2026-08-13)
+
+AE-SQ5 is permanently terminal. The committed F1G receipt at
+`4af4ad00cc11b903a2b6d796b3578d7e76e0aaca` is a 1,623-byte Git blob whose
+raw SHA-256 is
+`ffe6dca737c8e2a9f93a5bcdf596bec2569d6998efcc79d6583dd39ffb2a216d`.
+It ends in line feed. The frozen production `canonical_json` projection is
+1,622 bytes, has no trailing line feed, and has SHA-256
+`52b7b29bfbe85b8260e659a17273793ebbfa90c3e7c5afb3e0b9d56588a9203d`.
+Those byte streams are unequal.
+
+The actual frozen production `_load_base_state` route, executed at detached
+F2B `4760ecb53997fe693a76531057eaf8c13014434d`, raises
+`PreflightError: F1G receipt is not exact canonical UTF-8 JSON` before F2
+validation. F1G is therefore `NOT_PASS`, which takes the already frozen
+`SQ5-F1G:NOT_PASS->SQ5-AR` edge. The durable terminal routing artifact is
+`evals/ae-sq5/ar/terminal-decision.json`.
+
+F2A `e74e3ef5055ac95442ecd3b342d4a47bc2b0345d` and F2B
+`4760ecb53997fe693a76531057eaf8c13014434d` are unreferenced and unpublished
+evidence objects only. They did not qualify, cannot compensate for F1G, and
+must never be reused. Their author A/B task material is also prohibited in any
+successor. F3 was not attempted; model, canary, and batch calls are all zero.
+No retry, repair, refreeze, reinterpretation, reopen, resume, or downstream
+route exists in AE-SQ5.
+
+The remaining sections preserve the preterminal authority as history. They do
+not authorize another AE-SQ5 action. The only next route is the distinct
+owner-authorized AE-SQ6 program in `docs/exec-plans/active/ae-sq6.md`.
 
 ## 1. Distinct identity and terminal boundary
 

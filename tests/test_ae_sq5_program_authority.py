@@ -21,6 +21,7 @@ TERMINAL_PLAN_PATH = ROOT / "docs/exec-plans/active/ae-sq4.md"
 FOUNDATION_PATH = ROOT / "docs/foundations/current-2026-08-08.md"
 LOG_PATH = ROOT / "docs/foundations/decision-log.csv"
 BASE_COMMIT = "6357b87cfae9e488bbb1489541ec03d577803463"
+F0_COMMIT = "7f4590b284bfb5e5f60bc96c8cdb15e6ff8194c8"
 F2A = "8b1a26dc6951d7052429197af5d8dffe3636bbb3"
 AUTHORITY_SEMANTIC_SHA256 = (
     "7f801ca97604f0736bbcea204e1e6f72cb2ded7b8b25368fe766520387c2ff12"
@@ -1697,9 +1698,15 @@ class AeSq5ProgramAuthorityTests(unittest.TestCase):
     def test_strict_recursive_contract_and_exact_custody(self) -> None:
         document = strict(AUTHORITY_PATH.read_bytes())
         validate(document)
+        frozen_f0_plan = subprocess.run(
+            ["git", "show", f"{F0_COMMIT}:docs/exec-plans/active/ae-sq5.md"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+        ).stdout
         self.assertEqual(
             document["namespace"]["active_plan"]["raw_sha256"],
-            hashlib.sha256(PLAN_PATH.read_bytes()).hexdigest(),
+            hashlib.sha256(frozen_f0_plan).hexdigest(),
         )
         predecessor = document["predecessor_terminal_history"]
         self.assertEqual(
@@ -1776,7 +1783,7 @@ class AeSq5ProgramAuthorityTests(unittest.TestCase):
         )
 
     def test_foundation_pointer_and_decision_rows(self) -> None:
-        pointer = "**Active successor plan:** `docs/exec-plans/active/ae-sq5.md` for AE-SQ5 only; AE-SQ4, AE-SQ3, AE-SQ2, AE-SQ1, and `EXECPLAN.md` remain immutable terminal history"
+        pointer = "**Active successor plan:** `docs/exec-plans/active/ae-sq6.md` for AE-SQ6 only; AE-SQ5, AE-SQ4, AE-SQ3, AE-SQ2, AE-SQ1, and `EXECPLAN.md` remain immutable terminal history"
         self.assertEqual(
             FOUNDATION_PATH.read_text(encoding="utf-8").splitlines()[6], pointer
         )
@@ -1784,15 +1791,17 @@ class AeSq5ProgramAuthorityTests(unittest.TestCase):
         ids = [row["decision_id"] for row in rows]
         self.assertEqual(ids.count("AE-SQ4-AR-2026-08-13"), 1)
         self.assertEqual(ids.count("AE-SQ5-F0-2026-08-13"), 1)
+        self.assertEqual(ids.count("AE-SQ5-AR-2026-08-13"), 1)
+        self.assertEqual(ids.count("AE-SQ6-F0-2026-08-13"), 1)
         self.assertEqual(
             [row["decision_id"] for row in rows[-2:]],
-            ["AE-SQ4-AR-2026-08-13", "AE-SQ5-F0-2026-08-13"],
+            ["AE-SQ5-AR-2026-08-13", "AE-SQ6-F0-2026-08-13"],
         )
 
-    def test_f0_has_no_premature_sq5_surfaces(self) -> None:
-        for phase in ("f1", "f2", "f3", "f4", "f5", "f6", "ar"):
+    def test_terminal_sq5_has_no_later_execution_surfaces(self) -> None:
+        for phase in ("f3", "f4", "f5", "f6", "as"):
             self.assertFalse((ROOT / f"evals/ae-sq5/{phase}").exists(), phase)
-        self.assertFalse((ROOT / "scripts/run_ae_sq5_aq.py").exists())
+        self.assertTrue((ROOT / "evals/ae-sq5/ar/terminal-decision.json").is_file())
 
     def test_plan_exposes_real_byte_gate_and_freshness(self) -> None:
         plan = PLAN_PATH.read_text(encoding="utf-8")
