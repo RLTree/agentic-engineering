@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/ae-sq3/f1/result-schema.json",
+  "title": "AE-SQ3 aggregate-only terminal qualification projection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "program_id",
+    "candidate_id",
+    "status",
+    "aggregate_digest"
+  ],
+  "properties": {
+    "program_id": {"const": "AE-SQ3"},
+    "candidate_id": {"const": "AE-SQ3-SLEC-3"},
+    "status": {"enum": ["PASS", "FAIL"]},
+    "aggregate_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}
