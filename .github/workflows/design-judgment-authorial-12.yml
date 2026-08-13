@@ -35,9 +35,11 @@ jobs:
         working-directory: artifacts/design-judgment-authorial-12/plugin/design-judgment/engine-rust
         run: cargo generate-lockfile
 
-      - name: Rust format
+      - name: Format Rust source
         working-directory: artifacts/design-judgment-authorial-12/plugin/design-judgment/engine-rust
-        run: cargo fmt --all -- --check
+        run: |
+          cargo fmt --all
+          cargo fmt --all -- --check
 
       - name: Rust clippy
         working-directory: artifacts/design-judgment-authorial-12/plugin/design-judgment/engine-rust
