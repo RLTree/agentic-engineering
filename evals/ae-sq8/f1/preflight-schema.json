@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/ae-sq8/f1/preflight-schema.json",
+  "title": "AE-SQ8 single zero-model F3 preflight record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "program_id",
+    "candidate_id",
+    "phase",
+    "attempt",
+    "model_calls",
+    "status",
+    "bindings",
+    "checks",
+    "aggregate_sha256"
+  ],
+  "properties": {
+    "schema_version": {"const": "ae-sq8-preflight-v1"},
+    "program_id": {"const": "AE-SQ8"},
+    "candidate_id": {"const": "AE-SQ8-SLEC-8"},
+    "phase": {"const": "SQ8-F3"},
+    "attempt": {"const": 1},
+    "model_calls": {"const": 0},
+    "status": {"enum": ["PASS", "FAIL"]},
+    "bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "program_authority_sha256",
+        "f1_freeze_sha256",
+        "corpus_manifest_sha256",
+        "run_manifest_sha256"
+      ],
+      "properties": {
+        "program_authority_sha256": {"$ref": "#/$defs/sha256"},
+        "f1_freeze_sha256": {"$ref": "#/$defs/sha256"},
+        "corpus_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "run_manifest_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "exact_custody",
+        "provider_subset_and_local_semantics",
+        "recursive_schema_closure",
+        "independent_two_by_twenty",
+        "forty_unique_cases",
+        "eighty_by_four_schedule",
+        "formula_totality_and_global_and",
+        "lifecycle_event_and_counter_closure",
+        "zero_retry_and_aggregate_only",
+        "zero_raw_persistence",
+        "one_shot_state_unclaimed"
+      ],
+      "properties": {
+        "exact_custody": {"type": "boolean"},
+        "provider_subset_and_local_semantics": {"type": "boolean"},
+        "recursive_schema_closure": {"type": "boolean"},
+        "independent_two_by_twenty": {"type": "boolean"},
+        "forty_unique_cases": {"type": "boolean"},
+        "eighty_by_four_schedule": {"type": "boolean"},
+        "formula_totality_and_global_and": {"type": "boolean"},
+        "lifecycle_event_and_counter_closure": {"type": "boolean"},
+        "zero_retry_and_aggregate_only": {"type": "boolean"},
+        "zero_raw_persistence": {"type": "boolean"},
+        "one_shot_state_unclaimed": {"type": "boolean"}
+      }
+    },
+    "aggregate_sha256": {"$ref": "#/$defs/sha256"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "PASS"}}, "required": ["status"]},
+      "then": {
+        "properties": {
+          "checks": {
+            "properties": {
+              "exact_custody": {"const": true},
+              "provider_subset_and_local_semantics": {"const": true},
+              "recursive_schema_closure": {"const": true},
+              "independent_two_by_twenty": {"const": true},
+              "forty_unique_cases": {"const": true},
+              "eighty_by_four_schedule": {"const": true},
+              "formula_totality_and_global_and": {"const": true},
+              "lifecycle_event_and_counter_closure": {"const": true},
+              "zero_retry_and_aggregate_only": {"const": true},
+              "zero_raw_persistence": {"const": true},
+              "one_shot_state_unclaimed": {"const": true}
+            }
+          }
+        }
+      },
+      "else": {
+        "not": {
+          "properties": {
+            "checks": {
+              "properties": {
+                "exact_custody": {"const": true},
+                "provider_subset_and_local_semantics": {"const": true},
+                "recursive_schema_closure": {"const": true},
+                "independent_two_by_twenty": {"const": true},
+                "forty_unique_cases": {"const": true},
+                "eighty_by_four_schedule": {"const": true},
+                "formula_totality_and_global_and": {"const": true},
+                "lifecycle_event_and_counter_closure": {"const": true},
+                "zero_retry_and_aggregate_only": {"const": true},
+                "zero_raw_persistence": {"const": true},
+                "one_shot_state_unclaimed": {"const": true}
+              },
+              "required": [
+                "exact_custody", "provider_subset_and_local_semantics",
+                "recursive_schema_closure", "independent_two_by_twenty",
+                "forty_unique_cases", "eighty_by_four_schedule",
+                "formula_totality_and_global_and",
+                "lifecycle_event_and_counter_closure",
+                "zero_retry_and_aggregate_only", "zero_raw_persistence",
+                "one_shot_state_unclaimed"
+              ]
+            }
+          },
+          "required": ["checks"]
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

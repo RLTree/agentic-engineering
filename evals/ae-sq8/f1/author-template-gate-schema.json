@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/ae-sq8/f1/author-template-gate-schema.json",
+  "title": "AE-SQ8 zero-corpus author-template gate receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "program_id", "candidate_id", "attempt", "status", "model_calls", "f1a_implementation", "f1b_freeze", "builder", "validator", "template_sha256", "positive_round_trip", "selected_reference_anchor_gate", "full_f3_boundary_gate", "red_fixture", "aggregate_sha256"],
+  "properties": {
+    "schema_version": {"const": "ae-sq8-author-template-gate-v1"},
+    "program_id": {"const": "AE-SQ8"},
+    "candidate_id": {"const": "AE-SQ8-SLEC-8"},
+    "attempt": {"const": 1},
+    "status": {"const": "PASS"},
+    "model_calls": {"const": 0},
+    "f1a_implementation": {"$ref": "#/$defs/commitTree"},
+    "f1b_freeze": {"$ref": "#/$defs/sealedPath"},
+    "builder": {"$ref": "#/$defs/sealedPath"},
+    "validator": {"$ref": "#/$defs/sealedPath"},
+    "template_sha256": {"$ref": "#/$defs/sha256"},
+    "positive_round_trip": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["production_loader", "status"],
+      "properties": {
+        "production_loader": {"const": "_load_base_state"},
+        "status": {"const": "PASS"}
+      }
+    },
+    "selected_reference_anchor_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["production_validator", "production_resolver", "positive", "red_missing", "red_wrong"],
+      "properties": {
+        "production_validator": {"const": "validate_corpora:selected_reference_anchors_valid"},
+        "production_resolver": {"const": "resolve_expected_capsules"},
+        "positive": {"$ref": "#/$defs/passResult"},
+        "red_missing": {"$ref": "#/$defs/anchorRed"},
+        "red_wrong": {"$ref": "#/$defs/anchorRed"}
+      }
+    },
+    "full_f3_boundary_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fixture", "production_boundary", "production_checks", "production_one_shot_builder", "positive", "red_top_level_only", "red_missing_nested", "red_wrong_nested_placement"],
+      "properties": {
+        "fixture": {"const": "synthetic-zero-corpus-zero-model-closed-receipt"},
+        "production_boundary": {"const": "_execute_f3_boundary"},
+        "production_checks": {"const": "_f3_checks"},
+        "production_one_shot_builder": {"const": "build_f3_record"},
+        "positive": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["all_checks_true", "model_calls", "status"],
+          "properties": {
+            "all_checks_true": {"const": true},
+            "model_calls": {"const": 0},
+            "status": {"const": "PASS"}
+          }
+        },
+        "red_top_level_only": {"$ref": "#/$defs/f3BoundaryRed"},
+        "red_missing_nested": {"$ref": "#/$defs/f3BoundaryRed"},
+        "red_wrong_nested_placement": {"$ref": "#/$defs/f3BoundaryRed"}
+      }
+    },
+    "red_fixture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["exception_class", "exception_message", "mutation", "status"],
+      "properties": {
+        "exception_class": {"const": "PreflightError"},
+        "exception_message": {"const": "F1G receipt is not exact canonical UTF-8 JSON"},
+        "mutation": {"const": "exact-canonical-receipt-plus-one-line-feed"},
+        "status": {"const": "REJECTED"}
+      }
+    },
+    "aggregate_sha256": {"$ref": "#/$defs/sha256"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "gitObject": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "passResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {"status": {"const": "PASS"}}
+    },
+    "anchorRed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["error", "status"],
+      "properties": {
+        "error": {"const": "selected_reference_anchor"},
+        "status": {"const": "REJECTED"}
+      }
+    },
+    "f3BoundaryRed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["error", "status"],
+      "properties": {
+        "error": {"const": "validation_receipt_validator_identity"},
+        "status": {"const": "REJECTED"}
+      }
+    },
+    "commitTree": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["commit", "tree"],
+      "properties": {"commit": {"$ref": "#/$defs/gitObject"}, "tree": {"$ref": "#/$defs/gitObject"}}
+    },
+    "sealedPath": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["blob", "commit", "path", "sha256", "tree"],
+      "properties": {
+        "blob": {"$ref": "#/$defs/gitObject"},
+        "commit": {"$ref": "#/$defs/gitObject"},
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "tree": {"$ref": "#/$defs/gitObject"}
+      }
+    }
+  }
+}

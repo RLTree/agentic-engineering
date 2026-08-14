@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "program_id": "AE-SQ8",
+  "authority_id": "AE-SQ8-F1-GATES-V1",
+  "contract_mode": "closed-global-and",
+  "claim_ceiling": "unattested aggregate qualification telemetry from supplied in-memory observations",
+  "conditions": ["current", "reduced"],
+  "per_condition": [
+    {"gate_id": "capsule_local_need_accuracy", "kind": "ratio", "operator": ">=", "boundary": {"numerator": 19, "denominator": 20}, "fixed_denominator": 160},
+    {"gate_id": "capsule_reference_need_accuracy", "kind": "ratio", "operator": ">=", "boundary": {"numerator": 19, "denominator": 20}, "fixed_denominator": 160},
+    {"gate_id": "selected_precision", "kind": "ratio", "operator": ">=", "boundary": {"numerator": 19, "denominator": 20}, "fixed_denominator": null},
+    {"gate_id": "selected_recall", "kind": "ratio", "operator": ">=", "boundary": {"numerator": 9, "denominator": 10}, "fixed_denominator": 36},
+    {"gate_id": "exact_selected_set", "kind": "ratio", "operator": ">=", "boundary": {"numerator": 9, "denominator": 10}, "fixed_denominator": 40},
+    {"gate_id": "abstention_specificity", "kind": "ratio", "operator": ">=", "boundary": {"numerator": 19, "denominator": 20}, "fixed_denominator": 12},
+    {"gate_id": "broad_over_selection", "kind": "ratio", "operator": "<=", "boundary": {"numerator": 1, "denominator": 20}, "fixed_denominator": 40},
+    {"gate_id": "one_decision_stacking", "kind": "count", "operator": "==", "boundary": 0, "fixed_denominator": null},
+    {"gate_id": "exactly_two_exact_set", "kind": "ratio", "operator": "==", "boundary": {"numerator": 1, "denominator": 1}, "fixed_denominator": 8},
+    {"gate_id": "cap_abstention", "kind": "ratio", "operator": "==", "boundary": {"numerator": 1, "denominator": 1}, "fixed_denominator": 4},
+    {"gate_id": "explicit_invocation", "kind": "ratio", "operator": "==", "boundary": {"numerator": 1, "denominator": 1}, "fixed_denominator": 4},
+    {"gate_id": "must_not_select", "kind": "count", "operator": "==", "boundary": 0, "fixed_denominator": null},
+    {"gate_id": "anchor_grounding", "kind": "ratio", "operator": "==", "boundary": {"numerator": 1, "denominator": 1}, "fixed_denominator": 36},
+    {"gate_id": "reference_bundle_correctness", "kind": "ratio", "operator": ">=", "boundary": {"numerator": 19, "denominator": 20}, "fixed_denominator": 40},
+    {"gate_id": "payload_cap_violations", "kind": "count", "operator": "==", "boundary": 0, "fixed_denominator": null},
+    {"gate_id": "implicit_effect_claim_tool_events", "kind": "count", "operator": "==", "boundary": 0, "fixed_denominator": null}
+  ],
+  "complete_run": [
+    {"gate_id": "semantic_schema_order", "kind": "ratio", "operator": "==", "boundary": {"numerator": 1, "denominator": 1}, "fixed_denominator": 320},
+    {"gate_id": "resolver_parity", "kind": "ratio", "operator": "==", "boundary": {"numerator": 1, "denominator": 1}, "fixed_denominator": 80},
+    {"gate_id": "presentations_80_of_80", "kind": "count", "operator": "==", "boundary": 80, "fixed_denominator": null},
+    {"gate_id": "unique_capsule_contexts_320", "kind": "count", "operator": "==", "boundary": 320, "fixed_denominator": null},
+    {"gate_id": "binding_schedule_packet_parity", "kind": "ratio", "operator": "==", "boundary": {"numerator": 1, "denominator": 1}, "fixed_denominator": 320},
+    {"gate_id": "invocation_count_320", "kind": "count", "operator": "==", "boundary": 320, "fixed_denominator": null},
+    {"gate_id": "runner_local_raw_persistence", "kind": "boolean", "operator": "==", "boundary": false, "fixed_denominator": null},
+    {"gate_id": "heldout_outcome_use", "kind": "boolean", "operator": "==", "boundary": false, "fixed_denominator": null}
+  ],
+  "root_pass_iff": "both conditions pass every per-condition gate and the complete run passes every complete-run gate",
+  "condition_pooling": false,
+  "compensation": false,
+  "undefined_ratio": {"reported_value": 0, "gate_pass": false},
+  "arithmetic": "nonnegative integer counts and exact rational cross multiplication only"
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/ae-sq8/f1/handoff-schema.json",
+  "title": "AE-SQ8 PASS-only downstream handoff",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["aggregate_result", "authority_effect", "candidate_id", "program_id", "schema_version", "source_phase", "source_status"],
+  "properties": {
+    "aggregate_result": {"$ref": "#/$defs/sealedResult"},
+    "authority_effect": {"const": "none"},
+    "candidate_id": {"const": "AE-SQ8-SLEC-8"},
+    "program_id": {"const": "AE-SQ8"},
+    "schema_version": {"const": "ae-sq8-handoff-v1"},
+    "source_phase": {"const": "SQ8-F6"},
+    "source_status": {"const": "PASS"}
+  },
+  "$defs": {
+    "sealedResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"const": "evals/ae-sq8/f6/aggregate-result.json"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  }
+}
