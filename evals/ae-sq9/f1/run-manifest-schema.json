@@ -1,0 +1,496 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/ae-sq9/f1/run-manifest-schema.json",
+  "title": "AE-SQ9 immutable qualification run manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "program_id",
+    "candidate_id",
+    "run_id",
+    "author_template_gate",
+    "f1_freeze",
+    "implementation_freeze",
+    "corpus_freeze",
+    "corpus",
+    "schedule",
+    "runtime",
+    "execution",
+    "validation_receipt",
+    "usage_authority"
+  ],
+  "properties": {
+    "schema_version": {"const": "ae-sq9-run-manifest-v1"},
+    "program_id": {"const": "AE-SQ9"},
+    "candidate_id": {"const": "AE-SQ9-SLEC-9"},
+    "run_id": {
+      "type": "string",
+      "pattern": "^AE-SQ9-AQ-[A-Za-z0-9._-]{1,96}$"
+    },
+    "author_template_gate": {
+      "allOf": [
+        {"$ref": "#/$defs/sealedPath"},
+        {"properties": {"path": {"const": "evals/ae-sq9/f1/author-template-gate.json"}}}
+      ]
+    },
+    "f1_freeze": {"$ref": "#/$defs/f1Freeze"},
+    "implementation_freeze": {"$ref": "#/$defs/gitIdentity"},
+    "corpus_freeze": {"$ref": "#/$defs/gitIdentity"},
+    "corpus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "corpus_id",
+        "schema",
+        "manifest",
+        "split_a",
+        "split_b",
+        "historical_inventory"
+      ],
+      "properties": {
+        "corpus_id": {"const": "AE-SQ9-AQ-FRESH-V1"},
+        "schema": {"$ref": "#/$defs/corpusSchema"},
+        "manifest": {"$ref": "#/$defs/corpusManifest"},
+        "split_a": {"$ref": "#/$defs/splitA"},
+        "split_b": {"$ref": "#/$defs/splitB"},
+        "historical_inventory": {"$ref": "#/$defs/historicalInventory"}
+      }
+    },
+    "schedule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "document",
+        "seed",
+        "sha256",
+        "presentations",
+        "calls_per_presentation",
+        "conditions"
+      ],
+      "properties": {
+        "document": {"$ref": "#/$defs/scheduleDocument"},
+        "seed": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]{0,127}$"
+        },
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "presentations": {"const": 80},
+        "calls_per_presentation": {"const": 4},
+        "conditions": {
+          "type": "array",
+          "prefixItems": [
+            {"const": "current"},
+            {"const": "reduced"}
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cli",
+        "model",
+        "reasoning",
+        "fallback",
+        "sandbox",
+        "approval_policy",
+        "ephemeral",
+        "strict_isolation"
+      ],
+      "properties": {
+        "cli": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "version", "sha256"],
+          "properties": {
+            "id": {"const": "codex-cli"},
+            "version": {"const": "codex-cli 0.147.0"},
+            "sha256": {"const": "19c4f144c5226a9f17c58e6f0fa854843b0f77a6eb420f40e2745a12f10f5d37"}
+          }
+        },
+        "model": {"const": "gpt-5.5"},
+        "reasoning": {"const": "medium"},
+        "fallback": {"const": false},
+        "sandbox": {"const": "read-only"},
+        "approval_policy": {"const": "never"},
+        "ephemeral": {"const": true},
+        "strict_isolation": {"const": true}
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "f3_preflight_attempts",
+        "f3_model_calls",
+        "canary_calls",
+        "conditional_batch_presentations",
+        "calls_per_presentation",
+        "conditional_batch_calls",
+        "hard_call_ceiling",
+        "retry_calls",
+        "same_process_canary_then_batch",
+        "standalone_canary_or_resume",
+        "raw_persistence",
+        "aggregate_only_projection"
+      ],
+      "properties": {
+        "f3_preflight_attempts": {"const": 1},
+        "f3_model_calls": {"const": 0},
+        "canary_calls": {"const": 4},
+        "conditional_batch_presentations": {"const": 80},
+        "calls_per_presentation": {"const": 4},
+        "conditional_batch_calls": {"const": 320},
+        "hard_call_ceiling": {"const": 324},
+        "retry_calls": {"const": 0},
+        "same_process_canary_then_batch": {"const": true},
+        "standalone_canary_or_resume": {"const": false},
+        "raw_persistence": {"const": false},
+        "aggregate_only_projection": {"const": true}
+      }
+    },
+    "validation_receipt": {"$ref": "#/$defs/validationReceipt"},
+    "usage_authority": {
+      "const": "ae-sq9-authorized-canary-and-conditional-batch"
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "gitObject": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "repoPath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\u0000]+$"
+    },
+    "gitIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["commit", "tree"],
+      "properties": {
+        "commit": {"$ref": "#/$defs/gitObject"},
+        "tree": {"$ref": "#/$defs/gitObject"}
+      }
+    },
+    "pathDigest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "blob", "sha256"],
+      "properties": {
+        "path": {"$ref": "#/$defs/repoPath"},
+        "blob": {"$ref": "#/$defs/gitObject"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "sealedPath": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["commit", "tree", "path", "blob", "sha256"],
+      "properties": {
+        "commit": {"$ref": "#/$defs/gitObject"},
+        "tree": {"$ref": "#/$defs/gitObject"},
+        "path": {"$ref": "#/$defs/repoPath"},
+        "blob": {"$ref": "#/$defs/gitObject"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "f1Freeze": {
+      "allOf": [
+        {"$ref": "#/$defs/sealedPath"},
+        {"properties": {"path": {"const": "evals/ae-sq9/f1/repaired-freeze.json"}}}
+      ]
+    },
+    "corpusSchema": {
+      "allOf": [
+        {"$ref": "#/$defs/sealedPath"},
+        {"properties": {"path": {"const": "evals/ae-sq9/f1/corpus-schema.json"}}}
+      ]
+    },
+    "historicalInventory": {
+      "allOf": [
+        {"$ref": "#/$defs/sealedPath"},
+        {"properties": {"path": {"const": "evals/ae-sq4/f1/historical-task-digests.json"}}}
+      ]
+    },
+    "corpusManifest": {
+      "allOf": [
+        {"$ref": "#/$defs/pathDigest"},
+        {"properties": {"path": {"const": "evals/ae-sq9/f2/corpus-manifest.json"}}}
+      ]
+    },
+    "corpusManifestDocument": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version", "program_id", "candidate_id", "corpus_id",
+        "f1_freeze", "implementation_freeze", "corpus_contract_sha256",
+        "historical_inventory", "splits", "authoring_provenance", "combined_corpus_sha256",
+        "schedule", "freshness"
+      ],
+      "properties": {
+        "schema_version": {"const": "ae-sq9-corpus-manifest-v1"},
+        "program_id": {"const": "AE-SQ9"},
+        "candidate_id": {"const": "AE-SQ9-SLEC-9"},
+        "corpus_id": {"const": "AE-SQ9-AQ-FRESH-V1"},
+        "f1_freeze": {"$ref": "#/$defs/f1Freeze"},
+        "implementation_freeze": {"$ref": "#/$defs/gitIdentity"},
+        "corpus_contract_sha256": {"$ref": "#/$defs/sha256"},
+        "historical_inventory": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "raw_sha256", "inventory_sha256", "inventory_count", "source_count"],
+          "properties": {
+            "path": {"const": "evals/ae-sq4/f1/historical-task-digests.json"},
+            "raw_sha256": {"$ref": "#/$defs/sha256"},
+            "inventory_sha256": {"$ref": "#/$defs/sha256"},
+            "inventory_count": {"const": 768},
+            "source_count": {"const": 20}
+          }
+        },
+        "splits": {
+          "type": "array",
+          "prefixItems": [
+            {"$ref": "#/$defs/corpusManifestSplitA"},
+            {"$ref": "#/$defs/corpusManifestSplitB"}
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "authoring_provenance": {
+          "type": "array",
+          "prefixItems": [
+            {"$ref": "#/$defs/authoringProvenanceA"},
+            {"$ref": "#/$defs/authoringProvenanceB"}
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "combined_corpus_sha256": {"$ref": "#/$defs/sha256"},
+        "schedule": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "raw_sha256", "schedule_sha256", "presentations", "calls_per_presentation"],
+          "properties": {
+            "path": {"const": "evals/ae-sq9/f2/schedule.json"},
+            "raw_sha256": {"$ref": "#/$defs/sha256"},
+            "schedule_sha256": {"$ref": "#/$defs/sha256"},
+            "presentations": {"const": 80},
+            "calls_per_presentation": {"const": 4}
+          }
+        },
+        "freshness": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "split_authors_distinct", "other_split_access",
+            "predecessor_material_access", "diagnostic_or_live_result_access",
+            "outcome_blind_at_authoring", "corpus_freeze_self_reference"
+          ],
+          "properties": {
+            "split_authors_distinct": {"const": true},
+            "other_split_access": {"const": false},
+            "predecessor_material_access": {"const": false},
+            "diagnostic_or_live_result_access": {"const": false},
+            "outcome_blind_at_authoring": {"const": true},
+            "corpus_freeze_self_reference": {"const": false}
+          }
+        }
+      }
+    },
+    "corpusManifestSplit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["split_id", "path", "raw_sha256", "content_sha256", "case_count"],
+      "properties": {
+        "split_id": {"enum": ["A", "B"]},
+        "path": {"enum": ["evals/ae-sq9/f2/split-a.json", "evals/ae-sq9/f2/split-b.json"]},
+        "raw_sha256": {"$ref": "#/$defs/sha256"},
+        "content_sha256": {"$ref": "#/$defs/sha256"},
+        "case_count": {"const": 20}
+      }
+    },
+    "corpusManifestSplitA": {
+      "allOf": [
+        {"$ref": "#/$defs/corpusManifestSplit"},
+        {"properties": {"split_id": {"const": "A"}, "path": {"const": "evals/ae-sq9/f2/split-a.json"}}}
+      ]
+    },
+    "corpusManifestSplitB": {
+      "allOf": [
+        {"$ref": "#/$defs/corpusManifestSplit"},
+        {"properties": {"split_id": {"const": "B"}, "path": {"const": "evals/ae-sq9/f2/split-b.json"}}}
+      ]
+    },
+    "authoringProvenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provenance_version", "split_id", "author_id", "commit", "tree",
+        "parent_f1g_commit", "path", "blob", "raw_sha256",
+        "content_sha256", "case_count", "other_split_route_permitted",
+        "predecessor_material_route_permitted",
+        "diagnostic_or_live_result_route_permitted", "outcome_route_permitted",
+        "claim_ceiling"
+      ],
+      "properties": {
+        "provenance_version": {"const": "ae-sq9-author-provenance-v1"},
+        "split_id": {"enum": ["A", "B"]},
+        "author_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"},
+        "commit": {"$ref": "#/$defs/gitObject"},
+        "tree": {"$ref": "#/$defs/gitObject"},
+        "parent_f1g_commit": {"$ref": "#/$defs/gitObject"},
+        "path": {"enum": ["evals/ae-sq9/f2/split-a.json", "evals/ae-sq9/f2/split-b.json"]},
+        "blob": {"$ref": "#/$defs/gitObject"},
+        "raw_sha256": {"$ref": "#/$defs/sha256"},
+        "content_sha256": {"$ref": "#/$defs/sha256"},
+        "case_count": {"const": 20},
+        "other_split_route_permitted": {"const": false},
+        "predecessor_material_route_permitted": {"const": false},
+        "diagnostic_or_live_result_route_permitted": {"const": false},
+        "outcome_route_permitted": {"const": false},
+        "claim_ceiling": {"const": "git-object-and-orchestrator-attested-route-custody-only-not-human-identity-or-off-git-observation"}
+      }
+    },
+    "authoringProvenanceA": {
+      "allOf": [
+        {"$ref": "#/$defs/authoringProvenance"},
+        {"properties": {"split_id": {"const": "A"}, "path": {"const": "evals/ae-sq9/f2/split-a.json"}}}
+      ]
+    },
+    "authoringProvenanceB": {
+      "allOf": [
+        {"$ref": "#/$defs/authoringProvenance"},
+        {"properties": {"split_id": {"const": "B"}, "path": {"const": "evals/ae-sq9/f2/split-b.json"}}}
+      ]
+    },
+    "validationSplit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "blob", "raw_sha256", "content_sha256"],
+      "properties": {
+        "path": {"enum": ["evals/ae-sq9/f2/split-a.json", "evals/ae-sq9/f2/split-b.json"]},
+        "blob": {"$ref": "#/$defs/gitObject"},
+        "raw_sha256": {"$ref": "#/$defs/sha256"},
+        "content_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "validationReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "aggregate_sha256", "artifacts", "author_commits", "authorship_performed",
+        "claim_ceiling", "errors", "f1a_implementation", "f1b_freeze",
+        "f1g_gate", "f2a_corpus", "holds", "receipt_version", "status", "validator"
+      ],
+      "properties": {
+        "aggregate_sha256": {"$ref": "#/$defs/sha256"},
+        "artifacts": {
+          "type": "array", "items": {"$ref": "#/$defs/validationArtifact"},
+          "minItems": 4, "maxItems": 4
+        },
+        "author_commits": {
+          "type": "array", "items": {"$ref": "#/$defs/validationAuthor"},
+          "minItems": 2, "maxItems": 2
+        },
+        "authorship_performed": {"const": false},
+        "claim_ceiling": {"const": "git-object-and-orchestrator-attested-validator-route-only-not-human-identity-or-off-git-observation"},
+        "errors": {"type": "array", "maxItems": 0},
+        "f1a_implementation": {"$ref": "#/$defs/f1aReceiptBinding"},
+        "f1b_freeze": {"$ref": "#/$defs/f1Freeze"},
+        "f1g_gate": {
+          "allOf": [
+            {"$ref": "#/$defs/sealedPath"},
+            {"properties": {"path": {"const": "evals/ae-sq9/f1/author-template-gate.json"}}}
+          ]
+        },
+        "f2a_corpus": {"$ref": "#/$defs/f2aReceiptBinding"},
+        "holds": {"type": "array", "maxItems": 0},
+        "receipt_version": {"const": "ae-sq9-independent-validation-v1"},
+        "status": {"const": "PASS"},
+        "validator": {
+          "allOf": [{"$ref": "#/$defs/validatorReceiptBinding"}]
+        }
+      }
+    },
+    "f1aReceiptBinding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["commit", "role_ledger_sha256", "tree"],
+      "properties": {
+        "commit": {"$ref": "#/$defs/gitObject"},
+        "role_ledger_sha256": {"$ref": "#/$defs/sha256"},
+        "tree": {"$ref": "#/$defs/gitObject"}
+      }
+    },
+    "f2aReceiptBinding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["commit", "ordered_parents", "tree"],
+      "properties": {
+        "commit": {"$ref": "#/$defs/gitObject"},
+        "ordered_parents": {
+          "type": "array", "items": {"$ref": "#/$defs/gitObject"},
+          "minItems": 3, "maxItems": 3
+        },
+        "tree": {"$ref": "#/$defs/gitObject"}
+      }
+    },
+    "validationAuthor": {
+      "type": "object", "additionalProperties": false,
+      "required": ["author_id", "blob", "commit", "content_sha256", "path", "raw_sha256", "tree"],
+      "properties": {
+        "author_id": {"type": "string", "minLength": 1},
+        "blob": {"$ref": "#/$defs/gitObject"},
+        "commit": {"$ref": "#/$defs/gitObject"},
+        "content_sha256": {"$ref": "#/$defs/sha256"},
+        "path": {"$ref": "#/$defs/repoPath"},
+        "raw_sha256": {"$ref": "#/$defs/sha256"},
+        "tree": {"$ref": "#/$defs/gitObject"}
+      }
+    },
+    "validationArtifact": {
+      "type": "object", "additionalProperties": false,
+      "required": ["blob", "content_or_semantic_sha256", "path", "raw_sha256"],
+      "properties": {
+        "blob": {"$ref": "#/$defs/gitObject"},
+        "content_or_semantic_sha256": {"$ref": "#/$defs/sha256"},
+        "path": {"$ref": "#/$defs/repoPath"},
+        "raw_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "validatorReceiptBinding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["blob", "commit", "path", "raw_sha256", "tree", "validator_id"],
+      "properties": {
+        "blob": {"$ref": "#/$defs/gitObject"},
+        "commit": {"$ref": "#/$defs/gitObject"},
+        "path": {"const": "scripts/validate_ae_sq9_corpus.py"},
+        "raw_sha256": {"$ref": "#/$defs/sha256"},
+        "tree": {"$ref": "#/$defs/gitObject"},
+        "validator_id": {"const": "independent-nonauthor-validator"}
+      }
+    },
+    "splitA": {
+      "allOf": [
+        {"$ref": "#/$defs/pathDigest"},
+        {"properties": {"path": {"const": "evals/ae-sq9/f2/split-a.json"}}}
+      ]
+    },
+    "splitB": {
+      "allOf": [
+        {"$ref": "#/$defs/pathDigest"},
+        {"properties": {"path": {"const": "evals/ae-sq9/f2/split-b.json"}}}
+      ]
+    },
+    "scheduleDocument": {
+      "allOf": [
+        {"$ref": "#/$defs/pathDigest"},
+        {"properties": {"path": {"const": "evals/ae-sq9/f2/schedule.json"}}}
+      ]
+    }
+  }
+}

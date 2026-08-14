@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/ae-sq9/f1/f2b-loader-gate-schema.json",
+  "title": "AE-SQ9 clean-child F2B loader gate receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "program_id", "candidate_id", "status", "attempt", "model_calls", "run_commit", "verifier", "production_loader", "parent_resolver_preimported", "child_resolver_preloaded", "aggregate_sha256"],
+  "properties": {
+    "schema_version": {"const": "ae-sq9-f2b-loader-gate-v1"},
+    "program_id": {"const": "AE-SQ9"},
+    "candidate_id": {"const": "AE-SQ9-SLEC-9"},
+    "status": {"enum": ["PASS", "REJECTED"]},
+    "attempt": {"const": 1},
+    "model_calls": {"const": 0},
+    "run_commit": {"$ref": "#/$defs/gitObject"},
+    "verifier": {"$ref": "#/$defs/sealedPath"},
+    "production_loader": {"const": "run_ae_sq9_aq:_load_base_state"},
+    "parent_resolver_preimported": {"type": "boolean"},
+    "child_resolver_preloaded": {"type": "boolean"},
+    "error": {"enum": ["ambient_module_poisoning", "loader_rejected", "child_protocol", "child_exit"]},
+    "aggregate_sha256": {"$ref": "#/$defs/sha256"}
+  },
+  "allOf": [
+    {"if": {"properties": {"status": {"const": "PASS"}}}, "then": {"properties": {"parent_resolver_preimported": {"const": true}, "child_resolver_preloaded": {"const": false}}, "not": {"required": ["error"]}}},
+    {"if": {"properties": {"status": {"const": "REJECTED"}}}, "then": {"required": ["error"]}}
+  ],
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "gitObject": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "sealedPath": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["blob", "commit", "path", "sha256", "tree"],
+      "properties": {
+        "blob": {"$ref": "#/$defs/gitObject"},
+        "commit": {"$ref": "#/$defs/gitObject"},
+        "path": {"const": "scripts/verify_ae_sq9_f2b.py"},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "tree": {"$ref": "#/$defs/gitObject"}
+      }
+    }
+  }
+}
