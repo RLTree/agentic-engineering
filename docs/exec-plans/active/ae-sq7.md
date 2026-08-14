@@ -1,11 +1,51 @@
 # AE-SQ7 distinct successor qualification program
 
-Status: **ACTIVE — SQ7-F0 AUTHORITY; SQ7-F1A NEXT**
+Status: **TERMINAL — SQ7-F3 NOT_PASS -> SQ7-AR**
 Program: `AE-SQ7`
 Candidate: `AE-SQ7-SLEC-7`
 Machine authority: `evals/ae-sq7/program-authority.json`
 Authority date: 2026-08-13, America/Los_Angeles
-Claim ceiling: structural successor authority and unexecuted selected-reference-anchor repair plan only
+Claim ceiling: exact committed-object custody and aggregate frozen-preflight evidence only; no model, runtime-success, downstream, release, or effect claim
+
+## 0. Terminal closeout (2026-08-13)
+
+AE-SQ7 is permanently terminal. Frozen F2B
+`323d5b44f2453ce3343648a0ac1519db5a878511` (tree
+`70871d6031d24a76cf636054af4a872b216df69a`) opened the sole F3 attempt.
+F3 commit `39384f86f4680866cb2cee945c3eb7b2f3ea10fe` (tree
+`72e35516785f9c934c94b24b5cb0a59328d8225e`) contains only the canonical
+preflight record at `evals/ae-sq7/f3/preflight.json`, blob
+`c443f8f5eb6ce950ce3b049fa6f7ed48ddaf5647`, raw SHA-256
+`20024841e72a40b426203ca039b5ef70fb4cdfd20d47ddecfed9eac786fd41b8`.
+Its aggregate SHA-256 is
+`e59cd5db8d9fc3331b593860d15531c0eeb1dffba0f7719b89f795a02f7e3ea8`;
+status is `FAIL`, attempt is 1, and model calls are 0. After the single
+validator-identity interface exception, the fail-record fallback marks all 11
+checks false. Eleven false checks are record-level consequences; the single
+root cause remains the field-location mismatch below.
+
+The cause is a frozen interface mismatch. F1A runner commit
+`1613d46d8fae71259979371717dd567de17ffded` (tree
+`58a490dfc641ab11a2176c15801bb25b3df428a1`) binds runner blob
+`fedf77d632af3cfe393762bf761591d792bd6b9f`, raw SHA-256
+`a483680c2ee688ae708a63390b2db313d920f2cc5896e0fe28833efe400c775c`.
+Its production F3 boundary reads top-level
+`receipt['validator_id']`, while the closed schema and manifest require nested
+`receipt.validator.validator_id`. The nested valid receipt therefore cannot
+satisfy the frozen runner. The exact `SQ7-F3:NOT_PASS->SQ7-AR` edge applies.
+
+The terminal decision is already committed at
+`00d4e245244827cb4d12246725d95fc6287b00a2`; its canonical raw SHA-256 is
+`f401f7cda3fd9279d7fec49b2f02e6d4156f1268947aa1474c9fcc266ebc3454`.
+One-shot state is absent. No F4-F6, result, handoff, canary, batch, or model
+call exists. No retry, repair, refreeze, reinterpretation, reopen, resume, or
+downstream route exists in AE-SQ7. All SQ7 candidate, active-role, task,
+corpus, label, schedule, author, result, and execution bytes are permanently
+prohibited from successor reuse.
+
+The remaining sections preserve preterminal authority as history only. The
+sole next route is distinct owner-authorized AE-SQ8 in
+`docs/exec-plans/active/ae-sq8.md`.
 
 ## 1. Distinct terminal boundary
 
@@ -86,8 +126,8 @@ F6 may emit only aggregate-only JSON at
 Raw prompts, task/case content, outputs, events, transcripts, messages, and
 presentation-, assessor-, gate-, or score-level material remain private.
 
-Even PASS proves at most one exact candidate aggregate in this frozen 40-case,
+Even PASS would prove at most one exact candidate aggregate in this frozen 40-case,
 two-condition envelope. It does not prove general provider/model, product,
 host, field, production, security, release, publication, promotion, or effect
-claims. The next authorized transition is one zero-model, zero-corpus SQ7-F1A
-commit; no later phase begins before its immediate durable gate.
+claims. This historical transition is closed by the terminal section above;
+no later AE-SQ7 phase is authorized.

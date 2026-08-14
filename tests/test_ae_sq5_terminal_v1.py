@@ -164,7 +164,7 @@ class AeSq5TerminalTests(unittest.TestCase):
     def test_foundation_terminal_and_successor_bridge_is_unique(self) -> None:
         self.assertEqual(
             FOUNDATION.read_text(encoding="utf-8").splitlines()[6],
-            "**Active successor plan:** `docs/exec-plans/active/ae-sq7.md` for AE-SQ7 only; AE-SQ6, AE-SQ5, AE-SQ4, AE-SQ3, AE-SQ2, AE-SQ1, and `EXECPLAN.md` remain immutable terminal history",
+            "**Active successor plan:** `docs/exec-plans/active/ae-sq8.md` for AE-SQ8 only; AE-SQ7, AE-SQ6, AE-SQ5, AE-SQ4, AE-SQ3, AE-SQ2, AE-SQ1, and `EXECPLAN.md` remain immutable terminal history",
         )
         rows = list(csv.DictReader(io.StringIO(LOG.read_text(encoding="utf-8"))))
         ids = [row["decision_id"] for row in rows]
@@ -172,7 +172,9 @@ class AeSq5TerminalTests(unittest.TestCase):
         self.assertEqual(1, ids.count("AE-SQ6-F0-2026-08-13"))
         self.assertEqual(1, ids.count("AE-SQ6-AR-2026-08-13"))
         self.assertEqual(1, ids.count("AE-SQ7-F0-2026-08-13"))
-        self.assertEqual(["AE-SQ6-AR-2026-08-13", "AE-SQ7-F0-2026-08-13"], ids[-2:])
+        self.assertEqual(1, ids.count("AE-SQ7-AR-2026-08-13"))
+        self.assertEqual(1, ids.count("AE-SQ8-F0-2026-08-13"))
+        self.assertEqual(["AE-SQ7-AR-2026-08-13", "AE-SQ8-F0-2026-08-13"], ids[-2:])
 
     def test_mutation_reds_fail_frozen_schema_or_exact_terminal_contract(self) -> None:
         base = strict(DECISION.read_bytes())
