@@ -1,0 +1,242 @@
+{
+  "schema_version": "AE-SQ9-program-authority-v1",
+  "program_id": "AE-SQ9",
+  "candidate_id": "AE-SQ9-SLEC-9",
+  "authority_status": "F0_INITIAL_AUTHORITY_CLOSED",
+  "claim_ceiling": "structural-successor-authority-and-unexecuted-clean-process-F2B-acceptance-repair-only",
+  "owner_authorization": {
+    "authorized": true,
+    "scope": "SQ9-F1A-through-SQ9-F6-subject-to-exact-closed-gates-and-budgets",
+    "successor_kind": "distinct-owner-authorized-new-program",
+    "authorized_phases": ["SQ9-F1A", "SQ9-F1B", "SQ9-F1G", "SQ9-F2A", "SQ9-F2B", "SQ9-F2G", "SQ9-F3", "SQ9-F4", "SQ9-F5", "SQ9-F6"],
+    "live_model_phases": ["SQ9-F4", "SQ9-F5"],
+    "additional_diagnostic_calls_authorized": false,
+    "live_calls_authorized_within_gate_and_budget": true,
+    "additional_owner_approval_required_for_authorized_phases": false,
+    "corpus_authoring_authorized_only_after_exact_committed_F1G_clean_process_gate_pass": true,
+    "downstream_execution_authorized_by_this_artifact": false,
+    "release_publish_promotion_authorized": false,
+    "deletion_or_migration_authorized": false
+  },
+  "predecessor_terminal_history": {
+    "program_id": "AE-SQ8",
+    "candidate_id": "AE-SQ8-SLEC-8",
+    "status": "terminal",
+    "terminal_stage": "SQ8-AR",
+    "terminal_edge": "SQ8-F2B:NOT_PASS->SQ8-AR",
+    "terminal_reason": "integrated-F2B-loader-invoked-after-same-process-resolver-import-and-rejected-ambient-module-poisoning",
+    "terminal_decision": {
+      "commit": "f455f582e8d94356fab142f4d51c8ef825c446ff",
+      "tree": "e6bbed7ababbf95b4809e21108c62ce344d61728",
+      "path": "evals/ae-sq8/ar/terminal-decision.json",
+      "blob": "53e68cc9557214d842548c9dff19eb4168d7df63",
+      "raw_sha256": "0754a58ecb68dbfc5ac5b8b3d5aacbeca4e131a3724fadaea8d1e28d2f91ccd0"
+    },
+    "frozen_f1g": {
+      "commit": "7ea85f98762b79124e0323f5619e418ac0a55f09",
+      "tree": "6b40a897905874c28e626102fd9f15af981008d4"
+    },
+    "sealed_authors": [
+      {
+        "author_id": "sq8-author-a",
+        "commit": "3040aa21bd95dfcfe54bf60bf5735a54159bbcf2",
+        "tree": "8c92ee65e074ebd8e2d161158182a87d303c5f6a",
+        "parent": "7ea85f98762b79124e0323f5619e418ac0a55f09",
+        "path": "evals/ae-sq8/f2/split-a.json",
+        "blob": "77be58217ea969f4e74f46d97718c39372ab58ab",
+        "raw_sha256": "864e8e6a65b8679536fd72d8ace20057c33604cd533e6b9d82ca6795123052fe"
+      },
+      {
+        "author_id": "sq8-author-b",
+        "commit": "171635a5c5885fe975606c45c6eeeef158c60771",
+        "tree": "80bf1846d51fe8e0b4962d910363798dbb7fab04",
+        "parent": "7ea85f98762b79124e0323f5619e418ac0a55f09",
+        "path": "evals/ae-sq8/f2/split-b.json",
+        "blob": "76ba348c004f81e0b0887b2330a5680defacafc5",
+        "raw_sha256": "e551983bc4f468ba7d9f702a397404ef0e0e8945658bc93d1a733cb6849161d0"
+      }
+    ],
+    "frozen_f2a": {
+      "commit": "6ad83a4340d71408bcf38f51ccab8a60c2e1bbcf",
+      "tree": "a8f2f3129712518e8924a48c222140c7ad96e1a4",
+      "ordered_parents": ["7ea85f98762b79124e0323f5619e418ac0a55f09", "3040aa21bd95dfcfe54bf60bf5735a54159bbcf2", "171635a5c5885fe975606c45c6eeeef158c60771"],
+      "combined_corpus_sha256": "94bf12e80f64de30505cea7f1862dd32d6a4ce672a75a290e7bbca2b7fb80e9a",
+      "aggregate_validation_status": "PASS"
+    },
+    "frozen_f2b": {
+      "commit": "96c4f8a33caf4b8d5d34a6bfc9d0d32db571e831",
+      "tree": "8918dceec8e324ce118dcf101fbed466de631709",
+      "parent": "6ad83a4340d71408bcf38f51ccab8a60c2e1bbcf",
+      "run_manifest_path": "evals/ae-sq8/f2/run-manifest.json",
+      "run_manifest_blob": "4f8ea65a25407a49a03b8d090e8d8c6a4833d671",
+      "run_manifest_raw_sha256": "a1140b7f9fc674a5dea5aca4af91e6578f04c25273e6f68be90065d9b0a11cfb",
+      "validation_receipt_aggregate_sha256": "8d2ab9d2dd0b695d4bd896d4eecc40e03c369d021f5040ab1d44a5bb7f4d46a4",
+      "integrated_loader_status": "REJECTED"
+    },
+    "process_boundary_failure": {
+      "runner_commit": "8454c9c712eaeedb14381956ac6144fd42dfbe39",
+      "runner_tree": "f12485bc43bc406c33ecebcd6a59628fb7f8f556",
+      "runner_path": "scripts/run_ae_sq8_aq.py",
+      "runner_blob": "3fb82027c67f513aa396c152a3926322be857bdf",
+      "runner_raw_sha256": "71abc3c7b3afbb2ba0b7d1e22c2ae013371cffee9a84c3595db2790c2186d814",
+      "rejection": "ambient module poisoning detected: resolve_ae_sq8_slec",
+      "orchestration_shape": "validate-corpora-and-load-base-state-in-one-interpreter",
+      "guard_behavior": "reject-nonsnapshot-module-already-present-under-canonical-name",
+      "durable_command_receipt_present": false,
+      "evidence_kind": "exact-terminal-commit-message-plus-frozen-source-and-aggregate-operator-capture",
+      "root_cause_count": 1
+    },
+    "later_stage_facts": {
+      "f3_created": false,
+      "one_shot_state_present": false,
+      "f4_created": false,
+      "f5_created": false,
+      "f6_created": false,
+      "aggregate_result_created": false,
+      "handoff_created": false,
+      "model_calls": 0,
+      "canary_calls": 0,
+      "batch_calls": 0,
+      "downstream_opened": false
+    },
+    "predecessor_bytes_write_delete_or_migrate_permitted": false,
+    "predecessor_candidate_active_role_task_case_split_corpus_label_schedule_author_result_F2_or_execution_byte_reuse_permitted": false
+  },
+  "imported_failure_contract": {
+    "kind": "aggregate-F2B-process-isolation-boundary-mismatch-only",
+    "permitted_inputs": ["terminal-and-process-interface-provenance", "external-digest-only-historical-inventory"],
+    "permitted_use": "require-dedicated-clean-child-F2B-verifier-and-durable-receipt-before-F3",
+    "required_repair": "separate-validation-materialization-from-one-clean-child-target-frozen-production-loader-attempt",
+    "same_process_validation_then_loader_permitted": false,
+    "fresh_child_interpreter_required": true,
+    "durable_receipt_required": true,
+    "sq8_candidate_qualification_imported": false,
+    "sq8_candidate_active_role_task_case_split_corpus_label_schedule_author_result_F2_or_execution_bytes_imported": false,
+    "behavioral_or_threshold_tuning_permitted": false,
+    "result_informed_change_permitted": false
+  },
+  "phase_graph": {
+    "ordered_phases": ["SQ9-F0", "SQ9-F1A", "SQ9-F1B", "SQ9-F1G", "SQ9-F2A", "SQ9-F2B", "SQ9-F2G", "SQ9-F3", "SQ9-F4", "SQ9-F5", "SQ9-F6", "SQ9-AS-HANDOFF", "SQ9-AR"],
+    "success_edges": ["SQ9-F0->SQ9-F1A", "SQ9-F1A:PASS->SQ9-F1B", "SQ9-F1B:PASS->SQ9-F1G", "SQ9-F1G:PASS->SQ9-F2A", "SQ9-F2A:PASS->SQ9-F2B", "SQ9-F2B:PASS->SQ9-F2G", "SQ9-F2G:PASS->SQ9-F3", "SQ9-F3:PASS->SQ9-F4", "SQ9-F4:PASS->SQ9-F5", "SQ9-F5:COMPLETE_VALID->SQ9-F6", "SQ9-F6:PASS->SQ9-AS-HANDOFF"],
+    "terminal_edges": ["SQ9-F1A:NOT_PASS->SQ9-AR", "SQ9-F1B:NOT_PASS->SQ9-AR", "SQ9-F1G:NOT_PASS->SQ9-AR", "SQ9-F2A:NOT_PASS->SQ9-AR", "SQ9-F2B:NOT_PASS->SQ9-AR", "SQ9-F2G:NOT_PASS->SQ9-AR", "SQ9-F3:NOT_PASS->SQ9-AR", "SQ9-F4:NOT_PASS->SQ9-AR", "SQ9-F5:NOT_COMPLETE_VALID->SQ9-AR", "SQ9-F6:NOT_PASS->SQ9-AR"],
+    "later_phase_compensation_permitted": false,
+    "additional_active_phases_or_edges_permitted": false,
+    "retry_reopen_resume_repair_refreeze_or_H9_permitted": false
+  },
+  "model_configuration": {
+    "model_id": "gpt-5.5",
+    "reasoning_effort": "medium",
+    "applies_to_phases": ["SQ9-F4", "SQ9-F5"],
+    "model_provider_reasoning_or_mode_fallback_permitted": false
+  },
+  "call_budgets": {
+    "counting_unit": "attempted-model-invocation",
+    "diagnostic_calls": 0,
+    "canary_calls": 4,
+    "conditional_batch_presentations": 80,
+    "calls_per_presentation": 4,
+    "conditional_batch_calls": 320,
+    "qualification_hard_ceiling": 324,
+    "retry_calls_hard_ceiling": 0,
+    "failed_malformed_rejected_empty_or_timed_out_attempts_count": true,
+    "unused_calls_transfer_permitted": false,
+    "top_up_replacement_or_replay_calls_permitted": false
+  },
+  "f1_contract": {
+    "implementation_phase": "SQ9-F1A",
+    "freeze_phase": "SQ9-F1B",
+    "preauthor_gate_phase": "SQ9-F1G",
+    "candidate_requirements": ["new-SLEC-9-identity", "fresh-SQ9-namespace", "complete-candidate-evaluator-runner-verifier-schema-and-test-closure", "no-SQ8-active-role-blob-or-raw-byte-reuse", "zero-corpus-and-zero-model-calls"],
+    "f1b_requirements": ["direct-child-of-exact-passing-F1A", "manifest-only-delta", "bind-exact-F1A-commit-tree-path-blob-and-raw-digests", "no-post-freeze-semantic-change"],
+    "f1g_clean_process_gate": {
+      "production_command": "scripts/verify_ae_sq9_f2b.py",
+      "production_loader": "scripts/run_ae_sq9_aq.py:_load_base_state",
+      "fixture": "synthetic-zero-corpus-exact-F2A-F2B-git-topology",
+      "positive_parent_preimports_resolver_clean_child_passes": true,
+      "red_child_poisoned": "REJECTED",
+      "red_same_process_validation_then_loader": "REJECTED",
+      "red_wrong_commit_tree_blob_raw_or_canonical_bytes": "REJECTED",
+      "red_missing_or_top_level_validator_identity": "REJECTED",
+      "mock_source_assertion_dictionary_only_or_alternate_loader_permitted": false,
+      "aggregate_only": true,
+      "model_calls": 0
+    },
+    "canonical_receipt_gate": {
+      "serialization": "UTF-8-JSON-sort-keys-compact-separators-no-trailing-bytes",
+      "trailing_byte_permitted": false,
+      "verify_exact_committed_blob_not_in_memory_object": true
+    },
+    "authoring_before_exact_committed_F1G_clean_process_gate_pass_permitted": false,
+    "not_pass_route": "SQ9-F1G:NOT_PASS->SQ9-AR"
+  },
+  "f2_contract": {
+    "fresh_holdout": "two-independent-authors-times-twenty-cases-after-F1G-PASS-only",
+    "prohibited_inputs": ["any-SQ8-candidate-active-role-task-case-split-corpus-label-schedule-author-result-F2-or-execution-material", "other-author-split", "diagnostic-live-or-outcome-material"],
+    "historical_replay_input": "external-digest-only-inventory",
+    "f2a": {
+      "ordered_parents": ["exact-SQ9-F1G", "author-A", "author-B"],
+      "exact_delta_paths": ["evals/ae-sq9/f2/split-a.json", "evals/ae-sq9/f2/split-b.json", "evals/ae-sq9/f2/schedule.json", "evals/ae-sq9/f2/corpus-manifest.json"],
+      "artifact_mode": "100644",
+      "schedule_presentations": 80,
+      "calls_per_presentation": 4,
+      "independent_nonauthor_validation_required": true
+    },
+    "f2b": {
+      "direct_child_of_passing_F2A": true,
+      "exact_delta_paths": ["evals/ae-sq9/f2/run-manifest.json"],
+      "embedded_closed_independent_receipt_required": true,
+      "transient_loader_output_establishes_pass": false
+    },
+    "f2g": {
+      "direct_child_of_exact_F2B": true,
+      "exact_delta_paths": ["evals/ae-sq9/f2/f2b-loader-gate.json"],
+      "receipt_only": true,
+      "clean_child_attempts": 1,
+      "durable_attempt_state": {
+        "path": ".git-common-dir/.ae-sq9-f2g/state.json",
+        "claim_before_child_launch": true,
+        "owner_only": true,
+        "exclusive_create": true,
+        "binds_exact_F2B_verifier_executable_and_canonical_arguments": true,
+        "statuses": ["claimed", "completed", "invalid"],
+        "crash_rejection_cleanup_failure_parent_drift_or_missing_receipt_is_terminal": true,
+        "reset_delete_replace_or_relaunch_permitted": false,
+        "completed_state_binds_receipt_raw_sha256_and_F2G_commit": true
+      },
+      "binds_F1A_F1B_F1G_F2A_F2B_verifier_executable_command_module_ledger_and_loader_result": true,
+      "only_exact_committed_PASS_opens_F3": true,
+      "model_calls": 0
+    },
+    "retry_replacement_replay_duplicate_extra_or_top_up_permitted": false
+  },
+  "execution_contract": {
+    "f3": "one-zero-model-preflight-from-exact-committed-F2G-PASS-proving-custody-schema-formula-lifecycle-budget-privacy-and-unclaimed-one-shot-state",
+    "f4": "one-four-call-synthetic-noncorpus-canary-with-all-four-valid-or-terminal",
+    "f5": "conditional-exactly-eighty-presentations-and-at-most-three-hundred-twenty-attempted-calls-with-no-retry",
+    "f6": "deterministic-global-logical-AND-with-every-missing-invalid-undefined-nonfinite-duplicate-extra-rejected-or-failed-value-false",
+    "later_stage_compensation_permitted": false
+  },
+  "outcome_contract": {
+    "durable_result_path": "evals/ae-sq9/f6/aggregate-result.json",
+    "aggregate_result_fields_only": ["schema_version", "program_id", "candidate_id", "status", "aggregate_digest"],
+    "pass_handoff_path": "evals/ae-sq9/as/handoff.json",
+    "nonpass_terminal_path": "evals/ae-sq9/ar/terminal-decision.json",
+    "handoff_and_terminal_may_coexist": false,
+    "handoff_confers_downstream_execution_authority": false
+  },
+  "privacy_and_claims": {
+    "forbidden_durable_or_exfiltrated_material": ["raw-prompts", "task-text", "case-or-split-content", "outputs", "event-payloads", "transcripts", "messages", "presentation-assessor-gate-or-score-level-results"],
+    "maximum_success_claim": "one-exact-candidate-aggregate-in-the-frozen-forty-case-two-condition-SQ9-envelope",
+    "not_proven": ["general-provider-or-model-behavior", "product-or-host-behavior", "field-or-production-effect", "security-or-release-readiness", "publication-or-promotion-authority"]
+  },
+  "namespace": {
+    "active_plan": {
+      "path": "docs/exec-plans/active/ae-sq9.md",
+      "raw_sha256": "7d01de0811e2eea877d21206b42626ec3d447702c63d573ac3b8c33570b728f1"
+    },
+    "program_authority_path": "evals/ae-sq9/program-authority.json",
+    "owned_prefixes": ["AE-SQ9", "SQ9-", "SLEC-9", "ae-sq9", "evals/ae-sq9/"],
+    "predecessor_program_or_candidate_continuation_permitted": false
+  },
+  "forbidden_actions": ["reopen-retry-repair-refreeze-resume-reinterpret-or-continue-AE-SQ8", "reuse-any-SQ8-candidate-active-role-task-corpus-label-schedule-author-result-F2-or-execution-byte", "author-corpus-before-exact-committed-F1G-clean-process-gate-PASS", "invoke-production-F2B-loader-in-validation-or-materialization-interpreter", "accept-transient-stdout-as-F2G-PASS", "launch-second-F2G-verifier-process", "make-model-call-before-F4", "enter-batch-before-all-four-canary-calls-pass", "retry-replay-replace-duplicate-extra-or-top-up", "use-model-provider-reasoning-or-mode-fallback", "persist-or-exfiltrate-forbidden-raw-or-subaggregate-material", "use-later-stage-compensation", "route-nonpass-downstream", "release-publish-promote-delete-or-migrate"]
+}

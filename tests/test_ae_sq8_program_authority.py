@@ -15,7 +15,6 @@ from jsonschema import Draft202012Validator
 
 ROOT = Path(__file__).resolve().parents[1]
 AUTHORITY = ROOT / "evals/ae-sq8/program-authority.json"
-PLAN = ROOT / "docs/exec-plans/active/ae-sq8.md"
 EXPECTED_RAW_SHA256 = "dc15fc8403f59cb59ae1491ce790c0dfa3439b0d2bb02c0bfaadcfd6f3fb7654"
 EXPECTED_SEMANTIC_SHA256 = (
     "472ef4241dd06b0a9472c4da404b2534ed68f02cb53b2054486375b18730d70a"
@@ -24,6 +23,7 @@ F1A = "1613d46d8fae71259979371717dd567de17ffded"
 F3 = "39384f86f4680866cb2cee945c3eb7b2f3ea10fe"
 F3_PATH = "evals/ae-sq7/f3/preflight.json"
 PREFLIGHT_SCHEMA_PATH = "evals/ae-sq7/f1/preflight-schema.json"
+F0 = "342f923607bd45ecff7a670b1b939decea4676cf"
 
 
 def strict(raw: bytes) -> dict[str, Any]:
@@ -267,7 +267,9 @@ class AeSq8ProgramAuthorityTests(unittest.TestCase):
         validate(document)
         self.assertEqual(
             document["namespace"]["active_plan"]["raw_sha256"],
-            hashlib.sha256(PLAN.read_bytes()).hexdigest(),
+            hashlib.sha256(
+                git_show(F0, "docs/exec-plans/active/ae-sq8.md")
+            ).hexdigest(),
         )
 
     def test_exact_git_f3_record_derives_raw_aggregate_schema_and_all_false(
@@ -297,7 +299,7 @@ class AeSq8ProgramAuthorityTests(unittest.TestCase):
         self.assertEqual(0, record["model_calls"])
 
     def test_plan_exposes_full_boundary_repair_and_execution_contract(self) -> None:
-        plan = PLAN.read_text(encoding="utf-8")
+        plan = git_show(F0, "docs/exec-plans/active/ae-sq8.md").decode("utf-8")
         for value in (
             "actual target-frozen production\n`_f3_checks` and `build_f3_record`",
             "synthetic zero-corpus/no-model fixture",

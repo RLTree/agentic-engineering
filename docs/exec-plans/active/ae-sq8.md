@@ -1,11 +1,32 @@
 # AE-SQ8 distinct successor qualification program
 
-Status: **ACTIVE — SQ8-F0 AUTHORITY; SQ8-F1A NEXT**
+Status: **TERMINAL — SQ8-F2B NOT_PASS; SQ8-AR**
 Program: `AE-SQ8`
 Candidate: `AE-SQ8-SLEC-8`
 Machine authority: `evals/ae-sq8/program-authority.json`
 Authority date: 2026-08-13, America/Los_Angeles
-Claim ceiling: structural successor authority and unexecuted F3 receipt-interface repair plan only
+Claim ceiling: fresh F2A corpus validation PASS plus exact F2B production-loader rejection and terminal custody only
+
+## 0. Terminal disposition
+
+SQ8 is closed at commit `f455f582e8d94356fab142f4d51c8ef825c446ff`
+on edge `SQ8-F2B:NOT_PASS->SQ8-AR`. The independently authored fresh
+40-case corpus passed the frozen aggregate validator, and F2A
+`6ad83a4340d71408bcf38f51ccab8a60c2e1bbcf` plus F2B
+`96c4f8a33caf4b8d5d34a6bfc9d0d32db571e831` were sealed. The sole
+integrated production `_load_base_state` gate then rejected with
+`ambient module poisoning detected: resolve_ae_sq8_slec` because the
+validation process had already imported that resolver before invoking the
+strict target-frozen loader.
+
+The pair-level PASS cannot compensate for the integrated F2B rejection. A
+fresh-process rerun would be replay after NOT_PASS and is forbidden. F3 never
+opened; no one-shot state, F4-F6, result, handoff, canary, batch, or model call
+exists. The aggregate-only terminal record is
+`evals/ae-sq8/ar/terminal-decision.json`, raw SHA-256
+`0754a58ecb68dbfc5ac5b8b3d5aacbeca4e131a3724fadaea8d1e28d2f91ccd0`.
+No SQ8 active-role, author, split, corpus, schedule, F2, result, or execution
+byte may be reused by a successor.
 
 ## 1. Distinct terminal boundary
 
@@ -88,8 +109,10 @@ F6 may emit only aggregate-only JSON at
 Raw prompts, task/case content, outputs, events, transcripts, messages, and
 presentation-, assessor-, gate-, or score-level material remain private.
 
-Even PASS proves at most one exact candidate aggregate in this frozen 40-case,
+Even PASS would prove at most one exact candidate aggregate in this frozen 40-case,
 two-condition envelope. It does not prove general provider/model, product,
 host, field, production, security, release, publication, promotion, or effect
-claims. The next authorized transition is one zero-model, zero-corpus SQ8-F1A
-commit; no later phase begins before its immediate durable gate.
+claims. SQ8 has no next phase. The only lawful transition is a separately
+owner-authorized successor program importing terminal and process-interface
+provenance only; SQ8 may not be retried, repaired, reopened, refrozen, resumed,
+or reinterpreted.

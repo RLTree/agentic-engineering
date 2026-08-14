@@ -168,13 +168,15 @@ class AeSq7TerminalTests(unittest.TestCase):
     def test_foundation_bridge_and_decision_rows_are_unique(self) -> None:
         self.assertEqual(
             FOUNDATION.read_text(encoding="utf-8").splitlines()[6],
-            "**Active successor plan:** `docs/exec-plans/active/ae-sq8.md` for AE-SQ8 only; AE-SQ7, AE-SQ6, AE-SQ5, AE-SQ4, AE-SQ3, AE-SQ2, AE-SQ1, and `EXECPLAN.md` remain immutable terminal history",
+            "**Active successor plan:** `docs/exec-plans/active/ae-sq9.md` for AE-SQ9 only; AE-SQ8, AE-SQ7, AE-SQ6, AE-SQ5, AE-SQ4, AE-SQ3, AE-SQ2, AE-SQ1, and `EXECPLAN.md` remain immutable terminal history",
         )
         rows = list(csv.DictReader(io.StringIO(LOG.read_text(encoding="utf-8"))))
         ids = [row["decision_id"] for row in rows]
         self.assertEqual(1, ids.count("AE-SQ7-AR-2026-08-13"))
         self.assertEqual(1, ids.count("AE-SQ8-F0-2026-08-13"))
-        self.assertEqual(["AE-SQ7-AR-2026-08-13", "AE-SQ8-F0-2026-08-13"], ids[-2:])
+        self.assertEqual(1, ids.count("AE-SQ8-AR-2026-08-13"))
+        self.assertEqual(1, ids.count("AE-SQ9-F0-2026-08-13"))
+        self.assertEqual(["AE-SQ8-AR-2026-08-13", "AE-SQ9-F0-2026-08-13"], ids[-2:])
 
     def test_duplicate_and_nonfinite_json_are_rejected(self) -> None:
         with self.assertRaisesRegex(ValueError, "duplicate key"):
