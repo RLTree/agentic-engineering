@@ -1,0 +1,1391 @@
+{
+  "schema_version": "1.0",
+  "program_id": "AE-SQ8",
+  "corpus_id": "AE-SQ8-AQ-FRESH-V1",
+  "split_id": "B",
+  "split_nonce": "fae3cf9acdd06e36007b3012ec3da2a92914dad86dd435312c17d00a99e08a39",
+  "author_id": "sq8-author-b",
+  "authority": {
+    "program_id": "AE-SQ8",
+    "candidate_id": "AE-SQ8-SLEC-8",
+    "candidate_commit": "8454c9c712eaeedb14381956ac6144fd42dfbe39",
+    "candidate_tree": "f12485bc43bc406c33ecebcd6a59628fb7f8f556",
+    "f1_freeze_sha256": "37a698d0f854df5357326cc9ebea5c13b4b7086dc52c6c693d8f5ea2f4051b57",
+    "corpus_contract_sha256": "4a83e7aca782ed664f39238e2c2c32ed82776c6616ae7228bd4f44caecea4954",
+    "gates_sha256": "ed485f00a2545c9a691ce59135b638c8a83fe235f1d3012318bfe95b1e2894f2",
+    "metrics_sha256": "9f8d1dbdecd17ba9df17452efccd514ea31106cec66efb2b3494df732640d395",
+    "evaluator_schema_sha256": "d3a559d778e599808218679c2ca18b887d5b09fecc52ab4cb4bb5c8e7db30593"
+  },
+  "no_replay": {
+    "normalization_id": "ae-sq8-task-v1",
+    "historical_digest_inventory_sha256": "0e49a967d9a59021c0f1aa5fc8d80fd53fdf3ab1885925b0d86f1e8c4f9dc157",
+    "historical_inventory_content_sha256": "8ee69ae06f388c1b47386b312d31bcce7ae408d04e76659653335d55e12ac270",
+    "historical_inventory_count": 768,
+    "historical_text_embedded": false,
+    "predecessor_case_label_or_result_material_embedded": false
+  },
+  "cases": [
+    {
+      "case_id": "AE-SQ8-B-01",
+      "case_nonce": "ac206e37ffadf162ffe3f5efe24af8e72cf0b46df8856ff4d4c0fef60893e659",
+      "task_text": "Condense the supplied room-booking note to two sentences while retaining the original time, location, and organizer.",
+      "task_text_nfc_sha256": "bf1a4ca0e7582b597062c497c614d34d704f181555d4fcdfd8fa624dad80d895",
+      "profile": "none",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 116,
+              "text": "Condense the supplied room-booking note to two sentences while retaining the original time, location, and organizer."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 116,
+              "text": "Condense the supplied room-booking note to two sentences while retaining the original time, location, and organizer."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 116,
+              "text": "Condense the supplied room-booking note to two sentences while retaining the original time, location, and organizer."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 116,
+              "text": "Condense the supplied room-booking note to two sentences while retaining the original time, location, and organizer."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "none",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ8-B-02",
+      "case_nonce": "34e501ca9282ab39043213aae8b050484a06fb31188b6af612ede96cb61d3603",
+      "task_text": "Convert the provided comma-separated inventory names into a numbered list without altering spelling or quantity.",
+      "task_text_nfc_sha256": "466f8adf4743906712c75768f0a64f2dc7d1b91c075a0268bb2677a8650531df",
+      "profile": "none",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 112,
+              "text": "Convert the provided comma-separated inventory names into a numbered list without altering spelling or quantity."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 112,
+              "text": "Convert the provided comma-separated inventory names into a numbered list without altering spelling or quantity."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 112,
+              "text": "Convert the provided comma-separated inventory names into a numbered list without altering spelling or quantity."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 112,
+              "text": "Convert the provided comma-separated inventory names into a numbered list without altering spelling or quantity."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "none",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ8-B-03",
+      "case_nonce": "88888f8786465a5c5f3bf951f9e8861839f6431eb57b894cccf38e3cb3657ac1",
+      "task_text": "Reorder the four stated workshop objectives by their existing priority numbers and preserve every objective verbatim.",
+      "task_text_nfc_sha256": "16a46273512253a938584350de76491097f6dacc84879bc300ebc7117001c468",
+      "profile": "none",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 117,
+              "text": "Reorder the four stated workshop objectives by their existing priority numbers and preserve every objective verbatim."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 117,
+              "text": "Reorder the four stated workshop objectives by their existing priority numbers and preserve every objective verbatim."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 117,
+              "text": "Reorder the four stated workshop objectives by their existing priority numbers and preserve every objective verbatim."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 117,
+              "text": "Reorder the four stated workshop objectives by their existing priority numbers and preserve every objective verbatim."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "none",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ8-B-04",
+      "case_nonce": "0221fea861e59aa075aa4d1613094fd814dc0d8e819b82874cfdc77a86cbf76d",
+      "task_text": "Choose where to enforce lease ownership in a distributed agent queue so a delayed worker cannot publish after reassignment.",
+      "task_text_nfc_sha256": "52af3f1586bc30c2200bba5b3795f675aceefa85cfd4a1cc211569bb610c5084",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 123,
+              "text": "Choose where to enforce lease ownership in a distributed agent queue so a delayed worker cannot publish after reassignment."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 123,
+              "text": "Choose where to enforce lease ownership in a distributed agent queue so a delayed worker cannot publish after reassignment."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 123,
+              "text": "Choose where to enforce lease ownership in a distributed agent queue so a delayed worker cannot publish after reassignment."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 123,
+              "text": "Choose where to enforce lease ownership in a distributed agent queue so a delayed worker cannot publish after reassignment."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ8-B-05",
+      "case_nonce": "eb4647bb9dad28df4de4710fce55fbb26e42f76d74c049500a71f811c2e53b34",
+      "task_text": "Design the narrowest recovery boundary for a coordinator that must resume a partially completed fan-out after process loss.",
+      "task_text_nfc_sha256": "572432d857bef8e6ad971d2e7e9170bdbb7dcb76049eaff2b8096944d0cf94dd",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 123,
+              "text": "Design the narrowest recovery boundary for a coordinator that must resume a partially completed fan-out after process loss."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 123,
+              "text": "Design the narrowest recovery boundary for a coordinator that must resume a partially completed fan-out after process loss."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 123,
+              "text": "Design the narrowest recovery boundary for a coordinator that must resume a partially completed fan-out after process loss."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 123,
+              "text": "Design the narrowest recovery boundary for a coordinator that must resume a partially completed fan-out after process loss."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ8-B-06",
+      "case_nonce": "0e69e98aa13859d98f11a190d99b356221cb560114def091ddc2aaf3c898a95b",
+      "task_text": "Translate the request to clean up deployment into a bounded contract with authority, exclusions, acceptance evidence, and rollback.",
+      "task_text_nfc_sha256": "e2383b7648bcad939c75099fbfa9aff093a052654f0abcfaadfbfce706947250",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 131,
+              "text": "Translate the request to clean up deployment into a bounded contract with authority, exclusions, acceptance evidence, and rollback."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 131,
+              "text": "Translate the request to clean up deployment into a bounded contract with authority, exclusions, acceptance evidence, and rollback."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 131,
+              "text": "Translate the request to clean up deployment into a bounded contract with authority, exclusions, acceptance evidence, and rollback."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 131,
+              "text": "Translate the request to clean up deployment into a bounded contract with authority, exclusions, acceptance evidence, and rollback."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s1"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s1",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ8-B-07",
+      "case_nonce": "b5b097a5dcebbf45e4b952881e456cc6893056fb060c1830b982424e1c9e6f2e",
+      "task_text": "Frame an underspecified data-export change as an observable outcome with explicit assumptions and a consequence-aware approval gate.",
+      "task_text_nfc_sha256": "5b2ffb7a49b0bc001d8d953cc6399c243f939123afdfefd3d23d734d0dbd9915",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 132,
+              "text": "Frame an underspecified data-export change as an observable outcome with explicit assumptions and a consequence-aware approval gate."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 132,
+              "text": "Frame an underspecified data-export change as an observable outcome with explicit assumptions and a consequence-aware approval gate."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 132,
+              "text": "Frame an underspecified data-export change as an observable outcome with explicit assumptions and a consequence-aware approval gate."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 132,
+              "text": "Frame an underspecified data-export change as an observable outcome with explicit assumptions and a consequence-aware approval gate."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s1"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s1",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ8-B-08",
+      "case_nonce": "65293927f0edab188b12a65ba523b1eccdf9cfb64cbfa51bf8825c8723da5330",
+      "task_text": "Choose evidence that can expose stale-read behavior in a cache invalidation patch before the candidate is accepted.",
+      "task_text_nfc_sha256": "cd9960915703425c05ebc9badf676b76c8d7e21ce626363f6d6399370f07681c",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 115,
+              "text": "Choose evidence that can expose stale-read behavior in a cache invalidation patch before the candidate is accepted."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 115,
+              "text": "Choose evidence that can expose stale-read behavior in a cache invalidation patch before the candidate is accepted."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 115,
+              "text": "Choose evidence that can expose stale-read behavior in a cache invalidation patch before the candidate is accepted."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 115,
+              "text": "Choose evidence that can expose stale-read behavior in a cache invalidation patch before the candidate is accepted."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s2"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s2",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ8-B-09",
+      "case_nonce": "f709cee376c9370d5d50f1cd85c4e79bc9d747d70afc4ad530cb7426876609e2",
+      "task_text": "Build a proportional verification strategy for a command-line change whose main risk is silently truncating structured output.",
+      "task_text_nfc_sha256": "117775bfff6e039d8a726fbdd2107fee97e3842f97f71c9e831676aaf8603905",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 126,
+              "text": "Build a proportional verification strategy for a command-line change whose main risk is silently truncating structured output."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 126,
+              "text": "Build a proportional verification strategy for a command-line change whose main risk is silently truncating structured output."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 126,
+              "text": "Build a proportional verification strategy for a command-line change whose main risk is silently truncating structured output."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 126,
+              "text": "Build a proportional verification strategy for a command-line change whose main risk is silently truncating structured output."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s2"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s2",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ8-B-10",
+      "case_nonce": "0baa790ba71805c984fe7924170941281dcd865e553135384b2368e5f82218df",
+      "task_text": "Turn three confirmed authorization near-misses into a governed recommendation with mechanism evidence, counterexamples, owner, and review date.",
+      "task_text_nfc_sha256": "9215d2ec51e25f1c46c53f37a4ad610549e0650dd789ddf60f761f8709cf14de",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 143,
+              "text": "Turn three confirmed authorization near-misses into a governed recommendation with mechanism evidence, counterexamples, owner, and review date."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 143,
+              "text": "Turn three confirmed authorization near-misses into a governed recommendation with mechanism evidence, counterexamples, owner, and review date."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 143,
+              "text": "Turn three confirmed authorization near-misses into a governed recommendation with mechanism evidence, counterexamples, owner, and review date."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 143,
+              "text": "Turn three confirmed authorization near-misses into a governed recommendation with mechanism evidence, counterexamples, owner, and review date."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s3",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ8-B-11",
+      "case_nonce": "1cf586f81e391809fa72ef285244bbd1ce54daa32f0a6799065104fe9ae756e8",
+      "task_text": "Evaluate whether a recurring recovery workaround belongs in an evaluation, a tool constraint, or an explicit no-change record.",
+      "task_text_nfc_sha256": "050dcc21e54cde2599db700066e94fa452d4f9175f4a78a6cc5f0ac72565da14",
+      "profile": "single",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 126,
+              "text": "Evaluate whether a recurring recovery workaround belongs in an evaluation, a tool constraint, or an explicit no-change record."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 126,
+              "text": "Evaluate whether a recurring recovery workaround belongs in an evaluation, a tool constraint, or an explicit no-change record."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 126,
+              "text": "Evaluate whether a recurring recovery workaround belongs in an evaluation, a tool constraint, or an explicit no-change record."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 126,
+              "text": "Evaluate whether a recurring recovery workaround belongs in an evaluation, a tool constraint, or an explicit no-change record."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s3",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ8-B-12",
+      "case_nonce": "a01255bd2edcd3b4331bf4780218f4adaef99f0f45f5cdee413c81c3f8d45317",
+      "task_text": "Specify the topology and outcome contract for an approval-mediated research assistant that must survive interrupted sessions.",
+      "task_text_nfc_sha256": "d3bffc4498d5bf1be0e3f20de4888230c34db5dc72563131d8117daf2f5e614f",
+      "profile": "two",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 125,
+              "text": "Specify the topology and outcome contract for an approval-mediated research assistant that must survive interrupted sessions."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 125,
+              "text": "Specify the topology and outcome contract for an approval-mediated research assistant that must survive interrupted sessions."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 125,
+              "text": "Specify the topology and outcome contract for an approval-mediated research assistant that must survive interrupted sessions."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 125,
+              "text": "Specify the topology and outcome contract for an approval-mediated research assistant that must survive interrupted sessions."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0",
+          "s1"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "core"
+          },
+          {
+            "slot_id": "s1",
+            "need": "focused"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ8-B-13",
+      "case_nonce": "bba25629fbedb2ee6ec98ddc91e1b44f661ba0cc8a4e2e2cd23647028e36679b",
+      "task_text": "Design a restart-safe orchestration boundary and the field-learning process that may revise it after measured failures.",
+      "task_text_nfc_sha256": "b1844fca963d3fdea65043e58918b3632e046a9e58cfb2fecf2e537b6847461d",
+      "profile": "two",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 119,
+              "text": "Design a restart-safe orchestration boundary and the field-learning process that may revise it after measured failures."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 119,
+              "text": "Design a restart-safe orchestration boundary and the field-learning process that may revise it after measured failures."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 119,
+              "text": "Design a restart-safe orchestration boundary and the field-learning process that may revise it after measured failures."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 119,
+              "text": "Design a restart-safe orchestration boundary and the field-learning process that may revise it after measured failures."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s0",
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s0",
+            "need": "focused"
+          },
+          {
+            "slot_id": "s3",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ8-B-14",
+      "case_nonce": "4e7e9ecdd9e418c0b237f4795713777dde8c67bb20b1d903f924fcfac6b955cb",
+      "task_text": "Define the exact deliverable and the smallest falsifying evidence set for a consequential access-control migration.",
+      "task_text_nfc_sha256": "0eedf852b315f1f34fa9a21bad7f69b58ffb533975a67d651d639c572783665f",
+      "profile": "two",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 115,
+              "text": "Define the exact deliverable and the smallest falsifying evidence set for a consequential access-control migration."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 115,
+              "text": "Define the exact deliverable and the smallest falsifying evidence set for a consequential access-control migration."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 115,
+              "text": "Define the exact deliverable and the smallest falsifying evidence set for a consequential access-control migration."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 115,
+              "text": "Define the exact deliverable and the smallest falsifying evidence set for a consequential access-control migration."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s1",
+          "s2"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s1",
+            "need": "focused"
+          },
+          {
+            "slot_id": "s2",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ8-B-15",
+      "case_nonce": "98bde739b5ef1048f1968bf318721a826e589668502b5f7983cce1f6d2755d35",
+      "task_text": "Prove whether a retry defect is repaired and govern the resulting observation before encoding it as a reusable control.",
+      "task_text_nfc_sha256": "9dcf0b27981864db90ec4f1da695734b8f96a419f3338a2eb4000adcc2b913fd",
+      "profile": "two",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 119,
+              "text": "Prove whether a retry defect is repaired and govern the resulting observation before encoding it as a reusable control."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 119,
+              "text": "Prove whether a retry defect is repaired and govern the resulting observation before encoding it as a reusable control."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 119,
+              "text": "Prove whether a retry defect is repaired and govern the resulting observation before encoding it as a reusable control."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 119,
+              "text": "Prove whether a retry defect is repaired and govern the resulting observation before encoding it as a reusable control."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s2",
+          "s3"
+        ],
+        "reference_bundle": [
+          {
+            "slot_id": "s2",
+            "need": "focused"
+          },
+          {
+            "slot_id": "s3",
+            "need": "core"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "AE-SQ8-B-16",
+      "case_nonce": "c6bc1fa3b5f97bb0a17406576b9056d2b64e472ffb35b8cd890e58b4ed7d1d6c",
+      "task_text": "Develop the execution topology, task authority contract, and release evidence plan for an autonomous billing reconciliation agent.",
+      "task_text_nfc_sha256": "57488fd0675355271eb8dfb1bf985b27279364a397150589ce19e37c9496bb94",
+      "profile": "cap",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 130,
+              "text": "Develop the execution topology, task authority contract, and release evidence plan for an autonomous billing reconciliation agent."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 130,
+              "text": "Develop the execution topology, task authority contract, and release evidence plan for an autonomous billing reconciliation agent."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 130,
+              "text": "Develop the execution topology, task authority contract, and release evidence plan for an autonomous billing reconciliation agent."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 130,
+              "text": "Develop the execution topology, task authority contract, and release evidence plan for an autonomous billing reconciliation agent."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "cap_abstain",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ8-B-17",
+      "case_nonce": "91c370b97906fe0ceb93360f33ce8fa1f8692198a656368df737112fa8b99d99",
+      "task_text": "Bound a vague reliability intervention, verify its observable effects, and decide how any supported lesson enters durable engineering practice.",
+      "task_text_nfc_sha256": "a9de6ef976d7cd9525921d390f91fd43a529166123309f077e739e490fc04f76",
+      "profile": "cap",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 143,
+              "text": "Bound a vague reliability intervention, verify its observable effects, and decide how any supported lesson enters durable engineering practice."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 143,
+              "text": "Bound a vague reliability intervention, verify its observable effects, and decide how any supported lesson enters durable engineering practice."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 143,
+              "text": "Bound a vague reliability intervention, verify its observable effects, and decide how any supported lesson enters durable engineering practice."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 143,
+              "text": "Bound a vague reliability intervention, verify its observable effects, and decide how any supported lesson enters durable engineering practice."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "cap_abstain",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ8-B-18",
+      "case_nonce": "9bae1c7262a50b2cfb8486dca09eb622c1f72c07c4b8e84b25c8dc78432ed1a2",
+      "task_text": "Apply $agentic-engineering:codex-task-contract to define custody, approval thresholds, and done evidence for this repository transfer.",
+      "task_text_nfc_sha256": "585f2b7693c9dd08c12834fcd5cfbaae883bc7f7b7573b1243213f71f2c54681",
+      "profile": "explicit",
+      "explicit_slot_id": "s1",
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 134,
+              "text": "Apply $agentic-engineering:codex-task-contract to define custody, approval thresholds, and done evidence for this repository transfer."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "yes",
+          "reference_need": "focused",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 134,
+              "text": "Apply $agentic-engineering:codex-task-contract to define custody, approval thresholds, and done evidence for this repository transfer."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 134,
+              "text": "Apply $agentic-engineering:codex-task-contract to define custody, approval thresholds, and done evidence for this repository transfer."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 134,
+              "text": "Apply $agentic-engineering:codex-task-contract to define custody, approval thresholds, and done evidence for this repository transfer."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s1"
+        ],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ8-B-19",
+      "case_nonce": "d46508d495279e5e45121147ff99a30595f710b2b3b577e6ab6d6ed84bb8a360",
+      "task_text": "Apply $agentic-engineering:engineering-learning-loop to decide whether this reproduced timeout pattern merits a governed harness update.",
+      "task_text_nfc_sha256": "d55242207b1a2432b628d93de4d16083e529a5e9ce1c4a7855e774dd34fd0ca0",
+      "profile": "explicit",
+      "explicit_slot_id": "s3",
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 136,
+              "text": "Apply $agentic-engineering:engineering-learning-loop to decide whether this reproduced timeout pattern merits a governed harness update."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 136,
+              "text": "Apply $agentic-engineering:engineering-learning-loop to decide whether this reproduced timeout pattern merits a governed harness update."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 136,
+              "text": "Apply $agentic-engineering:engineering-learning-loop to decide whether this reproduced timeout pattern merits a governed harness update."
+            }
+          ]
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "yes",
+          "reference_need": "core",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 136,
+              "text": "Apply $agentic-engineering:engineering-learning-loop to decide whether this reproduced timeout pattern merits a governed harness update."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "selected",
+        "selected_slots": [
+          "s3"
+        ],
+        "reference_bundle": []
+      }
+    },
+    {
+      "case_id": "AE-SQ8-B-20",
+      "case_nonce": "b48e736649ec9b79862392c6fceb876a0d0c384746562f119e572a20f8eac13b",
+      "task_text": "A teammate recalls an occasional bad result but provides no exact task, candidate revision, trace, failure boundary, or reproducible observation.",
+      "task_text_nfc_sha256": "021e9f50269ac6e9be4f9705c65c1bfee6a439e23d82cedf3230eb44410a724c",
+      "profile": "uncertain",
+      "explicit_slot_id": null,
+      "expected_capsules": [
+        {
+          "slot_id": "s0",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 145,
+              "text": "A teammate recalls an occasional bad result but provides no exact task, candidate revision, trace, failure boundary, or reproducible observation."
+            }
+          ]
+        },
+        {
+          "slot_id": "s1",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 145,
+              "text": "A teammate recalls an occasional bad result but provides no exact task, candidate revision, trace, failure boundary, or reproducible observation."
+            }
+          ]
+        },
+        {
+          "slot_id": "s2",
+          "local_need": "uncertain",
+          "reference_need": "uncertain",
+          "anchors": []
+        },
+        {
+          "slot_id": "s3",
+          "local_need": "no",
+          "reference_need": "none",
+          "anchors": [
+            {
+              "start": 0,
+              "end": 145,
+              "text": "A teammate recalls an occasional bad result but provides no exact task, candidate revision, trace, failure boundary, or reproducible observation."
+            }
+          ]
+        }
+      ],
+      "expected_resolution": {
+        "status": "uncertain_abstain",
+        "selected_slots": [],
+        "reference_bundle": []
+      }
+    }
+  ]
+}
