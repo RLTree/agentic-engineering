@@ -13,11 +13,11 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 AUTHORITY = ROOT / "evals/ae-sq9/program-authority.json"
-PLAN = ROOT / "docs/exec-plans/active/ae-sq9.md"
 EXPECTED_RAW_SHA256 = "529c2a03d5c94c4505ed67c1c129a68fab1c73df4f6106098ec073512eafea3c"
 EXPECTED_SEMANTIC_SHA256 = (
     "0f134184062b8aca0915b7e70f5c37ca0cc5e0b8c3f15574387cd5134c5ec2ec"
 )
+F0 = "88c1b04dc049ab7656e811df9bc3f9e33276f778"
 
 
 def strict(raw: bytes) -> dict[str, Any]:
@@ -245,7 +245,14 @@ class AeSq9AuthorityTests(unittest.TestCase):
         )
         self.assertEqual(
             document["namespace"]["active_plan"]["raw_sha256"],
-            hashlib.sha256(PLAN.read_bytes()).hexdigest(),
+            hashlib.sha256(
+                subprocess.run(
+                    ["git", "show", f"{F0}:docs/exec-plans/active/ae-sq9.md"],
+                    cwd=ROOT,
+                    check=True,
+                    capture_output=True,
+                ).stdout
+            ).hexdigest(),
         )
         validate(document)
 
@@ -382,8 +389,16 @@ class AeSq9AuthorityTests(unittest.TestCase):
             ):
                 validate(mutate_leaf(document, path))
 
-    def test_plan_has_required_clean_process_and_receipt_contract(self) -> None:
-        plan = PLAN.read_text(encoding="utf-8")
+    def test_frozen_f0_plan_has_required_clean_process_and_receipt_contract(
+        self,
+    ) -> None:
+        plan = subprocess.run(
+            ["git", "show", f"{F0}:docs/exec-plans/active/ae-sq9.md"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout
         for fact in (
             "F2B -> F2G -> F3",
             "verify_ae_sq9_f2b.py",

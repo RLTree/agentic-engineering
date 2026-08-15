@@ -668,8 +668,8 @@ class AeSq3ProgramAuthorityTests(unittest.TestCase):
 
     def test_foundation_pointer_and_decision_rows(self) -> None:
         pointer = (
-            "**Active successor plan:** `docs/exec-plans/active/ae-sq9.md` for AE-SQ9 only; "
-            "AE-SQ8, AE-SQ7, AE-SQ6, AE-SQ5, AE-SQ4, AE-SQ3, AE-SQ2, AE-SQ1, and `EXECPLAN.md` remain immutable terminal history"
+            "**Active successor plan:** none; AE-SQ9, AE-SQ8, AE-SQ7, AE-SQ6, "
+            "AE-SQ5, AE-SQ4, AE-SQ3, AE-SQ2, AE-SQ1, and `EXECPLAN.md` remain immutable terminal history; a successor requires owner authorization after isolation capability PASS"
         )
         self.assertEqual(FOUNDATION_PATH.read_text().splitlines()[6], pointer)
         rows = list(csv.DictReader(io.StringIO(LOG_PATH.read_text())))
@@ -688,6 +688,8 @@ class AeSq3ProgramAuthorityTests(unittest.TestCase):
         self.assertEqual(identifiers.count("AE-SQ8-F0-2026-08-13"), 1)
         self.assertEqual(identifiers.count("AE-SQ8-AR-2026-08-13"), 1)
         self.assertEqual(identifiers.count("AE-SQ9-F0-2026-08-13"), 1)
+        self.assertEqual(identifiers.count("AE-SQ9-AR-2026-08-15"), 1)
+        self.assertEqual(identifiers.count("AE-SQ10-P0-HOLD-2026-08-15"), 1)
 
     def test_mutation_reds(self) -> None:
         document = strict(AUTHORITY_PATH.read_bytes())
